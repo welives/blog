@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: 🍳's blog
-  text: ''
+  name: 煎蛋的
+  text: 摸鱼笔记
   tagline: 知其然，也要知其所以然
   actions:
     - theme: brand
