@@ -1,0 +1,271 @@
+{
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.defaultLanguage": "javascript",
+  "code-runner.runInTerminal": true,
+  "code-runner.saveAllFilesBeforeRun": true,
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "php": "php",
+    "python": "D:/Develop/Python/python.exe"
+  },
+  // 配置编辑器
+  "editor.autoClosingBrackets": "always",
+  "editor.cursorBlinking": "smooth",
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.codeActionsOnSave": {
+    // 项目里得有.eslintrc.js
+    "source.fixAll.eslint": true,
+    // 项目里得有.stylelint.config.js
+    "source.fixAll.stylelint": true,
+    "source.fixAll.markdownlint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 不要同时开启editor.formatOnSave和source.fixAll.eslint，这样会导致两次lint检查
+  "editor.formatOnSave": false,
+  "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
+  "editor.guides.bracketPairs": "active",
+  "editor.linkedEditing": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.renderWhitespace": "boundary",
+  "editor.snippetSuggestions": "top",
+  "editor.tabSize": 2,
+  "editor.wordBasedSuggestions": false,
+  "editor.wordWrapColumn": 120,
+  "editor.wordWrap": "bounded",
+  // 配置emmet是否启用tab展开缩写
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "wxml": "html",
+    "vue-html": "html"
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  // 配置emmet对文件类型的支持
+  "emmet.syntaxProfiles": {
+    "vue-html": "html",
+    "vue": "html",
+    "wxml": "html",
+    "javascript": "jsx"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "extensions.ignoreRecommendations": true,
+  "files.eol": "\n",
+  // 配置文件关联
+  "files.associations": {
+    "*.html": "html",
+    "*.vue": "vue",
+    "*.nvue": "vue",
+    "*.css": "css",
+    "*.scss": "css",
+    "*.sass": "css",
+    "*.wxs": "javascript",
+    "*.js": "javascript",
+    "*.jsx": "javascriptreact",
+    "*.php": "php",
+    "*.json": "jsonc",
+    "*.wxss": "css",
+    "*.wxml": "wxml",
+    "*.cjson": "jsonc"
+  },
+  // 隐藏一些碍眼的文件夹
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/tmp": true,
+    "**/bower_components": true
+  },
+  // 排除掉一些不必要索引的大文件夹以减少内存和CPU消耗
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/tmp/**": true,
+    "**/bower_components/**": true,
+    "**/dist/**": true
+  },
+  "git.confirmSync": false,
+  "git.ignoreLimitWarning": true,
+  "git.path": "D:/Develop/Git/bin/git.exe",
+  "html-css-class-completion.includeGlobPattern": "**/*.{css,scss,sass,less,html}",
+  "html-css-class-completion.excludeGlobPattern": "**/node_modules/*.*",
+  "javascript.suggest.paths": false,
+  "typescript.suggest.paths": false,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "liveServer.settings.donotVerifyTags": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.useWebExt": true,
+  "php.validate.executablePath": "D:/Develop/PHP74/php.exe",
+  "php.suggest.basic": false,
+  // 是否格式化python文件
+  "python.pythonPath": "D:/Develop/Python/python.exe",
+  "python.linting.enabled": false,
+  "python.formatting.provider": "yapf",
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--max-line-length=248"],
+  // VScode 文件搜索排除区域
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/elehukouben": true,
+    "**/tmp": true,
+    "**/.umi": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.gitignore": true,
+    "**/.DS_Store": true,
+    "**/.idea": true,
+    "**/.vscode": false,
+    "**/yarn.lock": true,
+    "**/package-lock.json": true,
+    "**/.eslintrc.*": true
+    // "**/*.md": true
+  },
+  "search.followSymlinks": false,
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
+  "tailwindCSS.experimental.classRegex": ["tw`([^`]*)", ["tw.style\\(([^)]*)\\)", "'([^']*)'"]],
+  "terminal.external.windowsExec": "D:/Develop/Git/bin/bash.exe",
+  "terminal.integrated.automationProfile.windows": {
+    "path": "D:/Develop/Git/bin/bash.exe"
+  },
+  "terminal.integrated.profiles.windows": {
+    "Git-Bash": {
+      "path": "D:/Develop/Git/bin/bash.exe",
+      "args": []
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Git-Bash",
+  "terminal.integrated.cursorBlinking": true,
+  "workbench.colorTheme": "Dracula",
+  "workbench.iconTheme": "material-icon-theme",
+  // 设置guide线高亮颜色
+  "workbench.colorCustomizations": {
+    "editorIndentGuide.activeBackground1": "#ff0000"
+  },
+  // 代码检查/格式化
+  "auto-rename-tag.activationOnLanguage": [
+    "html",
+    "xml",
+    "php",
+    "javascript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  "css.validate": false,
+  "css.lint.unknownAtRules": "ignore",
+  "less.validate": false,
+  "less.lint.unknownAtRules": "ignore",
+  "scss.validate": false,
+  "scss.lint.unknownAtRules": "ignore",
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "less", "postcss", "scss", "sass", "vue"],
+  "eslint.run": "onSave",
+  // 既然editor.formatOnSave关闭了，那eslint.format.enable也得关闭。你放心，source.fixAll.eslint是生效的
+  "eslint.format.enable": false,
+  "eslint.alwaysShowStatus": true,
+  // ESLint添加支持，老版的是eslint.validate，暂时不去掉，以防万一
+  "eslint.validate": [
+    "html",
+    "vue",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  // ESLint添加支持，新版的是eslint.probe
+  "eslint.probe": ["html", "vue", "javascript", "typescript", "javascriptreact", "typescriptreact"],
+  "eslint.options": {
+    "configFile": ".eslintrc.js",
+    "extensions": [".html", ".vue", ".css", ".scss", ".js", ".ts", ".jsx", ".tsx"]
+  },
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "vetur.format.options.tabSize": 2,
+  "vetur.format.options.useTabs": false,
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.less": "prettier",
+  "[css]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[nvue]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[php]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "[prisma]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "[python]": {
+    "editor.formatOnSave": true
+  },
+  "minapp-vscode.disableAutoConfig": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "dart.hotReloadOnSave": "manual",
+  "tabnine.experimentalAutoImports": true,
+  "react-native-tools.showUserTips": false,
+  "Codegeex.Privacy": true,
+  "svg.preview.mode": "svg"
+  // "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  // "dart.flutterSdkPaths": ["D:/Develop/fvm/versions"]
+}

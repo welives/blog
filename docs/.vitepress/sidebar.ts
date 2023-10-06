@@ -9,7 +9,6 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         {
           text: 'CSS',
-          link: '/front-end/css/',
           collapsed: true,
           items: [
             {
@@ -36,7 +35,6 @@ const sidebar: DefaultTheme.Sidebar = {
         },
         {
           text: 'JavaScript',
-          link: '/front-end/javascript/',
           collapsed: true,
           items: [
             {
@@ -63,7 +61,6 @@ const sidebar: DefaultTheme.Sidebar = {
         },
         {
           text: 'TypeScript',
-          link: '/front-end/typescript/',
           collapsed: true,
           items: [
             {
@@ -80,7 +77,6 @@ const sidebar: DefaultTheme.Sidebar = {
         },
         {
           text: '浏览器',
-          link: '/front-end/browser/',
           collapsed: true,
           items: [
             {
@@ -102,8 +98,32 @@ const sidebar: DefaultTheme.Sidebar = {
   ],
   '/misc/': [
     {
-      text: 'VSCode',
-      link: '/misc/vscode'
+      text: '杂项',
+      collapsed: false,
+      items: [
+        {
+          text: 'VSCode',
+          link: '/misc/vscode'
+        },
+        {
+          text: 'win10开发环境搭建',
+          link: '/misc/win10开发环境搭建'
+        }
+      ]
+    },
+    {
+      text: 'Docker',
+      collapsed: false,
+      items: [
+        {
+          text: '基础',
+          link: '/misc/docker/基础'
+        },
+        {
+          text: '搭建远程开发环境',
+          link: '/misc/docker/搭建远程开发环境'
+        }
+      ]
     }
   ]
 }
