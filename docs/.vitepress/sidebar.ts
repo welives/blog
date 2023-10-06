@@ -4,6 +4,7 @@ const sidebar: DefaultTheme.Sidebar = {
   '/front-end/': [
     {
       text: 'Web前端',
+      link: '/front-end/',
       collapsed: false,
       items: [
         {
@@ -34,10 +35,42 @@ const sidebar: DefaultTheme.Sidebar = {
           ]
         },
         {
-          text: 'JavaScript'
+          text: 'JavaScript',
+          link: '/front-end/javascript/',
+          collapsed: true,
+          items: [
+            {
+              text: 'this指向',
+              link: '/front-end/javascript/this指向'
+            },
+            {
+              text: '原型链',
+              link: '/front-end/javascript/原型链'
+            },
+            {
+              text: '继承',
+              link: '/front-end/javascript/继承'
+            },
+            {
+              text: '模块导入导出',
+              link: '/front-end/javascript/模块导入导出'
+            },
+            {
+              text: '奇技淫巧',
+              link: '/front-end/javascript/奇技淫巧'
+            }
+          ]
         },
         {
-          text: 'TypeScript'
+          text: 'TypeScript',
+          link: '/front-end/typescript/',
+          collapsed: true,
+          items: [
+            {
+              text: '类型系统',
+              link: '/front-end/typescript/类型系统'
+            }
+          ]
         },
         {
           text: 'Vue'
@@ -65,6 +98,12 @@ const sidebar: DefaultTheme.Sidebar = {
           ]
         }
       ]
+    }
+  ],
+  '/misc/': [
+    {
+      text: 'VSCode',
+      link: '/misc/vscode'
     }
   ]
 }

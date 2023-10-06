@@ -20,7 +20,7 @@ export default defineConfig({
     },
     nav: [
       { text: '前端', link: '/front-end/' },
-      { text: '杂项', link: '/misc' }
+      { text: '杂项', link: '/misc/' }
     ],
     sidebar,
     outline: 'deep',
