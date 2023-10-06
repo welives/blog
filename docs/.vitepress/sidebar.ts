@@ -70,7 +70,54 @@ const sidebar: DefaultTheme.Sidebar = {
           ]
         },
         {
-          text: 'Vue'
+          text: 'Vue',
+          collapsed: true,
+          items: [
+            {
+              text: 'Vue2 生命周期',
+              link: '/front-end/vue/Vue2生命周期'
+            },
+            {
+              text: 'new Vue 发生了什么',
+              link: '/front-end/vue/newVue'
+            },
+            {
+              text: '虚拟 DOM',
+              link: '/front-end/vue/虚拟DOM'
+            },
+            {
+              text: 'Diff 算法',
+              link: '/front-end/vue/Diff算法'
+            },
+            {
+              text: 'Vue2 响应式原理',
+              link: '/front-end/vue/Vue2响应式原理'
+            },
+            {
+              text: 'nextTick',
+              link: '/front-end/vue/nextTick'
+            },
+            {
+              text: '计算属性和监听',
+              link: '/front-end/vue/计算属性和监听'
+            },
+            {
+              text: '$set和$delete',
+              link: '/front-end/vue/$set和$delete'
+            },
+            {
+              text: 'props',
+              link: '/front-end/vue/props'
+            },
+            {
+              text: 'Vue常见优化手段',
+              link: '/front-end/vue/Vue常见优化手段'
+            },
+            {
+              text: '杂项',
+              link: '/front-end/vue/杂项'
+            }
+          ]
         },
         {
           text: 'React'
