@@ -7,7 +7,31 @@ const sidebar: DefaultTheme.Sidebar = {
       collapsed: false,
       items: [
         {
-          text: 'CSS'
+          text: 'CSS',
+          link: '/front-end/css/',
+          collapsed: true,
+          items: [
+            {
+              text: 'CSS属性计算过程',
+              link: '/front-end/css/CSS属性计算过程'
+            },
+            {
+              text: 'CSS包含块',
+              link: '/front-end/css/CSS包含块'
+            },
+            {
+              text: '线性渐变',
+              link: '/front-end/css/线性渐变'
+            },
+            {
+              text: '瀑布流',
+              link: '/front-end/css/瀑布流'
+            },
+            {
+              text: '奇技淫巧',
+              link: '/front-end/css/奇技淫巧'
+            }
+          ]
         },
         {
           text: 'JavaScript'
