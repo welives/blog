@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例5 自由落体</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 95vh;
+        gap: 20px;
+      }
+      p {
+        text-align: center;
+      }
+      canvas {
+        width: 500px;
+        height: 500px;
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>练习自由落体运动的动画</p>
+      <canvas id="basic"></canvas>
+    </div>
+    <div>
+      <p>练习canvas用户交互</p>
+      <canvas id="interactive"></canvas>
+    </div>
+  </body>
+  <script>
+    const RADIUS = 25 // 球的半径
+    const G = 9.8 // 重力加速度
+    const balls = [
+      {
+        src: '../assets/volleyball.png',
+        x: 50, // 绘制图片的起点 dx 坐标
+        y: randomHeight(), // 绘制图片的起点 dy 坐标
+        v: 0, // 球的初始速度
+        t: 0, // 上次计算位移时记录的时间
+        b: 0.65, // 反弹系数
+        isControl: false, // 是否受控制
+      },
+      {
+        src: '../assets/basketball.png',
+        x: 150,
+        y: randomHeight(),
+        v: 0,
+        t: 0,
+        b: 0.6,
+        isControl: false,
+      },
+      {
+        src: '../assets/football.png',
+        x: 250,
+        y: randomHeight(),
+        v: 0,
+        t: 0,
+        b: 0.6,
+        isControl: false,
+      },
+      {
+        src: '../assets/baseball.png',
+        x: 350,
+        y: randomHeight(),
+        v: 0,
+        t: 0,
+        b: 0.4,
+        isControl: false,
+      },
+    ]
+
+    function randomHeight() {
+      return Math.floor(Math.random() * (250 - RADIUS * 2)) + RADIUS * 2
+    }
+    /**
+     * 初始化canvas原始尺寸
+     * @param {HTMLCanvasElement} cvs
+     */
+    function init(cvs) {
+      cvs.width = cvs.clientWidth * devicePixelRatio
+      cvs.height = cvs.clientHeight * devicePixelRatio
+    }
+    /**
+     * 加载小球的图片
+     * @param {balls} arr
+     */
+    function loadImagePromise(arr) {
+      return arr.map((item) => {
+        return new Promise((resolve) => {
+          const img = new Image()
+          img.src = item.src
+          img.onload = () => resolve(new Ball({ ...item, img }))
+        })
+      })
+    }
+
+    class Ball {
+      constructor(options) {
+        Object.assign(this, options)
+      }
+      /**
+       * 速度随时间变化的规律：v = gt
+       * 位移随时间变化的规律：h = 1/2gt^2
+       * 速度随时间变化的规律：v = sqrt(2gh)
+       *
+       * 球的坠落处理函数
+       * @param {number} time 动画进行的时间,秒
+       * @param {CanvasRenderingContext2D} ctx
+       */
+      fall(time, ctx) {
+        if (!this.t || (this.y === 0 && this.v === 0)) {
+          this.t = time
+          return
+        }
+
+        if (this.isControl) return
+
+        // 两次动画直接的时间间隔
+        const deltaT = time - this.t
+        this.t = time // 更新时间,给下一次计算使用
+
+        const h = this.v * time + (G * Math.pow(deltaT, 2)) / 2 // 先用旧的速度算出位移
+        this.y += h // 更新球的新位置
+        this.v += G * deltaT // 然后再更新速度, 速度=初速度+加速度*时间
+
+        // 触底时
+        if (this.y > ctx.canvas.height) {
+          this.y = ctx.canvas.height
+          /**
+           * 触底反弹,速度方向相反,而且有一定的衰减,衰减系数为 this.b
+           * 如果当前速度大于衰减系数,则乘以衰减系数的负值
+           */
+          this.v = this.v > this.b ? this.v * -this.b : 0
+        }
+      }
+      /**
+       * 操控球
+       * @param {{x:number,y:number,isPressed:boolean}} coor 鼠标在画布中的坐标
+       * @param {HTMLCanvasElement} canvas 画布DOM
+       */
+      control(coor, canvas) {
+        this.isControl = true
+        this.v = 0 // 重置速度
+
+        const mouseMoveFn = this.moveBall(coor, canvas)
+        canvas.addEventListener('mousemove', mouseMoveFn) // 选中球后监听鼠标的移动事件,回调函数由闭包提供
+        const mouseUpFn = () => {
+          canvas.removeEventListener('mousemove', mouseMoveFn)
+          canvas.removeEventListener('mouseup', mouseUpFn)
+          this.isControl = false
+          this.t = 0 // 重置时间记录
+        }
+        canvas.addEventListener('mouseup', mouseUpFn) // 松开鼠标
+      }
+      /**
+       * 操控球
+       * @param {{x:number,y:number,isPressed:boolean}} coor 鼠标在画布中的坐标
+       * @param {HTMLCanvasElement} canvas 画布DOM
+       */
+      moveBall(coor, canvas) {
+        return () => {
+          // 使球的圆心与鼠标保持一致,以此来计算绘制球的基点
+          this.x =
+            coor.x - RADIUS < 0
+              ? 0
+              : coor.x + RADIUS >= canvas.width
+              ? canvas.width - RADIUS * 2
+              : coor.x - RADIUS // 计算出绘制球的横坐标 x
+          this.y =
+            coor.y - RADIUS < 0
+              ? RADIUS * 2
+              : coor.y + RADIUS >= canvas.height
+              ? canvas.height
+              : coor.y + RADIUS // 计算出绘制球的纵坐标 y
+        }
+      }
+    }
+  </script>
+  <script src="./basic.js"></script>
+  <script src="./interactive.js"></script>
+</html>

@@ -214,7 +214,7 @@ export function mountComponent(
 - `computed-watcher`：也就是计算属性
 - `render-watcher`：只是用做视图渲染而定义的`Watcher`实例，也就是上面的`mountComponent`函数最后所实例化的`Watcher`类
 
-`user-watcher`和`computed-watcher`请查看[计算属性和监听](vue/计算属性和监听)，本章着重讲解`render-watcher`的情况，它的定义在`src/core/observer/watcher.ts`文件中：
+`user-watcher`和`computed-watcher`请查看[计算属性和监听](./计算属性和监听)，本章着重讲解`render-watcher`的情况，它的定义在`src/core/observer/watcher.ts`文件中：
 
 ```ts
 export default class Watcher implements DepTarget {
@@ -562,7 +562,7 @@ export default {
 
 > 知识点：`Vue`还是挺聪明的，通过这个示例能看出来，派发更新通知的粒度是组件级别，至于组件内是哪个属性赋值了，派发更新并不关心，而且怎么高效更新这个视图，那是之后`diff`比对做的事情。
 
-队列有了，执行`nextTick(flushSchedulerQueue)`在下一次`tick`时更新它，这里的`nextTick`就是我们经常使用的`this.$nextTick`方法的原始方法，它们作用一致，实现原理请看[nextTick](vue/nextTick)。我们来看下参数`flushSchedulerQueue`是个啥？
+队列有了，执行`nextTick(flushSchedulerQueue)`在下一次`tick`时更新它，这里的`nextTick`就是我们经常使用的`this.$nextTick`方法的原始方法，它们作用一致，实现原理请看[nextTick](./nextTick)。我们来看下参数`flushSchedulerQueue`是个啥？
 
 ```ts
 function flushSchedulerQueue() {
@@ -617,11 +617,11 @@ export default class Watcher implements DepTarget {
 
 执行`run`其实就是重新执行一次`this.get()`方法，让`vm._update(vm._render())`再走一遍而已。然后生成新旧`VNode`，最后进行`diff`比对以更新视图。
 
-最后我们来说下`Vue`基于`Object.defineProperty`响应式系统的一些不足。比如只能监听到数据的变化，所以有时`data`中要定义一堆的初始值，因为要先加入响应式系统后才能被感知到；还有就是常规 JavaScript 操作对象的方式，并不能监听到增加以及删除。`Vue`为了解决这个问题，提供了两个 API：[$set和$delete](vue/$set和$delete)
+最后我们来说下`Vue`基于`Object.defineProperty`响应式系统的一些不足。比如只能监听到数据的变化，所以有时`data`中要定义一堆的初始值，因为要先加入响应式系统后才能被感知到；还有就是常规 JavaScript 操作对象的方式，并不能监听到增加以及删除。`Vue`为了解决这个问题，提供了两个 API：[$set和$delete](./$set和$delete)
 
 ## 原理图
 
-![Vue响应式原理](./assets/Vue响应式原理.png ':size=70%')
+![Vue响应式原理](./assets/Vue响应式原理.png)
 
 通过`Object.defineProperty`遍历对象的每一个属性，把每一个属性变成一个`getter`和`setter`函数，读取属性的时候调用`getter`，给属性赋值的时候就会调用`setter`
 

@@ -12,5 +12,5 @@ hero:
       link: /front-end/
     - theme: alt
       text: View on GitHub
-      link: https://github.com/welives/notebook
+      link: https://github.com/welives/blog
 ---

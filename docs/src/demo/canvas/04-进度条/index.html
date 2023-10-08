@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例4 进度条</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 95vh;
+      }
+      .wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      canvas {
+        flex: 1;
+        /* 样式尺寸 */
+        width: 50%;
+        height: 100%;
+        background-color: #fefefe;
+      }
+    </style>
+  </head>
+  <body>
+    <p>练习canvas动画和文字相关的API</p>
+    <div class="wrap">
+      <canvas id="bar"></canvas>
+      <canvas id="circle"></canvas>
+    </div>
+  </body>
+  <script>
+    const MARGIN = 50
+    const barWidth = 400
+    const barHeight = 100
+    const radius = 150
+    const circleBg = '#eee'
+    let barColor, textColor
+
+    function randomColor() {
+      return `#${Math.random().toString(16).slice(2, 8)}`
+    }
+    /**
+     * 初始化canvas原始尺寸
+     * @param {HTMLCanvasElement} cvs
+     */
+    function init(cvs) {
+      cvs.width = cvs.clientWidth * devicePixelRatio
+      cvs.height = cvs.clientHeight * devicePixelRatio
+    }
+    /**
+     * 根据时间计算百分比
+     * @param {number} time
+     */
+    function calcPercent(time) {
+      const percent = time / 100
+      return percent > 100 ? 100 : percent
+    }
+    /**
+     * 绘制进度条
+     * @param {CanvasRenderingContext2D} ctx
+     * @param {number} percent
+     */
+    function drawBar(ctx, percent) {
+      ctx.strokeStyle = barColor
+      ctx.strokeRect(MARGIN, MARGIN, barWidth, barHeight)
+      ctx.fillStyle = barColor
+      ctx.fillRect(
+        MARGIN,
+        MARGIN,
+        (barWidth / 100) * Math.floor(percent),
+        barHeight,
+      )
+      // 文字进度
+      ctx.fillStyle = textColor
+      ctx.font = '48px Microsoft YaHei'
+      /**
+       * @see https://www.twle.cn/l/yufei/canvas/canvas-basic-filltext.html
+       */
+      ctx.fillText(percent.toFixed(2) + '%', 165, 120)
+    }
+
+    /**
+     * 绘制环形进度条
+     * @param {CanvasRenderingContext2D} ctx
+     * @param {number} percent
+     */
+    function drawCircle(ctx, percent) {
+      ctx.lineWidth = 5
+      // 画底色
+      ctx.beginPath()
+      ctx.strokeStyle = circleBg
+      ctx.arc(ctx.canvas.width / 2, MARGIN * 4, radius, 0, Math.PI * 2)
+      ctx.stroke()
+      // 画前景色
+      ctx.beginPath()
+      ctx.strokeStyle = barColor
+      ctx.arc(
+        ctx.canvas.width / 2,
+        MARGIN * 4,
+        radius,
+        0,
+        ((Math.PI * 2) / 100) * Math.floor(percent),
+      )
+      ctx.stroke()
+      // 文字进度
+      ctx.fillStyle = textColor
+      ctx.font = '36px Microsoft YaHei'
+      ctx.fillText(
+        percent.toFixed(2) + '%',
+        ctx.canvas.width / 2 - 60,
+        MARGIN * 4 + 10,
+      )
+    }
+    /**
+     * 创建动画
+     * @param {CanvasRenderingContext2D} ctx
+     */
+    function createBarAnim(ctx) {
+      /**
+       * 通过闭包拿到 requestAnimationFrame 的时间
+       * @param {number} time
+       */
+      return function (time) {
+        const percent = calcPercent(time)
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+        ctx.fillStyle = textColor
+        ctx.font = '24px Microsoft YaHei'
+        ctx.fillText('条形进度条', 200, 30)
+        drawBar(ctx, percent)
+        if (percent >= 100) return false // 停止动画的条件
+        requestAnimationFrame(createBarAnim(ctx))
+      }
+    }
+    /**
+     * 创建动画
+     * @param {CanvasRenderingContext2D} ctx
+     */
+    function createCircleAnim(ctx) {
+      /**
+       * 通过闭包拿到 requestAnimationFrame 的时间
+       * @param {number} time
+       */
+      return function (time) {
+        const percent = calcPercent(time)
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+        ctx.fillStyle = textColor
+        ctx.font = '24px Microsoft YaHei'
+        ctx.fillText('环形进度条', ctx.canvas.width / 2 - 60, 30)
+        drawCircle(ctx, percent)
+        if (percent >= 100) return false // 停止动画的条件
+        requestAnimationFrame(createCircleAnim(ctx))
+      }
+    }
+    /**
+     * 渲染canvas
+     * @param {string} id
+     */
+    function renderBar(id) {
+      id = id.replace('#', '')
+      /** @type {HTMLCanvasElement} */
+      const cvs = document.querySelector(`#${id}`)
+      if (cvs === null || !cvs.getContext) {
+        return false
+      }
+      const ctx = cvs.getContext('2d')
+      init(cvs)
+      requestAnimationFrame(createBarAnim(ctx)) // 启动动画
+    }
+    /**
+     * 渲染canvas
+     * @param {string} id
+     */
+    function renderCircle(id) {
+      id = id.replace('#', '')
+      /** @type {HTMLCanvasElement} */
+      const cvs = document.querySelector(`#${id}`)
+      if (cvs === null || !cvs.getContext) {
+        return false
+      }
+      const ctx = cvs.getContext('2d')
+      init(cvs)
+      requestAnimationFrame(createCircleAnim(ctx)) // 启动动画
+    }
+    barColor = randomColor()
+    textColor = randomColor()
+    renderBar('#bar')
+    renderCircle('#circle')
+  </script>
+</html>

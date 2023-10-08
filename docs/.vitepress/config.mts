@@ -25,7 +25,7 @@ export default defineConfig({
     ],
     sidebar,
     outline: 'deep',
-    socialLinks: [{ icon: 'github', link: 'https://github.com/welives/notebook' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/welives/blog' }],
     lastUpdated: {
       text: 'Updated at',
       formatOptions: {
