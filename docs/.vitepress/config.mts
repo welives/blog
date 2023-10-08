@@ -6,6 +6,7 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'welives',
   description: '一个使用vitepress构建的编写学习笔记的个人博客',
+  base: '/blog/',
   srcDir: './src',
   head: [
     ['meta', { charset: 'utf-8' }],
@@ -19,7 +20,8 @@ export default defineConfig({
     },
     nav: [
       { text: '前端', link: '/front-end/' },
-      { text: '杂项', link: '/misc/' }
+      { text: '杂项', link: '/misc/' },
+      { text: '关于', link: '/about' }
     ],
     sidebar,
     outline: 'deep',
