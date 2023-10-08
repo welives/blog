@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: 煎蛋的
-  text: 摸鱼笔记
-  tagline: 知其然，也要知其所以然
+  name: welives
+  text: 知其然,也要知其所以然
+  tagline: 学习是为了更好的摸鱼
   actions:
     - theme: brand
       text: 进入 🚀

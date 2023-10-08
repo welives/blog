@@ -70,6 +70,24 @@ const sidebar: DefaultTheme.Sidebar = {
           ]
         },
         {
+          text: '浏览器',
+          collapsed: true,
+          items: [
+            {
+              text: '浏览器渲染原理',
+              link: '/front-end/browser/浏览器渲染原理'
+            },
+            {
+              text: '事件循环',
+              link: '/front-end/browser/事件循环'
+            },
+            {
+              text: '跨域',
+              link: '/front-end/browser/跨域'
+            }
+          ]
+        },
+        {
           text: 'Vue',
           collapsed: true,
           items: [
@@ -110,33 +128,22 @@ const sidebar: DefaultTheme.Sidebar = {
               link: '/front-end/vue/props'
             },
             {
-              text: 'Vue常见优化手段',
+              text: 'Vue 常见优化手段',
               link: '/front-end/vue/Vue常见优化手段'
             },
             {
-              text: '杂项',
-              link: '/front-end/vue/杂项'
+              text: '其他',
+              link: '/front-end/vue/其他'
             }
           ]
         },
         {
-          text: 'React'
-        },
-        {
-          text: '浏览器',
+          text: 'React',
           collapsed: true,
           items: [
             {
-              text: '浏览器渲染原理',
-              link: '/front-end/browser/浏览器渲染原理'
-            },
-            {
-              text: '事件循环',
-              link: '/front-end/browser/事件循环'
-            },
-            {
-              text: '跨域',
-              link: '/front-end/browser/跨域'
+              text: '基础',
+              link: '/front-end/react/基础'
             }
           ]
         }

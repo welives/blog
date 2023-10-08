@@ -1,11 +1,10 @@
 import { defineConfig } from 'vitepress'
 import sidebar from './sidebar'
-// import renderInlineCode from './render-inline-code'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-CN',
-  title: "welives's blog",
+  title: 'welives',
   description: '一个使用vitepress构建的编写学习笔记的个人博客',
   srcDir: './src',
   head: [
@@ -37,9 +36,4 @@ export default defineConfig({
       copyright: 'Copyright © 2023-present welives'
     }
   }
-  // markdown: {
-  //   config: (md) => {
-  //     md.use(renderInlineCode)
-  //   }
-  // }
 })
