@@ -1,3 +1,7 @@
+::: tip 目标
+搭建一个 Koa2 + TypeScript + PM2 + ESLint + Prettier 的工程
+:::
+
 ## 事前准备
 
 - Windows 或者 Linux
@@ -6,8 +10,6 @@
 - git：代码版本控制
 
 ## 基础配置
-
-此项目将要构建一个 TypeScript + Koa2 + ESLint + Prettier 的工程
 
 ### 新建文件夹`server`并打开
 
@@ -33,6 +35,7 @@ dist
 *.code-workspace
 **/*.log
 *lock.json
+.env*
 ```
 
 ### 初始化`editorconfig`
@@ -83,6 +86,7 @@ npx tsc --init
     "module": "commonjs",
     "sourceMap": true,
     "outDir": "./dist",
+    "baseUrl": "./",
     "paths": {
       "~/*": ["./src/*"]
     },
@@ -91,7 +95,10 @@ npx tsc --init
     "esModuleInterop": true,
     "skipLibCheck": true,
     "noImplicitAny": false,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "public"]
@@ -119,12 +126,12 @@ console.log('hello world')
 
 ## 配置执行脚本
 
-此项目的开发环境使用`ts-node`和`nodemon`来运行项目和监听热重载，生产环境使用`pm2`来部署
+此项目的开发环境使用`ts-node`和`nodemon`来运行项目和监听热重载，使用`dotenv`来注入环境变量，生产环境使用`pm2`来部署
 
-### 安装`ts-node`、`nodemon`和`pm2`
+### 安装`nodemon`
 
 ```sh
-npm i -D ts-node nodemon pm2
+npm i -D nodemon ts-node tsconfig-paths
 ```
 
 新建`nodemon.json`文件，并写入如下内容
@@ -146,8 +153,15 @@ npm i -D ts-node nodemon pm2
 - delay 表示延迟时间
 - verbose 表示输出详细信息
 - exec 表示执行的命令
+  - tsconfig-paths 是用来识别`import`的路径别名
 
 :::
+
+### 安装`pm2`
+
+```sh
+npm i -D pm2
+```
 
 新建`ecosystem.config.js`，并写入如下内容
 
@@ -167,17 +181,57 @@ module.exports = {
       watch: true, // 启用监视和重启功能
       // 开发环境变量
       env: {
-        NODE_ENV: 'development',
-        PORT: 3000
+        NODE_ENV: 'development'
       },
       // 生产环境变量
       env_production: {
-        NODE_ENV: 'production',
-        PORT: 8080
+        NODE_ENV: 'production'
       }
     }
   ]
 }
+```
+
+### 安装`dotenv`
+
+```sh
+npm i -D dotenv
+```
+
+项目根目录下新建`.env`和`.env.production`文件，根据项目需求写入自己的环境变量，如
+
+```int
+# 环境标识
+NODE_ENV=development
+
+# 应用配置
+APP_HOST=localhost
+APP_PORT=3000
+
+# 数据库配置
+DATABASE_URL=mysql://root:123456@localhost:3306/test
+
+# 其他配置
+```
+
+`src`目录下新建`utils`文件夹，接着在`utils`文件夹下新建`load-env.ts`文件，并写入如下内容
+
+```ts
+import path from 'path'
+
+const NODE_ENV = process.env.NODE_ENV ?? 'development'
+const envPath =
+  NODE_ENV === 'development'
+    ? path.resolve(process.cwd(), '.env')
+    : path.resolve(process.cwd(), `.env.${NODE_ENV}`)
+
+require('dotenv').config({ path: envPath })
+```
+
+修改入口文件`src/index.ts`，在第一行加上
+
+```ts
+import './utils/load-env'
 ```
 
 ### 配置`package.json`执行脚本
@@ -187,17 +241,17 @@ module.exports = {
   "main": "dist/index.js",
   // ...
   "scripts": {
-    "dev": "export NODE_ENV=development && nodemon",
+    "dev": "nodemon",
     "clear": "rimraf dist/*",
     "build": "npm run clear && tsc",
     "start": "node_modules/.bin/pm2 start --env production",
-    "stop": " node_modules/.bin/pm2 stop all"
+    "stop": "node_modules/.bin/pm2 stop all"
   }
 }
 ```
 
 ::: tip
-如果是`Windows`系统的话，`dev`脚本改成`set NODE_ENV=development && nodemon`，`start`和`stop`中的斜杠`/`要改成`\\`
+如果是`Windows`系统的话，`start`和`stop`脚本中的斜杠`/`要改成`\\`
 :::
 
 ## 初始化`ESLint`
@@ -333,8 +387,6 @@ node_modules
 dist
 .idea
 .vscode
-.gitignore
-.editorconfig
 *.md
 *.json
 ```
@@ -346,19 +398,19 @@ npm i koa koa-router koa-bodyparser
 npm i -D @types/koa @types/koa-router @types/koa-bodyparser
 ```
 
-### 改写`index.ts`
+### 改写入口文件
 
 ```ts
+import './utils/load-env'
 import Koa from 'koa'
 
 const app = new Koa()
 
 app.use(async (ctx, next) => {
-  console.log(process.env.NODE_ENV)
   ctx.body = 'Hello World'
 })
 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.APP_PORT || 3000)
 ```
 
 ### 运行项目
@@ -367,4 +419,4 @@ app.listen(process.env.PORT || 3000)
 
 ### 打包和部署
 
-执行`npm run build`打包项目，接着`npm run start`通过 PM2 本地部署进行检验
+生产环境使用 PM2 启动，可以达到负载均衡。执行`npm run build`打包项目，接着`npm run start`进行部署（生产环境端口默认：8080）
