@@ -7,7 +7,7 @@
 - Node.js
 - Docker、Nginx、PM2
 - VSCode、git
-- 前端框架：Vue、React
+- 前端框架：Vue、React、React Native
 - 工程化：Webpack
 - CSS 预处理：postcss、sass、less
 - 代码规范：Eslint、Prettier、Stylelint

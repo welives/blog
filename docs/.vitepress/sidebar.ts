@@ -256,6 +256,16 @@ const sidebar: DefaultTheme.Sidebar = {
           ]
         }
       ]
+    },
+    {
+      text: 'NodeJS',
+      collapsed: false,
+      items: [
+        {
+          text: '搭建Koa工程',
+          link: '/front-end/nodejs/搭建koa工程'
+        }
+      ]
     }
   ],
   '/misc/': [
