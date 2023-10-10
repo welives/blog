@@ -2,6 +2,14 @@
 搭建一个 Koa2 + TypeScript + PM2 + ESLint + Prettier 的工程
 :::
 
+相关文档
+
+- [Koa2](https://koa.nodejs.cn/)
+- [TypeScript](https://www.tslang.cn/)
+- [PM2](https://pm2.fenxianglu.cn/)
+- [ESLint](https://eslint.nodejs.cn/)
+- [Prettier](https://prettier.nodejs.cn/)
+
 ## 事前准备
 
 - Windows 或者 Linux
@@ -11,7 +19,7 @@
 
 ## 基础配置
 
-### 新建文件夹`server`并打开
+新建文件夹`server`并打开
 
 ```sh
 mkdir server && cd server
@@ -160,7 +168,7 @@ npm i -D nodemon ts-node tsconfig-paths
 ### 安装`pm2`
 
 ```sh
-npm i -D pm2
+npm i -D pm2 tsc-alias
 ```
 
 新建`ecosystem.config.js`，并写入如下内容
@@ -173,7 +181,7 @@ module.exports = {
   apps: [
     {
       name, // 应用程序名称
-      cwd: './', // 启动应用程序的目录
+      cwd: './dist', // 启动应用程序的目录
       script: path.resolve(__dirname, './dist/index.js'), // 启动脚本路径
       instances: require('os').cpus().length, // 要启动的应用实例数量
       max_memory_restart: '1G', // 超过指定的内存量，应用程序将重新启动
@@ -200,7 +208,7 @@ npm i -D dotenv
 
 项目根目录下新建`.env`和`.env.production`文件，根据项目需求写入自己的环境变量，如
 
-```int
+```ini
 # 环境标识
 NODE_ENV=development
 
@@ -210,6 +218,13 @@ APP_PORT=3000
 
 # 数据库配置
 DATABASE_URL=mysql://root:123456@localhost:3306/test
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=123456
+DB_NAME=test
+DB_CHARSET=utf8
+DB_TIMEZONE=Asia/Shanghai
 
 # 其他配置
 ```
@@ -243,7 +258,7 @@ import './utils/load-env'
   "scripts": {
     "dev": "nodemon",
     "clear": "rimraf dist/*",
-    "build": "npm run clear && tsc",
+    "build": "npm run clear && cp .env.production dist/.env.production && tsc && tsc-alias",
     "start": "node_modules/.bin/pm2 start --env production",
     "stop": "node_modules/.bin/pm2 stop all"
   }
@@ -251,6 +266,8 @@ import './utils/load-env'
 ```
 
 ::: tip
+`tsc-alias`的作用是解决打包时不能识别路径别名的问题
+
 如果是`Windows`系统的话，`start`和`stop`脚本中的斜杠`/`要改成`\\`
 :::
 
@@ -398,14 +415,59 @@ npm i koa koa-router koa-bodyparser
 npm i -D @types/koa @types/koa-router @types/koa-bodyparser
 ```
 
+### 创建路由
+
+新建控制器文件`user.controller.ts`和路由文件`index.ts`，具体参考如下目录结构
+
+```
+.
+├─ src
+│  ├─ core
+│  │  ├─ controllers
+│  │  │  └─ user.controller.ts
+│  │  ├─ routes
+│  │  │  └─ index.ts
+...
+```
+
+::: code-group
+
+```ts [routes/index.ts]
+import Router from 'koa-router'
+import UserController from '~/core/controllers/user.controller'
+
+const router = new Router()
+router.get('/user', UserController.getUser)
+
+export default router
+```
+
+```ts [user.controller.ts]
+import { Context } from 'koa'
+
+export default class UserController {
+  public static async getUser(ctx: Context) {
+    // 获取用户信息
+    ctx.body = {
+      code: 200,
+      message: '获取用户信息成功',
+      data: { name: 'jandan', email: '10000@qq.com' }
+    }
+  }
+}
+```
+
+:::
+
 ### 改写入口文件
 
 ```ts
 import './utils/load-env'
 import Koa from 'koa'
-
+import router from './core/routes'
 const app = new Koa()
 
+app.use(router.routes()).use(router.allowedMethods())
 app.use(async (ctx, next) => {
   ctx.body = 'Hello World'
 })
@@ -415,8 +477,225 @@ app.listen(process.env.APP_PORT || 3000)
 
 ### 运行项目
 
-至此，一个极简的`Koa`项目就搭建完成了，执行`npm run dev`并访问`http://localhost:3000/`，可以看到浏览器显示`Hello World`
+至此，一个极简的`Koa`项目就搭建完成了，执行`npm run dev`并访问`http://localhost:3000`，可以看到浏览器显示`Hello World`
+
+使用接口调试工具访问`http://localhost:3000/user`，可以看到如下输出
+
+```json
+{
+  "code": 200,
+  "message": "获取用户信息成功",
+  "data": {
+    "name": "jandan",
+    "email": "10000@qq.com"
+  }
+}
+```
 
 ### 打包和部署
 
-生产环境使用 PM2 启动，可以达到负载均衡。执行`npm run build`打包项目，接着`npm run start`进行部署（生产环境端口默认：8080）
+执行`npm run build`打包项目，接着可以用`node`来启动预览
+
+```sh
+export NODE_ENV=production
+node dist/index.js
+```
+
+也可以直接`npm run start`使用 PM2 启动
+
+::: tip
+生产环境使用 PM2 启动（生产环境端口默认：8080），可以达到负载均衡
+:::
+
+## 连接数据库
+
+### 使用Typeorm
+
+安装相关依赖
+
+```sh
+npm i typeorm mysql reflect-metadata
+```
+
+#### 创建数据库服务
+
+我这里使用的是一个[免费的线上`MySQL`服务](https://methodot.com/)进行临时测试，具体可以根据自己手头上的资源进行选择
+
+创建完毕后将相关配置信息填入环境变量文件`.env`或`.env.production`
+
+#### 模型定义
+
+新建`src/core/entities/user.entity.ts`
+
+::: details 查看
+
+```ts
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id!: number
+
+  @Column()
+  name!: string
+
+  @Column()
+  password!: string
+
+  @Column()
+  email!: string
+}
+```
+
+:::
+
+#### 配置数据库
+
+新建`src/config/db.ts`
+
+::: details 查看
+
+```ts
+import path from 'path'
+import { DataSource, DataSourceOptions } from 'typeorm'
+const DATABASE_URL = process.env.DATABASE_URL
+
+const config: DataSourceOptions = {
+  ...(DATABASE_URL
+    ? { url: DATABASE_URL }
+    : {
+        host: process.env.DB_HOST as string,
+        port: parseInt(process.env.DB_PORT as string),
+        username: process.env.DB_USER as string,
+        password: process.env.DB_PASSWORD as string,
+        database: process.env.DB_NAME as string
+      }),
+  type: 'mysql',
+  timezone: process.env.DB_TIMEZONE,
+  charset: process.env.DB_CHARSET,
+  synchronize: true,
+  logging: false,
+  entities: [path.resolve(__dirname, '../core/entities/*.entity.{js,ts}')]
+}
+
+const DBSource = new DataSource(config)
+export default DBSource
+```
+
+:::
+
+#### CURD
+
+修改`src/core/controllers/user.controller.ts`，新建`src/core/services/user.service.ts`
+
+::: details 查看
+::: code-group
+
+```ts [user.controller.ts]
+import { Context } from 'koa'
+import UserService from '../services/user.service'
+
+export default class UserController {
+  public static async getUser(ctx: Context) {
+    ctx.body = {
+      code: 200,
+      message: '获取用户信息成功',
+      data: await UserService.getUser()
+    }
+  }
+}
+```
+
+```ts [user.service.ts]
+import { Context } from 'koa'
+import DBSource from '~/config/db'
+
+export default class UserService {
+  public static async getUser(ctx?: Context) {
+    const userRepository = DBSource.getRepository('user')
+    const users = await userRepository.find()
+    return users
+  }
+}
+```
+
+:::
+
+#### 路由调整
+
+修改`src/routes/index.ts`，新建`src/routes/v1/index.ts`
+
+::: details 查看
+::: code-group
+
+```ts [routes/index.ts]
+export { default as V1Router } from './v1'
+```
+
+```ts [v1/index.ts]
+import Router from 'koa-router'
+import UserController from '~/core/controllers/user.controller'
+
+const router = new Router()
+router.prefix('/api/v1')
+router.get('/user', UserController.getUser)
+
+export default router
+```
+
+:::
+
+#### 连接数据库
+
+修改`src/index.ts`，初始化连接
+
+::: details 查看
+
+```ts
+import './utils/load-env'
+import 'reflect-metadata'
+import Koa from 'koa'
+import { V1Router } from './core/routes'
+import DBSource from './config/db'
+const app = new Koa()
+
+DBSource.initialize()
+  .then(() => {
+    console.log('数据库连接成功')
+    app.use(V1Router.routes()).use(V1Router.allowedMethods())
+    app.use(async (ctx, next) => {
+      ctx.body = 'Hello World'
+    })
+    app.listen(process.env.APP_PORT || 3000)
+  })
+  .catch((err) => {
+    console.error('数据库连接失败', err)
+    process.exit(1)
+  })
+```
+
+:::
+
+#### 目录结构
+
+```
+.
+├─ src
+│  ├─ config                    # 配置文件目录
+│  │  └─ db.ts
+│  ├─ core                      # 业务核心目录
+│  │  ├─ controllers            # 控制器层
+│  │  │  └─ user.controller.ts
+│  │  ├─ entities               # 模型层
+│  │  │  └─ user.entity.ts
+│  │  ├─ services               # 服务层
+│  │  │  └─ user.service.ts
+│  │  ├─ routes                 # 路由
+│  │  │  ├─ v1                  # 路由版本
+│  │  │  │  └─ index.ts
+│  │  │  └─ index.ts
+│  ├─ utils                     # 工具类
+│  │  └─ load-env.ts
+│  └─ index.ts                  # 入口文件
+```
