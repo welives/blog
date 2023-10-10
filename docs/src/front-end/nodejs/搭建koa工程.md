@@ -229,7 +229,7 @@ DB_TIMEZONE=Asia/Shanghai
 # 其他配置
 ```
 
-`src`目录下新建`utils`文件夹，接着在`utils`文件夹下新建`load-env.ts`文件，并写入如下内容
+新建`src/utils/load-env.ts`文件，并写入如下内容
 
 ```ts
 import path from 'path'
@@ -309,7 +309,7 @@ npx eslint --init
 
 ![](./assets/搭建koa工程/eslint_setup_7.png)
 
-最后生成的配置文件大概如下
+最后生成的配置文件大致如下
 
 ```js
 module.exports = {
@@ -356,7 +356,7 @@ dist
 .vscode
 ```
 
-## 配置`Prettier`
+## 安装`Prettier`
 
 安装依赖
 
@@ -417,7 +417,7 @@ npm i -D @types/koa @types/koa-router @types/koa-bodyparser
 
 ### 创建路由
 
-新建控制器文件`user.controller.ts`和路由文件`index.ts`，具体参考如下目录结构
+新建控制器`src/core/controllers/user.controller.ts`和路由`src/core/routes/index.ts`，具体参考如下目录结构
 
 ```
 .
@@ -525,7 +525,7 @@ npm i typeorm mysql reflect-metadata
 
 #### 模型定义
 
-新建`src/core/entities/user.entity.ts`
+新建模型`src/core/entities/user.entity.ts`
 
 ::: details 查看
 
@@ -552,7 +552,7 @@ export class User {
 
 #### 配置数据库
 
-新建`src/config/db.ts`
+新建数据库配置`src/config/db.ts`
 
 ::: details 查看
 
@@ -648,7 +648,7 @@ export default router
 
 #### 连接数据库
 
-修改`src/index.ts`，初始化连接
+修改入口文件`src/index.ts`，初始化连接
 
 ::: details 查看
 
