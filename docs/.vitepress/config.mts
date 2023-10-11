@@ -5,7 +5,7 @@ import sidebar from './sidebar'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'welives',
-  description: '一个使用vitepress构建的编写学习笔记的个人博客',
+  description: '一个使用VitePress构建的编写学习笔记的个人博客',
   base: '/blog',
   srcDir: './src',
   head: [

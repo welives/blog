@@ -73,6 +73,10 @@ trim_trailing_whitespace = false
 npm init -y
 ```
 
+::: tip 提示
+如果你的网络使用`npm`很慢的话，可以试试用`yarn`，后续使用`npm`的地方一样可以用`yarn`代替
+:::
+
 ### 安装`typescript`
 
 ```sh
@@ -115,11 +119,10 @@ npx tsc --init
 
 ### 检验`typescript`环境
 
-新建文件夹`src`并新建`index.ts`
+新建`src/index.ts`
 
 ```sh
-mkdir src
-touch src/index.ts
+mkdir src && touch src/index.ts
 ```
 
 写入如下代码，然后编译`npx tsc`
@@ -199,7 +202,7 @@ module.exports = {
 ### 安装`dotenv`
 
 ```sh
-npm i -D dotenv
+npm i -D dotenv cross-env
 ```
 
 项目根目录下新建`.env`文件，根据项目需求写入自己的环境变量，如
@@ -210,14 +213,8 @@ APP_HOST=localhost
 APP_PORT=3000
 
 # 数据库配置
-DATABASE_URL=mysql://root:123456@localhost:3306/test
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=123456
-DB_NAME=test
-DB_CHARSET=utf8
-DB_TIMEZONE=Asia/Shanghai
+MYSQL_URL=mysql://root:123456@localhost:3306/test
+MONGODB_URL=mongodb://root:123456@localhost:27017/test
 
 # 其他配置
 ```
@@ -230,14 +227,15 @@ import 'dotenv/config'
 
 ### 配置`package.json`执行脚本
 
-```json
+```json{5-10}
 {
   "main": "dist/index.js",
   // ...
   "scripts": {
     "dev": "nodemon",
     "clear": "rimraf dist/*",
-    "build": "npm run clear && cp .env.production dist/.env && tsc && tsc-alias",
+    "build": "cross-env NODE_ENV=production npm run clear && cp .env.production dist/.env && tsc && tsc-alias",
+    "preview": "cross-env NODE_ENV=production node dist/index.js dotenv_config_path=dist/.env",
     "start": "node_modules/.bin/pm2 start",
     "stop": "node_modules/.bin/pm2 stop all"
   }
@@ -248,6 +246,8 @@ import 'dotenv/config'
 `tsc-alias`的作用是解决打包时不能识别路径别名的问题
 
 如果是`Windows`系统的话，`start`和`stop`脚本中的斜杠`/`要改成`\\`
+
+如果是`Linux`系统的话，`cross-env`要改成`export`
 :::
 
 ## 初始化`ESLint`
@@ -363,11 +363,11 @@ module.exports = {
   // ...
   extends: [
     // ...
-    'prettier',
-    'prettier/@typescript-eslint'
+    'prettier', // [!code ++]
+    'prettier/@typescript-eslint' // [!code ++]
   ],
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error' // [!code ++]
     // ...
   }
 }
@@ -486,12 +486,7 @@ app.listen(PORT, () => {
 
 在项目根目录新建`.env.production`文件，填入生产环境所需的环境变量
 
-执行`npm run build`打包项目，接着可以用`node`来启动预览
-
-```sh
-export NODE_ENV=production
-node dist/index.js dotenv_config_path=dist/.env
-```
+执行`npm run build`打包项目，接着执行`npm run preview`来启动预览
 
 也可以直接`npm run start`使用 PM2 启动
 
@@ -499,7 +494,35 @@ node dist/index.js dotenv_config_path=dist/.env
 生产环境使用 PM2 启动（生产环境端口默认：8080），可以达到负载均衡
 :::
 
-## 连接数据库
+## 使用数据库
+
+以下几种使用数据库的方式，最终的目录结构大致如下
+
+```
+.
+├─ src
+│  ├─ config                    # 配置文件目录
+│  │  └─ db.ts
+│  ├─ core                      # 业务核心目录
+│  │  ├─ controllers            # 控制器层
+│  │  │  └─ user.controller.ts
+│  │  ├─ models                 # 模型层
+│  │  │  └─ user.model.ts
+│  │  ├─ services               # 服务层
+│  │  │  └─ user.service.ts
+│  │  ├─ routes                 # 路由
+│  │  │  ├─ v1                  # 路由版本
+│  │  │  │  └─ index.ts
+│  │  │  └─ index.ts
+│  ├─ app.ts                    # koa 实例
+│  └─ index.ts                  # 入口文件
+```
+
+### 创建数据库服务
+
+我这里使用的是一个[免费的线上服务](https://methodot.com/)进行临时测试，具体可以根据自己手头上的资源进行选择
+
+创建完毕后将相关配置信息填入环境变量文件`.env`
 
 ### 使用`Typeorm`
 
@@ -509,15 +532,9 @@ node dist/index.js dotenv_config_path=dist/.env
 npm i typeorm mysql reflect-metadata
 ```
 
-#### 创建数据库服务
-
-我这里使用的是一个[免费的线上`MySQL`服务](https://methodot.com/)进行临时测试，具体可以根据自己手头上的资源进行选择
-
-创建完毕后将相关配置信息填入环境变量文件`.env`
-
 #### 模型定义
 
-新建模型`src/core/entities/user.entity.ts`
+新建模型`src/core/models/user.model.ts`
 
 ::: details 查看
 
@@ -542,7 +559,7 @@ export class User {
 
 :::
 
-#### 配置数据库
+#### 数据库信息
 
 新建数据库配置`src/config/db.ts`
 
@@ -568,7 +585,7 @@ const config: DataSourceOptions = {
   charset: process.env.DB_CHARSET,
   synchronize: true,
   logging: false,
-  entities: [path.resolve(__dirname, '../core/entities/*.entity.{js,ts}')]
+  entities: [path.resolve(__dirname, '../core/models/*.model.{js,ts}')]
 }
 
 const DBSource = new DataSource(config)
@@ -586,14 +603,14 @@ export default DBSource
 
 ```ts [user.controller.ts]
 import { Context } from 'koa'
-import UserService from '../services/user.service'
+import UserService from '../services/user.service' // [!code hl]
 
 export default class UserController {
   public static async getUser(ctx: Context) {
     ctx.body = {
       code: 200,
       message: '获取用户信息成功',
-      data: await UserService.getUser()
+      data: await UserService.getUser() // [!code hl]
     }
   }
 }
@@ -644,9 +661,9 @@ export default router
 
 ```ts
 import Koa from 'koa'
-import { V1Router } from './core/routes'
+import { V1Router } from './core/routes' // [!code hl]
 const app = new Koa()
-app.use(V1Router.routes()).use(V1Router.allowedMethods())
+app.use(V1Router.routes()).use(V1Router.allowedMethods()) // [!code hl]
 app.use(async (ctx, next) => {
   ctx.body = 'Hello World'
 })
@@ -656,11 +673,11 @@ export default app
 
 修改入口文件`src/index.ts`，初始化连接
 
-```ts
+```ts{7-17}
 import 'dotenv/config'
-import 'reflect-metadata'
+import 'reflect-metadata' // [!code ++]
 import app from './app'
-import DBSource from './config/db'
+import DBSource from './config/db' // [!code ++]
 const PORT = process.env.APP_PORT || 3000
 
 DBSource.initialize()
@@ -676,33 +693,162 @@ DBSource.initialize()
   })
 ```
 
-#### 目录结构
-
-```
-
-.
-├─ src
-│  ├─ config                    # 配置文件目录
-│  │  └─ db.ts
-│  ├─ core                      # 业务核心目录
-│  │  ├─ controllers            # 控制器层
-│  │  │  └─ user.controller.ts
-│  │  ├─ entities               # 模型层
-│  │  │  └─ user.entity.ts
-│  │  ├─ services               # 服务层
-│  │  │  └─ user.service.ts
-│  │  ├─ routes                 # 路由
-│  │  │  ├─ v1                  # 路由版本
-│  │  │  │  └─ index.ts
-│  │  │  └─ index.ts
-│  ├─ app.ts                    # koa 实例
-│  └─ index.ts                  # 入口文件
-```
-
 ### 使用`mongoose`
 
 安装相关依赖
 
 ```sh
 npm i mongodb mongoose
+```
+
+#### 模型定义
+
+新建模型`src/core/models/user.model.ts`
+
+::: details 查看
+
+```ts
+import mongoose from 'mongoose'
+
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true
+    }
+  },
+  { versionKey: false }
+)
+const userModel = mongoose.model('User', userSchema)
+export default userModel
+```
+
+:::
+
+#### 数据库信息
+
+新建数据库配置`src/config/db.ts`
+
+::: details 查看
+
+```ts
+import mongoose from 'mongoose'
+
+const url = process.env.MONGODB_URL as string
+
+mongoose.connect(url)
+
+mongoose.connection.on('connected', () => {
+  console.log('数据库连接成功')
+})
+mongoose.connection.on('error', (err) => {
+  console.error('数据库连接失败', err)
+})
+mongoose.connection.on('disconnected', () => {
+  console.log('数据库连接已断开')
+})
+```
+
+:::
+
+#### CURD
+
+修改`src/core/controllers/user.controller.ts`，新建`src/core/services/user.service.ts`
+
+::: details 查看
+::: code-group
+
+```ts [user.controller.ts]
+import { Context } from 'koa'
+import UserService from '../services/user.service' // [!code ++]
+
+export default class UserController {
+  public static async getUser(ctx: Context) {
+    ctx.body = {
+      code: 200,
+      message: '获取用户信息成功',
+      data: await UserService.getUser() // [!code hl]
+    }
+  }
+}
+```
+
+```ts [user.service.ts]
+import { Context } from 'koa'
+import userModel from '../models/user.model'
+
+export default class UserService {
+  public static async getUser(ctx?: Context) {
+    const users = await userModel.find({})
+    return users
+  }
+}
+```
+
+:::
+
+#### 路由调整
+
+修改`src/routes/index.ts`，新建`src/routes/v1/index.ts`
+
+::: details 查看
+::: code-group
+
+```ts [routes/index.ts]
+export { default as V1Router } from './v1'
+```
+
+```ts [v1/index.ts]
+import Router from 'koa-router'
+import UserController from '~/core/controllers/user.controller'
+
+const router = new Router()
+router.prefix('/api/v1')
+router.get('/user', UserController.getUser)
+
+export default router
+```
+
+:::
+
+#### 连接数据库
+
+修改`src/app.ts`
+
+::: details 查看
+
+```ts
+import Koa from 'koa'
+import { V1Router } from './core/routes' // [!code hl]
+const app = new Koa()
+
+app.use(V1Router.routes()).use(V1Router.allowedMethods()) // [!code hl]
+app.use(async (ctx, next) => {
+  ctx.body = 'Hello World'
+})
+
+export default app
+```
+
+:::
+
+修改入口文件`src/index.ts`，初始化连接
+
+```ts
+import 'dotenv/config'
+import './config/db' // [!code ++]
+import app from './app'
+const PORT = process.env.APP_PORT || 3000
+app.listen(PORT, () => {
+  console.info('Server listening on port: ' + PORT)
+})
 ```

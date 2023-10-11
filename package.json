@@ -1,11 +1,11 @@
 {
   "name": "blog-welives",
   "version": "1.0.0",
-  "description": "用vitepress搭建文档",
+  "description": "用VitePress搭建博客",
   "keywords": [
     "blog",
     "vue",
-    "vitepress"
+    "VitePress"
   ],
   "author": "welives",
   "license": "MIT",
