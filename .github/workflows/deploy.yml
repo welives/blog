@@ -1,0 +1,65 @@
+# 工作流名称
+name: Deploy blog to Github Pages
+
+# 用于描述工作流的何时触发
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+# 工作流里的任务
+jobs:
+  # 构建
+  build:
+    # 指定该任务运行的系统，目前可选的有 ubuntu、windows、和 macOS
+    runs-on: ubuntu-latest
+    # 任务里的运行步骤
+    steps:
+      # 步骤名
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Build with VitePress
+        run: |
+          npm run docs:build
+          touch docs/.vitepress/dist/.nojekyll
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs/.vitepress/dist
+
+  # 部署到GitHubPages
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # 不同任务之间可以通过needs定义依赖关系（执行有先后），例如我们定义deploy需要bulid任务完成后才执行
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

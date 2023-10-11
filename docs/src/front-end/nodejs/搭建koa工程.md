@@ -501,7 +501,7 @@ node dist/index.js dotenv_config_path=dist/.env
 
 ## 连接数据库
 
-### 使用Typeorm
+### 使用`Typeorm`
 
 安装相关依赖
 
@@ -698,3 +698,5 @@ DBSource.initialize()
 │  ├─ app.ts                    # koa 实例
 │  └─ index.ts                  # 入口文件
 ```
+
+### 使用`mongoose`
