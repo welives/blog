@@ -270,6 +270,10 @@ const sidebar: DefaultTheme.Sidebar = {
   ],
   '/misc/': [
     {
+      text: '部署博客',
+      link: '/misc/部署博客'
+    },
+    {
       text: '杂项',
       collapsed: false,
       items: [
