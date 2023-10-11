@@ -701,4 +701,8 @@ DBSource.initialize()
 
 ### 使用`mongoose`
 
-测试
+安装相关依赖
+
+```sh
+npm i mongodb mongoose
+```

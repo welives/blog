@@ -284,6 +284,10 @@ const sidebar: DefaultTheme.Sidebar = {
         {
           text: 'win10开发环境搭建',
           link: '/misc/win10开发环境搭建'
+        },
+        {
+          text: 'git常用命令',
+          link: '/misc/git'
         }
       ]
     },
