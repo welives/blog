@@ -11,7 +11,16 @@ export default defineConfig({
   head: [
     ['meta', { charset: 'utf-8' }],
     ['link', { rel: 'icon', href: '/blog/favicon.ico' }],
-    ['meta', { name: 'theme-color', content: '#ffffff' }]
+    ['meta', { name: 'theme-color', content: '#ffffff' }],
+    ['script', { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-CWC890FH58' }],
+    [
+      'script',
+      {},
+      `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CWC890FH58');`
+    ]
   ],
   // https://vitepress.dev/reference/default-theme-config
   themeConfig: {
