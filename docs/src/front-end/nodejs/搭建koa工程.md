@@ -187,12 +187,8 @@ module.exports = {
       max_memory_restart: '1G', // 超过指定的内存量，应用程序将重新启动
       autorestart: true, // 自动重启
       watch: true, // 启用监视和重启功能
-      // 开发环境变量
+      // 环境变量
       env: {
-        NODE_ENV: 'development'
-      },
-      // 生产环境变量
-      env_production: {
         NODE_ENV: 'production'
       }
     }
@@ -206,12 +202,9 @@ module.exports = {
 npm i -D dotenv
 ```
 
-项目根目录下新建`.env`和`.env.production`文件，根据项目需求写入自己的环境变量，如
+项目根目录下新建`.env`文件，根据项目需求写入自己的环境变量，如
 
 ```ini
-# 环境标识
-NODE_ENV=development
-
 # 应用配置
 APP_HOST=localhost
 APP_PORT=3000
@@ -229,24 +222,10 @@ DB_TIMEZONE=Asia/Shanghai
 # 其他配置
 ```
 
-新建`src/utils/load-env.ts`文件，并写入如下内容
-
-```ts
-import path from 'path'
-
-const NODE_ENV = process.env.NODE_ENV ?? 'development'
-const envPath =
-  NODE_ENV === 'development'
-    ? path.resolve(process.cwd(), '.env')
-    : path.resolve(process.cwd(), `.env.${NODE_ENV}`)
-
-require('dotenv').config({ path: envPath })
-```
-
 修改入口文件`src/index.ts`，在第一行加上
 
 ```ts
-import './utils/load-env'
+import 'dotenv/config'
 ```
 
 ### 配置`package.json`执行脚本
@@ -258,8 +237,8 @@ import './utils/load-env'
   "scripts": {
     "dev": "nodemon",
     "clear": "rimraf dist/*",
-    "build": "npm run clear && cp .env.production dist/.env.production && tsc && tsc-alias",
-    "start": "node_modules/.bin/pm2 start --env production",
+    "build": "npm run clear && cp .env.production dist/.env && tsc && tsc-alias",
+    "start": "node_modules/.bin/pm2 start",
     "stop": "node_modules/.bin/pm2 stop all"
   }
 }
@@ -447,7 +426,6 @@ import { Context } from 'koa'
 
 export default class UserController {
   public static async getUser(ctx: Context) {
-    // 获取用户信息
     ctx.body = {
       code: 200,
       message: '获取用户信息成功',
@@ -461,8 +439,9 @@ export default class UserController {
 
 ### 改写入口文件
 
+新建`src/app.ts`文件，并写入如下内容
+
 ```ts
-import './utils/load-env'
 import Koa from 'koa'
 import router from './core/routes'
 const app = new Koa()
@@ -472,7 +451,18 @@ app.use(async (ctx, next) => {
   ctx.body = 'Hello World'
 })
 
-app.listen(process.env.APP_PORT || 3000)
+export default app
+```
+
+修改入口文件`src/index.ts`
+
+```ts
+import 'dotenv/config'
+import app from './app'
+const PORT = process.env.APP_PORT || 3000
+app.listen(PORT, () => {
+  console.info('Server listening on port: ' + PORT)
+})
 ```
 
 ### 运行项目
@@ -494,11 +484,13 @@ app.listen(process.env.APP_PORT || 3000)
 
 ### 打包和部署
 
+在项目根目录新建`.env.production`文件，填入生产环境所需的环境变量
+
 执行`npm run build`打包项目，接着可以用`node`来启动预览
 
 ```sh
 export NODE_ENV=production
-node dist/index.js
+node dist/index.js dotenv_config_path=dist/.env
 ```
 
 也可以直接`npm run start`使用 PM2 启动
@@ -521,7 +513,7 @@ npm i typeorm mysql reflect-metadata
 
 我这里使用的是一个[免费的线上`MySQL`服务](https://methodot.com/)进行临时测试，具体可以根据自己手头上的资源进行选择
 
-创建完毕后将相关配置信息填入环境变量文件`.env`或`.env.production`
+创建完毕后将相关配置信息填入环境变量文件`.env`
 
 #### 模型定义
 
@@ -648,26 +640,35 @@ export default router
 
 #### 连接数据库
 
-修改入口文件`src/index.ts`，初始化连接
-
-::: details 查看
+修改`src/app.ts`
 
 ```ts
-import './utils/load-env'
-import 'reflect-metadata'
 import Koa from 'koa'
 import { V1Router } from './core/routes'
-import DBSource from './config/db'
 const app = new Koa()
+app.use(V1Router.routes()).use(V1Router.allowedMethods())
+app.use(async (ctx, next) => {
+  ctx.body = 'Hello World'
+})
+
+export default app
+```
+
+修改入口文件`src/index.ts`，初始化连接
+
+```ts
+import 'dotenv/config'
+import 'reflect-metadata'
+import app from './app'
+import DBSource from './config/db'
+const PORT = process.env.APP_PORT || 3000
 
 DBSource.initialize()
   .then(() => {
     console.log('数据库连接成功')
-    app.use(V1Router.routes()).use(V1Router.allowedMethods())
-    app.use(async (ctx, next) => {
-      ctx.body = 'Hello World'
+    app.listen(PORT, () => {
+      console.info('Server listening on port: ' + PORT)
     })
-    app.listen(process.env.APP_PORT || 3000)
   })
   .catch((err) => {
     console.error('数据库连接失败', err)
@@ -675,11 +676,10 @@ DBSource.initialize()
   })
 ```
 
-:::
-
 #### 目录结构
 
 ```
+
 .
 ├─ src
 │  ├─ config                    # 配置文件目录
@@ -695,7 +695,6 @@ DBSource.initialize()
 │  │  │  ├─ v1                  # 路由版本
 │  │  │  │  └─ index.ts
 │  │  │  └─ index.ts
-│  ├─ utils                     # 工具类
-│  │  └─ load-env.ts
+│  ├─ app.ts                    # koa 实例
 │  └─ index.ts                  # 入口文件
 ```
