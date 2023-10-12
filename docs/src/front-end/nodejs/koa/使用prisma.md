@@ -186,4 +186,8 @@ app.listen(PORT, () => {
 │  │  │  └─ index.ts
 │  ├─ app.ts                    # koa 实例
 │  └─ index.ts                  # 入口文件
+├─ nodemon.json                 # nodemon 配置
+├─ ecosystem.config.js          # PM2 配置
+├─ webpack.config.js            # webpack 配置
+├─ tsconfig.json
 ```

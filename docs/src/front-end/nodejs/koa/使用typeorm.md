@@ -18,11 +18,23 @@ npm i typeorm mysql reflect-metadata
 
 ## 数据库配置
 
+安装下面两个依赖，用来实现模型的自动化导入
+
+```sh
+npm i -D require-context @types/webpack-env
+```
+
 新建数据库配置`src/config/db.ts`
 
-```ts
-import path from 'path'
+```ts{2-8}
 import { DataSource, DataSourceOptions } from 'typeorm'
+// 自动加载所有模型
+const moduleFiles = require.context('../core/models', true, /\.(ts|js)$/)
+const models = moduleFiles.keys().reduce((model: any[], modelPath) => {
+  const value = moduleFiles(modelPath)
+  // 如果是默认导出的情况,则是 [...model, value.default]
+  return [...model, Object.values(value)[0]]
+}, [])
 const MYSQL_URL = process.env.MYSQL_URL
 
 const config: DataSourceOptions = {
@@ -40,7 +52,7 @@ const config: DataSourceOptions = {
   charset: process.env.CHARSET,
   synchronize: true,
   logging: false,
-  entities: [path.resolve(__dirname, '../core/models/*.model.{js,ts}')]
+  entities: models // [!code hl]
 }
 
 const DBSource = new DataSource(config)
@@ -54,7 +66,8 @@ export default DBSource
 ```ts
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
 
-@Entity()
+// 使用webpack打包时必须要显示声明表名称,否则压缩代码后模型名改变导致自动推断的表名称跟着改变
+@Entity({ name: 'user' }) // [!code hl]
 export class User {
   @PrimaryGeneratedColumn()
   id!: number
@@ -152,6 +165,7 @@ export default app
 
 ```ts{7-17}
 import 'dotenv/config'
+require('require-context/register') // [!code ++]
 import 'reflect-metadata' // [!code ++]
 import app from './app'
 import DBSource from './config/db' // [!code ++]
@@ -190,4 +204,8 @@ DBSource.initialize()
 │  │  │  └─ index.ts
 │  ├─ app.ts                    # koa 实例
 │  └─ index.ts                  # 入口文件
+├─ nodemon.json                 # nodemon 配置
+├─ ecosystem.config.js          # PM2 配置
+├─ webpack.config.js            # webpack 配置
+├─ tsconfig.json
 ```

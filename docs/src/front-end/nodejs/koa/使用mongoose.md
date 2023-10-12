@@ -63,7 +63,8 @@ const userSchema = new mongoose.Schema(
   },
   { versionKey: false }
 )
-const userModel = mongoose.model('User', userSchema)
+// 使用webpack打包时必须要显示声明表名称,否则压缩代码后模型名改变导致自动推断的表名称跟着改变
+const userModel = mongoose.model('User', userSchema, 'users') // [!code hl]
 export default userModel
 ```
 
@@ -176,4 +177,8 @@ app.listen(PORT, () => {
 │  │  │  └─ index.ts
 │  ├─ app.ts                    # koa 实例
 │  └─ index.ts                  # 入口文件
+├─ nodemon.json                 # nodemon 配置
+├─ ecosystem.config.js          # PM2 配置
+├─ webpack.config.js            # webpack 配置
+├─ tsconfig.json
 ```
