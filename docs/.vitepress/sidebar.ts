@@ -262,8 +262,26 @@ const sidebar: DefaultTheme.Sidebar = {
       collapsed: false,
       items: [
         {
-          text: '搭建Koa工程',
-          link: '/front-end/nodejs/搭建koa工程'
+          text: 'Koa',
+          collapsed: true,
+          items: [
+            {
+              text: '搭建项目',
+              link: '/front-end/nodejs/koa/搭建项目'
+            },
+            {
+              text: '使用Prisma',
+              link: '/front-end/nodejs/koa/使用prisma'
+            },
+            {
+              text: '使用Typeorm',
+              link: '/front-end/nodejs/koa/使用typeorm'
+            },
+            {
+              text: '使用Mongoose',
+              link: '/front-end/nodejs/koa/使用mongoose'
+            }
+          ]
         }
       ]
     }
