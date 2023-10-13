@@ -1,4 +1,6 @@
-<center><h1>CSS 属性计算过程</h1></center>
+---
+title: CSS属性计算过程
+---
 
 ## 前言
 

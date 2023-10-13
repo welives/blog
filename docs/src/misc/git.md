@@ -1,3 +1,7 @@
+---
+title: git的常用命令
+---
+
 ## 全局配置
 
 - `git config --global user.name <name>` 设置用户名

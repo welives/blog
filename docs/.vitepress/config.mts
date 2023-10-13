@@ -4,7 +4,7 @@ import sidebar from './sidebar'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-CN',
-  title: 'welives',
+  title: '全栈学习笔记',
   description: '一个使用VitePress构建的编写学习笔记的个人博客',
   base: '/blog',
   srcDir: './src',

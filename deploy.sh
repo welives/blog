@@ -4,16 +4,17 @@
 set -e  #有错误抛出错误
 
 # 构建
-npm run build  #然后执行打包命令
+npm run build
 
 # 进入待发布的目录
-cd docs/.vitepress/dist  #进到dist目录
+cd docs/.vitepress/dist
 touch .nojekyll
 
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME
 
-git init  #执行这些git命令
+#执行这些git命令
+git init
 git add -A
 git commit -m 'deploy'
 

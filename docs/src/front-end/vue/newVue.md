@@ -1,3 +1,7 @@
+---
+title: new Vue的过程
+---
+
 ## 初始化
 
 我们在实例化一个`Vue`实例，也就是`new Vue()`时，实际上是执行`src/core/instance/index.ts`文件中定义的`Vue`函数

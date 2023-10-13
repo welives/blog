@@ -20,6 +20,10 @@ const sidebar: DefaultTheme.Sidebar = {
               link: '/front-end/css/CSS包含块'
             },
             {
+              text: 'BEM命名法',
+              link: '/front-end/css/BEM命名法'
+            },
+            {
               text: '线性渐变',
               link: '/front-end/css/线性渐变'
             },

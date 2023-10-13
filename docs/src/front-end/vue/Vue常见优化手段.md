@@ -1,4 +1,6 @@
-<center><h1>Vue常见优化手段</h1></center>
+---
+title: Vue常见优化手段
+---
 
 ## 使用 Key
 

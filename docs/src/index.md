@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: welives
+  name: 🍳
   text: 知其然,也要知其所以然
   tagline: 学习是为了更好的摸鱼
   actions:
