@@ -12,8 +12,19 @@ export default defineConfig({
     ['meta', { name: 'author', content: 'welives' }],
     ['meta', { name: 'theme-color', content: '#ffffff' }],
     ['link', { rel: 'icon', href: '/blog/favicon.ico' }],
+    ['script', { src: 'https://hm.baidu.com/hm.js?aa8beab92ad3b999631569311b1f9bb2' }],
+    [
+      'script',
+      {},
+      `var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?aa8beab92ad3b999631569311b1f9bb2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();`
+    ],
     ['script', { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-CWC890FH58' }],
-    ['script', { src: 'https://hm.baidu.com/hm.js?' + 'aa8beab92ad3b999631569311b1f9bb2' }],
     [
       'script',
       {},
