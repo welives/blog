@@ -314,6 +314,16 @@ const sidebar: DefaultTheme.Sidebar = {
       ]
     },
     {
+      text: 'VitePress优化',
+      collapsed: false,
+      items: [
+        {
+          text: '图片缩放功能',
+          link: '/misc/vitepress/图片缩放功能'
+        }
+      ]
+    },
+    {
       text: 'Docker',
       collapsed: false,
       items: [

@@ -10,9 +10,11 @@ export default defineConfig({
   srcDir: './src',
   head: [
     ['meta', { charset: 'utf-8' }],
-    ['link', { rel: 'icon', href: '/blog/favicon.ico' }],
+    ['meta', { name: 'author', content: 'welives' }],
     ['meta', { name: 'theme-color', content: '#ffffff' }],
+    ['link', { rel: 'icon', href: '/blog/favicon.ico' }],
     ['script', { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-CWC890FH58' }],
+    ['script', { src: 'https://hm.baidu.com/hm.js?' + 'aa8beab92ad3b999631569311b1f9bb2' }],
     [
       'script',
       {},
@@ -45,6 +47,16 @@ export default defineConfig({
     footer: {
       message: 'MIT License',
       copyright: 'Copyright © 2023-present welives'
+    }
+  },
+  markdown: {
+    lineNumbers: true,
+    theme: {
+      light: 'vitesse-light',
+      dark: 'vitesse-dark'
+    },
+    config: (md) => {
+      // md.use(require('markdown-it-footnote'))
     }
   }
 })

@@ -13,4 +13,12 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/welives/blog
+
+features:
+  - title: 搞全栈💪
+    details: 不想搞后端的前端开发不是好运维
+  - title: 学英语🐱‍👓
+    details: Hello World
+  - title: 学日语🐱‍👤
+    details: 君日本語上手
 ---
