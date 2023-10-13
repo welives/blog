@@ -7,7 +7,6 @@ export default defineConfig({
   title: '全栈学习笔记',
   description: '一个使用VitePress构建的编写学习笔记的个人博客',
   base: '/blog',
-  srcDir: './src',
   head: [
     ['meta', { charset: 'utf-8' }],
     ['meta', { name: 'author', content: 'welives' }],
