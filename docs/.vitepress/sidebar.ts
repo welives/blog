@@ -58,6 +58,10 @@ const sidebar: DefaultTheme.Sidebar = {
               link: '/front-end/javascript/模块导入导出'
             },
             {
+              text: '图片懒加载',
+              link: '/front-end/javascript/图片懒加载'
+            },
+            {
               text: '奇技淫巧',
               link: '/front-end/javascript/奇技淫巧'
             }
@@ -296,6 +300,16 @@ const sidebar: DefaultTheme.Sidebar = {
       link: '/misc/部署博客'
     },
     {
+      text: 'VitePress优化',
+      collapsed: false,
+      items: [
+        {
+          text: '图片缩放功能',
+          link: '/misc/vitepress/图片缩放功能'
+        }
+      ]
+    },
+    {
       text: '杂项',
       collapsed: false,
       items: [
@@ -310,16 +324,6 @@ const sidebar: DefaultTheme.Sidebar = {
         {
           text: 'git常用命令',
           link: '/misc/git'
-        }
-      ]
-    },
-    {
-      text: 'VitePress优化',
-      collapsed: false,
-      items: [
-        {
-          text: '图片缩放功能',
-          link: '/misc/vitepress/图片缩放功能'
         }
       ]
     },
