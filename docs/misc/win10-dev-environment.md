@@ -434,6 +434,11 @@ nvm use 18.17.1
 - `Yarn`
   - `Global`
   - `Cache`
+- `pnpm`
+  - `.pnpm-store`
+  - `cache`
+  - `global`
+  - `state`
 
 创建好上述几个文件夹后开始接着补环境变量
 
@@ -450,7 +455,7 @@ npm config set cache "D:\Develop\nvm\node_cache"
 npm config set registry https://registry.npm.taobao.org
 ```
 
-安装 yarn
+#### 安装 yarn
 
 ```sh
 npm i -g yarn
@@ -463,9 +468,29 @@ yarn config set global-folder "D:\Develop\nvm\Yarn\Global"
 yarn config set cache-folder "D:\Develop\nvm\Yarn\Cache"
 ```
 
+#### 安装 pnpm
+
+```sh
+npm i -g pnpm
+```
+
+修改 pnpm 的缓存目录和全局包存放目录
+
+```sh
+# 全局仓库路径
+pnpm config set store-dir "D:\Develop\nvm\pnpm\.pnpm-store"
+# 全局包路径
+pnpm config set global-dir "D:\Develop\nvm\pnpm\global"
+# 全局缓存路径
+pnpm config set cache-dir "D:\Develop\nvm\pnpm\cache"
+# pnpm-state.json文件目录
+pnpm config set state-dir "D:\Develop\nvm\pnpm\state"
+```
+
 我常用的 npm 全局包
 
 - yarn
+- pnpm
 - ts-node
 - whistle
 - nodemon

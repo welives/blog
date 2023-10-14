@@ -18,6 +18,7 @@ title: git的常用命令
 
 - `git init` 初始化仓库
 - `git clone` 克隆仓库
+  - `git clone -b <branch_name> --single-branch <url>` 克隆指定的分支
 
 ## 提交和修改
 
@@ -76,8 +77,9 @@ title: git的常用命令
   - `git branch -D <branch_name>` 强制删除本地分支
   - `git branch -m <old_branch_name> <new_branch_name>` 重命名本地分支
 - `git checkout`
-  - `git checkout <branch_name>` 切换到指定分支
   - `git checkout -` 切换到前一个分支
+  - `git checkout <branch_name>` 切换到指定分支
+  - `git checkout --orphan <branch_name>` 创建一个空的分支
   - `git checkout -b <branch_name>` 基于当前分支创建并切换到指定分支
   - `git checkout -b <branch_name> <local_branch_name>` 基于本地分支创建并切换到指定分支
   - `git checkout -b <branch_name> <remote_name>/<branch_name>` 基于远程分支创建并切换到指定分支

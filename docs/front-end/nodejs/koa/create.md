@@ -50,9 +50,9 @@ dist
 .env*
 ```
 
-### 初始化`editorconfig`
+### 配置`EditorConfig`
 
-新建`.editorconfig`，设置编辑器和 ide 规范，内容根据自己的喜好或者团队规范
+新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
 
 ```ini
 # https://editorconfig.org
@@ -81,7 +81,7 @@ npm init -y
 如果你的网络使用`npm`很慢的话，可以试试用`yarn`，后续使用`npm`的地方一样可以用`yarn`代替
 :::
 
-### 安装`typescript`
+### 安装`TypeScript`
 
 ```sh
 npm i -D typescript @types/node
@@ -122,7 +122,7 @@ npx tsc --init
 }
 ```
 
-### 检验`typescript`环境
+### 检验`TypeScript`环境
 
 新建`src/index.ts`
 
@@ -230,7 +230,7 @@ module.exports = {
 }
 ```
 
-### 配置`package.json`执行脚本
+### 修改`package.json`
 
 ```json{5-10}
 {
@@ -253,7 +253,7 @@ module.exports = {
 如果是`Linux`系统的话，`cross-env`要改成`export`
 :::
 
-## 初始化`ESLint`
+## 安装`ESLint`
 
 ```sh
 npx eslint --init
@@ -271,11 +271,7 @@ npx eslint --init
 
 ![](../assets/koa/eslint_setup_3.png)
 
-是否使用`TypeScript`，选 Yes
-
-`Does your project use TypeScript? » No / Yes`
-
-所处运行环境，按`a`选择全部
+选`TypeScript`，然后运行环境按`a`全选
 
 ![](../assets/koa/eslint_setup_4.png)
 
@@ -313,29 +309,14 @@ module.exports = {
       }
     }
   ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
+    parser: '@typescript-eslint/parser',
     sourceType: 'module'
   },
   plugins: ['@typescript-eslint'],
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
-  }
+  rules: {}
 }
-```
-
-### 配置忽略文件
-
-新建`.eslintignore`文件，并写入如下配置，可根据自己喜好进行调整
-
-```ini
-.DS_Store
-node_modules
-dist
-.idea
-.vscode
 ```
 
 ## 安装`Prettier`
@@ -359,6 +340,32 @@ npm i -D prettier eslint-config-prettier eslint-plugin-prettier
 }
 ```
 
+### `EsLint`和`Prettier`的忽略文件
+
+新建`.eslintignore`和`.prettierignore`文件，并写入如下配置，可以根据自己喜好进行调整
+
+::: code-group
+
+```ini [eslintignore]
+.DS_Store
+node_modules
+dist
+.idea
+.vscode
+```
+
+```ini [prettierignore]
+.DS_Store
+node_modules
+dist
+.idea
+.vscode
+*.md
+*.json
+```
+
+:::
+
 ### 在`.eslintrc.js`中集成`prettier`
 
 ```js
@@ -369,25 +376,14 @@ module.exports = {
     'prettier', // [!code ++]
     'prettier/@typescript-eslint' // [!code ++]
   ],
+  plugins: ['@typescript-eslint', 'prettier'], // [!code hl]
   rules: {
-    'prettier/prettier': 'error' // [!code ++]
+    'prettier/prettier': 'error', // [!code ++]
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // [!code ++]
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off' // [!code ++]
     // ...
   }
 }
-```
-
-### 配置忽略文件
-
-新建`.prettierignore`文件，并写入如下配置，可以根据自己喜好进行调整
-
-```ini
-.DS_Store
-node_modules
-dist
-.idea
-.vscode
-*.md
-*.json
 ```
 
 ## 安装`Koa`和相关插件
