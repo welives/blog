@@ -22,7 +22,7 @@ title: 跨域
 
 对 HTML 标签发出的跨域请求进行轻微限制，对`Ajax`发出的跨域请求进行严格限制
 
-![Ajax限制](./assets/跨域/Ajax限制.png)
+![Ajax限制](./assets/cross-domain/Ajax限制.png)
 
 通过上图可以看到，所有的跨域请求其实都是能**正确送达**后端服务器的，服务器在运行正常的情况下也是能把结果响应给浏览器的，只是浏览器会对接收到的响应结果进行一层**校验**，当**校验不通过**的时候，浏览器会引发一个错误，这个错误就是我们通常说的「**跨域问题**」
 
@@ -51,7 +51,7 @@ title: 跨域
 `JSONP`的方案在现代前端开发中已经很少使用了
 :::
 
-![JSONP](./assets/跨域/jsonp.png)
+![JSONP](./assets/cross-domain/jsonp.png)
 
 ::: details JSONP示例
 ::: code-group
@@ -76,7 +76,7 @@ title: 跨域
 - 请求头字段满足`CORS`的安全规范，详情见[W3C](https://fetch.spec.whatwg.org/#cross-origin-resource-policy-header)，简单概括起来就是：只要不去修改请求头，那就是满足安全规范的
 - 请求头的`Content-Type`字段值必须是`text/plain`、`multipart/form-data`和`application/x-www-form-urlencoded`中的一个
 
-![简单请求](./assets/跨域/简单请求.png)
+![简单请求](./assets/cross-domain/简单请求.png)
 
 在发送请求的时候，浏览器发现跨域了就会在请求头上自动带一个`Origin`字段，其值通常是当前的页面源，表示该请求是从哪个源发出的。
 
@@ -84,7 +84,7 @@ title: 跨域
 
 **预检请求**：所有非简单请求
 
-![预检请求](./assets/跨域/预检请求.png)
+![预检请求](./assets/cross-domain/预检请求.png)
 
 浏览器在发送真实的请求前，会先发送一个`OPTIONS`请求，这个请求就是**预检请求**，预检请求会在请求头自动带上`Origin`、`Access-Control-Request-Method`和`Access-Control-Request-Headers`这三个字段。
 
@@ -102,7 +102,7 @@ title: 跨域
 
 在现代前端开发领域，我们常用构建工具`webpack`内置有一个`nodejs`服务器，平时在开发环境中能够正常访问后端接口其实都是通过这个内置服务器转发请求至目标服务器，得到结果再转发给前端
 
-::: details 方案 ① 各种前端脚手架，这里以`vue-cli`为例
+::: details 方案① 各种前端脚手架，这里以`vue-cli`为例
 
 ```js
 module.exports = {
@@ -127,7 +127,7 @@ module.exports = {
 
 :::
 
-::: details 方案 ② 通过自建`nodejs`服务器实现代理请求转发，这里以`express`为例
+::: details 方案② 通过自建`nodejs`服务器实现代理请求转发，这里以`express`为例
 
 ```js
 const express = require('express')
@@ -146,12 +146,11 @@ module.exports = app
 
 :::
 
-::: details 方案 ③ 通过配置`nginx`实现代理
+::: details 方案③ 通过配置`nginx`实现代理
 
 ```ini
 server {
   listen    80;
-  # server_name www.josephxia.com;
   location / {
     root  /var/www/html;
     index  index.html index.htm;

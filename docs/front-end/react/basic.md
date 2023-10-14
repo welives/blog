@@ -526,7 +526,7 @@ class App extends React.Component {
 
 ## [生命周期](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
-![生命周期](./assets/生命周期.png)
+![生命周期](./assets/basic/生命周期.png)
 
 ::: tip
 
@@ -556,7 +556,7 @@ class App extends React.Component {
 
 `Diffing`算法对比的最小粒度是标签，且逐层对比
 
-![Diffing算法](./assets/Diffing算法.png)
+![Diffing算法](./assets/basic/Diffing算法.png)
 
 ### `key`的作用
 

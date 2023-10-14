@@ -29,7 +29,7 @@ title: 图片懒加载
 
 `Element.getBoundingClientRect()`方法返回一个 DOMRect 对象，其提供了元素的大小及其相对于视口的位置
 
-![getBoundingClientRect](./assets/图片懒加载/getBoundingClientRect.png)
+![getBoundingClientRect](./assets/lazy-load/getBoundingClientRect.png)
 
 ::: details 查看
 
@@ -85,7 +85,7 @@ export default {
 
 `HTMLElement.offsetTop`为只读属性，它返回当前元素相对于其`offsetParent`元素的顶部内边距的距离
 
-![offsetTop](./assets/图片懒加载/offsetTop.png)
+![offsetTop](./assets/lazy-load/offsetTop.png)
 
 ::: details 查看
 

@@ -130,7 +130,7 @@ console.log(a[b]) // 输出 456
 
 ## JS 中的`==`隐式转换规则
 
-![](./assets/奇技淫巧/等号隐式转换规则.png)
+![](./assets/technique/等号隐式转换规则.png)
 
 ::: code-group
 

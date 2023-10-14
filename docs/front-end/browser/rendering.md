@@ -8,7 +8,7 @@ title: 浏览器渲染原理
 
 在事件循环机制的作用下，渲染主线程取出消息队列中的渲染任务，开启渲染流程。
 
-![渲染时间点](./assets/浏览器渲染原理/渲染时间点.png)
+![渲染时间点](./assets/rendering/渲染时间点.png)
 
 ### 渲染流程
 
@@ -18,7 +18,7 @@ title: 浏览器渲染原理
 
 这样，整个渲染流程就形成了一套组织严密的生产流水线。
 
-![渲染流水线](./assets/浏览器渲染原理/渲染流水线.png)
+![渲染流水线](./assets/rendering/渲染流水线.png)
 
 #### ① 解析 HTML
 
@@ -26,15 +26,15 @@ title: 浏览器渲染原理
 
 如果主线程解析到`link`标签，此时外部的 CSS 文件还没有下载解析好，主线程不会等待，继续解析后续的 HTML。这是因为下载和解析 CSS 的工作是在预解析线程中进行的。这就是 CSS 不会阻塞 HTML 解析的根本原因。
 
-![解析 CSS](./assets/浏览器渲染原理/解析CSS.png)
+![解析 CSS](./assets/rendering/解析CSS.png)
 
 如果主线程解析到`script`标签，会暂停解析 HTML，转而等待 JS 文件下载好，并将全局代码解析执行完成后，才能继续解析 HTML。这是因为 JS 代码的执行过程可能会修改当前的 DOM 树，所以 DOM 树的生成必须暂停。这就是 JS 会阻塞 HTML 解析的根本原因。
 
-![执行 JS](./assets/浏览器渲染原理/执行JS.png)
+![执行 JS](./assets/rendering/执行JS.png)
 
 在第一步完成后，会得到 DOM 树和 CSSOM 树，浏览器的默认样式、内部样式、外部样式、行内样式均会包含在 CSSOM 树中。
 
-![解析 HTML](./assets/浏览器渲染原理/解析HTML.png)
+![解析 HTML](./assets/rendering/解析HTML.png)
 
 #### ② 样式计算
 
@@ -52,7 +52,7 @@ title: 浏览器渲染原理
 
 比如`display:none`的节点没有几何信息，因此不会生成到布局树；又比如使用了伪元素选择器，虽然 DOM 树中不存在这些伪元素节点，但它们拥有几何信息，所以会生成到布局树中。还有匿名行盒、匿名块盒等等都会导致 DOM 树和布局树无法一一对应
 
-![DOM 树和布局树是不同的](./assets/浏览器渲染原理/DOM树和布局树是不同的.png)
+![DOM 树和布局树是不同的](./assets/rendering/DOM树和布局树是不同的.png)
 
 #### ④ 分层
 
@@ -66,7 +66,7 @@ title: 浏览器渲染原理
 
 主线程会为每个层单独产生绘制指令集，用于描述这一层的内容该如何画出来，渲染主线程的工作到此为止，剩余步骤交给其他线程来完成
 
-![完成绘制](./assets/浏览器渲染原理/完成绘制.png)
+![完成绘制](./assets/rendering/完成绘制.png)
 
 #### ⑥ 分块
 
@@ -86,7 +86,7 @@ GPU 进程会开启多个线程来完成光栅化，并且优先处理靠近视�
 
 光栅化的结果，就是一块一块的位图
 
-![光栅化](./assets/浏览器渲染原理/光栅化.png)
+![光栅化](./assets/rendering/光栅化.png)
 
 #### ⑧ 画
 
@@ -100,11 +100,11 @@ GPU 进程会开启多个线程来完成光栅化，并且优先处理靠近视�
 
 合成线程会把 quad 提交给 GPU 进程，由 GPU 进程产生系统调用，提交给 GPU 硬件，完成最终的屏幕成像
 
-![画](./assets/浏览器渲染原理/画.png)
+![画](./assets/rendering/画.png)
 
 ### 完整过程
 
-![完整过程](./assets/浏览器渲染原理/完整过程.png)
+![完整过程](./assets/rendering/完整过程.png)
 
 ## 什么是`reflow`？
 
@@ -118,7 +118,7 @@ GPU 进程会开启多个线程来完成光栅化，并且优先处理靠近视�
 
 浏览器在反复权衡下，最终决定获取属性立即`reflow`
 
-![重排](./assets/浏览器渲染原理/重排.png)
+![重排](./assets/rendering/重排.png)
 
 ## 如何避免不必要的`reflow`
 
@@ -140,7 +140,7 @@ GPU 进程会开启多个线程来完成光栅化，并且优先处理靠近视�
 
 由于元素的布局信息也属于可见样式，所以`reflow`一定会引起`repaint`
 
-![重绘](./assets/浏览器渲染原理/重绘.png)
+![重绘](./assets/rendering/重绘.png)
 
 ## 为什么`transform`的效率高？
 
@@ -154,9 +154,9 @@ GPU 进程会开启多个线程来完成光栅化，并且优先处理靠近视�
 
 **提高动画性能，则尽量不触发`layout`，使用`transform`，读取以上属性不会触发`layout`、只有更改的时候才会触发**
 
-![transform_1](./assets/浏览器渲染原理/transform_1.png)
+![transform_1](./assets/rendering/transform_1.png)
 
-![transform_2](./assets/浏览器渲染原理/transform_2.png)
+![transform_2](./assets/rendering/transform_2.png)
 
 ### 示例
 

@@ -18,31 +18,31 @@ title: Web前端
 
 ## CSS
 
-- [CSS属性计算过程](./css/CSS属性计算过程)
-- [CSS包含块](./css/CSS包含块)
-- [BEM命名法](./css/BEM命名法)
-- [线性渐变](./css/线性渐变)
-- [瀑布流](./css/瀑布流)
-- [奇技淫巧](./css/奇技淫巧)
+- [CSS属性计算过程](./css/css-computed)
+- [CSS包含块](./css/bfc)
+- [BEM命名法](./css/bem-naming)
+- [线性渐变](./css/linear-gradient)
+- [瀑布流](./css/waterfall)
+- [奇技淫巧](./css/technique)
 
 ## JavaScript
 
-- [this 指向](./javascript/this指向)
-- [原型链](./javascript/原型链)
-- [继承](./javascript/继承)
-- [模块导入导出](./javascript/模块导入导出)
-- [图片懒加载](./javascript/图片懒加载)
-- [奇技淫巧](./javascript/奇技淫巧)
+- [this 指向](./javascript/this)
+- [原型链](./javascript/prototype)
+- [继承](./javascript/extends)
+- [模块导入导出](./javascript/module)
+- [图片懒加载](./javascript/lazy-load)
+- [奇技淫巧](./javascript/technique)
 
 ## TypeScript
 
-- [类型系统](./typescript/类型系统)
+- [类型系统](./typescript/type-system)
 
 ## 浏览器
 
-- [浏览器渲染原理](./browser/浏览器渲染原理)
-- [事件循环](./browser/事件循环)
-- [跨域](./browser/跨域)
+- [浏览器渲染原理](./browser/rendering)
+- [事件循环](./browser/eventloop)
+- [跨域](./browser/cross-domain)
 
 ## Vue
 
@@ -60,4 +60,4 @@ title: Web前端
 
 ## React
 
-- [基础](./react/基础)
+- [基础](./react/basic)

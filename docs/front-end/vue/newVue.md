@@ -229,10 +229,10 @@ Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {
 }
 ```
 
-往后参考[Diff 算法](./Diff算法)篇章
+往后参考[Diff 算法](./diff)篇章
 
 ## 总结
 
 那么至此我们从主线上把模板和数据如何渲染成最终的 DOM 的过程分析完毕了，我们可以通过下图更直观地看到从初始化`Vue`到最终渲染的整个过程
 
-![newVue整体过程](./assets/newVue整体过程.png)
+![newVue整体过程](./assets/new-vue/newVue整体过程.png)

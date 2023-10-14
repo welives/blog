@@ -247,7 +247,7 @@ export default class Watcher implements DepTarget {
 
 其实这里的`sync`属性已经没在官网做说明了，不过我们看到源码中还是保留了相关代码。接下来我们看到为什么`watch`的回调内可以得到新值和旧值的原理，因为`this.cb.call(this.vm, value, oldValue)`这句代码的原因，内部将新值和旧值传给了回调函数
 
-![watch依赖收集](./assets/watch依赖收集.png)
+![watch依赖收集](./assets/computed-and-watch/watch依赖收集.png)
 
 ### `deep`属性
 
@@ -477,7 +477,7 @@ export default class Watcher implements DepTarget {
 
 ### 计算属性流程
 
-![](./assets/计算属性流程.png)
+![](./assets/computed-and-watch/计算属性流程.png)
 
 ::: tip `computed`总结
 为什么计算属性有缓存功能？因为当计算属性经过计算后，内部的标志位会表明已经计算过了，再次访问时会直接读取计算后的值；为什么计算属性内的响应式数据发生变更后，计算属性会重新计算？因为内部的响应式数据会收集`computed-watcher`，变更后通知计算属性要进行计算，也会通知页面重新渲染，渲染时会读取到重新计算后的值

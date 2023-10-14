@@ -100,7 +100,7 @@ export function useMediumZoom() {
 }
 
 export function useMediumZoomProvider(app: App, router: Router) {
-  // 如果是TS项目,根目录必须要有tsconfig.json,否则这里会报错说 import.mata对象上没有env属性
+  // 如果是TS项目, 必须要有`.vitepress/.env.d.ts`文件,否则这里会报错说 import.mata对象上没有env属性
   if (import.meta.env.SSR) return
   const zoom = mediumZoom()
   zoom.refresh = () => {
@@ -122,17 +122,10 @@ export * from './useMediumZoom'
 :::
 
 ::: warning 注意
+TS 项目必须要有`.vitepress/.env.d.ts`文件，否则报错说`import.mata`对象上没有`env`属性
 
-tsconfig.json 文件中必须要声明`"types": ["vite/client", "vitepress"]`，否则报错说`import.mata`对象上没有`env`属性
-
-```json
-{
-  "compilerOptions": {
-    // ...
-    "types": ["vite/client", "vitepress"] // [!code hl]
-  }
-  // ...
-}
+```ts
+/// <reference types="vite/client" />
 ```
 
 :::

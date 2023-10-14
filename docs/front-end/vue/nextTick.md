@@ -227,7 +227,7 @@ observer.observe(domTarget, {
 })
 ```
 
-![MutationObserver](./assets/MutationObserver示意图.png)
+![MutationObserver](./assets/nexttick/MutationObserver示意图.png)
 
 在`nextTick`中`MutationObserver`的作用就如上图所示。在监听到 DOM 更新后，调用回调函数
 

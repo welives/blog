@@ -216,7 +216,7 @@ export function mountComponent(
 - `computed-watcher`：也就是计算属性
 - `render-watcher`：只是用做视图渲染而定义的`Watcher`实例，也就是上面的`mountComponent`函数最后所实例化的`Watcher`类
 
-`user-watcher`和`computed-watcher`请查看[计算属性和监听](./计算属性和监听)，本章着重讲解`render-watcher`的情况，它的定义在`src/core/observer/watcher.ts`文件中：
+`user-watcher`和`computed-watcher`请查看[计算属性和监听](./computed-and-watch)，本章着重讲解`render-watcher`的情况，它的定义在`src/core/observer/watcher.ts`文件中：
 
 ```ts
 export default class Watcher implements DepTarget {
@@ -395,7 +395,7 @@ export default class Watcher implements DepTarget {
 
 这个`Dep`类的作用就是管理属性对应的`watcher`，如添加/删除/通知。至此，依赖收集的过程算是完成了，还是以一张图片加深对过程的理解：
 
-![data依赖收集](./assets/data依赖收集.png)
+![data依赖收集](./assets/vue2-reactivity/data依赖收集.png)
 
 ## 派发更新
 
@@ -619,14 +619,14 @@ export default class Watcher implements DepTarget {
 
 执行`run`其实就是重新执行一次`this.get()`方法，让`vm._update(vm._render())`再走一遍而已。然后生成新旧`VNode`，最后进行`diff`比对以更新视图。
 
-最后我们来说下`Vue`基于`Object.defineProperty`响应式系统的一些不足。比如只能监听到数据的变化，所以有时`data`中要定义一堆的初始值，因为要先加入响应式系统后才能被感知到；还有就是常规 JavaScript 操作对象的方式，并不能监听到增加以及删除。`Vue`为了解决这个问题，提供了两个 API：[$set和$delete](./$set和$delete)
+最后我们来说下`Vue`基于`Object.defineProperty`响应式系统的一些不足。比如只能监听到数据的变化，所以有时`data`中要定义一堆的初始值，因为要先加入响应式系统后才能被感知到；还有就是常规 JavaScript 操作对象的方式，并不能监听到增加以及删除。`Vue`为了解决这个问题，提供了两个 API：[$set和$delete](./$set-and-$delete)
 
 ## 原理图
 
-![Vue响应式原理](./assets/Vue响应式原理.png)
+![Vue响应式原理](./assets/vue2-reactivity/Vue2响应式原理.png)
 
 通过`Object.defineProperty`遍历对象的每一个属性，把每一个属性变成一个`getter`和`setter`函数，读取属性的时候调用`getter`，给属性赋值的时候就会调用`setter`
 
-![observe](./assets/vue_observe.svg)
+![observe](./assets/vue2-reactivity/vue_observe.svg)
 
 当运行`render`函数的时候，发现用到了响应式数据，这时候就会运行`getter`函数，然后`watcher`（发布订阅）就会记录下来。当响应式数据发生变化的时候，就会调用`setter`函数，`watcher`就会再记录下来这次的变化，然后通知`render`函数，数据发生了变化，然后就会重新运行`render`函数，重新生成虚拟 DOM 树

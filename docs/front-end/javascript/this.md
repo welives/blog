@@ -6,7 +6,7 @@ title: this指向
 `箭头函数`、`new`、`bind`、`apply和call`、`obj.`、`直接调用`、`不在函数里`
 :::
 
-## 箭头函数
+## 箭头函数 {#arrow-function}
 
 箭头函数排在第一个是因为它的 this 不会被改变，所以只要当前函数是箭头函数，那么就不用再看其他规则了
 
@@ -58,7 +58,7 @@ bindFunc = func.bind(1)
 new bindFunc() // Object true, 口诀 2 「new」优先
 ```
 
-## `apply`和`call`
+## `apply`和`call` {#apply-and-call}
 
 `apply()`和`call()`的第一个参数都是`this`，区别在于通过`apply`调用时实参是放到数组中的，而通过`call`调用时实参是逗号分隔的
 
@@ -82,7 +82,7 @@ bindFunc = func.bind(1)
 bindFunc.apply(2) // 1, 口诀 3 「bind」优先
 ```
 
-## `obj.`
+## `obj.` {#obj}
 
 ```js
 function func() {

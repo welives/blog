@@ -6,7 +6,6 @@
     "lib": ["DOM", "ESNext"],
     "jsx": "preserve",
     "moduleResolution": "node",
-    "types": ["vite/client", "vitepress"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -15,11 +14,6 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "docs/.vitepress/**/*.mts",
-    "docs/.vitepress/**/*.ts",
-    "docs/.vitepress/**/*.vue",
-    "docs/.vitepress/components.d.ts"
-  ],
-  "exclude": ["dist", "node_modules"]
+  "include": ["docs/.vitepress/**/*"],
+  "exclude": ["dist", "node_modules", "docs/.vitepress/cache"]
 }

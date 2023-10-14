@@ -13,27 +13,27 @@ const sidebar: DefaultTheme.Sidebar = {
           items: [
             {
               text: 'CSS属性计算过程',
-              link: '/front-end/css/CSS属性计算过程'
+              link: '/front-end/css/css-computed'
             },
             {
               text: 'CSS包含块',
-              link: '/front-end/css/CSS包含块'
+              link: '/front-end/css/bfc'
             },
             {
               text: 'BEM命名法',
-              link: '/front-end/css/BEM命名法'
+              link: '/front-end/css/bem-naming'
             },
             {
               text: '线性渐变',
-              link: '/front-end/css/线性渐变'
+              link: '/front-end/css/linear-gradient'
             },
             {
               text: '瀑布流',
-              link: '/front-end/css/瀑布流'
+              link: '/front-end/css/waterfall'
             },
             {
               text: '奇技淫巧',
-              link: '/front-end/css/奇技淫巧'
+              link: '/front-end/css/technique'
             }
           ]
         },
@@ -43,27 +43,27 @@ const sidebar: DefaultTheme.Sidebar = {
           items: [
             {
               text: 'this指向',
-              link: '/front-end/javascript/this指向'
+              link: '/front-end/javascript/this'
             },
             {
               text: '原型链',
-              link: '/front-end/javascript/原型链'
+              link: '/front-end/javascript/prototype'
             },
             {
               text: '继承',
-              link: '/front-end/javascript/继承'
+              link: '/front-end/javascript/extends'
             },
             {
               text: '模块导入导出',
-              link: '/front-end/javascript/模块导入导出'
+              link: '/front-end/javascript/module'
             },
             {
               text: '图片懒加载',
-              link: '/front-end/javascript/图片懒加载'
+              link: '/front-end/javascript/lazy-load'
             },
             {
               text: '奇技淫巧',
-              link: '/front-end/javascript/奇技淫巧'
+              link: '/front-end/javascript/technique'
             }
           ]
         },
@@ -73,7 +73,7 @@ const sidebar: DefaultTheme.Sidebar = {
           items: [
             {
               text: '类型系统',
-              link: '/front-end/typescript/类型系统'
+              link: '/front-end/typescript/type-system'
             }
           ]
         },
@@ -83,15 +83,15 @@ const sidebar: DefaultTheme.Sidebar = {
           items: [
             {
               text: '浏览器渲染原理',
-              link: '/front-end/browser/浏览器渲染原理'
+              link: '/front-end/browser/rendering'
             },
             {
               text: '事件循环',
-              link: '/front-end/browser/事件循环'
+              link: '/front-end/browser/eventloop'
             },
             {
               text: '跨域',
-              link: '/front-end/browser/跨域'
+              link: '/front-end/browser/cross-domain'
             }
           ]
         },
@@ -101,7 +101,7 @@ const sidebar: DefaultTheme.Sidebar = {
           items: [
             {
               text: 'Vue2 生命周期',
-              link: '/front-end/vue/Vue2生命周期'
+              link: '/front-end/vue/vue2-lifecycle'
             },
             {
               text: 'new Vue 发生了什么',
@@ -109,15 +109,15 @@ const sidebar: DefaultTheme.Sidebar = {
             },
             {
               text: '虚拟 DOM',
-              link: '/front-end/vue/虚拟DOM'
+              link: '/front-end/vue/virtual-dom'
             },
             {
               text: 'Diff 算法',
-              link: '/front-end/vue/Diff算法'
+              link: '/front-end/vue/diff'
             },
             {
               text: 'Vue2 响应式原理',
-              link: '/front-end/vue/Vue2响应式原理'
+              link: '/front-end/vue/vue2-reactivity'
             },
             {
               text: 'nextTick',
@@ -125,23 +125,23 @@ const sidebar: DefaultTheme.Sidebar = {
             },
             {
               text: '计算属性和监听',
-              link: '/front-end/vue/计算属性和监听'
+              link: '/front-end/vue/computed-and-watch'
             },
             {
               text: '$set和$delete',
-              link: '/front-end/vue/$set和$delete'
+              link: '/front-end/vue/$set-and-$delete'
             },
             {
               text: 'props',
               link: '/front-end/vue/props'
             },
             {
-              text: 'Vue 常见优化手段',
-              link: '/front-end/vue/Vue常见优化手段'
+              text: 'Vue2 常见优化手段',
+              link: '/front-end/vue/vue2-optimization'
             },
             {
               text: '其他',
-              link: '/front-end/vue/其他'
+              link: '/front-end/vue/other'
             }
           ]
         },
@@ -151,7 +151,7 @@ const sidebar: DefaultTheme.Sidebar = {
           items: [
             {
               text: '基础',
-              link: '/front-end/react/基础'
+              link: '/front-end/react/basic'
             }
           ]
         }
@@ -266,6 +266,15 @@ const sidebar: DefaultTheme.Sidebar = {
       ]
     },
     {
+      text: '工程化',
+      collapsed: false,
+      items: [
+        {
+          text: 'vite'
+        }
+      ]
+    },
+    {
       text: 'NodeJS',
       collapsed: false,
       items: [
@@ -275,19 +284,19 @@ const sidebar: DefaultTheme.Sidebar = {
           items: [
             {
               text: '搭建项目',
-              link: '/front-end/nodejs/koa/搭建项目'
+              link: '/front-end/nodejs/koa/create'
             },
             {
               text: '使用Prisma',
-              link: '/front-end/nodejs/koa/使用prisma'
+              link: '/front-end/nodejs/koa/prisma'
             },
             {
               text: '使用Typeorm',
-              link: '/front-end/nodejs/koa/使用typeorm'
+              link: '/front-end/nodejs/koa/typeorm'
             },
             {
               text: '使用Mongoose',
-              link: '/front-end/nodejs/koa/使用mongoose'
+              link: '/front-end/nodejs/koa/mongoose'
             }
           ]
         }
@@ -296,8 +305,8 @@ const sidebar: DefaultTheme.Sidebar = {
   ],
   '/misc/': [
     {
-      text: '部署博客',
-      link: '/misc/部署博客'
+      text: '博客部署',
+      link: '/misc/deploy-blog'
     },
     {
       text: 'VitePress优化',
@@ -305,7 +314,7 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         {
           text: '图片缩放功能',
-          link: '/misc/vitepress/图片缩放功能'
+          link: '/misc/vitepress/image-zoom'
         }
       ]
     },
@@ -319,7 +328,7 @@ const sidebar: DefaultTheme.Sidebar = {
         },
         {
           text: 'win10开发环境搭建',
-          link: '/misc/win10开发环境搭建'
+          link: '/misc/win10-dev-environment'
         },
         {
           text: 'git常用命令',
@@ -333,11 +342,11 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         {
           text: '基础',
-          link: '/misc/docker/基础'
+          link: '/misc/docker/basic'
         },
         {
           text: '搭建远程开发环境',
-          link: '/misc/docker/搭建远程开发环境'
+          link: '/misc/docker/remote-dev'
         }
       ]
     }

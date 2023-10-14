@@ -25,7 +25,7 @@ export default defineConfig({
 
 - 在代码仓库页切到`Settings`选项卡，选择左侧菜单的`Pages`项，在页面中`Build and deployment`部分选择`Github Actions`
 
-![Github Actions](./assets/部署博客/githun_actions.png)
+![Github Actions](./assets/deploy-blog/githun_actions.png)
 
 - 在项目根目录下新建`.github/workflows/deploy.yml`文件，内容如下
 
@@ -165,4 +165,4 @@ rm -rf docs/.vitepress/dist  #删除dist文件夹
 
 - 在代码仓库页切到`Settings`选项卡，选择左侧菜单的`Pages`项，在页面中`Build and deployment`部分选择`Deploy form a branch`，接着选择`gh-pages`分支，然后点击`Save`按钮保存
 
-![gh-pages](./assets/部署博客/gh-pages.png)
+![gh-pages](./assets/deploy-blog/gh-pages.png)

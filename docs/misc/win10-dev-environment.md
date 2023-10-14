@@ -30,25 +30,25 @@
 
 1. 新建一个情景模式，名字取个自己喜欢的
 
-![](./assets/win10开发环境搭建/magic_setup_1.png)
+![](./assets/win10-dev-environment/magic_setup_1.png)
 
 2. 协议选`HTTP`，服务器填`127.0.0.1`，端口`7890`(_因为用的是 Clash_)，然后保存
 
-![](./assets/win10开发环境搭建/magic_setup_2.png)
+![](./assets/win10-dev-environment/magic_setup_2.png)
 
 3. 切到自动切换(auto switch)模式，在`2`的位置填入`raw.githubusercontent.com`，模式选刚才创建的，我这里创建的是`Clash`；`3`的位置选刚才创建的模式，`4`的位置填入规则列表的[链接](https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt)，接着点击`5`，最后保存
 
-![](./assets/win10开发环境搭建/magic_setup_3.png)
+![](./assets/win10-dev-environment/magic_setup_3.png)
 
 4. 然后`Proxy SwitchyOmega`选择使用自动切换模式
 
-![](./assets/win10开发环境搭建/magic_setup_4.png)
+![](./assets/win10-dev-environment/magic_setup_4.png)
 
 5. 最后 PC 端的 Clash 代理模式选择`Global`(全局)就行了，对于访问网站来说开不开系统代理都无所谓，如果是给 PC 软件使用的话，打开一下系统代理就行
 
-![](./assets/win10开发环境搭建/magic_setup_5.png)
+![](./assets/win10-dev-environment/magic_setup_5.png)
 
-## 启用 Windows 的 WSL 功能
+## 启用 Windows 的 WSL 功能 {#enable-wsl}
 
 ::: tip
 可以通过在 PowerShell 执行`wsl --install`命令进行 WSL 的初始化安装，默认会安装 Ubuntu 作为 Linux 子系统，此时会自动更新到 WSL2。输入`wsl -l -o`可以查看官方提供的 Linux 发行版列表
@@ -58,7 +58,7 @@
 
 1. 启用 win10 的开发者模式
 
-![](./assets/win10开发环境搭建/wsl_setup_1.png)
+![](./assets/win10-dev-environment/wsl_setup_1.png)
 
 2. 打开控制面板的`Windows功能`，勾选
    - `Hyper-V`
@@ -68,13 +68,13 @@
 
 只是简单玩玩 WSL 的话，勾选`适用于 Linux 的 Windows 子系统`就够了，但我这里会后续可能会涉及到`Kali`和`Docker`，所以干脆一次直接安装完。_安装完成后会提示重启一次电脑_
 
-![](./assets/win10开发环境搭建/wsl_setup_2.png)
+![](./assets/win10-dev-environment/wsl_setup_2.png)
 
 3. 下载[WSL2 Linux](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)内核更新包并安装
 4. 将 WSL2 设置为默认版本`wsl --set-default-version 2`
 5. 在 Win10 应用商店搜索`Ubuntu`，然后安装它，也可以通过命令`wsl --install -d Ubuntu`来安装
 
-![](./assets/win10开发环境搭建/wsl_setup_3.png)
+![](./assets/win10-dev-environment/wsl_setup_3.png)
 
 ::: tip
 如果之前已经安装了 WSL1 版本的子系统，那么在上述第 4 步之后再执行`wsl --set-version Ubuntu 2`命令将子系统更新到 WSL2
@@ -166,7 +166,7 @@ New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEth
 
 并且启用这一条规则
 
-![](./assets/win10开发环境搭建/windows_firewall.png)
+![](./assets/win10-dev-environment/windows_firewall.png)
 
 ### SSH 配置
 
@@ -210,7 +210,7 @@ netsh advfirewall firewall add rule name=WSL2 dir=in action=allow protocol=TCP l
 
 1. 先在宿主机中查看 vEthernet (WSL)的 ip 地址，我这里的是`172.20.19.1`，然后确保 WSL 子系统和宿主机之间能够双向 ping 通
 
-![](./assets/win10开发环境搭建/wsl_proxy_setup_1.png)
+![](./assets/win10-dev-environment/wsl_proxy_setup_1.png)
 
 2. 确定魔法工具所使用的代理端口，我这里的是`7890`，并启用局域网代理
 
@@ -251,7 +251,7 @@ sudo ln -s /home/code/test /mnt/d/Workspace/test
 
 1. 查看自己的 WSL 和 Linux 发行版本，可以看到我这里的发行版本是`Ubuntu`，后续的操作都将围绕这个发行版本来进行
 
-![](./assets/win10开发环境搭建/wsl_migrate_1.png)
+![](./assets/win10-dev-environment/wsl_migrate_1.png)
 
 2. 关闭 WSL 服务`wsl --shutdown`
 3. 将原位置的 Linux 发行版导出到指定位置，最好要在管理员模式的 PowerShell 执行`wsl --export Ubuntu D:\WSL\Ubuntu.tar`
@@ -261,7 +261,7 @@ sudo ln -s /home/code/test /mnt/d/Workspace/test
 
 迁移完成后把之前生成的备份文件`Ubuntu.tar`删除
 
-## 安装 Docker
+## 安装 Docker {#install-docker}
 
 在 Windows 中使用 Docker 有以下两种方式
 
@@ -306,15 +306,15 @@ rm -rf get-docker.sh
 
 软链接做好后再开始安装，记得勾选使用 WSL2 代替 Hyper-V
 
-![](./assets/win10开发环境搭建/docker_setup_0.png)
+![](./assets/win10-dev-environment/docker_setup_0.png)
 
 安装完成后进入软件，打开设置界面，修改 docker 数据和镜像的存储路径
 
-![](./assets/win10开发环境搭建/docker_setup_1.png)
+![](./assets/win10-dev-environment/docker_setup_1.png)
 
 将 Ubuntu 和 docker 关联起来
 
-![](./assets/win10开发环境搭建/docker_setup_2.png)
+![](./assets/win10-dev-environment/docker_setup_2.png)
 
 由于众所周知的原因，Docker 官方源 ban 掉国内 ip 了，所以需要更改为国内镜像源
 
@@ -329,11 +329,11 @@ rm -rf get-docker.sh
 }
 ```
 
-![](./assets/win10开发环境搭建/docker_setup_3.png)
+![](./assets/win10-dev-environment/docker_setup_3.png)
 
 设置完成后打开 WSL，输入`docker ps`，看到如下的输出就表示 Docker 和 WSL 连接成功了
 
-![](./assets/win10开发环境搭建/docker_setup_4.png)
+![](./assets/win10-dev-environment/docker_setup_4.png)
 
 ## 在 WSL 中安装宝塔
 
@@ -411,11 +411,11 @@ git config credential.helper store
 
 设置安装目录为`D:\Develop\nvm`
 
-![](./assets/win10开发环境搭建/nvm_install_step_1.png)
+![](./assets/win10-dev-environment/nvm_install_step_1.png)
 
 设置 nodejs 软链接指向的目录为`D:\Develop\nvm\nodejs`，之后就无脑下一步
 
-![](./assets/win10开发环境搭建/nvm_install_step_2.png)
+![](./assets/win10-dev-environment/nvm_install_step_2.png)
 
 安装完成后会自动生成两个系统环境变量`NVM_HOME`和`NVM_SYMLINK`
 
@@ -518,7 +518,7 @@ yarn config set cache-folder "D:\Develop\nvm\Yarn\Cache"
 
 设置安装目录为`D:\Develop\Dart`
 
-![](./assets/win10开发环境搭建/dart_install_step_1.png)
+![](./assets/win10-dev-environment/dart_install_step_1.png)
 
 安装完后会自动生成一个系统环境变量`DART_SDK`，然后给用户变量`Path`添加一个值`%DART_SDK%\bin`
 
