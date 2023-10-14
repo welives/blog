@@ -270,7 +270,14 @@ const sidebar: DefaultTheme.Sidebar = {
       collapsed: false,
       items: [
         {
-          text: 'vite'
+          text: 'Vant',
+          collapsed: true,
+          items: [
+            {
+              text: '搭建项目',
+              link: '/front-end/engineering/vant/create'
+            }
+          ]
         }
       ]
     },

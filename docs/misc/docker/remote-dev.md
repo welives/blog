@@ -28,11 +28,11 @@ docker run -dit -p 3000:3000 -e WATCHPACK_POLLING=true --name react-demo -v D:/W
 
 上面的命令执行成功后，可以在`Docker Desktop`中查看该容器的相关信息，可以看到宿主机的项目目录已经成功挂载到容器中
 
-![](./assets/remote-dev/simple_container.png)
+![](../assets/remote-dev/simple_container.png)
 
 3. 打开 VSCode 先点击左下角，然后再弹出的对话框中选择`附加到正在运行的容器`，选择对应的容器(我这里是`react-demo`)
 
-![](./assets/remote-dev/simple_container_dev.png)
+![](../assets/remote-dev/simple_container_dev.png)
 
 4. 在 VSCode 中打开命令行终端，输入`cd /app`进入到容器中的开发目录，执行`npm install`安装依赖，最后`npm run start`就可以愉快的开发了
 
