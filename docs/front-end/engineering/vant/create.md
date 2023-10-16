@@ -92,8 +92,6 @@ dist
 .idea
 .vscode
 .nuxt
-*.md
-*.json
 ```
 
 :::
@@ -159,7 +157,7 @@ import { VantResolver } from '@vant/auto-import-resolver' // [!code ++]
 export default defineConfig(({ mode }) => {
   return {
     // ..
-    plugins: [vue(), vueJsx(), Components({ resolvers: [VantResolver()] })] // [!code hl]
+    plugins: [vue(), vueJsx(), Components({ resolvers: [VantResolver()] })], // [!code hl]
   }
 })
 ```
@@ -311,7 +309,7 @@ pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
   "tabWidth": 2,
   "printWidth": 120,
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "es5"
 }
 ```
 
@@ -325,15 +323,15 @@ module.exports = {
   extends: [
     // ...
     'prettier', // [!code ++]
-    'prettier/@typescript-eslint' // [!code ++]
+    'prettier/@typescript-eslint', // [!code ++]
   ],
   plugins: ['@typescript-eslint', 'vue', 'prettier'], // [!code hl]
   rules: {
     'prettier/prettier': 'error', // [!code ++]
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // [!code ++]
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off' // [!code ++]
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // [!code ++]
     // ...
-  }
+  },
 }
 ```
 
@@ -376,7 +374,7 @@ export default {
 ```ts
 export default defineNuxtConfig({
   // ...
-  modules: ['@nuxtjs/tailwindcss'] // [!code ++]
+  modules: ['@nuxtjs/tailwindcss'], // [!code ++]
 })
 ```
 
@@ -395,9 +393,9 @@ export default defineNuxtConfig({
   // ...
   modules: [
     // ...
-    ['@pinia/nuxt', { autoImports: ['defineStore'] }] // [!code ++]
+    ['@pinia/nuxt', { autoImports: ['defineStore'] }], // [!code ++]
   ],
-  imports: { dirs: ['./stores'] } // [!code ++]
+  imports: { dirs: ['./stores'] }, // [!code ++]
 })
 ```
 
@@ -415,7 +413,7 @@ pnpm add -D vant @vant/nuxt
 export default defineNuxtConfig({
   // ...
   modules: ['@nuxt/devtools', '@nuxtjs/tailwindcss', '@vant/nuxt'], // [!code hl]
-  vant: { lazyload: true } // [!code ++]
+  vant: { lazyload: true }, // [!code ++]
 })
 ```
 
@@ -446,12 +444,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     apiSecret: process.env.NUXT_API_SECRET,
     app: {
-      appName: process.env.NUXT_APP_NAME
+      appName: process.env.NUXT_APP_NAME,
     },
     public: {
-      appName: process.env.NUXT_APP_NAME
-    }
-  }
+      appName: process.env.NUXT_APP_NAME,
+    },
+  },
 })
 ```
 
@@ -464,8 +462,8 @@ export default defineNuxtConfig({
   // ...
   appConfig: {
     apiSecret: process.env.NUXT_API_SECRET,
-    appName: process.env.NUXT_APP_NAME
-  }
+    appName: process.env.NUXT_APP_NAME,
+  },
 })
 ```
 
@@ -479,7 +477,7 @@ Nuxt3 会把`nuxt.config.ts`中的`appConfig`配置项合并到`app.config.ts`�
 export default defineAppConfig({
   haha: 'i am defined in app.config.ts',
   apiSecret: undefined,
-  appName: 'what is this app'
+  appName: 'what is this app',
 })
 ```
 
@@ -489,8 +487,8 @@ export default defineNuxtConfig({
   appConfig: {
     test: 'pass from nuxt.config.ts',
     apiSecret: process.env.NUXT_API_SECRET,
-    appName: process.env.NUXT_APP_NAME
-  }
+    appName: process.env.NUXT_APP_NAME,
+  },
 })
 ```
 
@@ -532,10 +530,10 @@ export default {
         return path.resolve(file).includes(path.join('node_modules', 'vant')) ? 375 : 750
       },
       unitPrecision: 6,
-      landscapeWidth: 1024
+      landscapeWidth: 1024,
       // exclude: [/node_modules\/vant/i]
-    }
-  }
+    },
+  },
 }
 ```
 

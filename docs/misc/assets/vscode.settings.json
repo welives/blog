@@ -172,7 +172,7 @@
   "stylelint.enable": true,
   "stylelint.validate": ["css", "less", "postcss", "scss", "sass", "vue"],
   "eslint.run": "onSave",
-  // 既然editor.formatOnSave关闭了，那eslint.format.enable也得关闭。你放心，source.fixAll.eslint是生效的
+  // 既然editor.formatOnSave关闭了，那eslint.format.enable也得关闭。放心，source.fixAll.eslint是生效的
   "eslint.format.enable": false,
   "eslint.alwaysShowStatus": true,
   // ESLint添加支持，老版的是eslint.validate，暂时不去掉，以防万一
@@ -192,7 +192,7 @@
   },
   "prettier.semi": false,
   "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
+  "prettier.trailingComma": "es5",
   "vetur.format.options.tabSize": 2,
   "vetur.format.options.useTabs": false,
   "vetur.format.defaultFormatter.html": "prettier",
@@ -219,11 +219,11 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[vue]": {
+  "[typescriptreact]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[nvue]": {
+  "[vue]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

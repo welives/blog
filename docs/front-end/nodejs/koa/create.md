@@ -223,10 +223,10 @@ module.exports = {
       watch: true, // 启用监视和重启功能
       // 环境变量
       env: {
-        NODE_ENV: 'production'
-      }
-    }
-  ]
+        NODE_ENV: 'production',
+      },
+    },
+  ],
 }
 ```
 
@@ -295,27 +295,27 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true
+    node: true,
   },
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   overrides: [
     {
       env: {
-        node: true
+        node: true,
       },
       files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: 'script'
-      }
-    }
+        sourceType: 'script',
+      },
+    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
-  rules: {}
+  rules: {},
 }
 ```
 
@@ -336,7 +336,7 @@ npm i -D prettier eslint-config-prettier eslint-plugin-prettier
   "tabWidth": 2,
   "printWidth": 120,
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "es5"
 }
 ```
 
@@ -346,7 +346,7 @@ npm i -D prettier eslint-config-prettier eslint-plugin-prettier
 
 ::: code-group
 
-```ini [eslintignore]
+```ini [.eslintignore]
 .DS_Store
 node_modules
 dist
@@ -354,14 +354,12 @@ dist
 .vscode
 ```
 
-```ini [prettierignore]
+```ini [.prettierignore]
 .DS_Store
 node_modules
 dist
 .idea
 .vscode
-*.md
-*.json
 ```
 
 :::
@@ -374,15 +372,15 @@ module.exports = {
   extends: [
     // ...
     'prettier', // [!code ++]
-    'prettier/@typescript-eslint' // [!code ++]
+    'prettier/@typescript-eslint', // [!code ++]
   ],
   plugins: ['@typescript-eslint', 'prettier'], // [!code hl]
   rules: {
     'prettier/prettier': 'error', // [!code ++]
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // [!code ++]
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off' // [!code ++]
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // [!code ++]
     // ...
-  }
+  },
 }
 ```
 
@@ -428,7 +426,7 @@ export default class UserController {
     ctx.body = {
       code: 200,
       message: '获取用户信息成功',
-      data: { name: 'jandan', email: '10000@qq.com' }
+      data: { name: 'jandan', email: '10000@qq.com' },
     }
   }
 }
@@ -526,7 +524,7 @@ const config = {
   output: {
     clean: true, // 每次打包前清理输出文件夹
     filename: 'index.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
@@ -534,9 +532,9 @@ const config = {
         test: /\.(ts|tsx)$/i,
         loader: 'ts-loader',
         include: path.resolve(__dirname, 'src'), // 指定loader要处理的目录
-        exclude: ['/node_modules/'] // 排除的目录
-      }
-    ]
+        exclude: ['/node_modules/'], // 排除的目录
+      },
+    ],
   },
   // 解析规则
   resolve: {
@@ -544,16 +542,16 @@ const config = {
     extensions: ['.tsx', '.ts', '.jsx', '.js'], // 要解析的文件类型
     // 路径别名
     alias: {
-      '~': path.resolve(__dirname, 'src')
-    }
+      '~': path.resolve(__dirname, 'src'),
+    },
   },
   externals: [nodeExternals()], // 打包时忽略node_modules中的第三方依赖
   plugins: [new webpack.ProgressPlugin()],
   node: {
     global: true,
     __filename: true,
-    __dirname: true
-  }
+    __dirname: true,
+  },
 }
 
 module.exports = () => {
@@ -562,22 +560,22 @@ module.exports = () => {
         mode: 'production',
         stats: {
           children: false, // 是否添加关于子模块的信息
-          warnings: false // 禁用告警
+          warnings: false, // 禁用告警
         },
         // 优化配置
         optimization: {
           // 压缩配置
           minimize: true,
-          minimizer: [new TerserPlugin()]
-        }
+          minimizer: [new TerserPlugin()],
+        },
       })
     : merge(config, {
         mode: 'development',
         devtool: 'eval-source-map',
         stats: {
           children: false, // 是否添加关于子模块的信息
-          modules: false // 不显示模块信息
-        }
+          modules: false, // 不显示模块信息
+        },
       })
 }
 ```
