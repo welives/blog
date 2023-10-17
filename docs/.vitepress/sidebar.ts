@@ -314,7 +314,7 @@ const sidebar: DefaultTheme.Sidebar = {
       collapsed: false,
       items: [
         {
-          text: 'selenium-webdriver',
+          text: 'Selenium',
           link: '/front-end/automation/selenium-webdriver',
         },
       ],

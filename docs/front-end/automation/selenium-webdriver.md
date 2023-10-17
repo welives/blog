@@ -209,8 +209,100 @@ import { Builder, Browser, By, Key, until } from 'selenium-webdriver'
 
 ![](./assets/检验selenium工程.png)
 
-## 实战
+## 基本语法
 
-使用`selenium-webdriver`爬取 BOSS直聘网站的招聘信息
+[详细的文档看这里](https://www.selenium.dev/selenium/docs/api/javascript/index.html)
 
-To be continued...
+### 选择器
+
+```ts
+await driver.findElement() // 查找单个元素
+await driver.findElements() // 查找多个元素
+
+By.id('xxx')
+By.css('.xxx') // 类似 jQuery的 $()
+
+getText() // 获取标签内容
+// 一般都会结合一起使用
+await driver.findElement(By.css('.xxx')).getText() // 类似jQuery的 $(".xxx").val()
+```
+
+### 获取属性
+
+```ts
+// 获取包裹在 xxx 内的所有标签
+await driver.findElement(By.css('.xxx')).getAttribute('innerHTML')
+await driver.findElement(By.css('.xxx')).getAttribute('ka') // 获取属性ka的值 attr
+```
+
+### 按钮点击
+
+```ts
+await driver.findElement(By.id('xxx')).click()
+```
+
+### 表单操作
+
+```ts
+await driver.findElement(By.id('xxx')).sendKeys('要输入的内容')
+await driver.findElement(By.id('xxx')).clear() // 清空元素的值
+```
+
+### 休眠
+
+一般用于降低抓取速度，防止操作太快触发反爬机制
+
+```ts
+await driver.sleep(1000) // 毫秒
+```
+
+### 执行脚本
+
+```ts
+// 修改样式
+await driver.executeScript(`document.getElementsByClassName('info-detail')[0].style.zIndex = '-1';`)
+```
+
+### 切换窗体
+
+- 切换到`iframe`
+
+网页中常常会嵌入一些`iframe`，或者是标签页面或者是弹窗的形式。这时要操作`iframe`里面的元素前就需把当前窗体切换到`iframe`，切换后的所有操作都是针对`iframe`，在`iframe`内的操作结束后需切换回主窗体
+
+```ts
+await driver.switchTo().frame(driver.findElement(By.id('iframe-id')))
+```
+
+- 切换到弹窗
+
+有时候一些网页会弹出一些操作提示，提示框会堵塞整个任务的执行，需将其关闭(只针对原生的 JS 弹出框)
+
+```ts
+driver
+  .switchTo()
+  .alert()
+  .then(
+    function (alert) {
+      //检测到弹出框时执行
+      return alert.dismiss() // 关闭alert
+    },
+    function () {
+      //没有检测到弹出框时执行
+    }
+  )
+```
+
+- 切换回主窗体
+
+```ts
+await driver.switchTo().defaultContent()
+```
+
+- 切换到新的浏览器标签页
+
+有时候需要爬取网页的一些内页数据，点击链接后会打开一个新的标签页，但此时的窗体还停留在原来的页面，这时需要把窗体指向到新的标签页
+
+```ts
+const windowHandle = await driver.getAllWindowHandles() // 获取浏览器所有标签页的句柄
+await driver.switchTo().window(windowHandle[1]) // 将句柄定位到新的标签页
+```
