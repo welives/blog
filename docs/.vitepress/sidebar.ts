@@ -58,6 +58,10 @@ const sidebar: DefaultTheme.Sidebar = {
               link: '/front-end/javascript/module',
             },
             {
+              text: '拖拽API',
+              link: '/front-end/javascript/draggable',
+            },
+            {
               text: '图片懒加载',
               link: '/front-end/javascript/lazy-load',
             },

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>拖拽API</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      h1 {
+        text-align: center;
+      }
+      .container {
+        display: flex;
+        gap: 10px;
+      }
+      .left,
+      .right {
+        background: #fbfbfb;
+      }
+      .right {
+        flex: 1;
+      }
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      ul {
+        padding: 10px;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+      li:last-child {
+        margin-bottom: 0;
+      }
+      .subject {
+        padding: 8px 15px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 2px;
+        min-height: 0;
+        min-width: 65px;
+        text-align: center;
+      }
+      .chinese {
+        background: #ff4c4c;
+      }
+      .maths {
+        background: #0abf53;
+      }
+      .english {
+        background: #f47721;
+      }
+      .physics {
+        background: #0099e5;
+      }
+      .chemistry {
+        background: #d20962;
+      }
+      .organism {
+        background: #7d3f98;
+      }
+      .sport {
+        background: #8a7967;
+      }
+      .right {
+        padding: 10px;
+      }
+      table {
+        width: 100%;
+        border: none;
+        border-spacing: 1px;
+      }
+      tr.divide {
+        height: 40px;
+      }
+      th,
+      td {
+        min-width: 80px;
+        min-height: 40px;
+        padding: 10px 15px;
+        text-align: center;
+        background: #caccd1;
+        border-radius: 2px;
+        border: 1px solid #9f9fa3;
+      }
+      thead td {
+        background: inherit;
+        min-width: 0;
+        min-height: 0;
+        width: 10px;
+        border: none;
+      }
+      tbody td {
+        height: 50px;
+        background: inherit;
+      }
+      .span {
+        min-width: 0;
+        min-height: 0;
+        padding: 10px;
+        font-weight: bold;
+        background: #caccd1;
+        border: 1px solid #9f9fa3;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>课程表</h1>
+      <div class="container">
+        <div class="left">
+          <ul>
+            <li>
+              <div class="subject chinese">语文</div>
+            </li>
+            <li>
+              <div class="subject maths">数学</div>
+            </li>
+            <li>
+              <div class="subject english">英语</div>
+            </li>
+            <li>
+              <div class="subject physics">物理</div>
+            </li>
+            <li>
+              <div class="subject chemistry">化学</div>
+            </li>
+            <li>
+              <div class="subject organism">生物</div>
+            </li>
+            <li>
+              <div class="subject sport">体育</div>
+            </li>
+          </ul>
+        </div>
+        <div class="right">
+          <table>
+            <!-- 列的分组 -->
+            <colgroup>
+              <col />
+              <col />
+              <col />
+              <col />
+              <col />
+              <col />
+              <col />
+              <col />
+            </colgroup>
+            <thead>
+              <tr>
+                <td></td>
+                <th>星期一</th>
+                <th>星期二</th>
+                <th>星期三</th>
+                <th>星期四</th>
+                <th>星期五</th>
+                <th>星期六</th>
+                <th>星期日</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="span" rowspan="4">上午</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="divide"></tr>
+              <tr>
+                <td class="span" rowspan="3">下午</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

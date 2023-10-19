@@ -29,3 +29,11 @@ title: CSS奇技淫巧
   诗歌排列</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
+
+## 高度自动的过渡效果
+
+<iframe height="450" style="width: 100%;" scrolling="no" title="高度自动的过渡效果" src="https://codepen.io/welives/embed/gOZVvPJ?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/welives/pen/gOZVvPJ">
+  高度自动的过渡效果</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
