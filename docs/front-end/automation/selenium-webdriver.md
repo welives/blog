@@ -5,6 +5,8 @@ title: selenium-webdriver学习
 ## 项目搭建
 
 ::: tip 搭建一个 Selenium + TypeScript + ESLint + Prettier 的工程
+
+[本工程的Github地址](https://github.com/welives/ts-selenimu-starter)
 :::
 
 相关文档
@@ -45,8 +47,7 @@ node_modules
 .vscode
 *.code-workspace
 **/*.log
-.env
-.env.*
+.env*
 ```
 
 ```json [tsconfig.json]

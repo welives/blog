@@ -4,6 +4,8 @@ title: Vant工程搭建
 
 ::: tip 目标
 搭建一个 Vant + TailwindCSS + TypeScript + ESLint + Prettier 的工程
+
+[本工程的Github地址](https://github.com/welives/ts-vant-starter)
 :::
 
 相关文档
@@ -37,7 +39,7 @@ yarn create vue
 
 :::
 
-![初始化](../assets/vant/vite脚手架创建项目.png)
+![初始化](./assets/vant/vite脚手架创建项目.png)
 
 然后按照提示操作即可，这样一个基础项目就创建好了。
 
@@ -264,31 +266,31 @@ npx eslint --init
 
 选第二个
 
-![](../assets/vant/eslint_setup_1.png)
+![](./assets/vant/eslint_setup_1.png)
 
 选第一个
 
-![](../assets/vant/eslint_setup_2.png)
+![](./assets/vant/eslint_setup_2.png)
 
 选 Vue
 
-![](../assets/vant/eslint_setup_3.png)
+![](./assets/vant/eslint_setup_3.png)
 
 选`TypeScript`，然后运行环境按`a`全选
 
-![](../assets/vant/eslint_setup_4.png)
+![](./assets/vant/eslint_setup_4.png)
 
 `eslint`配置文件的的保存格式，选第一个
 
-![](../assets/vant/eslint_setup_5.png)
+![](./assets/vant/eslint_setup_5.png)
 
 是否立即安装所需的依赖，选 Yes
 
-![](../assets/vant/eslint_setup_6.png)
+![](./assets/vant/eslint_setup_6.png)
 
 这里根据项目构建所使用的包管理器进行选择，因为本项目使用`pnpm`，所以选第三个
 
-![](../assets/vant/eslint_setup_7.png)
+![](./assets/vant/eslint_setup_7.png)
 
 ::: tip
 `EsLint`和`Prettier`的忽略文件[参考上面Vite的配置](#eslint和prettier的忽略文件)
@@ -494,7 +496,7 @@ export default defineNuxtConfig({
 
 :::
 
-![](../assets/vant/打印appConfig.png)
+![](./assets/vant/打印appConfig.png)
 
 ::: warning 注意
 这个文件有点特别，在这里无法读取到环境变量的值，但可以在这里定义一些有明确初始值的变量。这个文件的作用更像是预先定义一些占位的变量，等待`nuxt.config.ts`中的`appConfig`合并到此，然后在应用运行生命周期内进行修改

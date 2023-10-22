@@ -278,7 +278,7 @@ const sidebar: DefaultTheme.Sidebar = {
           collapsed: true,
           items: [
             {
-              text: '搭建项目',
+              text: '搭建工程',
               link: '/front-end/nodejs/koa/create',
             },
             {
@@ -302,14 +302,12 @@ const sidebar: DefaultTheme.Sidebar = {
       collapsed: false,
       items: [
         {
-          text: 'Vant',
-          collapsed: true,
-          items: [
-            {
-              text: '搭建项目',
-              link: '/front-end/engineering/vant/create',
-            },
-          ],
+          text: '使用UmiJS',
+          link: '/front-end/engineering/umijs',
+        },
+        {
+          text: '搭建Vant工程',
+          link: '/front-end/engineering/create-vant',
         },
       ],
     },
