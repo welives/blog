@@ -40,7 +40,7 @@ pnpm add -D cross-env
 
 这样就创建好一个以`UmiJS`为脚手架的基础工程了，接下来我们对这个它做亿点点额外的配置
 
-## 添加EsLint
+## 添加ESLint
 
 详细的文档[看这里](https://umijs.org/docs/guides/lint)
 

@@ -31,6 +31,7 @@ title: Web前端
 - [原型链](./javascript/prototype)
 - [继承](./javascript/extends)
 - [模块导入导出](./javascript/module)
+- [拖拽API](./javascript/draggable)
 - [图片懒加载](./javascript/lazy-load)
 - [奇技淫巧](./javascript/technique)
 

@@ -371,6 +371,10 @@ const sidebar: DefaultTheme.Sidebar = {
           text: '安装MySQL服务',
           link: '/misc/docker/mysql',
         },
+        {
+          text: '安装MongoDB服务',
+          link: '/misc/docker/mongodb',
+        },
       ],
     },
   ],

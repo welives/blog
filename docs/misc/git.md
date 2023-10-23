@@ -36,7 +36,7 @@ title: git的常用命令
 - `git reset` 回退版本
 - `git rm`
   - `git rm <file>` 将文件从暂存区和工作区中删除
-  - `git rm -r <dir>` 递归删除指定目录下的所有内容
+  - `git rm -rf <dir>` 递归删除指定目录下的所有内容
 - `git mv`
   - `git mv <file> <new_file>` 移动或重命名工作区文件
 - `git checkout`
