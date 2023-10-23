@@ -10,10 +10,10 @@ title: Vant工程搭建
 
 相关文档
 
-- [Vant](https://vant-ui.github.io/vant/#/zh-CN)
-- [TypeScript](https://www.tslang.cn/)
 - [Vite](https://cn.vitejs.dev/)
 - [Nuxt3](https://nuxt.com.cn/)
+- [Vant](https://vant-ui.github.io/vant/#/zh-CN)
+- [TypeScript](https://www.tslang.cn/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
@@ -31,7 +31,7 @@ title: Vant工程搭建
 pnpm create vue
 ```
 
-![初始化](./assets/vant/vite脚手架创建项目.png)
+![初始化](./assets/vite/vite脚手架创建项目.png)
 
 然后按照提示操作即可，这样一个基础项目就创建好了。
 
@@ -47,7 +47,13 @@ git init
 
 新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
 
-```ini
+::: code-group
+
+```sh
+touch .editorconfig
+```
+
+```ini [.editorconfig]
 # https://editorconfig.org
 root = true
 
@@ -64,11 +70,18 @@ insert_final_newline = false
 trim_trailing_whitespace = false
 ```
 
+:::
+
 ### `EsLint`和`Prettier`的忽略文件
 
 新建`.eslintignore`和`.prettierignore`文件，并写入如下配置，可以根据自己喜好进行调整
 
 ::: code-group
+
+```sh
+touch .eslintignore
+touch .prettierignore
+```
 
 ```ini [.eslintignore]
 .DS_Store
@@ -110,7 +123,7 @@ delete colors.trueGray // [!code ++]
 delete colors.coolGray // [!code ++]
 delete colors.blueGray // [!code ++]
 export default {
-  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'], // [!code ++]
+  content: ['./index.html', './src/**/*.{vue,jsx,tsx}'], // [!code ++]
   theme: {
     colors: { ...colors }, // [!code ++]
     extend: {},
@@ -212,17 +225,9 @@ export default defineConfig(({ mode }) => {
 
 ## 使用Nuxt3初始化项目
 
-::: code-group
-
 ```sh [pnpm]
 pnpm dlx nuxi init
 ```
-
-```sh [npx]
-npx nuxi init
-```
-
-:::
 
 ::: tip 提示
 
@@ -260,31 +265,31 @@ npx eslint --init
 
 选第二个
 
-![](./assets/vant/eslint_setup_1.png)
+![](./assets/vite/eslint_setup_1.png)
 
 选第一个
 
-![](./assets/vant/eslint_setup_2.png)
+![](./assets/vite/eslint_setup_2.png)
 
 选 Vue
 
-![](./assets/vant/eslint_setup_3.png)
+![](./assets/vite/eslint_setup_3.png)
 
 选`TypeScript`，然后运行环境按`a`全选
 
-![](./assets/vant/eslint_setup_4.png)
+![](./assets/vite/eslint_setup_4.png)
 
 `eslint`配置文件的的保存格式，选第一个
 
-![](./assets/vant/eslint_setup_5.png)
+![](./assets/vite/eslint_setup_5.png)
 
 是否立即安装所需的依赖，选 Yes
 
-![](./assets/vant/eslint_setup_6.png)
+![](./assets/vite/eslint_setup_6.png)
 
 这里根据项目构建所使用的包管理器进行选择，因为本项目使用`pnpm`，所以选第三个
 
-![](./assets/vant/eslint_setup_7.png)
+![](./assets/vite/eslint_setup_7.png)
 
 ::: tip
 `EsLint`和`Prettier`的忽略文件[参考上面Vite的配置](#eslint和prettier的忽略文件)
@@ -298,7 +303,13 @@ pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
 
 新建`.prettierrc`文件，并写入如下配置，可以根据自己喜好进行调整
 
-```json
+::: code-group
+
+```sh
+touch .prettierrc
+```
+
+```json [.prettierrc]
 {
   "$schema": "https://json.schemastore.org/prettierrc",
   "semi": false,
@@ -308,6 +319,8 @@ pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
   "trailingComma": "es5"
 }
 ```
+
+:::
 
 新建`.prettierignore`文件，并写入如下配置，可以根据自己喜好进行调整
 
@@ -355,12 +368,12 @@ npx tailwindcss init
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    './components/**/*.{js,vue,ts}', // [!code ++]
-    './layouts/**/*.vue', // [!code ++]
-    './pages/**/*.vue', // [!code ++]
+    './components/**/*.{vue,jsx,tsx}', // [!code ++]
+    './layouts/**/*.{vue,jsx,tsx}', // [!code ++]
+    './pages/**/*.{vue,jsx,tsx}', // [!code ++]
+    './app.{vue,jsx,tsx}', // [!code ++]
     './plugins/**/*.{js,ts}', // [!code ++]
     './nuxt.config.{js,ts}', // [!code ++]
-    './app.vue', // [!code ++]
   ],
   // ...
 }
@@ -492,7 +505,7 @@ export default defineNuxtConfig({
 
 :::
 
-![](./assets/vant/打印appConfig.png)
+![](./assets/vite/打印appConfig.png)
 
 ::: warning 注意
 这个文件有点特别，在这里无法读取到环境变量的值，但可以在这里定义一些有明确初始值的变量。这个文件的作用更像是预先定义一些占位的变量，等待`nuxt.config.ts`中的`appConfig`合并到此，然后在应用运行生命周期内进行修改

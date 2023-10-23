@@ -306,8 +306,8 @@ const sidebar: DefaultTheme.Sidebar = {
           link: '/front-end/engineering/umijs',
         },
         {
-          text: '搭建Vant工程',
-          link: '/front-end/engineering/create-vant',
+          text: '使用Vite',
+          link: '/front-end/engineering/vite',
         },
       ],
     },
