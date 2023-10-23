@@ -302,12 +302,16 @@ const sidebar: DefaultTheme.Sidebar = {
       collapsed: false,
       items: [
         {
-          text: '使用UmiJS',
+          text: 'UmiJS',
           link: '/front-end/engineering/umijs',
         },
         {
-          text: '使用Vite',
+          text: 'Vite',
           link: '/front-end/engineering/vite',
+        },
+        {
+          text: 'Nuxt',
+          link: '/front-end/engineering/nuxt',
         },
       ],
     },
