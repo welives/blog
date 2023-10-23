@@ -27,17 +27,9 @@ title: Vant工程搭建
 
 ## 使用Vite初始化项目
 
-::: code-group
-
 ```sh [pnpm]
 pnpm create vue
 ```
-
-```sh [yarn]
-yarn create vue
-```
-
-:::
 
 ![初始化](./assets/vant/vite脚手架创建项目.png)
 
@@ -109,19 +101,19 @@ npx tailwindcss init -p
 
 编辑`tailwind.config.js`
 
-```js{2-7,9,11}
+```js
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
-delete colors.lightBlue
-delete colors.warmGray
-delete colors.trueGray
-delete colors.coolGray
-delete colors.blueGray
+delete colors.lightBlue // [!code ++]
+delete colors.warmGray // [!code ++]
+delete colors.trueGray // [!code ++]
+delete colors.coolGray // [!code ++]
+delete colors.blueGray // [!code ++]
 export default {
-  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'], // [!code ++]
   theme: {
-    colors: { ...colors },
-    extend: {}
+    colors: { ...colors }, // [!code ++]
+    extend: {},
   },
   // ...
 }
@@ -159,7 +151,8 @@ import { VantResolver } from '@vant/auto-import-resolver' // [!code ++]
 export default defineConfig(({ mode }) => {
   return {
     // ..
-    plugins: [vue(), vueJsx(), Components({ resolvers: [VantResolver()] })], // [!code hl]
+    plugins: [vue(), vueJsx()], // [!code --]
+    plugins: [vue(), vueJsx(), Components({ resolvers: [VantResolver()] })], // [!code ++]
   }
 })
 ```
@@ -206,7 +199,8 @@ vite 脚手架规定了`src`目录下的文件属于浏览器环境，而`vite.c
 
 ```ts
 // ...
-import { defineConfig, loadEnv } from 'vite' // [!code hl]
+import { defineConfig } from 'vite' // [!code --]
+import { defineConfig, loadEnv } from 'vite' // [!code ++]
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd()) // [!code ++]
   // ...
@@ -327,7 +321,8 @@ module.exports = {
     'prettier', // [!code ++]
     'prettier/@typescript-eslint', // [!code ++]
   ],
-  plugins: ['@typescript-eslint', 'vue', 'prettier'], // [!code hl]
+  plugins: ['@typescript-eslint', 'vue'], // [!code --]
+  plugins: ['@typescript-eslint', 'vue', 'prettier'], // [!code ++]
   rules: {
     'prettier/prettier': 'error', // [!code ++]
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // [!code ++]
@@ -356,16 +351,16 @@ npx tailwindcss init
 
 编辑`tailwind.config.js`，在`content`中增加如下内容
 
-```js{4-9}
+```js
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    './components/**/*.{js,vue,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}',
-    './app.vue'
+    './components/**/*.{js,vue,ts}', // [!code ++]
+    './layouts/**/*.vue', // [!code ++]
+    './pages/**/*.vue', // [!code ++]
+    './plugins/**/*.{js,ts}', // [!code ++]
+    './nuxt.config.{js,ts}', // [!code ++]
+    './app.vue', // [!code ++]
   ],
   // ...
 }
@@ -414,7 +409,8 @@ pnpm add -D vant @vant/nuxt
 ```ts
 export default defineNuxtConfig({
   // ...
-  modules: ['@nuxt/devtools', '@nuxtjs/tailwindcss', '@vant/nuxt'], // [!code hl]
+  modules: ['@nuxt/devtools', '@nuxtjs/tailwindcss'], // [!code --]
+  modules: ['@nuxt/devtools', '@nuxtjs/tailwindcss', '@vant/nuxt'], // [!code ++]
   vant: { lazyload: true }, // [!code ++]
 })
 ```
@@ -521,7 +517,7 @@ pnpm add -D postcss-px-to-viewport-8-plugin
 
 - 方式一：编辑`postcss.config.js`，增加如下`postcss-px-to-viewport-8-plugin`配置项
 
-```js
+```js{6-13}
 import path from 'path' // [!code ++]
 
 export default {
