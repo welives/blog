@@ -5,7 +5,9 @@ title: 使用UmiJS搭建工程
 ::: tip ✨
 搭建一个 UmiJS + TailwindCSS + TypeScript + ESLint + Prettier 的工程
 
-[本工程的Github地址](https://github.com/welives/umi-starter)
+UI框架以 Vant 为例
+
+[本工程的Github地址](https://github.com/welives/umijs-starter)
 :::
 
 相关文档

@@ -7,7 +7,7 @@ title: 使用Vite搭建工程
 
 UI框架以 Vant 为例
 
-[本工程的Github地址](https://github.com/welives/ts-vite-starter)
+[本工程的Github地址](https://github.com/welives/vite-starter)
 :::
 
 相关文档

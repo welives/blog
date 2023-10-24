@@ -306,6 +306,10 @@ const sidebar: DefaultTheme.Sidebar = {
           link: '/front-end/engineering/umijs',
         },
         {
+          text: 'Next.js',
+          link: '/front-end/engineering/nextjs',
+        },
+        {
           text: 'Vite',
           link: '/front-end/engineering/vite',
         },

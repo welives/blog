@@ -8,7 +8,7 @@ title: 线性渐变
 linear-gradient([<angle> | to <side-or-corner>]? , <color-stop-list>)
 ```
 
-这个函数（特性）接受的第一个参数是**渐变的角度**，他可以接受一个表示角度的值（可用的单位`deg`、`rad`、`grad`或`turn`）或者是表示方向的关键词（`top`、`right`、`bottom`、`left`、`left top`、`top right`、`bottom right`或者`left bottom`）。第二个参数是接受一系列**颜色节点**（终止点的颜色）
+这个函数接受的第一个参数是**渐变的角度**，他可以接受一个表示角度的值（可用的单位`deg`、`rad`、`grad`或`turn`）或者是表示方向的关键词（`top`、`right`、`bottom`、`left`、`left top`、`top right`、`bottom right`或者`left bottom`）。第二个参数是接受一系列**颜色节点**（终止点的颜色）
 
 ## 渐变容器 {#gradient-box}
 
@@ -97,7 +97,7 @@ linear-gradient([<angle> | to <side-or-corner>]? , <color-stop-list>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
-> 参考之《[你真的理解 CSS 的 linear-gradient？](https://www.w3cplus.com/css3/do-you-really-understand-css-linear-gradients.html)》
+> 参考自《[你真的理解 CSS 的 linear-gradient？](https://www.w3cplus.com/css3/do-you-really-understand-css-linear-gradients.html)》
 
 ## 实战：条纹进度条 {#practice}
 
