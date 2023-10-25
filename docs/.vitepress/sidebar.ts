@@ -317,6 +317,10 @@ const sidebar: DefaultTheme.Sidebar = {
           text: 'Nuxt',
           link: '/front-end/engineering/nuxt',
         },
+        // {
+        //   text: 'Expo',
+        //   link: '/front-end/engineering/expo',
+        // },
       ],
     },
     {
