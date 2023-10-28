@@ -181,7 +181,9 @@ ios
 
 ### 整合`ESLint`和`Prettier`
 
-编辑`.eslintrc.js`
+修改`.eslintrc.js`
+
+::: details 查看
 
 ```js
 module.exports = {
@@ -224,6 +226,8 @@ module.exports = {
 }
 ```
 
+:::
+
 ## 配置`tsconfig`
 
 ```json
@@ -264,7 +268,7 @@ module.exports = {
 }
 ```
 
-## 调整目录结构
+### 调整目录结构
 
 项目根目录新建`src`文件夹，把`App.tsx`移入其中，新建`index.ts`文件作为应用入口，并填入以下内容
 
@@ -291,6 +295,279 @@ registerRootComponent(App)
 ```
 
 :::
+
+## 环境变量
+
+```sh
+pnpm add expo-constants
+pnpm add -D cross-env dotenv zod
+```
+
+- 根目录新建`.env`或`.env.local`和`env.js`文件
+
+::: details 查看
+::: code-group
+
+```ini [.env.local]
+# 应用配置
+EXPO_PUBLIC_UI_WIDTH=375
+EXPO_PUBLIC_UI_HEIGHT=812
+EXPO_PUBLIC_API_URL=http://localhost:3000
+EXPO_PUBLIC_API_PREFIX=/api
+API_KEY=your_api_key
+
+# 构建配置
+PACKAGE=com.jandan
+BUNDLE_ID=com.jandan
+EAS_PROJECT_ID=
+EXPO_ACCOUNT_OWNER=jandan
+```
+
+```js [env.js]
+const fs = require('fs')
+const path = require('path')
+const { parse } = require('dotenv')
+const z = require('zod')
+const NODE_ENV = process.env.NODE_ENV ?? 'development'
+/**
+ * 同步读取文件
+ * @param {string} file
+ * @returns {fs.Stats | undefined}
+ */
+function tryStatSync(file) {
+  try {
+    return fs.statSync(file, { throwIfNoEntry: false })
+  } catch {}
+}
+/**
+ * 转成数组
+ * @param {string | string[]} target
+ * @returns {string[]}
+ */
+function toArray(target) {
+  return Array.isArray(target) ? target : [target]
+}
+/**
+ * 获取env文件列表
+ * @param {string} mode
+ * @returns {string[]}
+ */
+function getEnvFilesForMode(mode) {
+  return [
+    /** default file */ `.env`,
+    /** local file */ `.env.local`,
+    /** mode file */ `.env.${mode}`,
+    /** mode local file */ `.env.${mode}.local`,
+  ]
+}
+/**
+ * 一个用于给传入变量加上环境标识的函数
+ * @param {string} name
+ * @returns {string}
+ */
+function withEnvSuffix(name) {
+  return NODE_ENV === 'production' ? name : `${name}.${NODE_ENV}`
+}
+/**
+ * 加载环境变量
+ * @param {string} envDir
+ * @param {string | string[]} prefixes
+ * @returns {object}
+ */
+function loadEnv(envDir, prefixes = 'EXPO_PUBLIC_') {
+  prefixes = toArray(prefixes)
+  const env = {}
+  const envFiles = getEnvFilesForMode(NODE_ENV)
+  const parsed = Object.fromEntries(
+    envFiles.flatMap((file) => {
+      const filePath = path.resolve(envDir, file)
+      if (!tryStatSync(filePath)?.isFile()) return []
+      return Object.entries(parse(fs.readFileSync(filePath)))
+    })
+  )
+  for (const [key, value] of Object.entries(parsed)) {
+    if (prefixes.some((prefix) => !key.startsWith(prefix))) {
+      env[key] = value
+    }
+  }
+  return env
+}
+const config = loadEnv(__dirname)
+// 定义客户端常量的类型模式
+const clientSchema = z.object({
+  NODE_ENV: z.enum(['development', 'test', 'production']),
+  API_KEY: z.string(),
+  MMKV_DEVICE_KEY: z.string(),
+  MMKV_USER_ENCRYPT_KEY: z.string(),
+})
+// 定义构建工具常量的类型模式
+const buildSchema = z.object({
+  PACKAGE: z.string(),
+  BUNDLE_ID: z.string(),
+  EAS_PROJECT_ID: z.string(),
+  EXPO_ACCOUNT_OWNER: z.string(),
+})
+/** @type {Record<keyof z.infer<typeof clientSchema>, string | undefined>} */
+const _clientEnv = {
+  NODE_ENV,
+  API_KEY: config.API_KEY,
+  MMKV_DEVICE_KEY: config.MMKV_DEVICE_KEY,
+  MMKV_USER_ENCRYPT_KEY: config.MMKV_USER_ENCRYPT_KEY,
+}
+/** @type {Record<keyof z.infer<typeof buildSchema>, string | undefined>} */
+const _buildEnv = {
+  PACKAGE: withEnvSuffix(config.PACKAGE),
+  BUNDLE_ID: withEnvSuffix(config.BUNDLE_ID),
+  EAS_PROJECT_ID: config.EAS_PROJECT_ID,
+  EXPO_ACCOUNT_OWNER: config.EXPO_ACCOUNT_OWNER,
+}
+// 合并环境变量
+const _env = { ..._clientEnv, ..._buildEnv }
+// 合并类型模式
+const mergeSchema = buildSchema.merge(clientSchema)
+const parsed = mergeSchema.safeParse(_env)
+if (parsed.success === false) {
+  throw new Error('无效的环境变量')
+}
+
+module.exports = {
+  withEnvSuffix,
+  Env: parsed.data,
+  ClientEnv: clientSchema.parse(_clientEnv),
+}
+```
+
+:::
+
+- 把`app.json`改成`app.config.ts`
+
+::: details 查看
+
+```ts
+import { ExpoConfig, ConfigContext } from 'expo/config'
+const { name, version } = require('./package.json')
+import { Env, ClientEnv } from './env'
+
+export default ({ config }: ConfigContext): ExpoConfig => {
+  return {
+    ...config,
+    name,
+    slug: name,
+    description: '一个简单的Expo基础项目模板',
+    owner: Env.EXPO_ACCOUNT_OWNER,
+    version,
+    orientation: 'portrait',
+    userInterfaceStyle: 'automatic',
+    scheme: `com.${name}.linking`,
+    assetBundlePatterns: ['**/*'],
+    experiments: {
+      tsconfigPaths: true,
+    },
+    icon: './assets/icon.png',
+    splash: {
+      image: './assets/splash.png',
+      resizeMode: 'contain',
+      backgroundColor: '#ffffff',
+    },
+    runtimeVersion: {
+      policy: 'appVersion',
+    },
+    ios: {
+      supportsTablet: true,
+      bundleIdentifier: Env.BUNDLE_ID,
+      entitlements: {
+        'com.apple.developer.networking.wifi-info': true,
+      },
+    },
+    android: {
+      package: Env.PACKAGE,
+      adaptiveIcon: {
+        foregroundImage: './assets/adaptive-icon.png',
+        backgroundColor: '#ffffff',
+      },
+    },
+    web: {
+      favicon: './assets/favicon.png',
+    },
+    plugins: [
+      [
+        'app-icon-badge',
+        {
+          enabled: Env.NODE_ENV !== 'production',
+          badges: [
+            {
+              text: Env.NODE_ENV,
+              type: 'banner',
+              color: 'white',
+            },
+            {
+              text: version,
+              type: 'ribbon',
+              color: 'white',
+            },
+          ],
+        },
+      ],
+    ],
+    extra: {
+      ...ClientEnv,
+      eas: {
+        ...(Env.EAS_PROJECT_ID && { projectId: Env.EAS_PROJECT_ID }),
+      },
+    },
+  }
+}
+```
+
+:::
+
+- 新建`src/@types/global.d.ts`文件，用来声明全局变量、函数、接口和类型等
+- 新建`src/core/constants/env.ts`文件，用来导出 Expo 传递进来的环境变量
+- 修改`tsconfig.json`，增加一个路径别名`@env`指向`src/core/constants/env.ts`
+
+::: code-group
+
+```ts [global.d.ts]
+declare module '@env' {
+  interface Env {
+    NODE_ENV: 'development' | 'test' | 'production'
+    API_KEY: string
+    MMKV_DEVICE_KEY: string
+    MMKV_USER_ENCRYPT_KEY: string
+  }
+  export const Env: Env
+}
+```
+
+```ts [env.ts]
+import Constants from 'expo-constants'
+const Env = Constants.expoConfig?.extra ?? {}
+if (Env.hasOwnProperty('eas')) {
+  delete Env.eas
+}
+export { Env }
+```
+
+```json [tsconfig.json]
+{
+  "compilerOptions": {
+    "paths": {
+      "@env": ["src/core/constants/env.ts"] // [!code ++]
+    }
+  }
+}
+```
+
+:::
+
+## 使用`EAS`构建服务
+
+```sh
+pnpm add -D app-icon-badge
+npm i -g eas-cli
+eas login
+eas build:configure
+```
 
 ## 安全区适配和手势插件
 
@@ -389,31 +666,17 @@ export default function App() {
 
 ## 屏幕适配
 
-新建`src/@types/global.d.ts`文件，用来声明全局变量、函数、接口和类型等
-
-新建`src/core/utils/global.ts`，修改入口文件`index.ts`
+新建`src/core/utils/global.ts`，修改`src/@types.global.d.ts`和入口文件`index.ts`
 
 ::: code-group
-
-```ts [global.d.ts]
-type Prettify<T> = { [P in keyof T]: T[P] } & {}
-type ScaleBased = 'w' | 'h'
-/**
- * 获取设计稿中像素值的真实dp
- * @param uiSize 设计稿尺寸
- * @param based 基准比例方案,默认用宽度方案
- * @returns
- */
-function dp(uiSize: number, based: ScaleBased = 'w'): number
-```
 
 ```ts [global.ts]
 import { Dimensions, PixelRatio } from 'react-native'
 
 // UI设计稿尺寸,单位px
 const designSize = Object.freeze({
-  width: 375,
-  height: 812,
+  width: parseInt(process.env.EXPO_PUBLIC_UI_WIDTH as string),
+  height: parseInt(process.env.EXPO_PUBLIC_UI_HEIGHT as string),
 })
 // 获取设备屏幕尺寸,单位dp
 const { width, height } = Dimensions.get('window')
@@ -430,6 +693,19 @@ const operation = Object.freeze({
 global.dp = function (uiSize: number, based: ScaleBased = 'w') {
   return uiSize > 1 ? operation.px2dp(operation.size(uiSize, based)) : uiSize
 }
+```
+
+```ts [global.d.ts]
+// ...
+type Prettify<T> = { [P in keyof T]: T[P] } & {}
+type ScaleBased = 'w' | 'h'
+/**
+ * 获取设计稿中像素值的真实dp
+ * @param uiSize 设计稿尺寸
+ * @param based 基准比例方案,默认用宽度方案
+ * @returns
+ */
+function dp(uiSize: number, based: ScaleBased = 'w'): number
 ```
 
 ```ts [index.ts]
@@ -454,6 +730,7 @@ pnpm add @react-navigation/native @react-navigation/native-stack @react-navigati
 - `Profile`
   - `index.tsx`
 
+::: details 查看
 ::: code-group
 
 ```tsx [Onboarding]
@@ -515,6 +792,7 @@ export default () => {
 
 新建`src/routes`目录，用来管理应用的路由。在`routes`目录下新建`AppNavigator.tsx`、`TabsNavigator.tsx`和`types.ts`
 
+::: details 查看
 ::: code-group
 
 ```ts [types.ts]
@@ -665,6 +943,60 @@ export default () => {
       ))}
     </Tabs.Navigator>
   )
+}
+```
+
+:::
+
+## 侧栏组件
+
+[详细文档看这里](https://reactnavigation.org/docs/drawer-layout)
+
+```sh
+pnpm add react-native-drawer-layout react-native-reanimated@3.3.0
+```
+
+修改`src/pages/Profile/index.tsx`和`babel.config.js`
+
+::: code-group
+
+```tsx{7-25} [Profile]
+import { Drawer } from 'react-native-drawer-layout' // [!code ++]
+// ...
+
+export default () => {
+  const [open, setOpen] = React.useState(false) // [!code ++]
+  return (
+    <Drawer
+      open={open}
+      onOpen={() => setOpen(true)}
+      onClose={() => setOpen(false)}
+      renderDrawerContent={() => {
+        return (
+          <View style={tw`flex-1 items-center justify-center`}>
+            <Text>Drawer content</Text>
+          </View>
+        )
+      }}
+    >
+      <SafeAreaView style={tw`flex-1 items-center justify-center`}>
+        <Button
+          onPress={() => setOpen((prevOpen) => !prevOpen)}
+          title={`${open ? 'Close' : 'Open'} drawer`}
+        />
+      </SafeAreaView>
+    </Drawer>
+  )
+}
+```
+
+```js [babel.config.js]
+module.exports = function (api) {
+  api.cache(true)
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: ['react-native-reanimated/plugin'], // [!code ++]
+  }
 }
 ```
 
