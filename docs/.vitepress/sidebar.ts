@@ -159,6 +159,10 @@ const sidebar: DefaultTheme.Sidebar = {
             },
           ],
         },
+        {
+          text: 'Axios封装',
+          link: '/front-end/axios',
+        },
       ],
     },
     {

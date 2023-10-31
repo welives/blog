@@ -13,6 +13,7 @@ title: 使用Expo搭建工程
 - [Expo](https://expo.dev/)
 - [ReactNative](https://reactnative.cn/)
 - [ReactNavigation](https://reactnavigation.org/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
 - [TypeScript](https://www.tslang.cn/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
@@ -34,10 +35,11 @@ title: 使用Expo搭建工程
 pnpm create expo-app -t expo-template-blank-typescript
 ```
 
-由于使用`pnpm`创建的 Expo 项目缺少了`.npmrc`文件，我们需要在项目根目录手动创建它，填入如下内容
+由于使用`pnpm`创建的 Expo 项目缺少了`.npmrc`文件，我们需要在项目根目录手动创建它，并填入`node-linker=hoisted`
 
-```ini
-node-linker=hoisted
+```sh
+touch .npmrc
+echo node-linker=hoisted > .npmrc
 ```
 
 接着删除`node_modules`目录和`pnpm-lock.yaml`文件，然后重新执行一遍依赖的安装
@@ -260,7 +262,7 @@ module.exports = {
 ```json
 {
   "expo": {
-    // ...
+    // 省略...
     "experiments": {
       "tsconfigPaths": true
     }
@@ -289,7 +291,7 @@ registerRootComponent(App)
 
 ```json [package.json]
 {
-  // ...
+  // 省略...
   "main": "index.ts" // [!code ++]
 }
 ```
@@ -299,7 +301,7 @@ registerRootComponent(App)
 ## 环境变量
 
 ```sh
-pnpm add expo-constants
+npx expo install expo-constants
 pnpm add -D cross-env dotenv zod
 ```
 
@@ -315,12 +317,6 @@ EXPO_PUBLIC_UI_HEIGHT=812
 EXPO_PUBLIC_API_URL=http://localhost:3000
 EXPO_PUBLIC_API_PREFIX=/api
 API_KEY=your_api_key
-
-# 构建配置
-PACKAGE=com.jandan
-BUNDLE_ID=com.jandan
-EAS_PROJECT_ID=
-EXPO_ACCOUNT_OWNER=jandan
 ```
 
 ```js [env.js]
@@ -397,42 +393,15 @@ const config = loadEnv(__dirname)
 const clientSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']),
   API_KEY: z.string(),
-  MMKV_DEVICE_KEY: z.string(),
-  MMKV_USER_ENCRYPT_KEY: z.string(),
-})
-// 定义构建工具常量的类型模式
-const buildSchema = z.object({
-  PACKAGE: z.string(),
-  BUNDLE_ID: z.string(),
-  EAS_PROJECT_ID: z.string(),
-  EXPO_ACCOUNT_OWNER: z.string(),
 })
 /** @type {Record<keyof z.infer<typeof clientSchema>, string | undefined>} */
 const _clientEnv = {
   NODE_ENV,
   API_KEY: config.API_KEY,
-  MMKV_DEVICE_KEY: config.MMKV_DEVICE_KEY,
-  MMKV_USER_ENCRYPT_KEY: config.MMKV_USER_ENCRYPT_KEY,
-}
-/** @type {Record<keyof z.infer<typeof buildSchema>, string | undefined>} */
-const _buildEnv = {
-  PACKAGE: withEnvSuffix(config.PACKAGE),
-  BUNDLE_ID: withEnvSuffix(config.BUNDLE_ID),
-  EAS_PROJECT_ID: config.EAS_PROJECT_ID,
-  EXPO_ACCOUNT_OWNER: config.EXPO_ACCOUNT_OWNER,
-}
-// 合并环境变量
-const _env = { ..._clientEnv, ..._buildEnv }
-// 合并类型模式
-const mergeSchema = buildSchema.merge(clientSchema)
-const parsed = mergeSchema.safeParse(_env)
-if (parsed.success === false) {
-  throw new Error('无效的环境变量')
 }
 
 module.exports = {
   withEnvSuffix,
-  Env: parsed.data,
   ClientEnv: clientSchema.parse(_clientEnv),
 }
 ```
@@ -446,15 +415,13 @@ module.exports = {
 ```ts
 import { ExpoConfig, ConfigContext } from 'expo/config'
 const { name, version } = require('./package.json')
-import { Env, ClientEnv } from './env'
-
+import { ClientEnv } from './env'
 export default ({ config }: ConfigContext): ExpoConfig => {
   return {
     ...config,
     name,
     slug: name,
     description: '一个简单的Expo基础项目模板',
-    owner: Env.EXPO_ACCOUNT_OWNER,
     version,
     orientation: 'portrait',
     userInterfaceStyle: 'automatic',
@@ -469,18 +436,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       resizeMode: 'contain',
       backgroundColor: '#ffffff',
     },
-    runtimeVersion: {
-      policy: 'appVersion',
-    },
     ios: {
       supportsTablet: true,
-      bundleIdentifier: Env.BUNDLE_ID,
       entitlements: {
         'com.apple.developer.networking.wifi-info': true,
       },
     },
     android: {
-      package: Env.PACKAGE,
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#ffffff',
@@ -489,31 +451,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     web: {
       favicon: './assets/favicon.png',
     },
-    plugins: [
-      [
-        'app-icon-badge',
-        {
-          enabled: Env.NODE_ENV !== 'production',
-          badges: [
-            {
-              text: Env.NODE_ENV,
-              type: 'banner',
-              color: 'white',
-            },
-            {
-              text: version,
-              type: 'ribbon',
-              color: 'white',
-            },
-          ],
-        },
-      ],
-    ],
     extra: {
       ...ClientEnv,
-      eas: {
-        ...(Env.EAS_PROJECT_ID && { projectId: Env.EAS_PROJECT_ID }),
-      },
     },
   }
 }
@@ -522,8 +461,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 :::
 
 - 新建`src/@types/global.d.ts`文件，用来声明全局变量、函数、接口和类型等
-- 新建`src/core/constants/env.ts`文件，用来导出 Expo 传递进来的环境变量
-- 修改`tsconfig.json`，增加一个路径别名`@env`指向`src/core/constants/env.ts`
+- 新建`src/constants/env.ts`文件，用来导出 Expo 传递进来的环境变量
+- 修改`tsconfig.json`，增加一个路径别名`@env`指向`src/constants/env.ts`
 
 ::: code-group
 
@@ -532,8 +471,6 @@ declare module '@env' {
   interface Env {
     NODE_ENV: 'development' | 'test' | 'production'
     API_KEY: string
-    MMKV_DEVICE_KEY: string
-    MMKV_USER_ENCRYPT_KEY: string
   }
   export const Env: Env
 }
@@ -552,7 +489,7 @@ export { Env }
 {
   "compilerOptions": {
     "paths": {
-      "@env": ["src/core/constants/env.ts"] // [!code ++]
+      "@env": ["src/constants/env.ts"] // [!code ++]
     }
   }
 }
@@ -560,19 +497,131 @@ export { Env }
 
 :::
 
-## 使用`EAS`构建服务
+## `EAS`云构建服务
+
+打开[Expo控制台](https://expo.dev/)，创建一个新的项目，然后把生成的`ID`复制下来填入环境变量`EAS_PROJECT_ID`
 
 ```sh
+npx expo install expo-dev-client
 pnpm add -D app-icon-badge
+```
+
+- 在`.env.local`文件中添加新的环境变量
+
+```ini
+# 构建配置
+ANDROID_PACKAGE=com.jandan
+APPLE_BUNDLE_ID=com.jandan
+EAS_PROJECT_ID=刚才生成的ID
+EXPO_ACCOUNT_OWNER=jandan
+```
+
+- 修改入口文件`index.ts`
+
+```ts
+import 'expo-dev-client' // [!code ++]
+```
+
+- 修改`env.js`文件
+
+::: details 查看
+
+```js
+// 省略...
+// 定义构建工具常量的类型模式
+const buildSchema = z.object({
+  ANDROID_PACKAGE: z.string(),
+  APPLE_BUNDLE_ID: z.string(),
+  EAS_PROJECT_ID: z.string(),
+  EXPO_ACCOUNT_OWNER: z.string(),
+})
+/** @type {Record<keyof z.infer<typeof buildSchema>, string | undefined>} */
+const _buildEnv = {
+  ANDROID_PACKAGE: withEnvSuffix(config.ANDROID_PACKAGE),
+  APPLE_BUNDLE_ID: withEnvSuffix(config.APPLE_BUNDLE_ID),
+  EAS_PROJECT_ID: config.EAS_PROJECT_ID,
+  EXPO_ACCOUNT_OWNER: config.EXPO_ACCOUNT_OWNER,
+}
+// 合并环境变量
+const _env = { ..._clientEnv, ..._buildEnv }
+// 合并类型模式
+const mergeSchema = buildSchema.merge(clientSchema)
+const parsed = mergeSchema.safeParse(_env)
+if (parsed.success === false) {
+  throw new Error('无效的环境变量')
+}
+module.exports = {
+  // 省略...
+  Env: parsed.data,
+}
+```
+
+:::
+
+- 修改`app.config.ts`
+
+::: details 查看
+
+```ts{2,13-24}
+// 省略...
+import { Env, ClientEnv } from './env'
+export default ({ config }: ConfigContext): ExpoConfig => {
+  return {
+    // 省略...
+    owner: Env.EXPO_ACCOUNT_OWNER, // [!code ++]
+    ios: {
+      bundleIdentifier: Env.APPLE_BUNDLE_ID, // [!code ++]
+    },
+    android: {
+      package: Env.ANDROID_PACKAGE, // [!code ++]
+    },
+    plugins: [
+      [
+        'app-icon-badge',
+        {
+          enabled: Env.NODE_ENV !== 'production',
+          badges: [
+            { text: Env.NODE_ENV, type: 'banner', color: 'white' },
+            { text: version, type: 'ribbon', color: 'white' },
+          ],
+        },
+      ],
+    ],
+    extra: {
+      eas: {
+        ...(Env.EAS_PROJECT_ID && { projectId: Env.EAS_PROJECT_ID }), // [!code ++]
+      },
+    },
+  }
+}
+```
+
+:::
+
+### 安装`EAS`
+
+```sh
 npm i -g eas-cli
-eas login
 eas build:configure
+```
+
+选`All`，然后会在根目录自动创建一个`eas.json`文件
+
+![](./assets/expo/eas_configure.png)
+
+### 预构建
+
+打`debug`包
+
+```sh
+npx expo prebuild
+expo run:android
 ```
 
 ## 安全区适配和手势插件
 
 ```sh
-pnpm add react-native-screens react-native-safe-area-context react-native-gesture-handler
+npx expo install react-native-safe-area-context react-native-gesture-handler
 ```
 
 修改入口文件`index.ts`和`src/App.tsx`
@@ -581,17 +630,14 @@ pnpm add react-native-screens react-native-safe-area-context react-native-gestur
 
 ```ts [index.ts]
 import 'react-native-gesture-handler' // [!code ++]
-// ...
 ```
 
-```tsx{10-17} [App.tsx]
+```tsx{8-15} [App.tsx]
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler' // [!code ++]
 import { SafeAreaProvider } from 'react-native-safe-area-context' // [!code ++]
-import { enableScreens } from 'react-native-screens' // [!code ++]
 
-enableScreens() // [!code ++]
 export default function App() {
   return (
     <SafeAreaProvider>
@@ -604,7 +650,7 @@ export default function App() {
     </SafeAreaProvider>
   )
 }
-// ...
+// 省略...
 ```
 
 :::
@@ -643,22 +689,22 @@ module.exports = {
 pnpm add twrnc
 ```
 
-新建`src/core/utils/tailwind.ts`文件，修改`src/App.tsx`
+新建`src/utils/tailwind.ts`文件，修改`src/App.tsx`
 
 ::: code-group
 
 ```ts [tailwind.ts]
 import { create } from 'twrnc'
-export default create(require('../../../tailwind.config'))
+export default create(require('../../tailwind.config'))
 ```
 
 ```tsx [App.tsx]
-// ...
+// 省略...
 import { useDeviceContext } from 'twrnc' // [!code ++]
-import { tw } from './core/utils' // [!code ++]
+import { tw } from './utils' // [!code ++]
 export default function App() {
   useDeviceContext(tw) // [!code ++]
-  // ...
+  // 省略...
 }
 ```
 
@@ -666,9 +712,22 @@ export default function App() {
 
 ## 屏幕适配
 
-新建`src/core/utils/global.ts`，修改`src/@types.global.d.ts`和入口文件`index.ts`
+新建`src/utils/global.ts`，修改`src/@types.global.d.ts`和入口文件`index.ts`
 
 ::: code-group
+
+```ts [global.d.ts]
+// 省略...
+type Prettify<T> = { [P in keyof T]: T[P] } & {}
+type ScaleBased = 'w' | 'h'
+/**
+ * 获取设计稿中像素值的真实dp
+ * @param uiSize 设计稿尺寸
+ * @param based 基准比例方案,默认用宽度方案
+ * @returns
+ */
+function dp(uiSize: number, based: ScaleBased = 'w'): number
+```
 
 ```ts [global.ts]
 import { Dimensions, PixelRatio } from 'react-native'
@@ -695,30 +754,18 @@ global.dp = function (uiSize: number, based: ScaleBased = 'w') {
 }
 ```
 
-```ts [global.d.ts]
-// ...
-type Prettify<T> = { [P in keyof T]: T[P] } & {}
-type ScaleBased = 'w' | 'h'
-/**
- * 获取设计稿中像素值的真实dp
- * @param uiSize 设计稿尺寸
- * @param based 基准比例方案,默认用宽度方案
- * @returns
- */
-function dp(uiSize: number, based: ScaleBased = 'w'): number
-```
-
 ```ts [index.ts]
-import './src/core/utils/global' // [!code ++]
-// ...
+import './src/utils/global' // [!code ++]
 ```
 
 :::
 
 ## 路由导航
 
+[详细文档看这里](https://reactnavigation.org/)
+
 ```sh
-pnpm add @react-navigation/native @react-navigation/native-stack @react-navigation/bottom-tabs
+pnpm add react-native-screens @react-navigation/native @react-navigation/native-stack @react-navigation/bottom-tabs
 ```
 
 新建`src/pages`目录，用来存放应用的所有页面，接着新建三个页面用来测试，参考如下
@@ -736,25 +783,7 @@ pnpm add @react-navigation/native @react-navigation/native-stack @react-navigati
 ```tsx [Onboarding]
 import { View, Button } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { tw } from '~/core/utils'
-import { AppStackScreenProps, AppStacks } from '~/routes/types'
-
-type Props = AppStackScreenProps<AppStacks>
-export default ({ navigation }: Props) => {
-  return (
-    <SafeAreaView style={tw`flex-1 items-center justify-center`}>
-      <View>
-        <Button title="Go Home" onPress={() => navigation.navigate('BOTTOM_TABS')}></Button>
-      </View>
-    </SafeAreaView>
-  )
-}
-```
-
-```tsx [Home]
-import { View, Button } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { tw } from '~/core/utils'
+import { tw } from '~/utils'
 import { AppStackScreenProps, AppStacks } from '~/routes/types'
 
 type Props = AppStackScreenProps<AppStacks>
@@ -772,10 +801,28 @@ export default ({ navigation }: Props) => {
 }
 ```
 
+```tsx [Home]
+import { View, Button } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { tw } from '~/utils'
+import { TabsStackScreenProps, TabsStacks } from '~/routes/types'
+
+type Props = TabsStackScreenProps<TabsStacks>
+export default ({ navigation }: Props) => {
+  return (
+    <SafeAreaView style={tw`flex-1 items-center justify-center`}>
+      <View>
+        <Button title="Go Orboarding" onPress={() => navigation.navigate('ONBOARDING')}></Button>
+      </View>
+    </SafeAreaView>
+  )
+}
+```
+
 ```tsx [Profile]
 import { View, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { tw } from '~/core/utils'
+import { tw } from '~/utils'
 
 export default () => {
   return (
@@ -948,25 +995,57 @@ export default () => {
 
 :::
 
+修改`src/App.tsx`
+
+```tsx{9-12}
+// 省略...
+import { NavigationContainer } from '@react-navigation/native' // [!code ++]
+import AppNavigation from './routes/AppNavigator' // [!code ++]
+export default function App() {
+  useDeviceContext(tw)
+  return (
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <NavigationContainer>
+          <AppNavigation />
+        </NavigationContainer>
+        <StatusBar style="auto" />
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
+  )
+}
+```
+
 ## 侧栏组件
 
 [详细文档看这里](https://reactnavigation.org/docs/drawer-layout)
 
 ```sh
-pnpm add react-native-drawer-layout react-native-reanimated@3.3.0
+pnpm add react-native-drawer-layout
+npx expo install react-native-reanimated
 ```
 
 修改`src/pages/Profile/index.tsx`和`babel.config.js`
 
 ::: code-group
 
-```tsx{7-25} [Profile]
-import { Drawer } from 'react-native-drawer-layout' // [!code ++]
-// ...
+```js [babel.config.js]
+module.exports = function (api) {
+  api.cache(true)
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: ['react-native-reanimated/plugin'], // [!code ++]
+  }
+}
+```
 
+```tsx [Profile]
+import { Drawer } from 'react-native-drawer-layout' // [!code ++]
+// 省略...
 export default () => {
   const [open, setOpen] = React.useState(false) // [!code ++]
   return (
+    // [!code focus:20]
     <Drawer
       open={open}
       onOpen={() => setOpen(true)}
@@ -990,14 +1069,207 @@ export default () => {
 }
 ```
 
-```js [babel.config.js]
-module.exports = function (api) {
-  api.cache(true)
-  return {
-    presets: ['babel-preset-expo'],
-    plugins: ['react-native-reanimated/plugin'], // [!code ++]
-  }
+:::
+
+## 状态管理
+
+[Zustand详细文档](https://zustand-demo.pmnd.rs/)
+
+```sh
+pnpm add zustand immer
+```
+
+### 定义
+
+新建`src/models/counter.ts`和`src/models/selectors.ts`
+
+::: details 查看
+::: code-group
+
+```ts [counter.ts]
+import { create } from 'zustand'
+import { immer } from 'zustand/middleware/immer'
+import createSelectors from './selectors'
+interface State {
+  count: number
+}
+interface Action {
+  inc: () => void
+  dec: () => void
+}
+const initialState: State = {
+  count: 0,
+}
+const counterStore = create<State & Action>()(
+  immer((set, get) => ({
+    count: 0,
+    inc: () => set((state) => ({ count: state.count + 1 })),
+    dec: () => set((state) => ({ count: state.count - 1 })),
+  }))
+)
+export const useCounterStore = createSelectors(counterStore)
+export function useCounterReset() {
+  counterStore.setState(initialState)
 }
 ```
 
+```ts [selectors.ts]
+import { StoreApi, UseBoundStore } from 'zustand'
+type WithSelectors<S> = S extends { getState: () => infer T }
+  ? S & { use: { [K in keyof T]: () => T[K] } }
+  : never
+const createSelectors = <S extends UseBoundStore<StoreApi<{}>>>(_store: S) => {
+  let store = _store as WithSelectors<typeof _store>
+  store.use = {}
+  for (let k of Object.keys(store.getState())) {
+    ;(store.use as any)[k] = () => store((s) => s[k as keyof typeof s])
+  }
+  return store
+}
+export default createSelectors
+```
+
+:::
+
+### 使用
+
+修改`src/pages/Home/index.tsx`和`src/pages/Profile/index.tsx`
+
+::: details 查看
+::: code-group
+
+```tsx [Home]
+// 省略...
+import { useCounterStore, useCounterReset } from '~/models' // [!code ++]
+export default ({ navigation }: Props) => {
+  const count = useCounterStore.use.count() // [!code ++]
+  const inc = useCounterStore.use.inc() // [!code ++]
+  const dec = useCounterStore.use.dec() // [!code ++]
+  return (
+    // 省略...
+    <View style={tw`my-3 items-center justify-center`}>
+      <Button title="increment" onPress={inc}></Button>
+      <Text>{count}</Text>
+      <Button title="decrement" onPress={dec}></Button>
+    </View>
+    <Button title="reset" onPress={useCounterReset}></Button>
+    // 省略...
+  )
+}
+```
+
+```tsx [Profile]
+// 省略...
+import { useCounterStore } from '~/models' // [!code ++]
+export default () => {
+  const { count, inc, dec } = useCounterStore() // [!code ++]
+  return (
+    // 省略...
+    <View style={tw`mt-3 items-center justify-center`}>
+      <Button title="increment" onPress={inc}></Button>
+      <Text>{count}</Text>
+      <Button title="decrement" onPress={dec}></Button>
+    </View>
+    // 省略...
+  )
+}
+```
+
+:::
+
+### 持久化
+
+注意，使用了`MMKV`之后需要打`debug`包才能进行调试
+
+```sh
+pnpm add react-native-mmkv
+```
+
+新建`src/utils/storage.ts`和`src/models/user.ts`
+
+::: details 查看
+::: code-group
+
+```ts [storage.ts]
+import { MMKV } from 'react-native-mmkv'
+// 定义不同场景下的mmkv存储键
+enum MMKVSceneKey {
+  USER = 'mmkv-user',
+}
+// 创建默认的 mmkv 实例
+const storage = new MMKV()
+function getItem<T>(key: string): T {
+  const value = storage.getString(key)
+  return value ? JSON.parse(value) ?? null : null
+}
+function setItem<T>(key: string, value: T) {
+  storage.set(key, JSON.stringify(value))
+}
+function removeItem(key: string) {
+  storage.delete(key)
+}
+export { storage, getItem, setItem, removeItem, MMKVSceneKey }
+```
+
+```ts [user.ts]
+import { create } from 'zustand'
+import { immer } from 'zustand/middleware/immer'
+import { createJSONStorage, persist, StateStorage } from 'zustand/middleware'
+import createSelectors from './selectors'
+import { storage, MMKVSceneKey } from '../utils'
+interface State {
+  token: string
+  isLogged: boolean
+}
+interface Action {
+  setToken: (token: string) => void
+  removeToken: () => void
+}
+const userStorage: StateStorage = {
+  getItem: (key: string) => {
+    const value = storage.getString(key)
+    return value ?? null
+  },
+  setItem: (key: string, value) => {
+    storage.set(key, value)
+  },
+  removeItem: (key: string) => {
+    storage.delete(key)
+  },
+}
+const initialState: State = {
+  token: '',
+  isLogged: false,
+}
+const userStore = create<State & Action>()(
+  immer(
+    persist(
+      (set, get) => ({
+        token: '',
+        isLogged: false,
+        setToken: (token) => set({ token, isLogged: true }),
+        removeToken: () => set({ token: '', isLogged: false }),
+      }),
+      {
+        //! 注意这里的 name 并不是创建 mmkv 实例的 ID，而是 mmkv 持久化数据的唯一 key
+        name: MMKVSceneKey.USER,
+        storage: createJSONStorage(() => userStorage),
+      }
+    )
+  )
+)
+export const useUserStore = createSelectors(userStore)
+export function useUserReset() {
+  userStore.setState(initialState)
+}
+```
+
+:::
+
+## 请求模块
+
+封装过程就不说了，具体代码可以我的[Axios封装](../axios.md)
+
+::: tip
+到这里，其实这个基础项目的架子就已经算完成了，之后我想到什么补什么
 :::
