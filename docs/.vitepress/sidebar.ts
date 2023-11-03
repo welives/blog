@@ -299,6 +299,16 @@ const sidebar: DefaultTheme.Sidebar = {
             },
           ],
         },
+        {
+          text: 'NestJS',
+          collapsed: true,
+          items: [
+            {
+              text: '搭建工程',
+              link: '/front-end/nodejs/nestjs/create',
+            },
+          ],
+        },
       ],
     },
     {
