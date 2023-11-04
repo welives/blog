@@ -2,7 +2,7 @@
 title: Koa搭建
 ---
 
-::: tip 目标
+::: tip ✨
 搭建一个 Koa2 + TypeScript + Webpack + PM2 + ESLint + Prettier 的工程
 
 [本工程的Github地址](https://github.com/welives/koa-starter)

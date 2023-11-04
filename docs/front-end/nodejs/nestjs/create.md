@@ -2,7 +2,7 @@
 title: NestJS搭建
 ---
 
-::: tip 目标
+::: tip ✨
 搭建一个 NestJS + TypeScript + Webpack + PM2 + ESLint + Prettier 的工程
 
 [本工程的Github地址](https://github.com/welives/nestjs-starter)
@@ -173,18 +173,16 @@ pnpm add -D cross-env
 ```ts
 import { ConfigModule } from '@nestjs/config' // [!code ++]
 import Joi from 'joi' // [!code ++]
+const envFilePath =
+  process.env.NODE_ENV === 'production'
+    ? ['.env.production.local', '.env.production']
+    : [`.env.${process.env.NODE_ENV}.local`, '.env.local', '.env']
 @Module({
   // ...
   imports: [
-    // [!code focus:16]
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: [
-        `.env.${process.env.NODE_ENV}.local`,
-        `.env.${process.env.NODE_ENV}`,
-        '.env.local',
-        '.env',
-      ],
+      envFilePath,
       validationSchema: Joi.object({
         NODE_ENV: Joi.string().valid('development', 'test', 'production').default('development'),
         APP_PORT: Joi.number().default(3000),
@@ -271,7 +269,7 @@ import { RedisModule } from '@liaoliaots/nestjs-redis' // [!code ++]
         // ...
         REDIS_PORT: Joi.number().default(6379),
         REDIS_HOST: Joi.string().default('127.0.0.1'),
-        REDIS_USERNAME: Joi.string().default('root'),
+        REDIS_USER: Joi.string().default('root'),
         REDIS_PWD: Joi.string().required(),
       }),
     }),
@@ -282,7 +280,7 @@ import { RedisModule } from '@liaoliaots/nestjs-redis' // [!code ++]
           config: {
             host: config.get('REDIS_HOST'),
             port: config.get('REDIS_PORT'),
-            username: config.get('REDIS_USERNAME'),
+            username: config.get('REDIS_USER'),
             password: config.get('REDIS_PWD'),
           },
         }

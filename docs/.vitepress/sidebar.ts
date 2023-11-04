@@ -311,6 +311,10 @@ const sidebar: DefaultTheme.Sidebar = {
               text: '使用Typeorm',
               link: '/front-end/nodejs/nestjs/typeorm',
             },
+            {
+              text: '使用Prisma',
+              link: '/front-end/nodejs/nestjs/prisma',
+            },
           ],
         },
       ],

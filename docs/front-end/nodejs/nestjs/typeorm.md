@@ -10,7 +10,9 @@ title: NestJS使用Typeorm
 
 我这里使用的是一个[免费的线上服务](https://methodot.com/)进行临时测试，具体可以根据自己手头上的资源进行选择
 
-创建完毕后将相关配置信息填入环境变量文件`.env`
+创建完毕后将相关配置信息填入环境变量文件
+
+## 安装依赖
 
 ```sh
 pnpm add @nestjs/typeorm typeorm mysql2
@@ -18,18 +20,19 @@ pnpm add @nestjs/typeorm typeorm mysql2
 
 ## 数据库配置
 
-修改`apps/api/src/app.module.ts`
+修改`apps/api/src/app.module.ts`，在`imports`中增加`TypeOrmModule`配置项和相关的环境变量
 
 ```ts
 // ...
 import { TypeOrmModule } from '@nestjs/typeorm' // [!code ++]
 // @ts-ignore
 const moduleFiles = require.context('./models', true, /\.(ts|js)$/)
-const models = moduleFiles.keys().reduce((model: any[], modelPath) => {
+const models = moduleFiles.keys().reduce((model: any[], modelPath: string) => {
   const value = moduleFiles(modelPath)
-  const [entity] = Object.values(value).filter((v) => typeof v === 'function' && v.toString().slice(0, 5) === 'class')
-  // 如果是默认导出的情况,则是 [...model, value.default]
-  return [...model, entity]
+  // 单个导出时
+  // const [entity] = Object.values(value).filter((v) => typeof v === 'function' && v.toString().slice(0, 5) === 'class')
+  // 默认导出时
+  return [...model, value.default]
 }, [])
 @Module({
   imports: [
@@ -39,7 +42,7 @@ const models = moduleFiles.keys().reduce((model: any[], modelPath) => {
         MYSQL_URL: Joi.string().required(),
         MYSQL_HOST: Joi.string().required(),
         MYSQL_PORT: Joi.number().default(3306),
-        MYSQL_USER: Joi.string().required(),
+        MYSQL_USER: Joi.string().default('root'),
         MYSQL_PWD: Joi.string().required(),
         MYSQL_DBNAME: Joi.string().required(),
         CHARSET: Joi.string().default('utf8'),
@@ -91,26 +94,21 @@ export enum UserStatus {
 }
 
 @Entity({ name: 'user' })
-export class User {
+export default class User {
   @PrimaryGeneratedColumn({ unsigned: true })
   id: number
-
   @Column({ type: 'varchar', length: 50, comment: '用户名' })
   username: string
-
   @Column({ type: 'varchar', length: 100, comment: '密码' })
   password: string
-
   @Column({ type: 'varchar', length: 50, comment: '加密盐' })
   salt: string
-
   @Column({ type: 'varchar', length: 255, default: '', comment: '头像' })
   avatar: string
-
   @Column({ type: 'tinyint', default: 0, comment: '角色' })
   role: number
   @Column({ type: 'enum', enum: UserStatus, default: UserStatus.NORMAL, comment: '状态' })
-  status: number
+  status: UserStatus
 }
 ```
 
@@ -121,7 +119,7 @@ export class User {
 ```ts
 import { InjectEntityManager } from '@nestjs/typeorm' // [!code ++]
 import { EntityManager } from 'typeorm' // [!code ++]
-import { User, UserStatus } from '../models/user.entity' // [!code ++]
+import User, { UserStatus } from '../models/user.entity' // [!code ++]
 export class AuthService {
   constructor(
     // ...
