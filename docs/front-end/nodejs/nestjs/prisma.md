@@ -19,11 +19,15 @@ nest add nestjs-prisma
 pnpm add -D dotenv-cli
 ```
 
+![](../assets/nestjs/nestjs_prisma.png)
+
 ### 数据库配置
 
 修改`apps/api/src/app.module.ts`，在`imports`中增加`PrismaModule`配置项和相关的环境变量
 
-```ts
+::: code-group
+
+```ts [mysql]
 import { PrismaModule } from 'nestjs-prisma' // [!code ++]
 @Module({
   imports: [
@@ -57,6 +61,35 @@ import { PrismaModule } from 'nestjs-prisma' // [!code ++]
 })
 ```
 
+```ts [mongodb]
+import { PrismaModule } from 'nestjs-prisma' // [!code ++]
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      validationSchema: Joi.object({
+        // ...
+        MONGODB_URL: Joi.string().required(),
+      }),
+    }),
+    PrismaModule.forRootAsync({
+      isGlobal: true,
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        const NODE_ENV = config.get('NODE_ENV')
+        return {
+          prismaOptions: {
+            log: NODE_ENV === 'production' ? ['error'] : ['info', 'warn', 'error'],
+            datasourceUrl: config.get('MONGODB_URL'),
+          },
+        }
+      },
+    }),
+  ]
+})
+```
+
+:::
+
 ## 手动配置
 
 ```sh
@@ -68,17 +101,33 @@ pnpm add -D prisma dotenv-cli
 
 初始化`Prisma`，执行`npx prisma init`，然后项目根目录会自动生成`prisma/schema.prisma`文件，根据项目情况对其进行修改
 
-```ini{7-8}
+::: code-group
+
+```ini [mysql]
 generator client {
   provider = "prisma-client-js"
 }
-
+// [!code focus:6]
 datasource db {
   provider     = "mysql"
   url          = env("MYSQL_URL")
   relationMode = "prisma"
 }
 ```
+
+```ini [mongodb]
+generator client {
+  provider = "prisma-client-js"
+}
+// [!code focus:6]
+datasource db {
+  provider     = "mongodb"
+  url          = env("MONGODB_URL")
+  relationMode = "prisma"
+}
+```
+
+:::
 
 修改`tsconfig.build.json`，把`prisma`文件夹加入排除项
 
@@ -171,7 +220,9 @@ async function bootstrap() {
 
 编辑`prisma/schema.prisma`文件，增加如下内容，然后执行`npx prisma db push`会根据模型信息自动创建表
 
-```ini
+::: code-group
+
+```ini [mysql]
 model user {
   id       Int     @id @default(autoincrement()) @db.UnsignedInt
   username String  @db.VarChar(50)
@@ -182,6 +233,20 @@ model user {
   status   Int     @default(0) @db.UnsignedTinyInt
 }
 ```
+
+```ini [mongodb]
+model user {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  avatar   String
+  password String
+  role     Int
+  salt     String
+  status   Int
+  username String @unique(map: "username_1")
+}
+```
+
+:::
 
 ## CURD
 

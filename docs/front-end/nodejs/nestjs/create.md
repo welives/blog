@@ -417,7 +417,7 @@ nest g interface user-request interface -p common --flat
 import { Request } from '@nestjs/common'
 export interface UserRequest extends Request {
   user: {
-    id: number
+    id: number | string
     username: string
     role: number
     avatar: string
@@ -1152,4 +1152,8 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 }
 ```
 
+:::
+
+::: tip 🎉
+基础的框架封装到这里就结束了
 :::
