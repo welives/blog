@@ -1,5 +1,5 @@
 ---
-title: Koa搭建
+title: Koa工程搭建
 ---
 
 ::: tip ✨
@@ -41,16 +41,43 @@ touch .gitignore
 
 设置忽略文件，内容根据自己的喜好
 
+::: details 查看
+
 ```ini
+# compiled output
+/dist
+/node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
 .DS_Store
-node_modules
-dist
-.idea
+
+# IDEs and editors
+/.idea
+.project
 .vscode
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 *.code-workspace
-**/*.log
-.env*
+
+# local env files
+.env*.local
+*.rest
+*.http
 ```
+
+:::
 
 ### 配置`EditorConfig`
 
@@ -76,17 +103,13 @@ trim_trailing_whitespace = false
 ### 初始化项目
 
 ```sh
-npm init -y
+pnpm init -y
 ```
-
-::: tip 提示
-如果你的网络使用`npm`很慢的话，可以试试用`yarn`，后续使用`npm`的地方一样可以用`yarn`代替
-:::
 
 ### 安装`TypeScript`
 
 ```sh
-npm i -D typescript @types/node
+pnpm add -D typescript @types/node
 ```
 
 ### 初始化`tsconfig.json`
@@ -100,8 +123,8 @@ npx tsc --init
 ```json
 {
   "compilerOptions": {
-    "target": "esnext",
     "module": "commonjs",
+    "target": "esnext",
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
@@ -109,6 +132,12 @@ npx tsc --init
     },
     "typeRoots": ["./node_modules/@types", "./src/@types"],
     "moduleResolution": "node",
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "strictNullChecks": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false,
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
@@ -142,120 +171,9 @@ console.log('hello world')
 
 试试用`node dist/index.js`运行看看，输出`hello world`的话说明`typescript`环境搭建成功了，之后就可以继续完善工程了
 
-## 配置执行脚本
+## 代码规范
 
-此项目的开发环境使用`ts-node`和`nodemon`来运行项目和监听热重载，使用`dotenv`来注入环境变量，生产环境使用`pm2`来部署
-
-### 安装`dotenv`
-
-```sh
-npm i -D dotenv cross-env
-```
-
-项目根目录下新建`.env`文件，根据项目需求写入自己的环境变量，如
-
-```ini
-# 应用配置
-APP_HOST=localhost
-APP_PORT=3000
-
-# 数据库配置
-MYSQL_URL=mysql://root:123456@localhost:3306/test
-MONGODB_URL=mongodb://root:123456@localhost:27017/test
-
-# 其他配置
-```
-
-修改入口文件`src/index.ts`，在第一行加上
-
-```ts
-import 'dotenv/config'
-```
-
-### 安装`nodemon`
-
-```sh
-npm i -D nodemon ts-node tsconfig-paths
-```
-
-新建`nodemon.json`文件，并写入如下内容
-
-```json
-{
-  "watch": ["src", ".env"],
-  "ext": "ts,tsx",
-  "delay": 1000,
-  "verbose": true,
-  "exec": "ts-node -r tsconfig-paths/register src/index.ts"
-}
-```
-
-::: tip
-
-- watch 表示要监听的文件或文件夹
-- ext 表示监听的文件类型
-- delay 表示延迟时间
-- verbose 表示输出详细信息
-- exec 表示执行的命令
-  - tsconfig-paths 是用来识别`import`的路径别名
-
-:::
-
-### 安装`pm2`
-
-```sh
-npm i -D pm2 tsc-alias
-```
-
-新建`ecosystem.config.js`，并写入如下内容
-
-```js
-const { name } = require('./package.json')
-const path = require('path')
-
-module.exports = {
-  apps: [
-    {
-      name, // 应用程序名称
-      cwd: './dist', // 启动应用程序的目录
-      script: path.resolve(__dirname, './dist/index.js'), // 启动脚本路径
-      instances: require('os').cpus().length, // 要启动的应用实例数量
-      max_memory_restart: '1G', // 超过指定的内存量，应用程序将重新启动
-      autorestart: true, // 自动重启
-      watch: true, // 启用监视和重启功能
-      // 环境变量
-      env: {
-        NODE_ENV: 'production',
-      },
-    },
-  ],
-}
-```
-
-### 修改`package.json`
-
-```json{5-10}
-{
-  "main": "dist/index.js",
-  // ...
-  "scripts": {
-    "dev": "nodemon",
-    "clear": "rimraf dist/*",
-    "build": "cross-env NODE_ENV=production npm run clear && cp .env.production dist/.env && tsc && tsc-alias",
-    "preview": "cross-env NODE_ENV=production node dist/index.js dotenv_config_path=dist/.env",
-    "deploy": "pm2 start",
-    "deploy:stop": "pm2 stop all"
-  }
-}
-```
-
-::: tip
-`tsc-alias`的作用是解决打包时不能识别路径别名的问题
-
-如果是`Linux`系统的话，`cross-env`要改成`export`
-:::
-
-## 安装`ESLint`
+### 安装`ESLint`
 
 ```sh
 npx eslint --init
@@ -285,48 +203,14 @@ npx eslint --init
 
 ![](../assets/koa/eslint_setup_6.png)
 
-这里根据项目构建所使用的包管理器进行选择，因为本项目使用`npm`，所以选第一个
+这里根据项目构建所使用的包管理器进行选择，因为本项目使用`pnpm`，所以选第三个
 
 ![](../assets/koa/eslint_setup_7.png)
 
-最后生成的配置文件大致如下
-
-```js
-module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-  overrides: [
-    {
-      env: {
-        node: true,
-      },
-      files: ['.eslintrc.{js,cjs}'],
-      parserOptions: {
-        sourceType: 'script',
-      },
-    },
-  ],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    parser: '@typescript-eslint/parser',
-    sourceType: 'module',
-  },
-  plugins: ['@typescript-eslint'],
-  rules: {},
-}
-```
-
-## 安装`Prettier`
-
-安装依赖
+### 安装`Prettier`
 
 ```sh
-npm i -D prettier eslint-config-prettier eslint-plugin-prettier
+pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
 新建`.prettierrc`文件，并写入如下配置，可以根据自己喜好进行调整
@@ -341,8 +225,6 @@ npm i -D prettier eslint-config-prettier eslint-plugin-prettier
   "trailingComma": "es5"
 }
 ```
-
-### `EsLint`和`Prettier`的忽略文件
 
 新建`.eslintignore`和`.prettierignore`文件，并写入如下配置，可以根据自己喜好进行调整
 
@@ -370,41 +252,214 @@ dist
 
 ```js
 module.exports = {
-  // ...
+  root: true,
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
   extends: [
-    // ...
-    'prettier', // [!code ++]
-    'prettier/@typescript-eslint', // [!code ++]
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'plugin:prettier/recommended',
   ],
-  plugins: ['@typescript-eslint', 'prettier'], // [!code hl]
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: ['.eslintrc.{js,cjs}'],
+      parserOptions: {
+        sourceType: 'script',
+      },
+    },
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': 'error', // [!code ++]
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // [!code ++]
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // [!code ++]
-    // ...
+    complexity: ['error', 10],
+    'prettier/prettier': 'error',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },
 }
 ```
 
+## 配置执行脚本
+
+此项目的开发环境使用`ts-node`和`nodemon`来运行项目和监听热重载，使用`dotenv`来注入环境变量，生产环境使用`pm2`来部署
+
+### 环境变量
+
+```sh
+pnpm add -D dotenv dotenv-expand cross-env
+```
+
+根目录下新建`.env`或`.env.local`文件，根据项目需求写入自己的环境变量，如
+
+```ini
+NODE_ENV=development
+# 应用配置
+APP_HOST=localhost
+APP_PORT=3000
+
+# 数据库配置
+MYSQL_URL=mysql://root:123456@localhost:3306/test
+MONGODB_URL=mongodb://root:123456@localhost:27017/test
+```
+
+新建`src/env.ts`，用来加载多环境变量配置文件
+
+```ts
+import fs from 'node:fs'
+import path from 'node:path'
+import { parse } from 'dotenv'
+import { expand } from 'dotenv-expand'
+
+/** 同步读取文件 */
+function tryStatSync(file: string): fs.Stats | undefined {
+  try {
+    return fs.statSync(file, { throwIfNoEntry: false })
+  } catch {}
+}
+/** 获取env文件列表 */
+function getEnvFilesForMode(mode: string): string[] {
+  return [
+    /** default file */ `.env`,
+    /** local file */ `.env.local`,
+    /** mode file */ `.env.${mode}`,
+    /** mode local file */ `.env.${mode}.local`,
+  ]
+}
+
+/** 加载环境变量 */
+function loadEnv(envDir: string) {
+  const envFiles = getEnvFilesForMode(process.env.NODE_ENV ?? 'development')
+  const parsed = Object.fromEntries(
+    envFiles.flatMap((file) => {
+      const filePath = path.join(envDir, file)
+      if (!tryStatSync(filePath)?.isFile()) return []
+      return Object.entries(parse(fs.readFileSync(filePath)))
+    })
+  )
+  expand({ parsed })
+  return parsed
+}
+loadEnv(path.resolve(__dirname, '../'))
+```
+
+修改入口文件`src/index.ts`，在第一行加上
+
+```ts
+import './env' // [!code ++]
+// ...
+```
+
+### 安装`nodemon`
+
+```sh
+pnpm add -D nodemon ts-node tsconfig-paths
+```
+
+新建`nodemon.json`文件，并写入如下内容
+
+```json
+{
+  "watch": ["src", ".env", ".env.local"],
+  "ext": "ts,tsx",
+  "delay": 1000,
+  "verbose": true,
+  "exec": "ts-node -r tsconfig-paths/register src/index.ts"
+}
+```
+
+::: tip
+
+- watch 表示要监听的文件或文件夹
+- ext 表示监听的文件类型
+- delay 表示延迟时间
+- verbose 表示输出详细信息
+- exec 表示执行的命令
+  - tsconfig-paths 是用来识别`import`的路径别名
+
+:::
+
+### 安装`pm2`
+
+```sh
+pnpm add -D pm2 tsc-alias
+```
+
+根目录新建`ecosystem.config.js`，并写入如下内容
+
+```js
+const { name } = require('./package.json')
+const path = require('path')
+
+module.exports = {
+  apps: [
+    {
+      name, // 应用程序名称
+      cwd: './dist', // 启动应用程序的目录
+      script: path.resolve(__dirname, './dist/index.js'), // 启动脚本路径
+      instances: require('os').cpus().length, // 要启动的应用实例数量
+      max_memory_restart: '1G', // 超过指定的内存量，应用程序将重新启动
+      autorestart: true, // 自动重启
+      watch: true, // 启用监视和重启功能
+      // 环境变量
+      env: {
+        NODE_ENV: 'production',
+      },
+    },
+  ],
+}
+```
+
+### 修改`package.json`
+
+```json
+{
+  "main": "dist/index.js", // [!code focus]
+  // ...
+  "scripts": {
+    // [!code focus:7]
+    "dev": "nodemon",
+    "clear": "rm -rf dist/*",
+    "build": "cross-env NODE_ENV=production npm run clear && cp .env.production dist/ && tsc && tsc-alias",
+    "preview": "cross-env NODE_ENV=production node dist/index.js dotenv_config_path=.env.production",
+    "deploy": "pm2 start",
+    "deploy:stop": "pm2 stop all"
+  }
+}
+```
+
+::: tip
+`tsc-alias`的作用是解决打包时不能识别路径别名的问题
+:::
+
 ## 安装`Koa`和相关插件
 
 ```sh
-npm i koa koa-router koa-bodyparser
-npm i -D @types/koa @types/koa-router @types/koa-bodyparser
+pnpm add koa koa-router koa-bodyparser
+pnpm add -D @types/koa @types/koa-router @types/koa-bodyparser
 ```
 
 ### 创建路由
 
-新建控制器`src/core/controllers/user.controller.ts`和路由`src/core/routes/index.ts`，具体参考如下目录结构
+新建控制器`src/controllers/user.controller.ts`和路由`src/routes/index.ts`，具体参考如下目录结构
 
 ```
 .
 ├─ src
-│  ├─ core
-│  │  ├─ controllers
-│  │  │  └─ user.controller.ts
-│  │  ├─ routes
-│  │  │  └─ index.ts
+│  ├─ controllers
+│  │  └─ user.controller.ts
+│  ├─ routes
+│  │  └─ index.ts
 ...
 ```
 
@@ -412,7 +467,7 @@ npm i -D @types/koa @types/koa-router @types/koa-bodyparser
 
 ```ts [routes/index.ts]
 import Router from 'koa-router'
-import UserController from '~/core/controllers/user.controller'
+import UserController from '../controllers/user.controller'
 
 const router = new Router()
 router.get('/user', UserController.getUser)
@@ -438,23 +493,14 @@ export default class UserController {
 
 ### 改写入口文件
 
-修改入口文件`src/index.ts`，新建`src/app.ts`
+新建`src/app.ts`，修改入口文件`src/index.ts`
 
 ::: code-group
-
-```ts [index.ts]
-import 'dotenv/config'
-import app from './app'
-const PORT = process.env.APP_PORT || 3000
-app.listen(PORT, () => {
-  console.info('Server listening on port: ' + PORT)
-})
-```
 
 ```ts [app.ts]
 import Koa from 'koa'
 import bodyParser from 'koa-bodyparser'
-import router from './core/routes'
+import router from './routes'
 const app = new Koa()
 app.use(bodyParser())
 
@@ -466,11 +512,20 @@ app.use(async (ctx, next) => {
 export default app
 ```
 
+```ts [index.ts]
+import './env'
+import app from './app'
+const PORT = process.env.APP_PORT || 3000
+app.listen(PORT, () => {
+  console.info('Server listening on port: ' + PORT)
+})
+```
+
 :::
 
 ### 运行项目
 
-至此，一个极简的`Koa`项目就搭建完成了，执行`npm run dev`并访问`http://localhost:3000`，可以看到浏览器显示`Hello World`
+至此，一个极简的`Koa`项目就搭建完成了，执行`pnpm run dev`并访问`http://localhost:3000`，可以看到浏览器显示`Hello World`
 
 使用接口调试工具访问`http://localhost:3000/user`，可以看到如下输出
 
@@ -493,7 +548,7 @@ export default app
 
 默认的打包方式是使用`tsc`进行打包，这种方式会保留代码的目录结构，而且不会压缩代码
 
-执行`npm run build`进行默认打包
+执行`pnpm run build`进行默认打包
 
 ### `Webpack`打包
 
@@ -502,10 +557,10 @@ export default app
 - 安装相关依赖
 
 ```sh
-npm i -D webpack webpack-cli webpack-dev-server webpack-merge webpack-node-externals terser-webpack-plugin ts-loader
+pnpm add -D webpack webpack-cli webpack-dev-server webpack-merge webpack-node-externals terser-webpack-plugin ts-loader
 ```
 
-- 项目根目录下创建`webpack.config.js`，参考配置如下
+- 根目录下创建`webpack.config.js`，参考配置如下
 
 ::: details 查看
 
@@ -584,7 +639,7 @@ module.exports = () => {
 
 :::
 
-- 修改`package.json`脚本
+- 修改`package.json`脚本，执行`pnpm run webpack`进行打包
 
 ```json
 {
@@ -592,22 +647,20 @@ module.exports = () => {
     // ..
     "watch": "cross-env NODE_ENV=development webpack --watch --progress", // [!code ++]
     "debug": "nodemon --exec node dist/index.js", // [!code ++]
-    "webpack": "cross-env NODE_ENV=production webpack --progress && cp .env.production dist/.env" // [!code ++]
+    "webpack": "cross-env NODE_ENV=production webpack --progress && cp .env.production dist/" // [!code ++]
     // ..
   }
 }
 ```
 
-- 执行`npm run webpack`进行打包
-
 ## 部署
 
-在项目根目录新建`.env.production`文件，填入生产环境所需的环境变量
+根目录新建`.env.production`文件，填入生产环境所需的环境变量
 
-打包好之后执行`npm run preview`来载入生产环境变量进行预览,
+打包好之后执行`pnpm run preview`来载入生产环境变量进行预览,
 
-也可以直接`npm run deploy`使用 PM2 启动
+也可以直接`pnpm run deploy`使用`PM2`启动
 
 ::: tip
-生产环境使用 PM2 启动（生产环境端口默认：8080），可以达到负载均衡
+生产环境使用`PM2`启动（生产环境端口默认：8080），可以达到负载均衡
 :::
