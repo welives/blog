@@ -5,7 +5,7 @@ title: NestJS搭建
 ::: tip 目标
 搭建一个 NestJS + TypeScript + Webpack + PM2 + ESLint + Prettier 的工程
 
-[本工程的Github地址](https://github.com/welives/koa-starter)
+[本工程的Github地址](https://github.com/welives/nestjs-starter)
 :::
 
 相关文档
@@ -200,6 +200,52 @@ import Joi from 'joi' // [!code ++]
 其中`joi`包可以用来校验环境变量的值和类型，[相关文档看这里](https://joi.dev/)
 :::
 
+## 配置PM2
+
+```sh
+pnpm add -D pm2
+touch ecosystem.config.js
+touch .env.production
+```
+
+```js
+const { name } = require('./package.json')
+const path = require('path')
+
+module.exports = {
+  apps: [
+    {
+      name, // 应用程序名称
+      cwd: './dist', // 启动应用程序的目录
+      script: path.resolve(__dirname, './dist/apps/api/main.js'), // 启动脚本路径
+      instances: require('os').cpus().length, // 要启动的应用实例数量
+      max_memory_restart: '1G', // 超过指定的内存量，应用程序将重新启动
+      autorestart: true, // 自动重启
+      watch: true, // 启用监视和重启功能
+      // 环境变量
+      env: {
+        NODE_ENV: 'production',
+      },
+    },
+  ],
+}
+```
+
+修改`package.json`
+
+```json
+{
+  // ...
+  "scripts": {
+    // ...
+    "build": "nest build && cp .env.production dist/",
+    "start:prod": "cross-env NODE_ENV=production node dist/apps/api/main",
+    "deploy": "pm2 start", // [!code ++]
+    "deploy:stop": "pm2 stop all" // [!code ++]
+  }
+}
+```
+
 ## Redis服务
 
 ```sh
@@ -218,7 +264,7 @@ import { RedisModule } from '@liaoliaots/nestjs-redis' // [!code ++]
 @Module({
   imports:[
     // ...
-    // [!code focus:25]
+    // [!code focus:24]
     ConfigModule.forRoot({
       // ...
       validationSchema: Joi.object({
@@ -230,7 +276,6 @@ import { RedisModule } from '@liaoliaots/nestjs-redis' // [!code ++]
       }),
     }),
     RedisModule.forRootAsync({
-      imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (config: ConfigService) => {
         return {
@@ -321,9 +366,7 @@ class Utils {
     this._instance || (this._instance = new Utils(singletonEnforcer))
     return this._instance
   }
-  /**
-   * 获取请求信息
-   */
+  /** 获取请求信息 */
   getReqForLogger(req: Request): Record<string, any> {
     const { url, headers, method, body, params, query, connection } = req
     const xRealIp = headers['X-Real-IP']
@@ -650,7 +693,7 @@ export class UnifyExceptionFilter implements ExceptionFilter {
     const data = {
       success: false,
       code: void 0,
-      message: status >= 500 ? 'Server Error' : 'Client Error',
+      message: status >= 500 ? exception.message ?? 'Server Error' : 'Client Error',
       url: request.url,
       timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     }
@@ -840,13 +883,18 @@ interface ValidResult {
   message: string
   result: any
 }
+enum UserStatus {
+  NORMAL = 0, // 正常
+  LOCKED = 1, // 锁定
+  BANNED = 2, // 封禁
+}
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly jwtService: JwtService,
+    @InjectRedis() private readonly redis: Redis,
     private readonly config: ConfigService,
-    @InjectRedis() private readonly redis: Redis
+    private readonly jwtService: JwtService
   ) {}
   /**
    * 校验用户信息
@@ -861,7 +909,7 @@ export class AuthService {
       avatar: '',
       password: 'ad1b1d9d48755cae4cfc406a888fb097cbf18346abdc85569b971a96b620b528', // 123456
       salt: 'sycLRIsMcYuhh2ijW5gWFg==',
-      status: 'NORMAL', // NORMAL LOCKED BANNED
+      status: UserStatus.NORMAL,
     }
     if (!faker) {
       return {
@@ -870,7 +918,7 @@ export class AuthService {
         result: null,
       }
     }
-    if (faker.status !== 'NORMAL') {
+    if (faker.status !== UserStatus.NORMAL) {
       return {
         type: 'FORBIDDEN',
         message: '用户已被锁定',
@@ -997,7 +1045,7 @@ export class LoginMiddleware implements NestMiddleware {
 ::: details 查看`jwt.strategy.ts`
 
 ```ts
-import { Injectable, UnauthorizedException } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { PassportStrategy } from '@nestjs/passport'
 import { ExtractJwt, Strategy } from 'passport-jwt'
@@ -1078,8 +1126,8 @@ import { IS_PUBLIC_API, UserRequest } from '@libs/common'
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
   constructor(
-    private readonly reflector: Reflector,
-    @InjectRedis() private readonly redis: Redis
+    @InjectRedis() private readonly redis: Redis,
+    private readonly reflector: Reflector
   ) {
     super()
   }

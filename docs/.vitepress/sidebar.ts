@@ -307,6 +307,10 @@ const sidebar: DefaultTheme.Sidebar = {
               text: '搭建工程',
               link: '/front-end/nodejs/nestjs/create',
             },
+            {
+              text: '使用Typeorm',
+              link: '/front-end/nodejs/nestjs/typeorm',
+            },
           ],
         },
       ],
