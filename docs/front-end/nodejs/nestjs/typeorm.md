@@ -18,7 +18,7 @@ title: NestJS使用Typeorm
 pnpm add @nestjs/typeorm typeorm mysql2
 ```
 
-如果用 MongoDB的话
+如果用 MongoDB 的话
 
 ```sh
 pnpm add @nestjs/typeorm typeorm mongodb

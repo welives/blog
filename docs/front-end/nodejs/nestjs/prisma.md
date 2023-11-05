@@ -129,6 +129,12 @@ datasource db {
 
 :::
 
+::: tip 提示
+`MYSQL_URL`是`.env`文件中的数据库环境变量
+
+`relationMode`的作用是定义表的外键关系模式，这里用的是`prisma`模式，即虚拟外键
+:::
+
 修改`tsconfig.build.json`，把`prisma`文件夹加入排除项
 
 ```json
@@ -137,12 +143,6 @@ datasource db {
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts", "prisma"] // [!code hl]
 }
 ```
-
-::: tip 提示
-`MYSQL_URL`是`.env`文件中的数据库环境变量
-
-`relationMode`的作用是定义表的外键关系模式，这里用的是`prisma`模式，即虚拟外键
-:::
 
 ### Prisma模块
 
@@ -247,6 +247,12 @@ model user {
 ```
 
 :::
+
+生成模型实体
+
+```sh
+npx prisma generate
+```
 
 ## CURD
 

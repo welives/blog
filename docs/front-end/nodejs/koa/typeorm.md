@@ -10,14 +10,18 @@ title: Koa使用Typeorm
 
 我这里使用的是一个[免费的线上服务](https://methodot.com/)进行临时测试，具体可以根据自己手头上的资源进行选择
 
-创建完毕后将相关配置信息填入环境变量文件`.env`
+创建完毕后将相关配置信息填入环境变量文件
 
 ## 安装`Typeorm`
 
-安装相关依赖
+```sh
+pnpm add typeorm mysql2 reflect-metadata
+```
+
+如果用 MongoDB 的话
 
 ```sh
-npm i typeorm mysql reflect-metadata
+pnpm add typeorm mongodb reflect-metadata
 ```
 
 ## 数据库配置
@@ -25,19 +29,23 @@ npm i typeorm mysql reflect-metadata
 安装下面两个依赖，用来实现模型的自动化导入
 
 ```sh
-npm i -D require-context @types/webpack-env
+pnpm add -D require-context @types/webpack-env
 ```
 
 新建数据库配置`src/config/db.ts`
 
-```ts{2-8}
+::: code-group
+
+```ts [mysql]
 import { DataSource, DataSourceOptions } from 'typeorm'
 // 自动加载所有模型
-const moduleFiles = require.context('../core/models', true, /\.(ts|js)$/)
-const models = moduleFiles.keys().reduce((model: any[], modelPath) => {
+const moduleFiles = require.context('../models', true, /\.(ts|js)$/)
+const models = moduleFiles.keys().reduce((model: any[], modelPath: string) => {
   const value = moduleFiles(modelPath)
-  // 如果是默认导出的情况,则是 [...model, value.default]
-  return [...model, Object.values(value)[0]]
+  // 单个导出时
+  // const [entity] = Object.values(value).filter((v) => typeof v === 'function' && v.toString().slice(0, 5) === 'class')
+  // 默认导出时 [...model, value.default]
+  return [...model, value.default]
 }, [])
 const MYSQL_URL = process.env.MYSQL_URL
 
@@ -48,48 +56,145 @@ const config: DataSourceOptions = {
         host: process.env.MYSQL_HOST as string,
         port: parseInt(process.env.MYSQL_PORT as string),
         username: process.env.MYSQL_USER as string,
-        password: process.env.MYSQL_PASSWORD as string,
-        database: process.env.MYSQL_DBNAME as string
+        password: process.env.MYSQL_PWD as string,
+        database: process.env.MYSQL_DBNAME as string,
       }),
   type: 'mysql',
   timezone: process.env.TIMEZONE,
   charset: process.env.CHARSET,
-  synchronize: true,
+  synchronize: process.env.NODE_ENV === 'production' ? false : true,
   logging: false,
-  entities: models // [!code hl]
+  entities: models,
 }
 
 const DBSource = new DataSource(config)
 export default DBSource
 ```
 
-## 定义模型
+```ts [mongodb]
+import { DataSource, DataSourceOptions } from 'typeorm'
+// 自动加载所有模型
+const moduleFiles = require.context('../models', true, /\.(ts|js)$/)
+const models = moduleFiles.keys().reduce((model: any[], modelPath: string) => {
+  const value = moduleFiles(modelPath)
+  // 单个导出时
+  // const [entity] = Object.values(value).filter((v) => typeof v === 'function' && v.toString().slice(0, 5) === 'class')
+  // 默认导出时 [...model, value.default]
+  return [...model, value.default]
+}, [])
+const MONGODB_URL = process.env.MONGODB_URL
 
-新建模型`src/core/models/user.model.ts`
+const config: DataSourceOptions = {
+  ...(MONGODB_URL
+    ? { url: MONGODB_URL }
+    : {
+        host: process.env.MONGODB_HOST as string,
+        port: parseInt(process.env.MONGODB_PORT as string),
+        username: process.env.MONGODB_USER as string,
+        password: process.env.MONGODB_PWD as string,
+        database: process.env.MONGODB_DBNAME as string,
+      }),
+  type: 'mongodb',
+  synchronize: process.env.NODE_ENV === 'production' ? false : true,
+  logging: false,
+  entities: models,
+}
+
+const DBSource = new DataSource(config)
+export default DBSource
+```
+
+:::
+
+## 连接数据库
+
+修改入口文件`src/index.ts`
 
 ```ts
+import './env'
+require('require-context/register') // [!code ++]
+import 'reflect-metadata' // [!code ++]
+import app from './app'
+import DBSource from './config/db' // [!code ++]
+const PORT = process.env.APP_PORT || 3000
+// [!code focus:12]
+DBSource.initialize()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log('数据库连接成功')
+      console.info('Server listening on port: ' + PORT)
+    })
+  })
+  .catch((err) => {
+    console.error('数据库连接失败', err)
+    process.exit(1)
+  })
+```
+
+## 定义模型
+
+新建模型`src/models/user.entity.ts`
+
+::: code-group
+
+```ts [mysql]
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
-
+export enum UserStatus {
+  NORMAL = 0, // 正常
+  LOCKED = 1, // 锁定
+  BANNED = 2, // 封禁
+}
 // 使用webpack打包时必须要显示声明表名称,否则压缩代码后模型名改变导致自动推断的表名称跟着改变
-@Entity({ name: 'user' }) // [!code hl]
-export class User {
-  @PrimaryGeneratedColumn()
-  id!: number
-
-  @Column()
-  name!: string
-
-  @Column()
-  password!: string
-
-  @Column()
-  email!: string
+@Entity({ name: 'user' })
+export default class User {
+  @PrimaryGeneratedColumn({ unsigned: true })
+  id: number
+  @Column({ type: 'varchar', comment: '用户名' })
+  username: string
+  @Column({ type: 'varchar', comment: '密码' })
+  password: string
+  @Column({ type: 'varchar', comment: '加密盐' })
+  salt: string
+  @Column({ type: 'varchar', default: '', comment: '头像' })
+  avatar: string
+  @Column({ type: 'tinyint', default: 0, comment: '角色' })
+  role: number
+  @Column({ type: 'enum', enum: UserStatus, default: UserStatus.NORMAL, comment: '状态' })
+  status: UserStatus
 }
 ```
 
+```ts [mongodb]
+import { Entity, Column, ObjectId, ObjectIdColumn } from 'typeorm'
+export enum UserStatus {
+  NORMAL = 0, // 正常
+  LOCKED = 1, // 锁定
+  BANNED = 2, // 封禁
+}
+@Entity({ name: 'user' })
+export default class User {
+  @ObjectIdColumn()
+  id: ObjectId
+  @Column({ type: 'string', comment: '用户名' })
+  username: string
+  @Column({ type: 'string', comment: '密码' })
+  password: string
+  @Column({ type: 'string', comment: '加密盐' })
+  salt: string
+  @Column({ type: 'string', default: '', comment: '头像' })
+  avatar: string
+  @Column({ type: 'number', default: 0, comment: '角色' })
+  role: number
+  @Column({ type: 'enum', enum: UserStatus, default: UserStatus.NORMAL, comment: '状态' })
+  status: UserStatus
+}
+```
+
+:::
+
 ## CURD
 
-修改`src/core/controllers/user.controller.ts`，新建`src/core/services/user.service.ts`
+修改`src/controllers/user.controller.ts`，新建`src/services/user.service.ts`
 
 ::: code-group
 
@@ -97,12 +202,13 @@ export class User {
 import { Context } from 'koa'
 import UserService from '../services/user.service' // [!code ++]
 
-export default class UserController {
-  public static async getUser(ctx: Context) {
+class UserController {
+  // ...
+  async getUser(ctx: Context) {
     ctx.body = {
       code: 200,
       message: '获取用户信息成功',
-      data: await UserService.getUser() // [!code hl]
+      data: await UserService.getUser(), // [!code hl]
     }
   }
 }
@@ -110,32 +216,41 @@ export default class UserController {
 
 ```ts [user.service.ts]
 import { Context } from 'koa'
-import DBSource from '~/config/db'
+import DBSource from '../config/db'
 
-export default class UserService {
-  public static async getUser(ctx?: Context) {
+const singletonEnforcer = Symbol('UserService')
+
+class UserService {
+  private static _instance: UserService
+  constructor(enforcer: any) {
+    if (enforcer !== singletonEnforcer) {
+      throw new Error('Cannot initialize single instance')
+    }
+  }
+  static get instance() {
+    this._instance || (this._instance = new UserService(singletonEnforcer))
+    return this._instance
+  }
+  async getUser(ctx?: Context) {
     const userRepository = DBSource.getRepository('user')
     const users = await userRepository.find()
     return users
   }
 }
+export default UserService.instance
 ```
 
 :::
 
 ## 路由调整
 
-修改`src/routes/index.ts`，新建`src/routes/v1/index.ts`
+新建`src/routes/v1/index.ts`，修改`src/routes/index.ts`和`src/app.ts`
 
 ::: code-group
 
-```ts [routes/index.ts]
-export { default as V1Router } from './v1'
-```
-
 ```ts [v1/index.ts]
 import Router from 'koa-router'
-import UserController from '~/core/controllers/user.controller'
+import UserController from '~/controllers/user.controller'
 
 const router = new Router()
 router.prefix('/api/v1')
@@ -144,16 +259,14 @@ router.get('/user', UserController.getUser)
 export default router
 ```
 
-:::
+```ts [routes/index.ts]
+export { default as V1Router } from './v1'
+```
 
-## 连接数据库
-
-修改`src/app.ts`
-
-```ts
+```ts [app.ts]
 import Koa from 'koa'
 import bodyParser from 'koa-bodyparser'
-import { V1Router } from './core/routes' // [!code hl]
+import { V1Router } from './routes' // [!code hl]
 const app = new Koa()
 app.use(bodyParser())
 
@@ -165,51 +278,4 @@ app.use(async (ctx, next) => {
 export default app
 ```
 
-修改入口文件`src/index.ts`，初始化连接
-
-```ts{7-17}
-import 'dotenv/config'
-require('require-context/register') // [!code ++]
-import 'reflect-metadata' // [!code ++]
-import app from './app'
-import DBSource from './config/db' // [!code ++]
-const PORT = process.env.APP_PORT || 3000
-
-DBSource.initialize()
-  .then(() => {
-    console.log('数据库连接成功')
-    app.listen(PORT, () => {
-      console.info('Server listening on port: ' + PORT)
-    })
-  })
-  .catch((err) => {
-    console.error('数据库连接失败', err)
-    process.exit(1)
-  })
-```
-
-## 目录结构
-
-```
-.
-├─ src
-│  ├─ config                    # 配置文件目录
-│  │  └─ db.ts
-│  ├─ core                      # 业务核心目录
-│  │  ├─ controllers            # 控制器层
-│  │  │  └─ user.controller.ts
-│  │  ├─ models                 # 模型层
-│  │  │  └─ user.model.ts
-│  │  ├─ services               # 服务层
-│  │  │  └─ user.service.ts
-│  │  ├─ routes                 # 路由
-│  │  │  ├─ v1                  # 路由版本
-│  │  │  │  └─ index.ts
-│  │  │  └─ index.ts
-│  ├─ app.ts                    # koa 实例
-│  └─ index.ts                  # 入口文件
-├─ nodemon.json                 # nodemon 配置
-├─ ecosystem.config.js          # PM2 配置
-├─ webpack.config.js            # webpack 配置
-├─ tsconfig.json
-```
+:::
