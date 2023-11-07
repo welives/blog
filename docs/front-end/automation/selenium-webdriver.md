@@ -53,8 +53,8 @@ node_modules
 ```json [tsconfig.json]
 {
   "compilerOptions": {
-    "target": "esnext",
     "module": "commonjs",
+    "target": "esnext",
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
@@ -62,6 +62,11 @@ node_modules
     },
     "typeRoots": ["./node_modules/@types", "./src/@types"],
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "strictNullChecks": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false,
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,

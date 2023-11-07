@@ -60,6 +60,7 @@ title: git的常用命令
   - `git remote remove <remote_name>` 从当前仓库中删除指定的远程仓库
   - `git remote set-url <remote_name> <new_url>` 修改指定远程仓库的 URL
   - `git remote show <remote_name>` 显示指定远程仓库的详细信息
+  - `git remote prune origin` 清理无效的远程分支信息
 - `get fetch` 用于从远程仓库拉取代码
   - `git merge <branch_name>` 将指定分支合并到当前分支
 - `git pull` 从远程仓库拉取代码并合并本地的版本

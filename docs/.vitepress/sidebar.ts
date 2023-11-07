@@ -274,6 +274,36 @@ const sidebar: DefaultTheme.Sidebar = {
       ],
     },
     {
+      text: '工程化',
+      collapsed: true,
+      items: [
+        {
+          text: 'UmiJS',
+          link: '/front-end/engineering/umijs',
+        },
+        {
+          text: 'Next.js',
+          link: '/front-end/engineering/nextjs',
+        },
+        {
+          text: 'Vite',
+          link: '/front-end/engineering/vite',
+        },
+        {
+          text: 'Nuxt',
+          link: '/front-end/engineering/nuxt',
+        },
+        {
+          text: 'Expo',
+          link: '/front-end/engineering/expo',
+        },
+        {
+          text: 'Taro',
+          link: '/front-end/engineering/taro',
+        },
+      ],
+    },
+    {
       text: 'NodeJS',
       collapsed: false,
       items: [
@@ -320,32 +350,6 @@ const sidebar: DefaultTheme.Sidebar = {
               link: '/front-end/nodejs/nestjs/mongoose',
             },
           ],
-        },
-      ],
-    },
-    {
-      text: '工程化',
-      collapsed: false,
-      items: [
-        {
-          text: 'UmiJS',
-          link: '/front-end/engineering/umijs',
-        },
-        {
-          text: 'Next.js',
-          link: '/front-end/engineering/nextjs',
-        },
-        {
-          text: 'Vite',
-          link: '/front-end/engineering/vite',
-        },
-        {
-          text: 'Nuxt',
-          link: '/front-end/engineering/nuxt',
-        },
-        {
-          text: 'Expo',
-          link: '/front-end/engineering/expo',
         },
       ],
     },

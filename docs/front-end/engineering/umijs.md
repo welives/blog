@@ -41,7 +41,7 @@ pnpm dlx create-umi@latest
 pnpm add -D cross-env
 ```
 
-这样就创建好一个以`UmiJS`为脚手架的基础工程了，接下来我们对这个它做亿点点额外的配置
+这样就创建好一个以`UmiJS`为脚手架的基础工程了，接下来我们对它做亿点点额外的配置
 
 ## 配置EditorConfig
 

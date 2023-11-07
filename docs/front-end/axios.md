@@ -6,7 +6,7 @@ title: axios封装
 
 ::: code-group
 
-```ts [axios.ts]
+```ts [http.ts]
 import axios, {
   AxiosInstance,
   AxiosRequestConfig,
@@ -164,7 +164,7 @@ class AxiosRequest {
    * @param url 接口地址
    * @param opts 额外参数
    */
-  request: IRequest = (url: string, opts: any = { method: 'GET' }) => {
+  request: IRequest = (url: string, opts: any = { method: 'GET' }): Promise<any> => {
     const { getResponse = false, requestInterceptors, responseInterceptors } = opts
     const { requestInterceptorsToEject, responseInterceptorsToEject } = this.getInterceptorsEject({
       requestInterceptors,
