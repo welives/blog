@@ -3,7 +3,7 @@ title: 使用Expo搭建工程
 ---
 
 ::: tip ✨
-搭建一个 Expo + TailwindCSS + TypeScript + ESLint + Prettier 的工程
+搭建一个开箱即用的基于 Expo + Zustand + MMKV + TailwindCSS + TypeScript 的工程
 
 [本工程的Github地址](https://github.com/welives/expo-starter)
 :::

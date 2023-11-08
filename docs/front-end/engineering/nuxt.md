@@ -3,7 +3,7 @@ title: 使用Nuxt搭建工程
 ---
 
 ::: tip ✨
-搭建一个 Nuxt3 + TailwindCSS + TypeScript + ESLint + Prettier 的工程
+搭建一个开箱即用的基于 Nuxt3 + Pinia + Vant + TailwindCSS + TypeScript 的工程
 
 UI框架以 Vant 为例
 
@@ -13,9 +13,10 @@ UI框架以 Vant 为例
 相关文档
 
 - [Nuxt3](https://nuxt.com.cn/)
+- [Pinia](https://pinia.vuejs.org/zh/)
 - [Vant](https://vant-ui.github.io/vant/#/zh-CN)
-- [TypeScript](https://www.tslang.cn/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
 
@@ -245,9 +246,9 @@ export default defineNuxtConfig({
 })
 ```
 
-## 安装`pinia`
+## 状态管理
 
-pinia 同样也被 Nuxt 官方集成了
+Pinia 同样也被 Nuxt 官方集成了
 
 ```sh
 pnpm add pinia @pinia/nuxt
@@ -260,6 +261,23 @@ export default defineNuxtConfig({
   // ...
   modules: [['@pinia/nuxt', { autoImports: ['defineStore'] }]], // [!code ++]
   imports: { dirs: ['./stores'] }, // [!code ++]
+})
+```
+
+### 持久化
+
+```sh
+pnpm add -D @pinia-plugin-persistedstate/nuxt
+```
+
+编辑`nuxt.config.ts`，在`modules`中增加`@pinia-plugin-persistedstate/nuxt`
+
+```ts
+export default defineNuxtConfig({
+  modules: [
+    // ...
+    '@pinia-plugin-persistedstate/nuxt',
+  ],
 })
 ```
 

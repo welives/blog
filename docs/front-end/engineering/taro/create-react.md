@@ -15,8 +15,8 @@ UI框架以 NutUI-React 为例
 - [Taro](https://nervjs.github.io/taro-docs/docs/)
 - [Zustand](https://zustand-demo.pmnd.rs/)
 - [NutUI-React](https://nutui.jd.com/)
-- [TypeScript](https://www.tslang.cn/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
 

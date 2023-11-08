@@ -7,7 +7,7 @@ title: Taro-Vue工程搭建
 
 UI框架以 NutUI-Vue 为例
 
-[本工程的Github地址](https://github.com/welives/taro-react-starter)
+[本工程的Github地址](https://github.com/welives/taro-vue-starter)
 :::
 
 相关文档
@@ -15,8 +15,8 @@ UI框架以 NutUI-Vue 为例
 - [Taro](https://nervjs.github.io/taro-docs/docs/)
 - [Pinia](https://pinia.vuejs.org/zh/)
 - [NutUI-Vue](https://nutui.jd.com/)
-- [TypeScript](https://www.tslang.cn/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
 

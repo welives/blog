@@ -205,7 +205,7 @@ export type {
 
 ```ts [config.ts]
 import { AxiosError } from 'axios'
-import type { RequestConfig } from './axios'
+import type { RequestConfig } from './http'
 
 // 错误处理方案： 错误类型
 enum ErrorShowType {

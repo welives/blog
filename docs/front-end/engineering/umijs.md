@@ -3,7 +3,7 @@ title: 使用UmiJS搭建工程
 ---
 
 ::: tip ✨
-搭建一个 UmiJS + TailwindCSS + TypeScript + ESLint + Prettier 的工程
+搭建一个开箱即用的基于 UmiJS + Vant + TailwindCSS + TypeScript 的工程
 
 UI框架以 Vant 为例
 
@@ -14,8 +14,8 @@ UI框架以 Vant 为例
 
 - [UmiJS](https://umijs.org/)
 - [React-Vant](https://react-vant.3lang.dev/)
-- [TypeScript](https://www.tslang.cn/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
 

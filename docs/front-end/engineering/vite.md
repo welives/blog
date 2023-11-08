@@ -3,7 +3,7 @@ title: 使用Vite搭建工程
 ---
 
 ::: tip ✨
-搭建一个 Vite + TailwindCSS + TypeScript + ESLint + Prettier 的工程
+搭建一个开箱即用的基于 Vite + Pinia + Vant + TailwindCSS + TypeScript 的工程
 
 UI框架以 Vant 为例
 
@@ -13,9 +13,10 @@ UI框架以 Vant 为例
 相关文档
 
 - [Vite](https://cn.vitejs.dev/)
+- [Pinia](https://pinia.vuejs.org/zh/)
 - [Vant](https://vant-ui.github.io/vant/#/zh-CN)
-- [TypeScript](https://www.tslang.cn/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
 
@@ -188,8 +189,82 @@ export default defineConfig(({ mode }) => {
 })
 ```
 
-::: tip 🎉
-到这里，基于 Vite 的基础项目模板就搭建完成了
+## 请求模块
+
+```sh
+pnpm add axios
+```
+
+新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../axios.md)
+
+## 状态持久化
+
+```sh
+pnpm add pinia-plugin-persistedstate
+```
+
+编辑`src/main.ts`
+
+```ts
+// ...
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate' // [!code ++]
+const app = createApp(App)
+app.use(createPinia().use(piniaPluginPersistedstate)).use(router).mount('#app') // [!code ++]
+```
+
+新建`src/utils/storage.ts`和`src/stores/user.ts`
+
+::: code-group
+
+```ts [storage.ts]
+enum StorageSceneKey {
+  DEVICE = 'storage-device-uuid',
+  USER = 'storage-user',
+}
+
+function getItem<T = any>(key: string): T {
+  const value = localStorage.getItem(key)
+  return value ? JSON.parse(value) ?? null : null
+}
+function setItem<T = any>(key: string, value: T) {
+  localStorage.setItem(key, JSON.stringify(value))
+}
+function removeItem(key: string) {
+  localStorage.removeItem(key)
+}
+
+export { getItem, setItem, removeItem, StorageSceneKey }
+```
+
+```ts [user.ts]
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import { StorageSceneKey } from '../utils'
+
+export const useUserStore = defineStore(
+  'user',
+  () => {
+    const token = ref('')
+    const isLogged = ref(false)
+    const setToken = (value: string) => {
+      token.value = value
+      isLogged.value = true
+    }
+    const removeToken = () => {
+      token.value = ''
+      isLogged.value = false
+    }
+    return { token, isLogged, setToken, removeToken }
+  },
+  {
+    persist: {
+      //! 注意这里的key是当前这个Pinia模块进行缓存时的唯一key, 每个需要缓存的Pinia模块都必须分配一个唯一key
+      key: StorageSceneKey.USER,
+    },
+  }
+)
+```
+
 :::
 
 ## 使用Vant作为UI库
@@ -220,6 +295,72 @@ export default defineConfig(({ mode }) => {
 ```
 
 这样就完成了 Vant 的按需引入，就可以直接在模板中使用 Vant 组件了，`unplugin-vue-components`会解析模板并自动注册对应的组件，`@vant/auto-import-resolver`会自动引入对应的组件样式
+
+## 移动端适配
+
+安装所需依赖，此插件的参数配置文档[看这里](https://github.com/lkxian888/postcss-px-to-viewport-8-plugin#readme)
+
+```sh
+pnpm add -D postcss-px-to-viewport-8-plugin
+```
+
+::: warning ⚡
+由于`Vant`使用的设计稿宽度是`375`，而通常情况下，设计师使用的设计稿宽度更多是`750`，那么`Vant`组件在`750`设计稿下会出现样式缩小的问题
+
+解决方案: 当读取的`node_modules`文件是`vant`时，那么就将设计稿宽度变为`375`，读取的文件不是`vant`时，就将设计稿宽度变为`750`
+:::
+
+- 方式一：编辑`postcss.config.js`，增加如下`postcss-px-to-viewport-8-plugin`配置项
+
+```js{6-13}
+import path from 'path' // [!code ++]
+
+export default {
+  plugins: {
+    // ...
+    'postcss-px-to-viewport-8-plugin': {
+      viewportWidth: (file) => {
+        return path.resolve(file).includes(path.join('node_modules', 'vant')) ? 375 : 750
+      },
+      unitPrecision: 6,
+      landscapeWidth: 1024,
+      // exclude: [/node_modules\/vant/i]
+    },
+  },
+}
+```
+
+- 方式二：编辑`vite.config.ts`，增加如下`css`配置项
+
+```ts{8-21}
+// ...
+import path from 'path' // [!code ++]
+import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin' // [!code ++]
+
+export default defineConfig(({ mode }) => {
+  return {
+    // ...
+    css: {
+      postcss: {
+        plugins: [
+          postcsspxtoviewport8plugin({
+            viewportWidth: (file) => {
+              return path.resolve(file).includes(path.join('node_modules', 'vant')) ? 375 : 750
+            },
+            unitPrecision: 6,
+            landscapeWidth: 1024
+            // exclude: [/node_modules\/vant/i]
+          })
+        ]
+      }
+    }
+  }
+})
+```
+
+::: tip 🎉
+到这里，基于 Vite 的基础项目模板就搭建完成了
+:::
 
 ## 搭配React
 
@@ -292,6 +433,7 @@ module.exports = {
   },
   plugins: ['react-refresh', 'prettier'],
   rules: {
+    complexity: ['error', 10],
     'prettier/prettier': 'error',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -320,64 +462,167 @@ module.exports = {
 pnpm add react-vant @react-vant/icons
 ```
 
-## 移动端适配
-
-安装所需依赖，此插件的参数配置文档[看这里](https://github.com/lkxian888/postcss-px-to-viewport-8-plugin#readme)
+### 状态管理
 
 ```sh
-pnpm add -D postcss-px-to-viewport-8-plugin
+pnpm add zustand immer
 ```
 
-::: warning ⚡
-由于`Vant`使用的设计稿宽度是`375`，而通常情况下，设计师使用的设计稿宽度更多是`750`，那么`Vant`组件在`750`设计稿下会出现样式缩小的问题
+#### 定义
 
-解决方案: 当读取的`node_modules`文件是`vant`时，那么就将设计稿宽度变为`375`，读取的文件不是`vant`时，就将设计稿宽度变为`750`
-:::
+新建`src/models/counter.ts`和`src/models/selectors.ts`
 
-- 方式一：编辑`postcss.config.js`，增加如下`postcss-px-to-viewport-8-plugin`配置项
+::: code-group
 
-```js{6-13}
-import path from 'path' // [!code ++]
-
-export default {
-  plugins: {
-    // ...
-    'postcss-px-to-viewport-8-plugin': {
-      viewportWidth: (file) => {
-        return path.resolve(file).includes(path.join('node_modules', 'vant')) ? 375 : 750
-      },
-      unitPrecision: 6,
-      landscapeWidth: 1024,
-      // exclude: [/node_modules\/vant/i]
-    },
-  },
+```ts [counter.ts]
+import { create } from 'zustand'
+import { immer } from 'zustand/middleware/immer'
+import createSelectors from './selectors'
+interface State {
+  count: number
+}
+interface Action {
+  inc: () => void
+  dec: () => void
+}
+const initialState: State = {
+  count: 0,
+}
+const counterStore = create<State & Action>()(
+  immer((set, get) => ({
+    count: 0,
+    inc: () => set((state) => ({ count: state.count + 1 })),
+    dec: () => set((state) => ({ count: state.count - 1 })),
+  }))
+)
+export const useCounterStore = createSelectors(counterStore)
+export function useCounterReset() {
+  counterStore.setState(initialState)
 }
 ```
 
-- 方式二：编辑`vite.config.ts`，增加如下`css`配置项
-
-```ts{8-21}
-// ...
-import path from 'path' // [!code ++]
-import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin' // [!code ++]
-
-export default defineConfig(({ mode }) => {
-  return {
-    // ...
-    css: {
-      postcss: {
-        plugins: [
-          postcsspxtoviewport8plugin({
-            viewportWidth: (file) => {
-              return path.resolve(file).includes(path.join('node_modules', 'vant')) ? 375 : 750
-            },
-            unitPrecision: 6,
-            landscapeWidth: 1024
-            // exclude: [/node_modules\/vant/i]
-          })
-        ]
-      }
-    }
+```ts [selectors.ts]
+import { StoreApi, UseBoundStore } from 'zustand'
+type WithSelectors<S> = S extends { getState: () => infer T }
+  ? S & { use: { [K in keyof T]: () => T[K] } }
+  : never
+const createSelectors = <S extends UseBoundStore<StoreApi<{}>>>(_store: S) => {
+  let store = _store as WithSelectors<typeof _store>
+  store.use = {}
+  for (let k of Object.keys(store.getState())) {
+    ;(store.use as any)[k] = () => store((s) => s[k as keyof typeof s])
   }
-})
+  return store
+}
+export default createSelectors
 ```
+
+:::
+
+#### 示例
+
+```tsx
+// ...
+import { useCounterStore, useCounterReset } from './models'
+function App() {
+  const count = useCounterStore.use.count()
+  const inc = useCounterStore.use.inc()
+  return (
+    <>
+      <Button
+        icon={<Like />}
+        round
+        color="linear-gradient(to right, #ff6034, #ee0a24)"
+        size="small"
+        onClick={inc}
+      >
+        Like {count}
+      </Button>
+      <div className="card">
+        <button onClick={useCounterReset}>Reset</button>
+      </div>
+    </>
+  )
+}
+```
+
+#### 持久化
+
+新建`src/utils/storage.ts`和`src/models/user.ts`
+
+::: code-group
+
+```ts [storage.ts]
+enum StorageSceneKey {
+  DEVICE = 'storage-device-uuid',
+  USER = 'storage-user',
+}
+
+function getItem<T = any>(key: string): T {
+  const value = localStorage.getItem(key)
+  return value ? JSON.parse(value) ?? null : null
+}
+function setItem<T = any>(key: string, value: T) {
+  localStorage.setItem(key, JSON.stringify(value))
+}
+function removeItem(key: string) {
+  localStorage.removeItem(key)
+}
+
+export { getItem, setItem, removeItem, StorageSceneKey }
+```
+
+```ts [user.ts]
+import { create } from 'zustand'
+import { immer } from 'zustand/middleware/immer'
+import { createJSONStorage, persist, StateStorage } from 'zustand/middleware'
+import createSelectors from './selectors'
+import { StorageSceneKey } from '../utils'
+interface State {
+  token: string
+  isLogged: boolean
+}
+interface Action {
+  setToken: (token: string) => void
+  removeToken: () => void
+}
+const userStorage: StateStorage = {
+  getItem: (key) => {
+    const value = localStorage.getItem(key)
+    return value ?? null
+  },
+  setItem: (key, value) => {
+    localStorage.setItem(key, value)
+  },
+  removeItem: (key) => {
+    localStorage.removeItem(key)
+  },
+}
+const initialState: State = {
+  token: '',
+  isLogged: false,
+}
+const userStore = create<State & Action>()(
+  immer(
+    persist(
+      (set, get) => ({
+        token: '',
+        isLogged: false,
+        setToken: (token) => set({ token, isLogged: true }),
+        removeToken: () => set({ token: '', isLogged: false }),
+      }),
+      {
+        //! 注意这里的name是当前这个Zustand模块进行缓存时的唯一key, 每个需要缓存的Zustand模块都必须分配一个唯一key
+        name: StorageSceneKey.USER,
+        storage: createJSONStorage(() => userStorage),
+      }
+    )
+  )
+)
+export const useUserStore = createSelectors(userStore)
+export function useUserReset() {
+  userStore.setState(initialState)
+}
+```
+
+:::
