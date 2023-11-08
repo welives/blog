@@ -299,7 +299,11 @@ const sidebar: DefaultTheme.Sidebar = {
         },
         {
           text: 'Taro',
-          link: '/front-end/engineering/taro',
+          collapsed: true,
+          items: [
+            { text: 'React', link: '/front-end/engineering/taro/create-react' },
+            { text: 'Vue', link: '/front-end/engineering/taro/create-vue' },
+          ],
         },
       ],
     },

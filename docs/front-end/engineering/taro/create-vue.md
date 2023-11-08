@@ -1,11 +1,11 @@
 ---
-title: 使用Taro搭建工程
+title: Taro-Vue工程搭建
 ---
 
 ::: tip ✨
-搭建一个 Taro + TailwindCSS + TypeScript + ESLint + Prettier 的工程
+搭建一个开箱即用的 Taro + Vue + Pinia + TailwindCSS + TypeScript 工程
 
-UI框架以 NutUI-React 为例
+UI框架以 NutUI-Vue 为例
 
 [本工程的Github地址](https://github.com/welives/taro-react-starter)
 :::
@@ -13,8 +13,8 @@ UI框架以 NutUI-React 为例
 相关文档
 
 - [Taro](https://nervjs.github.io/taro-docs/docs/)
-- [Zustand](https://zustand-demo.pmnd.rs/)
-- [NutUI-React](https://nutui.jd.com/)
+- [Pinia](https://pinia.vuejs.org/zh/)
+- [NutUI-Vue](https://nutui.jd.com/)
 - [TypeScript](https://www.tslang.cn/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
@@ -31,15 +31,15 @@ UI框架以 NutUI-React 为例
 
 ```sh
 npm install -g @tarojs/cli
-taro init taro-starter
+taro init taro-vue-starter
 ```
 
-![](./assets/taro/taro_init.png)
+![](../assets/taro/create-vue.png)
 
-然后按照提示操作即可，这样一个基础项目就创建好了
+然后按照提示操作即可
 
 ::: tip
-通过上述交互式命令的选项，我们创建了一个带有`ESLint`的 React 基础工程，接下来我们对它做亿点点额外的配置
+通过上述交互式命令的选项，我们创建了一个带有`ESLint`的 Vue 基础工程，接下来我们对它做亿点点额外的配置
 :::
 
 ## 安装Prettier
@@ -101,8 +101,8 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'taro/vue3',
     'plugin:@typescript-eslint/recommended',
-    'taro/react',
     'prettier',
     'plugin:prettier/recommended',
   ],
@@ -121,8 +121,6 @@ module.exports = {
   rules: {
     complexity: ['error', 10],
     'prettier/prettier': 'error',
-    'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },
@@ -150,8 +148,10 @@ module.exports = {
 
 在`Taro`中使用`TailwindCSS`的文档说明[看这里](https://docs.taro.zone/docs/tailwindcss)
 
+由于`Taro`已经内置有`postcss`和`autoprefixer`，这两个就不用装了
+
 ```sh
-pnpm add -D tailwindcss postcss autoprefixer
+pnpm add -D tailwindcss
 npx tailwindcss init -p
 ```
 
@@ -166,7 +166,7 @@ delete colors.coolGray
 delete colors.blueGray
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./public/index.html', './src/**/*.{html,js,ts,jsx,tsx}'], // [!code focus]
+  content: ['./public/index.html', './src/**/*.{html,vue,js,ts,jsx,tsx}'], // [!code focus]
   theme: {
     extend: { colors }, // [!code focus]
   },
@@ -209,8 +209,6 @@ module.exports = {
   },
 }
 ```
-
-这样即可完成`tailwindcss`默认工具类的`rem`转`rpx`的配置了
 
 ### 安装`weapp-tailwindcss`
 
@@ -258,10 +256,10 @@ export default defineConfig(async (merge, { command, mode }) => {
 
 ## UI组件库
 
-这里选用的是[NutUI-React](https://nutui.jd.com/#/)
+这里选用的是[NutUI-Vue](https://nutui.jd.com/#/)
 
 ```sh
-pnpm add @nutui/nutui-react-taro @tarojs/plugin-html
+pnpm add @nutui/nutui-taro @nutui/icons-vue-taro @tarojs/plugin-html
 ```
 
 编辑`config/index.ts`
@@ -282,7 +280,7 @@ export default defineConfig(async (merge, { command, mode }) => {
       '@': path.resolve(__dirname, '../src'),
     },
     sass: {
-      data: '@import "@nutui/nutui-react/dist/styles/variables.scss";',
+      data: '@import "@nutui/nutui-taro/dist/styles/variables.scss";',
     },
     mini: {
       postcss: {
@@ -295,7 +293,7 @@ export default defineConfig(async (merge, { command, mode }) => {
       },
     },
     h5: {
-      esnextModules: ['@nutui/nutui-react-taro'],
+      esnextModules: ['nutui-taro', 'icons-vue-taro'],
       postcss: {
         pxtransform: {
           enable: true,
@@ -309,29 +307,60 @@ export default defineConfig(async (merge, { command, mode }) => {
 })
 ```
 
-按需引入组件样式
+### 按需引入和JSX支持
 
 ```sh
-pnpm add -D babel-plugin-import
+pnpm add -D unplugin-vue-components
 ```
 
-编辑`babel.config.js`
+编辑`config/index.ts`
 
-```js
-module.exports = {
-  // ...
-  plugins: [
-    [
-      'import',
-      {
-        libraryName: '@nutui/nutui-react-taro',
-        libraryDirectory: 'dist/esm',
-        style: 'css',
-        camel2DashComponentName: false,
+```ts
+import ComponentsPlugin from 'unplugin-vue-components/webpack' // [!code ++]
+import NutUIResolver from '@nutui/nutui-taro/dist/resolver' // [!code ++]
+export default defineConfig(async (merge, { command, mode }) => {
+  const baseConfig: UserConfigExport = {
+    // [!code focus:29]
+    mini: {
+      webpackChain(chain) {
+        chain.plugin('unplugin-vue-components').use(
+          ComponentsPlugin({
+            include: [
+              /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+              /\.vue$/,
+              /\.vue\?vue/, // .vue
+            ],
+            resolvers: [NutUIResolver({ taro: true })],
+          })
+        )
       },
-      'nutui-react-taro',
-    ],
-  ],
+    },
+    h5: {
+      webpackChain(chain) {
+        chain.plugin('unplugin-vue-components').use(
+          ComponentsPlugin({
+            include: [
+              /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+              /\.vue$/,
+              /\.vue\?vue/, // .vue
+            ],
+            resolvers: [NutUIResolver({ taro: true })],
+          })
+        )
+      },
+    },
+  }
+})
+```
+
+编辑`tsconfig.json`，在`include`字段中加入`components.d.ts`
+
+```json
+{
+  "include": [
+    // ...
+    "components.d.ts"
+  ]
 }
 ```
 
@@ -341,83 +370,56 @@ module.exports = {
 pnpm add @tarojs/plugin-http axios
 ```
 
-编辑`config/index.ts`
+编辑`config/index.ts`，注册插件
 
 ```ts
 export default defineConfig(async (merge, { command, mode }) => {
   const baseConfig: UserConfigExport = {
     // ...
-    plugins: ['@tarojs/plugin-html'], // [!code focus]
+    plugins: ['@tarojs/plugin-http'], // [!code focus]
   }
 })
 ```
 
-新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../axios.md)
+新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../../axios.md)
 
 ## 状态管理
 
-这里用的是[Zustand](https://zustand-demo.pmnd.rs/)
+这里用的是[Pinia](https://pinia.vuejs.org/zh/)
 
 ```sh
-pnpm add zustand immer
+pnpm add pinia
+```
+
+编辑`src/app.ts`
+
+```ts
+import { createPinia } from 'pinia' // [!code ++]
+const App = createApp({
+  // ...
+}).use(createPinia()) // [!code ++]
+export default App
 ```
 
 ### 定义
 
-新建`src/models/counter.ts`和`src/models/selectors.ts`
+新建`src/stores/counter.ts`
 
-::: code-group
+```ts
+import { defineStore } from 'pinia'
 
-```ts [counter.ts]
-import { create } from 'zustand'
-import { immer } from 'zustand/middleware/immer'
-import createSelectors from './selectors'
-
-interface State {
-  count: number
-}
-interface Action {
-  inc: () => void
-  dec: () => void
-}
-const initialState: State = {
-  count: 0,
-}
-
-const counterStore = create<State & Action>()(
-  immer((set, get) => ({
-    count: 0,
-    inc: () => set((state) => ({ count: state.count + 1 })),
-    dec: () => set((state) => ({ count: state.count - 1 })),
-  }))
-)
-export const useCounterStore = createSelectors(counterStore)
-export function useCounterReset() {
-  counterStore.setState(initialState)
-}
+export const useCounterStore = defineStore('counter', {
+  state: () => ({ count: 0 }),
+  actions: {
+    increment() {
+      this.count++
+    },
+    decrement() {
+      this.count--
+    },
+  },
+})
 ```
-
-```ts [selectors.ts]
-import { StoreApi, UseBoundStore } from 'zustand'
-
-type WithSelectors<S> = S extends { getState: () => infer T }
-  ? S & { use: { [K in keyof T]: () => T[K] } }
-  : never
-
-const createSelectors = <S extends UseBoundStore<StoreApi<{}>>>(_store: S) => {
-  let store = _store as WithSelectors<typeof _store>
-  store.use = {}
-  for (let k of Object.keys(store.getState())) {
-    ;(store.use as any)[k] = () => store((s) => s[k as keyof typeof s])
-  }
-
-  return store
-}
-
-export default createSelectors
-```
-
-:::
 
 ### 示例
 
@@ -428,67 +430,110 @@ taro create home
 taro create profile
 ```
 
+编辑`src/app.config.ts`和新建的两个页面
+
 ::: code-group
 
-```tsx [Home]
-import { useCounterStore, useCounterReset } from '@/models'
-export default function Home() {
-  const count = useCounterStore.use.count()
-  const inc = useCounterStore.use.inc()
-  const dec = useCounterStore.use.dec()
-  return (
-    <View className="flex flex-1 flex-wrap flex-col items-center justify-center gap-4 h-full">
-      <View>
-        <Button type="warn" onClick={dec}>
-          Dec
-        </Button>
-        <Text className="mx-3">{count}</Text>
-        <Button type="primary" onClick={inc}>
-          Inc
-        </Button>
-      </View>
-      <Button type="default" onClick={useCounterReset}>
-        Reset
-      </Button>
-    </View>
-  )
-}
+```ts [app.config.ts]
+const pages = ['pages/index/index', 'pages/home/index', 'pages/profile/index']
+export default defineAppConfig({
+  animation: true,
+  entryPagePath: 'pages/index/index',
+  pages,
+  tabBar: {
+    color: '#666666',
+    selectedColor: '#4965f2',
+    backgroundColor: '#fefefe',
+    list: [
+      {
+        pagePath: 'pages/home/index',
+        text: '首页',
+      },
+      {
+        pagePath: 'pages/profile/index',
+        text: '我的',
+      },
+    ],
+  },
+  // ...
+})
 ```
 
-```tsx [Profile]
-import { useCounterStore } from '@/models'
-export default function Profile() {
-  const { count, inc, dec } = useCounterStore()
-  return (
-    <View className="flex flex-1 flex-wrap flex-col items-center justify-center gap-4 h-full">
-      <View>
-        <Button type="warn" onClick={dec}>
-          Dec
-        </Button>
-        <Text className="mx-3">{count}</Text>
-        <Button type="primary" onClick={inc}>
-          Inc
-        </Button>
+```tsx [Home]
+import { View, Text, Button } from '@tarojs/components'
+import { defineComponent } from 'vue'
+import { useCounterStore } from '@/stores'
+import './index.scss'
+export default defineComponent({
+  setup() {
+    const counter = useCounterStore()
+    return () => (
+      <View class="flex flex-1 flex-wrap flex-col items-center justify-center gap-4 h-full">
+        <Text>Home Page</Text>
+        <View class="text-center">
+          <Button type="warn" onClick={counter.decrement}>
+            Dec
+          </Button>
+          <Text>{counter.count}</Text>
+          <Button type="primary" onClick={counter.increment}>
+            Inc
+          </Button>
+        </View>
       </View>
-    </View>
-  )
-}
+    )
+  },
+})
+```
+
+```vue [Profile]
+<template>
+  <view class="flex flex-1 flex-wrap flex-col items-center justify-center gap-4 h-full">
+    <text>Profile Page</text>
+    <view class="text-center">
+      <button type="warn" @tap="counter.decrement">Dec</button>
+      <text>{{ counter.count }}</text>
+      <button type="primary" @tap="counter.increment">Inc</button>
+    </view>
+  </view>
+</template>
+
+<script setup>
+import { useCounterStore } from '@/stores'
+import './index.scss'
+const counter = useCounterStore()
+</script>
 ```
 
 :::
 
 ### 持久化
 
-新建`src/utils/storage.ts`和`src/models/user.ts`
+```sh
+pnpm add pinia-plugin-persistedstate
+```
+
+编辑`src/app.ts`
+
+```ts
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate' // [!code ++]
+const App = createApp({
+  // ...
+}).use(createPinia().use(piniaPluginPersistedstate)) // [!code ++]
+export default App
+```
+
+新建`src/utils/storage.ts`和`src/stores/user.ts`
 
 ::: code-group
 
-```tsx [storage.ts]
+```ts [storage.ts]
 import { setStorageSync, getStorageSync, removeStorageSync } from '@tarojs/taro'
+
 enum StorageSceneKey {
   DEVICE = 'storage-device-uuid',
   USER = 'storage-user',
 }
+
 function getItem<T = any>(key: string): T {
   const value = getStorageSync(key)
   return value ? JSON.parse(value) ?? null : null
@@ -499,25 +544,17 @@ function setItem<T = any>(key: string, value: T) {
 function removeItem(key: string) {
   removeStorageSync(key)
 }
+
 export { getItem, setItem, removeItem, StorageSceneKey }
 ```
 
 ```ts [user.ts]
-import { create } from 'zustand'
-import { immer } from 'zustand/middleware/immer'
-import { createJSONStorage, persist, StateStorage } from 'zustand/middleware'
-import { setStorageSync, getStorageSync, removeStorageSync } from '@tarojs/taro'
-import createSelectors from './selectors'
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import { setStorageSync, getStorageSync } from '@tarojs/taro'
+import { StorageLike } from 'pinia-plugin-persistedstate'
 import { StorageSceneKey } from '../utils'
-interface State {
-  token: string
-  isLogged: boolean
-}
-interface Action {
-  setToken: (token: string) => void
-  removeToken: () => void
-}
-const userStorage: StateStorage = {
+const userStorage: StorageLike = {
   getItem: (key) => {
     const value = getStorageSync(key)
     return value ?? null
@@ -525,35 +562,31 @@ const userStorage: StateStorage = {
   setItem: (key, value) => {
     setStorageSync(key, value)
   },
-  removeItem: (key) => {
-    removeStorageSync(key)
+}
+export const useUserStore = defineStore(
+  'user',
+  () => {
+    const token = ref('')
+    const isLogged = ref(false)
+    const setToken = (value: string) => {
+      token.value = value
+      isLogged.value = true
+    }
+    const removeToken = () => {
+      token.value = ''
+      isLogged.value = false
+    }
+    return { token, isLogged, setToken, removeToken }
   },
-}
-const initialState: State = {
-  token: '',
-  isLogged: false,
-}
-const userStore = create<State & Action>()(
-  immer(
-    persist(
-      (set, get) => ({
-        token: '',
-        isLogged: false,
-        setToken: (token) => set({ token, isLogged: true }),
-        removeToken: () => set({ token: '', isLogged: false }),
-      }),
-      {
-        //! 注意这里的name是当前这个Zustand模块进行缓存时的唯一key, 每个需要缓存的Zustand模块都必须分配一个唯一key
-        name: StorageSceneKey.USER,
-        storage: createJSONStorage(() => userStorage),
-      }
-    )
-  )
+  {
+    persist: {
+      //! 注意这里的key是当前这个Pinia模块进行缓存时的唯一key, 每个需要缓存的Pinia模块都必须分配一个唯一key
+      key: StorageSceneKey.USER,
+      // pinia-plugin-persistedstate 插件的默认持久化方案只支持web端，在Taro里使用需要自定义进行覆盖
+      storage: userStorage,
+    },
+  }
 )
-export const useUserStore = createSelectors(userStore)
-export function useUserReset() {
-  userStore.setState(initialState)
-}
 ```
 
 :::
@@ -715,18 +748,21 @@ export default defineAppConfig({
 编辑刚才新建的`blank`页面
 
 ```tsx
+import { defineComponent } from 'vue'
 import { useLoad } from '@tarojs/taro'
-import { useUserStore } from '@/models'
+import { useUserStore } from '@/stores'
 import router from '@/routes'
-export default function Blank() {
-  const isLogged = useUserStore.use.isLogged()
-  useLoad(() => {
-    if (isLogged) {
-      router.switchTab({ url: '/pages/home/index' })
-    } else {
-      router.reLaunch({ url: '/pages/index/index' })
-    }
-  })
-  return null
-}
+export default defineComponent({
+  setup() {
+    const userStore = useUserStore()
+    useLoad(() => {
+      if (userStore.isLogged) {
+        router.switchTab({ url: '/pages/home/index' })
+      } else {
+        router.reLaunch({ url: '/pages/index/index' })
+      }
+    })
+    return null
+  },
+})
 ```
