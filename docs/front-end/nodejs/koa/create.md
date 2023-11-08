@@ -130,7 +130,6 @@ npx tsc --init
     "paths": {
       "~/*": ["./src/*"]
     },
-    "typeRoots": ["./node_modules/@types", "./src/@types"],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "incremental": true,

@@ -359,7 +359,7 @@ export default defineConfig(async (merge, { command, mode }) => {
 这里用的是[Zustand](https://zustand-demo.pmnd.rs/)
 
 ```sh
-pnpm add -D zustand immer
+pnpm add zustand immer
 ```
 
 ### 定义
@@ -543,7 +543,7 @@ const userStore = create<State & Action>()(
         removeToken: () => set({ token: '', isLogged: false }),
       }),
       {
-        //! 注意这里的 name 并不是创建 mmkv 实例的 ID，而是 mmkv 持久化数据的唯一 key
+        //! 注意这里的name是当前这个Zustand模块进行缓存时的唯一key, 每个需要缓存的Zustand模块都必须分配一个唯一key
         name: StorageSceneKey.USER,
         storage: createJSONStorage(() => userStorage),
       }

@@ -240,10 +240,9 @@ module.exports = {
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
-    },
-    "typeRoots": ["node_modules/@types", "src/@types"]
+    }
   },
-  "include": ["src"],
+  "include": ["src", "types"],
   "exclude": [
     "node_modules",
     "android",
@@ -460,7 +459,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 
 :::
 
-- 新建`src/@types/global.d.ts`文件，用来声明全局变量、函数、接口和类型等
+- 新建`types/global.d.ts`文件，用来声明全局变量、函数、接口和类型等
 - 新建`src/constants/env.ts`文件，用来导出 Expo 传递进来的环境变量
 - 修改`tsconfig.json`，增加一个路径别名`@env`指向`src/constants/env.ts`
 
@@ -712,7 +711,7 @@ export default function App() {
 
 ## 屏幕适配
 
-新建`src/utils/global.ts`，修改`src/@types.global.d.ts`和入口文件`index.ts`
+新建`src/utils/global.ts`，修改`types/global.d.ts`和入口文件`index.ts`
 
 ::: code-group
 

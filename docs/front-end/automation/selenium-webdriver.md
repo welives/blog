@@ -2,9 +2,8 @@
 title: selenium-webdriver学习
 ---
 
-## 项目搭建
-
-::: tip 搭建一个 Selenium + TypeScript + ESLint + Prettier 的工程
+::: tip ✨
+搭建一个 Selenium + TypeScript + ESLint + Prettier 的工程
 
 [本工程的Github地址](https://github.com/welives/selenimu-starter)
 :::
@@ -16,6 +15,15 @@ title: selenium-webdriver学习
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
+
+## 事前准备
+
+- Windows 或者 Linux
+- VSCode：编辑器
+- nodejs：项目运行所需要的基础环境
+- git：代码版本控制
+
+## 项目搭建
 
 ### 初始化
 
@@ -43,11 +51,12 @@ touch .prettierignore
 ```ini [.gitignore]
 .DS_Store
 node_modules
+dist
 .idea
 .vscode
 *.code-workspace
 **/*.log
-.env*
+.env*.local
 ```
 
 ```json [tsconfig.json]
@@ -60,7 +69,6 @@ node_modules
     "paths": {
       "~/*": ["./src/*"]
     },
-    "typeRoots": ["./node_modules/@types", "./src/@types"],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "incremental": true,
@@ -94,7 +102,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
   ],
   overrides: [
     {
@@ -114,6 +122,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
+    complexity: ['error', 10],
     'prettier/prettier': 'error',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -166,7 +175,7 @@ touch nodemon.json
 
 ```json [nodemon.json]
 {
-  "watch": ["src", ".env"],
+  "watch": ["src", ".env", ".env.local"],
   "ext": "ts,tsx",
   "delay": 1000,
   "verbose": true,
