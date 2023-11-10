@@ -1,5 +1,5 @@
 ---
-title: 使用Nuxt搭建工程
+title: Nuxt工程搭建
 ---
 
 ::: tip ✨
@@ -187,14 +187,13 @@ module.exports = {
   // ...
   extends: [
     // ...
-    'prettier/@typescript-eslint', // [!code --]
     'prettier', // [!code ++]
     'plugin:prettier/recommended', // [!code ++]
   ],
-  plugins: ['@typescript-eslint', 'vue'], // [!code --]
   parser: 'vue-eslint-parser', // [!code ++]
   plugins: ['@typescript-eslint', 'vue', 'prettier'], // [!code ++]
   rules: {
+    complexity: ['error', 10], // [!code ++]
     'prettier/prettier': 'error', // [!code ++]
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // [!code ++]
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // [!code ++]
@@ -220,20 +219,33 @@ npx tailwindcss init
 @tailwind utilities;
 ```
 
-编辑`tailwind.config.js`，在`content`中增加如下内容
+编辑`tailwind.config.js`
 
 ```js
+const colors = require('tailwindcss/colors')
+delete colors.lightBlue
+delete colors.warmGray
+delete colors.trueGray
+delete colors.coolGray
+delete colors.blueGray
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    './components/**/*.{vue,jsx,tsx}', // [!code ++]
-    './layouts/**/*.{vue,jsx,tsx}', // [!code ++]
-    './pages/**/*.{vue,jsx,tsx}', // [!code ++]
-    './app.{vue,jsx,tsx}', // [!code ++]
-    './plugins/**/*.{js,ts}', // [!code ++]
-    './nuxt.config.{js,ts}', // [!code ++]
+    // [!code focus:8]
+    './components/**/*.{vue,jsx,tsx}',
+    './layouts/**/*.{vue,jsx,tsx}',
+    './pages/**/*.{vue,jsx,tsx}',
+    './app.{vue,jsx,tsx}',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
   ],
-  // ...
+  theme: {
+    extend: { colors }, // [!code focus]
+  },
+  corePlugins: {
+    preflight: false, // [!code focus]
+  },
+  plugins: [],
 }
 ```
 
@@ -241,8 +253,10 @@ export default {
 
 ```ts
 export default defineNuxtConfig({
-  // ...
-  modules: ['@nuxtjs/tailwindcss'], // [!code ++]
+  modules: [
+    // ...
+    '@nuxtjs/tailwindcss', // [!code ++]
+  ],
 })
 ```
 
@@ -258,8 +272,10 @@ pnpm add pinia @pinia/nuxt
 
 ```ts
 export default defineNuxtConfig({
-  // ...
-  modules: [['@pinia/nuxt', { autoImports: ['defineStore'] }]], // [!code ++]
+  modules: [
+    // ...
+    ['@pinia/nuxt', { autoImports: ['defineStore'] }], // [!code ++]
+  ],
   imports: { dirs: ['./stores'] }, // [!code ++]
 })
 ```
@@ -276,7 +292,7 @@ pnpm add -D @pinia-plugin-persistedstate/nuxt
 export default defineNuxtConfig({
   modules: [
     // ...
-    '@pinia-plugin-persistedstate/nuxt',
+    '@pinia-plugin-persistedstate/nuxt', // [!code ++]
   ],
 })
 ```
@@ -367,7 +383,7 @@ export default defineNuxtConfig({
 ::: tip 到这里，基于 Nuxt3 的 Vant 基础项目模板就搭建完成了
 :::
 
-## 使用Vant作为UI库
+## 使用Vant
 
 Vant 同样也被 Nuxt 官方集成了
 
@@ -379,7 +395,10 @@ pnpm add -D vant @vant/nuxt
 
 ```ts
 export default defineNuxtConfig({
-  modules: ['@vant/nuxt'], // [!code ++]
+  modules: [
+    // ...
+    '@vant/nuxt', // [!code ++]
+  ],
   vant: { lazyload: true }, // [!code ++]
 })
 ```
@@ -400,10 +419,10 @@ pnpm add -D postcss-px-to-viewport-8-plugin
 
 编辑`nuxt.config.ts`文件，增加如下`postcss`配置项
 
-```ts{4-15}
+```ts
 import path from 'path' // [!code ++]
 export default defineNuxtConfig({
-  // ...
+  // [!code focus:12]
   postcss: {
     plugins: {
       'postcss-px-to-viewport-8-plugin': {
@@ -411,11 +430,10 @@ export default defineNuxtConfig({
           return path.resolve(file).includes(path.join('node_modules', 'vant')) ? 375 : 750
         },
         unitPrecision: 6,
-        landscapeWidth: 1024
-        // exclude: [/node_modules\/vant/i]
-      }
-    }
-  }
+        landscapeWidth: 1024,
+      },
+    },
+  },
 })
 ```
 

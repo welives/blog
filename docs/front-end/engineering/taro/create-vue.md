@@ -170,11 +170,11 @@ module.exports = {
   theme: {
     extend: { colors }, // [!code focus]
   },
-  plugins: [],
   // [!code focus:4]
   corePlugins: {
     preflight: false,
   },
+  plugins: [],
 }
 ```
 
@@ -383,6 +383,46 @@ export default defineConfig(async (merge, { command, mode }) => {
 
 新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../../axios.md)
 
+### Mockjs
+
+```sh
+pnpm add -D @tarojs/plugin-mock mockjs @types/mockjs
+```
+
+编辑`config/dev.ts`
+
+```ts
+export default {
+  plugins: ['@tarojs/plugin-mock'],
+  h5: {
+    devServer: {
+      proxy: {
+        '/api': {
+          target: process.env.TARO_APP_API,
+          changeOrigin: true,
+          pathRewrite: { '^/api': '' },
+        },
+      },
+    },
+  },
+} satisfies UserConfigExport
+```
+
+根目录新建`mock/index.ts`，示例如下，根据自己的情况添加添加接口
+
+```ts
+export default {
+  'POST /api/login': {
+    code: '200',
+    message: 'ok',
+    data: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjMyODU2LCJzZXNzaW9uIjoiOTRlZTZjOThmMmY4NzgzMWUzNzRmZTBiMzJkYTIwMGMifQ.z5Llnhe4muNsanXQSV-p1DJ-89SADVE-zIkHpM0uoQs',
+    success: true,
+  },
+}
+```
+
+当启动开发服务器的时候就会启动一个数据`mock`服务器
+
 ## 状态管理
 
 这里用的是[Pinia](https://pinia.vuejs.org/zh/)
@@ -538,7 +578,7 @@ function getItem<T = any>(key: string): T {
   const value = getStorageSync(key)
   return value ? JSON.parse(value) ?? null : null
 }
-function setItem<T = any>(key: string, value: T) {
+function setItem(key: string, value: any) {
   setStorageSync(key, JSON.stringify(value))
 }
 function removeItem(key: string) {

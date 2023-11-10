@@ -1,5 +1,5 @@
 ---
-title: 使用UmiJS搭建工程
+title: UmiJS工程搭建
 ---
 
 ::: tip ✨
@@ -41,9 +41,13 @@ pnpm dlx create-umi@latest
 pnpm add -D cross-env
 ```
 
-这样就创建好一个以`UmiJS`为脚手架的基础工程了，接下来我们对它做亿点点额外的配置
+::: tip 🎉
+编写此笔记时所使用的`UmiJS`版本为`4.0.87`
 
-## 配置EditorConfig
+这样就创建好一个以`UmiJS`为脚手架的基础工程了，接下来我们对它做亿点点额外的配置
+:::
+
+### EditorConfig
 
 ::: code-group
 
@@ -72,7 +76,82 @@ indent_style = tab
 
 :::
 
-## 添加ESLint
+### Prettier
+
+详细的文档[看这里](https://umijs.org/docs/guides/generator#prettier-%E9%85%8D%E7%BD%AE%E7%94%9F%E6%88%90%E5%99%A8)
+
+::: code-group
+
+```sh
+pnpm umi g prettier
+```
+
+```json [.prettierrc]
+{
+  "printWidth": 120,
+  "semi": false,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "proseWrap": "never",
+  "overrides": [{ "files": ".prettierrc", "options": { "parser": "json" } }],
+  "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-packagejson"]
+}
+```
+
+```json [.prettierignore]
+node_modules
+.umi
+.umi-production
+.DS_Store
+dist
+.idea
+.vscode
+```
+
+:::
+
+### TailwindCSS
+
+::: code-group
+
+```sh
+pnpm umi g tailwindcss
+```
+
+```js [tailwind.config.js]
+const colors = require('tailwindcss/colors')
+delete colors.lightBlue
+delete colors.warmGray
+delete colors.trueGray
+delete colors.coolGray
+delete colors.blueGray
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{jsx,tsx}',
+    './src/components/**/*.{jsx,tsx}',
+    './src/layouts/**/*.{jsx,tsx}',
+  ],
+  theme: {
+    extend: { colors },
+  },
+  corePlugins: {
+    preflight: false,
+  },
+  plugins: [],
+}
+```
+
+```css [tailwind.css]
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+:::
+
+### ESLint
 
 详细的文档[看这里](https://umijs.org/docs/guides/lint)
 
@@ -89,6 +168,7 @@ touch .stylelintrc.js
 module.exports = {
   extends: require.resolve('umi/eslint'),
   rules: {
+    complexity: ['error', 10],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },
@@ -102,6 +182,7 @@ dist
 .idea
 .vscode
 .umi
+.umi-production
 ```
 
 ```js [.stylelintrc.js]
@@ -129,27 +210,7 @@ module.exports = {
 
 :::
 
-## 添加Prettier
-
-详细的文档[看这里](https://umijs.org/docs/guides/generator#prettier-%E9%85%8D%E7%BD%AE%E7%94%9F%E6%88%90%E5%99%A8)
-
-```sh
-pnpm umi g prettier
-```
-
-## 添加TailwindCSS
-
-```sh
-pnpm umi g tailwindcss
-```
-
-## 启用数据流插件
-
-为了拥有良好的开发体验，以`hooks`范式使用和管理全局状态，我们需要启用`@umijs/plugin-model`插件
-
-::: tip
-关于 Umi 插件的详细文档[看这里](https://umijs.org/docs/guides/use-plugins)，Umi 的官方插件列表[看这里](https://github.com/umijs/plugins)
-:::
+## 插件
 
 由于普通的 Umi 应用中，默认不附带任何插件，所以我们需要先安装它
 
@@ -157,18 +218,26 @@ pnpm umi g tailwindcss
 pnpm add -D @umijs/plugins
 ```
 
-修改`.umirc.ts`或者`config/config.ts`文件
+关于 Umi 插件的详细文档[看这里](https://umijs.org/docs/guides/use-plugins)，Umi 的官方插件列表[看这里](https://github.com/umijs/plugins)
+
+### 数据流
+
+为了拥有良好的开发体验，以`hooks`范式使用和管理全局状态，我们需要启用`@umijs/plugin-model`插件
+
+编辑`.umirc.ts`或者`config/config.ts`文件
 
 ```ts
 export default defineConfig({
   // ...
-  plugins: ['@umijs/plugins/dist/tailwindcss'], // [!code --]
-  plugins: ['@umijs/plugins/dist/tailwindcss', '@umijs/plugins/dist/model'], // [!code ++]
+  plugins: [
+    // ...
+    '@umijs/plugins/dist/model', // [!code ++]
+  ],
   model: {}, // [!code ++]
 })
 ```
 
-### 计数器例子
+#### 示例
 
 数据流插件要求在`src`目录下创建一个`models`目录，该目录下存放需要全局共享的数据
 
@@ -194,7 +263,7 @@ export default () => {
 
 :::
 
-然后修改这个基础项目中的`src/pages/index.tsx`和`src/pages/docs.tsx`文件
+然后编辑`src/pages/index.tsx`和`src/pages/docs.tsx`
 
 ::: code-group
 
@@ -232,7 +301,159 @@ export default function DocsPage() {
 
 启动项目查看这个计数器例子，可以看到在`HomePage`页面中修改了`counter`的值后，`DocsPage`页面中也会跟着改变
 
-## 使用Vant作为UI库
+### 请求
+
+编辑`.umirc.ts`或`config/config.ts`
+
+```ts
+export default defineConfig({
+  plugins: [
+    // ...
+    '@umijs/plugins/dist/request', // [!code ++]
+  ],
+  request: {}, // [!code ++]
+})
+```
+
+新建`src/app.tsx`，编写如下请求配置
+
+::: details 查看
+
+```tsx
+import type { AxiosRequestConfig, AxiosResponse, RequestConfig } from 'umi'
+
+// 错误处理方案： 错误类型
+enum ErrorShowType {
+  SILENT = 0,
+  WARN_MESSAGE = 1,
+  ERROR_MESSAGE = 2,
+  NOTIFICATION = 3,
+  REDIRECT = 9,
+}
+
+// 与后端约定的响应数据格式
+interface ResponseStructure<T = any> {
+  success: boolean
+  code: string
+  data?: T
+  message?: string
+  [key: string]: any
+}
+
+export const request: RequestConfig = {
+  errorConfig: {
+    // 错误抛出
+    errorThrower: (res: ResponseStructure) => {
+      const { success, data, errorCode, errorMessage, showType } = res
+      if (!success) {
+        const error: any = new Error(errorMessage)
+        error.name = 'BizError'
+        error.info = { errorCode, errorMessage, showType, data }
+        throw error // 抛出自制的错误
+      }
+    },
+    // 错误接收及处理
+    errorHandler: (error: any, opts) => {
+      if (opts?.skipErrorHandler) throw error
+      // 我们的 errorThrower 抛出的错误。
+      if (error.name === 'BizError') {
+        const errorInfo: ResponseStructure | undefined = error.info
+        if (errorInfo) {
+          const { errorMessage, errorCode } = errorInfo
+          switch (errorInfo.showType) {
+            case ErrorShowType.SILENT:
+              // do nothing
+              break
+            case ErrorShowType.WARN_MESSAGE:
+              // TODO: message
+              console.warn(errorMessage)
+              break
+            case ErrorShowType.ERROR_MESSAGE:
+              // TODO: message
+              console.error(errorMessage)
+              break
+            case ErrorShowType.NOTIFICATION:
+              // TODO: notification
+              console.error({ description: errorMessage, message: errorCode })
+              break
+            case ErrorShowType.REDIRECT:
+              // TODO: redirect
+              break
+            default:
+              // TODO: message
+              console.error(errorMessage)
+          }
+        }
+      } else if (error.response) {
+        // Axios 的错误
+        // 请求成功发出且服务器也响应了状态码，但状态代码超出了 2xx 的范围
+        // TODO: message
+        console.error(`Response status:${error.response.status}`)
+      } else if (error.request) {
+        // 请求已经成功发起，但没有收到响应
+        // error.request 在浏览器中是 XMLHttpRequest 的实例
+        // 而在node.js中是 http.ClientRequest 的实例
+        // TODO: message
+        console.error('None response! Please retry.')
+      } else {
+        // 发送请求时出了点问题
+        // TODO: message
+        console.error('Request error, please retry')
+      }
+    },
+  },
+  // 请求拦截器
+  requestInterceptors: [
+    [
+      (config: AxiosRequestConfig) => {
+        // 拦截请求配置，进行个性化处理。
+        return { ...config }
+      },
+      (error) => {
+        return Promise.reject(error)
+      },
+    ],
+  ],
+  // 响应拦截器
+  responseInterceptors: [
+    (response: AxiosResponse) => {
+      // 拦截响应数据，进行个性化处理
+      const { data } = response
+      if (!data.success) {
+        // TODO: message
+        console.error('请求失败！')
+      }
+      return response
+    },
+  ],
+}
+```
+
+:::
+
+#### Mock
+
+根目录新建`mock/index.ts`，示例如下，根据自己的情况添加添加接口
+
+```ts
+export default {
+  'POST /api/login': {
+    code: '200',
+    message: 'ok',
+    data: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjMyODU2LCJzZXNzaW9uIjoiOTRlZTZjOThmMmY4NzgzMWUzNzRmZTBiMzJkYTIwMGMifQ.z5Llnhe4muNsanXQSV-p1DJ-89SADVE-zIkHpM0uoQs',
+    success: true,
+  },
+}
+```
+
+使用
+
+```tsx
+import { request } from 'umi'
+request('/api/login', { method: 'POST' })
+```
+
+## 使用Vant
 
 ```sh
 pnpm add react react-dom react-vant @react-vant/icons
@@ -246,12 +467,11 @@ pnpm add -D postcss-px-to-viewport-8-plugin
 
 编辑`.umirc.ts`或`config/config.ts`，增加如下`extraPostCSSPlugins`配置项
 
-```ts{6-14}
+```ts
 import path from 'path' // [!code ++]
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin' // [!code ++]
-
 export default defineConfig({
-  // ...
+  // [!code focus:10]
   extraPostCSSPlugins: [
     postcsspxtoviewport8plugin({
       viewportWidth: (file: string) => {
@@ -272,6 +492,19 @@ export default defineConfig({
 
 由于 StyleLint 对 Vue 的支持不太友好，所以编码规范插件装 ESLint 和 Prettier 就行
 
+### JSX支持
+
+编辑`tsconfig.json`
+
+```json
+{
+  // ...
+  "compilerOptions": {
+    "jsxImportSource": "vue" // [!code ++]
+  }
+}
+```
+
 ### 配置TailwindCSS
 
 在 Umi 中使用 Vue 默认是同时支持模板语法和 JSX 语法的，所以修改一下`TailwindCSS`的配置
@@ -288,10 +521,10 @@ module.exports = {
 
 ### 状态管理
 
-由于 Umi 的`useModel`只支持 React，所以需要使用`pinia`代替
+由于 Umi 的`useModel`只支持 React，所以需要使用`Pinia`代替
 
 ```sh
-pnpm add pinia
+pnpm add pinia pinia-plugin-persistedstate
 ```
 
 接着新建`src/app.tsx`，写入如下内容，之后就可以像正常的 Vue 项目一样使用`pinia`了
@@ -300,7 +533,72 @@ pnpm add pinia
 import { createPinia } from 'pinia'
 
 export function onAppCreated({ app }: any) {
-  const pinia = createPinia()
-  app.use(pinia)
+  app.use(createPinia().use(piniaPluginPersistedstate))
 }
+```
+
+#### 持久化
+
+新建`src/utils/storage.ts`和`src/stores/user.ts`
+
+::: code-group
+
+```ts [storage.ts]
+enum StorageSceneKey {
+  DEVICE = 'storage-device-uuid',
+  USER = 'storage-user',
+}
+function getItem<T = any>(key: string): T {
+  const value: any = localStorage.getItem(key)
+  return value ? JSON.parse(value) ?? null : null
+}
+function setItem(key: string, value: any) {
+  localStorage.setItem(key, JSON.stringify(value))
+}
+function removeItem(key: string) {
+  localStorage.removeItem(key)
+}
+export { StorageSceneKey, getItem, removeItem, setItem }
+```
+
+```ts [user.ts]
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import { StorageSceneKey } from '../utils'
+export const useUserStore = defineStore(
+  'user',
+  () => {
+    const token = ref('')
+    const isLogged = ref(false)
+    const setToken = (value: string) => {
+      token.value = value
+      isLogged.value = true
+    }
+    const removeToken = () => {
+      token.value = ''
+      isLogged.value = false
+    }
+    return { token, isLogged, setToken, removeToken }
+  },
+  {
+    persist: {
+      //! 注意这里的key是当前这个Pinia模块进行缓存时的唯一key, 每个需要缓存的Pinia模块都必须分配一个唯一key
+      key: StorageSceneKey.USER,
+    },
+  }
+)
+```
+
+:::
+
+### Ant-Design-Vue
+
+```sh
+pnpm add ant-design-vue @ant-design/icons-vue
+```
+
+新建`src/global.ts`，引入样式
+
+```ts
+import 'ant-design-vue/dist/reset.css'
 ```

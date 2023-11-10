@@ -1,5 +1,5 @@
 ---
-title: 使用Vite搭建工程
+title: Vite工程搭建
 ---
 
 ::: tip ✨
@@ -117,29 +117,31 @@ npx tailwindcss init -p
 编辑`tailwind.config.js`
 
 ```js
-/** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
-delete colors.lightBlue // [!code ++]
-delete colors.warmGray // [!code ++]
-delete colors.trueGray // [!code ++]
-delete colors.coolGray // [!code ++]
-delete colors.blueGray // [!code ++]
+delete colors.lightBlue
+delete colors.warmGray
+delete colors.trueGray
+delete colors.coolGray
+delete colors.blueGray
+/** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{vue,jsx,tsx}'], // [!code ++]
+  content: ['./index.html', './src/**/*.{vue,jsx,tsx}'], // [!code focus]
   theme: {
-    colors: { ...colors }, // [!code ++]
-    extend: {},
+    extend: { colors }, // [!code focus]
   },
-  // ...
+  corePlugins: {
+    preflight: false, // [!code focus]
+  },
+  plugins: [],
 }
 ```
 
 编辑`src/assets/main.css`，增加如下内容
 
 ```css
-@tailwind base; // [!code ++]
-@tailwind components; // [!code ++]
-@tailwind utilities; // [!code ++]
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ```
 
 ## 配置环境变量
@@ -152,6 +154,9 @@ export default {
 VITE_APP_NAME=ts-vant-starter
 VITE_APP_HOST=localhost
 VITE_APP_PORT=5173
+API_HOST=http://localhost
+API_PORT=80
+VITE_BASE_API=$API_HOST:$API_PORT
 VITE_API_SECRET=secret_string
 ```
 
@@ -164,6 +169,7 @@ interface ImportMetaEnv {
   readonly VITE_APP_NAME: string
   readonly VITE_APP_HOST: string
   readonly VITE_APP_PORT: string
+  readonly VITE_BASE_API: string
   readonly VITE_API_SECRET: string
   // 更多环境变量...
 }
@@ -197,6 +203,53 @@ pnpm add axios
 
 新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../axios.md)
 
+### Mockjs
+
+```sh
+pnpm add -D vite-plugin-mock@2.9.8 mockjs @types/mockjs
+```
+
+编辑`vite.config.ts`，注册插件
+
+```ts
+import { viteMockServe } from 'vite-plugin-mock' // [!code ++]
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [
+      //...
+      viteMockServe(), // [!code ++]
+    ],
+  }
+})
+```
+
+根目录新建`mock/index.ts`，示例如下，根据自己的情况添加添加接口
+
+```ts
+import type { MockMethod } from 'vite-plugin-mock'
+export default [
+  {
+    url: '/api/login',
+    method: 'post',
+    response: () => {
+      return {
+        code: '200',
+        message: 'ok',
+        data: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjMyODU2LCJzZXNzaW9uIjoiOTRlZTZjOThmMmY4NzgzMWUzNzRmZTBiMzJkYTIwMGMifQ.z5Llnhe4muNsanXQSV-p1DJ-89SADVE-zIkHpM0uoQs',
+        success: true,
+      }
+    },
+  },
+] as MockMethod[]
+```
+
+使用，注意，`vite-plugin-mock`默认是以当前开发服务器的`host`和`post`作为`baseURL`
+
+```tsx
+import { request } from './api'
+request('/api/login', { method: 'POST' })
+```
+
 ## 状态持久化
 
 ```sh
@@ -221,18 +274,16 @@ enum StorageSceneKey {
   DEVICE = 'storage-device-uuid',
   USER = 'storage-user',
 }
-
 function getItem<T = any>(key: string): T {
   const value = localStorage.getItem(key)
   return value ? JSON.parse(value) ?? null : null
 }
-function setItem<T = any>(key: string, value: T) {
+function setItem(key: string, value: any) {
   localStorage.setItem(key, JSON.stringify(value))
 }
 function removeItem(key: string) {
   localStorage.removeItem(key)
 }
-
 export { getItem, setItem, removeItem, StorageSceneKey }
 ```
 
@@ -240,7 +291,6 @@ export { getItem, setItem, removeItem, StorageSceneKey }
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { StorageSceneKey } from '../utils'
-
 export const useUserStore = defineStore(
   'user',
   () => {
@@ -267,13 +317,13 @@ export const useUserStore = defineStore(
 
 :::
 
-## 使用Vant作为UI库
+## 使用Vant
 
 ```sh
 pnpm add vant
 ```
 
-### 给Vant配置按需引入
+### 按需引入
 
 ```sh
 pnpm add -D @vant/auto-import-resolver unplugin-vue-components
@@ -285,11 +335,12 @@ pnpm add -D @vant/auto-import-resolver unplugin-vue-components
 // ...
 import Components from 'unplugin-vue-components/vite' // [!code ++]
 import { VantResolver } from '@vant/auto-import-resolver' // [!code ++]
-
 export default defineConfig(({ mode }) => {
   return {
-    // ..
-    plugins: [vue(), vueJsx(), Components({ resolvers: [VantResolver()] })], // [!code ++]
+    plugins: [
+      //...
+      Components({ resolvers: [VantResolver()] }), // [!code ++]
+    ],
   }
 })
 ```
@@ -312,19 +363,17 @@ pnpm add -D postcss-px-to-viewport-8-plugin
 
 - 方式一：编辑`postcss.config.js`，增加如下`postcss-px-to-viewport-8-plugin`配置项
 
-```js{6-13}
+```js
 import path from 'path' // [!code ++]
-
 export default {
   plugins: {
-    // ...
+    // [!code focus:8]
     'postcss-px-to-viewport-8-plugin': {
       viewportWidth: (file) => {
         return path.resolve(file).includes(path.join('node_modules', 'vant')) ? 375 : 750
       },
       unitPrecision: 6,
       landscapeWidth: 1024,
-      // exclude: [/node_modules\/vant/i]
     },
   },
 }
@@ -332,14 +381,13 @@ export default {
 
 - 方式二：编辑`vite.config.ts`，增加如下`css`配置项
 
-```ts{8-21}
+```ts
 // ...
 import path from 'path' // [!code ++]
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin' // [!code ++]
-
 export default defineConfig(({ mode }) => {
   return {
-    // ...
+    // [!code focus:14]
     css: {
       postcss: {
         plugins: [
@@ -348,12 +396,11 @@ export default defineConfig(({ mode }) => {
               return path.resolve(file).includes(path.join('node_modules', 'vant')) ? 375 : 750
             },
             unitPrecision: 6,
-            landscapeWidth: 1024
-            // exclude: [/node_modules\/vant/i]
-          })
-        ]
-      }
-    }
+            landscapeWidth: 1024,
+          }),
+        ],
+      },
+    },
   }
 })
 ```
@@ -449,9 +496,9 @@ module.exports = {
 只是 CSS 的引入变成了`src/index.css`
 
 ```css
-@tailwind base; // [!code ++]
-@tailwind components; // [!code ++]
-@tailwind utilities; // [!code ++]
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ```
 
 环境变量也是[参考上面的配置](#配置环境变量)
@@ -557,18 +604,16 @@ enum StorageSceneKey {
   DEVICE = 'storage-device-uuid',
   USER = 'storage-user',
 }
-
 function getItem<T = any>(key: string): T {
   const value = localStorage.getItem(key)
   return value ? JSON.parse(value) ?? null : null
 }
-function setItem<T = any>(key: string, value: T) {
+function setItem(key: string, value: any) {
   localStorage.setItem(key, JSON.stringify(value))
 }
 function removeItem(key: string) {
   localStorage.removeItem(key)
 }
-
 export { getItem, setItem, removeItem, StorageSceneKey }
 ```
 

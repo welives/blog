@@ -1,5 +1,5 @@
 ---
-title: 使用Expo搭建工程
+title: Expo工程搭建
 ---
 
 ::: tip ✨
@@ -14,8 +14,8 @@ title: 使用Expo搭建工程
 - [ReactNative](https://reactnative.cn/)
 - [ReactNavigation](https://reactnavigation.org/)
 - [Zustand](https://zustand-demo.pmnd.rs/)
-- [TypeScript](https://www.tslang.cn/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
 
@@ -675,6 +675,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: { colors },
+  },
+  corePlugins: {
+    preflight: false,
   },
   plugins: [],
 }

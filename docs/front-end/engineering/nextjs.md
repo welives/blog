@@ -1,5 +1,5 @@
 ---
-title: 使用Next.js搭建工程
+title: Next.js工程搭建
 ---
 
 ::: tip ✨
@@ -143,6 +143,7 @@ module.exports = {
   extends: ['next/core-web-vitals', 'prettier', 'plugin:prettier/recommended'],
   plugins: ['prettier'],
   rules: {
+    complexity: ['error', 10],
     'prettier/prettier': 'error',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -154,7 +155,7 @@ module.exports = {
 
 关于 Next.js 的环境变量[详细文档看这里](https://www.nextjs.cn/docs/basic-features/environment-variables)
 
-## 使用Vant作为UI库
+## 使用Vant
 
 ```sh
 pnpm add react-vant @react-vant/icons
@@ -166,7 +167,6 @@ pnpm add -D next-images next-compose-plugins
 ```js
 const withPlugins = require('next-compose-plugins')
 const withImages = require('next-images')
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
@@ -174,7 +174,6 @@ const nextConfig = {
   },
   transpilePackages: ['react-vant'],
 }
-
 module.exports = withPlugins([withImages], nextConfig)
 ```
 
@@ -192,12 +191,11 @@ pnpm add -D postcss-px-to-viewport-8-plugin
 
 编辑`postcss.config.js`，增加如下`postcss-px-to-viewport-8-plugin`配置项
 
-```js{6-12}
+```js
 const path = require('path') // [!code ++]
-
 module.exports = {
   plugins: {
-    // ...
+    // [!code focus:8]
     'postcss-px-to-viewport-8-plugin': {
       viewportWidth: (file) => {
         return path.resolve(file).includes(path.join('node_modules', 'react-vant')) ? 375 : 750
