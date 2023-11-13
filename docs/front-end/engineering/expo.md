@@ -6,6 +6,8 @@ title: Expo工程搭建
 搭建一个开箱即用的基于 Expo + Zustand + MMKV + TailwindCSS + TypeScript 的工程
 
 [本工程的Github地址](https://github.com/welives/expo-starter)
+
+编写此笔记时所使用的`Expo`版本为`49.0.16`
 :::
 
 相关文档
@@ -1272,6 +1274,6 @@ export function useUserReset() {
 
 封装过程就不说了，具体代码可以我的[Axios封装](../axios.md)
 
-::: tip
+::: tip 🎉
 到这里，其实这个基础项目的架子就已经算完成了，之后我想到什么补什么
 :::

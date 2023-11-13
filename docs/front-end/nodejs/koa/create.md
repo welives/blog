@@ -6,6 +6,8 @@ title: Koa工程搭建
 搭建一个 Koa2 + TypeScript + Webpack + PM2 + ESLint + Prettier 的工程
 
 [本工程的Github地址](https://github.com/welives/koa-starter)
+
+编写此笔记时所使用的`Koa2`版本为`2.14.2`
 :::
 
 相关文档
@@ -376,7 +378,7 @@ pnpm add -D nodemon ts-node tsconfig-paths
 }
 ```
 
-::: tip
+::: tip ⚡
 
 - watch 表示要监听的文件或文件夹
 - ext 表示监听的文件类型
@@ -436,7 +438,7 @@ module.exports = {
 }
 ```
 
-::: tip
+::: tip ⚡
 `tsc-alias`的作用是解决打包时不能识别路径别名的问题
 :::
 
@@ -671,6 +673,6 @@ module.exports = () => {
 
 也可以直接`pnpm run deploy`使用`PM2`启动
 
-::: tip
+::: tip ⚡
 生产环境使用`PM2`启动（生产环境端口默认：8080），可以达到负载均衡
 :::

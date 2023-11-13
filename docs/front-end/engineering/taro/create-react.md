@@ -8,6 +8,8 @@ title: Taro-React工程搭建
 UI框架以 NutUI-React 为例
 
 [本工程的Github地址](https://github.com/welives/taro-react-starter)
+
+编写此笔记时所使用的`Taro`版本为`3.6.18`
 :::
 
 相关文档
@@ -38,7 +40,7 @@ taro init taro-react-starter
 
 然后按照提示操作即可
 
-::: tip
+::: tip 💡
 通过上述交互式命令的选项，我们创建了一个带有`ESLint`的 React 基础工程，接下来我们对它做亿点点额外的配置
 :::
 
@@ -759,12 +761,7 @@ class Router {
 // 需要权限的路由,注意首尾不能带有斜杠
 const authRoutes = ['pages/home/index', 'pages/profile/index']
 // 全部路由
-export const routes = [
-  'pages/blank/index',
-  'pages/index/index',
-  'pages/home/index',
-  'pages/profile/index',
-]
+const routes = ['pages/blank/index', 'pages/index/index', 'pages/home/index', 'pages/profile/index']
 export default Router.instance
 ```
 

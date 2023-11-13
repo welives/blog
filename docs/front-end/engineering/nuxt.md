@@ -8,6 +8,8 @@ title: Nuxt工程搭建
 UI框架以 Vant 为例
 
 [本工程的Github地址](https://github.com/welives/nuxt-starter)
+
+编写此笔记时所使用的`Nuxt`版本为`3.7.4`
 :::
 
 相关文档
@@ -33,7 +35,7 @@ UI框架以 Vant 为例
 pnpm dlx nuxi init
 ```
 
-::: tip 提示
+::: warning ⚡ 提示
 
 如果安装时报错`Error: Failed to download template from registry: fetch failed`，则给 host 文件添加如下内容
 
@@ -55,7 +57,7 @@ git clone -b v3 --single-branch git@github.com:nuxt/starter.git
 
 接着安装依赖`pnpm install`
 
-::: tip 注意
+::: tip ⚡ 注意
 由于 Nuxt 的官方初始模板缺少了`ESLint`和`Prettier`等配置，所以需要自己手动安装
 :::
 
@@ -376,7 +378,7 @@ export default defineNuxtConfig({
 
 ![](./assets/nuxt/打印appConfig.png)
 
-::: warning 注意
+::: warning ⚡ 注意
 这个文件有点特别，在这里无法读取到环境变量的值，但可以在这里定义一些有明确初始值的变量。这个文件的作用更像是预先定义一些占位的变量，等待`nuxt.config.ts`中的`appConfig`合并到此，然后在应用运行生命周期内进行修改
 :::
 

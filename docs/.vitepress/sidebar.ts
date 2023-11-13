@@ -308,6 +308,15 @@ const sidebar: DefaultTheme.Sidebar = {
       ],
     },
     {
+      text: '微前端',
+      items: [
+        {
+          text: 'micro-app',
+          link: '/front-end/micro-app',
+        },
+      ],
+    },
+    {
       text: 'NodeJS',
       collapsed: false,
       items: [

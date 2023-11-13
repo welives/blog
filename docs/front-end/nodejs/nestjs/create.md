@@ -6,6 +6,8 @@ title: NestJS工程搭建
 搭建一个 NestJS + TypeScript + Webpack + PM2 + ESLint + Prettier 的工程
 
 [本工程的Github地址](https://github.com/welives/nestjs-starter)
+
+编写此笔记时所使用的`NestJS`版本为`10.0.0`
 :::
 
 相关文档
@@ -194,7 +196,7 @@ const envFilePath =
 })
 ```
 
-::: tip 说明
+::: tip ⚡ 说明
 其中`joi`包可以用来校验环境变量的值和类型，[相关文档看这里](https://joi.dev/)
 :::
 
@@ -250,7 +252,7 @@ module.exports = {
 pnpm add ioredis @liaoliaots/nestjs-redis
 ```
 
-::: tip
+::: tip ⚡
 `@liaoliaots/nestjs-redis` 这个包的使用文档[看这里](https://github.com/liaoliaots/nestjs-redis/blob/main/docs/latest/redis.md)
 :::
 

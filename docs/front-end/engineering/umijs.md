@@ -3,17 +3,19 @@ title: UmiJS工程搭建
 ---
 
 ::: tip ✨
-搭建一个开箱即用的基于 UmiJS + Vant + TailwindCSS + TypeScript 的工程
+搭建一个开箱即用的基于 UmiJS + AntDesign + TailwindCSS + TypeScript 的工程
 
-UI框架以 Vant 为例
+UI框架以`Ant-Design`为例
 
 [本工程的Github地址](https://github.com/welives/umijs-starter)
+
+编写此笔记时所使用的`UmiJS`版本为`4.0.87`
 :::
 
 相关文档
 
 - [UmiJS](https://umijs.org/)
-- [React-Vant](https://react-vant.3lang.dev/)
+- [Ant-Design](https://ant-design.antgroup.com/index-cn)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
@@ -42,8 +44,6 @@ pnpm add -D cross-env
 ```
 
 ::: tip 🎉
-编写此笔记时所使用的`UmiJS`版本为`4.0.87`
-
 这样就创建好一个以`UmiJS`为脚手架的基础工程了，接下来我们对它做亿点点额外的配置
 :::
 
@@ -79,6 +79,10 @@ indent_style = tab
 ### Prettier
 
 详细的文档[看这里](https://umijs.org/docs/guides/generator#prettier-%E9%85%8D%E7%BD%AE%E7%94%9F%E6%88%90%E5%99%A8)
+
+::: tip ⚡
+`prettier-plugin-organize-imports`这个插件的作用是自动移除**没有被使用的导入**，如果不想要这个功能就在`plugins`字段中移除
+:::
 
 ::: code-group
 
@@ -453,13 +457,71 @@ import { request } from 'umi'
 request('/api/login', { method: 'POST' })
 ```
 
-## 使用Vant
+## UI库
+
+### Ant-Design
+
+```sh
+pnpm add antd @ant-design/icons
+```
+
+编辑`.umirc.ts`或`config/config.ts`
+
+```ts
+export default defineConfig({
+  plugins: [
+    // ...
+    '@umijs/plugins/dist/antd', // [!code ++]
+  ],
+  antd: {}, // [!code ++]
+})
+```
+
+新建`src/global.tsx`，引入样式
+
+```ts
+import 'antd/dist/reset.css'
+```
+
+#### 布局
+
+先编辑`.umirc.ts`或`config/config.ts`，启用内置布局插件，并为每个路由新增`name`字段，用于给`ProLayout`做菜单渲染使用
+
+```ts
+export default defineConfig({
+  routes: [
+    { path: '/', component: 'index', name: 'Home' },
+    { path: '/docs', component: 'docs', name: 'Docs' },
+  ],
+  plugins: [
+    // ...
+    '@umijs/plugins/dist/layout', // [!code ++]
+  ],
+  layout: {
+    title: 'UmiJS Starter', // [!code ++]
+  },
+})
+```
+
+接着编辑`src/app.tsx`，添加如下内容
+
+```tsx
+import type { RunTimeLayoutConfig } from 'umi'
+// 更多参数见: https://procomponents.ant.design/components/layout#prolayout
+export const layout: RunTimeLayoutConfig = () => {
+  return {
+    layout: 'mix',
+  }
+}
+```
+
+### React-Vant
 
 ```sh
 pnpm add react react-dom react-vant @react-vant/icons
 ```
 
-### 移动端适配
+#### 移动端适配
 
 ```sh
 pnpm add -D postcss-px-to-viewport-8-plugin

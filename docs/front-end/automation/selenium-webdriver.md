@@ -6,6 +6,8 @@ title: selenium-webdriver学习
 搭建一个 Selenium + TypeScript + ESLint + Prettier 的工程
 
 [本工程的Github地址](https://github.com/welives/selenimu-starter)
+
+编写此笔记时所使用的`Selenium`版本为`4.14.0`
 :::
 
 相关文档

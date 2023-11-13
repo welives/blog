@@ -9,7 +9,7 @@ on:
 
 # 设置GITHUB_TOKEN的权限
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -29,12 +29,12 @@ jobs:
     steps:
       # 代码检出
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       # 指定 node 版本
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
@@ -49,12 +49,26 @@ jobs:
         run: |
           npm run build
           touch docs/.vitepress/dist/.nojekyll
-      # 上传
+      # 创建 gh-pages 分支
+      - name: Create gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          folder: docs/.vitepress/dist
+          single-commit: true
+          clean: true
+      # 同步代码到 gitee
+      - name: Sync to Gitee
+        uses: wearerequired/git-mirror-action@v1.2.0
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+        with:
+          source-repo: git@github.com:welives/blog.git
+          destination-repo: git@gitee.com:welives/blog.git
+        # 上传
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: docs/.vitepress/dist
-
   # 部署到GitHubPages
   deploy:
     environment:
@@ -69,3 +83,24 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+      - name: Deploy Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          gitee-username: ${{ secrets.GITEE_USERNAME }}
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: welives/blog
+          branch: gh-pages
+  clear:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # 代码检出
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # 清理 gh-pages
+      - name: Remove gh-pages
+        run: |
+          git branch -d gh-pages
+          git push origin -d gh-pages
