@@ -49,24 +49,23 @@ jobs:
         run: |
           npm run build
           touch docs/.vitepress/dist/.nojekyll
-      # 创建 gh-pages 分支
+      # 创建 gh-pages 分支, Gitee Paegs 部署要用到
       - name: Create gh-pages
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           folder: docs/.vitepress/dist
           single-commit: true
           clean: true
-      # 上传
+      # 上传到 Github Pages 部署环境
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: docs/.vitepress/dist
-  # 部署到GitHubPages
+  # 部署 Github Pages
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    # 不同任务之间可以通过needs定义依赖关系（执行有先后），例如我们定义deploy需要bulid任务完成后才执行
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -74,6 +73,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+  # 同步 Gitee
   gitee-sync:
     needs: build
     runs-on: ubuntu-latest

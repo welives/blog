@@ -7,12 +7,15 @@ hero:
   text: 知其然,也要知其所以然
   tagline: 学习是为了更好的摸鱼
   actions:
-    - theme: brand
-      text: 进入 🚀
-      link: /front-end/
     - theme: alt
       text: View on GitHub
       link: https://github.com/welives/blog
+    - theme: alt
+      text: View on Gitee
+      link: https://welives.gitee.io/blog
+    - theme: brand
+      text: 进入 🚀
+      link: /front-end/
 
 features:
   - title: 搞全栈💪

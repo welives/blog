@@ -10,7 +10,7 @@ title: VitePress博客部署
 ```js
 export default defineConfig({
   // ...
-  base: '/blog'
+  base: '/blog',
   // ...
 })
 ```
@@ -43,7 +43,7 @@ on:
 
 # 设置GITHUB_TOKEN的权限
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -83,23 +83,20 @@ jobs:
         run: |
           npm run build
           touch docs/.vitepress/dist/.nojekyll
-      # 上传
+      # 上传到 Github Pages 部署环境
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: docs/.vitepress/dist
-
   # 部署到GitHubPages
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    # 不同任务之间可以通过needs定义依赖关系（执行有先后），例如我们定义deploy需要bulid任务完成后才执行
     needs: build
     runs-on: ubuntu-latest
-    name: Deploy
     steps:
-      # 执行部署
+      # 部署 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
@@ -108,6 +105,58 @@ jobs:
 :::
 
 - 当推送`main`分支的代码时，Github 会自动进入 CI/CD 流程，过个几分钟，就可以看到博客已经部署成功了
+
+### 自动同步到`Gitee`
+
+在代码仓库页切到`Settings`选项卡，选择左侧菜单的`Secrets and variables`项的`Actions`，点击`New repository secret`按钮设置密钥
+
+- `GITEE_PRIVATE_KEY`是与个人设置页的`SSH keys`相对应的私钥
+- `GITEE_USERNAME`和`GITEE_PASSWORD`是登录`Gitee`要用到账号密码
+
+![](./assets/deploy-blog/gitee-sync-secrets.png)
+
+编辑`.github/workflows/deploy.yml`，增加一个新的工作流任务`gitee-sync`，并且在`build`的任务步骤`Upload artifact`之前插入一个创建`gh-pages`分支的步骤，如下所示：
+
+```yml
+# 同步 Gitee
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 省略... // [!code focus:8]
+      # 创建 gh-pages 分支, Gitee Paegs 部署要用到
+      - name: Create gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          folder: docs/.vitepress/dist
+          single-commit: true
+          clean: true
+      - name: Upload artifact
+        # 省略...
+
+  # 省略... // [!code focus:22]
+  # 同步 Gitee
+  gitee-sync:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # 同步代码到 gitee
+      - name: Sync to Gitee
+        uses: wearerequired/git-mirror-action@v1.2.0
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+        with:
+          source-repo: git@github.com:welives/blog.git
+          destination-repo: git@gitee.com:welives/blog.git
+      # 部署 Gitee Pages
+      - name: Deploy Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          gitee-username: ${{ secrets.GITEE_USERNAME }}
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: welives/blog
+          branch: gh-pages
+```
 
 ## 使用`deploy.sh`脚本手动部署
 
