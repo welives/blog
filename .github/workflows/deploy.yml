@@ -56,15 +56,7 @@ jobs:
           folder: docs/.vitepress/dist
           single-commit: true
           clean: true
-      # 同步代码到 gitee
-      - name: Sync to Gitee
-        uses: wearerequired/git-mirror-action@v1.2.0
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
-        with:
-          source-repo: git@github.com:welives/blog.git
-          destination-repo: git@gitee.com:welives/blog.git
-        # 上传
+      # 上传
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
@@ -77,12 +69,24 @@ jobs:
     # 不同任务之间可以通过needs定义依赖关系（执行有先后），例如我们定义deploy需要bulid任务完成后才执行
     needs: build
     runs-on: ubuntu-latest
-    name: Deploy
     steps:
-      # 执行部署
+      # 部署 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+  gitee-sync:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # 同步代码到 gitee
+      - name: Sync to Gitee
+        uses: wearerequired/git-mirror-action@v1.2.0
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+        with:
+          source-repo: git@github.com:welives/blog.git
+          destination-repo: git@gitee.com:welives/blog.git
+      # 部署 Gitee Pages
       - name: Deploy Gitee Pages
         uses: yanglbme/gitee-pages-action@main
         with:
@@ -90,17 +94,3 @@ jobs:
           gitee-password: ${{ secrets.GITEE_PASSWORD }}
           gitee-repo: welives/blog
           branch: gh-pages
-  clear:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      # 代码检出
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      # 清理 gh-pages
-      - name: Remove gh-pages
-        run: |
-          git branch -d gh-pages
-          git push origin -d gh-pages
