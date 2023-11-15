@@ -31,13 +31,13 @@ UI框架以 Vant 为例
 
 ## 初始化项目
 
-```sh [pnpm]
+```sh
 pnpm create vue
 ```
 
 ![初始化](./assets/vite/vite-vue.png)
 
-然后按照提示操作即可，这样一个基础项目就创建好了
+按照提示操作即可，这样一个基础项目就创建好了
 
 ::: tip 💡
 通过上述交互式命令的选项，我们创建了一个带有`vue-router`、`pinia`、`ESLint`和`Prettier`的基于 Vite 脚手架的 Vue 项目
@@ -205,7 +205,7 @@ pnpm add axios
 
 新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../axios.md)
 
-### Mockjs
+### Mock
 
 ```sh
 pnpm add -D vite-plugin-mock@2.9.8 mockjs @types/mockjs
@@ -245,12 +245,14 @@ export default [
 ] as MockMethod[]
 ```
 
-使用，注意，`vite-plugin-mock`默认是以当前开发服务器的`host`和`post`作为`baseURL`
+- 使用
 
-```tsx
+```ts
 import { request } from './api'
 request('/api/login', { method: 'POST' })
 ```
+
+注意，`vite-plugin-mock`默认是以当前开发服务器的`host`和`post`作为`baseURL`
 
 ## 状态持久化
 
@@ -351,7 +353,7 @@ export default defineConfig(({ mode }) => {
 
 ## 移动端适配
 
-安装所需依赖，此插件的参数配置文档[看这里](https://github.com/lkxian888/postcss-px-to-viewport-8-plugin#readme)
+此插件的参数配置文档[看这里](https://github.com/lkxian888/postcss-px-to-viewport-8-plugin#readme)
 
 ```sh
 pnpm add -D postcss-px-to-viewport-8-plugin

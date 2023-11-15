@@ -202,9 +202,7 @@ pnpm add -D postcss-rem-to-responsive-pixel
 const isH5 = process.env.TARO_ENV === 'h5' // [!code focus]
 module.exports = {
   plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-    // [!code focus:6]
+    // ... // [!code focus:6]
     'postcss-rem-to-responsive-pixel': {
       rootValue: 32, // 1rem = 32rpx
       propList: ['*'], // 默认所有属性都转化
@@ -242,8 +240,7 @@ export default defineConfig(async (merge, { command, mode }) => {
     // ...
     mini: {
       webpackChain(chain) {
-        // ...
-        // [!code focus:9]
+        // ... // [!code focus:9]
         chain.merge({
           plugin: {
             install: {
@@ -272,7 +269,7 @@ pnpm add @nutui/nutui-react-taro @nutui/icons-react-taro @tarojs/plugin-html
 import path from 'node:path' // [!code ++]
 export default defineConfig(async (merge, { command, mode }) => {
   const baseConfig: UserConfigExport = {
-    // [!code focus:35]
+    // ... // [!code focus:35]
     designWidth: (input: any) => {
       if (input?.file?.replace(/\\+/g, '/').indexOf('@nutui') > -1) {
         return 375
@@ -356,7 +353,7 @@ export default defineConfig(async (merge, { command, mode }) => {
 
 新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../../axios.md)
 
-### Mockjs
+### Mock
 
 ```sh
 pnpm add -D @tarojs/plugin-mock mockjs @types/mockjs
@@ -463,7 +460,7 @@ export default createSelectors
 
 ### 示例
 
-新建两个页面用来测试，并请其设置为`tabbar`
+新建两个页面用来测试，并将其设置为`tabbar`
 
 ```sh
 taro create home

@@ -31,7 +31,7 @@ UI框架以 Vant 为例
 
 ## 初始化项目
 
-```sh [pnpm]
+```sh
 pnpm dlx nuxi init
 ```
 

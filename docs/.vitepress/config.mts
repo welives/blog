@@ -51,20 +51,15 @@ export default defineConfig({
     [
       'script',
       {},
-      `(function() {
-        if(location.host.includes('github')) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-CWC890FH58');
-        }
-        if(location.host.includes('gitee')) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-1ZQYVKCJWX');
-        }
-      })();`,
+      `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      if(location.host.includes('github')) {
+        gtag('config', 'G-CWC890FH58');
+      }
+      if(location.host.includes('gitee')) {
+        gtag('config', 'G-1ZQYVKCJWX');
+      }`,
     ],
   ],
   // https://vitepress.dev/reference/default-theme-config

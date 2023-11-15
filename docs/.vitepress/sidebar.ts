@@ -286,16 +286,20 @@ const sidebar: DefaultTheme.Sidebar = {
           link: '/front-end/engineering/nextjs',
         },
         {
+          text: 'Expo',
+          link: '/front-end/engineering/expo',
+        },
+        {
+          text: 'Vue-Cli',
+          link: '/front-end/engineering/vue-cli',
+        },
+        {
           text: 'Vite',
           link: '/front-end/engineering/vite',
         },
         {
           text: 'Nuxt',
           link: '/front-end/engineering/nuxt',
-        },
-        {
-          text: 'Expo',
-          link: '/front-end/engineering/expo',
         },
         {
           text: 'Taro',
