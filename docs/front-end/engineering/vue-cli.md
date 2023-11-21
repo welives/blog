@@ -212,7 +212,7 @@ VUE_APP_BASE_API=$API_HOST:$API_PORT
 pnpm add axios
 ```
 
-新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../axios.md)
+新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../encapsulation.md#axios)
 
 ### Mock
 

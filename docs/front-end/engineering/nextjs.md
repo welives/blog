@@ -12,7 +12,7 @@ UI框架以 Vant 为例
 编写此笔记时所使用的`Next`版本为`13.5.6`
 :::
 
-相关文档
+## 相关文档
 
 - [Next.js](https://www.nextjs.cn/)
 - [React-Vant](https://react-vant.3lang.dev/)
@@ -20,13 +20,6 @@ UI框架以 Vant 为例
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
-
-## 事前准备
-
-- Windows 或者 Linux
-- VSCode：编辑器
-- nodejs：项目运行所需要的基础环境
-- git：代码版本控制
 
 ## 初始化项目
 

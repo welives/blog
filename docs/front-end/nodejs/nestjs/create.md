@@ -3,7 +3,7 @@ title: NestJS工程搭建
 ---
 
 ::: tip ✨
-搭建一个 NestJS + TypeScript + Webpack + PM2 + ESLint + Prettier 的工程
+搭建一个 NestJS + TypeORM + TypeScript + Webpack + PM2 + ESLint + Prettier 的工程
 
 [本工程的Github地址](https://github.com/welives/nestjs-starter)
 
@@ -13,17 +13,13 @@ title: NestJS工程搭建
 相关文档
 
 - [NestJS](https://docs.nestjs.cn/)
-- [TypeScript](https://www.tslang.cn/)
+- [TypeORM](https://typeorm.nodejs.cn/)
+- [Prisma](https://prisma.nodejs.cn/)
+- [Mongoose](https://mongoose.nodejs.cn/)
 - [PM2](https://pm2.fenxianglu.cn/)
+- [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
-
-## 事前准备
-
-- Windows 或者 Linux
-- VSCode：编辑器
-- nodejs：项目运行所需要的基础环境
-- git：代码版本控制
 
 ## 项目初始化
 
@@ -134,7 +130,7 @@ rm -rf apps/nestjs-starter
   "monorepo": true,
   "root": "apps/api", // [!code focus]
   "projects": {
-    // [!code focus:10]
+    // ... // [!code focus:10]
     "api": {
       "type": "application",
       "root": "apps/api",
@@ -263,10 +259,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config' // [!code ++]
 import { RedisModule } from '@liaoliaots/nestjs-redis' // [!code ++]
 @Module({
   imports:[
-    // ...
-    // [!code focus:24]
+    // ... // [!code focus:23]
     ConfigModule.forRoot({
-      // ...
       validationSchema: Joi.object({
         // ...
         REDIS_PORT: Joi.number().default(6379),
@@ -307,7 +301,7 @@ import 'winston-daily-rotate-file' // [!code ++]
 @Module({
   // ...
   imports: [
-    // [!code focus:20]
+    // ... // [!code focus:20]
     WinstonModule.forRoot({
       exitOnError: false, // 出现 uncaughtException 时是否 process.exit
       transports: [
@@ -586,8 +580,7 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard' // [!code focus]
 @Module({
   // ...
   providers: [
-    // ...
-    // [!code focus:5]
+    // ... // [!code focus:5]
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
@@ -642,8 +635,7 @@ import { TransformInterceptor } from '@libs/common' // [!code focus]
 @Module({
   // ...
   providers: [
-    // ...
-    // [!code focus:5]
+    // ... // [!code focus:5]
     {
       provide: APP_INTERCEPTOR,
       useClass: TransformInterceptor,
@@ -724,8 +716,7 @@ import { UnifyExceptionFilter } from '@libs/common' // [!code focus]
 @Module({
   // ...
   providers: [
-    // ...
-    // [!code focus:5]
+    // ... // [!code focus:5]
     {
       provide: APP_FILTER,
       useClass: UnifyExceptionFilter,
@@ -803,8 +794,7 @@ nest g class local.strategy auth -p api --flat --no-spec
 ```ts
 import crypto from 'node:crypto' // [!code ++]
 class Utils {
-  // ...
-  // [!code focus:17]
+  // ... // [!code focus:17]
   /** 生成加密盐 */
   genSalt() {
     return crypto.randomBytes(16).toString('base64')

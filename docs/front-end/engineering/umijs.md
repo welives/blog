@@ -12,21 +12,14 @@ UI框架以`Ant-Design`为例
 编写此笔记时所使用的`UmiJS`版本为`4.0.87`
 :::
 
-相关文档
+## 相关文档
 
 - [UmiJS](https://umijs.org/)
-- [Ant-Design](https://ant-design.antgroup.com/index-cn)
+- [AntDesign](https://ant-design.antgroup.com/index-cn)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
-
-## 事前准备
-
-- Windows 或者 Linux
-- VSCode：编辑器
-- nodejs：项目运行所需要的基础环境
-- git：代码版本控制
 
 ## 初始化项目
 
@@ -533,7 +526,7 @@ pnpm add -D postcss-px-to-viewport-8-plugin
 import path from 'path' // [!code ++]
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin' // [!code ++]
 export default defineConfig({
-  // [!code focus:10]
+  // ... // [!code focus:10]
   extraPostCSSPlugins: [
     postcsspxtoviewport8plugin({
       viewportWidth: (file: string) => {

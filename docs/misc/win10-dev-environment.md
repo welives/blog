@@ -419,6 +419,10 @@ git config credential.helper store
 
 安装完成后会自动生成两个系统环境变量`NVM_HOME`和`NVM_SYMLINK`
 
+- `nvm list available` 查看所有可用的 nodejs 版本
+- `nvm ls` 查看当前安装的 nodejs 版本
+- `nvm current` 查看当前使用的 nodejs 版本
+
 然后使用 nvm 命令安装所需要的 nodejs 版本，我这里安装的是最新的 LTS 版本
 
 ```sh

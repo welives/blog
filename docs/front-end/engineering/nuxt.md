@@ -12,24 +12,18 @@ UI框架以 Vant 为例
 编写此笔记时所使用的`Nuxt`版本为`3.7.4`
 :::
 
-相关文档
+## 相关文档
 
 - [Nuxt3](https://nuxt.com.cn/)
 - [Pinia](https://pinia.vuejs.org/zh/)
+- [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/)
 - [Vant](https://vant-ui.github.io/vant/#/zh-CN)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
 
-## 事前准备
-
-- Windows 或者 Linux
-- VSCode：编辑器
-- nodejs：项目运行所需要的基础环境
-- git：代码版本控制
-
-## 初始化项目
+## 项目初始化
 
 ```sh
 pnpm dlx nuxi init
@@ -61,7 +55,7 @@ git clone -b v3 --single-branch git@github.com:nuxt/starter.git
 由于 Nuxt 的官方初始模板缺少了`ESLint`和`Prettier`等配置，所以需要自己手动安装
 :::
 
-## 配置EditorConfig
+### 配置EditorConfig
 
 新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
 
@@ -90,7 +84,7 @@ trim_trailing_whitespace = false
 
 :::
 
-## 安装`ESLint`
+## 安装ESLint
 
 ```sh
 npx eslint --init
@@ -124,7 +118,7 @@ npx eslint --init
 
 ![](./assets/nuxt/eslint_setup_7.png)
 
-## 安装`Prettier`
+## 安装Prettier
 
 ```sh
 pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
@@ -151,7 +145,7 @@ touch .prettierrc
 
 :::
 
-### `ESLint`和`Prettier`的忽略文件
+### ESLint和Prettier的忽略文件
 
 新建`.eslintignore`和`.prettierignore`文件，填入自己喜欢的配置
 
@@ -182,7 +176,7 @@ dist
 
 :::
 
-### 在`.eslintrc.js`中集成`prettier`
+### 在`.eslintrc.js`中集成Prettier
 
 ```js
 module.exports = {
@@ -233,7 +227,6 @@ delete colors.blueGray
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    // [!code focus:8]
     './components/**/*.{vue,jsx,tsx}',
     './layouts/**/*.{vue,jsx,tsx}',
     './pages/**/*.{vue,jsx,tsx}',
@@ -242,10 +235,10 @@ export default {
     './nuxt.config.{js,ts}',
   ],
   theme: {
-    extend: { colors }, // [!code focus]
+    extend: { colors },
   },
   corePlugins: {
-    preflight: false, // [!code focus]
+    preflight: false,
   },
   plugins: [],
 }
@@ -424,7 +417,7 @@ pnpm add -D postcss-px-to-viewport-8-plugin
 ```ts
 import path from 'path' // [!code ++]
 export default defineNuxtConfig({
-  // [!code focus:12]
+  // ... // [!code focus:12]
   postcss: {
     plugins: {
       'postcss-px-to-viewport-8-plugin': {

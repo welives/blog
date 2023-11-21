@@ -160,9 +160,13 @@ const sidebar: DefaultTheme.Sidebar = {
           ],
         },
         {
-          text: 'Axios封装',
-          link: '/front-end/axios',
+          text: '常用工具封装',
+          link: '/front-end/encapsulation',
         },
+        // {
+        //   text: '制作NPM包',
+        //   link: '/front-end/npm/create-package',
+        // },
       ],
     },
     {
@@ -275,7 +279,6 @@ const sidebar: DefaultTheme.Sidebar = {
     },
     {
       text: '工程化',
-      collapsed: true,
       items: [
         {
           text: 'UmiJS',
@@ -300,6 +303,10 @@ const sidebar: DefaultTheme.Sidebar = {
         {
           text: 'Nuxt',
           link: '/front-end/engineering/nuxt',
+        },
+        {
+          text: 'uni-app',
+          link: '/front-end/engineering/uni-app',
         },
         {
           text: 'Taro',

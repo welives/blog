@@ -3,30 +3,26 @@ title: Koa工程搭建
 ---
 
 ::: tip ✨
-搭建一个 Koa2 + TypeScript + Webpack + PM2 + ESLint + Prettier 的工程
+搭建一个 Koa2 + TypeORM + TypeScript + Webpack + PM2 + ESLint + Prettier 的工程
 
 [本工程的Github地址](https://github.com/welives/koa-starter)
 
 编写此笔记时所使用的`Koa2`版本为`2.14.2`
 :::
 
-相关文档
+## 相关文档
 
 - [Koa2](https://koa.nodejs.cn/)
-- [TypeScript](https://www.tslang.cn/)
-- [Webpack](https://webpack.docschina.org/)
+- [TypeORM](https://typeorm.nodejs.cn/)
+- [Prisma](https://prisma.nodejs.cn/)
+- [Mongoose](https://mongoose.nodejs.cn/)
 - [PM2](https://pm2.fenxianglu.cn/)
+- [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
+- [Webpack](https://webpack.docschina.org/)
 
-## 事前准备
-
-- Windows 或者 Linux
-- VSCode：编辑器
-- nodejs：项目运行所需要的基础环境
-- git：代码版本控制
-
-## 基础配置
+## 项目初始化
 
 新建文件夹`server`并打开
 
@@ -102,7 +98,7 @@ insert_final_newline = false
 trim_trailing_whitespace = false
 ```
 
-### 初始化项目
+### 初始化npm
 
 ```sh
 pnpm init -y

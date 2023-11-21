@@ -3,20 +3,23 @@ title: Expo工程搭建
 ---
 
 ::: tip ✨
-搭建一个开箱即用的基于 Expo + Zustand + MMKV + TailwindCSS + TypeScript 的工程
+搭建一个开箱即用的基于 Expo + ReactNavigation + Zustand + MMKV + TailwindCSS + TypeScript 的工程
 
 [本工程的Github地址](https://github.com/welives/expo-starter)
 
 编写此笔记时所使用的`Expo`版本为`49.0.16`
 :::
 
-相关文档
+## 相关文档
 
 - [Expo](https://expo.dev/)
 - [ReactNative](https://reactnative.cn/)
 - [ReactNavigation](https://reactnavigation.org/)
 - [Zustand](https://zustand-demo.pmnd.rs/)
+- [immer](https://immerjs.github.io/immer/)
+- [react-native-mmkv](https://github.com/mrousavy/react-native-mmkv#readme)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
+- [twrnc](https://github.com/jaredh159/tailwind-react-native-classnames)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
@@ -185,7 +188,7 @@ ios
 
 ### 整合`ESLint`和`Prettier`
 
-修改`.eslintrc.js`
+编辑`.eslintrc.js`
 
 ::: details 查看
 
@@ -258,12 +261,12 @@ module.exports = {
 
 ### 开启路径别名
 
-编辑`app.json`，添加如下`experiments`配置项
+编辑`app.json`，添加`experiments`字段
 
 ```json
 {
   "expo": {
-    // 省略...
+    // ...
     "experiments": {
       "tsconfigPaths": true
     }
@@ -292,7 +295,7 @@ registerRootComponent(App)
 
 ```json [package.json]
 {
-  // 省略...
+  // ...
   "main": "index.ts" // [!code ++]
 }
 ```
@@ -463,7 +466,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 
 - 新建`types/global.d.ts`文件，用来声明全局变量、函数、接口和类型等
 - 新建`src/constants/env.ts`文件，用来导出 Expo 传递进来的环境变量
-- 修改`tsconfig.json`，增加一个路径别名`@env`指向`src/constants/env.ts`
+- 编辑`tsconfig.json`，增加一个路径别名`@env`指向`src/constants/env.ts`
 
 ::: code-group
 
@@ -517,18 +520,18 @@ EAS_PROJECT_ID=刚才生成的ID
 EXPO_ACCOUNT_OWNER=jandan
 ```
 
-- 修改入口文件`index.ts`
+- 编辑入口文件`index.ts`
 
 ```ts
 import 'expo-dev-client' // [!code ++]
 ```
 
-- 修改`env.js`文件
+- 编辑`env.js`文件
 
 ::: details 查看
 
 ```js
-// 省略...
+// ...
 // 定义构建工具常量的类型模式
 const buildSchema = z.object({
   ANDROID_PACKAGE: z.string(),
@@ -552,23 +555,23 @@ if (parsed.success === false) {
   throw new Error('无效的环境变量')
 }
 module.exports = {
-  // 省略...
+  // ...
   Env: parsed.data,
 }
 ```
 
 :::
 
-- 修改`app.config.ts`
+- 编辑`app.config.ts`
 
 ::: details 查看
 
 ```ts{2,13-24}
-// 省略...
+// ...
 import { Env, ClientEnv } from './env'
 export default ({ config }: ConfigContext): ExpoConfig => {
   return {
-    // 省略...
+    // ...
     owner: Env.EXPO_ACCOUNT_OWNER, // [!code ++]
     ios: {
       bundleIdentifier: Env.APPLE_BUNDLE_ID, // [!code ++]
@@ -612,7 +615,7 @@ eas build:configure
 
 ### 预构建
 
-打`debug`包
+所谓预构建其实就是打`debug`包
 
 ```sh
 npx expo prebuild
@@ -625,7 +628,7 @@ expo run:android
 npx expo install react-native-safe-area-context react-native-gesture-handler
 ```
 
-修改入口文件`index.ts`和`src/App.tsx`
+编辑入口文件`index.ts`和`src/App.tsx`
 
 ::: code-group
 
@@ -651,7 +654,7 @@ export default function App() {
     </SafeAreaProvider>
   )
 }
-// 省略...
+// ...
 ```
 
 :::
@@ -693,7 +696,7 @@ module.exports = {
 pnpm add twrnc
 ```
 
-新建`src/utils/tailwind.ts`文件，修改`src/App.tsx`
+新建`src/utils/tailwind.ts`文件，编辑`src/App.tsx`
 
 ::: code-group
 
@@ -703,12 +706,12 @@ export default create(require('../../tailwind.config'))
 ```
 
 ```tsx [App.tsx]
-// 省略...
+// ...
 import { useDeviceContext } from 'twrnc' // [!code ++]
 import { tw } from './utils' // [!code ++]
 export default function App() {
   useDeviceContext(tw) // [!code ++]
-  // 省略...
+  // ...
 }
 ```
 
@@ -716,12 +719,12 @@ export default function App() {
 
 ## 屏幕适配
 
-新建`src/utils/global.ts`，修改`types/global.d.ts`和入口文件`index.ts`
+新建`src/utils/global.ts`，编辑`types/global.d.ts`和入口文件`index.ts`
 
 ::: code-group
 
 ```ts [global.d.ts]
-// 省略...
+// ...
 type Prettify<T> = { [P in keyof T]: T[P] } & {}
 type ScaleBased = 'w' | 'h'
 /**
@@ -999,10 +1002,10 @@ export default () => {
 
 :::
 
-修改`src/App.tsx`
+编辑`src/App.tsx`
 
 ```tsx{9-12}
-// 省略...
+// ...
 import { NavigationContainer } from '@react-navigation/native' // [!code ++]
 import AppNavigation from './routes/AppNavigator' // [!code ++]
 export default function App() {
@@ -1029,7 +1032,7 @@ pnpm add react-native-drawer-layout
 npx expo install react-native-reanimated
 ```
 
-修改`src/pages/Profile/index.tsx`和`babel.config.js`
+编辑`src/pages/Profile/index.tsx`和`babel.config.js`
 
 ::: code-group
 
@@ -1045,7 +1048,7 @@ module.exports = function (api) {
 
 ```tsx [Profile]
 import { Drawer } from 'react-native-drawer-layout' // [!code ++]
-// 省略...
+// ...
 export default () => {
   const [open, setOpen] = React.useState(false) // [!code ++]
   return (
@@ -1137,44 +1140,44 @@ export default createSelectors
 
 ### 使用
 
-修改`src/pages/Home/index.tsx`和`src/pages/Profile/index.tsx`
+编辑`src/pages/Home/index.tsx`和`src/pages/Profile/index.tsx`
 
 ::: details 查看
 ::: code-group
 
 ```tsx [Home]
-// 省略...
+// ...
 import { useCounterStore, useCounterReset } from '~/models' // [!code ++]
 export default ({ navigation }: Props) => {
   const count = useCounterStore.use.count() // [!code ++]
   const inc = useCounterStore.use.inc() // [!code ++]
   const dec = useCounterStore.use.dec() // [!code ++]
   return (
-    // 省略...
+    // ...
     <View style={tw`my-3 items-center justify-center`}>
       <Button title="increment" onPress={inc}></Button>
       <Text>{count}</Text>
       <Button title="decrement" onPress={dec}></Button>
     </View>
     <Button title="reset" onPress={useCounterReset}></Button>
-    // 省略...
+    // ...
   )
 }
 ```
 
 ```tsx [Profile]
-// 省略...
+// ...
 import { useCounterStore } from '~/models' // [!code ++]
 export default () => {
   const { count, inc, dec } = useCounterStore() // [!code ++]
   return (
-    // 省略...
+    // ...
     <View style={tw`mt-3 items-center justify-center`}>
       <Button title="increment" onPress={inc}></Button>
       <Text>{count}</Text>
       <Button title="decrement" onPress={dec}></Button>
     </View>
-    // 省略...
+    // ...
   )
 }
 ```
@@ -1272,7 +1275,7 @@ export function useUserReset() {
 
 ## 请求模块
 
-封装过程就不说了，具体代码可以我的[Axios封装](../axios.md)
+封装过程就不说了，具体代码可以我的[Axios封装](../encapsulation.md#axios)
 
 ::: tip 🎉
 到这里，其实这个基础项目的架子就已经算完成了，之后我想到什么补什么

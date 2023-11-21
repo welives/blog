@@ -12,22 +12,16 @@ UI框架以 NutUI-React 为例
 编写此笔记时所使用的`Taro`版本为`3.6.18`
 :::
 
-相关文档
+## 相关文档
 
 - [Taro](https://nervjs.github.io/taro-docs/docs/)
 - [Zustand](https://zustand-demo.pmnd.rs/)
 - [NutUI-React](https://nutui.jd.com/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
+- [weapp-tailwindcss](https://weapp-tw.icebreaker.top/docs/intro)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
-
-## 事前准备
-
-- Windows 或者 Linux
-- VSCode：编辑器
-- nodejs：项目运行所需要的基础环境
-- git：代码版本控制
 
 ## 初始化项目
 
@@ -351,7 +345,7 @@ export default defineConfig(async (merge, { command, mode }) => {
 })
 ```
 
-新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../../axios.md)
+新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../../encapsulation.md#axios)
 
 ### Mock
 

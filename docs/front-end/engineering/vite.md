@@ -12,22 +12,17 @@ UI框架以 Vant 为例
 编写此笔记时所使用的`Vite`版本为`4.4.9`
 :::
 
-相关文档
+## 相关文档
 
 - [Vite](https://cn.vitejs.dev/)
+- [Vue](https://cn.vuejs.org/guide/introduction.html)
 - [Pinia](https://pinia.vuejs.org/zh/)
+- [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/)
 - [Vant](https://vant-ui.github.io/vant/#/zh-CN)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
-
-## 事前准备
-
-- Windows 或者 Linux
-- VSCode：编辑器
-- nodejs：项目运行所需要的基础环境
-- git：代码版本控制
 
 ## 初始化项目
 
@@ -43,13 +38,13 @@ pnpm create vue
 通过上述交互式命令的选项，我们创建了一个带有`vue-router`、`pinia`、`ESLint`和`Prettier`的基于 Vite 脚手架的 Vue 项目
 :::
 
-## 初始化`git`
+### 初始化`git`
 
 ```sh
 git init
 ```
 
-## 配置EditorConfig
+### 配置EditorConfig
 
 新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
 
@@ -78,7 +73,7 @@ trim_trailing_whitespace = false
 
 :::
 
-## `ESLint`和`Prettier`的忽略文件
+### ESLint和Prettier的忽略文件
 
 新建`.eslintignore`和`.prettierignore`文件，填入自己喜欢的配置
 
@@ -146,11 +141,11 @@ export default {
 @tailwind utilities;
 ```
 
-## 配置环境变量
+## 环境变量
 
 关于 Vite 的环境变量详细文档[看这里](https://cn.vitejs.dev/guide/env-and-mode.html#env-files)
 
-新建`.env.local`文件，填入项目所需的环境变量。注意，环境变量名必须以`VITE_`开头，否则不会被识别，例如
+新建`.env`文件，填入项目所需的环境变量。注意，环境变量名必须以`VITE_`开头，否则不会被识别，例如
 
 ```ini
 VITE_APP_NAME=ts-vant-starter
@@ -181,7 +176,7 @@ interface ImportMeta {
 }
 ```
 
-### 使用环境变量
+### 使用
 
 vite 脚手架规定了`src`目录下的文件属于浏览器环境，而`vite.config.ts`文件属于 Node 环境，所以在使用上有点区别
 
@@ -203,7 +198,7 @@ export default defineConfig(({ mode }) => {
 pnpm add axios
 ```
 
-新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../axios.md)
+新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../encapsulation.md#axios)
 
 ### Mock
 
