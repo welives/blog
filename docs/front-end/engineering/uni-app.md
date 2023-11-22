@@ -1343,7 +1343,9 @@ enum StorageSceneKey {
 
 ### ②封装uni-app的路由跳转
 
-安装`qs`模块对 URL 参数进行处理，注意要使用`6.5.3`版本，最新的版本在小程序中会报错
+原本是想用`URLSearchParams`来处理参数的，但`uni-app`没有像`Taro`那样做 polyfill 处理，所以改成使用`qs`模块对 URL 参数进行处理
+
+注意要使用`6.5.3`版本，最新的版本在小程序中会报错
 
 ```sh
 pnpm add qs@6.5.3

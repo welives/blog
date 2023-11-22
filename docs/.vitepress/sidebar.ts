@@ -316,6 +316,10 @@ const sidebar: DefaultTheme.Sidebar = {
             { text: 'Vue', link: '/front-end/engineering/taro/create-vue' },
           ],
         },
+        // {
+        //   text: 'Electron',
+        //   link: '/front-end/engineering/electron',
+        // },
       ],
     },
     {
@@ -392,6 +396,16 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: '博客部署',
       link: '/misc/deploy-blog',
+    },
+    {
+      text: 'Github',
+      collapsed: false,
+      items: [
+        {
+          text: '美化个人主页',
+          link: '/misc/github/profile',
+        },
+      ],
     },
     {
       text: 'VitePress优化',
