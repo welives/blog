@@ -21,7 +21,7 @@ UI框架以 Vant 为例
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
 
-## 初始化项目
+## 项目初始化
 
 ```sh
 pnpm create next-app
@@ -33,7 +33,7 @@ pnpm create next-app
 通过上述交互式命令的选项，我们创建了一个带有`ESLint`的基于 Next.js 脚手架的 React 项目
 :::
 
-## 配置EditorConfig
+### 配置EditorConfig
 
 新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
 
@@ -62,7 +62,7 @@ trim_trailing_whitespace = false
 
 :::
 
-## 安装`Prettier`
+### 安装`Prettier`
 
 ```sh
 pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
@@ -149,6 +149,10 @@ module.exports = {
 ## 环境变量
 
 关于 Next.js 的环境变量[详细文档看这里](https://www.nextjs.cn/docs/basic-features/environment-variables)
+
+## 助手函数
+
+根目录新建`utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
 
 ## 使用Vant
 

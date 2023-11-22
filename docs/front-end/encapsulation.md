@@ -434,7 +434,7 @@ const kindOfTest = (type: string) => {
   return (thing: any) => kindOf(thing) === type
 }
 const typeOfTest = (type: string) => (thing: any) => typeof thing === type
-function findKey(obj: Object, key: string) {
+function findKey(obj: object, key: string) {
   key = key.toLowerCase()
   const keys = Object.keys(obj)
   let i = keys.length
@@ -589,7 +589,7 @@ class Utils {
   /** @description 判断对象是否有某属性 */
   hasOwnProperty = (
     ({ hasOwnProperty }) =>
-    (obj: Object, prop: string) =>
+    (obj: object, prop: string) =>
       hasOwnProperty.call(obj, prop)
   )(Object.prototype)
   /** @description 把baseURL和relativeURL组合起来 */
@@ -611,7 +611,7 @@ class Utils {
     return arr
   }
   /** @description 迭代数组或对象 */
-  forEach(obj: AnyObj | Array<any>, fn: Function) {
+  forEach(obj: AnyObj | Array<any>, fn: (...args: any[]) => void) {
     if (obj === null || typeof obj === 'undefined') {
       return
     }
@@ -631,7 +631,7 @@ class Utils {
     }
   }
   /** @description 对象合并 */
-  merge(...args: Object[]) {
+  merge(...args: object[]) {
     // @ts-expect-error
     const { caseless } = (this.isContextDefined(this) && this) || {}
     const result: AnyObj = {}
@@ -649,7 +649,7 @@ class Utils {
     }
 
     for (let i = 0, l = arguments.length; i < l; i++) {
-      arguments[i] && this.forEach(arguments[i], assignValue)
+      args[i] && this.forEach(args[i], assignValue)
     }
     return result
   }

@@ -84,7 +84,7 @@ trim_trailing_whitespace = false
 
 :::
 
-## 安装ESLint
+### 安装ESLint
 
 ```sh
 npx eslint --init
@@ -118,7 +118,7 @@ npx eslint --init
 
 ![](./assets/nuxt/eslint_setup_7.png)
 
-## 安装Prettier
+### 安装Prettier
 
 ```sh
 pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
@@ -255,43 +255,6 @@ export default defineNuxtConfig({
 })
 ```
 
-## 状态管理
-
-Pinia 同样也被 Nuxt 官方集成了
-
-```sh
-pnpm add pinia @pinia/nuxt
-```
-
-编辑`nuxt.config.ts`，在`modules`中增加`@pinia/nuxt`并设置自动导入，指定`stores`目录
-
-```ts
-export default defineNuxtConfig({
-  modules: [
-    // ...
-    ['@pinia/nuxt', { autoImports: ['defineStore'] }], // [!code ++]
-  ],
-  imports: { dirs: ['./stores'] }, // [!code ++]
-})
-```
-
-### 持久化
-
-```sh
-pnpm add -D @pinia-plugin-persistedstate/nuxt
-```
-
-编辑`nuxt.config.ts`，在`modules`中增加`@pinia-plugin-persistedstate/nuxt`
-
-```ts
-export default defineNuxtConfig({
-  modules: [
-    // ...
-    '@pinia-plugin-persistedstate/nuxt', // [!code ++]
-  ],
-})
-```
-
 ## 配置环境变量
 
 关于 Nuxt3 的环境变量详细文档[看这里](https://nuxt.com.cn/docs/getting-started/configuration#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%92%8C%E7%A7%81%E6%9C%89%E4%BB%A4%E7%89%8C)
@@ -375,7 +338,49 @@ export default defineNuxtConfig({
 这个文件有点特别，在这里无法读取到环境变量的值，但可以在这里定义一些有明确初始值的变量。这个文件的作用更像是预先定义一些占位的变量，等待`nuxt.config.ts`中的`appConfig`合并到此，然后在应用运行生命周期内进行修改
 :::
 
-::: tip 到这里，基于 Nuxt3 的 Vant 基础项目模板就搭建完成了
+## 助手函数
+
+根目录新建`utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
+
+## 状态管理
+
+Pinia 同样也被 Nuxt 官方集成了
+
+```sh
+pnpm add pinia @pinia/nuxt
+```
+
+编辑`nuxt.config.ts`，在`modules`中增加`@pinia/nuxt`并设置自动导入，指定`stores`目录
+
+```ts
+export default defineNuxtConfig({
+  modules: [
+    // ...
+    ['@pinia/nuxt', { autoImports: ['defineStore'] }], // [!code ++]
+  ],
+  imports: { dirs: ['./stores'] }, // [!code ++]
+})
+```
+
+### 持久化
+
+```sh
+pnpm add -D @pinia-plugin-persistedstate/nuxt
+```
+
+编辑`nuxt.config.ts`，在`modules`中增加`@pinia-plugin-persistedstate/nuxt`
+
+```ts
+export default defineNuxtConfig({
+  modules: [
+    // ...
+    '@pinia-plugin-persistedstate/nuxt', // [!code ++]
+  ],
+})
+```
+
+::: tip 🎉
+到这里，基于 Nuxt3 的 Vant 基础项目模板就搭建完成了
 :::
 
 ## 使用Vant

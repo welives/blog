@@ -313,20 +313,40 @@ import AutoImport from 'unplugin-auto-import/vite' // [!code ++]
 export default defineConfig(({ mode }) => {
   return {
     plugins: [
-      // ... // [!code focus:11]
+      // ... // [!code focus:9]
       AutoImport({
         include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
         imports: ['vue', 'uni-app', 'pinia'],
         eslintrc: {
           enabled: true,
-          filepath: './.eslintrc-auto-import.json',
-          globalsPropValue: true,
         },
-        dts: './src/auto-imports.d.ts',
+        dts: true,
       }),
     ],
   }
 })
+```
+
+编辑`tsconfig.json`，将插件生成的`auto-imports.d.ts`添加进`include`字段
+
+```json
+{
+  "include": [
+    // ...
+    "auto-imports.d.ts" // [!code ++]
+  ]
+}
+```
+
+编辑`.eslintrc.js`，将插件生成的`.eslintrc-auto-import.json`添加进`extends`字段
+
+```js
+module.exports = {
+  extends: [
+    // ...
+    './.eslintrc-auto-import.json', // [!code ++]
+  ],
+}
 ```
 
 ## 安装TailwindCSS
@@ -1412,7 +1432,7 @@ class Router {
    * 路由中间件,做跳转前的代理
    */
   private middleware(type: RouterType, options: UniRouterOptions) {
-    let { url = '', data = '', events, ...rest } = options
+    let { url = '', data = {}, events, ...rest } = options
     let [urlKey, queryStr] = url.split('?')
     // 单独存一份url,待会要用
     urlKey = urlKey
@@ -1429,14 +1449,14 @@ class Router {
         if (type === 'switchTab') {
           url = urlKey
         } else {
-          let obj: AnyObj = {}
           if (data && typeof data === 'string' && data.trim()) {
             data = searchParams2Obj(data)
           }
+          let obj: AnyObj = {}
           if (queryStr && queryStr.trim()) {
             obj = searchParams2Obj(queryStr)
           }
-          const str = stringify(utils.merge(data, obj))
+          const str = stringify(utils.merge(data as object, obj))
           url = str ? `${urlKey}?${str}` : urlKey
         }
         authCheck(urlKey, type, { ...rest, url, events })
@@ -1473,8 +1493,8 @@ class Router {
   /**
    * 关闭当前页面，返回上一页面或多级页面
    */
-  navigateBack(options: UniRouterOptions) {
-    this.middleware('navigateBack', options)
+  navigateBack(options: Omit<UniRouterOptions, 'url'>) {
+    this.middleware('navigateBack', { url: '', ...options })
   }
 }
 // 需要权限的路由,注意首尾不能带有斜杠

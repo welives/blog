@@ -32,7 +32,7 @@ title: Expo工程搭建
 - git：代码版本控制
 - AndroidStudio：Android 虚拟机调试 App
 
-## 初始化项目
+## 项目初始化
 
 我初始化项目时用的 Expo SDK 版本是`49`
 
@@ -59,7 +59,7 @@ pnpm install
 
 这样就创建好一个以 Expo 为脚手架的基础工程了，接下来我们对它做亿点点额外的配置
 
-## 配置EditorConfig
+### 配置EditorConfig
 
 新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
 
@@ -88,7 +88,7 @@ trim_trailing_whitespace = false
 
 :::
 
-## 初始化`ESLint`
+### 安装ESLint
 
 ```sh
 npx eslint --init
@@ -142,13 +142,13 @@ ios
 
 :::
 
-### RN社区的ESLint插件
+#### RN社区的ESLint插件
 
 ```sh
 pnpm add -D @react-native-community/eslint-plugin @react-native-community/eslint-config
 ```
 
-## 安装`Prettier`
+### 安装Prettier
 
 ```sh
 pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
@@ -186,7 +186,7 @@ ios
 
 :::
 
-### 整合`ESLint`和`Prettier`
+#### 整合ESLint和Prettier
 
 编辑`.eslintrc.js`
 
@@ -235,7 +235,7 @@ module.exports = {
 
 :::
 
-## 配置`tsconfig`
+### 配置tsconfig
 
 ```json
 {
@@ -259,7 +259,7 @@ module.exports = {
 }
 ```
 
-### 开启路径别名
+#### 开启路径别名
 
 编辑`app.json`，添加`experiments`字段
 
@@ -716,6 +716,18 @@ export default function App() {
 ```
 
 :::
+
+## 助手函数
+
+新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
+
+## 请求模块
+
+```sh
+pnpm add axios
+```
+
+新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../encapsulation.md#axios)
 
 ## 屏幕适配
 
@@ -1199,8 +1211,11 @@ pnpm add react-native-mmkv
 
 ```ts [storage.ts]
 import { MMKV } from 'react-native-mmkv'
+import { StateStorage } from 'zustand/middleware'
+
 // 定义不同场景下的mmkv存储键
 enum MMKVSceneKey {
+  DEVICE = 'mmkv-device-uuid',
   USER = 'mmkv-user',
 }
 // 创建默认的 mmkv 实例
@@ -1216,23 +1231,9 @@ function removeItem(key: string) {
   storage.delete(key)
 }
 export { storage, getItem, setItem, removeItem, MMKVSceneKey }
-```
 
-```ts [user.ts]
-import { create } from 'zustand'
-import { immer } from 'zustand/middleware/immer'
-import { createJSONStorage, persist, StateStorage } from 'zustand/middleware'
-import createSelectors from './selectors'
-import { storage, MMKVSceneKey } from '../utils'
-interface State {
-  token: string
-  isLogged: boolean
-}
-interface Action {
-  setToken: (token: string) => void
-  removeToken: () => void
-}
-const userStorage: StateStorage = {
+/** @description 用来给 zustand 持久化存储的方法 */
+export const zustandStorage: StateStorage = {
   getItem: (key: string) => {
     const value = storage.getString(key)
     return value ?? null
@@ -1244,6 +1245,24 @@ const userStorage: StateStorage = {
     storage.delete(key)
   },
 }
+```
+
+```ts [user.ts]
+import { create } from 'zustand'
+import { immer } from 'zustand/middleware/immer'
+import { createJSONStorage, persist } from 'zustand/middleware'
+import createSelectors from './selectors'
+import { MMKVSceneKey, zustandStorage } from '../utils'
+
+interface State {
+  token: string
+  isLogged: boolean
+}
+interface Action {
+  setToken: (token: string) => void
+  removeToken: () => void
+}
+
 const initialState: State = {
   token: '',
   isLogged: false,
@@ -1260,7 +1279,7 @@ const userStore = create<State & Action>()(
       {
         //! 注意这里的 name 并不是创建 mmkv 实例的 ID，而是 mmkv 持久化数据的唯一 key
         name: MMKVSceneKey.USER,
-        storage: createJSONStorage(() => userStorage),
+        storage: createJSONStorage(() => zustandStorage),
       }
     )
   )
@@ -1272,10 +1291,6 @@ export function useUserReset() {
 ```
 
 :::
-
-## 请求模块
-
-封装过程就不说了，具体代码可以我的[Axios封装](../encapsulation.md#axios)
 
 ::: tip 🎉
 到这里，其实这个基础项目的架子就已经算完成了，之后我想到什么补什么

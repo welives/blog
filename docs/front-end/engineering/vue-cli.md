@@ -206,42 +206,6 @@ VUE_APP_BASE_API=$API_HOST:$API_PORT
 
 之后就可以在代码中以 `process.env.VUE_APP_XXX` 的形式使用自定义环境变量了
 
-## 请求模块
-
-```sh
-pnpm add axios
-```
-
-新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../encapsulation.md#axios)
-
-### Mock
-
-```sh
-pnpm add -D vue-cli-plugin-mock mockjs @types/mockjs
-```
-
-根目录新建`mock/index.js`，示例如下，根据自己的情况添加添加接口
-
-```js
-export default {
-  'POST /api/login': {
-    code: '200',
-    message: 'ok',
-    data: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjMyODU2LCJzZXNzaW9uIjoiOTRlZTZjOThmMmY4NzgzMWUzNzRmZTBiMzJkYTIwMGMifQ.z5Llnhe4muNsanXQSV-p1DJ-89SADVE-zIkHpM0uoQs',
-    success: true,
-  },
-}
-```
-
-- 使用
-
-```ts
-import { request } from './api'
-request('/api/login', { method: 'POST' })
-```
-
-注意，`vue-cli-plugin-mock`默认是以当前开发服务器的`host`和`post`作为`baseURL`
-
 ## 迁移至Vue2.7
 
 ```sh
@@ -291,6 +255,46 @@ export function useRoute() {
 ```sh
 pnpm add vuex-composition-helpers@1.2.0
 ```
+
+## 助手函数
+
+新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
+
+## 请求模块
+
+```sh
+pnpm add axios
+```
+
+新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../encapsulation.md#axios)
+
+### Mock
+
+```sh
+pnpm add -D vue-cli-plugin-mock mockjs @types/mockjs
+```
+
+根目录新建`mock/index.js`，示例如下，根据自己的情况添加添加接口
+
+```js
+export default {
+  'POST /api/login': {
+    code: '200',
+    message: 'ok',
+    data: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjMyODU2LCJzZXNzaW9uIjoiOTRlZTZjOThmMmY4NzgzMWUzNzRmZTBiMzJkYTIwMGMifQ.z5Llnhe4muNsanXQSV-p1DJ-89SADVE-zIkHpM0uoQs',
+    success: true,
+  },
+}
+```
+
+- 使用
+
+```ts
+import { request } from './api'
+request('/api/login', { method: 'POST' })
+```
+
+注意，`vue-cli-plugin-mock`默认是以当前开发服务器的`host`和`post`作为`baseURL`
 
 ## 状态管理
 

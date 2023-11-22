@@ -23,7 +23,7 @@ UI框架以 NutUI-React 为例
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
 
-## 初始化项目
+## 项目初始化
 
 ```sh
 npm install -g @tarojs/cli
@@ -38,7 +38,7 @@ taro init taro-react-starter
 通过上述交互式命令的选项，我们创建了一个带有`ESLint`的 React 基础工程，接下来我们对它做亿点点额外的配置
 :::
 
-## 安装Prettier
+### 安装Prettier
 
 ```sh
 pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
@@ -249,84 +249,9 @@ export default defineConfig(async (merge, { command, mode }) => {
 })
 ```
 
-## UI组件库
+## 助手函数
 
-这里选用的是[NutUI-React](https://nutui.jd.com/#/)
-
-```sh
-pnpm add @nutui/nutui-react-taro @nutui/icons-react-taro @tarojs/plugin-html
-```
-
-编辑`config/index.ts`
-
-```ts
-import path from 'node:path' // [!code ++]
-export default defineConfig(async (merge, { command, mode }) => {
-  const baseConfig: UserConfigExport = {
-    // ... // [!code focus:35]
-    designWidth: (input: any) => {
-      if (input?.file?.replace(/\\+/g, '/').indexOf('@nutui') > -1) {
-        return 375
-      }
-      return 750
-    },
-    plugins: ['@tarojs/plugin-html'],
-    alias: {
-      '@': path.resolve(__dirname, '../src'),
-    },
-    sass: {
-      data: '@import "@nutui/nutui-react/dist/styles/variables.scss";',
-    },
-    mini: {
-      postcss: {
-        pxtransform: {
-          enable: true,
-          config: {
-            selectorBlackList: ['nut-'],
-          },
-        },
-      },
-    },
-    h5: {
-      esnextModules: ['nutui-react-taro', 'icons-react-taro'],
-      postcss: {
-        pxtransform: {
-          enable: true,
-          config: {
-            selectorBlackList: ['nut-'],
-          },
-        },
-      },
-    },
-  }
-})
-```
-
-### 按需引入
-
-```sh
-pnpm add -D babel-plugin-import
-```
-
-编辑`babel.config.js`
-
-```js
-module.exports = {
-  // ...
-  plugins: [
-    [
-      'import',
-      {
-        libraryName: '@nutui/nutui-react-taro',
-        libraryDirectory: 'dist/esm',
-        style: 'css',
-        camel2DashComponentName: false,
-      },
-      'nutui-react-taro',
-    ],
-  ],
-}
-```
+新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../../encapsulation.md#helper)
 
 ## 请求模块
 
@@ -340,7 +265,7 @@ pnpm add @tarojs/plugin-http axios
 export default defineConfig(async (merge, { command, mode }) => {
   const baseConfig: UserConfigExport = {
     // ...
-    plugins: ['@tarojs/plugin-http'], // [!code focus]
+    plugins: ['@tarojs/plugin-http'], // [!code ++]
   }
 })
 ```
@@ -551,8 +476,9 @@ export default function Profile() {
 
 ```tsx [storage.ts]
 import { setStorageSync, getStorageSync, removeStorageSync } from '@tarojs/taro'
+import { StateStorage } from 'zustand/middleware'
+
 enum StorageSceneKey {
-  DEVICE = 'storage-device-uuid',
   USER = 'storage-user',
 }
 function getItem<T = any>(key: string): T {
@@ -566,15 +492,29 @@ function removeItem(key: string) {
   removeStorageSync(key)
 }
 export { getItem, setItem, removeItem, StorageSceneKey }
+
+/** @description 用来给 zustand 持久化存储的方法 */
+export const zustandStorage: StateStorage = {
+  getItem: (key: string) => {
+    const value = getStorageSync(key)
+    return value ?? null
+  },
+  setItem: (key: string, value) => {
+    setStorageSync(key, value)
+  },
+  removeItem: (key: string) => {
+    removeStorageSync(key)
+  },
+}
 ```
 
 ```ts [user.ts]
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
-import { createJSONStorage, persist, StateStorage } from 'zustand/middleware'
-import { setStorageSync, getStorageSync, removeStorageSync } from '@tarojs/taro'
+import { createJSONStorage, persist } from 'zustand/middleware'
 import createSelectors from './selectors'
-import { StorageSceneKey } from '../utils'
+import { zustandStorage, StorageSceneKey } from '../utils'
+
 interface State {
   token: string
   isLogged: boolean
@@ -583,23 +523,12 @@ interface Action {
   setToken: (token: string) => void
   removeToken: () => void
 }
-const userStorage: StateStorage = {
-  getItem: (key) => {
-    const value = getStorageSync(key)
-    return value ?? null
-  },
-  setItem: (key, value) => {
-    setStorageSync(key, value)
-  },
-  removeItem: (key) => {
-    removeStorageSync(key)
-  },
-}
+
 const initialState: State = {
   token: '',
   isLogged: false,
 }
-const userStore = create<State & Action>()(
+const store = create<State & Action>()(
   immer(
     persist(
       (set, get) => ({
@@ -611,14 +540,15 @@ const userStore = create<State & Action>()(
       {
         //! 注意这里的name是当前这个Zustand模块进行缓存时的唯一key, 每个需要缓存的Zustand模块都必须分配一个唯一key
         name: StorageSceneKey.USER,
-        storage: createJSONStorage(() => userStorage),
+        storage: createJSONStorage(() => zustandStorage),
       }
     )
   )
 )
-export const useUserStore = createSelectors(userStore)
+
+export const useUserStore = createSelectors(store)
 export function useUserReset() {
-  userStore.setState(initialState)
+  store.setState(initialState)
 }
 ```
 
@@ -626,35 +556,104 @@ export function useUserReset() {
 
 ## 路由权限
 
-新建`src/routes/index.ts`，对`Taro`的路由跳转做一层权限控制的封装
+### ①路由状态
+
+新建`src/models/auth.ts`，用来记录重定向的信息，编辑`src/utils/storage.ts`，增加一个`zustand`持久化场景
+
+::: code-group
+
+```ts [auth.ts]
+import { create } from 'zustand'
+import { immer } from 'zustand/middleware/immer'
+import { createJSONStorage, persist } from 'zustand/middleware'
+import createSelectors from './selectors'
+import { zustandStorage, StorageSceneKey } from '../utils'
+
+interface Redirect {
+  url: string
+  tab?: boolean
+}
+
+interface State {
+  redirect: Redirect | null
+}
+interface Action {
+  setRedirect: (value: Redirect) => void
+  clear: () => void
+}
+
+const store = create<State & Action>()(
+  immer(
+    persist(
+      (set, get) => ({
+        redirect: null,
+        setRedirect: (value) => set({ redirect: value }),
+        clear: () => set({ redirect: null }),
+      }),
+      {
+        name: StorageSceneKey.AUTH,
+        storage: createJSONStorage(() => zustandStorage),
+      }
+    )
+  )
+)
+
+export const useAuthStore = createSelectors(store)
+export function useAuthReset() {
+  store.setState({ redirect: null })
+}
+```
+
+```ts [storage.ts]
+enum StorageSceneKey {
+  // ...
+  AUTH = 'storage-auth', // [!code ++]
+}
+```
+
+:::
+
+### ②封装Taro的路由跳转
+
+新建`src/router/index.ts`，对`Taro`的路由跳转做一层权限控制的封装
 
 ::: details 查看
 
 ```ts
-import Taro, { EventChannel } from '@tarojs/taro'
-import { useUserStore } from '@/models'
+import Taro from '@tarojs/taro'
+import { useUserStore } from '../models'
+import { utils } from '../utils'
 
-interface IRouterOptions<T = any> {
-  url: string
-  data?: T
-  complete?: (res: TaroGeneral.CallbackResult) => void
-  fail?: (res: TaroGeneral.CallbackResult) => void
-  success?: (res: TaroGeneral.CallbackResult) => void
+interface AnyObj {
+  [key: string]: any
 }
-interface NavigateToOptions<T = any> extends IRouterOptions<T> {
-  events?: TaroGeneral.IAnyObject
-  success?: (res: TaroGeneral.CallbackResult & { eventChannel: EventChannel }) => void
-}
-interface NavigateBackOptions extends Omit<IRouterOptions, 'url' | 'data'> {
-  delta?: number
-}
-type RouterOptions<T = any> = NavigateToOptions<T> & NavigateBackOptions
 type RouterType = 'navigateTo' | 'redirectTo' | 'switchTab' | 'reLaunch' | 'navigateBack'
+type SuccessCallback =
+  | TaroGeneral.CallbackResult
+  | (TaroGeneral.CallbackResult & { eventChannel: Taro.EventChannel })
+interface TaroRouterOptions<S = SuccessCallback>
+  extends Omit<Taro.navigateTo.Option, 'success'>,
+    Omit<Taro.navigateBack.Option, 'success'>,
+    Omit<Taro.redirectTo.Option, 'success'>,
+    Omit<Taro.reLaunch.Option, 'success'>,
+    Omit<Taro.switchTab.Option, 'success'> {
+  data?: string | AnyObj
+  success?: (res: S) => void
+}
+
+function searchParams2Obj(params: any) {
+  const searchParams = new URLSearchParams(params)
+  const obj: AnyObj = {}
+  for (const [key, value] of searchParams.entries()) {
+    obj[key] = value
+  }
+  return obj
+}
 
 /**
  * 路由跳转处理
  */
-function handleRouter(urlKey: string, type: RouterType, options: RouterOptions) {
+function authCheck(urlKey: string, type: RouterType, options: TaroRouterOptions) {
   const isLogged = useUserStore.getState().isLogged
   if (authRoutes.includes(urlKey)) {
     if (!isLogged) {
@@ -669,9 +668,9 @@ function handleRouter(urlKey: string, type: RouterType, options: RouterOptions) 
 /**
  * 执行路由跳转
  */
-function navigate(type: RouterType, options: RouterOptions) {
+function navigate(type: RouterType, options: TaroRouterOptions) {
   const { data, ...rest } = options
-  if (!Taro.hasOwnProperty(type)) return
+  if (!['navigateTo', 'redirectTo', 'switchTab', 'reLaunch'].includes(type)) return
   if (!rest.url.startsWith('/')) {
     rest.url = `/${rest.url}`
   }
@@ -694,10 +693,11 @@ class Router {
   /**
    * 路由中间件,做跳转前的代理
    */
-  private middleware(type: RouterType, options: RouterOptions) {
+  private middleware(type: RouterType, options: TaroRouterOptions) {
     let { url = '', data = {}, events, ...rest } = options
+    let [urlKey, queryStr] = url.split('?')
     // 单独存一份url,待会要用
-    const key = url
+    urlKey = urlKey
       .split('/')
       .filter((e) => e !== '')
       .join('/')
@@ -705,46 +705,57 @@ class Router {
       if (type === 'navigateBack') {
         Taro.navigateBack(rest)
       } else {
-        if (!key.trim() || !routes.includes(key)) {
+        if (!urlKey.trim() || !routes.includes(urlKey)) {
           throw Error('无效的路由')
         }
-        // 不是tabbar的话就给路由拼上参数
-        options.url = type === 'switchTab' ? key : key + '?' + new URLSearchParams(data).toString()
-        handleRouter(key, type, options)
+        if (type === 'switchTab') {
+          url = urlKey
+        } else {
+          let obj: AnyObj = {}
+          if (data && typeof data === 'string' && data.trim()) {
+            data = searchParams2Obj(data)
+          }
+          if (queryStr && queryStr.trim()) {
+            obj = searchParams2Obj(queryStr)
+          }
+          const str = new URLSearchParams(utils.merge(data as object, obj)).toString()
+          url = str ? `${urlKey}?${str}` : urlKey
+        }
+        authCheck(urlKey, type, { ...rest, url, events })
       }
     } catch (error) {
-      console.error(error.message)
       // TODO
+      console.error(error.message)
     }
   }
   /**
    * 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
    */
-  switchTab(options: IRouterOptions) {
+  switchTab(options: TaroRouterOptions) {
     this.middleware('switchTab', options)
   }
   /**
    * 关闭所有页面，打开到应用内的某个页面
    */
-  reLaunch(options: IRouterOptions) {
+  reLaunch(options: TaroRouterOptions) {
     this.middleware('reLaunch', options)
   }
   /**
    * 关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面
    */
-  redirectTo(options: IRouterOptions) {
+  redirectTo(options: TaroRouterOptions) {
     this.middleware('redirectTo', options)
   }
   /**
    * 保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面
    */
-  navigateTo(options: NavigateToOptions) {
+  navigateTo(options: TaroRouterOptions) {
     this.middleware('navigateTo', options)
   }
   /**
    * 关闭当前页面，返回上一页面或多级页面
    */
-  navigateBack(options: NavigateBackOptions) {
+  navigateBack(options: Omit<TaroRouterOptions, 'url'>) {
     this.middleware('navigateBack', { url: '', ...options })
   }
 }
@@ -756,6 +767,41 @@ export default Router.instance
 ```
 
 :::
+
+### ③权限钩子
+
+新建`src/hooks/useAuth.ts`权限钩子函数，对直接访问 URL 的方式进行拦截
+
+```ts
+import { useDidShow, getCurrentInstance } from '@tarojs/taro'
+import { useUserStore, useAuthStore } from '../models'
+import router from '../router'
+const tabbar = ['/pages/home/index', '/pages/profile/index']
+
+export const useAuth = () => {
+  const isLogged = useUserStore.use.isLogged()
+  const setRedirect = useAuthStore.use.setRedirect()
+  const current = getCurrentInstance().router
+  const path = current ? current.path.split('?')[0] : ''
+  const isTab = tabbar.includes(path)
+  const routeParams = current?.params
+  const params = {}
+  for (const [key, value] of Object.entries(routeParams ?? {})) {
+    if (!['stamp', '$taroTimestamp'].includes(key)) {
+      params[key] = value
+    }
+  }
+  useDidShow(() => {
+    if (!isLogged) {
+      const str = new URLSearchParams(params).toString()
+      setRedirect({ tab: isTab, url: str ? `${path}?${str}` : path })
+      router.reLaunch({ url: '/pages/index/index' })
+    }
+  })
+}
+```
+
+### ④使用示例
 
 新建一个空白页面用来做权限判断的跳板页，并将其设置为启动页面
 
@@ -770,14 +816,14 @@ export default defineAppConfig({
 })
 ```
 
-### 使用
+编辑`blank`、`index`和`home`页面
 
-编辑刚才新建的`blank`页面
+::: code-group
 
-```tsx
+```tsx [blank]
 import { useLoad } from '@tarojs/taro'
 import { useUserStore } from '@/models'
-import router from '@/routes'
+import router from '@/router'
 export default function Blank() {
   const isLogged = useUserStore.use.isLogged()
   useLoad(() => {
@@ -788,5 +834,137 @@ export default function Blank() {
     }
   })
   return null
+}
+```
+
+```tsx [index]
+import { View, Button } from '@tarojs/components'
+import { request } from '@/api'
+import { useUserStore, useAuthStore, useAuthReset } from '@/models'
+import router from '@/router'
+import './index.scss'
+
+export default function Index() {
+  const setToken = useUserStore.use.setToken()
+  const auth = useAuthStore()
+  const login = async () => {
+    const res = await request('/api/login', {
+      method: 'POST',
+    })
+    setToken(res.data)
+    if (auth.redirect?.url) {
+      const success = () => {
+        useAuthReset()
+      }
+      auth.redirect.tab
+        ? router.switchTab({
+            url: auth.redirect.url,
+            success,
+          })
+        : router.redirectTo({
+            url: auth.redirect.url,
+            success,
+          })
+    } else {
+      router.switchTab({ url: '/pages/home/index' })
+    }
+  }
+  return (
+    <View className="flex flex-1 flex-col items-center justify-center gap-2 h-full">
+      <Button plain type="primary" onClick={login}>
+        Go Home
+      </Button>
+    </View>
+  )
+}
+```
+
+```tsx [home]
+// ...
+import { useAuth } from '@/hooks' // [!code ++]
+export default function Home() {
+  useAuth() // [!code ++]
+  // ...
+}
+```
+
+:::
+
+## UI组件库
+
+这里选用的是[NutUI-React](https://nutui.jd.com/#/)
+
+```sh
+pnpm add @nutui/nutui-react-taro @nutui/icons-react-taro @tarojs/plugin-html
+```
+
+编辑`config/index.ts`
+
+```ts
+import path from 'node:path' // [!code ++]
+export default defineConfig(async (merge, { command, mode }) => {
+  const baseConfig: UserConfigExport = {
+    // ... // [!code focus:35]
+    designWidth: (input: any) => {
+      if (input?.file?.replace(/\\+/g, '/').indexOf('@nutui') > -1) {
+        return 375
+      }
+      return 750
+    },
+    plugins: ['@tarojs/plugin-html'],
+    alias: {
+      '@': path.resolve(__dirname, '../src'),
+    },
+    sass: {
+      data: '@import "@nutui/nutui-react/dist/styles/variables.scss";',
+    },
+    mini: {
+      postcss: {
+        pxtransform: {
+          enable: true,
+          config: {
+            selectorBlackList: ['nut-'],
+          },
+        },
+      },
+    },
+    h5: {
+      esnextModules: ['nutui-react-taro', 'icons-react-taro'],
+      postcss: {
+        pxtransform: {
+          enable: true,
+          config: {
+            selectorBlackList: ['nut-'],
+          },
+        },
+      },
+    },
+  }
+})
+```
+
+### 按需引入
+
+```sh
+pnpm add -D babel-plugin-import
+```
+
+编辑`babel.config.js`
+
+```js
+module.exports = {
+  // ...
+  plugins: [
+    [
+      'import',
+      {
+        libraryName: '@nutui/nutui-react-taro',
+        libraryDirectory: 'dist/esm',
+        style: 'css',
+        camel2DashComponentName: false,
+      },
+      'nutui-react-taro',
+    ],
+  ],
 }
 ```

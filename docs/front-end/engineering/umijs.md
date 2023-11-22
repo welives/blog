@@ -207,6 +207,10 @@ module.exports = {
 
 :::
 
+## 助手函数
+
+新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
+
 ## 插件
 
 由于普通的 Umi 应用中，默认不附带任何插件，所以我们需要先安装它
@@ -600,7 +604,6 @@ export function onAppCreated({ app }: any) {
 
 ```ts [storage.ts]
 enum StorageSceneKey {
-  DEVICE = 'storage-device-uuid',
   USER = 'storage-user',
 }
 function getItem<T = any>(key: string): T {

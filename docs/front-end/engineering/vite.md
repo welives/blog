@@ -192,6 +192,59 @@ export default defineConfig(({ mode }) => {
 })
 ```
 
+## 自动导入
+
+```sh
+pnpm add -D unplugin-auto-import
+```
+
+编辑`vite.config.ts`，注册插件
+
+```ts
+import AutoImport from 'unplugin-auto-import/vite' // [!code ++]
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [
+      // ... // [!code focus:9]
+      AutoImport({
+        include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
+        imports: ['vue', 'pinia', 'vue-router'],
+        eslintrc: {
+          enabled: true,
+        },
+        dts: true,
+      }),
+    ],
+  }
+})
+```
+
+编辑`tsconfig.app.json`，将插件生成的`auto-imports.d.ts`添加进`include`字段
+
+```json
+{
+  "include": [
+    // ...
+    "auto-imports.d.ts" // [!code ++]
+  ]
+}
+```
+
+编辑`.eslintrc.js`，将插件生成的`.eslintrc-auto-import.json`添加进`extends`字段
+
+```js
+module.exports = {
+  extends: [
+    // ...
+    './.eslintrc-auto-import.json', // [!code ++]
+  ],
+}
+```
+
+## 助手函数
+
+新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
+
 ## 请求模块
 
 ```sh
@@ -201,6 +254,8 @@ pnpm add axios
 新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../encapsulation.md#axios)
 
 ### Mock
+
+安装`2.9.8`的版本，`3`的版本目前有`bug`
 
 ```sh
 pnpm add -D vite-plugin-mock@2.9.8 mockjs @types/mockjs
@@ -255,7 +310,7 @@ request('/api/login', { method: 'POST' })
 pnpm add pinia-plugin-persistedstate
 ```
 
-编辑`src/main.ts`
+编辑`src/main.ts`，注册插件
 
 ```ts
 // ...
@@ -270,7 +325,6 @@ app.use(createPinia().use(piniaPluginPersistedstate)).use(router).mount('#app') 
 
 ```ts [storage.ts]
 enum StorageSceneKey {
-  DEVICE = 'storage-device-uuid',
   USER = 'storage-user',
 }
 function getItem<T = any>(key: string): T {
@@ -600,7 +654,6 @@ function App() {
 
 ```ts [storage.ts]
 enum StorageSceneKey {
-  DEVICE = 'storage-device-uuid',
   USER = 'storage-user',
 }
 function getItem<T = any>(key: string): T {

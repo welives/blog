@@ -24,7 +24,7 @@ UI框架以 NutUI-Vue 为例
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
 
-## 初始化项目
+## 项目初始化
 
 ```sh
 npm install -g @tarojs/cli
@@ -39,7 +39,7 @@ taro init taro-vue-starter
 通过上述交互式命令的选项，我们创建了一个带有`ESLint`的 Vue 基础工程，接下来我们对它做亿点点额外的配置
 :::
 
-## 安装Prettier
+### 安装Prettier
 
 ```sh
 pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
@@ -248,6 +248,69 @@ export default defineConfig(async (merge, { command, mode }) => {
 })
 ```
 
+## 助手函数
+
+新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../../encapsulation.md#helper)
+
+## 请求模块
+
+```sh
+pnpm add @tarojs/plugin-http axios
+```
+
+编辑`config/index.ts`，注册插件
+
+```ts
+export default defineConfig(async (merge, { command, mode }) => {
+  const baseConfig: UserConfigExport = {
+    // ...
+    plugins: ['@tarojs/plugin-http'], // [!code focus]
+  }
+})
+```
+
+新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../../encapsulation.md#axios)
+
+### Mock
+
+```sh
+pnpm add -D @tarojs/plugin-mock mockjs @types/mockjs
+```
+
+编辑`config/dev.ts`
+
+```ts
+export default {
+  plugins: ['@tarojs/plugin-mock'],
+  h5: {
+    devServer: {
+      proxy: {
+        '/api': {
+          target: process.env.TARO_APP_API,
+          changeOrigin: true,
+          pathRewrite: { '^/api': '' },
+        },
+      },
+    },
+  },
+} satisfies UserConfigExport
+```
+
+根目录新建`mock/index.ts`，示例如下，根据自己的情况添加添加接口
+
+```ts
+export default {
+  'POST /api/login': {
+    code: '200',
+    message: 'ok',
+    data: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjMyODU2LCJzZXNzaW9uIjoiOTRlZTZjOThmMmY4NzgzMWUzNzRmZTBiMzJkYTIwMGMifQ.z5Llnhe4muNsanXQSV-p1DJ-89SADVE-zIkHpM0uoQs',
+    success: true,
+  },
+}
+```
+
+当启动开发服务器的时候就会启动一个数据`mock`服务器
+
 ## UI组件库
 
 这里选用的是[NutUI-Vue](https://nutui.jd.com/#/)
@@ -358,65 +421,6 @@ export default defineConfig(async (merge, { command, mode }) => {
 }
 ```
 
-## 请求模块
-
-```sh
-pnpm add @tarojs/plugin-http axios
-```
-
-编辑`config/index.ts`，注册插件
-
-```ts
-export default defineConfig(async (merge, { command, mode }) => {
-  const baseConfig: UserConfigExport = {
-    // ...
-    plugins: ['@tarojs/plugin-http'], // [!code focus]
-  }
-})
-```
-
-新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../../encapsulation.md#axios)
-
-### Mock
-
-```sh
-pnpm add -D @tarojs/plugin-mock mockjs @types/mockjs
-```
-
-编辑`config/dev.ts`
-
-```ts
-export default {
-  plugins: ['@tarojs/plugin-mock'],
-  h5: {
-    devServer: {
-      proxy: {
-        '/api': {
-          target: process.env.TARO_APP_API,
-          changeOrigin: true,
-          pathRewrite: { '^/api': '' },
-        },
-      },
-    },
-  },
-} satisfies UserConfigExport
-```
-
-根目录新建`mock/index.ts`，示例如下，根据自己的情况添加添加接口
-
-```ts
-export default {
-  'POST /api/login': {
-    code: '200',
-    message: 'ok',
-    data: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjMyODU2LCJzZXNzaW9uIjoiOTRlZTZjOThmMmY4NzgzMWUzNzRmZTBiMzJkYTIwMGMifQ.z5Llnhe4muNsanXQSV-p1DJ-89SADVE-zIkHpM0uoQs',
-    success: true,
-  },
-}
-```
-
-当启动开发服务器的时候就会启动一个数据`mock`服务器
-
 ## 状态管理
 
 这里用的是[Pinia](https://pinia.vuejs.org/zh/)
@@ -425,7 +429,7 @@ export default {
 pnpm add pinia
 ```
 
-编辑`src/app.ts`
+编辑`src/app.ts`，注册 Pinia
 
 ```ts
 import { createPinia } from 'pinia' // [!code ++]
@@ -546,7 +550,7 @@ const counter = useCounterStore()
 pnpm add pinia-plugin-persistedstate
 ```
 
-编辑`src/app.ts`
+编辑`src/app.ts`，注册持久化插件
 
 ```ts
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate' // [!code ++]
@@ -562,9 +566,9 @@ export default App
 
 ```ts [storage.ts]
 import { setStorageSync, getStorageSync, removeStorageSync } from '@tarojs/taro'
+import { StorageLike } from 'pinia-plugin-persistedstate'
 
 enum StorageSceneKey {
-  DEVICE = 'storage-device-uuid',
   USER = 'storage-user',
 }
 
@@ -580,15 +584,9 @@ function removeItem(key: string) {
 }
 
 export { getItem, setItem, removeItem, StorageSceneKey }
-```
 
-```ts [user.ts]
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
-import { setStorageSync, getStorageSync } from '@tarojs/taro'
-import { StorageLike } from 'pinia-plugin-persistedstate'
-import { StorageSceneKey } from '../utils'
-const userStorage: StorageLike = {
+/** @description 用来给 pinia 持久化存储的方法 */
+export const piniaStorage: StorageLike = {
   getItem: (key) => {
     const value = getStorageSync(key)
     return value ?? null
@@ -597,6 +595,13 @@ const userStorage: StorageLike = {
     setStorageSync(key, value)
   },
 }
+```
+
+```ts [user.ts]
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import { piniaStorage, StorageSceneKey } from '../utils'
+
 export const useUserStore = defineStore(
   'user',
   () => {
@@ -617,7 +622,7 @@ export const useUserStore = defineStore(
       //! 注意这里的key是当前这个Pinia模块进行缓存时的唯一key, 每个需要缓存的Pinia模块都必须分配一个唯一key
       key: StorageSceneKey.USER,
       // pinia-plugin-persistedstate 插件的默认持久化方案只支持web端，在Taro里使用需要自定义进行覆盖
-      storage: userStorage,
+      storage: piniaStorage,
     },
   }
 )
@@ -627,35 +632,91 @@ export const useUserStore = defineStore(
 
 ## 路由权限
 
-新建`src/routes/index.ts`，对`Taro`的路由跳转做一层权限控制的封装
+### ①路由状态
+
+新建`src/stores/auth.ts`，用来记录重定向的信息，编辑`src/utils/storage.ts`，增加一个`pinia`持久化场景
+
+::: code-group
+
+```ts [auth.ts]
+import { defineStore } from 'pinia'
+import { StorageSceneKey, piniaStorage } from '../utils'
+
+interface Redirect {
+  url: string
+  tab?: boolean
+}
+interface AuthState {
+  redirect: Redirect | null
+}
+
+export const useAuthStore = defineStore('auth', {
+  state: (): AuthState => ({ redirect: null }),
+  actions: {
+    setRedirect(value: Redirect) {
+      this.redirect = value
+    },
+    clear() {
+      this.redirect = null
+    },
+  },
+  persist: {
+    key: StorageSceneKey.AUTH,
+    storage: piniaStorage,
+  },
+})
+```
+
+```ts [storage.ts]
+enum StorageSceneKey {
+  // ...
+  AUTH = 'storage-auth', // [!code ++]
+}
+```
+
+:::
+
+### ②封装uni-app的路由跳转
+
+新建`src/router/index.ts`，对`Taro`的路由跳转做一层权限控制的封装
 
 ::: details 查看
 
 ```ts
-import Taro, { EventChannel } from '@tarojs/taro'
-import { useUserStore } from '@/stores'
+import Taro from '@tarojs/taro'
+import { useUserStore } from '../stores'
+import { utils } from '../utils'
 
-interface IRouterOptions<T = any> {
-  url: string
-  data?: T
-  complete?: (res: TaroGeneral.CallbackResult) => void
-  fail?: (res: TaroGeneral.CallbackResult) => void
-  success?: (res: TaroGeneral.CallbackResult) => void
+interface AnyObj {
+  [key: string]: any
 }
-interface NavigateToOptions<T = any> extends IRouterOptions<T> {
-  events?: TaroGeneral.IAnyObject
-  success?: (res: TaroGeneral.CallbackResult & { eventChannel: EventChannel }) => void
-}
-interface NavigateBackOptions extends Omit<IRouterOptions, 'url' | 'data'> {
-  delta?: number
-}
-type RouterOptions<T = any> = NavigateToOptions<T> & NavigateBackOptions
 type RouterType = 'navigateTo' | 'redirectTo' | 'switchTab' | 'reLaunch' | 'navigateBack'
+type SuccessCallback =
+  | TaroGeneral.CallbackResult
+  | (TaroGeneral.CallbackResult & { eventChannel: Taro.EventChannel })
+interface TaroRouterOptions<S = SuccessCallback>
+  extends Omit<Taro.navigateTo.Option, 'success'>,
+    Omit<Taro.navigateBack.Option, 'success'>,
+    Omit<Taro.redirectTo.Option, 'success'>,
+    Omit<Taro.reLaunch.Option, 'success'>,
+    Omit<Taro.switchTab.Option, 'success'> {
+  data?: string | AnyObj
+  success?: (res: S) => void
+}
+
+function searchParams2Obj(params: any) {
+  const searchParams = new URLSearchParams(params)
+  const obj: AnyObj = {}
+  for (const [key, value] of searchParams.entries()) {
+    obj[key] = value
+  }
+  return obj
+}
 
 /**
  * 路由跳转处理
  */
-function handleRouter(urlKey: string, type: RouterType, options: RouterOptions) {
+function authCheck(urlKey: string, type: RouterType, options: TaroRouterOptions) {
   const isLogged = useUserStore().isLogged
   if (authRoutes.includes(urlKey)) {
     if (!isLogged) {
@@ -670,9 +731,9 @@ function handleRouter(urlKey: string, type: RouterType, options: RouterOptions) 
 /**
  * 执行路由跳转
  */
-function navigate(type: RouterType, options: RouterOptions) {
+function navigate(type: RouterType, options: TaroRouterOptions) {
   const { data, ...rest } = options
-  if (!Taro.hasOwnProperty(type)) return
+  if (!['navigateTo', 'redirectTo', 'switchTab', 'reLaunch'].includes(type)) return
   if (!rest.url.startsWith('/')) {
     rest.url = `/${rest.url}`
   }
@@ -695,10 +756,11 @@ class Router {
   /**
    * 路由中间件,做跳转前的代理
    */
-  private middleware(type: RouterType, options: RouterOptions) {
+  private middleware(type: RouterType, options: TaroRouterOptions) {
     let { url = '', data = {}, events, ...rest } = options
+    let [urlKey, queryStr] = url.split('?')
     // 单独存一份url,待会要用
-    const key = url
+    urlKey = urlKey
       .split('/')
       .filter((e) => e !== '')
       .join('/')
@@ -706,46 +768,57 @@ class Router {
       if (type === 'navigateBack') {
         Taro.navigateBack(rest)
       } else {
-        if (!key.trim() || !routes.includes(key)) {
+        if (!urlKey.trim() || !routes.includes(urlKey)) {
           throw Error('无效的路由')
         }
-        // 不是tabbar的话就给路由拼上参数
-        options.url = type === 'switchTab' ? key : key + '?' + new URLSearchParams(data).toString()
-        handleRouter(key, type, options)
+        if (type === 'switchTab') {
+          url = urlKey
+        } else {
+          let obj: AnyObj = {}
+          if (data && typeof data === 'string' && data.trim()) {
+            data = searchParams2Obj(data)
+          }
+          if (queryStr && queryStr.trim()) {
+            obj = searchParams2Obj(queryStr)
+          }
+          const str = new URLSearchParams(utils.merge(data as object, obj)).toString()
+          url = str ? `${urlKey}?${str}` : urlKey
+        }
+        authCheck(urlKey, type, { ...rest, url, events })
       }
     } catch (error) {
-      console.error(error.message)
       // TODO
+      console.error(error.message)
     }
   }
   /**
    * 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
    */
-  switchTab(options: IRouterOptions) {
+  switchTab(options: TaroRouterOptions) {
     this.middleware('switchTab', options)
   }
   /**
    * 关闭所有页面，打开到应用内的某个页面
    */
-  reLaunch(options: IRouterOptions) {
+  reLaunch(options: TaroRouterOptions) {
     this.middleware('reLaunch', options)
   }
   /**
    * 关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面
    */
-  redirectTo(options: IRouterOptions) {
+  redirectTo(options: TaroRouterOptions) {
     this.middleware('redirectTo', options)
   }
   /**
    * 保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面
    */
-  navigateTo(options: NavigateToOptions) {
+  navigateTo(options: TaroRouterOptions) {
     this.middleware('navigateTo', options)
   }
   /**
    * 关闭当前页面，返回上一页面或多级页面
    */
-  navigateBack(options: NavigateBackOptions) {
+  navigateBack(options: Omit<TaroRouterOptions, 'url'>) {
     this.middleware('navigateBack', { url: '', ...options })
   }
 }
@@ -757,6 +830,41 @@ export default Router.instance
 ```
 
 :::
+
+### ③权限钩子
+
+新建`src/hooks/useAuth.ts`权限钩子函数，对直接访问 URL 的方式进行拦截
+
+```ts
+import { useDidShow, getCurrentInstance } from '@tarojs/taro'
+import { useUserStore, useAuthStore } from '../stores'
+import router from '../router'
+const tabbar = ['/pages/home/index', '/pages/profile/index']
+
+export const useAuth = () => {
+  const isLogged = useUserStore().isLogged
+  const setRedirect = useAuthStore().setRedirect
+  const current = getCurrentInstance().router
+  const path = current ? current.path.split('?')[0] : ''
+  const isTab = tabbar.includes(path)
+  const routeParams = current?.params
+  const params = {}
+  for (const [key, value] of Object.entries(routeParams ?? {})) {
+    if (!['stamp', '$taroTimestamp'].includes(key)) {
+      params[key] = value
+    }
+  }
+  useDidShow(() => {
+    if (!isLogged) {
+      const str = new URLSearchParams(params).toString()
+      setRedirect({ tab: isTab, url: str ? `${path}?${str}` : path })
+      router.reLaunch({ url: '/pages/index/index' })
+    }
+  })
+}
+```
+
+### ④使用示例
 
 新建一个空白页面用来做权限判断的跳板页，并将其设置为启动页面
 
@@ -771,15 +879,15 @@ export default defineAppConfig({
 })
 ```
 
-### 使用
+编辑`blank`、`index`和`home`页面
 
-编辑刚才新建的`blank`页面
+::: code-group
 
-```tsx
+```tsx [blank]
 import { defineComponent } from 'vue'
 import { useLoad } from '@tarojs/taro'
 import { useUserStore } from '@/stores'
-import router from '@/routes'
+import router from '@/router'
 export default defineComponent({
   setup() {
     const userStore = useUserStore()
@@ -794,3 +902,52 @@ export default defineComponent({
   },
 })
 ```
+
+```vue [index]
+<template>
+  <view class="flex flex-col items-center justify-center gap-2 h-full">
+    <button @tap="login">Go Home</button>
+  </view>
+</template>
+
+<script setup lang="ts">
+import { request } from '@/api'
+import { useUserStore, useAuthStore } from '@/stores'
+import router from '@/router'
+const setToken = useUserStore().setToken
+const auth = useAuthStore()
+const login = async () => {
+  const res = await request('/api/login', { method: 'post' })
+  setToken(res.data)
+  if (auth.redirect?.url) {
+    const success = () => {
+      auth.clear()
+    }
+    auth.redirect.tab
+      ? router.switchTab({
+          url: auth.redirect.url,
+          success,
+        })
+      : router.redirectTo({
+          url: auth.redirect.url,
+          success,
+        })
+  } else {
+    router.switchTab({ url: '/pages/home/index' })
+  }
+}
+</script>
+```
+
+```tsx [home]
+// ...
+import { useAuth } from '@/hooks' // [!code ++]
+export default defineComponent({
+  setup() {
+    useAuth() // [!code ++]
+    // ...
+  },
+})
+```
+
+:::
