@@ -63,18 +63,34 @@ jobs:
     steps:
       # 代码检出
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      # 指定 node 版本
-      - name: Setup Node
-        uses: pnpm/action-setup@v2
+      # 安装 Node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: pnpm
+          node-version: 16
       # 配置 github pages
       - name: Setup Pages
         uses: actions/configure-pages@v3
+      # 安装 pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
       # 安装依赖
       - name: Install dependencies
         run: pnpm install
