@@ -2,33 +2,21 @@
 title: 给VitePress增加图片缩放功能
 ---
 
-默认的 Vitepress 加载图片后，因为布局的原因，图片显得很小，很多图片里的内容看不清晰,所以想要一个可以点击图片放大的效果
+默认的 Vitepress 加载图片后，因为布局的原因，图片显得很小，很多图片里的内容看不清晰，所以想要一个可以点击图片放大的效果
 
-经过搜索，找到了一个方案[issues#854](https://github.com/vuejs/vitepress/issues/854)，看了他们的交流后，我也尝试实现了这个功能
+去谷歌搜索了一番，找到一个方案[issues#854](https://github.com/vuejs/vitepress/issues/854)，看了他们的交流后，我也尝试实现了这个功能
 
-## 安装`medium-zoom`
+## 安装medium-zoom
 
-::: code-group
-
-```sh [npm]
-npm add medium-zoom
+```sh
+pnpm add -D medium-zoom
 ```
-
-```sh [yarn]
-yarn add medium-zoom
-```
-
-```sh [pnpm]
-pnpm add medium-zoom
-```
-
-:::
 
 ## 引入库以及配置相关文件
 
 ### 方式一
 
-在`docs/.vitepress`目录下新建`theme`文件夹，接着新建`index.ts`文件(_如果已有则忽略此步骤_)，具体代码如下
+新建`docs/.vitepress/theme/index.ts`，添加如下代码
 
 ```ts{2-4,10-23}
 import DefaultTheme from 'vitepress/theme'
@@ -57,7 +45,9 @@ export default {
 }
 ```
 
-这时候，点击图片放大的功能已经实现了,但是效果不尽如人意，会被其他层级的元素遮挡图片(_例如左侧的导航栏_),所以需要修改一下样式
+这时候，点击图片放大的功能已经实现了，但是效果不尽如人意，会被其他层级的元素遮挡图片(_例如左侧的导航栏_)，所以需要修改一下样式
+
+新建`docs/.vitepress/theme/global.css`，添加如下样式代码，然后在上面的提到的`theme/index.ts`中引入它
 
 ```css
 .medium-zoom-overlay {
@@ -76,7 +66,7 @@ export default {
 
 ### 方式二
 
-在`docs/.vitepress`目录下新建`hooks`文件夹，接着新建`index.ts`和`useMediumZoom.ts`文件，具体代码如下
+新建`docs/.vitepress/hooks/useMediumZoom.ts`，添加如下代码
 
 ::: code-group
 
@@ -121,8 +111,8 @@ export * from './useMediumZoom'
 
 :::
 
-::: warning 注意
-TS 项目必须要有`.vitepress/.env.d.ts`文件，否则报错说`import.mata`对象上没有`env`属性
+::: warning ⚡ 注意
+如果是 TS 项目必须要有`docs/.vitepress/.env.d.ts`文件，否则报错说`import.mata`对象上没有`env`属性
 
 ```ts
 /// <reference types="vite/client" />
@@ -132,7 +122,7 @@ TS 项目必须要有`.vitepress/.env.d.ts`文件，否则报错说`import.mata`
 
 接着编辑**方式一**中提到的`theme/index.ts`文件
 
-```ts{2-3,8-10}
+```ts
 import DefaultTheme from 'vitepress/theme'
 import type { EnhanceAppContext } from 'vitepress' // [!code ++]
 import { useMediumZoomProvider } from '../hooks' // [!code ++]
@@ -140,9 +130,10 @@ import './global.css'
 
 export default {
   ...DefaultTheme,
-  enhanceApp({ app, router, siteData }: EnhanceAppContext) {
-    useMediumZoomProvider(app, router)
-  }
+  enhanceApp(ctx: EnhanceAppContext) {
+    const { app, router, siteData } = ctx
+    useMediumZoomProvider(app, router) // [!code ++]
+  },
   // ...
 }
 ```

@@ -1,4 +1,6 @@
+import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vitepress'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import sidebar from './sidebar'
 
 // https://vitepress.dev/reference/site-config
@@ -67,6 +69,7 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
+    logo: '/logo.svg',
     nav: [
       { text: '前端', link: '/front-end/' },
       { text: '杂项', link: '/misc/' },
@@ -101,8 +104,14 @@ export default defineConfig({
       light: 'vitesse-light',
       dark: 'vitesse-dark',
     },
-    config: (md) => {
-      // md.use(require('markdown-it-footnote'))
+    config: (md) => {},
+  },
+  vite: {
+    plugins: [vueJsx()],
+    resolve: {
+      alias: {
+        '~': fileURLToPath(new URL('../', import.meta.url)),
+      },
     },
   },
 })

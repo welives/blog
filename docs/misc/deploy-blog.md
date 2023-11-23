@@ -2,9 +2,9 @@
 title: VitePress博客部署
 ---
 
-既然选择了用`VitePress`当作博客，那么部署方案肯定不能落下，下面将给出两种方案
+本文将介绍`VitePress`博客的两种部署方案
 
-::: tip 注意
+::: tip 注意 ⚡
 仓库名要和`VitePress`配置中的`base`一致，否则会部署失败，例如我这个项目在 github 的仓库名是`blog`，那么`base`要写成`/blog`
 
 ```js
@@ -17,7 +17,7 @@ export default defineConfig({
 
 :::
 
-## 使用`Github Actions`自动部署
+## 使用Github Actions自动部署
 
 开始之前，最好先阅读 [GitHub Actions 文档](https://docs.github.com/zh/actions)，主要参考的是 [语法部分](https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions)
 
@@ -25,7 +25,7 @@ export default defineConfig({
 
 - 在代码仓库页切到`Settings`选项卡，选择左侧菜单的`Pages`项，在页面中`Build and deployment`部分选择`Github Actions`
 
-![Github Actions](./assets/deploy-blog/githun_actions.png)
+![](./assets/deploy-blog/githun_actions.png)
 
 - 在项目根目录下新建`.github/workflows/deploy.yml`文件，内容如下
 
@@ -106,7 +106,7 @@ jobs:
 
 - 当推送`main`分支的代码时，Github 会自动进入 CI/CD 流程，过个几分钟，就可以看到博客已经部署成功了
 
-### 自动同步到`Gitee`
+### 自动同步到Gitee（可选）
 
 在代码仓库页切到`Settings`选项卡，选择左侧菜单的`Secrets and variables`项的`Actions`，点击`New repository secret`按钮设置密钥
 
@@ -214,4 +214,4 @@ rm -rf docs/.vitepress/dist  #删除dist文件夹
 
 - 在代码仓库页切到`Settings`选项卡，选择左侧菜单的`Pages`项，在页面中`Build and deployment`部分选择`Deploy form a branch`，接着选择`gh-pages`分支，然后点击`Save`按钮保存
 
-![gh-pages](./assets/deploy-blog/gh-pages.png)
+![](./assets/deploy-blog/gh-pages.png)
