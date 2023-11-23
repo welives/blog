@@ -137,3 +137,51 @@ export default {
   // ...
 }
 ```
+
+## 自定义MarkDown图片渲染插件
+
+新建`docs/.vitepress/plugins/markdown/image.ts`，添加如下代码
+
+```ts
+import type MarkdownIt from 'markdown-it'
+export function ImagePlugin(md: MarkdownIt) {
+  const imageRender = md.renderer.rules.image! // 尾部的这个感叹号的意思是断言此变量肯定有值
+  md.renderer.rules.image = (...args) => {
+    const [tokens, idx] = args
+    if (tokens[idx + 2] && /^<!--.*-->/.test(tokens[idx + 2].content)) {
+      const data = tokens[idx + 2].content
+      if (/size=/.test(data)) {
+        const size = data.match(/size=(\d+)(x\d+)?/)
+        tokens[idx].attrs?.push(
+          ['width', size?.[1] || ''],
+          ['height', size?.[2]?.substring(1) || size?.[1] || '']
+        )
+      }
+
+      tokens[idx].attrs?.push(['loading', 'lazy'], ['decoding', 'async'])
+      tokens[idx + 2].content = ''
+      return imageRender(...args)
+    }
+    tokens[idx].attrs?.push(['loading', 'lazy'], ['decoding', 'async'])
+    return imageRender(...args)
+  }
+}
+```
+
+编辑`docs/.vitepress/config.ts`
+
+```ts
+import { ImagePlugin } from './plugins/markdown/image' // [!code ++]
+export default defineConfig({
+  // ...
+  markdown: {
+    config: (md) => {
+      md.use(ImagePlugin) // [!code ++]
+    },
+  },
+})
+```
+
+::: tip 🎉
+现在`markdown`中的所有图片都能实现点击放大效果了，并且使用了原生自带的懒加载
+:::

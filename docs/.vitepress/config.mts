@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vitepress'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { ImagePlugin } from './plugins'
 import sidebar from './sidebar'
 
 // https://vitepress.dev/reference/site-config
@@ -100,11 +101,9 @@ export default defineConfig({
   },
   markdown: {
     lineNumbers: true,
-    theme: {
-      light: 'vitesse-light',
-      dark: 'vitesse-dark',
+    config: (md) => {
+      md.use(ImagePlugin)
     },
-    config: (md) => {},
   },
   vite: {
     plugins: [vueJsx()],
