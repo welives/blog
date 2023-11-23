@@ -68,20 +68,20 @@ jobs:
           fetch-depth: 0
       # 指定 node 版本
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: pnpm/action-setup@v2
         with:
           node-version: 18
-          cache: npm
+          cache: pnpm
       # 配置 github pages
       - name: Setup Pages
         uses: actions/configure-pages@v3
       # 安装依赖
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
       # 打包
       - name: Build with VitePress
         run: |
-          npm run build
+          pnpm build
           touch docs/.vitepress/dist/.nojekyll
       # 上传到 Github Pages 部署环境
       - name: Upload artifact
@@ -171,7 +171,7 @@ jobs:
 set -e  #有错误抛出错误
 
 # 构建
-npm run build  #然后执行打包命令
+pnpm build  #然后执行打包命令
 
 # 进入待发布的目录
 cd docs/.vitepress/dist  #进到dist目录
@@ -210,7 +210,7 @@ rm -rf docs/.vitepress/dist  #删除dist文件夹
 }
 ```
 
-- 执行`npm run deploy`，部署到 GitHub Pages
+- 执行`pnpm deploy`，部署到 GitHub Pages
 
 - 在代码仓库页切到`Settings`选项卡，选择左侧菜单的`Pages`项，在页面中`Build and deployment`部分选择`Deploy form a branch`，接着选择`gh-pages`分支，然后点击`Save`按钮保存
 
