@@ -459,6 +459,9 @@ npm config set cache "D:\Develop\nvm\node_cache"
 npm config set registry https://registry.npm.taobao.org
 ```
 
+::: tip ⚡ npm 的官方源是 `https://registry.npmjs.org`
+:::
+
 #### 安装 yarn
 
 ```sh

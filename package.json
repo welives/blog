@@ -28,12 +28,17 @@
     "eslint-plugin-vue": "^9.17.0",
     "medium-zoom": "^1.0.8",
     "prettier": "^3.0.3",
-    "vitepress": "^1.0.0-rc.20",
-    "vue": "^3.3.8"
+    "vite": "^5.0.4",
+    "vitepress": "1.0.0-rc.31"
   },
   "homepage": "https://github.com/welives/blog",
   "repository": {
     "type": "git",
     "url": "https://github.com/welives/blog.git"
+  },
+  "dependencies": {
+    "@vitepress-code-preview/container": "^1.0.3",
+    "@vitepress-code-preview/plugin": "^1.0.3",
+    "vue": "^3.3.9"
   }
 }

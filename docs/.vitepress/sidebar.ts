@@ -298,7 +298,17 @@ const sidebar: DefaultTheme.Sidebar = {
         },
         {
           text: 'Vite',
-          link: '/front-end/engineering/vite',
+          collapsed: true,
+          items: [
+            {
+              text: 'Vue工程搭建',
+              link: '/front-end/engineering/vite/create-vue',
+            },
+            {
+              text: '代码演示插件编写',
+              link: '/front-end/engineering/vite/code-preview-plugin',
+            },
+          ],
         },
         {
           text: 'Nuxt',
@@ -414,6 +424,10 @@ const sidebar: DefaultTheme.Sidebar = {
         {
           text: '图片缩放功能',
           link: '/misc/vitepress/image-zoom',
+        },
+        {
+          text: '代码演示功能',
+          link: '/misc/vitepress/demo-preview',
         },
       ],
     },

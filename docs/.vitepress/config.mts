@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vitepress'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+import { demoPreviewPlugin } from '@vitepress-code-preview/plugin'
 import { ImagePlugin } from './plugins'
 import sidebar from './sidebar'
 
@@ -102,15 +102,9 @@ export default defineConfig({
   markdown: {
     lineNumbers: true,
     config: (md) => {
+      const docRoot = fileURLToPath(new URL('../', import.meta.url))
+      md.use(demoPreviewPlugin, { docRoot })
       md.use(ImagePlugin)
-    },
-  },
-  vite: {
-    plugins: [vueJsx()],
-    resolve: {
-      alias: {
-        '~': fileURLToPath(new URL('../', import.meta.url)),
-      },
     },
   },
 })

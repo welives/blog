@@ -30,7 +30,7 @@ UI框架以 Vant 为例
 pnpm create vue
 ```
 
-![初始化](./assets/vite/vite-vue.png)
+![初始化](./assets/vite-vue.png)
 
 按照提示操作即可，这样一个基础项目就创建好了
 
@@ -468,7 +468,7 @@ export default defineConfig(({ mode }) => {
 pnpm create vite
 ```
 
-![](./assets/vite/vite-react.png)
+![](./assets/vite-react.png)
 
 ::: tip 💡
 通过上述交互式命令的选项，我们创建了一个带有 ESLint 的基于 Vite 脚手架的 React 项目
