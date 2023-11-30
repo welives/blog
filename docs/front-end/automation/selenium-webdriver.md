@@ -222,7 +222,7 @@ import { Builder, Browser, By, Key, until } from 'selenium-webdriver'
 
 执行`pnpm dev`，可以看到调起的浏览器执行了我们想要的操作
 
-![元気が出る](/blog/よし、元気が出る.gif)
+![元気が出る](/よし、元気が出る.gif)
 
 ![](./assets/检验selenium工程.png)
 

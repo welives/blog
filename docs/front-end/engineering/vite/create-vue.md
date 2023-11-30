@@ -243,7 +243,7 @@ module.exports = {
 
 ## 助手函数
 
-新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
+新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../../encapsulation.md#helper)
 
 ## 请求模块
 
@@ -251,7 +251,7 @@ module.exports = {
 pnpm add axios
 ```
 
-新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../encapsulation.md#axios)
+新建`src/api/core/http.ts`和`src/api/core/config.ts`，之后的封装逻辑参考我的[Axios封装](../../encapsulation.md#axios)
 
 ### Mock
 
