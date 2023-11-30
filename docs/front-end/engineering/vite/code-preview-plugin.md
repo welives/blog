@@ -719,7 +719,6 @@ const on = {
 </template>
 
 <script setup lang="ts">
-import { useData } from 'vitepress'
 import { ref, defineProps, computed } from 'vue'
 import CollapseTransition from './CollapseTransition.vue'
 import Tooltip from './Tooltip.vue'
@@ -744,17 +743,14 @@ const props = withDefaults(defineProps<DemoProps>(), {
   isFile: false,
   hlSource: '',
 })
-const data = useData()
 const locale = computed(() => {
-  return (
-    data.theme.value.codePreview?.[data.localeIndex.value] ?? {
-      'view-source': '查看源代码',
-      'hide-source': '隐藏源代码',
-      'edit-in-playground': '在 Playground 中编辑',
-      'copy-code': '复制代码',
-      'copy-success': '复制成功',
-    }
-  )
+  return {
+    'view-source': '查看源代码',
+    'hide-source': '隐藏源代码',
+    'edit-in-playground': '在 Playground 中编辑',
+    'copy-code': '复制代码',
+    'copy-success': '复制成功',
+  }
 })
 const decodedSource = computed(() => decodeURIComponent(props.source))
 const decodedHlSource = computed(() => decodeURIComponent(props.hlSource))
@@ -971,7 +967,7 @@ export { default } from './components/DemoPreview.vue'
 pnpm add markdown-it markdown-it-container hash-sum --filter ./packages/plugin
 pnpm add unified remark-parse remark-stringify remark-frontmatter --filter ./packages/plugin
 pnpm add -D @types/markdown-it @types/markdown-it-container @types/hash-sum --filter ./packages/plugin
-pnpm add -D vite vitepress @types/unist --filter ./packages/plugin
+pnpm add -D vite @types/unist --filter ./packages/plugin
 ```
 
 ### markdown插件
