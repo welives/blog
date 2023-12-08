@@ -1021,8 +1021,8 @@ function createDemoContainer(md: MarkdownIt, options: PreviewPluginOptions) {
       const token = tokens[idx]
       // 开始标签的 nesting 为 1，结束标签的 nesting 为 -1
       if (token.nesting === 1 && token.type === 'container_demo_open') {
-        const source = tokens[idx + 1].info
-        const lang = tokens[idx + 1].type === 'fence' ? tokens[idx + 1].content : ''
+        const lang = tokens[idx + 1].info
+        const source = tokens[idx + 1].type === 'fence' ? tokens[idx + 1].content : ''
         // 这个componentName表示之后注册组件时所使用的组件名
         return `<${componentName} lang="${lang}" source="${encodeURIComponent(source)}">`
       }

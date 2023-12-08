@@ -665,6 +665,16 @@ class Utils {
       reader.readAsDataURL(blob)
     }).then(cb)
   }
+  /** @description 洗牌算法 */
+  shuffle = (arr: any[]) => {
+    let res = [],
+      random
+    while (arr.length > 0) {
+      random = Math.floor(Math.random() * arr.length)
+      res.push(arr.splice(random, 1)[0])
+    }
+    return res
+  }
 }
 export default Utils.instance
 ```

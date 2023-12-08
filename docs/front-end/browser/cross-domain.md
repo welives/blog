@@ -32,7 +32,7 @@ title: 跨域
 
 ## 跨域的解决方案
 
-### `JSONP`
+### JSONP
 
 `JSONP`是解决跨域问题的古老方案，同源策略中，对标签的跨域请求限制较小，`JSONP`正是利用了这一点来解决跨域问题的
 
@@ -60,7 +60,11 @@ title: 跨域
 <<< @/demo/jsonp/server.js
 :::
 
-### `CORS`
+### iframe
+
+使用`iframe`标签展示异源内容，通过`postMessage`进行跨窗体通信
+
+### CORS
 
 `CORS`(Cross-Origin Resource Sharing)是一套机制，用于浏览器校验跨域请求，它的基本理念是：只要**服务器**明确表示**允许**，则校验**通过**；**服务器**明确表示**拒绝**或**没有表示**，则校验**不通过**
 
@@ -94,7 +98,7 @@ title: 跨域
 
 如果预检请求通过了浏览器的校验后，就会发送真实请求了。此时，真实请求的执行步骤就和简单请求完全一致了
 
-### `Proxy`
+### Proxy
 
 无论是`JSONP`还是`CORS`，这两种方案都不可避免的要对后端服务器动手，即要求服务器端是友军，否则就无法实施
 
@@ -117,11 +121,11 @@ module.exports = {
         changeOrigin: true, //是否跨域
         pathRewrite: {
           // pathRewrite 的作用是把实际Request Url中的'/api'用""代替
-          '^/api': ''
-        }
-      }
-    }
-  }
+          '^/api': '',
+        },
+      },
+    },
+  },
 }
 ```
 
@@ -138,7 +142,7 @@ app.use(
   '/api',
   proxy({
     target: 'http://localhost:8080',
-    changeOrigin: false
+    changeOrigin: false,
   })
 )
 module.exports = app
