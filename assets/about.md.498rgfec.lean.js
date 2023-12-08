@@ -1,0 +1,1 @@
+import{_ as e,o,c,R as t}from"./chunks/framework.O97JKVSI.js";const h=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"about.md","filePath":"about.md","lastUpdated":1698214676000}'),a={name:"about.md"},d=t("",6),r=[d];function n(s,p,_,i,u,l){return o(),c("div",null,r)}const f=e(a,[["render",n]]);export{h as __pageData,f as default};
