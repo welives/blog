@@ -52,7 +52,7 @@ RUN apt-get update -y && \
  git && \
  rm -rf /var/lib/apt/lists/*
 # 安装一些全局依赖
-RUN npm install typescript nodemon ts-node live-server -g --registry=https://registry.npm.taobao.org
+RUN npm install typescript nodemon ts-node live-server -g --registry=https://registry.npmmirror.com
 ```
 
 2. 构建镜像`docker image build -t my-node .`，然后运行容器`docker run -dit -p 5173:5173 --name vue-demo -v "${PWD}":/app my-node /bin/bash`
@@ -111,7 +111,7 @@ source ~/.bashrc
 11. 安装一些常用的全局软件包
 
 ```sh
-npm install yarn typescript nodemon ts-node live-server -g --registry=https://registry.npm.taobao.org
+npm install yarn typescript nodemon ts-node live-server -g --registry=https://registry.npmmirror.com
 ```
 
 12. 打开 VSCode 通过 SSH 连接此`fed`容器，然后根据喜好给容器安装一些常用的 VSCode 插件(_此步可以不做_)

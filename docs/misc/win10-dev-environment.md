@@ -8,7 +8,7 @@
 - [宝塔面板](https://www.bt.cn/new/download.html)
 - [Clash](https://github.com/Fndroid/clash_for_windows_pkg)
 - [Dart](http://gekorm.com/dart-windows/)
-- fvm
+- [fvm](https://fvm.app/)
 - [git](https://git-scm.com/downloads)
 - [TortoiseGit](https://tortoisegit.org/download/)
 - [JDK](https://www.oracle.com/hk/java/technologies/downloads/#java17)
@@ -456,7 +456,7 @@ NODE_PATH => %NVM_HOME%\node_global\node_modules
 ```sh
 npm config set prefix "D:\Develop\nvm\node_global"
 npm config set cache "D:\Develop\nvm\node_cache"
-npm config set registry https://registry.npm.taobao.org
+npm config set registry https://registry.npmmirror.com
 ```
 
 ::: tip ⚡ npm 的官方源是 `https://registry.npmjs.org`
@@ -562,10 +562,17 @@ dart pub global activate fvm
 
 再给用户变量`Path`添加一个值`%LOCALAPPDATA%\Pub\Cache\bin`
 
-创建一个系统变量`FVM_HOME`，填入值`D:\Develop\fvm`，然后使用命令修改 fvm 的缓存路径
+创建一个系统变量`FVM_CACHE_PATH`，填入值`D:\Develop\fvm`
+
+::: warning 注意
+v3版本之前的 fvm 所使用的系统变量名是`FVM_HOME`
+:::
+
+然后使用命令修改 fvm 的缓存路径、禁用git缓存
 
 ```sh
 fvm config --cache-path D:\Develop\fvm
+fvm config --no-git-cache false
 ```
 
 ::: warning 注意
@@ -580,7 +587,7 @@ fvm config --cache-path D:\Develop\fvm
 
 设置了全局版本之后，会在`D:\Develop\fvm`目录下自动生成一个`default`目录，其将作为软链接指向某个具体的版本
 
-然后给用户变量`Path`添加一个值`%FVM_HOME%\default\bin`
+然后给用户变量`Path`添加一个值`%FVM_CACHE_PATH%\default\bin`
 
 最后创建两个用户环境变量`FLUTTER_STORAGE_BASE_URL`和`PUB_HOSTED_URL`
 
@@ -589,7 +596,7 @@ FLUTTER_STORAGE_BASE_URL => https://storage.flutter-io.cn
 PUB_HOSTED_URL => https://pub.flutter-io.cn
 ```
 
-> 更多 fvm 命令可以查看[官方文档](https://fvm.app/docs/guides/basic_commands)
+> 更多 fvm 命令可以查看[官方文档](https://fvm.app/documentation/guides/basic-commands)
 
 ::: warning 注意
 在运行`flutter doctor`进行环境检查时，如果提示 `HTTP Host Availability`，则按以下处理：
@@ -598,7 +605,32 @@ PUB_HOSTED_URL => https://pub.flutter-io.cn
 - 修改`kPubDevHttpHost`的值为`https://pub.flutter-io.cn/`
 - 修改`kgCloudHttpHost`的值为`https://storage.flutter-io.cn/`
 - 修改`androidRequiredHttpHosts`的值为`https://maven.aliyun.com/repository/google/`
+- 删除`flutter/bin/cache`目录
+- 重新运行`flutter doctor`
 
 :::
+
+### 常用的源
+
+- 国内 Flutter 社区
+
+```sh
+FLUTTER_STORAGE_BASE_URL: https://storage.flutter-io.cn
+PUB_HOSTED_URL: https://pub.flutter-io.cn
+```
+
+- 上海交通大学
+
+```sh
+FLUTTER_STORAGE_BASE_URL: https://mirrors.sjtug.sjtu.edu.cn
+PUB_HOSTED_URL: https://dart-pub.mirrors.sjtug.sjtu.edu.cn
+```
+
+- 清华大学 TUNA 协会
+
+```sh
+FLUTTER_STORAGE_BASE_URL: https://mirrors.tuna.tsinghua.edu.cn/flutter
+PUB_HOSTED_URL: https://mirrors.tuna.tsinghua.edu.cn/dart-pub
+```
 
 > 至此，Dart、fvm 和 flutter 的环境配置结束
