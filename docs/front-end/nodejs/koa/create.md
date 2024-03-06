@@ -37,7 +37,7 @@ git init
 touch .gitignore
 ```
 
-设置忽略文件，内容根据自己的喜好
+设置忽略文件，内容根据自己的情况进行调整
 
 ::: details 查看
 
@@ -79,7 +79,7 @@ lerna-debug.log*
 
 ### 配置`EditorConfig`
 
-新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
+新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范进行调整
 
 ```ini
 # https://editorconfig.org
@@ -303,10 +303,6 @@ NODE_ENV=development
 # 应用配置
 APP_HOST=localhost
 APP_PORT=3000
-
-# 数据库配置
-MYSQL_URL=mysql://root:123456@localhost:3306/test
-MONGODB_URL=mongodb://root:123456@localhost:27017/test
 ```
 
 新建`src/env.ts`，用来加载多环境变量配置文件
@@ -441,63 +437,30 @@ module.exports = {
 ## 安装`Koa`和相关插件
 
 ```sh
-pnpm add koa koa-router koa-bodyparser
-pnpm add -D @types/koa @types/koa-router @types/koa-bodyparser
+pnpm add koa koa-router koa-bodyparser @koa/cors koa-helmet koa-static
+pnpm add -D @types/koa @types/koa-router @types/koa-bodyparser @types/koa__cors @types/koa-helmet @types/koa-static
+
 ```
 
 ### 创建路由
 
-新建控制器`src/controllers/user.controller.ts`和路由`src/routes/index.ts`，具体参考如下目录结构
+新建`src/routes/index.ts`
 
-```
-.
-├─ src
-│  ├─ controllers
-│  │  └─ user.controller.ts
-│  ├─ routes
-│  │  └─ index.ts
-...
-```
-
-::: code-group
-
-```ts [routes/index.ts]
+```ts
 import Router from 'koa-router'
-import UserController from '../controllers/user.controller'
 
 const router = new Router()
-router.get('/user', UserController.getUser)
+router.prefix('/api')
+router.get('/test', async (ctx) => {
+  ctx.body = {
+    code: 'E0000',
+    msg: 'ok',
+    data: 'test',
+  }
+})
 
 export default router
 ```
-
-```ts [user.controller.ts]
-import { Context } from 'koa'
-const singletonEnforcer = Symbol('UserController')
-class UserController {
-  private static _instance: UserController
-  constructor(enforcer: any) {
-    if (enforcer !== singletonEnforcer) {
-      throw new Error('Cannot initialize single instance')
-    }
-  }
-  static get instance() {
-    // 如果已经存在实例则直接返回, 否则实例化后返回
-    this._instance || (this._instance = new UserController(singletonEnforcer))
-    return this._instance
-  }
-  async getUser(ctx: Context) {
-    ctx.body = {
-      code: 200,
-      message: '获取用户信息成功',
-      data: { name: 'jandan', email: '10000@qq.com' },
-    }
-  }
-}
-export default UserController.instance
-```
-
-:::
 
 ### 改写入口文件
 
@@ -506,16 +469,26 @@ export default UserController.instance
 ::: code-group
 
 ```ts [app.ts]
+import path from 'node:path'
 import Koa from 'koa'
+import cors from '@koa/cors'
+import helmet from 'koa-helmet'
+import koaStatic from 'koa-static'
 import bodyParser from 'koa-bodyparser'
 import router from './routes'
 const app = new Koa()
-app.use(bodyParser())
+app
+  .use(helmet())
+  .use(cors())
+  .use(bodyParser())
+  .use(koaStatic(path.resolve(__dirname, '../public')))
 
-app.use(router.routes()).use(router.allowedMethods())
-app.use(async (ctx, next) => {
-  ctx.body = 'Hello World'
-})
+app
+  .use(router.routes())
+  .use(router.allowedMethods())
+  .use(async (ctx, next) => {
+    ctx.body = 'Hello World'
+  })
 
 export default app
 ```
@@ -535,16 +508,13 @@ app.listen(PORT, () => {
 
 至此，一个极简的`Koa`项目就搭建完成了，执行`pnpm run dev`并访问`http://localhost:3000`，可以看到浏览器显示`Hello World`
 
-使用接口调试工具访问`http://localhost:3000/user`，可以看到如下输出
+使用接口调试工具访问`http://localhost:3000/api/test`，可以看到如下输出
 
 ```json
 {
-  "code": 200,
-  "message": "获取用户信息成功",
-  "data": {
-    "name": "jandan",
-    "email": "10000@qq.com"
-  }
+  "code": "E0000",
+  "msg": "ok",
+  "data": "test"
 }
 ```
 
@@ -671,4 +641,631 @@ module.exports = () => {
 
 ::: tip ⚡
 生产环境使用`PM2`启动（生产环境端口默认：8080），可以达到负载均衡
+:::
+
+## 扩展完善
+
+### 助手函数
+
+新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../../encapsulation.md#helper)
+
+### 定时任务
+
+```bash
+pnpm add cron
+pnpm add @types/cron -D
+```
+
+新建`src/tasks/index.ts`编写定时任务逻辑，编辑`src/app.ts`注册定时任务
+
+::: code-group
+
+```ts [tasks/index.ts]
+import { CronJob } from 'cron'
+const cronExp = process.env.CRON_EXP || '* * * * *'
+
+export const cron = new CronJob(cronExp, () => {
+  console.log('Executing cron job once every minutes')
+})
+```
+
+```ts [app.ts]
+import { cron } from './tasks' // [!code ++]
+// ...
+cron.start() // [!code ++]
+export default app
+```
+
+:::
+
+### 日志
+
+```bash
+pnpm add winston
+```
+
+新建`src/utils/logger.ts`编写日志核心逻辑，编辑`src/app.ts`加载日志模块
+
+::: code-group
+
+```ts [logger.ts]
+import { Context, Next } from 'koa'
+import winston from 'winston'
+
+function koaLogging() {
+  return async (ctx: Context, next: Next) => {
+    const start = Date.now()
+    await next()
+    const ms = Date.now() - start
+    let logLevel = ''
+    if (ctx.status >= 500) {
+      logLevel = 'error'
+    } else if (ctx.status >= 400) {
+      logLevel = 'warn'
+    } else if (ctx.status >= 100) {
+      logLevel = 'info'
+    }
+    const msg = `${ctx.method} ${ctx.url} ${ctx.status} ${ms}ms`
+    logger.log(logLevel, msg)
+  }
+}
+
+const options: winston.LoggerOptions = {
+  level: process.env.LOG_LEVEL,
+  transports: [
+    new winston.transports.Console({
+      format: winston.format.combine(winston.format.colorize(), winston.format.simple()),
+    }),
+    new winston.transports.File({ level: 'error', dirname: 'logs', filename: 'error.log' }),
+  ],
+}
+export const logger = winston.createLogger(options)
+export function setupLogging(app: any) {
+  app.use(koaLogging())
+}
+```
+
+```ts [app.ts]
+import { setupLogging } from './utils/logger' // [!code ++]
+// ...
+const app = new Koa()
+setupLogging(app) // [!code ++]
+// ...
+```
+
+:::
+
+### 异常处理
+
+新建`src/utils/exception.ts`和`src/middlewares/error_handler.ts`，编辑`src/app.ts`应用中间件
+
+::: code-group
+
+```ts [app.ts]
+import catchError from './middlewares/error_handler' // [!code ++]
+// ...
+app.use(catchError) // [!code ++] // 注意一定要放在路由的前面加载
+// ...
+```
+
+```ts [exception.ts]
+import assert from 'assert'
+import Utils from './utils'
+export interface AppError {
+  // http状态码
+  status?: number
+  // 业务状态
+  success?: boolean
+  // 业务消息
+  msg?: string
+  // 业务码
+  code?: string
+  // 业务数据
+  data?: any
+}
+
+export const ErrorType = {
+  unknowd: { status: 500, msg: '未知错误', code: 'E9999' },
+  http: { status: 400, msg: '请求出错', code: 'E0001' },
+  success: { status: 200, msg: 'ok', code: 'E0000' },
+  failed: { status: 400, msg: 'error', code: 'E0001' },
+  unauthorized: { status: 401, msg: '未授权', code: 'E0002' },
+  forbidden: { status: 403, msg: '禁止访问', code: 'E0003' },
+  not_found: { status: 404, msg: '资源未找到', code: 'E0004' },
+  auth_denied: { status: 400, msg: '身份验证失败', code: 'E0005' },
+  parameters: { status: 400, msg: '参数错误', code: 'E0006' },
+  expired_token: { status: 422, msg: '令牌过期', code: 'E0007' },
+  repeat: { status: 400, msg: '字段重复', code: 'E0008' },
+  method_not_allowed: { status: 405, msg: '请求方法不允许', code: 'E0009' },
+  file_large: { status: 413, msg: '文件体积过大', code: 'E0010' },
+  file_too_many: { status: 413, msg: '文件数量过多', code: 'E0011' },
+  file_extension: { status: 406, msg: '文件扩展名不符合规范', code: 'E0012' },
+  limit: { status: 400, msg: '请求过于频繁，请稍后再试', code: 'E0013' },
+}
+
+type ErrorTypes = keyof typeof ErrorType
+
+export class HttpException extends Error {
+  public status: number
+  public msg: string
+  public code: string
+  public success: boolean = false
+  public data: any = null
+  constructor(type: ErrorTypes = 'http', ex?: AppError) {
+    super()
+    const error = ErrorType[type]
+    this.status = error.status
+    this.msg = error.msg
+    this.code = error.code
+    if (ex && ex.status) {
+      assert(Utils.isNumber(ex.status))
+      this.status = ex.status
+    }
+    if (ex && ex.msg) {
+      this.msg = ex.msg
+    }
+    if (ex && ex.code) {
+      assert(Utils.isString(ex.code))
+      this.code = ex.code
+    }
+  }
+}
+
+/** @description 请求成功 */
+export class Success extends HttpException {
+  constructor(ex?: AppError) {
+    super()
+    const error = ErrorType.success
+    this.success = true
+    this.status = error.status
+    this.msg = error.msg
+    this.code = error.code
+    if (ex && ex.status) {
+      assert(Utils.isNumber(ex.status))
+      this.status = ex.status
+    }
+    if (ex && ex.msg) {
+      this.msg = ex.msg
+    }
+    if (ex && ex.code) {
+      assert(Utils.isString(ex.code))
+      this.code = ex.code
+    }
+    if (ex && ex.data) {
+      this.data = ex.data
+    }
+  }
+}
+
+/** @description 请求失败 */
+export class Failed extends HttpException {
+  constructor(ex?: AppError) {
+    super()
+    const error = ErrorType.failed
+    this.status = error.status
+    this.msg = error.msg
+    this.code = error.code
+    if (ex && ex.status) {
+      assert(Utils.isNumber(ex.status))
+      this.status = ex.status
+    }
+    if (ex && ex.msg) {
+      this.msg = ex.msg
+    }
+    if (ex && ex.code) {
+      assert(Utils.isString(ex.code))
+      this.code = ex.code
+    }
+  }
+}
+```
+
+```ts [error_handler.ts]
+import { BaseContext, Next } from 'koa'
+import { HttpException, AppError } from '../utils/exception'
+
+interface ICatchError extends AppError {
+  request?: string
+}
+
+/** @description 错误处理中间件 */
+export default async (ctx: BaseContext, next: Next) => {
+  try {
+    await next()
+  } catch (error: any) {
+    const isHttpException = error instanceof HttpException
+    const isDev = process.env.NODE_ENV === 'development'
+    // 开发环境时抛出原始错误
+    if (isDev && !isHttpException) {
+      throw error
+    }
+    if (isHttpException) {
+      const errorObj: ICatchError = {
+        success: error.success,
+        msg: error.msg,
+        code: error.code,
+        ...(error.success ? { data: error.data } : {}),
+        ...(error.success ? {} : { request: `${ctx.method} ${ctx.path}` }),
+      }
+      ctx.body = errorObj
+      ctx.status = error.status
+    } else {
+      const errorObj: ICatchError = {
+        msg: '服务器错误',
+        code: 'E9999',
+        request: `${ctx.method} ${ctx.path}`,
+      }
+      ctx.body = errorObj
+      ctx.status = 500
+    }
+  }
+}
+```
+
+:::
+
+### swagger
+
+```bash
+pnpm add koa-swagger-decorator@next reflect-metadata
+```
+
+:::tip
+注意: 安装`koa-swagger-decorator`时一定要是`next`版本，因为这个是`v2`版本，完善了`v1`版本中的参数校验功能不足的问题
+:::
+
+新建`src/controllers/general.ctrl.ts`
+
+```ts
+import { Context } from 'koa'
+import { routeConfig } from 'koa-swagger-decorator'
+export default class GeneralController {
+  @routeConfig({
+    method: 'get',
+    path: '/',
+    summary: '欢迎页',
+    tags: ['General'],
+  })
+  async hello(ctx: Context) {
+    ctx.body = 'Hello World!'
+  }
+}
+```
+
+编辑`src/routes/index.ts`路由文件挂载swagger，编辑`src/app.ts`和`src/index.ts`
+
+::: code-group
+
+```ts [routes/index.ts]
+import Router from 'koa-router'
+import { SwaggerRouter, registry } from 'koa-swagger-decorator'
+import GeneralController from '../controllers/general.ctrl'
+
+const unprotectedRouter = new Router()
+unprotectedRouter.get('/', new GeneralController().hello)
+
+const protectedRouter = new SwaggerRouter({
+  spec: {
+    info: {
+      title: 'koa-starter',
+      description: 'API Doc',
+      version: '1.0.0',
+    },
+  },
+})
+// 开发环境才挂载swagger
+if (process.env.NODE_ENV === 'development') {
+  protectedRouter.swagger()
+}
+// 用来指定token存放的位置和key名
+registry.registerComponent('securitySchemes', process.env.API_KEY, {
+  type: 'apiKey',
+  name: process.env.API_KEY,
+  in: 'header',
+})
+protectedRouter.prefix('/api')
+
+export { unprotectedRouter, protectedRouter }
+```
+
+```ts [src/app.ts]
+import { unprotectedRouter, protectedRouter } from './routes' // [!code hl]
+// ...
+app.use(helmet()) // [!code --]
+app
+  .use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", 'unpkg.com'], // [!code hl]
+      },
+    })
+  )
+  .use(cors())
+  .use(bodyParser())
+  .use(koaStatic(path.resolve(__dirname, '../public')))
+
+app
+  .use(catchError) // 注意一定要放在路由的前面加载
+  .use(unprotectedRouter.routes()) // [!code ++]
+  .use(unprotectedRouter.allowedMethods()) // [!code ++]
+  .use(protectedRouter.routes()) // [!code ++]
+  .use(protectedRouter.allowedMethods()) // [!code ++]
+// ...
+```
+
+```ts [src/index.ts]
+import './env'
+import 'reflect-metadata' // [!code ++]
+import app from './app'
+import { logger } from './utils/logger' // [!code ++]
+const PORT = process.env.APP_PORT || 3000
+app.listen(PORT, () => {
+  logger.info(`
+------------
+Server Started!
+App is running in ${app.env} mode
+Logging initialized at ${process.env.LOG_LEVEL} level
+
+Http: http://localhost:${PORT}
+
+API Docs: http://localhost:${PORT}/api/swagger-html
+API Spec: http://localhost:${PORT}/api/swagger-json
+------------
+  `)
+})
+```
+
+:::
+
+### JWT
+
+```bash
+pnpm add jsonwebtoken bcryptjs koa-unless
+pnpm add @types/jsonwebtoken @types/bcryptjs -D
+```
+
+编辑`src/utils/utils.ts`，添加生成token的方法
+
+```ts
+import jwt from 'jsonwebtoken'
+// ...
+export function genToken(
+  payload: any,
+  secretType: 'ACCESS' | 'REFRESH' = 'ACCESS',
+  expiresIn: string | number | null = process.env.JWT_EXPIRED
+) {
+  const secret =
+    secretType === 'ACCESS' ? process.env.ACCESS_TOKEN_SECRET : process.env.REFRESH_TOKEN_SECRET
+  if (expiresIn === null || expiresIn === '') {
+    return jwt.sign(payload, secret)
+  }
+  return jwt.sign(payload, secret, { expiresIn })
+}
+```
+
+新建`src/controllers/auth.ctrl.ts`，用来写模拟的登录接口
+
+新建`src/validators/auth.ts`，用来编写接口的参数校验规则
+
+:::tip
+因为目前还没接入数据库和redis，所以先用模拟的数据来测试
+:::
+
+::: code-group
+
+```ts [auth.ctrl.ts]
+import { Context } from 'koa'
+import { routeConfig, body, ParsedArgs } from 'koa-swagger-decorator'
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
+import { Success, HttpException } from '../utils/exception'
+import { genToken } from '../utils/utils'
+import { signInReq, tokenReq, ISignInReq, ITokenReq } from '../validators'
+
+export default class AuthController {
+  // 模拟数据
+  readonly username = 'admin'
+  readonly password = '$2a$10$D46VTSW0Mpe6P96Sa1w8tebfeYfZf1s.97Dz84XFfpcUvjtSCvLMO'
+  static refreshTokens = []
+  @routeConfig({
+    method: 'post',
+    path: '/signin',
+    summary: '登录接口',
+    tags: ['Auth'],
+  })
+  @body(signInReq)
+  async signIn(ctx: Context, args: ParsedArgs<ISignInReq>) {
+    const { username, password } = args.body
+    // 1.检查用户是否存在
+    if (username !== this.username) {
+      throw new HttpException('not_found', { msg: '用户不存在' })
+    }
+    // 2.校验用户密码
+    if (!bcrypt.compareSync(password, this.password)) {
+      throw new HttpException('auth_denied', { msg: '密码错误' })
+    }
+    // 3.生成token
+    const accessToken = genToken({ username })
+    const refreshToken = genToken({ username }, 'REFRESH', '1d')
+    // 4.将刷新token保存到redis或数据库中
+    AuthController.refreshTokens = [refreshToken, ...AuthController.refreshTokens]
+    throw new Success({ msg: '登录成功', data: { accessToken, refreshToken } })
+  }
+
+  @routeConfig({
+    method: 'post',
+    path: '/token',
+    summary: '刷新token',
+    tags: ['Auth'],
+    security: [{ [process.env.API_KEY]: [] }],
+  })
+  @body(tokenReq)
+  async token(ctx: Context, args: ParsedArgs<ITokenReq>) {
+    const { token } = args.body
+    // 1.先检查是否有token
+    if (!token) {
+      throw new HttpException('unauthorized')
+    }
+    // 2.再检查redis或数据库中是否有此token
+    if (!AuthController.refreshTokens.includes(token)) {
+      throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
+    }
+    // 3.最后校验token是否合法
+    jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, decode: any) => {
+      if (err) {
+        throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
+      }
+      // 4.校验通过的话就生成新的token给客户端
+      const accessToken = genToken({ username: decode.username })
+      const refreshToken = genToken({ username: decode.username }, 'REFRESH', '1d')
+      AuthController.refreshTokens = AuthController.refreshTokens
+        .filter((t) => t !== token)
+        .concat([refreshToken])
+      throw new Success({ msg: '刷新token成功', data: { accessToken, refreshToken } })
+    })
+  }
+
+  @routeConfig({
+    method: 'delete',
+    path: '/logout',
+    summary: '退出',
+    tags: ['Auth'],
+    security: [{ [process.env.API_KEY]: [] }],
+  })
+  @body(tokenReq)
+  async logout(ctx: Context, args: ParsedArgs<ITokenReq>) {
+    const { token: refreshToken } = args.body
+    // 1.先检查是否有token
+    if (!refreshToken) {
+      throw new HttpException('unauthorized')
+    }
+    // 2.再检查redis或数据库中是否有此token
+    if (!AuthController.refreshTokens.includes(refreshToken)) {
+      throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
+    }
+    // 3.移除redis或数据库中保存的此客户端token
+    AuthController.refreshTokens = AuthController.refreshTokens.filter(
+      (token) => token !== refreshToken
+    )
+    throw new Success({ status: 204, msg: '退出成功' })
+  }
+}
+```
+
+```ts [auth.ts]
+import { z } from 'koa-swagger-decorator'
+
+const signInReq = z.object({
+  username: z
+    .string({ required_error: '用户名不能为空' })
+    .trim()
+    .min(4, '用户名长度不能少于4位')
+    .max(20, '用户名长度最多20位'),
+  password: z.string({ required_error: '密码不能为空' }).min(6, '密码长度不能少于6位'),
+})
+
+const tokenReq = z.object({
+  token: z.string({ required_error: 'token不能为空' }).trim(),
+})
+
+export { signInReq, tokenReq }
+export type ISignInReq = z.infer<typeof signInReq>
+export type ITokenReq = z.infer<typeof tokenReq>
+```
+
+:::
+
+编辑`src/routes/index.ts`，应用`Auth`路由模块
+
+```ts
+import AuthController from '../controllers/auth.ctrl' // [!code ++]
+// ...
+protectedRouter.prefix('/api')
+protectedRouter.applyRoute(AuthController) // [!code ++]
+```
+
+新建`src/middlewares/auth.ts`，用于校验token
+
+```ts
+import { Context, Next } from 'koa'
+import jwt from 'jsonwebtoken'
+import { HttpException } from '../utils/exception'
+const unless = require('koa-unless')
+
+export default function () {
+  const verifyToken = async (ctx: Context, next: Next) => {
+    const authzHeader = ctx.request.header.authorization
+    const accessToken = authzHeader && authzHeader.split(' ')[1]
+    if (!accessToken) {
+      throw new HttpException('unauthorized')
+    } else {
+      jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, decode) => {
+        if (err) {
+          if (err.name === 'TokenExpiredError') {
+            throw new HttpException('expired_token', { msg: '令牌过期' })
+          } else if (err.name === 'JsonWebTokenError') {
+            throw new HttpException('forbidden', { msg: '无效令牌' })
+          }
+        }
+        ctx.state.user = decode
+      })
+      return next()
+    }
+  }
+  verifyToken.unless = unless
+  return verifyToken
+}
+```
+
+编辑`src/app.ts`，应用`Auth`中间件
+
+```ts
+import verifyToken from './middlewares/auth' // [!code ++]
+// ...
+app
+  .use(catchError) // 注意一定要放在路由的前面加载
+  .use(unprotectedRouter.routes())
+  .use(unprotectedRouter.allowedMethods())
+  .use(
+    verifyToken().unless({
+      path: [/^\/public/, /^\/favicon.ico/, /^\/api\/swagger-/, /^\/api\/signin/, /^\/api\/token/],
+    })
+  )
+  .use(protectedRouter.routes())
+  .use(protectedRouter.allowedMethods())
+```
+
+编辑`src/middlewares/error_handler.ts`，适配`swagger`插件内置的参数校验
+
+```ts
+import { BaseContext, Next } from 'koa'
+import { z } from 'koa-swagger-decorator' // [!code ++]
+// ...
+
+/** @description 错误处理中间件 */
+export default async (ctx: BaseContext, next: Next) => {
+  try {
+    await next().catch((error) => {
+      if (error instanceof z.ZodError) {
+        throw new HttpException('parameters', {
+          msg: error.issues.map((issue) => issue.message).join(';'),
+        })
+      }
+      throw error
+    })
+  } catch (error: any) {
+    // ...
+    if (!ctx.path.match(/^\/api\/swagger-/) && !ctx.path.match(/^\/favicon.ico/)) {
+      if (isHttpException) {
+        // ...
+      } else {
+        // ...
+      }
+    }
+  }
+}
+```
+
+:::tip 🎉 到这里，扩展部分就结束了，数据库和Redis的集成请看其他篇章
 :::

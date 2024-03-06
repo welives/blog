@@ -12,46 +12,45 @@ title: Koa使用Mongoose
 
 创建完毕后将相关配置信息填入环境变量文件
 
-## 安装`Mongoose`
+## 连接数据库
 
 ```sh
 pnpm add mongoose
 ```
 
-## 数据库配置
-
-新建数据库配置`src/config/db.ts`
-
-```ts
-import mongoose from 'mongoose'
-
-const url = process.env.MONGODB_URL as string
-
-mongoose.connect(url)
-
-mongoose.connection.on('connected', () => {
-  console.log('数据库连接成功')
-})
-mongoose.connection.on('error', (err) => {
-  console.error('数据库连接失败', err)
-})
-mongoose.connection.on('disconnected', () => {
-  console.log('数据库连接已断开')
-})
-```
-
-### 连接数据库
-
-修改入口文件`src/index.ts`
+编辑`src/index.ts`
 
 ```ts
 import './env'
-import './config/db' // [!code ++]
+import 'reflect-metadata'
 import app from './app'
-const PORT = process.env.APP_PORT || 3000
-app.listen(PORT, () => {
-  console.info('Server listening on port: ' + PORT)
-})
+import mongoose from 'mongoose'
+import { logger } from './utils/logger'
+const url = process.env.MONGODB_URL as string
+
+mongoose
+  .connect(url)
+  .then(() => {
+    console.log('数据库连接成功')
+    const PORT = process.env.APP_PORT || 3000
+    app.listen(PORT, () => {
+      logger.info(`
+      ------------
+      Server Started!
+      App is running in ${app.env} mode
+      Logging initialized at ${process.env.LOG_LEVEL} level
+
+      Http: http://localhost:${PORT}
+
+      API Docs: http://localhost:${PORT}/api/swagger-html
+      API Spec: http://localhost:${PORT}/api/swagger-json
+      ------------
+      `)
+    })
+  })
+  .catch((err) => {
+    console.error('数据库连接失败', err)
+  })
 ```
 
 ## 定义模型
@@ -63,9 +62,10 @@ import mongoose from 'mongoose'
 
 const userSchema = new mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
       required: true,
+      trim: true,
     },
     password: {
       type: String,
@@ -74,7 +74,7 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
+      trim: true,
     },
   },
   { versionKey: false }
