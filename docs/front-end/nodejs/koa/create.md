@@ -1028,7 +1028,7 @@ pnpm add @types/jsonwebtoken @types/bcryptjs -D
 编辑`src/utils/utils.ts`，添加生成token的方法
 
 ```ts
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken' // [!code ++]
 // ...
 export function genToken(
   payload: any,
@@ -1076,54 +1076,55 @@ export default class AuthController {
   })
   @body(signInReq)
   async signIn(ctx: Context, args: ParsedArgs<ISignInReq>) {
-    const { username, password } = args.body
     // 1.检查用户是否存在
-    if (username !== this.username) {
+    if (args.body.username !== this.username) {
       throw new HttpException('not_found', { msg: '用户不存在' })
     }
     // 2.校验用户密码
-    if (!bcrypt.compareSync(password, this.password)) {
+    if (!bcrypt.compareSync(args.body.password, this.password)) {
       throw new HttpException('auth_denied', { msg: '密码错误' })
     }
     // 3.生成token
-    const accessToken = genToken({ username })
-    const refreshToken = genToken({ username }, 'REFRESH', '1d')
+    const accessToken = genToken({ username: args.body.username })
+    const refreshToken = genToken({ username: args.body.username }, 'REFRESH', '1d')
     // 4.将刷新token保存到redis或数据库中
     AuthController.refreshTokens = [refreshToken, ...AuthController.refreshTokens]
     throw new Success({ msg: '登录成功', data: { accessToken, refreshToken } })
   }
 
   @routeConfig({
-    method: 'post',
+    method: 'put',
     path: '/token',
     summary: '刷新token',
     tags: ['Auth'],
-    security: [{ [process.env.API_KEY]: [] }],
   })
   @body(tokenReq)
   async token(ctx: Context, args: ParsedArgs<ITokenReq>) {
-    const { token } = args.body
-    // 1.先检查是否有token
-    if (!token) {
+    // 1.先检查前端是否有提交token
+    if (!args.body.token) {
       throw new HttpException('unauthorized')
     }
-    // 2.再检查redis或数据库中是否有此token
-    if (!AuthController.refreshTokens.includes(token)) {
-      throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
-    }
-    // 3.最后校验token是否合法
-    jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, decode: any) => {
+    // 2.解析token中的用户信息
+    let user: any
+    jwt.verify(args.body.token, process.env.REFRESH_TOKEN_SECRET, (err, decode) => {
       if (err) {
         throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
       }
-      // 4.校验通过的话就生成新的token给客户端
-      const accessToken = genToken({ username: decode.username })
-      const refreshToken = genToken({ username: decode.username }, 'REFRESH', '1d')
-      AuthController.refreshTokens = AuthController.refreshTokens
-        .filter((t) => t !== token)
-        .concat([refreshToken])
-      throw new Success({ msg: '刷新token成功', data: { accessToken, refreshToken } })
+      user = decode
     })
+    // 3.拿到缓存中的token,检查redis或数据库中是否有此token
+    if (!AuthController.refreshTokens.includes(args.body.token)) {
+      throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
+    }
+    // 4.生成新的token
+    const { iat, exp, ...rest } = user
+    const accessToken = genToken(rest)
+    const refreshToken = genToken(rest, 'REFRESH', '1d')
+    // 5.将新token保存到redis或数据库中
+    AuthController.refreshTokens = AuthController.refreshTokens
+      .filter((t) => t !== args.body.token)
+      .concat([refreshToken])
+    throw new Success({ msg: '刷新token成功', data: { accessToken, refreshToken } })
   }
 
   @routeConfig({
@@ -1135,18 +1136,25 @@ export default class AuthController {
   })
   @body(tokenReq)
   async logout(ctx: Context, args: ParsedArgs<ITokenReq>) {
-    const { token: refreshToken } = args.body
-    // 1.先检查是否有token
-    if (!refreshToken) {
+    // 1.先检查前端是否有提交token
+    if (!args.body.token) {
       throw new HttpException('unauthorized')
     }
-    // 2.再检查redis或数据库中是否有此token
-    if (!AuthController.refreshTokens.includes(refreshToken)) {
+    // 2.解析token中的用户信息
+    let user: any
+    jwt.verify(args.body.token, process.env.REFRESH_TOKEN_SECRET, (err, decode) => {
+      if (err) {
+        throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
+      }
+      user = decode
+    })
+    // 3.拿到缓存中的token,检查redis或数据库中是否有此token
+    if (!AuthController.refreshTokens.includes(args.body.token)) {
       throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
     }
-    // 3.移除redis或数据库中保存的此客户端token
+    // 4.移除redis或数据库中保存的此客户端token
     AuthController.refreshTokens = AuthController.refreshTokens.filter(
-      (token) => token !== refreshToken
+      (token) => token !== args.body.token
     )
     throw new Success({ status: 204, msg: '退出成功' })
   }
