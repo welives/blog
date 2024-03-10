@@ -496,7 +496,7 @@ export default app
 ```ts [index.ts]
 import './env'
 import app from './app'
-const PORT = process.env.APP_PORT || 3000
+const PORT = process.env.APP_PORT ?? 3000
 app.listen(PORT, () => {
   console.info('Server listening on port: ' + PORT)
 })
@@ -662,7 +662,7 @@ pnpm add @types/cron -D
 
 ```ts [tasks/index.ts]
 import { CronJob } from 'cron'
-const cronExp = process.env.CRON_EXP || '* * * * *'
+const cronExp = process.env.CRON_EXP ?? '* * * * *'
 
 export const cron = new CronJob(cronExp, () => {
   console.log('Executing cron job once every minutes')
@@ -711,7 +711,7 @@ function koaLogging() {
 }
 
 const options: winston.LoggerOptions = {
-  level: process.env.LOG_LEVEL,
+  level: process.env.LOG_LEVEL ?? 'debug',
   transports: [
     new winston.transports.Console({
       format: winston.format.combine(winston.format.colorize(), winston.format.simple()),
@@ -766,21 +766,20 @@ export interface AppError {
 
 export const ErrorType = {
   unknowd: { status: 500, msg: '未知错误', code: 'E9999' },
-  http: { status: 400, msg: '请求出错', code: 'E0001' },
-  success: { status: 200, msg: 'ok', code: 'E0000' },
-  failed: { status: 400, msg: 'error', code: 'E0001' },
+  success: { status: 200, msg: 'ok', code: '00000' },
+  http: { status: 400, msg: '错误的请求', code: 'E0001' },
+  failed: { status: 400, msg: '错误的请求', code: 'E0001' },
   unauthorized: { status: 401, msg: '未授权', code: 'E0002' },
-  forbidden: { status: 403, msg: '禁止访问', code: 'E0003' },
-  not_found: { status: 404, msg: '资源未找到', code: 'E0004' },
+  forbidden: { status: 403, msg: '已禁止', code: 'E0003' },
+  not_found: { status: 404, msg: '未找到', code: 'E0004' },
   auth_denied: { status: 400, msg: '身份验证失败', code: 'E0005' },
   parameters: { status: 400, msg: '参数错误', code: 'E0006' },
-  expired_token: { status: 422, msg: '令牌过期', code: 'E0007' },
-  repeat: { status: 400, msg: '字段重复', code: 'E0008' },
-  method_not_allowed: { status: 405, msg: '请求方法不允许', code: 'E0009' },
-  file_large: { status: 413, msg: '文件体积过大', code: 'E0010' },
-  file_too_many: { status: 413, msg: '文件数量过多', code: 'E0011' },
-  file_extension: { status: 406, msg: '文件扩展名不符合规范', code: 'E0012' },
-  limit: { status: 400, msg: '请求过于频繁，请稍后再试', code: 'E0013' },
+  repeat: { status: 400, msg: '字段重复', code: 'E0007' },
+  method_not_allowed: { status: 405, msg: '方法不允许', code: 'E0008' },
+  file_large: { status: 413, msg: '文件体积过大', code: 'E0009' },
+  file_too_many: { status: 413, msg: '文件数量过多', code: 'E0010' },
+  file_extension: { status: 406, msg: '文件扩展名不符合规范', code: 'E0011' },
+  limit: { status: 400, msg: '请求过于频繁，请稍后再试', code: 'E0012' },
 }
 
 type ErrorTypes = keyof typeof ErrorType
@@ -863,7 +862,6 @@ export class Failed extends HttpException {
 ```ts [error_handler.ts]
 import { BaseContext, Next } from 'koa'
 import { HttpException, AppError } from '../utils/exception'
-
 interface ICatchError extends AppError {
   request?: string
 }
@@ -879,24 +877,26 @@ export default async (ctx: BaseContext, next: Next) => {
     if (isDev && !isHttpException) {
       throw error
     }
-    if (isHttpException) {
-      const errorObj: ICatchError = {
-        success: error.success,
-        msg: error.msg,
-        code: error.code,
-        ...(error.success ? { data: error.data } : {}),
-        ...(error.success ? {} : { request: `${ctx.method} ${ctx.path}` }),
+    if (!ctx.path.match(/^\/api\/swagger-/) && !ctx.path.match(/^\/favicon.ico/)) {
+      if (isHttpException) {
+        const errorObj: ICatchError = {
+          success: error.success,
+          msg: error.msg,
+          code: error.code,
+          ...(error.success ? { data: error.data } : {}),
+          ...(error.success ? {} : { request: `${ctx.method} ${ctx.path}` }),
+        }
+        ctx.body = errorObj
+        ctx.status = error.status
+      } else {
+        const errorObj: ICatchError = {
+          msg: '服务器错误',
+          code: 'E9999',
+          request: `${ctx.method} ${ctx.path}`,
+        }
+        ctx.body = errorObj
+        ctx.status = 500
       }
-      ctx.body = errorObj
-      ctx.status = error.status
-    } else {
-      const errorObj: ICatchError = {
-        msg: '服务器错误',
-        code: 'E9999',
-        request: `${ctx.method} ${ctx.path}`,
-      }
-      ctx.body = errorObj
-      ctx.status = 500
     }
   }
 }
@@ -904,68 +904,190 @@ export default async (ctx: BaseContext, next: Next) => {
 
 :::
 
+### Redis
+
+```bash
+pnpm add ioredis
+```
+
+新建`src/utils/redis.ts`
+
+```ts
+import IoRedis from 'ioredis'
+
+const singletonEnforcer = Symbol('Redis')
+class Redis {
+  private _client: IoRedis
+  private static _instance: Redis
+  constructor(enforcer: any) {
+    if (enforcer !== singletonEnforcer) {
+      throw new Error('Cannot initialize single instance')
+    }
+    this.init()
+    this._client.on('error', (err) => {
+      console.error('Redis 连接错误:', err)
+      process.exit(1)
+    })
+    this._client.on('connect', () => console.log('Redis 连接成功'))
+    this._client.on('close', () => {
+      console.log('Redis 连接断开')
+      this._client.connect()
+    })
+  }
+  static get instance() {
+    // 如果已经存在实例则直接返回, 否则实例化后返回
+    return this._instance || (this._instance = new Redis(singletonEnforcer))
+  }
+
+  private init() {
+    this._client = new IoRedis({
+      host: process.env.REDIS_HOST ?? 'localhost',
+      port: Number(process.env.REDIS_PORT) ?? 6379,
+    })
+  }
+
+  get client() {
+    return this._client
+  }
+
+  // 设置缓存
+  async set(key: string, value: string, expire: number) {
+    await this._client.set(key, value, 'EX', expire)
+  }
+  // 获取缓存
+  async get(key: string) {
+    return this._client.get(key)
+  }
+  // 删除缓存
+  async del(key: string) {
+    return this._client.del(key)
+  }
+  // 更新过期时间
+  async expire(key: string, expire: number) {
+    return this._client.expire(key, expire)
+  }
+  async getAllKey(pattern = '*') {
+    return this._client.keys(pattern)
+  }
+}
+export default Redis.instance
+export const redis = Redis.instance.client
+```
+
+### Session
+
+```bash
+pnpm add koa-generic-session koa-redis
+pnpm add @types/koa-generic-session @types/koa-redis -D
+```
+
+编辑`src/app.ts`
+
+```ts
+import Store from 'koa-redis' // [!code ++]
+import session from 'koa-generic-session' // [!code ++]
+//...
+const app = new Koa()
+// 对session id进行加密用的盐
+app.keys = [process.env.SESSION_SECRET ?? 'secret'] // [!code ++]
+app.use(
+  session({
+    key: process.env.COOKIE_KEY ?? 'koa.sid', // cookie的key, 默认是 koa.sid
+    prefix: process.env.SESSION_PREFIX ?? 'koa:sess:', // session数据在redis中的key前缀, 默认是 koa:sess:
+    store: Store({
+      host: process.env.REDIS_HOST ?? 'localhost',
+      port: Number(process.env.REDIS_PORT) ?? 6379,
+    }) as any,
+  })
+)
+```
+
 ### swagger
 
 ```bash
-pnpm add koa-swagger-decorator@next reflect-metadata
+pnpm add koa-swagger-decorator reflect-metadata
 ```
 
 :::tip
-注意: 安装`koa-swagger-decorator`时一定要是`next`版本，因为这个是`v2`版本，完善了`v1`版本中的参数校验功能不足的问题
+注意: 如果安装的是`koa-swagger-decorator@next`版本的话，配置起来稍有不同，[具体可以看这里](./create-with-swagger_v2.md#swagger)
 :::
 
-新建`src/controllers/general.ctrl.ts`
+新建`src/controllers/general.ctrl.ts`，同时写入session的示例代码
 
 ```ts
-import { Context } from 'koa'
-import { routeConfig } from 'koa-swagger-decorator'
+import { IRouterContext } from 'koa-router'
+import { request, summary, query, tagsAll } from 'koa-swagger-decorator'
+import { redis } from '../utils/redis'
+
+@tagsAll(['General'])
 export default class GeneralController {
-  @routeConfig({
-    method: 'get',
-    path: '/',
-    summary: '欢迎页',
-    tags: ['General'],
+  @request('get', '')
+  @summary('欢迎页')
+  @query({
+    name: { type: 'string', required: false, example: 'jandan' },
   })
-  async hello(ctx: Context) {
-    ctx.body = 'Hello World!'
+  async hello(ctx: IRouterContext) {
+    // 提取cookies中的session id
+    const sid = ctx.cookies.get(process.env.COOKIE_KEY ?? 'koa.sid')
+    console.log('sid', sid)
+    // session prefix 拼接sid得到key
+    const session_key = `${process.env.SESSION_PREFIX ?? 'koa:sess:'}${sid}`
+    console.log('session_key', session_key)
+    const data = await redis.get(session_key)
+    console.log('data', data)
+    ctx.session.name = ctx.request.query.name
+    if (ctx.session.viewCount === null || ctx.session.viewCount === undefined) {
+      ctx.session.viewCount = 1
+    } else {
+      ctx.session.viewCount++
+    }
+    ctx.body = `Hello ${ctx.session.name}, you check this ${ctx.session.viewCount} times`
   }
 }
+export const generalController = new GeneralController()
 ```
 
-编辑`src/routes/index.ts`路由文件挂载swagger，编辑`src/app.ts`和`src/index.ts`
+新建`src/routes/unprotected.ts`，用来设置不需要鉴权的路由
 
-::: code-group
-
-```ts [routes/index.ts]
+```ts
 import Router from 'koa-router'
-import { SwaggerRouter, registry } from 'koa-swagger-decorator'
-import GeneralController from '../controllers/general.ctrl'
+import { generalController } from '../controllers/general.ctrl'
 
 const unprotectedRouter = new Router()
-unprotectedRouter.get('/', new GeneralController().hello)
+unprotectedRouter.get('/', generalController.hello)
 
-const protectedRouter = new SwaggerRouter({
-  spec: {
-    info: {
-      title: 'koa-starter',
-      description: 'API Doc',
-      version: '1.0.0',
-    },
-  },
-})
+export { unprotectedRouter }
+```
+
+新建`src/routes/protected.ts`，用来设置需要鉴权的路由
+
+```ts
+import path from 'node:path'
+import { SwaggerRouter } from 'koa-swagger-decorator'
+
+const protectedRouter = new SwaggerRouter(
+  { prefix: '/api' }, // RouterOptions
+  { title: 'koa-starter', description: 'API DOC', version: '1.0.0', prefix: '/api' } // SwaggerOptions
+)
+
+// 扫描控制器模块并禁用内置的参数校验
+protectedRouter.mapDir(path.resolve(__dirname, '../controllers'), { doValidation: false })
+
 // 开发环境才挂载swagger
 if (process.env.NODE_ENV === 'development') {
   protectedRouter.swagger()
 }
-// 用来指定token存放的位置和key名
-registry.registerComponent('securitySchemes', process.env.API_KEY, {
-  type: 'apiKey',
-  name: process.env.API_KEY,
-  in: 'header',
-})
-protectedRouter.prefix('/api')
 
-export { unprotectedRouter, protectedRouter }
+export { protectedRouter }
+```
+
+编辑`src/routes/index.ts`、`src/app.ts`和`src/index.ts`
+
+::: code-group
+
+```ts [routes/index.ts]
+export * from './unprotected'
+export * from './protected'
 ```
 
 ```ts [src/app.ts]
@@ -977,7 +1099,10 @@ app
     helmet.contentSecurityPolicy({
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", 'unpkg.com'], // [!code hl]
+        scriptSrc: ["'self'", "'unsafe-inline'", 'cdnjs.cloudflare.com'],
+        styleSrc: ["'self'", "'unsafe-inline'", 'cdnjs.cloudflare.com', 'fonts.googleapis.com'],
+        fontSrc: ["'self'", 'fonts.gstatic.com'],
+        imgSrc: ["'self'", 'data:', 'online.swagger.io', 'validator.swagger.io'],
       },
     })
   )
@@ -999,13 +1124,13 @@ import './env'
 import 'reflect-metadata' // [!code ++]
 import app from './app'
 import { logger } from './utils/logger' // [!code ++]
-const PORT = process.env.APP_PORT || 3000
+const PORT = process.env.APP_PORT ?? 3000
 app.listen(PORT, () => {
   logger.info(`
 ------------
 Server Started!
 App is running in ${app.env} mode
-Logging initialized at ${process.env.LOG_LEVEL} level
+Logging initialized at ${process.env.LOG_LEVEL ?? 'debug'} level
 
 Http: http://localhost:${PORT}
 
@@ -1017,6 +1142,73 @@ API Spec: http://localhost:${PORT}/api/swagger-json
 ```
 
 :::
+
+### 参数校验
+
+```bash
+pnpm add class-validator
+```
+
+新建`src/dto/auth.ts`，用来编写接口的参数校验规则
+
+```ts
+import { Length, IsNotEmpty, IsString } from 'class-validator'
+
+export class SignInDto {
+  @Length(4, 20, { message: '用户名长度为4-20' })
+  @IsString({ message: '用户名必须为字符串' })
+  @IsNotEmpty({ message: '用户名不能为空' })
+  username: string
+
+  @IsString({ message: '密码必须为字符串' })
+  @IsNotEmpty({ message: '密码不能为空' })
+  password: string
+}
+
+export class TokenDto {
+  @IsString({ message: '令牌必须为字符串' })
+  @IsNotEmpty({ message: '令牌不能为空' })
+  token: string
+}
+```
+
+新建`src/middlewares/validator.ts`，用来处理接口参数校验
+
+```ts
+import { Next } from 'koa'
+import { Context } from 'koa-swagger-decorator'
+import { validate } from 'class-validator'
+import { Failed } from '../utils/exception'
+
+export interface ValidateContext extends Context {
+  dto: any
+}
+
+interface Type<T = any> extends Function {
+  new (...args: any[]): T
+}
+
+export default function (DtoClass: Type) {
+  return async (ctx: ValidateContext, next: Next) => {
+    const params = { ...(ctx.request.body as object), ...ctx.request.query, ...ctx.params }
+    const dto = new DtoClass()
+    Object.assign(dto, params)
+    const errors = await validate(dto)
+    if (errors.length > 0) {
+      const errMsg = errors
+        .map((err) => {
+          const msg = Object.values(err.constraints)[0]
+          return msg
+        })
+        .join(';')
+      throw new Failed({ msg: errMsg })
+    } else {
+      ctx.dto = dto
+    }
+    await next()
+  }
+}
+```
 
 ### JWT
 
@@ -1033,10 +1225,12 @@ import jwt from 'jsonwebtoken' // [!code ++]
 export function genToken(
   payload: any,
   secretType: 'ACCESS' | 'REFRESH' = 'ACCESS',
-  expiresIn: string | number | null = process.env.JWT_EXPIRED
+  expiresIn: string | number | null = process.env.JWT_EXPIRED ?? '30s'
 ) {
   const secret =
-    secretType === 'ACCESS' ? process.env.ACCESS_TOKEN_SECRET : process.env.REFRESH_TOKEN_SECRET
+    secretType === 'ACCESS'
+      ? process.env.ACCESS_TOKEN_SECRET ?? 'secret'
+      : process.env.REFRESH_TOKEN_SECRET ?? 'secret'
   if (expiresIn === null || expiresIn === '') {
     return jwt.sign(payload, secret)
   }
@@ -1046,151 +1240,122 @@ export function genToken(
 
 新建`src/controllers/auth.ctrl.ts`，用来写模拟的登录接口
 
-新建`src/validators/auth.ts`，用来编写接口的参数校验规则
-
 :::tip
-因为目前还没接入数据库和redis，所以先用模拟的数据来测试
+因为目前还没接入数据库，所以先用模拟的数据来测试
 :::
 
-::: code-group
-
-```ts [auth.ctrl.ts]
-import { Context } from 'koa'
-import { routeConfig, body, ParsedArgs } from 'koa-swagger-decorator'
+```ts
+import { request, summary, body, middlewares, tagsAll } from 'koa-swagger-decorator'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { Success, HttpException } from '../utils/exception'
 import { genToken } from '../utils/utils'
-import { signInReq, tokenReq, ISignInReq, ITokenReq } from '../validators'
+import redis from '../utils/redis'
+import validator, { ValidateContext } from '../middlewares/validator'
+import { SignInDto, TokenDto } from '../dto'
 
+@tagsAll(['Auth'])
 export default class AuthController {
   // 模拟数据
   readonly username = 'admin'
+  // 123456
   readonly password = '$2a$10$D46VTSW0Mpe6P96Sa1w8tebfeYfZf1s.97Dz84XFfpcUvjtSCvLMO'
-  static refreshTokens = []
-  @routeConfig({
-    method: 'post',
-    path: '/signin',
-    summary: '登录接口',
-    tags: ['Auth'],
+
+  @request('post', '/signin')
+  @summary('登录接口')
+  @middlewares([validator(SignInDto)])
+  @body({
+    username: { type: 'string', required: true, example: 'admin' },
+    password: { type: 'string', required: true, example: '123456' },
   })
-  @body(signInReq)
-  async signIn(ctx: Context, args: ParsedArgs<ISignInReq>) {
+  async signIn(ctx: ValidateContext) {
     // 1.检查用户是否存在
-    if (args.body.username !== this.username) {
+    if (ctx.dto.username !== this.username) {
       throw new HttpException('not_found', { msg: '用户不存在' })
     }
     // 2.校验用户密码
-    if (!bcrypt.compareSync(args.body.password, this.password)) {
+    if (!bcrypt.compareSync(ctx.dto.password, this.password)) {
       throw new HttpException('auth_denied', { msg: '密码错误' })
     }
     // 3.生成token
-    const accessToken = genToken({ username: args.body.username })
-    const refreshToken = genToken({ username: args.body.username }, 'REFRESH', '1d')
-    // 4.将刷新token保存到redis或数据库中
-    AuthController.refreshTokens = [refreshToken, ...AuthController.refreshTokens]
+    const accessToken = genToken({ username: this.username })
+    const refreshToken = genToken({ username: this.username }, 'REFRESH', '1d')
+    // 4.拿到redis中的token
+    const refreshTokens = JSON.parse(await redis.get(`${this.username}:token`)) ?? []
+    // 5.将刷新token保存到redis中
+    refreshTokens.push(refreshToken)
+    await redis.set(`${this.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ msg: '登录成功', data: { accessToken, refreshToken } })
   }
 
-  @routeConfig({
-    method: 'put',
-    path: '/token',
-    summary: '刷新token',
-    tags: ['Auth'],
+  @request('put', '/token')
+  @summary('刷新token')
+  @middlewares([validator(TokenDto)])
+  @body({
+    token: { type: 'string', required: true, example: 'asdasd' },
   })
-  @body(tokenReq)
-  async token(ctx: Context, args: ParsedArgs<ITokenReq>) {
+  async token(ctx: ValidateContext) {
     // 1.先检查前端是否有提交token
-    if (!args.body.token) {
+    if (!ctx.dto.token) {
       throw new HttpException('unauthorized')
     }
     // 2.解析token中的用户信息
     let user: any
-    jwt.verify(args.body.token, process.env.REFRESH_TOKEN_SECRET, (err, decode) => {
+    jwt.verify(ctx.dto.token, process.env.REFRESH_TOKEN_SECRET ?? 'secret', (err, decode) => {
       if (err) {
         throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
       }
       user = decode
     })
-    // 3.拿到缓存中的token,检查redis或数据库中是否有此token
-    if (!AuthController.refreshTokens.includes(args.body.token)) {
+    // 3.拿到缓存中的token
+    let refreshTokens: string[] = JSON.parse(await redis.get(`${this.username}:token`)) ?? []
+    // 4.再检查此用户在redis中是否有此token
+    if (!refreshTokens.includes(ctx.dto.token)) {
       throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
     }
-    // 4.生成新的token
+    // 5.生成新的token
     const { iat, exp, ...rest } = user
     const accessToken = genToken(rest)
     const refreshToken = genToken(rest, 'REFRESH', '1d')
-    // 5.将新token保存到redis或数据库中
-    AuthController.refreshTokens = AuthController.refreshTokens
-      .filter((t) => t !== args.body.token)
-      .concat([refreshToken])
+    // 6.将新token保存到redis中
+    refreshTokens = refreshTokens.filter((token) => token !== ctx.dto.token).concat([refreshToken])
+    await redis.set(`${rest.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ msg: '刷新token成功', data: { accessToken, refreshToken } })
   }
 
-  @routeConfig({
-    method: 'delete',
-    path: '/logout',
-    summary: '退出',
-    tags: ['Auth'],
-    security: [{ [process.env.API_KEY]: [] }],
+  @request('delete', '/logout')
+  @summary('退出')
+  @middlewares([validator(TokenDto)])
+  @body({
+    token: { type: 'string', required: true, example: 'asdasd' },
   })
-  @body(tokenReq)
-  async logout(ctx: Context, args: ParsedArgs<ITokenReq>) {
+  async logout(ctx: ValidateContext) {
     // 1.先检查前端是否有提交token
-    if (!args.body.token) {
+    if (!ctx.dto.token) {
       throw new HttpException('unauthorized')
     }
     // 2.解析token中的用户信息
     let user: any
-    jwt.verify(args.body.token, process.env.REFRESH_TOKEN_SECRET, (err, decode) => {
+    jwt.verify(ctx.dto.token, process.env.REFRESH_TOKEN_SECRET ?? 'secret', (err, decode) => {
       if (err) {
         throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
       }
       user = decode
     })
-    // 3.拿到缓存中的token,检查redis或数据库中是否有此token
-    if (!AuthController.refreshTokens.includes(args.body.token)) {
+    // 3.拿到缓存中的token
+    let refreshTokens: string[] = JSON.parse(await redis.get(`${this.username}:token`)) ?? []
+    // 4.再检查此用户在redis中是否有此token
+    if (!refreshTokens.includes(ctx.dto.token)) {
       throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
     }
-    // 4.移除redis或数据库中保存的此客户端token
-    AuthController.refreshTokens = AuthController.refreshTokens.filter(
-      (token) => token !== args.body.token
-    )
+    // 5.移除redis中保存的此客户端token
+    refreshTokens = refreshTokens.filter((token) => token !== ctx.dto.token)
+    // 6.更新redis
+    await redis.set(`${user.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ status: 204, msg: '退出成功' })
   }
 }
-```
-
-```ts [auth.ts]
-import { z } from 'koa-swagger-decorator'
-
-const signInReq = z.object({
-  username: z
-    .string({ required_error: '用户名不能为空' })
-    .trim()
-    .min(4, '用户名长度不能少于4位')
-    .max(20, '用户名长度最多20位'),
-  password: z.string({ required_error: '密码不能为空' }).min(6, '密码长度不能少于6位'),
-})
-
-const tokenReq = z.object({
-  token: z.string({ required_error: 'token不能为空' }).trim(),
-})
-
-export { signInReq, tokenReq }
-export type ISignInReq = z.infer<typeof signInReq>
-export type ITokenReq = z.infer<typeof tokenReq>
-```
-
-:::
-
-编辑`src/routes/index.ts`，应用`Auth`路由模块
-
-```ts
-import AuthController from '../controllers/auth.ctrl' // [!code ++]
-// ...
-protectedRouter.prefix('/api')
-protectedRouter.applyRoute(AuthController) // [!code ++]
+export const authController = new AuthController()
 ```
 
 新建`src/middlewares/auth.ts`，用于校验token
@@ -1208,10 +1373,10 @@ export default function () {
     if (!accessToken) {
       throw new HttpException('unauthorized')
     } else {
-      jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, decode) => {
+      jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET ?? 'secret', (err, decode) => {
         if (err) {
           if (err.name === 'TokenExpiredError') {
-            throw new HttpException('expired_token', { msg: '令牌过期' })
+            throw new HttpException('forbidden', { msg: '令牌过期' })
           } else if (err.name === 'JsonWebTokenError') {
             throw new HttpException('forbidden', { msg: '无效令牌' })
           }
@@ -1237,43 +1402,19 @@ app
   .use(unprotectedRouter.allowedMethods())
   .use(
     verifyToken().unless({
-      path: [/^\/public/, /^\/favicon.ico/, /^\/api\/swagger-/, /^\/api\/signin/, /^\/api\/token/],
+      path: [
+        /^\/public/,
+        /^\/favicon.ico/,
+        /^(?!\/api)/,
+        /^\/api\/swagger-/,
+        /^\/api\/signin/,
+        /^\/api\/token/,
+      ],
     })
   )
   .use(protectedRouter.routes())
   .use(protectedRouter.allowedMethods())
 ```
 
-编辑`src/middlewares/error_handler.ts`，适配`swagger`插件内置的参数校验
-
-```ts
-import { BaseContext, Next } from 'koa'
-import { z } from 'koa-swagger-decorator' // [!code ++]
-// ...
-
-/** @description 错误处理中间件 */
-export default async (ctx: BaseContext, next: Next) => {
-  try {
-    await next().catch((error) => {
-      if (error instanceof z.ZodError) {
-        throw new HttpException('parameters', {
-          msg: error.issues.map((issue) => issue.message).join(';'),
-        })
-      }
-      throw error
-    })
-  } catch (error: any) {
-    // ...
-    if (!ctx.path.match(/^\/api\/swagger-/) && !ctx.path.match(/^\/favicon.ico/)) {
-      if (isHttpException) {
-        // ...
-      } else {
-        // ...
-      }
-    }
-  }
-}
-```
-
-:::tip 🎉 到这里，扩展部分就结束了，数据库和Redis的集成请看其他篇章
+:::tip 🎉 到这里，扩展部分就结束了，数据库的集成请看其他篇章
 :::

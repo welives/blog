@@ -12,60 +12,6 @@ title: Koa使用Mongoose
 
 创建完毕后将相关配置信息填入环境变量文件
 
-## Redis
-
-```bash
-pnpm add ioredis
-```
-
-新建`src/utils/redis.ts`
-
-```ts
-import IoRedis from 'ioredis'
-
-const singletonEnforcer = Symbol('Redis')
-class Redis {
-  private redis: IoRedis
-  private static _instance: Redis
-  constructor(enforcer: any) {
-    if (enforcer !== singletonEnforcer) {
-      throw new Error('Cannot initialize single instance')
-    }
-    this.init()
-  }
-  static get instance() {
-    // 如果已经存在实例则直接返回, 否则实例化后返回
-    return this._instance || (this._instance = new Redis(singletonEnforcer))
-  }
-
-  private init() {
-    this.redis = new IoRedis({
-      host: process.env.REDIS_HOST,
-      port: parseInt(process.env.REDIS_PORT),
-      username: '',
-      password: '',
-      db: 0,
-    })
-    if (!this.redis) {
-      console.error('Redis 连接失败')
-      process.exit(1)
-    }
-    console.log('Redis 连接成功')
-  }
-
-  async set(key: string, value: string, expire: number) {
-    await this.redis.set(key, value, 'EX', expire)
-  }
-  async get(key: string) {
-    return this.redis.get(key)
-  }
-  async del(key: string) {
-    return this.redis.del(key)
-  }
-}
-export default Redis.instance
-```
-
 ## MongoDB
 
 ```sh
@@ -86,13 +32,13 @@ mongoose
   .connect(url)
   .then(() => {
     console.log('数据库连接成功')
-    const PORT = process.env.APP_PORT || 3000
+    const PORT = process.env.APP_PORT ?? 3000
     app.listen(PORT, () => {
       logger.info(`
       ------------
       Server Started!
       App is running in ${app.env} mode
-      Logging initialized at ${process.env.LOG_LEVEL} level
+      Logging initialized at ${process.env.LOG_LEVEL ?? 'debug'} level
 
       Http: http://localhost:${PORT}
 
@@ -233,54 +179,62 @@ export default new UserService()
 
 ### 控制器模块
 
-编辑`src/validators/auth.ts`，补充注册的验证规则
+编辑`src/dto/auth.ts`，补充注册接口的验证规则
 
 ```ts [auth.ts]
-const signUpReq = z.object({
-  username: z
-    .string({ required_error: '用户名不能为空' })
-    .trim()
-    .min(4, '用户名长度不能少于4位')
-    .max(20, '用户名长度最多20位'),
-  password: z.string({ required_error: '密码不能为空' }).min(6, '密码长度不能少于6位'),
-  email: z.string({ required_error: '邮箱不能为空' }).trim().email('邮箱格式不正确'),
-})
+import { Length, IsNotEmpty, IsString, IsEmail } from 'class-validator'
 // ...
-export { signUpReq, signInReq, tokenReq }
-export type ISignUpReq = z.infer<typeof signUpReq>
+export class SignUpDto {
+  @Length(4, 20, { message: '用户名长度为4-20' })
+  @IsString({ message: '用户名必须为字符串' })
+  @IsNotEmpty({ message: '用户名不能为空' })
+  username: string
+
+  @IsString({ message: '密码必须为字符串' })
+  @IsNotEmpty({ message: '密码不能为空' })
+  password: string
+
+  @IsString({ message: '邮箱必须为字符串' })
+  @IsNotEmpty({ message: '邮箱不能为空' })
+  @IsEmail({}, { message: '邮箱格式不正确' })
+  email: string
+}
 ```
 
 编辑`src/controllers/auth.ctrl.ts`，把之前的模拟数据删掉，改成操作数据库和Redis
 
 ```ts
-import { Context } from 'koa'
-import { routeConfig, body, ParsedArgs } from 'koa-swagger-decorator'
+import { request, summary, body, middlewares, tagsAll } from 'koa-swagger-decorator'
 import jwt from 'jsonwebtoken'
-import { Success, HttpException, Failed } from '../utils/exception'
+import { Success, Failed, HttpException } from '../utils/exception'
 import { genToken } from '../utils/utils'
 import redis from '../utils/redis'
 import UserService from '../services/user.serv'
-import { signUpReq, signInReq, tokenReq, ISignUpReq, ISignInReq, ITokenReq } from '../validators'
+import validator, { ValidateContext } from '../middlewares/validator'
+import { SignUpDto, SignInDto, TokenDto } from '../dto'
 
+@tagsAll(['Auth'])
 export default class AuthController {
-  @routeConfig({
-    method: 'post',
-    path: '/signup',
-    summary: '注册接口',
-    tags: ['Auth'],
+  @request('post', '/signup')
+  @summary('注册接口')
+  @middlewares([validator(SignUpDto)])
+  @body({
+    username: { type: 'string', required: true, example: 'admin' },
+    password: { type: 'string', required: true, example: '123456' },
+    email: { type: 'string', required: true, example: 'admin@example.com' },
   })
-  @body(signUpReq)
-  async signUp(ctx: Context, args: ParsedArgs<ISignUpReq>) {
-    if (await UserService.findOne({ email: args.body.email })) {
+  async signUp(ctx: ValidateContext) {
+    // 1.检查邮箱是否已存在
+    if (await UserService.findOne({ email: ctx.dto.email })) {
       throw new Failed({ msg: '该邮箱已被注册' })
     } else {
-      const user = await UserService.save(args.body)
+      const user = await UserService.save(ctx.dto)
       delete user.password
       const { _id, password, lock_token, ...rest } = user
       const accessToken = genToken(rest)
       const refreshToken = genToken(rest, 'REFRESH', '1d')
-      // 将刷新token保存到redis中
-      await redis.set(`token:${rest.id}`, JSON.stringify([refreshToken]), 24 * 60 * 60)
+      // 2.将token保存到redis中
+      await redis.set(`${rest.id}:token`, JSON.stringify([refreshToken]), 24 * 60 * 60)
       throw new Success({
         status: 201,
         msg: '注册成功',
@@ -289,21 +243,21 @@ export default class AuthController {
     }
   }
 
-  @routeConfig({
-    method: 'post',
-    path: '/signin',
-    summary: '登录接口',
-    tags: ['Auth'],
+  @request('post', '/signin')
+  @summary('登录接口')
+  @middlewares([validator(SignInDto)])
+  @body({
+    username: { type: 'string', required: true, example: 'admin' },
+    password: { type: 'string', required: true, example: '123456' },
   })
-  @body(signInReq)
-  async signIn(ctx: Context, args: ParsedArgs<ISignInReq>) {
-    const doc = await UserService.findOne({ username: args.body.username })
+  async signIn(ctx: ValidateContext) {
+    const doc = await UserService.findOne({ username: ctx.dto.username })
     // 1.检查用户是否存在
     if (!doc) {
       throw new HttpException('not_found', { msg: '用户不存在' })
     }
     // 2.校验用户密码
-    if (!doc.comparePassword(args.body.password)) {
+    if (!doc.comparePassword(ctx.dto.password)) {
       throw new HttpException('auth_denied', { msg: '密码错误' })
     }
     // 3.生成token
@@ -312,37 +266,36 @@ export default class AuthController {
     const accessToken = genToken(rest)
     const refreshToken = genToken(rest, 'REFRESH', '1d')
     // 4.拿到redis中的token
-    const refreshTokens: string[] = JSON.parse(await redis.get(`token:${rest.id}`)) ?? []
+    const refreshTokens: string[] = JSON.parse(await redis.get(`${rest.id}:token`)) ?? []
     // 5.将刷新token保存到redis中
     refreshTokens.push(refreshToken)
-    await redis.set(`token:${rest.id}`, JSON.stringify(refreshTokens), 24 * 60 * 60)
+    await redis.set(`${rest.id}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ msg: '登录成功', data: { accessToken, refreshToken } })
   }
 
-  @routeConfig({
-    method: 'put',
-    path: '/token',
-    summary: '刷新token',
-    tags: ['Auth'],
+  @request('put', '/token')
+  @summary('刷新token')
+  @middlewares([validator(TokenDto)])
+  @body({
+    token: { type: 'string', required: true, example: 'asdasd' },
   })
-  @body(tokenReq)
-  async token(ctx: Context, args: ParsedArgs<ITokenReq>) {
+  async token(ctx: ValidateContext) {
     // 1.先检查前端是否有提交token
-    if (!args.body.token) {
+    if (!ctx.dto.token) {
       throw new HttpException('unauthorized')
     }
     // 2.解析token中的用户信息
     let user: any
-    jwt.verify(args.body.token, process.env.REFRESH_TOKEN_SECRET, (err, decode) => {
+    jwt.verify(ctx.dto.token, process.env.REFRESH_TOKEN_SECRET ?? 'secret', (err, decode) => {
       if (err) {
         throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
       }
       user = decode
     })
     // 3.拿到缓存中的token
-    let refreshTokens: string[] = JSON.parse(await redis.get(`token:${user.id}`)) ?? []
+    let refreshTokens: string[] = JSON.parse(await redis.get(`${user.id}:token`)) ?? []
     // 4.再检查此用户在redis中是否有此token
-    if (!refreshTokens.includes(args.body.token)) {
+    if (!refreshTokens.includes(ctx.dto.token)) {
       throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
     }
     // 5.生成新的token
@@ -350,45 +303,42 @@ export default class AuthController {
     const accessToken = genToken(rest)
     const refreshToken = genToken(rest, 'REFRESH', '1d')
     // 6.将刷新token保存到redis中
-    refreshTokens = refreshTokens
-      .filter((token) => token !== args.body.token)
-      .concat([refreshToken])
-    await redis.set(`token:${rest.id}`, JSON.stringify(refreshTokens), 24 * 60 * 60)
+    refreshTokens = refreshTokens.filter((token) => token !== ctx.dto.token).concat([refreshToken])
+    await redis.set(`${rest.id}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ msg: '刷新token成功', data: { accessToken, refreshToken } })
   }
 
-  @routeConfig({
-    method: 'delete',
-    path: '/logout',
-    summary: '退出',
-    tags: ['Auth'],
-    security: [{ [process.env.API_KEY]: [] }],
+  @request('delete', '/logout')
+  @summary('退出')
+  @middlewares([validator(TokenDto)])
+  @body({
+    token: { type: 'string', required: true, example: 'asdasd' },
   })
-  @body(tokenReq)
-  async logout(ctx: Context, args: ParsedArgs<ITokenReq>) {
+  async logout(ctx: ValidateContext) {
     // 1.先检查前端是否有提交token
-    if (!args.body.token) {
+    if (!ctx.dto.token) {
       throw new HttpException('unauthorized')
     }
     // 2.解析token中的用户信息
     let user: any
-    jwt.verify(args.body.token, process.env.REFRESH_TOKEN_SECRET, (err, decode) => {
+    jwt.verify(ctx.dto.token, process.env.REFRESH_TOKEN_SECRET ?? 'secret', (err, decode) => {
       if (err) {
         throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
       }
       user = decode
     })
     // 3.拿到缓存中的token
-    let refreshTokens: string[] = JSON.parse(await redis.get(`token:${user.id}`)) ?? []
+    let refreshTokens: string[] = JSON.parse(await redis.get(`${user.id}:token`)) ?? []
     // 4.再检查此用户在redis中是否有此token
-    if (!refreshTokens.includes(args.body.token)) {
+    if (!refreshTokens.includes(ctx.dto.token)) {
       throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
     }
     // 5.移除redis中保存的此客户端token
-    refreshTokens = refreshTokens.filter((token) => token !== args.body.token)
+    refreshTokens = refreshTokens.filter((token) => token !== ctx.dto.token)
     // 6.更新redis
-    await redis.set(`token:${user.id}`, JSON.stringify(refreshTokens), 24 * 60 * 60)
+    await redis.set(`${user.id}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ status: 204, msg: '退出成功' })
   }
 }
+export const authController = new AuthController()
 ```

@@ -464,8 +464,7 @@ class Utils {
   }
   static get instance() {
     // 如果已经存在实例则直接返回, 否则实例化后返回
-    this._instance || (this._instance = new Utils(singletonEnforcer))
-    return this._instance
+    return this._instance || (this._instance = new Utils(singletonEnforcer))
   }
 
   /** @description 是否为数组 */
