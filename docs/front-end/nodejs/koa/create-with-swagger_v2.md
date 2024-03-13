@@ -19,7 +19,7 @@ pnpm add koa-swagger-decorator@next reflect-metadata
 ```ts
 import { IRouterContext } from 'koa-router'
 import { routeConfig, z } from 'koa-swagger-decorator'
-import redis from '../utils/redis'
+import { Redis } from '../utils'
 export default class GeneralController {
   @routeConfig({
     method: 'get',
@@ -39,7 +39,7 @@ export default class GeneralController {
     // session prefix 拼接sid得到key
     const session_key = `${process.env.SESSION_PREFIX ?? 'koa:sess:'}${sid}`
     console.log('session_key', session_key)
-    const data = await redis.get(session_key)
+    const data = await Redis.get(session_key)
     console.log('data', data)
     ctx.session.name = ctx.request.query.name
     if (ctx.session.viewCount === null || ctx.session.viewCount === undefined) {
@@ -135,7 +135,7 @@ app
 import './env'
 import 'reflect-metadata' // [!code ++]
 import app from './app'
-import { logger } from './utils/logger' // [!code ++]
+import { logger } from './utils' // [!code ++]
 const PORT = process.env.APP_PORT ?? 3000
 app.listen(PORT, () => {
   logger.info(`
@@ -155,6 +155,42 @@ API Spec: http://localhost:${PORT}/api/swagger-json
 
 :::
 
+### 参数校验
+
+新建`src/validators/auth.ts`，用来编写接口的参数校验规则
+
+```ts
+import { z } from 'koa-swagger-decorator'
+
+const signUpReq = z.object({
+  username: z
+    .string({ required_error: '用户名不能为空' })
+    .trim()
+    .min(4, '用户名长度不能少于4位')
+    .max(20, '用户名长度最多20位'),
+  password: z.string({ required_error: '密码不能为空' }).min(6, '密码长度不能少于6位'),
+  email: z.string({ required_error: '邮箱不能为空' }).trim().email('邮箱格式不正确'),
+})
+
+const signInReq = z.object({
+  username: z
+    .string({ required_error: '用户名不能为空' })
+    .trim()
+    .min(4, '用户名长度不能少于4位')
+    .max(20, '用户名长度最多20位'),
+  password: z.string({ required_error: '密码不能为空' }).min(6, '密码长度不能少于6位'),
+})
+
+const tokenReq = z.object({
+  token: z.string({ required_error: 'token不能为空' }).trim(),
+})
+
+export { signUpReq, signInReq, tokenReq }
+export type ISignUpReq = z.infer<typeof signUpReq>
+export type ISignInReq = z.infer<typeof signInReq>
+export type ITokenReq = z.infer<typeof tokenReq>
+```
+
 ### JWT
 
 ```bash
@@ -164,7 +200,9 @@ pnpm add @types/jsonwebtoken @types/bcryptjs -D
 
 编辑`src/utils/utils.ts`，添加生成token的方法
 
-```ts
+::: code-group
+
+```ts [utils.ts]
 import jwt from 'jsonwebtoken' // [!code ++]
 // ...
 export function genToken(
@@ -183,31 +221,42 @@ export function genToken(
 }
 ```
 
-新建`src/controllers/auth.ctrl.ts`，用来写模拟的登录接口
+```ts [utils/index]
+export { default as Utils, genToken } from './utils' // [!code hl]
+```
 
-新建`src/validators/auth.ts`，用来编写接口的参数校验规则
+:::
+
+新建`src/controllers/auth.ctrl.ts`，用来写模拟的登录接口
 
 :::tip
 因为目前还没接入数据库，所以先用模拟的数据来测试
 :::
 
-::: code-group
-
-```ts [auth.ctrl.ts]
+```ts
 import { IRouterContext } from 'koa-router'
 import { routeConfig, body, ParsedArgs } from 'koa-swagger-decorator'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { Success, HttpException } from '../utils/exception'
-import { genToken } from '../utils/utils'
-import redis from '../utils/redis'
-import { signInReq, tokenReq, ISignInReq, ITokenReq } from '../validators'
+import { genToken, Redis, Success, HttpException } from '../utils'
+import { signUpReq, signInReq, tokenReq, ISignUpReq, ISignInReq, ITokenReq } from '../validators'
 
 export default class AuthController {
   // 模拟数据
   readonly username = 'admin'
   // 123456
   readonly password = '$2a$10$D46VTSW0Mpe6P96Sa1w8tebfeYfZf1s.97Dz84XFfpcUvjtSCvLMO'
+  @routeConfig({
+    method: 'post',
+    path: '/signup',
+    summary: '注册接口',
+    tags: ['Auth'],
+  })
+  @body(signUpReq)
+  async signUp(ctx: IRouterContext, args: ParsedArgs<ISignUpReq>) {
+    ctx.body = 'signup'
+  }
+
   @routeConfig({
     method: 'post',
     path: '/signin',
@@ -228,10 +277,10 @@ export default class AuthController {
     const accessToken = genToken({ username: this.username })
     const refreshToken = genToken({ username: this.username }, 'REFRESH', '1d')
     // 4.拿到redis中的token
-    const refreshTokens = JSON.parse(await redis.get(`${this.username}:token`)) ?? []
+    const refreshTokens = JSON.parse(await Redis.get(`${this.username}:token`)) ?? []
     // 5.将刷新token保存到redis中
     refreshTokens.push(refreshToken)
-    await redis.set(`${this.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
+    await Redis.set(`${this.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ msg: '登录成功', data: { accessToken, refreshToken } })
   }
 
@@ -256,7 +305,7 @@ export default class AuthController {
       user = decode
     })
     // 3.拿到缓存中的token
-    let refreshTokens: string[] = JSON.parse(await redis.get(`${this.username}:token`)) ?? []
+    let refreshTokens: string[] = JSON.parse(await Redis.get(`${this.username}:token`)) ?? []
     // 4.再检查此用户在redis中是否有此token
     if (!refreshTokens.includes(args.body.token)) {
       throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
@@ -269,7 +318,7 @@ export default class AuthController {
     refreshTokens = refreshTokens
       .filter((token) => token !== args.body.token)
       .concat([refreshToken])
-    await redis.set(`${rest.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
+    await Redis.set(`${rest.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ msg: '刷新token成功', data: { accessToken, refreshToken } })
   }
 
@@ -295,43 +344,19 @@ export default class AuthController {
       user = decode
     })
     // 3.拿到缓存中的token
-    let refreshTokens: string[] = JSON.parse(await redis.get(`${this.username}:token`)) ?? []
+    let refreshTokens: string[] = JSON.parse(await Redis.get(`${this.username}:token`)) ?? []
     // 4.再检查此用户在redis中是否有此token
     if (!refreshTokens.includes(args.body.token)) {
       throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
     }
     // 5.移除redis中保存的此客户端token
     refreshTokens = refreshTokens.filter((token) => token !== args.body.token)
-    // 6.更新redis
-    await redis.set(`${user.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
+    await Redis.set(`${user.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ status: 204, msg: '退出成功' })
   }
 }
 export const authController = new AuthController()
 ```
-
-```ts [auth.ts]
-import { z } from 'koa-swagger-decorator'
-
-const signInReq = z.object({
-  username: z
-    .string({ required_error: '用户名不能为空' })
-    .trim()
-    .min(4, '用户名长度不能少于4位')
-    .max(20, '用户名长度最多20位'),
-  password: z.string({ required_error: '密码不能为空' }).min(6, '密码长度不能少于6位'),
-})
-
-const tokenReq = z.object({
-  token: z.string({ required_error: 'token不能为空' }).trim(),
-})
-
-export { signInReq, tokenReq }
-export type ISignInReq = z.infer<typeof signInReq>
-export type ITokenReq = z.infer<typeof tokenReq>
-```
-
-:::
 
 编辑`src/routes/protected.ts`，应用`Auth`路由模块
 
@@ -343,10 +368,12 @@ protectedRouter.applyRoute(AuthController) // [!code ++]
 
 新建`src/middlewares/auth.ts`，用于校验token
 
-```ts
+::: code-group
+
+```ts [auth.ts]
 import { Context, Next } from 'koa'
 import jwt from 'jsonwebtoken'
-import { HttpException } from '../utils/exception'
+import { HttpException } from '../utils'
 const unless = require('koa-unless')
 
 export default function () {
@@ -374,10 +401,16 @@ export default function () {
 }
 ```
 
+```ts [middlewares/index]
+export { default as verifyToken } from './auth' // [!code ++]
+```
+
+:::
+
 编辑`src/app.ts`，应用`Auth`中间件
 
 ```ts
-import verifyToken from './middlewares/auth' // [!code ++]
+import { verifyToken, catchError } from './middlewares' // [!code hl]
 // ...
 app
   .use(catchError) // 注意一定要放在路由的前面加载
@@ -390,6 +423,7 @@ app
         /^\/favicon.ico/,
         /^(?!\/api)/,
         /^\/api\/swagger-/,
+        /^\/api\/signup/,
         /^\/api\/signin/,
         /^\/api\/token/,
       ],

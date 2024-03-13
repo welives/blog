@@ -19,11 +19,26 @@ pnpm add @prisma/client
 pnpm add -D prisma dotenv-cli
 ```
 
+编辑`package.json`，增加如下`prisma`命令
+
+```json
+{
+  "scripts": {
+    // ...
+    "prisma:pull": "npx prisma db pull",
+    "prisma:generate": "npx prisma generate"
+}
+```
+
 ## 数据库配置
+
+![](../assets/koa/prisma_database_url.png)
+
+参照图示，在`.env`文件中写入数据库的连接信息
 
 ### 初始化
 
-初始化`Prisma`，执行`npx prisma init`，然后项目根目录会自动生成`prisma/schema.prisma`文件，根据项目情况对其进行修改
+在`.env`文件中配置好数据库的环境变量后执行`npx prisma init`，然后项目根目录会自动生成`prisma/schema.prisma`文件，根据项目情况对其进行修改
 
 ::: code-group
 
@@ -43,7 +58,7 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
-
+// [!code focus:6]
 datasource db {
   provider     = "mongodb"
   url          = env("MONGODB_URL")
@@ -54,7 +69,7 @@ datasource db {
 :::
 
 ::: tip 提示
-`MYSQL_URL`是`.env`文件中的数据库环境变量
+`MYSQL_URL`和`MONGODB_URL`是`.env`文件中的数据库环境变量
 
 `relationMode`的作用是定义表的外键关系模式，这里用的是`prisma`模式，即虚拟外键
 :::
@@ -96,13 +111,13 @@ model user {
 
 ```ini [mongodb]
 model user {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  avatar   String
-  password String
-  role     Int
-  salt     String
-  status   Int
-  username String @unique(map: "username_1")
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt  Float
+  email      String  @unique(map: "email_1")
+  lock_token String?
+  password   String
+  updatedAt  Float
+  username   String
 }
 ```
 

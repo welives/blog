@@ -194,12 +194,12 @@ import PropTypes from 'prop-types'
 class App extends React.Component {}
 // 指定props的默认值
 App.defaultProps = {
-  list: []
+  list: [],
 }
 // 属性限制(类型,是否必传等)
 App.propTypes = {
   msg: PropTypes.string.isRequired,
-  list: PropTypes.array
+  list: PropTypes.array,
 }
 ```
 
@@ -209,12 +209,12 @@ import PropTypes from 'prop-types'
 class App extends React.Component {
   // 指定props的默认值
   static defaultProps = {
-    list: []
+    list: [],
   }
   // 属性限制(类型,是否必传等)
   static propTypes = {
     msg: PropTypes.string.isRequired,
-    list: PropTypes.array
+    list: PropTypes.array,
   }
 }
 ```
@@ -224,12 +224,12 @@ import PropTypes from 'prop-types'
 function App(props) {}
 // 指定props的默认值
 App.defaultProps = {
-  list: []
+  list: [],
 }
 // 属性限制(类型,是否必传等)
 App.propTypes = {
   msg: PropTypes.string.isRequired,
-  list: PropTypes.array
+  list: PropTypes.array,
 }
 ```
 
@@ -318,7 +318,7 @@ class App extends React.Component {
 ```jsx [子组件]
 class Child extends React.Component {
   state = {
-    name: 'Child'
+    name: 'Child',
   }
   render() {
     return <div>this is {this.state.name}</div>
@@ -535,15 +535,15 @@ class App extends React.Component {
   - `static getDerivedStateFromProps(props, state)`：在调用`render`方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新`state`，如果返回`null`则不更新任何内容
   - `render()`：类组件中必须实现的方法。如果`shouldComponentUpdate()`返回`false`，则不会调用`render()`
   - `componentDidMount()`：会在组件挂载后立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过网络请求获取数据，此处是实例化请求的好地方
-  - ~~`UNSAFE_componentWillMount()`~~：即将废弃，不过多介绍
+  - `UNSAFE_componentWillMount()`：即将废弃，不过多介绍
 - 更新阶段
   - `static getDerivedStateFromProps(props, state)`：参考挂载阶段
   - `shouldComponentUpdate(nextProps, nextState)`：在这里对组件进行优化，是否需要更新，若返回`false`将不会调用`render()`和`componentDidUpdate()`。首次渲染或使用`forceUpdate()`时不会调用该方法。`PureComponent`会对`props`和`state`进行浅层比较，并减少了跳过必要更新的可能性
   - `render()`：参考挂载阶段
   - `getSnapshotBeforeUpdate(prevProps, prevState)`：如果实现了该生命周期，则它的返回值将作为`componentDidUpdate()`的第三个参数`snapshot`传递，否则此参数为`undefined`
   - `componentDidUpdate(prevProps, prevState, snapshot)`：会在更新后会被立即调用。首次渲染不会执行此方法
-  - ~~`UNSAFE_componentWillUpdate()`~~：即将废弃，不过多介绍
-  - ~~`UNSAFE_componentWillReceiveProps()`~~：即将废弃，不过多介绍
+  - `UNSAFE_componentWillUpdate()`：即将废弃，不过多介绍
+  - `UNSAFE_componentWillReceiveProps()`：即将废弃，不过多介绍
 - 卸载阶段：
   - `componentWillUnmount`：会在组件卸载及销毁之前调用。在此方法中执行必要的清理操作，例如清除`timer`，取消网络请求或清除在`componentDidMount()`中创建的订阅等。这里面不应该调用`setState()`
 - 错误处理
@@ -560,7 +560,7 @@ class App extends React.Component {
 
 ### `key`的作用
 
-- 简单地说：`key`是虚拟 DOM 对象的标识，在更新显示时`key`起着极其重要的作用
+- 简单地说：`key`是虚拟 DOM 对象的标识，在更新组件时`key`起着极其重要的作用
 - 详细地说：当`state`发生变化时，React 会根据「新的`state`」生成「新的`VNode`」, 随后 React 会对新旧的`VNode`进行`diff`比较，比较规则如下
   - 旧`VNode`中找到了与新`VNode`相同的`key`
     - 若`VNode`中内容没变，直接使用之前的真实 DOM

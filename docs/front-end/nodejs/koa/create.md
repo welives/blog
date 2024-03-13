@@ -649,6 +649,12 @@ module.exports = () => {
 
 新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../../encapsulation.md#helper)
 
+再新建`src/utils/index.ts`，对此目录下的所有模块进行导出
+
+```ts
+export { default as Utils } from './utils'
+```
+
 ### 定时任务
 
 ```bash
@@ -726,11 +732,15 @@ export function setupLogging(app: any) {
 ```
 
 ```ts [app.ts]
-import { setupLogging } from './utils/logger' // [!code ++]
+import { setupLogging } from './utils' // [!code ++]
 // ...
 const app = new Koa()
 setupLogging(app) // [!code ++]
 // ...
+```
+
+```ts [utils/index]
+export * from './logger' // [!code ++]
 ```
 
 :::
@@ -742,7 +752,7 @@ setupLogging(app) // [!code ++]
 ::: code-group
 
 ```ts [app.ts]
-import catchError from './middlewares/error_handler' // [!code ++]
+import { catchError } from './middlewares' // [!code ++]
 // ...
 app.use(catchError) // [!code ++] // 注意一定要放在路由的前面加载
 // ...
@@ -859,15 +869,19 @@ export class Failed extends HttpException {
 }
 ```
 
+```ts [utils/index]
+export * from './exception' // [!code ++]
+```
+
 ```ts [error_handler.ts]
 import { BaseContext, Next } from 'koa'
-import { HttpException, AppError } from '../utils/exception'
+import { HttpException, AppError } from '../utils'
 interface ICatchError extends AppError {
   request?: string
 }
 
 /** @description 错误处理中间件 */
-export default async (ctx: BaseContext, next: Next) => {
+export default async function (ctx: BaseContext, next: Next) {
   try {
     await next()
   } catch (error: any) {
@@ -902,6 +916,10 @@ export default async (ctx: BaseContext, next: Next) => {
 }
 ```
 
+```ts [middlewares/index]
+export { default as catchError } from './error_handler' // [!code ++]
+```
+
 :::
 
 ### Redis
@@ -912,7 +930,9 @@ pnpm add ioredis
 
 新建`src/utils/redis.ts`
 
-```ts
+::: code-group
+
+```ts [redis.ts]
 import IoRedis from 'ioredis'
 
 const singletonEnforcer = Symbol('Redis')
@@ -974,6 +994,12 @@ export default Redis.instance
 export const redis = Redis.instance.client
 ```
 
+```ts [utils/index]
+export { default as Redis, redis } from './redis' // [!code ++]
+```
+
+:::
+
 ### Session
 
 ```bash
@@ -1017,7 +1043,7 @@ pnpm add koa-swagger-decorator reflect-metadata
 ```ts
 import { IRouterContext } from 'koa-router'
 import { request, summary, query, tagsAll } from 'koa-swagger-decorator'
-import { redis } from '../utils/redis'
+import { Redis } from '../utils'
 
 @tagsAll(['General'])
 export default class GeneralController {
@@ -1033,7 +1059,7 @@ export default class GeneralController {
     // session prefix 拼接sid得到key
     const session_key = `${process.env.SESSION_PREFIX ?? 'koa:sess:'}${sid}`
     console.log('session_key', session_key)
-    const data = await redis.get(session_key)
+    const data = await Redis.get(session_key)
     console.log('data', data)
     ctx.session.name = ctx.request.query.name
     if (ctx.session.viewCount === null || ctx.session.viewCount === undefined) {
@@ -1123,7 +1149,7 @@ app
 import './env'
 import 'reflect-metadata' // [!code ++]
 import app from './app'
-import { logger } from './utils/logger' // [!code ++]
+import { logger } from './utils' // [!code ++]
 const PORT = process.env.APP_PORT ?? 3000
 app.listen(PORT, () => {
   logger.info(`
@@ -1174,11 +1200,13 @@ export class TokenDto {
 
 新建`src/middlewares/validator.ts`，用来处理接口参数校验
 
-```ts
+::: code-group
+
+```ts [validator.ts]
 import { Next } from 'koa'
 import { Context } from 'koa-swagger-decorator'
 import { validate } from 'class-validator'
-import { Failed } from '../utils/exception'
+import { Failed } from '../utils'
 
 export interface ValidateContext extends Context {
   dto: any
@@ -1210,6 +1238,12 @@ export default function (DtoClass: Type) {
 }
 ```
 
+```ts [middlewares/index]
+export { default as validator, ValidateContext } from './validator' // [!code ++]
+```
+
+:::
+
 ### JWT
 
 ```bash
@@ -1219,7 +1253,9 @@ pnpm add @types/jsonwebtoken @types/bcryptjs -D
 
 编辑`src/utils/utils.ts`，添加生成token的方法
 
-```ts
+::: code-group
+
+```ts [utils.ts]
 import jwt from 'jsonwebtoken' // [!code ++]
 // ...
 export function genToken(
@@ -1238,6 +1274,12 @@ export function genToken(
 }
 ```
 
+```ts [utils/index]
+export { default as Utils, genToken } from './utils' // [!code hl]
+```
+
+:::
+
 新建`src/controllers/auth.ctrl.ts`，用来写模拟的登录接口
 
 :::tip
@@ -1248,10 +1290,8 @@ export function genToken(
 import { request, summary, body, middlewares, tagsAll } from 'koa-swagger-decorator'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { Success, HttpException } from '../utils/exception'
-import { genToken } from '../utils/utils'
-import redis from '../utils/redis'
-import validator, { ValidateContext } from '../middlewares/validator'
+import { genToken, Redis, Success, HttpException } from '../utils'
+import { ValidateContext, validator } from '../middlewares'
 import { SignInDto, TokenDto } from '../dto'
 
 @tagsAll(['Auth'])
@@ -1260,6 +1300,17 @@ export default class AuthController {
   readonly username = 'admin'
   // 123456
   readonly password = '$2a$10$D46VTSW0Mpe6P96Sa1w8tebfeYfZf1s.97Dz84XFfpcUvjtSCvLMO'
+
+  @request('post', '/signup')
+  @summary('注册接口')
+  @body({
+    username: { type: 'string', required: true, example: 'admin' },
+    password: { type: 'string', required: true, example: '123456' },
+    email: { type: 'string', required: true, example: 'admin@example.com' },
+  })
+  async signUp(ctx: ValidateContext) {
+    ctx.body = 'signup'
+  }
 
   @request('post', '/signin')
   @summary('登录接口')
@@ -1281,10 +1332,10 @@ export default class AuthController {
     const accessToken = genToken({ username: this.username })
     const refreshToken = genToken({ username: this.username }, 'REFRESH', '1d')
     // 4.拿到redis中的token
-    const refreshTokens = JSON.parse(await redis.get(`${this.username}:token`)) ?? []
+    const refreshTokens = JSON.parse(await Redis.get(`${this.username}:token`)) ?? []
     // 5.将刷新token保存到redis中
     refreshTokens.push(refreshToken)
-    await redis.set(`${this.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
+    await Redis.set(`${this.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ msg: '登录成功', data: { accessToken, refreshToken } })
   }
 
@@ -1308,7 +1359,7 @@ export default class AuthController {
       user = decode
     })
     // 3.拿到缓存中的token
-    let refreshTokens: string[] = JSON.parse(await redis.get(`${this.username}:token`)) ?? []
+    let refreshTokens: string[] = JSON.parse(await Redis.get(`${this.username}:token`)) ?? []
     // 4.再检查此用户在redis中是否有此token
     if (!refreshTokens.includes(ctx.dto.token)) {
       throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
@@ -1319,7 +1370,7 @@ export default class AuthController {
     const refreshToken = genToken(rest, 'REFRESH', '1d')
     // 6.将新token保存到redis中
     refreshTokens = refreshTokens.filter((token) => token !== ctx.dto.token).concat([refreshToken])
-    await redis.set(`${rest.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
+    await Redis.set(`${rest.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ msg: '刷新token成功', data: { accessToken, refreshToken } })
   }
 
@@ -1343,15 +1394,14 @@ export default class AuthController {
       user = decode
     })
     // 3.拿到缓存中的token
-    let refreshTokens: string[] = JSON.parse(await redis.get(`${this.username}:token`)) ?? []
+    let refreshTokens: string[] = JSON.parse(await Redis.get(`${this.username}:token`)) ?? []
     // 4.再检查此用户在redis中是否有此token
     if (!refreshTokens.includes(ctx.dto.token)) {
       throw new HttpException('forbidden', { msg: '无效令牌，请重新登录' })
     }
     // 5.移除redis中保存的此客户端token
     refreshTokens = refreshTokens.filter((token) => token !== ctx.dto.token)
-    // 6.更新redis
-    await redis.set(`${user.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
+    await Redis.set(`${user.username}:token`, JSON.stringify(refreshTokens), 24 * 60 * 60)
     throw new Success({ status: 204, msg: '退出成功' })
   }
 }
@@ -1360,10 +1410,12 @@ export const authController = new AuthController()
 
 新建`src/middlewares/auth.ts`，用于校验token
 
-```ts
+::: code-group
+
+```ts [auth.ts]
 import { Context, Next } from 'koa'
 import jwt from 'jsonwebtoken'
-import { HttpException } from '../utils/exception'
+import { HttpException } from '../utils'
 const unless = require('koa-unless')
 
 export default function () {
@@ -1391,10 +1443,16 @@ export default function () {
 }
 ```
 
+```ts [middlewares/index]
+export { default as verifyToken } from './auth' // [!code ++]
+```
+
+:::
+
 编辑`src/app.ts`，应用`Auth`中间件
 
 ```ts
-import verifyToken from './middlewares/auth' // [!code ++]
+import { verifyToken, catchError } from './middlewares' // [!code hl]
 // ...
 app
   .use(catchError) // 注意一定要放在路由的前面加载
@@ -1407,6 +1465,7 @@ app
         /^\/favicon.ico/,
         /^(?!\/api)/,
         /^\/api\/swagger-/,
+        /^\/api\/signup/,
         /^\/api\/signin/,
         /^\/api\/token/,
       ],

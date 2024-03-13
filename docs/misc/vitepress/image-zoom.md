@@ -4,7 +4,7 @@ title: 给VitePress增加图片缩放功能
 
 默认的 Vitepress 加载图片后，因为布局的原因，图片显得很小，很多图片里的内容看不清晰，所以想要一个可以点击图片放大的效果
 
-去谷歌搜索了一番，找到一个方案[issues#854](https://github.com/vuejs/vitepress/issues/854)，看了他们的交流后，我也尝试实现了这个功能
+去谷歌搜索了一番，找到一个方案[issues#854](https://github.com/vuejs/vitepress/issues/854)
 
 ## 安装medium-zoom
 
