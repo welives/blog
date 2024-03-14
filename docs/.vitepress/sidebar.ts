@@ -357,10 +357,10 @@ const sidebar: DefaultTheme.Sidebar = {
               text: '使用Typeorm',
               link: '/front-end/nodejs/koa/typeorm',
             },
-            // {
-            //   text: '使用Prisma',
-            //   link: '/front-end/nodejs/koa/prisma',
-            // },
+            {
+              text: '使用Prisma',
+              link: '/front-end/nodejs/koa/prisma',
+            },
             {
               text: '使用Mongoose',
               link: '/front-end/nodejs/koa/mongoose',

@@ -26,108 +26,6 @@ pnpm add typeorm mysql2
 pnpm add typeorm mongodb
 ```
 
-### 数据库配置
-
-新建`src/utils/db.ts`
-
-::: code-group
-
-```ts [mysql]
-import { DataSource, DataSourceOptions } from 'typeorm'
-
-const MYSQL_URL = process.env.MYSQL_URL
-
-const config: DataSourceOptions = {
-  ...(MYSQL_URL
-    ? { url: MYSQL_URL }
-    : {
-        host: process.env.MYSQL_HOST ?? 'localhost',
-        port: Number(process.env.MYSQL_PORT ?? 3306),
-        username: process.env.MYSQL_USER ?? 'root',
-        password: process.env.MYSQL_PASSWORD ?? 'root',
-        database: process.env.MYSQL_DBNAME ?? 'test',
-      }),
-  type: 'mysql',
-  timezone: process.env.TIMEZONE ?? 'Asia/Shanghai',
-  charset: process.env.CHARSET ?? 'utf8',
-  synchronize: process.env.NODE_ENV === 'production' ? false : true,
-  logging: false,
-  entities:
-    process.env.NODE_ENV === 'development'
-      ? ['src/entities/**/*.entity.ts']
-      : ['dist/entities/**/*.entity.js'],
-}
-
-export const DBSource = new DataSource(config)
-```
-
-```ts [mongodb]
-import { DataSource, DataSourceOptions } from 'typeorm'
-
-const MONGODB_URL = process.env.MONGODB_URL
-
-const config: DataSourceOptions = {
-  ...(MONGODB_URL
-    ? { url: MONGODB_URL }
-    : {
-        host: process.env.MONGODB_HOST ?? 'localhost',
-        port: Number(process.env.MONGODB_PORT ?? 27017),
-        username: process.env.MONGODB_USER ?? 'root',
-        password: process.env.MONGODB_PWD ?? 'root',
-        database: process.env.MONGODB_DBNAME ?? 'test',
-      }),
-  type: 'mongodb',
-  synchronize: process.env.NODE_ENV === 'production' ? false : true,
-  logging: false,
-  entities:
-    process.env.NODE_ENV === 'development'
-      ? ['src/entities/**/*.entity.ts']
-      : ['dist/entities/**/*.entity.js'],
-}
-
-export const DBSource = new DataSource(config)
-```
-
-```ts [utils/index]
-export * from './db' // [!code ++]
-```
-
-:::
-
-### 连接数据库
-
-编辑入口文件`src/index.ts`
-
-```ts
-import './env'
-import 'reflect-metadata'
-import app from './app'
-import { logger, DBSource } from './utils' // [!code hl]
-DBSource.initialize()
-  .then(() => {
-    console.log('数据库连接成功')
-    const PORT = process.env.APP_PORT ?? 3000
-    app.listen(PORT, () => {
-      logger.info(`
-      ------------
-      Server Started!
-      App is running in ${app.env} mode
-      Logging initialized at ${process.env.LOG_LEVEL ?? 'debug'} level
-
-      Http: http://localhost:${PORT}
-
-      API Docs: http://localhost:${PORT}/api/swagger-html
-      API Spec: http://localhost:${PORT}/api/swagger-json
-      ------------
-      `)
-    })
-  })
-  .catch((err) => {
-    console.error('数据库连接失败', err)
-    process.exit(1)
-  })
-```
-
 ## 定义模型
 
 新建模型`src/entities/user.entity.ts`
@@ -207,6 +105,124 @@ export class User {
 
 :::
 
+## 连接数据库
+
+新建`src/services/db.serv.ts`，用来创建数据库服务
+
+::: code-group
+
+```ts [mysql]
+import { DataSource, DataSourceOptions } from 'typeorm'
+const singletonEnforcer = Symbol('DbService')
+
+class DbService {
+  private _db: DataSource
+  private static _instance: DbService
+  constructor(enforcer: any) {
+    if (enforcer !== singletonEnforcer) {
+      throw new Error('Cannot initialize single instance')
+    }
+    this.init()
+  }
+  static get instance() {
+    return this._instance || (this._instance = new DbService(singletonEnforcer))
+  }
+  private init() {
+    const MYSQL_URL = process.env.MYSQL_URL
+    const config: DataSourceOptions = {
+      ...(MYSQL_URL
+        ? { url: MYSQL_URL }
+        : {
+            host: process.env.MYSQL_HOST ?? 'localhost',
+            port: Number(process.env.MYSQL_PORT ?? 3306),
+            username: process.env.MYSQL_USER ?? 'root',
+            password: process.env.MYSQL_PASSWORD ?? 'root',
+            database: process.env.MYSQL_DBNAME ?? 'test',
+          }),
+      type: 'mysql',
+      timezone: process.env.TIMEZONE ?? 'Asia/Shanghai',
+      charset: process.env.CHARSET ?? 'utf8',
+      synchronize: process.env.NODE_ENV === 'production' ? false : true,
+      logging: false,
+      entities:
+        process.env.NODE_ENV === 'development'
+          ? ['src/entities/**/*.entity.ts']
+          : ['dist/entities/**/*.entity.js'],
+    }
+    this._db = new DataSource(config)
+    this._db
+      .initialize()
+      .then(() => {
+        console.log('数据库连接成功')
+      })
+      .catch((err) => {
+        console.error('数据库连接失败', err)
+        process.exit(1)
+      })
+  }
+  get db() {
+    return this._db
+  }
+}
+export const db = DbService.instance.db
+```
+
+```ts [mongodb]
+import { DataSource, DataSourceOptions } from 'typeorm'
+const singletonEnforcer = Symbol('DbService')
+
+class DbService {
+  private _db: DataSource
+  private static _instance: DbService
+  constructor(enforcer: any) {
+    if (enforcer !== singletonEnforcer) {
+      throw new Error('Cannot initialize single instance')
+    }
+    this.init()
+  }
+  static get instance() {
+    return this._instance || (this._instance = new DbService(singletonEnforcer))
+  }
+  private init() {
+    const MONGODB_URL = process.env.MONGODB_URL
+    const config: DataSourceOptions = {
+      ...(MONGODB_URL
+        ? { url: MONGODB_URL }
+        : {
+            host: process.env.MONGODB_HOST ?? 'localhost',
+            port: Number(process.env.MONGODB_PORT ?? 27017),
+            username: process.env.MONGODB_USER ?? 'root',
+            password: process.env.MONGODB_PWD ?? 'root',
+            database: process.env.MONGODB_DBNAME ?? 'test',
+          }),
+      type: 'mongodb',
+      synchronize: process.env.NODE_ENV === 'production' ? false : true,
+      logging: false,
+      entities:
+        process.env.NODE_ENV === 'development'
+          ? ['src/entities/**/*.entity.ts']
+          : ['dist/entities/**/*.entity.js'],
+    }
+    this._db = new DataSource(config)
+    this._db
+      .initialize()
+      .then(() => {
+        console.log('数据库连接成功')
+      })
+      .catch((err) => {
+        console.error('数据库连接失败', err)
+        process.exit(1)
+      })
+  }
+  get db() {
+    return this._db
+  }
+}
+export const db = DbService.instance.db
+```
+
+:::
+
 ## CURD
 
 编辑`src/dto/auth.ts`，补充注册接口的验证规则
@@ -238,10 +254,11 @@ export class SignUpDto {
 ```ts [mysql]
 import { request, summary, body, middlewares, tagsAll } from 'koa-swagger-decorator'
 import jwt from 'jsonwebtoken'
-import { genToken, Redis, DBSource, Success, Failed, HttpException } from '../utils'
+import { genToken, Redis, Success, Failed, HttpException } from '../utils'
 import { ValidateContext, validator } from '../middlewares'
 import { SignUpDto, SignInDto, TokenDto } from '../dto'
 import { User } from '../entities/user.entity'
+import { db } from '../services/db.serv'
 
 @tagsAll(['Auth'])
 export default class AuthController {
@@ -254,7 +271,7 @@ export default class AuthController {
     email: { type: 'string', required: true, example: 'admin@example.com' },
   })
   async signUp(ctx: ValidateContext) {
-    const userRepository = DBSource.getRepository(User)
+    const userRepository = db.getRepository(User)
     // 1.检查邮箱是否已存在
     if (await userRepository.findOne({ where: { email: ctx.dto.email } })) {
       throw new Failed({ msg: '该邮箱已被注册' })
@@ -284,7 +301,7 @@ export default class AuthController {
     password: { type: 'string', required: true, example: '123456' },
   })
   async signIn(ctx: ValidateContext) {
-    const userRepository = DBSource.getRepository(User)
+    const userRepository = db.getRepository(User)
     const user = await userRepository.findOneBy({ username: ctx.dto.username })
     // 1.检查用户是否存在
     if (!user) {
@@ -378,10 +395,11 @@ export const authController = new AuthController()
 ```ts [mongodb]
 import { request, summary, body, middlewares, tagsAll } from 'koa-swagger-decorator'
 import jwt from 'jsonwebtoken'
-import { genToken, Redis, DBSource, Success, Failed, HttpException } from '../utils'
+import { genToken, Redis, Success, Failed, HttpException } from '../utils'
 import { ValidateContext, validator } from '../middlewares'
 import { SignUpDto, SignInDto, TokenDto } from '../dto'
 import { User } from '../entities/user.entity'
+import { db } from '../services/db.serv'
 
 @tagsAll(['Auth'])
 export default class AuthController {
@@ -394,7 +412,7 @@ export default class AuthController {
     email: { type: 'string', required: true, example: 'admin@example.com' },
   })
   async signUp(ctx: ValidateContext) {
-    const userRepository = DBSource.getRepository(User)
+    const userRepository = db.getRepository(User)
     // 1.检查邮箱是否已存在
     if (await userRepository.findOne({ where: { email: ctx.dto.email } })) {
       throw new Failed({ msg: '该邮箱已被注册' })
@@ -424,7 +442,7 @@ export default class AuthController {
     password: { type: 'string', required: true, example: '123456' },
   })
   async signIn(ctx: ValidateContext) {
-    const userRepository = DBSource.getRepository(User)
+    const userRepository = db.getRepository(User)
     const user = await userRepository.findOneBy({ username: ctx.dto.username })
     // 1.检查用户是否存在
     if (!user) {
