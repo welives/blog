@@ -1,5 +1,11 @@
+---
+title: 拖拽API
+---
+
 ::: details 基础模板
-<<< @/demo/拖拽API/basic.html
+
+<<< ./assets/draggable/basic.html
+
 :::
 
 <iframe height="400" style="width: 100%;" scrolling="no" title="拖拽API" src="https://codepen.io/welives/embed/mdaNzzb?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -9,6 +15,8 @@
 </iframe>
 
 ## 课程表实战
+
+<a href="/blog/demo/课程表/index.html" target="_blank">查看完整示例</a>
 
 拖拽API 本身并不复杂，难的是结合到具体的应用场景时涉及很多的知识点，考验的是对各种知识点的掌控能力
 

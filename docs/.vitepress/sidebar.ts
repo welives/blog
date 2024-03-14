@@ -28,10 +28,6 @@ const sidebar: DefaultTheme.Sidebar = {
               link: '/front-end/css/linear-gradient',
             },
             {
-              text: '瀑布流',
-              link: '/front-end/css/waterfall',
-            },
-            {
               text: '奇技淫巧',
               link: '/front-end/css/technique',
             },
@@ -56,10 +52,6 @@ const sidebar: DefaultTheme.Sidebar = {
             {
               text: '模块导入导出',
               link: '/front-end/javascript/module',
-            },
-            {
-              text: '拖拽API',
-              link: '/front-end/javascript/draggable',
             },
             {
               text: '图片懒加载',
@@ -162,6 +154,17 @@ const sidebar: DefaultTheme.Sidebar = {
         {
           text: '常用工具封装',
           link: '/front-end/encapsulation',
+        },
+        {
+          text: '一些Demo',
+          link: '/front-end/demo/',
+          collapsed: true,
+          items: [
+            {
+              text: '课程表',
+              link: '/front-end/demo/draggable',
+            },
+          ],
         },
         // {
         //   text: '制作NPM包',

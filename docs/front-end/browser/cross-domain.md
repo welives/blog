@@ -55,9 +55,56 @@ title: 跨域
 
 ::: details JSONP示例
 ::: code-group
-<<< @/demo/jsonp/index.html
 
-<<< @/demo/jsonp/server.js
+```html [client]
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSONP解决跨域</title>
+  </head>
+  <body>
+    <button>点击获取数据</button>
+    <script>
+      function callback(resp) {
+        console.log(resp)
+      }
+      function request(url) {
+        const script = document.createElement('script')
+        script.src = url
+        script.onload = function () {
+          script.remove()
+        }
+        document.body.appendChild(script)
+      }
+      document.querySelector('button').onclick = function () {
+        request('http://localhost:8000/data')
+      }
+    </script>
+  </body>
+</html>
+```
+
+```js [server]
+const http = require('http')
+const port = 8000
+
+const server = http.createServer(function (req, res) {
+  if (req.url === '/') {
+    res.end('hello world')
+  } else if (req.url === '/data') {
+    res.end('callback([1,2,3,{name: "jandan", age: 18, gender: "male"}])')
+  } else {
+    res.end('404 Not Found')
+  }
+})
+
+server.listen(port, function () {
+  console.log(`server start at: http://localhost:${port}`)
+})
+```
+
 :::
 
 ### iframe
