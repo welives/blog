@@ -22,16 +22,14 @@ title: Web前端
 - [CSS包含块](./css/bfc)
 - [BEM命名法](./css/bem-naming)
 - [线性渐变](./css/linear-gradient)
-- [瀑布流](./css/waterfall)
 - [奇技淫巧](./css/technique)
 
 ## JavaScript
 
-- [this 指向](./javascript/this)
+- [this指向](./javascript/this)
 - [原型链](./javascript/prototype)
 - [继承](./javascript/extends)
 - [模块导入导出](./javascript/module)
-- [拖拽API](./javascript/draggable)
 - [图片懒加载](./javascript/lazy-load)
 - [奇技淫巧](./javascript/technique)
 
