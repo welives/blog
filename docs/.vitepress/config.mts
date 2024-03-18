@@ -7,7 +7,7 @@ import sidebar from './sidebar'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-CN',
-  title: '全栈学习笔记',
+  title: '学习笔记',
   description: '一个使用VitePress构建的编写学习笔记的个人博客',
   base: '/blog',
   head: [
@@ -73,6 +73,7 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       { text: '前端', link: '/front-end/' },
+      { text: '自然语言', link: '/language/' },
       { text: '杂项', link: '/misc/' },
       { text: '关于', link: '/about' },
     ],

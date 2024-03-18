@@ -475,6 +475,35 @@ const sidebar: DefaultTheme.Sidebar = {
       ],
     },
   ],
+  '/language/': [
+    {
+      text: '英语',
+      collapsed: false,
+      link: '/language/english/',
+      items: [
+        {
+          text: '发音',
+          link: '/language/english/pronunciation',
+        },
+        {
+          text: '新概念英语',
+          collapsed: true,
+          items: [
+            {
+              text: '第一册',
+              link: '/language/english/new_concept/one',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      text: '日语',
+      collapsed: false,
+      link: '/language/japanese/',
+      items: [],
+    },
+  ],
 }
 
 export default sidebar

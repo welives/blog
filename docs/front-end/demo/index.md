@@ -26,8 +26,6 @@ itemList[i].style.gridRowEnd = `span ${girdHeight}`
 
 ## 滚动歌词
 
-<a href="/blog/demo/滚动歌词/index.html" target="_blank">查看完整示例</a>
-
 因为歌词文件的文本格式通常都是一段歌词正文和时间轴组合而成的，所以大致的实现思路可以分为以下步骤
 
 1. 通过接口获取到歌词文本内容
@@ -36,10 +34,12 @@ itemList[i].style.gridRowEnd = `span ${girdHeight}`
 4. 根据解析好的歌词数组对象动态创建一个列表
 5. 监听播放器的`timeupdate`事件得到当前歌词的数组下标，然后计算出偏移量
 
+<iframe src="/blog/demo/滚动歌词/index.html" title="滚动歌词" height="300" width="100%" scrolling="auto" frameborder="0"></iframe>
+
 ## 购物车动画
 
-<a href="/blog/demo/购物车动画/index.html" target="_blank">查看完整示例</a>
+<iframe src="/blog/demo/购物车动画/index.html" title="购物车动画" height="500" width="350" scrolling="no" frameborder="0"></iframe>
 
 ## 高度自动的过渡效果
 
-<a href="/blog/demo/高度自动的过渡/index.html" target="_blank">查看完整示例</a>
+<iframe src="/blog/demo/高度自动的过渡/index.html" title="高度自动的过渡效果" height="400" width="100%" scrolling="auto" frameborder="0"></iframe>

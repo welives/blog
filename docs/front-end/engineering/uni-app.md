@@ -493,7 +493,7 @@ export default defineConfig(({ mode }) => {
 })
 ```
 
-根目录新建`mock/index.ts`，示例如下，根据自己的情况添加添加接口
+根目录新建`mock/index.ts`，示例如下，根据自己的情况添加接口
 
 ```ts
 import type { MockMethod } from 'vite-plugin-mock'
@@ -705,7 +705,7 @@ export function progressEventReducer(
 
 ### ③取消请求代理函数
 
-因为需要保留`axios`的取消请求用法，`uni-app`的`requestTask`并不会对外暴露，所以需要一个中间函数来进行代理
+因为需要保留`axios`的取消请求用法，而`uni-app`的`requestTask`并不会对外暴露，所以需要一个中间函数来进行代理
 
 新建`src/api/adapter/methods/cancel.ts`，并添加如下代码
 
@@ -951,7 +951,7 @@ export default upload
 
 :::
 
-创建一个函数，根据请求的`method`来统一管理这三个封装好的请求
+创建一个中间函数，根据请求的`method`来统一管理这三个封装好的请求
 
 新建`src/api/adapter/methods/index.ts`，并添加如下代码
 
