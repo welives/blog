@@ -9,12 +9,6 @@ hero:
   image:
     src: /logo.svg
   actions:
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/welives/blog
-    - theme: alt
-      text: View on Gitee
-      link: https://welives.gitee.io/blog
     - theme: brand
       text: 进入 🚀
       link: /front-end/
