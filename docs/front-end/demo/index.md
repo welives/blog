@@ -18,11 +18,7 @@ itemList[i].style.gridRowEnd = `span ${girdHeight}`
 
 > 我的这个例子是用原生 JS 写的，对于 `Vue`和`React`，可以根据这个思路，将`grid`元素封装成子组件，在子组件挂载阶段获取元素的`clientHeight`并计算出实际的`grid`元素高度即可
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Grid瀑布流" src="https://codepen.io/welives/embed/eYQqZpO?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/welives/pen/eYQqZpO">
-  Grid瀑布流</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe src="/blog/demo/waterfall/grid.html" title="Grid实现瀑布流" height="300" width="100%" scrolling="auto" frameborder="0"></iframe>
 
 ## 滚动歌词
 

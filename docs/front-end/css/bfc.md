@@ -18,11 +18,30 @@ title: CSS包含块
 
 来看一个简单的例子：
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="CSS包含块例子1" src="https://codepen.io/welives/embed/MWZevaP?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/welives/pen/MWZevaP">
-  CSS包含块例子1</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+:::code-group
+
+```html
+<div class="container">
+  <div class="item"></div>
+</div>
+```
+
+```css
+.container {
+  width: 500px;
+  height: 300px;
+  background-color: skyblue;
+}
+.item {
+  width: 50%;
+  height: 50%;
+  background-color: red;
+}
+```
+
+:::
+
+<iframe src="/blog/demo/bfc/1.html" title="CSS包含块例子1" height="300" width="100%" scrolling="auto" frameborder="0"></iframe>
 
 请仔细阅读上面的代码，然后你认为`div.item`这个盒子的宽高是多少？
 
@@ -47,11 +66,42 @@ title: CSS包含块
 
 前面两条实际上都还比较好理解，第三条往往是初学者容易比较忽视的，我们来看一个示例：
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="CSS包含块例子2" src="https://codepen.io/welives/embed/ExGyvPz?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/welives/pen/ExGyvPz">
-  CSS包含块例子2</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+:::code-group
+
+```html
+<div class="container">
+  <div class="item">
+    <div class="item2"></div>
+  </div>
+</div>
+```
+
+```css
+.container {
+  width: 500px;
+  height: 300px;
+  background-color: skyblue;
+  position: relative;
+}
+.item {
+  width: 300px;
+  height: 150px;
+  border: 5px solid;
+  margin-left: 100px;
+}
+.item2 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+```
+
+:::
+
+<iframe src="/blog/demo/bfc/2.html" title="CSS包含块例子2" height="300" width="100%" scrolling="auto" frameborder="0"></iframe>
 
 根据上面的第三条规则，对于`div.item2`来讲，它的包含块应该是`div.container`，而非`div.item`
 
@@ -69,11 +119,43 @@ title: CSS包含块
 
 我们再来看一个例子：
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="CSS包含块例子3" src="https://codepen.io/welives/embed/WNLxEwM?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/welives/pen/WNLxEwM">
-  CSS包含块例子3</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+:::code-group
+
+```html
+<div class="container">
+  <div class="item">
+    <div class="item2"></div>
+  </div>
+</div>
+```
+
+```css
+.container {
+  width: 500px;
+  height: 300px;
+  background-color: skyblue;
+  position: relative;
+}
+.item {
+  width: 300px;
+  height: 150px;
+  border: 5px solid;
+  margin-left: 100px;
+  transform: rotate(0deg); /* 新增代码 */
+}
+.item2 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+```
+
+:::
+
+<iframe src="/blog/demo/bfc/3.html" title="CSS包含块例子3" height="300" width="100%" scrolling="auto" frameborder="0"></iframe>
 
 我们对于上面的代码只新增了一条声明，那就是`transform: rotate(0deg)`，此时的渲染效果却发生了改变，如下图所示：
 

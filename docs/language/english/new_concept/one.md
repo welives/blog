@@ -75,7 +75,7 @@ title: 新概念英语第一册
   </tbody>
 </table>
 
-:::info
+:::info 💡
 主格一般作主语，放在句首
 
 宾格作宾语，放在动词或介词的后面
@@ -147,7 +147,7 @@ e.g. `Here is my umbrella.`
 - a用于辅音音标的普通名词之前，发音为`/ə/`
 - an用于元音音标的单词之前，发音为`/ən/`
 
-e.g. `This is a B/C/D/G/J/K/P/Q/R/T/U/V/W/Y/Z .`，`This is an A/E/F/H/I/L/M/N/O/S/X`
+e.g. `This is a B/C/D/G/J/K/P/Q/R/T/U/V/W/Y/Z .`、`This is an A/E/F/H/I/L/M/N/O/S/X`
 
 **选择疑问句**：选择疑问句的标志词是`or`。选择疑问句的回答必须要用完整的句子，选择疑问句的语调为前升后降
 :::
@@ -194,7 +194,7 @@ Lesson 6 的`What make is it?`在生活中其实很少这么用，更多是用`W
 
 e.g. `She's very well.` => `Is she well today?` => `How's she today?`
 
-_先把陈述句中的be动词提到句首得到一般疑问句，再用`how`对一般疑问句中的`well`进行提问，并将其提到句子的前面_
+_先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how`对一般疑问句中的答案`well`进行提问，并将其提到句首_
 
 **形容词**：形容词用来修饰名词，表示人或事物的性质、特征。通常可将形容词分为「性质形容词」和「叙述形容词」，其位置不一定都放在名词的前面。_英文的形容词用法和中文语境中的用法是保持一致的_
 
@@ -215,7 +215,7 @@ _先把陈述句中的be动词提到句首得到一般疑问句，再用`how`对
 
 e.g. `This is her dress.` => `Is this her dress?` => `Whose dress is this?`
 
-_先把陈述句中的be动词提到句首得到一般疑问句，再用`whose`对一般疑问句中的`her`进行提问，并将其提到句子的前面_
+_先把陈述句中的`be`动词提到句首得到一般疑问句，再用`whose`对一般疑问句中的答案`her`进行提问，并将其提到句首_
 
 **名词所有格**：在词尾加`'s`构成，在句中不仅可以作定语，还可以作表语
 
@@ -247,9 +247,9 @@ e.g. `John's dog.`
 
 e.g. `Her new dress is green.` => `Is her new dress green?` => `What colour is her new dress?`
 
-_先把陈述句中的be动词提到句首得到一般疑问句，再用`what`对一般疑问句中的`green`进行提问，并将其提到句子的前面_
+_先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`green`进行提问，并将其提到句首_
 
-**is it连读**：`it`要失去爆破，发音类似`/isi/`
+**is it连读**：`it`要失去爆破，发音类似`/isit/`
 :::
 `smart`更多的时候所表达的意思是「聪明」，而不是「漂亮」
 
@@ -271,6 +271,8 @@ _先把陈述句中的be动词提到句首得到一般疑问句，再用`what`�
 :::
 
 ## Lesson 15~16
+
+### 名词复数变化
 
 :::danger ⚡本课重点
 **名词的单/复数**：英语中的可数名词有「单数」和「复数」两种形式。表示一个人或事物时用单数形式，表示多个人或事物时用复数形式。
@@ -311,7 +313,7 @@ _先把陈述句中的be动词提到句首得到一般疑问句，再用`what`�
 
 如果句中的主语是名词的复数形式或复数的人称代词时，则句中的be动词要用其复数形式`are`
 
-e.g. `This is a book.`，`These are my books.`
+e.g. `This is a book.`、`These are my books.`
 
 **be动词的一般现在时**：英语中的be动词在使用时有人称的变化，在口语中这些变化常用缩略形式
 
@@ -337,7 +339,7 @@ e.g. `This is a book.`，`These are my books.`
 
 e.g. `This is young man Jandan.` => `Is this young man Jandan?` => `Who is this young man?`
 
-_先把陈述句中的be动词提到句首得到一般疑问句，再用`who`对一般疑问句中的`Jandan`进行提问，并将其提到句子的前面_
+_先把陈述句中的`be`动词提到句首得到一般疑问句，再用`who`对一般疑问句中的答案`Jandan`进行提问，并将其提到句首_
 
 **可数名词复数的发音规则**
 
@@ -368,6 +370,8 @@ e.g. `live` => `/laɪv/`
 
 ## Lesson 19~20
 
+### There be
+
 :::danger ⚡本课重点
 **There be结构**：表示某处有某物。此结构可将重要的新信息置于句末，以示强调
 
@@ -385,7 +389,7 @@ e.g. `live` => `/laɪv/`
 
 e.g. `This is my book.` => `Is this your book?` => `Which is your book?`
 
-_先把陈述句中的be动词提到句首得到一般疑问句，再用`which`对一般疑问句中的`this`进行提问，并将其提到句子的前面_
+_先把陈述句中的`be`动词提到句首得到一般疑问句，再用`which`对一般疑问句中的答案`this`进行提问，并将其提到句首_
 
 **不定代词one**：用来代替前文出现过的人称代词或可数名词，以免重复。它有复数形式`ones`，可以和冠词连用，也可以有自己的定语
 
@@ -398,13 +402,9 @@ _先把陈述句中的be动词提到句首得到一般疑问句，再用`which`�
 
 ## Lesson 23~24
 
+### 双宾语
+
 :::danger ⚡本课重点
-**where引导的特殊疑问句**：
-
-e.g. `My book is on the shelf.` => `Is my book on the shelf?` => `Where is my book?`
-
-_先把陈述句中的be动词提到句首得到一般疑问句，再用`where`对一般疑问句中的`on the shelf`进行提问，并将其提到句子的前面_
-
 **双宾语**：有些动词可以有两个宾语，往往一个指代人，一个指代物。指人的叫「**间接宾语**」，指物的叫「**直接宾语**」
 
 - 间接宾语一般放在直接宾语的前面，人要用代词的宾格，`give sb. sth.`
@@ -419,11 +419,17 @@ _先把陈述句中的be动词提到句首得到一般疑问句，再用`where`�
 
 - 当直接宾语是名词时，它既可以放在间接宾语的后面，也可以在间接宾语的前面加`to`，并把这个带`to`的间接宾语放在直接宾语的后面
 
+**where引导的特殊疑问句**：
+
+e.g. `My book is on the shelf.` => `Is my book on the shelf?` => `Where is my book?`
+
+_先把陈述句中的`be`动词提到句首得到一般疑问句，再用`where`对一般疑问句中的答案`on the shelf`进行提问，并将其提到句首_
+
 **介词on**：经常用在名词、名词短语、代词或动名词的前面，用来表示人物、事件等之间的各种关系，如空间关系、时间关系、因果关系等。介词始终带有宾语，即使介词与宾语之间分隔开时，这种关系仍然存在
 
 介词短语：`介词`+`名词`(+`介词`)
 
-e.g. `on time`，`in the middle of`
+e.g. `on time`、`in the middle of`
 
 介词不能在句子中独立充当一个成分，需要和一个名词或与之相当的词构成介词短语来充当句子中的一个成分，和介词构成短语的那个部分称为「介词的宾语」
 
@@ -480,7 +486,7 @@ e.g. `on time`，`in the middle of`
 
 e.g. `There are two books on the desk.` => `Are there two books on the desk?` => `How many books are there on the desk?`
 
-_先把陈述句中的be动词提到句首得到一般疑问句，再用`how many`对一般疑问句中的`two books`进行提问，并将其提到句子的前面_
+_先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how many`对一般疑问句中的答案`two books`进行提问，并将其提到句首_
 
 **some和any的区别**：在英语中，`some`和`any`是两个最常用的数量词，它们都表示「一些」。再具体一点话`some`表示「某些」，`any`表示「任一」
 
@@ -506,7 +512,7 @@ _先把陈述句中的be动词提到句首得到一般疑问句，再用`how man
 - 它没有人称和数的变化
 - 含有情态动词的句子，否定句和疑问句都是在情态动词上发生变化
 
-**must**：它是一个情态动词，表示「必须」的意思
+**must**：单词本义「必须」，它是一个情态动词
 
 - `must`的否定形式`must not`表示不应该或不许可，语气比较强烈
 - 一般疑问句，将`must`提到句首
@@ -518,26 +524,14 @@ _先把陈述句中的be动词提到句首得到一般疑问句，再用`how man
 
 ## Lesson 31~32
 
+### 现在进行时
+
 :::danger ⚡本课重点
 **时态**：动词的变化规则、时间的状态
 
 **动词的时态**：动作发生的时间和状态
 
-**动词现在分词**
-
-- 对于大多数动词来说，在动词后面直接加`-ing`即可构成现在分词
-
-  e.g. `doing`、`climbing`；
-
-- 以`-e`结尾的动词，要去掉`-e`再加`-ing`
-
-  e.g. `making`、`coming`
-
-- 如果动词只有一个元音字母，并且其后面跟了一个辅音字母时，需要先将辅音字母双写再加`-ing`
-
-  e.g. `running`、`sitting`
-
-**现在进行时**：由`be动词的现在时形式`+`动词现在分词`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`
+**现在进行时**：动作发生的状态是「进行中」，动作发生的时间是「现在」。由`be动词的现在时形式`+`动词现在分词`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`
 
 结构：`主语`+`am/is/are`+`V.ing`
 
@@ -558,6 +552,20 @@ _先把陈述句中的be动词提到句首得到一般疑问句，再用`how man
 
   e.g. `What is he doing?`
 
+**动词现在分词**
+
+- 对于大多数动词来说，在动词后面直接加`-ing`即可构成现在分词
+
+  e.g. `doing`、`climbing`；
+
+- 以`-e`结尾的动词，要去掉`-e`再加`-ing`
+
+  e.g. `making`、`coming`
+
+- 如果动词只有一个元音字母，并且其后面跟了一个辅音字母时，需要先将辅音字母双写再加`-ing`
+
+  e.g. `running`、`sitting`
+
 **特殊疑问句的特殊情况**：对主语提问时，直接用特殊疑问词替代主语即可
 
 e.g. `Tim is climbing the tree.` => `Who climbing the tree?`
@@ -576,9 +584,9 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 
 e.g. `They are walking over the bridge.`
 
-**on和over的区别**：它们都有「在...上面」的意思。但是`on`的关系双方之间是直接接触表面的，而`over`的关系双方不会直接接触表面
+**on和over的区别**：它们都有「在...上面」的意思。但是`on`的关系双方之间需要直接接触表面，而`over`的关系双方可以不直接接触表面，常常用于表示悬浮在其上面
 
-e.g. `There is a book on the desk.`，`The sky is over our heads.`
+e.g. `There is a book on the desk.`、`The sky is over our heads.`
 
 **ship和boat的区别**：它们都是「船」的意思。但是`ship`表示的是在海洋中行驶的「大船」，而`boat`则是在河流中行驶的「小船」
 :::
@@ -594,7 +602,7 @@ e.g. `There is a book on the desk.`，`The sky is over our heads.`
 
 不仅一个动词可以和大量的介词或副词小品词组合在一起构成动词短语，一个动词短语本身也可能有几种不同的意思
 
-e.g. `put on your coat`，`put it on`
+e.g. `put on your coat`、`put it on`
 
 **other和another**：
 
@@ -607,8 +615,10 @@ e.g. `put on your coat`，`put it on`
 
 ## Lesson 37~38
 
+### 一般将来时
+
 :::danger ⚡本课重点
-**一般将来时**：由`be动词的现在时形式`+`going to`+`动词原形`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`
+**一般将来时**：动作没有具体的状态(零状态)，只有动作发生的时间是「将来」。由`be动词的现在时形式`+`going to`+`动词原形`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`
 
 结构：`主语`+`am/is/are`+`going to`+`V`，在口语当中常常会用`gonna`替代`going to`
 
@@ -644,7 +654,7 @@ e.g. `paint the bookcase pink.`
 
 **不及物动词**：本身词义完整，后面不需要跟宾语。如果要跟宾语，则动词后面要加介词之后才可以跟宾语
 
-**paint it连读**：`it`要失去爆破，发音类似`/peinti/`
+**paint it连读**：发音类似`/peintit/`，`it`要失去爆破
 :::
 
 - 学习了一般将来时的基本用法
@@ -660,15 +670,15 @@ e.g. `Don't do it`
 
 **双宾语**：相关概念参考[23~24课](#lesson-23-24)，但本课着重讲的是其`give sth. to sb.`的形式
 
-**give it连读**：`it`要失去爆破，发音类似`/givi/`
-
-**put it连读**：`it`要失去爆破，发音类似`/pʊti/`
-
-**drop it连读**：`it`要失去爆破，发音类似`/drɒpi/`
-
-**front of连读**：`of`夺取`front`中的`t`发音，发音类似`/frʌntof/`
-
 **`动词`+`介词`的词组**，如果再加名词的话，可以放中间也可以放后面。而如果是代词的话，只能放中间
+
+**give it连读**：发音类似`/givit/`，`it`要失去爆破
+
+**put it连读**：发音类似`/pʊtit/`，`it`要失去爆破
+
+**drop it连读**：发音类似`/drɒpit/`，`it`要失去爆破
+
+**front of连读**：发音类似`/frʌntof/`，`of`夺取`front`中的`t`发音，`it`要失去爆破
 :::
 
 ## Lesson 41~42
@@ -697,3 +707,106 @@ e.g. `Don't do it`
 :::
 
 - 学习了不可数名词的概念
+
+## Lesson 43~44
+
+:::danger ⚡本课重点
+**情态动词can**：单词本义为「能」。它本身不表示动作，只表示体力和脑力方面的能力或客观可能，它必须与其他东西连用，没有人称和数的变化
+
+结构：`主语`+`can`+`V`
+
+- 表示能力或可能
+
+  e.g. `The bird can fly in the sky.`
+
+- 否定句：只需在`can`的后面加上`not`即可，`cannot`=`can not`=`can't`，`主语`+`can`+`not`+`V`
+
+  e.g. `The dog can not fly in the sky.`
+
+- 一般疑问句：只需将`can`提到句首(主语前面)，`can`+`主语`+`V`
+
+  e.g. `Can the bird fly in the sky?`
+
+- 特殊疑问句：在一般疑问句的句首加上特殊疑问词并去掉答案，`What`+`can`+`主语`+`V`
+
+  e.g. `What can the bird do?`
+
+  _先把陈述句中的`can`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`fly in the sky`进行提问，并将其提到句首_
+
+**find it连读**：发音类似`/faɪndit/`，`it`要失去爆破
+:::
+
+- 学习了情态动词`can`的基本用法
+
+## Lesson 45~46
+
+:::danger ⚡本课重点
+**can的否定式的特殊疑问句**：和其肯定句式的特殊疑问句一样，在`can`的后面加上`not`即可，`What`+`can't`+`主语`+`V`
+
+- `Can Pamela read the letter?` => `Why can't Pamela read the letter?`
+
+**read it连读**：发音类似`/redit/`，`it`要失去爆破
+
+**ask sb. to do sth.**：请求某人做某事
+:::
+
+## Lesson 47~48
+
+### 一般现在时
+
+:::danger ⚡本课重点
+**一般现在时**：动作没有具体的状态(零状态)，但是动作发生的时间可以是「过去、现在、将来」
+
+- 表示客观事实或存在状态
+
+  e.g. `It is very hot today.`
+
+- 表示习惯或反复的动作
+
+  e.g. `She gets up at 7 o'clock every day.`
+
+- 代替一般将来时
+
+  e.g. `Are you going to come tomorrow?` => `Do you come tomorrow?`
+
+结构：`主语`+`V`
+
+- 肯定句：动词的前面其实有个隐式的`do`，只是肯定句中经常省略而已
+
+  e.g. `I want this job.`、`I do like tea.`
+
+- 否定句：在隐式的`do`后面加上`not`并转为显式即可，`do not`=`don't`
+
+  e.g. `I do not want this job.`、`I don't like tea.`
+
+- 一般疑问句：将隐式的`do`提到句首并转为显式即可
+
+  e.g. `Do you want this job?`
+
+- 特殊疑问句：在一般疑问句的句首加上特殊疑问词，并去掉答案
+
+  e.g. `I want this job.` => `Do you want this job?` => `What do you want?`
+
+  _先把陈述句中的`do`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`this job`进行提问，并将其提到句首_
+
+**动词加s/es**：一般现在时中，当主语是第三人称单数时，行为动词要用第三人称单数形式
+
+- ①一般情况下在词尾直接加`s`
+- ②以辅音字母加`y`结尾的单词，将`y`改为`i`，再加`-es`，读`/z/`
+- ③以字母`s`、`z`、`x`、`ch`、`sh`结尾的单词，直接在词尾加`-es`，读`/iz/`
+- ④不规则变化：`have` => `has`
+
+**频率副词**：`always` > `often` > `usually` > `sometimes` > `never`
+
+- 在句子中用于`be`动词之后
+- 用在行为动词之前
+- 如果是否定句或疑问句，用在助动词和行为动词之间
+- 为表示强调，频率副词可以放在句首或句尾
+
+**love him连读**：发音类似`/lʌvɪm/`，`him`出现发音击穿现象(语音变音)，`h`不发音
+:::
+
+## Lesson 49~50
+
+:::danger ⚡本课重点
+:::

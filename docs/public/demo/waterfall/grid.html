@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid实现瀑布流</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        user-select: none;
+      }
+      html,
+      body,
+      .container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
+      .btn-box {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        display: none;
+      }
+      button {
+        width: 100px;
+        height: 40px;
+        border-radius: 5px;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #abf;
+        cursor: pointer;
+      }
+      .waterfall {
+        display: grid;
+        /* 设置每一行的基准高度 */
+        grid-auto-rows: 5px;
+        grid-template-columns: repeat(auto-fill, calc(50% - 5px));
+        /* 取消默认的拉伸 */
+        align-items: start;
+        justify-content: space-between;
+        padding: 10px;
+      }
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #abf9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="btn-box"><button>刷新</button></div>
+      <div class="waterfall"></div>
+    </div>
+    <script>
+      function getRandomNum(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min
+      }
+      function createNode() {
+        const frag = document.createDocumentFragment()
+        for (let i = 0; i < 50; i++) {
+          const height = getRandomNum(30, 100)
+          const girdHeight = Math.ceil(height / 5) + 2
+          const item = document.createElement('div')
+          item.style.height = height + 'px'
+          item.style.gridRowEnd = `span ${girdHeight}`
+          item.classList.add('item')
+          item.textContent = `项目${i}`
+          frag.appendChild(item)
+        }
+        root.appendChild(frag)
+        btnWrap.style.display = 'block'
+      }
+      function refresh() {
+        const itemList = document.querySelectorAll('.item')
+        for (let i = 0; i < itemList.length; i++) {
+          const height = getRandomNum(30, 100)
+          const girdHeight = Math.ceil(height / 5) + 2
+          itemList[i].style.height = height + 'px'
+          itemList[i].style.gridRowEnd = `span ${girdHeight}`
+        }
+      }
+      const root = document.querySelector('.waterfall')
+      const btnWrap = document.querySelector('.btn-box')
+      const btn = document.querySelector('button')
+      btn.addEventListener('click', refresh)
+      createNode()
+    </script>
+  </body>
+</html>

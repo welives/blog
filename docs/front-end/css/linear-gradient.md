@@ -101,11 +101,13 @@ linear-gradient([<angle> | to <side-or-corner>]? , <color-stop-list>)
 
 ## 实战：条纹进度条 {#practice}
 
-::: details 思路
+思路：
 
 1. 把渐变背景分成若干份正方形的切片
 2. 接着将每一份切片的背景均匀的分为四份,使用两种颜色互相隔开,因此需要四组渐变色节点
 3. 最后把每一份切片拼接成完整的斜向条纹
+
+::: details 查看关键部分
 
 ```css
 background-color: var(--main-color);
@@ -136,8 +138,113 @@ background-image: repeating-linear-gradient(-45deg, transparent 0 25%, var(--lig
 
 :::
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="条纹进度条" src="https://codepen.io/welives/embed/abQedev?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/welives/pen/abQedev">
-  条纹进度条</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe src="/blog/demo/gradient/stripe-progress.html" title="条纹进度条" height="300" width="100%" scrolling="auto" frameborder="0"></iframe>
+
+全部代码如下
+
+:::code-group
+
+```html
+<div class="container">
+  <div class="stripe"></div>
+</div>
+```
+
+```css
+:root {
+  --bg-color: #f1f1f1;
+  --main-color: #fff;
+  --light-color: #ff0000;
+  --shadow-color: rgba(255, 0, 0, 0.15);
+}
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  list-style-type: none;
+}
+html,
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.stripe {
+  width: 50%;
+  height: 10vh;
+  position: relative;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+  box-shadow: 1vw 3vh 10vh var(--shadow-color);
+  border-radius: 10px;
+  background-size: 5rem 5rem;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 25%,
+    var(--light-color) 25% 50%
+  );
+  animation: stripe-animation 1s infinite linear;
+  -o-animation: stripe-animation 1s infinite linear;
+  -webkit-animation: stripe-animation 1s infinite linear;
+  -moz-animation: stripe-animation 1s infinite linear;
+}
+.stripe::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    var(--main-color) 0,
+    transparent 30%,
+    transparent 70%,
+    var(--main-color) 100%
+  );
+}
+
+@keyframes stripe-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 5rem 0;
+  }
+}
+@-o-keyframes stripe-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 5rem 0;
+  }
+}
+@-webkit-keyframes stripe-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 5rem 0;
+  }
+}
+@-moz-keyframes stripe-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 5rem 0;
+  }
+}
+```
+
+:::
