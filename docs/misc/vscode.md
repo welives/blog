@@ -1,4 +1,15 @@
-# 我的 VSCode 常用插件
+---
+title: VSCode常用插件
+head:
+  - - meta
+    - name: description
+      content: VSCode常用插件
+  - - meta
+    - name: keywords
+      content: vscode 前端 插件
+---
+
+**我的 VSCode 常用插件**
 
 ## Vue 插件
 

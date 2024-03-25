@@ -1,5 +1,12 @@
 ---
 title: 常用工具封装
+head:
+  - - meta
+    - name: description
+      content: 常用工具封装
+  - - meta
+    - name: keywords
+      content: typescript axios 工具方法 封装
 ---
 
 ## Axios

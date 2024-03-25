@@ -1,5 +1,12 @@
 ---
 title: this指向
+head:
+  - - meta
+    - name: description
+      content: this指向
+  - - meta
+    - name: keywords
+      content: js this 指向 七步口诀 箭头函数
 ---
 
 ::: tip 速记七步口诀

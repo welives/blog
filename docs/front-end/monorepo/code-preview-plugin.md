@@ -1,5 +1,12 @@
 ---
-title: VitePress示例代码演示插件
+title: monorepo实战
+head:
+  - - meta
+    - name: description
+      content: VitePress示例代码演示插件
+  - - meta
+    - name: keywords
+      content: monorepo 工程化 pnpm vitepress 代码演示 demo
 ---
 
 ::: tip ⚡ 记一次开发 VitePress 代码演示功能插件的经历

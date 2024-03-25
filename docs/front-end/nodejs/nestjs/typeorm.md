@@ -1,5 +1,12 @@
 ---
 title: NestJS使用Typeorm
+head:
+  - - meta
+    - name: description
+      content: NestJS使用Typeorm
+  - - meta
+    - name: keywords
+      content: nest nestjs monorepo typeorm typescript pnpm
 ---
 
 先前我们已经创建好了一个[基础的`NestJS`工程](./create.md)，接下来我们来给它加上数据库功能

@@ -1,5 +1,12 @@
 ---
 title: Taro-Vue工程搭建
+head:
+  - - meta
+    - name: description
+      content: Taro-Vue工程搭建
+  - - meta
+    - name: keywords
+      content: taro typescript vue NutUI pinia pinia-plugin-persistedstate 持久化 mock pnpm 工程化
 ---
 
 ::: tip ✨

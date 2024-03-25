@@ -1,5 +1,12 @@
 ---
 title: 京东Micro-App微前端学习
+head:
+  - - meta
+    - name: description
+      content: 京东Micro-App微前端学习
+  - - meta
+    - name: keywords
+      content: micro-app 微前端 vue react svelte 主应用 子应用 应用通信 pnpm
 ---
 
 ::: tip ✨ 京东Micro-App微前端学习

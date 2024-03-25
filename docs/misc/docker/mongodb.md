@@ -1,5 +1,12 @@
 ---
 title: Docker安装MongoDB服务
+head:
+  - - meta
+    - name: description
+      content: Docker安装MongoDB服务
+  - - meta
+    - name: keywords
+      content: docker 容器 镜像 mongodb
 ---
 
 ## 下载MongoDB镜像

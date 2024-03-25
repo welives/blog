@@ -1,5 +1,12 @@
 ---
 title: Vue-Cli工程搭建
+head:
+  - - meta
+    - name: description
+      content: Vue-Cli工程搭建
+  - - meta
+    - name: keywords
+      content: vue-cli typescript vue2 vue2.7 vuex vuex-persistedstate 持久化 mock pnpm 工程化
 ---
 
 ::: tip ✨

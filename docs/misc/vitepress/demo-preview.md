@@ -1,5 +1,12 @@
 ---
 title: 给VitePress增加代码演示功能
+head:
+  - - meta
+    - name: description
+      content: 给VitePress增加代码演示功能
+  - - meta
+    - name: keywords
+      content: vitepress code preview demo plugin 插件
 ---
 
 ::: tip ⚡

@@ -1,5 +1,12 @@
 ---
 title: Docker安装MySQL服务
+head:
+  - - meta
+    - name: description
+      content: Docker安装MySQL服务
+  - - meta
+    - name: keywords
+      content: docker 容器 镜像 mysql
 ---
 
 ## 下载MySQL镜像

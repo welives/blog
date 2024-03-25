@@ -1,5 +1,12 @@
 ---
 title: 事件循环
+head:
+  - - meta
+    - name: description
+      content: 事件循环
+  - - meta
+    - name: keywords
+      content: 事件循环 浏览器 线程 渲染主线程 异步
 ---
 
 ## 什么是进程？

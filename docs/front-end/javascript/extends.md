@@ -1,5 +1,12 @@
 ---
 title: JS继承
+head:
+  - - meta
+    - name: description
+      content: JS继承
+  - - meta
+    - name: keywords
+      content: js extends 继承
 ---
 
 ## 原型链继承
@@ -176,7 +183,7 @@ const m = {
   types: ['android', 'ios'],
   say: function () {
     console.log(`I am ${this.name}`)
-  }
+  },
 }
 const a = Create(m)
 const b = Object.create(m)
@@ -220,7 +227,7 @@ function Create(obj) {
 
 const obj = {
   name: 'xiaomi',
-  types: ['android', 'ios']
+  types: ['android', 'ios'],
 }
 const a = Create(obj)
 obj.say = function () {

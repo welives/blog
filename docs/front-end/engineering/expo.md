@@ -1,5 +1,12 @@
 ---
 title: Expo工程搭建
+head:
+  - - meta
+    - name: description
+      content: Expo工程搭建
+  - - meta
+    - name: keywords
+      content: expo typescript react-native RN zustand mmkv twrnc pnpm 工程化
 ---
 
 ::: tip ✨

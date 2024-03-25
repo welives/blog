@@ -1,5 +1,12 @@
 ---
 title: Docker基础
+head:
+  - - meta
+    - name: description
+      content: Docker基础
+  - - meta
+    - name: keywords
+      content: docker 容器 镜像 基础
 ---
 
 > 如果在 Windows 上还没搭建好基础的 docker 运行环境的话，去这里看：[启用 Windows 的 WSL 功能](/misc/win10-dev-environment.html#enable-wsl)和[安装 Docker](/misc/win10-dev-environment.html#install-docker)

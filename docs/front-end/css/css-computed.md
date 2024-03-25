@@ -1,5 +1,12 @@
 ---
 title: CSS属性计算过程
+head:
+  - - meta
+    - name: description
+      content: CSS属性计算过程
+  - - meta
+    - name: keywords
+      content: css 属性 计算过程
 ---
 
 ## 前言

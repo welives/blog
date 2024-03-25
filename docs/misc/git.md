@@ -1,5 +1,12 @@
 ---
 title: git的常用命令
+head:
+  - - meta
+    - name: description
+      content: git的常用命令
+  - - meta
+    - name: keywords
+      content: git 常用命令
 ---
 
 ## 全局配置

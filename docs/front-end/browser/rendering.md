@@ -1,5 +1,12 @@
 ---
 title: 浏览器渲染原理
+head:
+  - - meta
+    - name: description
+      content: 浏览器渲染原理
+  - - meta
+    - name: keywords
+      content: 渲染原理 渲染流程 渲染主线程 reflow repain 重排 重绘
 ---
 
 ## 浏览器是如何渲染页面的？

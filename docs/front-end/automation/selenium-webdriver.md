@@ -1,5 +1,12 @@
 ---
 title: selenium-webdriver学习
+head:
+  - - meta
+    - name: description
+      content: selenium-webdriver学习
+  - - meta
+    - name: keywords
+      content: selenium 自动化 pnpm
 ---
 
 ::: tip ✨

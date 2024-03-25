@@ -1,5 +1,12 @@
 ---
 title: 模块导入导出
+head:
+  - - meta
+    - name: description
+      content: 模块导入导出
+  - - meta
+    - name: keywords
+      content: js ES6 ESM commonJS module.exports exports export
 ---
 
 ::: tip

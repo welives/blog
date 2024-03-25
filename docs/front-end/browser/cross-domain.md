@@ -1,5 +1,12 @@
 ---
 title: 跨域
+head:
+  - - meta
+    - name: description
+      content: 跨域
+  - - meta
+    - name: keywords
+      content: 跨域 同源策略 proxy jsonp cros
 ---
 
 ## 浏览器的同源策略

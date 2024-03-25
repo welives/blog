@@ -1,5 +1,12 @@
 ---
 title: 线性渐变
+head:
+  - - meta
+    - name: description
+      content: 线性渐变
+  - - meta
+    - name: keywords
+      content: css linear gradient 线性渐变 条纹进度条
 ---
 
 ## `linear-gradient`的语法 {#syntax}

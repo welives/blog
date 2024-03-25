@@ -1,5 +1,12 @@
 ---
 title: Koa工程搭建
+head:
+  - - meta
+    - name: description
+      content: Koa工程搭建
+  - - meta
+    - name: keywords
+      content: koa koa2 typescript swagger session redis cron jwt 参数校验 日志 异常处理 pnpm 工程化
 ---
 
 ::: tip ✨

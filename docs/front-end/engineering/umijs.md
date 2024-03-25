@@ -1,5 +1,12 @@
 ---
 title: UmiJS工程搭建
+head:
+  - - meta
+    - name: description
+      content: UmiJS工程搭建
+  - - meta
+    - name: keywords
+      content: umijs typescript AntDesign react pnpm 工程化
 ---
 
 ::: tip ✨

@@ -1,5 +1,12 @@
 ---
 title: 一些Demo
+head:
+  - - meta
+    - name: description
+      content: 一些前端Demo
+  - - meta
+    - name: keywords
+      content: css js 前端 demo
 ---
 
 ## 瀑布流

@@ -1,5 +1,12 @@
 ---
 title: Vite工程搭建
+head:
+  - - meta
+    - name: description
+      content: Vite工程搭建
+  - - meta
+    - name: keywords
+      content: vite typescript vue3 pinia pinia-plugin-persistedstate 持久化 mock react pnpm 工程化
 ---
 
 ::: tip ✨

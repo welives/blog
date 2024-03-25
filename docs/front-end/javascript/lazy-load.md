@@ -1,5 +1,12 @@
 ---
 title: 图片懒加载
+head:
+  - - meta
+    - name: description
+      content: 图片懒加载
+  - - meta
+    - name: keywords
+      content: js 懒加载 lazyload getBoundingClientRect offsetTop IntersectionObserver vue-lazyload
 ---
 
 ## 需求背景
@@ -139,7 +146,7 @@ export default {
 
 ### [IntersectionObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)
 
-`Intersection Observer`即重叠观察者，从这个命名就可以看出它用于判断两个元素是否重叠，因为不用进行事件的监听，性能方面相比`getBoundingClientRect`会好很多
+`IntersectionObserver`即重叠观察者，从这个命名就可以看出它用于判断两个元素是否重叠，因为不用进行事件的监听，性能方面相比`getBoundingClientRect`会好很多
 
 ```js
 <script>

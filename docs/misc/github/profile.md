@@ -1,5 +1,12 @@
 ---
 title: 使用GitHub-Readme-Stats美化Github个人主页
+head:
+  - - meta
+    - name: description
+      content: 使用GitHub-Readme-Stats美化Github个人主页
+  - - meta
+    - name: keywords
+      content: github 美化 GithubActions GitHub-Readme-Stats wakatime
 ---
 
 ::: tip ✨

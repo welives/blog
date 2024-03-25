@@ -1,5 +1,12 @@
 ---
 title: React基础
+head:
+  - - meta
+    - name: description
+      content: React基础
+  - - meta
+    - name: keywords
+      content: react 基础 生命周期
 ---
 
 ## 组件

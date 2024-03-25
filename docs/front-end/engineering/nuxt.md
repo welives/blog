@@ -1,5 +1,12 @@
 ---
 title: Nuxt工程搭建
+head:
+  - - meta
+    - name: description
+      content: Nuxt工程搭建
+  - - meta
+    - name: keywords
+      content: nuxt nuxt.js typescript vue3 pnpm 工程化
 ---
 
 ::: tip ✨

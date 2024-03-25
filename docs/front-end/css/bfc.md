@@ -1,5 +1,12 @@
 ---
 title: CSS包含块
+head:
+  - - meta
+    - name: description
+      content: CSS包含块
+  - - meta
+    - name: keywords
+      content: 包含块 css bfc
 ---
 
 说到 CSS 盒模型，这是很多小伙伴耳熟能详的知识，甚至有的小伙伴还能说出`border-box`和`content-box`这两种盒模型的区别

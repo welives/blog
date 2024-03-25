@@ -1,5 +1,12 @@
 ---
 title: TypeScript类型系统
+head:
+  - - meta
+    - name: description
+      content: TypeScript类型系统
+  - - meta
+    - name: keywords
+      content: typescript 类型系统
 ---
 
 > [微软官方的 TypeScript 学习中心](https://learn.microsoft.com/zh-cn/training/paths/build-javascript-applications-typescript/)
@@ -31,7 +38,7 @@ type ManagementEmployee = Employee & Manager
 let newManager: ManagementEmployee = {
   employeeID: 12345,
   age: 34,
-  stockPlan: true
+  stockPlan: true,
 }
 ```
 
@@ -91,7 +98,7 @@ type UserInfo = {
   email: string
 }
 const user: Record<string, UserInfo> = {
-  uid1: { name: 'john', email: 'john@gmail.com' }
+  uid1: { name: 'john', email: 'john@gmail.com' },
 }
 ```
 
@@ -319,7 +326,7 @@ reverse('hello') // olleh
 ```ts
 const obj = {
   name: 'jandan',
-  age: 30
+  age: 30,
 }
 // 得到对象的类型
 type Person = typeof obj

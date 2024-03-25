@@ -1,5 +1,12 @@
 ---
 title: NestJS工程搭建
+head:
+  - - meta
+    - name: description
+      content: NestJS工程搭建
+  - - meta
+    - name: keywords
+      content: nest nestjs monorepo typescript swagger redis jwt 生命周期 装饰器 中间件 守卫 过滤器 拦截器 管道 日志 异常处理 pnpm 工程化
 ---
 
 ::: tip ✨

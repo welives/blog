@@ -1,5 +1,12 @@
 ---
 title: VitePress博客部署
+head:
+  - - meta
+    - name: description
+      content: VitePress博客部署
+  - - meta
+    - name: keywords
+      content: vitepress deploy GithubActions 部署 博客部署
 ---
 
 本文将介绍`VitePress`博客的两种部署方案

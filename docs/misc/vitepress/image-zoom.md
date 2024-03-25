@@ -1,5 +1,12 @@
 ---
 title: 给VitePress增加图片缩放功能
+head:
+  - - meta
+    - name: description
+      content: 给VitePress增加图片缩放功能
+  - - meta
+    - name: keywords
+      content: vitepress medium-zoom image 图片 缩放 plugin 插件
 ---
 
 默认的 Vitepress 加载图片后，因为布局的原因，图片显得很小，很多图片里的内容看不清晰，所以想要一个可以点击图片放大的效果

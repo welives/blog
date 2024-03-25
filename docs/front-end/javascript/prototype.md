@@ -1,5 +1,12 @@
 ---
 title: 原型链
+head:
+  - - meta
+    - name: description
+      content: 原型链
+  - - meta
+    - name: keywords
+      content: js ES6 原型链 prototype __proto__
 ---
 
 ![原型链](./assets/原型链.png)

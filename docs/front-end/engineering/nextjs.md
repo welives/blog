@@ -1,5 +1,12 @@
 ---
 title: Next.js工程搭建
+head:
+  - - meta
+    - name: description
+      content: Next.js工程搭建
+  - - meta
+    - name: keywords
+      content: nextjs next.js typescript react pnpm 工程化
 ---
 
 ::: tip ✨

@@ -1,5 +1,12 @@
 ---
-title: 拖拽API
+title: 课程表实战
+head:
+  - - meta
+    - name: description
+      content: 课程表实战
+  - - meta
+    - name: keywords
+      content: draggable 拖拽API demo
 ---
 
 ::: details 基础模板

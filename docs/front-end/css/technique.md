@@ -1,5 +1,12 @@
 ---
 title: CSS奇技淫巧
+head:
+  - - meta
+    - name: description
+      content: CSS奇技淫巧
+  - - meta
+    - name: keywords
+      content: css 技巧 demo
 ---
 
 ## 空白折叠

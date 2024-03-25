@@ -1,5 +1,12 @@
 ---
 title: Taro-React工程搭建
+head:
+  - - meta
+    - name: description
+      content: Taro-React工程搭建
+  - - meta
+    - name: keywords
+      content: taro typescript react NutUI zustand 持久化 mock pnpm 工程化
 ---
 
 ::: tip ✨

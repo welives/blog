@@ -1,4 +1,13 @@
-# 我的 Win10 开发环境搭建
+---
+title: 我的Win10开发环境搭建
+head:
+  - - meta
+    - name: description
+      content: 我的Win10开发环境搭建
+  - - meta
+    - name: keywords
+      content: win10 前端 开发环境
+---
 
 > 在 Windows 系统中，我平时习惯将开发软件安装在`D:\Develop`目录下
 

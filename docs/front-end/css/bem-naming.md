@@ -1,5 +1,12 @@
 ---
 title: BEM命名法
+head:
+  - - meta
+    - name: description
+      content: BEM命名法
+  - - meta
+    - name: keywords
+      content: bem css 命名规范
 ---
 
 ## 概念

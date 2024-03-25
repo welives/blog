@@ -1,5 +1,12 @@
 ---
 title: JS奇技淫巧
+head:
+  - - meta
+    - name: description
+      content: JS奇技淫巧
+  - - meta
+    - name: keywords
+      content: js 技巧 demo
 ---
 
 ## 在 VSCode 中给获取到的`canvas`对象增加代码提示
@@ -144,7 +151,7 @@ const a = {
   n: 1,
   valueOf: function () {
     return this.n++
-  }
+  },
 }
 ```
 

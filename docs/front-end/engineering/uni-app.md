@@ -1,5 +1,12 @@
 ---
 title: uni-app工程搭建
+head:
+  - - meta
+    - name: description
+      content: uni-app工程搭建
+  - - meta
+    - name: keywords
+      content: uniapp uni-app typescript vite vue3 pinia pinia-plugin-persistedstate 持久化 axios axios适配器 mock 路由权限 pnpm 工程化
 ---
 
 ::: tip ✨

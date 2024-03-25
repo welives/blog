@@ -1,5 +1,12 @@
 ---
 title: Koa使用Typeorm
+head:
+  - - meta
+    - name: description
+      content: Koa使用Typeorm
+  - - meta
+    - name: keywords
+      content: koa koa2 mysql mongodb typeorm typescript swagger session redis cron jwt 参数校验 日志 异常处理 pnpm
 ---
 
 先前我们已经创建好了一个[基础的`Koa`工程](./create.md)，接下来我们来给它加上数据库功能
