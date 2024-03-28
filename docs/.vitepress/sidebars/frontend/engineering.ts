@@ -4,6 +4,22 @@ export default {
   collapsed: false,
   items: [
     {
+      text: 'Vue-Cli',
+      link: '/front-end/engineering/vue-cli',
+    },
+    {
+      text: 'Vite',
+      link: '/front-end/engineering/vite',
+    },
+    {
+      text: 'Nuxt',
+      link: '/front-end/engineering/nuxt',
+    },
+    {
+      text: 'uni-app',
+      link: '/front-end/engineering/uni-app',
+    },
+    {
       text: 'UmiJS',
       link: '/front-end/engineering/umijs',
     },
@@ -14,28 +30,6 @@ export default {
     {
       text: 'Expo',
       link: '/front-end/engineering/expo',
-    },
-    {
-      text: 'Vue-Cli',
-      link: '/front-end/engineering/vue-cli',
-    },
-    {
-      text: 'Vite',
-      collapsed: true,
-      items: [
-        {
-          text: 'Vue工程搭建',
-          link: '/front-end/engineering/vite/create-vue',
-        },
-      ],
-    },
-    {
-      text: 'Nuxt',
-      link: '/front-end/engineering/nuxt',
-    },
-    {
-      text: 'uni-app',
-      link: '/front-end/engineering/uni-app',
     },
     {
       text: 'Taro',

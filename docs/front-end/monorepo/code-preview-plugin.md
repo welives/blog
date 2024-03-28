@@ -11,9 +11,14 @@ head:
 
 ::: tip ⚡ 记一次开发 VitePress 代码演示功能插件的经历
 
-此插件项目是一个使用 pnpm + workspace + changesets 构建的单仓库多项目的 monorepo 工程
+此插件项目是一个使用`pnpm`+`workspace`+`changesets`构建的单仓库多项目的`monorepo`工程
 
-涉及到的技术有 Vite 虚拟模块、手动管理 HMR 热更新、`markdown-it`自定义渲染 和 `unified`+`remark` 解析 markdown
+涉及到的核心技术有
+
+- Vite虚拟模块
+- 手动管理HMR热更新
+- `unified`+`remark`解析markdown
+- `markdown-it`自定义渲染
 
 **实现原理：利用 Vite 插件的`transform`钩子读取 markdown 内容，使用 `unified`+`remark` 解析出自定义 markdown 容器中的代码块，然后将代码块转换为虚拟模块，最后是使用`markdown-it`对虚拟模块进行自定义渲染**
 
@@ -311,7 +316,7 @@ pnpm vitepress init
 }
 ```
 
-### 安装VIte
+### 安装Vite
 
 ```sh
 pnpm add -D vite @vitejs/plugin-vue-jsx --filter ./docs
@@ -2002,7 +2007,7 @@ pnpm changeset init
 
 执行`pnpm changeset`，构建日志信息
 
-- 首先是让你选择要哪些项目需要生成更新信息
+- 首先是让你选择哪些项目需要生成更新信息
 
 ![](./assets/update-log-setup-1.png)
 
@@ -2064,7 +2069,11 @@ nvm use 16.19.0
 
 ![](./assets/npm-organizations.png)
 
-创建完毕后执行 `pnpm publish --access public`
+创建完毕后执行`pnpm publish --access public`
+
+:::tip ⚡注意
+如果想单独发布子项目的话，需要进入到子项目的目录，然后执行`pnpm publish --access public`
+:::
 
 ## 示例项目部署到Github Pages
 
@@ -2080,7 +2089,7 @@ export default defineConfig({
 
 主项目新建`.github/workflows/deploy-docs.yml`，填入如下内容
 
-然后推送`main`分支代码 Github 仓库后会自动执行部署
+然后推送`main`分支代码给 Github 仓库后会自动执行部署
 
 ::: details 查看
 
