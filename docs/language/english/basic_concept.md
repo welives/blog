@@ -11,6 +11,7 @@ title: 英语基础概念
       <th></th>
       <th>主格</th>
       <th>宾格</th>
+      <th>反身代词</th>
       <th>形容词性物主代词</th>
       <th>名词性物主代词</th>
     </tr>
@@ -21,6 +22,7 @@ title: 英语基础概念
       <td>第一人称</td>
       <td>I</td>
       <td>me</td>
+      <td>myself</td>
       <td>my</td>
       <td>mine</td>
     </tr>
@@ -28,6 +30,7 @@ title: 英语基础概念
       <td>第二人称</td>
       <td>you</td>
       <td>you</td>
+      <td>yourself</td>
       <td>your</td>
       <td>yours</td>
     </tr>
@@ -35,18 +38,21 @@ title: 英语基础概念
       <td rowspan="3">第三人称</td>
       <td>he</td>
       <td>him</td>
+      <td>himself</td>
       <td>his</td>
       <td>his</td>
     </tr>
     <tr>
       <td>she</td>
       <td>her</td>
+      <td>herself</td>
       <td>her</td>
       <td>hers</td>
     </tr>
     <tr>
       <td>it</td>
       <td>it</td>
+      <td>itself</td>
       <td>its</td>
       <td>its</td>
     </tr>
@@ -55,6 +61,7 @@ title: 英语基础概念
       <td>第一人称</td>
       <td>we</td>
       <td>us</td>
+      <td>ourselves</td>
       <td>our</td>
       <td>ours</td>
     </tr>
@@ -62,6 +69,7 @@ title: 英语基础概念
       <td>第二人称</td>
       <td>you</td>
       <td>you</td>
+      <td>yourselves</td>
       <td>your</td>
       <td>yours</td>
     </tr>
@@ -69,6 +77,7 @@ title: 英语基础概念
       <td>第三人称</td>
       <td>they</td>
       <td>them</td>
+      <td>themselves</td>
       <td>their</td>
       <td>theirs</td>
     </tr>

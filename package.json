@@ -37,7 +37,7 @@
     "url": "https://github.com/welives/blog.git"
   },
   "dependencies": {
-    "@vitepress-code-preview/container": "^1.0.6",
+    "@vitepress-code-preview/container": "^1.0.7",
     "@vitepress-code-preview/plugin": "^1.0.4",
     "vue": "^3.3.9"
   }

@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@vitepress-code-preview/container':
-    specifier: ^1.0.6
-    version: 1.0.6(vue@3.3.9)
+    specifier: ^1.0.7
+    version: 1.0.7(vue@3.3.9)
   '@vitepress-code-preview/plugin':
     specifier: ^1.0.4
     version: 1.0.4
@@ -1230,8 +1230,8 @@ packages:
       vue: 3.3.9(typescript@5.4.3)
     dev: true
 
-  /@vitepress-code-preview/container@1.0.6(vue@3.3.9):
-    resolution: {integrity: sha512-oe9MQjC7g6Dvqe3AaFLv/MjgKIAfmqcpAC3aVkF4083CctA43wUxzx+rP/fn1Bxd+gPLCeWFKCKAlYdyjfQQxg==}
+  /@vitepress-code-preview/container@1.0.7(vue@3.3.9):
+    resolution: {integrity: sha512-TIfEyB0W0zHrUcpkSEPbOUdtCEQN6Qog+PlcFHcdvdudyiRwJB/aeTfJJJ4iDT268qp3lQKwKrJ+QCnLNIbtuw==}
     engines: {node: '>= 16'}
     peerDependencies:
       vue: ^3.3.0

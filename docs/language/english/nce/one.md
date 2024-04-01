@@ -7,7 +7,7 @@ title: 新概念英语第一册
 :::danger ⚡本课重点
 **一般疑问句**：通过主谓倒装可将带有be的陈述句变为一般疑问句，即将be的适当形式移至主语之前。
 
-e.g. `He is a teacher.`变为`Is he a teacher?`
+e.g. `He is a teacher.` => `Is he a teacher?`
 
 **be动词**：前期先记住以下三种形式
 
@@ -28,7 +28,7 @@ e.g. `He is a teacher.`变为`Is he a teacher?`
 
 e.g.`This is my umbrella.`
 
-**否定句**：否定陈述句与肯定陈述句相反，它表示「否定」，并且含有一个如not之类的否定词。
+**否定句**：否定陈述句与肯定陈述句相反，它表示「否定」，并且含有一个如`not`之类的否定词。
 
 含有be动词的句子如果变为否定句，就是在be动词的后面加上not
 
@@ -113,7 +113,7 @@ e.g. `She's very well.` => `Is she well today?` => `How's she today?`
 
 _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how`对一般疑问句中的答案`well`进行提问，并将其提到句首_
 
-**形容词**：形容词用来修饰名词，表示人或事物的性质、特征。通常可将形容词分为「性质形容词」和「叙述形容词」，其位置不一定都放在名词的前面。_英文的形容词用法和中文语境中的用法是保持一致的_
+**形容词**：形容词用来修饰名词，表示人或事物的性质、特征。通常可将形容词分为「**性质形容词**」和「**叙述形容词**」，其位置不一定都放在名词的前面。_英文的形容词用法和中文语境中的用法是保持一致的_
 
 - 直接说明事物的性质或特征的形容词是「性质形容词」，它有级的变化，可用程度副词进行修饰，在句中可作定语、表语和补语
 - 「叙述形容词」只能作表语，所以又称为表语形容词。这类形容词没有级的变化，也不能用程度副词进行修饰，大多数以`a`开头的形容词都属于这一类
@@ -142,21 +142,6 @@ e.g. `John's dog.`
 - 学习了使用特殊疑问词`whose`询问某件物品是谁的
 - 学习了使用`perhaps`表达 **大概、可能、也许**
 
-:::warning 使用`tie`造一个情景对话
-
-- Hello, John.
-- Hi, Dave.
-- Is this your tie?
-- No, it isn't.
-- What colour is your tie?
-- It's red.
-- So, whose tie is this?
-- Perhaps it's Tom's.
-- What colour is Tom's tie?
-- It's blue.
-
-:::
-
 ## Lesson 13~14
 
 :::danger ⚡本课重点
@@ -172,27 +157,12 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`
 
 - 学习了特殊疑问词`what`的基本用法
 
-:::warning 使用`hat`造10个句子
-
-- Sophie's new hat is pink.
-- Is Sophie's new hat pink?
-- What colour is Sophie's new hat?
-- Whose new hat is this?
-- What colour is your hat?
-- My hat is pink, too.
-- It's a lovely hat.
-- Here is my hat.
-- My coat and my hat, please.
-- It's not my hat.
-
-:::
-
 ## Lesson 15~16
 
 ### 名词复数变化
 
 :::danger ⚡本课重点
-**名词的单/复数**：英语中的可数名词有「单数」和「复数」两种形式。表示一个人或事物时用单数形式，表示多个人或事物时用复数形式。
+**名词的单/复数**：英语中的可数名词有「**单数**」和「**复数**」两种形式。表示一个人或事物时用单数形式，表示多个人或事物时用复数形式。
 
 名词的复数规则变化
 
@@ -290,11 +260,14 @@ e.g. `live` => `/laɪv/`
 ### There be
 
 :::danger ⚡本课重点
-**There be结构**：表示某处有某物。此结构可将重要的新信息置于句末，以示强调
-
-结构为：`There be`+`名词`+`地点(时间)状语`
+**There be结构**：此结构可将重要的新信息置于句末，以示强调
 
 这种句子结构中的`there`是个引词，本身没有实际意义，常弱读。句子中的`be`为谓语动词，`be`后面的名词为实际主语，句子最后部分为地点(时间)状语
+
+- **肯定句**：_表示某处有某物_。`There am/is/are`+`名词`+`地点(时间)状语`
+
+  e.g. `There is a pen.`
+
 :::
 
 - 学习了`There be`结构的肯定句本用法
@@ -324,11 +297,11 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`which
 :::danger ⚡本课重点
 **双宾语**：有些动词可以有两个宾语，往往一个指代人，一个指代物。指人的叫「**间接宾语**」，指物的叫「**直接宾语**」
 
-- 间接宾语一般放在直接宾语的前面，人要用代词的宾格，`give sb. sth.`
+- 间接宾语一般放在直接宾语的前面，人要用代词的宾格。`give sb. sth.`
 
   e.g. `show me the money`
 
-- 如果直接宾语是个人称代词时，就需要在间接宾语的前面加上介词`to`，并把这个带`to`的间接宾语放在直接宾语的后面，`give sth. to sb.`
+- 如果直接宾语是个人称代词时，就需要在间接宾语的前面加上介词`to`，并把这个带`to`的间接宾语放在直接宾语的后面。`give sth. to sb.`
 
   e.g. `give it to me`
 
@@ -348,7 +321,7 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`where
 
 e.g. `on time`、`in the middle of`
 
-介词不能在句子中独立充当一个成分，需要和一个名词或与之相当的词构成介词短语来充当句子中的一个成分，和介词构成短语的那个部分称为「介词的宾语」
+介词不能在句子中独立充当一个成分，需要和一个名词或与之相当的词构成介词短语来充当句子中的一个成分，和介词构成短语的那个部分称为「**介词的宾语**」
 
 `on`在不同的搭配情况下有不同的含义
 
@@ -369,12 +342,12 @@ e.g. `on time`、`in the middle of`
 ## Lesson 25~26
 
 :::danger ⚡本课重点
-**介词in**：表示地点、场所、部位等，本课学习的是其「在…里面」的意思
+**介词in**：表示地点、场所、部位等，本课学习的是其「**在…里面**」的意思
 
 - 在某范围或空间内
 - 在某一段时间内
 
-**定冠词the**：表示特指，不论是指人、物、单数、复数，其形式都不会发生变化。与指示代词`this`和`that`同源，有「这(那)个」的意思，但较弱，可以和一个名词连用，来表示某个或某些特定的人或物
+**定冠词the**：表示特指，不论是指人、物、单数、复数，其形式都不会发生变化。与指示代词`this`和`that`同源，有「**这(那)个**」的意思，但较弱，可以和一个名词连用，来表示某个或某些特定的人或物
 
 - 特指双方都明白的人或物
 - 前文提到过的人或物
@@ -405,15 +378,15 @@ e.g. `There are two books on the desk.` => `Are there two books on the desk?` =>
 
 _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how many`对一般疑问句中的答案`two books`进行提问，并将其提到句首_
 
-**some和any的区别**：在英语中，`some`和`any`是两个最常用的数量词，它们都表示「一些」。再具体一点话`some`表示「某些」，`any`表示「任一」
+**some和any的区别**：在英语中，`some`和`any`是两个最常用的数量词，它们都表示「**一些**」。再具体一点话`some`表示「**某些**」，`any`表示「**任一**」
 
 - `some`：修饰可数名词复数和不可数名词，表示「某些」但不是「全部」，通常用于肯定句。在疑问句中，所希望的回答是`yes`时也可以用`some`
 - `any`表示「任一」，即不确定的数量，通常用于否定句和疑问句
 
 **There be的否定和疑问结构**：在[19~20课](#lesson-19-20)中学习了其肯定句结构，现在来学习其否定句和疑问句
 
-- 否定句时，要在be动词的后面加上`not`或`no`，即`There be`+`not`+`名词`+`地点(时间)状语`
-- 疑问句时，将be动词提到there的前面(句首)，句子的其余部分不变，即`Be there`+`名词`+`地点(时间)状语`
+- **否定句**：_要在be动词的后面加上`not`或`no`_。`There am/is/are`+`not`+`名词`+`地点(时间)状语`
+- **疑问句**：_将be动词提到there的前面(句首)，句子的其余部分不变_。`Am/Is/Are there`+`名词`+`地点(时间)状语`
 
 :::
 
@@ -429,11 +402,25 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 - 它没有人称和数的变化
 - 含有情态动词的句子，否定句和疑问句都是在情态动词上发生变化
 
-**must**：单词本义为「必须」，它是一个情态动词
+**情态动词must**：单词本义为「**必须**」。它必须与其他东西连用，没有时态、人称和数的变化
 
-- `must`的否定形式`must not`表示不应该或不许可，语气比较强烈
-- 一般疑问句，将`must`提到句首
-- 当对谓语部分提出疑问时，`must`像助动词一样提到主语前面
+- **肯定句**：_表示必须做某事_。`主语`+`must`+`V`
+
+  e.g. `I must drink some water.`
+
+- **否定句**：_只需在`must`的后面加上`not`即可，`must not`=`mustn't`。其否定形式表示「**禁止**」而不是简单的**非必须**，语气强烈，不要随便使用_。`主语`+`must not`+`V`
+
+  e.g. `You mustn't smoke here.`
+
+- **一般疑问句**：_只需将`must`提到句首(主语前面)即可_。`Must`+`主语`+`V`
+
+  e.g. `Must I do the homework today?`
+
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。`特殊疑问词`+`must`+`主语`+`V`
+
+  e.g. `I must drink some water.` => `Must I drink some water?` => `What must I do?`
+
+  _先把陈述句中的`must`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`drink some water`进行提问，并将其提到句首_
 
 :::
 
@@ -448,26 +435,27 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 
 **动词的时态**：动作发生的时间和状态
 
-**现在进行时**：动作发生的状态是「进行中」，动作发生的时间是「现在」。由`be动词的现在时形式`+`动词现在分词`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`
+**现在进行时**：动作发生的状态是「**进行中**」，动作发生的时间是「**现在**」
 
-结构：`主语`+`am/is/are`+`V.ing`
+由`be动词的现在时形式`+`动词现在分词`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`
 
-- 表示现在正在进行或者发生的动作、状态
+- **肯定句**：_表示现在正在进行或者发生的动作、状态_。`主语`+`am/is/are`+`V.ing`
 
   e.g. `He's reading a book.`
 
-- 表示现阶段正在进行或发生，但说话的此刻，动作不一定进行
-- 否定句：只需在`be`的后面加上`not`即可，`主语`+`am/is/are`+`not`+`V.ing`
+- **否定句**：_只需在`be`的后面加上`not`即可_。`主语`+`am/is/are`+`not`+`V.ing`
 
   e.g. `He's not reading a book.`
 
-- 一般疑问句：只需将`be`提到句首(主语前面)即可，`am/is/are`+`主语`+`V.ing`
+- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。`Am/Is/Are`+`主语`+`V.ing`
 
   e.g. `Is he reading a book?`
 
-- 特殊疑问句：在一般疑问句的句首加上特殊疑问词，`What`+`am/is/are`+`主语`+`V.ing`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词_。`特殊疑问词`+`am/is/are`+`主语`+`V.ing`
 
-  e.g. `What is he doing?`
+  e.g. `He's reading a book.` => `Is he reading a book?` => `What is he doing?`
+
+  _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`reading a book`进行提问，并将其提到句首_
 
 **动词现在分词**
 
@@ -499,13 +487,15 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 :::danger ⚡本课重点
 在[31~32课](#lesson-31-32)中学习了现在进行时的`be动词`单数形式，本节来学习其复数形式
 
+当主语是复数时，`be动词`要使用其复数`are`
+
 e.g. `They are walking over the bridge.`
 
-**on和over的区别**：它们都有「在...上面」的意思。但是`on`的关系双方之间需要直接接触表面，而`over`的关系双方可以不直接接触表面，常常用于表示悬浮在其上面
+**on和over的区别**：它们都有「**在...上面**」的意思。但是`on`的关系双方之间需要直接接触表面，而`over`的关系双方可以不直接接触表面，常常用于表示悬浮在其上面
 
 e.g. `There is a book on the desk.`、`The sky is over our heads.`
 
-**ship和boat的区别**：它们都是「船」的意思。但是`ship`表示的是在海洋中行驶的「大船」，而`boat`则是在河流中行驶的「小船」
+**ship和boat的区别**：它们都是「船」的意思。但是`ship`表示的是在海洋中行驶的「**大船**」，而`boat`则是在河流中行驶的「**小船**」
 :::
 
 ## Lesson 35~36
@@ -513,15 +503,15 @@ e.g. `There is a book on the desk.`、`The sky is over our heads.`
 :::danger ⚡本课重点
 **动词短语**：通常是指在动词的后面跟一个介词或副词短语形成的结构
 
-结构：`动词`+`介词`，`动词`+`副词小品词`
+结构：`动词`+`介词` 、 `动词`+`副词小品词`
 
-在英语中存在着一种用动词短语代替与其同义的单个动词的用法，这种用法称为「动词短语化」。例如听到敲门声，我们会说`come in`，而不会用`enter`来表达。最常见的动词短语是由英语中最短小和最简单的动词构成的，这些动词常与表示位置或方向的词组合，例如`along`、`down`、`in`、`out`、`off`、`on`、`over`、`under`等
+在英语中存在着一种用动词短语代替与其同义的单个动词的用法，这种用法称为「**动词短语化**」。例如听到敲门声，我们会说`come in`，而不会用`enter`来表达。最常见的动词短语是由英语中最短小和最简单的动词构成的，这些动词常与表示位置或方向的词组合，例如`along`、`down`、`in`、`out`、`off`、`on`、`over`、`under`等
 
 不仅一个动词可以和大量的介词或副词小品词组合在一起构成动词短语，一个动词短语本身也可能有几种不同的意思
 
 e.g. `put on your coat`、`put it on`
 
-**other和another**：
+**other和another**
 
 - `other`+`单数/复数`
 - `another`+`单数`
@@ -535,33 +525,37 @@ e.g. `put on your coat`、`put it on`
 ### 一般将来时
 
 :::danger ⚡本课重点
-**一般将来时**：动作没有具体的状态(零状态)，只有动作发生的时间是「将来」。由`be动词的现在时形式`+`going to`+`动词原形`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`
+**一般将来时**：动作没有具体的状态(零状态)，只有动作发生的时间是「**将来**」
 
-结构：`主语`+`am/is/are`+`going to`+`V`，在口语当中常常会用`gonna`替代`going to`
+由`be动词的现在时形式`+`going to`+`动词原形`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`。在口语中常常会用`gonna`替代`going to`
 
-- 表示打算、准备做某事
+- **肯定句**：`主语`+`am/is/are`+`going to`+`V`
 
-  e.g. `He is going to sleep.`
+  - _表示打算、准备做某事_
 
-- 表示按计划、安排要发生的事
+    e.g. `He is going to sleep.`
 
-  e.g. `The meeting is going to begin at nine.`
+  - _表示按计划、安排要发生的事_
 
-- 表示预言一件事即将发生
+    e.g. `The meeting is going to begin at nine.`
 
-  e.g. `It's going to rain.`
+  - _表示预言一件事即将发生_
 
-- 否定句：只需在`be`的后面加上`not`即可，`主语`+`am/is/are`+`not`+`going to`+`V`
+    e.g. `It's going to rain.`
+
+- **否定句**：_只需在`be`的后面加上`not`即可_。`主语`+`am/is/are`+`not`+`going to`+`V`
 
   e.g. `He is not going to sleep.`
 
-- 一般疑问句：只需将`be`提到句首(主语前面)即可，`am/is/are`+`主语`+`going to`+`V`
+- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。`Am/Is/Are`+`主语`+`going to`+`V`
 
   e.g. `Is he going to sleep?`
 
-- 特殊疑问句：在一般疑问句的句首加上特殊疑问词，`What`+`am/is/are`+`主语`+`going to`+`V`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词_。`特殊疑问词`+`am/is/are`+`主语`+`going to`+`V`
 
-  e.g. `What is he going to do?`
+  e.g. `He is going to sleep.` => `Is he going to sleep?` => `What is he going to do?`
+
+  _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`sleep`进行提问，并将其提到句首_
 
 **宾语补足语**：对宾语进行补充说明，`一个动词`+`代词(名词)`+`形容词`
 
@@ -628,25 +622,23 @@ e.g. `Don't do it`
 ## Lesson 43~44
 
 :::danger ⚡本课重点
-**情态动词can**：单词本义为「能」。它本身不表示动作，只表示体力和脑力方面的能力或客观可能，它必须与其他东西连用，没有人称和数的变化
+**情态动词can**：单词本义为「**能**」。它本身不表示动作，只表示体力和脑力方面的能力或客观可能，它必须与其他东西连用，没有人称和数的变化
 
-结构：`主语`+`can`+`V`
-
-- 表示能力或可能
+- **肯定句**：_表示能力或可能_。`主语`+`can`+`V`
 
   e.g. `The bird can fly in the sky.`
 
-- 否定句：只需在`can`的后面加上`not`即可，`cannot`=`can not`=`can't`，`主语`+`can`+`not`+`V`
+- **否定句**：_只需在`can`的后面加上`not`即可_。`cannot`=`can not`=`can't`。`主语`+`can`+`not`+`V`
 
   e.g. `The dog can not fly in the sky.`
 
-- 一般疑问句：只需将`can`提到句首(主语前面)即可，`can`+`主语`+`V`
+- **一般疑问句**：_只需将`can`提到句首(主语前面)即可_。`Can`+`主语`+`V`
 
   e.g. `Can the bird fly in the sky?`
 
-- 特殊疑问句：在一般疑问句的句首加上特殊疑问词并去掉答案，`What`+`can`+`主语`+`V`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。`特殊疑问词`+`can`+`主语`+`V`
 
-  e.g. `What can the bird do?`
+  e.g. `The bird can fly in the sky.` => `Can the bird fly in the sky?` => `What can the bird do?`
 
   _先把陈述句中的`can`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`fly in the sky`进行提问，并将其提到句首_
 
@@ -660,7 +652,7 @@ e.g. `Don't do it`
 :::danger ⚡本课重点
 **can的否定特殊疑问句**：和其肯定句的特殊疑问句一样，在`can`的后面加上`not`即可
 
-- 结构：`What`+`can't`+`主语`+`V`
+- 结构：`特殊疑问词`+`can't`+`主语`+`V`
 
   e.g. `Can Pamela read the letter?` => `Why can't Pamela read the letter?`
 
@@ -674,39 +666,43 @@ e.g. `Don't do it`
 ### 一般现在时
 
 :::danger ⚡本课重点
-**一般现在时**：动作没有具体的状态(零状态)，但是动作发生的时间可以是「过去、现在、将来」
+**一般现在时**：动作没有具体的状态(零状态)，但是动作发生的时间可以是「**过去、现在、将来**」
+
+在本课之前见过的各种`主语`+`am/is/are`+`名词/形容词`的「**主系表结构**」其实也是一般现在时
 
 - 表示客观事实或存在状态
 
   e.g. `It's very hot today.`
 
-- 表示习惯或反复的动作
+而本课则是着重讲「**主谓宾结构**」下的一般现在时
 
-  e.g. `She gets up at 7 o'clock every day.`
-
-- 代替一般将来时
-
-  e.g. `Are you going to come tomorrow?` => `Do you come tomorrow?`
-
-结构：`主语`+`V`
-
-- 肯定句：动词的前面其实有个隐式的`do`，只是肯定句中经常省略而已
+- **肯定句**：_实义动词的前面其实有个隐式的`do`，只是肯定句中经常省略而已_。`主语`(+`do`)+`V`
 
   e.g. `I want this job.`、`I do like tea.`
 
-- 否定句：在隐式的`do`后面加上`not`并转为显式即可，`do not`=`don't`
+- **否定句**：_显式使用`do`并在后面加上`not`即可，`do not`=`don't`_。`主语`+`do not`+`V`
 
   e.g. `I do not want this job.`、`I don't like tea.`
 
-- 一般疑问句：将隐式的`do`提到句首并转为显式即可
+- **一般疑问句**：_显式使用`do`并将其提到句首即可_。`Do`+`主语`+`V`
 
   e.g. `Do you want this job?`
 
-- 特殊疑问句：在一般疑问句的句首加上特殊疑问词，并去掉答案
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`do`+`主语`+`V`
 
   e.g. `I want this job.` => `Do you want this job?` => `What do you want?`
 
-  _先把陈述句中的`do`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`this job`进行提问，并将其提到句首_
+  _先把陈述句中的`do`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`this job`进行提问，并将其提到句首_
+
+**一般现在时还有如下两种常见用法**
+
+- 表示习惯或反复的动作
+
+e.g. `She gets up at 7 o'clock every day.`
+
+- 代替一般将来时
+
+e.g. `Are you going to come tomorrow?` => `Do you come tomorrow?`
 
 **love him连读**：发音类似`/lʌvɪm/`，`him`出现发音击穿现象(语音变音)，`h`不发音
 :::
@@ -716,31 +712,27 @@ e.g. `Don't do it`
 ## Lesson 49~50
 
 :::danger ⚡本课重点
-**一般现在时的第三人称**：在[47~48课](#lesson-47-48)中主要讲的是一般现在时的非三单形式，这节课则主要讲解其三单形式
+**一般现在时的第三人称**：在[47~48课](#lesson-47-48)中主要讲的是一般现在时的非三单形式，这节课则主要讲解其三单形式。`do`的第三人称单数为`does`
 
-`do`的第三人称单数为`does`，它用在一般现在时中表示强调
-
-结构：`主语`+`V.s/es`
-
-- 肯定句：当隐式的`do`显示的时候，要用其第三人称单数形式`does`，行为动词则用原形；而`do`隐藏时，行为动词要用第三人称单数形式
+- **肯定句**：_当`does`隐藏时，实义动词要用第三人称单数形式；显式使用`does`的时候，实义动词要用原形_。`主语`(+`does`)+`V.s/es`
 
   e.g. `He wants this job.`、`She does like tea.`
 
-- 否定句：显式使用`does`并在后面加上`not`即可，`does not`=`doesn't`
+- **否定句**：_显式使用`does`并在后面加上`not`即可，`does not`=`doesn't`_。`主语`+`does not`+`V`
 
   e.g. `He does not want this job.`、`She doesn't like tea.`
 
-- 一般疑问句：将`does`提到句首即可，行为动词要用原形
+- **一般疑问句**：_显式使用`does`并将其提到句首即可_。`Does`+`主语`+`V`
 
   e.g. `Does he want this job?`
 
-- 特殊疑问句：在一般疑问句的句首加上特殊疑问词，并去掉答案
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`does`+`主语`+`V`
 
   e.g. `He wants this job.` => `Does he want this job?` => `What does he want?`
 
-  _先把陈述句中的`does`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`this job`进行提问，并将其提到句首_
+  _先把陈述句中的`does`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`this job`进行提问，并将其提到句首_
 
-**动词加s/es**：一般现在时中，当主语是第三人称单数时，行为动词要用第三人称单数形式
+**动词加s/es**：一般现在时中，当主语是第三人称单数时，实义动词要用第三人称单数形式
 
 - ①一般情况下在词尾直接加`s`
 - ②以辅音字母加`y`结尾的动词，将`y`改为`i`，再加`-es`，读`/z/`
@@ -766,8 +758,8 @@ e.g. `How often do you go to the cinema?`
 **频率副词**：`always` > `often` > `usually` > `sometimes` > `never`
 
 - 在句子中用于`be`动词之后
-- 用在行为动词之前
-- 如果是否定句或疑问句，用在助动词和行为动词之间
+- 用在实义动词之前
+- 如果是否定句或疑问句，用在助动词和实义动词之间
 - 为表示强调，频率副词可以放在句首或句尾
 
 :::
@@ -777,9 +769,9 @@ e.g. `How often do you go to the cinema?`
 :::danger ⚡本课重点
 **like的不同词性**
 
-- 当其做动词时表示「喜欢、想要」
-- 当其做介词时表示「怎么样、像...一样」
-- 当其做形容词时表示「类似的、相似的」
+- 当其做动词时表示「**喜欢、想要**」
+- 当其做介词时表示「**怎么样、像...一样**」
+- 当其做形容词时表示「**类似的、相似的**」
 
 :::
 
@@ -814,11 +806,11 @@ e.g. `Their father takes them to school every day.`
 
   e.g. 6点整 => `six o'clock`、10点10分 => `ten ten`、12点40分 => `twelve forty`、
 
-- 分 past 时：用在表示「某个整点时间过去了多少分钟」，这种方式要求当前的自然分钟数必须`小于等于30`
+- **分 past 时**：表示「**某个整点时间过去了多少分钟**」，这种方式要求当前的自然分钟数必须`小于等于30`
 
   e.g. 6点半 => `half past six`、10点15分 => `a quarter past ten`、 12点5分 => `five past twelve`
 
-- 分 to 时：用在表示「距离某个整点时间还差多少分钟」，这种方式要求当前的自然分钟数必须`大于30`
+- **分 to 时**：表示「**距离某个整点时间还差多少分钟**」，这种方式要求当前的自然分钟数必须`大于30`
 
   e.g. 6点50分 => `ten to seven`、10点45分 => `a quarter to eleven`、
 
@@ -831,15 +823,178 @@ e.g. `Their father takes them to school every day.`
 ## Lesson 59~60
 
 :::danger ⚡本课重点
-**have**：单词本义为「有、拥有」。它作为动词时的第三人称单数形式为`has`，当它表示「有」这个概念时，其否定形式和疑问形式各有两种
+**have用法①**：单词本义为「**有、拥有**」。它作为动词时有第三人称单数形式`has`，当它表示「有」这个概念时，其否定形式和疑问形式各有两种
 
-- 否定句：可以在`have/has`后面直接加`not`，也可以借助一般现在时助动词`do/does`的否定形式。`have not`=`haven't`，`has not`=`hasn't`
+- **否定句**：_可以在`have/has`后面直接加`not`，也可以借助一般现在时助动词`do/does`的否定形式_。`have not`=`haven't`，`has not`=`hasn't`
 
   e.g. `I have a car.` => `I haven't a car.` => `I don't have a car.`、`He has a car.` => `He hasn't a car.` => `He doesn't have a car.`
 
-- 疑问句：将`have/has`提到句首(主语前面)即可，或者借助一般现在时助动词`do/does`
+- **一般疑问句**：_将`have/has`提到句首(主语前面)，或者借助一般现在时助动词`do/does`_
 
   e.g. `Have you a car?` => `Do you have a car?`、`Has he a car?` => `Does he have a car?`
 
 **else**：常常跟在疑问代词、不定代词、疑问副词的后面
+
+e.g. `What else do you want?`、`Who else is from Japan?`
+
+:::
+
+## Lesson 61~62
+
+:::danger ⚡本课重点
+**have用法②**：常常与表示疼痛和疾病的名词连用。不定冠词`a/an`与这类名词连用时，分以下几种情况
+
+- 必须用不定冠词的情况：`a cold`、`a headache`、`a sore throat`
+
+  e.g. `I have a cold.`、`I have a headache.`
+
+- 不定冠词用或不用都行：`catch (a) cold`、`have (a) backache/toothache/stomach ache`
+
+  e.g. `I've had (a) toothache all night.`
+
+- 复数形式的疾病名称前面不用冠词：`measles`、`mumps`、`shingles`
+
+  e.g. `Most children are in bed with mumps.`
+
+- 被认为不可数的疾病名词前面不用冠词：`flu`、`gout`、`hepatitis`等
+
+  e.g. `I was in bed with flu for ten days.`
+
+- `the`也可以跟`flu`、`measles`、`mumps`等词连用
+
+  e.g. `He's got the flu.`
+
+:::
+
+## Lesson 63~64
+
+:::danger ⚡本课重点
+本节课又讲了一次`must`的用法，关于`must`的相关笔记，我已经在[29~30课](#lesson-29-30)中记录过了
+
+**so**
+
+- 作为程度副词时，用于形容词或副词的前面，表示「**如此**」
+
+  e.g. `She is so beautiful.`
+
+- 作为转折连词时，表示「**因此**」
+
+  e.g. `You have flu so you must stay at home.`
+
+**because**：单词本义为「**因为**」，它和`so`之间的关系如下
+
+- 用了**因为**就不能用**所以**，用了**所以**就不能用**因为**
+
+  e.g. `You must stay at home because you have flu.` => `You have flu so you must stay at home.`
+
+**wake up**：表示「**醒来**」
+
+**get up**：表示「**起床**」
+:::
+
+## Lesson 65~66
+
+:::danger ⚡本课重点
+**反身代词**：关于各人称代词所对应的反身代词，可以参考[基础概念](../basic_concept.md#人称代词)中的人称代词
+
+- 当宾语和主语是同一个人时，一般需要用反身代词
+
+  e.g. `The old lady is talking to herself.`
+
+- 反身代词也可以和名词连用，表达「**就是那个人而不是别人**」
+
+  e.g. `They wanted to finish the work themselves.`
+
+**want to do sth.**：想要做某事
+
+**dad和mum**：它们前面如果没有「所有格代词」或「名词所有格」作修饰的话，就特指自己的父母，此时要大写开头
+
+**this、next、every等词开头的时间状语前面通常不加介词**
+:::
+
+## Lesson 67~68
+
+### 一般过去时
+
+:::danger ⚡本课重点
+
+| be的现在时 | be的过去时 |
+| ---------- | ---------- |
+| am/is      | was        |
+| are        | were       |
+
+**一般过去时**：动作没有具体的状态(零状态)，但是动作发生的时间可以是「**过去**」
+
+本课主要讲的是`主语`+`was/were`+`名词/形容词`的「**主系表结构**」一般过去时
+
+- **肯定句**：表示过去发生的动作、或存在的事实、状态。`主语`+`was/were`
+
+  e.g. `I was a student.`、`We were at home in the morning.`
+
+- **否定句**：只需在`be`的后面加上`not`即可。`主语`+`was/were`+`not`
+
+  e.g. `He wasn't a teacher.`、`They were not at school.`
+
+- **一般疑问句**：只需将`be`提到句首(主语前面)即可。`Was/Were`+`主语`
+
+  e.g. `Was she hungry?`、`Were you happy?`
+
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`was/were`(+`主语`)
+
+  e.g. `He was a teacher.` => `Was he a teacher?` => `What was he job?`
+
+  _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`teacher`进行提问，并将其提到句首_
+
+**一般过去时常见的使用场景有**
+
+- 表示过去某一具体时间发生的动作或存在的事实、状态，常与表示明确的过去时间状语连用，如`a moment ago`、`yesterday`、`last night`、`last year`、`last night`等
+
+  e.g. `Mike was in China last year.`
+
+- 表示过去一段时间内经常性、习惯性的动作，常与`every day`、`usually`、`often`等时间状语连用
+
+- 叙述没有具体的过去时间的动作或存在的状态
+
+  e.g. `They were at school.`
+
+**动词过去式和过去分词的变化规则**：
+
+- ①一般的动词后面直接加`ed`
+  - 清辅音后面加`ed`时，读`/t/`
+  - 浊辅音或元音后面加`ed`时，读`/d/`
+- ②以不发音的`e`结尾的动词，直接加`d`
+- ③以短元音加一个辅音字母结尾的动词，先双写这个辅音字母再加`ed`
+- ④以辅音字母加`y`结尾的动词，变`y`为`i`再加`ed`
+
+**否定疑问句**：_谓语部分为否定形式的疑问句_。表示说话者惊异的情绪、责难的口吻或赞叹；也可以表示说话者的某种建议、邀请、请求或看法等
+
+这种句式主要是为了加强语气，尽管形式上是否的的，但却表示强有力的肯定
+
+e.g. `Aren't you lucky.`
+:::
+
+- 学习了一般过去时的基本用法
+
+## Lesson 69~70
+
+:::danger ⚡本课重点
+**excited和exciting**：都是由`excite`变化而来，单词本义为「**兴奋、激动**」
+
+- 以`-ing`结尾的形容词可以修饰「**人或物**」，表示「**某人怎么样**」或「**某物令人感到...**」
+- 以`-ed`结尾的形容词修饰「**人**」，表示「**某人对...感到怎么样**」
+
+**介词`at`、`on`、`in`的时间短语**
+
+- 介词`at`的时间短语通常表示「**确切的时间**」
+
+  e.g. `at 10 o'clock`、`at lunchtime`、`at noon`、`at Christmas`、`at the age of 18`
+
+- 介词`on`常用于「**周**」、「**月份中的任意一天**」或「**一天中的某段时间**」
+
+  e.g. `on Monday`、`on April 1st`、`on Sunday morning`、`on your birthday`、`on Christmas Day`
+
+- 介词`in`的时间短语通常表示「**某一段时间**」
+
+  e.g. `in the evening`、`in March`、`in summer`、`in 1999`、`in the 20th century`
+
 :::
