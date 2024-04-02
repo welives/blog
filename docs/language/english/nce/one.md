@@ -5,7 +5,7 @@ title: 新概念英语第一册
 ## Lesson 1~2
 
 :::danger ⚡本课重点
-**一般疑问句**：通过主谓倒装可将带有be的陈述句变为一般疑问句，即将be的适当形式移至主语之前。
+**一般疑问句**：通过主谓倒装可将带有`be`的陈述句变为一般疑问句，即将`be`的适当形式移至主语之前
 
 e.g. `He is a teacher.` => `Is he a teacher?`
 
@@ -26,7 +26,7 @@ e.g. `He is a teacher.` => `Is he a teacher?`
 :::danger ⚡本课重点
 含有be动词的简单陈述句
 
-e.g.`This is my umbrella.`
+e.g. `This is my umbrella.`
 
 **否定句**：否定陈述句与肯定陈述句相反，它表示「否定」，并且含有一个如`not`之类的否定词。
 
@@ -159,12 +159,12 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`
 
 ## Lesson 15~16
 
-### 名词复数变化
+### 名词复数规则变化
 
 :::danger ⚡本课重点
 **名词的单/复数**：英语中的可数名词有「**单数**」和「**复数**」两种形式。表示一个人或事物时用单数形式，表示多个人或事物时用复数形式。
 
-名词的复数规则变化
+**名词的复数规则变化**
 
 - ①一般情况下在词尾直接加`-s`
 
@@ -198,11 +198,11 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`
 - ⑨以`um`结尾的单词，将`um`改为`a`
 - ⑩以`a`结尾的单词，在词尾直接加`-e`
 
-如果句中的主语是名词的复数形式或复数的人称代词时，则句中的be动词要用其复数形式`are`
+如果句中的主语是名词的复数形式或复数的人称代词时，则句中的`be`动词要用其复数形式`are`
 
 e.g. `This is a book.`、`These are my books.`
 
-**be动词的一般现在时**：英语中的be动词在使用时有人称的变化，在口语中这些变化常用缩略形式
+**be动词的一般现在时**：英语中的`be`动词在使用时有人称的变化，在口语中这些变化常用缩略形式
 
 | 肯定句   | 肯定的缩略 | 否定的缩略                  |
 | -------- | ---------- | --------------------------- |
@@ -264,13 +264,27 @@ e.g. `live` => `/laɪv/`
 
 这种句子结构中的`there`是个引词，本身没有实际意义，常弱读。句子中的`be`为谓语动词，`be`后面的名词为实际主语，句子最后部分为地点(时间)状语
 
-- **肯定句**：_表示某处有某物_。`There am/is/are`+`名词`+`地点(时间)状语`
+- **肯定句**：_表示某处有某物_。`There am/is/are`+`名词`(+`地点(时间)状语`)
 
   e.g. `There is a pen.`
 
+- **否定句**：_要在`be`的后面加上`not`即可_。`There am/is/are`+`not`+`名词`(+`地点(时间)状语`)
+
+  e.g. `There isn't a pen.`
+
+- **疑问句**：_只需将`be`提到句首(`there`前面)即可_。`Am/Is/Are there`+`名词`(+`地点(时间)状语`)
+
+  e.g. `Is  there a pen?`
+
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`am/is/are there`(+`地点(时间)状语`)
+
+  e.g. `There is a pen.` => `Is  there a pen?` => `What is there?`
+
+  _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`pen`进行提问，并将其提到句首_
+
 :::
 
-- 学习了`There be`结构的肯定句本用法
+- 学习了`There be`结构的基本用法
 
 ## Lesson 21~22
 
@@ -345,7 +359,12 @@ e.g. `on time`、`in the middle of`
 **介词in**：表示地点、场所、部位等，本课学习的是其「**在…里面**」的意思
 
 - 在某范围或空间内
+
+  e.g. `There is a refrigerator in the kitchen.`
+
 - 在某一段时间内
+
+  e.g. `in the morning`
 
 **定冠词the**：表示特指，不论是指人、物、单数、复数，其形式都不会发生变化。与指示代词`this`和`that`同源，有「**这(那)个**」的意思，但较弱，可以和一个名词连用，来表示某个或某些特定的人或物
 
@@ -381,19 +400,15 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 **some和any的区别**：在英语中，`some`和`any`是两个最常用的数量词，它们都表示「**一些**」。再具体一点话`some`表示「**某些**」，`any`表示「**任一**」
 
 - `some`：修饰可数名词复数和不可数名词，表示「某些」但不是「全部」，通常用于肯定句。在疑问句中，所希望的回答是`yes`时也可以用`some`
-- `any`表示「任一」，即不确定的数量，通常用于否定句和疑问句
-
-**There be的否定和疑问结构**：在[19~20课](#lesson-19-20)中学习了其肯定句结构，现在来学习其否定句和疑问句
-
-- **否定句**：_要在be动词的后面加上`not`或`no`_。`There am/is/are`+`not`+`名词`+`地点(时间)状语`
-- **疑问句**：_将be动词提到there的前面(句首)，句子的其余部分不变_。`Am/Is/Are there`+`名词`+`地点(时间)状语`
+- `any`：表示「任一」，即不确定的数量，通常用于否定句和疑问句
 
 :::
 
 - 学习了`some`和`any`的基本用法
-- 学习了`There be`的否定句和疑问句用法
 
 ## Lesson 29~30
+
+### 情态动词must
 
 :::danger ⚡本课重点
 **情态动词**：是一种本身没有词义，表示说话人的语气和情态的助动词。
@@ -408,7 +423,7 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 
   e.g. `I must drink some water.`
 
-- **否定句**：_只需在`must`的后面加上`not`即可，`must not`=`mustn't`。其否定形式表示「**禁止**」而不是简单的**非必须**，语气强烈，不要随便使用_。`主语`+`must not`+`V`
+- **否定句**：_只需在`must`的后面加上`not`即可。其否定形式表示「**禁止**」而不是简单的**非必须**，语气强烈，不要随便使用_。`主语`+`must not`+`V`
 
   e.g. `You mustn't smoke here.`
 
@@ -457,7 +472,7 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 
   _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`reading a book`进行提问，并将其提到句首_
 
-**动词现在分词**
+**动词现在分词的规则变化**
 
 - 对于大多数动词来说，在动词后面直接加`-ing`即可构成现在分词
 
@@ -525,7 +540,7 @@ e.g. `put on your coat`、`put it on`
 ### 一般将来时
 
 :::danger ⚡本课重点
-**一般将来时**：动作没有具体的状态(零状态)，只有动作发生的时间是「**将来**」
+**一般将来时**：动作没有具体的状态(零状态)，动作发生的时间是「**将来**」
 
 由`be动词的现在时形式`+`going to`+`动词原形`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`。在口语中常常会用`gonna`替代`going to`
 
@@ -575,9 +590,9 @@ e.g. `paint the bookcase pink.`
 :::danger ⚡本课重点
 **祈使句否定形式**：在动词原形前面加上`Don't`或`Do not`。相关概念和肯定句式参考[3~4课](#lesson-3-4)
 
-结构：`Don't(Do not)`+`动词原形`+`名词(代词)`
+- 结构：`Don't(Do not)`+`动词原形`+`名词(代词)`
 
-e.g. `Don't do it`
+  e.g. `Don't do it`
 
 **双宾语**：相关概念参考[23~24课](#lesson-23-24)，但本课着重讲的是其`give sth. to sb.`的形式
 
@@ -595,19 +610,19 @@ e.g. `Don't do it`
 ## Lesson 41~42
 
 :::danger ⚡本课重点
-**不可数名词**：不可数名词的前面不能加`a`或`an`，也没有复数形式，也就是说前面不能加常规的数量词。如果想表示在表示「一些」，可以用`some`或`any`等特定的词
+**不可数名词**：不可数名词的前面不能加`a`或`an`，也没有复数形式，也就是说前面不能加常规的数量词。如果想表示「一些」，可以用`some`或`any`等特定的词
 
-- 如果想表示量的概念时，要用某种「容器」承载不可数名词，然后就可以对其使用常规数量词来描述了
+- 如果想表示量的概念时，要用某种「**容器**」承载不可数名词，然后就可以对其使用常规数量词来描述了
 
   e.g. `two bottles of milk`
 
 **There be结构中使用可数名词和不可数名词**：当`There be`后面跟单数名词或不可数名词时，`be`要用`is`；而当后面跟复数名词时，`be`要用`are`。`There be`后面的名词是句子的主语
 
-- `There is`+`名词单数/不可数名词`+`地点(时间)状语`
+- `There is`+`名词单数/不可数名词`(+`地点(时间)状语`)
 
   e.g. `There's some milk.`
 
-- `There are`+`可数名词复数`+`地点(时间)状语`
+- `There are`+`可数名词复数`(+`地点(时间)状语`)
 
   e.g. `There're two books on the desk.`
 
@@ -621,6 +636,8 @@ e.g. `Don't do it`
 
 ## Lesson 43~44
 
+### 情态动词can
+
 :::danger ⚡本课重点
 **情态动词can**：单词本义为「**能**」。它本身不表示动作，只表示体力和脑力方面的能力或客观可能，它必须与其他东西连用，没有人称和数的变化
 
@@ -628,7 +645,7 @@ e.g. `Don't do it`
 
   e.g. `The bird can fly in the sky.`
 
-- **否定句**：_只需在`can`的后面加上`not`即可_。`cannot`=`can not`=`can't`。`主语`+`can`+`not`+`V`
+- **否定句**：_只需在`can`的后面加上`not`即可_。`主语`+`can`+`not`+`V`
 
   e.g. `The dog can not fly in the sky.`
 
@@ -666,25 +683,25 @@ e.g. `Don't do it`
 ### 一般现在时
 
 :::danger ⚡本课重点
-**一般现在时**：动作没有具体的状态(零状态)，但是动作发生的时间可以是「**过去、现在、将来**」
+**一般现在时①**：动作没有具体的状态(零状态)，但是动作发生的时间可以是「**过去、现在、将来**」
 
-在本课之前见过的各种`主语`+`am/is/are`+`名词/形容词`的「**主系表结构**」其实也是一般现在时
+在本课之前见过的各种`主语`+`am/is/are`+`名词/形容词`句式其实是「**主系表结构**」一般现在时，这种句式的谓语是`be`动词
 
 - 表示客观事实或存在状态
 
   e.g. `It's very hot today.`
 
-而本课则是着重讲「**主谓宾结构**」下的一般现在时
+而本课则是着重讲`主语`+`V`的「**主谓宾结构**」一般现在时，它的谓语是`实义动词`
 
 - **肯定句**：_实义动词的前面其实有个隐式的`do`，只是肯定句中经常省略而已_。`主语`(+`do`)+`V`
 
   e.g. `I want this job.`、`I do like tea.`
 
-- **否定句**：_显式使用`do`并在后面加上`not`即可，`do not`=`don't`_。`主语`+`do not`+`V`
+- **否定句**：_显式使用`do`并在后面加上`not`即可_。`主语`+`do not`+`V`
 
   e.g. `I do not want this job.`、`I don't like tea.`
 
-- **一般疑问句**：_显式使用`do`并将其提到句首即可_。`Do`+`主语`+`V`
+- **一般疑问句**：_显式使用`do`并将其提到句首(主语前面)即可_。`Do`+`主语`+`V`
 
   e.g. `Do you want this job?`
 
@@ -711,18 +728,20 @@ e.g. `Are you going to come tomorrow?` => `Do you come tomorrow?`
 
 ## Lesson 49~50
 
+### 动词三单变化
+
 :::danger ⚡本课重点
-**一般现在时的第三人称**：在[47~48课](#lesson-47-48)中主要讲的是一般现在时的非三单形式，这节课则主要讲解其三单形式。`do`的第三人称单数为`does`
+**一般现在时②**：在[47~48课](#lesson-47-48)中主要讲的是「**主谓宾结构**」一般现在时的非三单形式，而本节课则主要讲解其三单形式。`do`的第三人称单数为`does`
 
 - **肯定句**：_当`does`隐藏时，实义动词要用第三人称单数形式；显式使用`does`的时候，实义动词要用原形_。`主语`(+`does`)+`V.s/es`
 
   e.g. `He wants this job.`、`She does like tea.`
 
-- **否定句**：_显式使用`does`并在后面加上`not`即可，`does not`=`doesn't`_。`主语`+`does not`+`V`
+- **否定句**：_显式使用`does`并在后面加上`not`即可_。`主语`+`does not`+`V`
 
   e.g. `He does not want this job.`、`She doesn't like tea.`
 
-- **一般疑问句**：_显式使用`does`并将其提到句首即可_。`Does`+`主语`+`V`
+- **一般疑问句**：_显式使用`does`并将其提到句首(主语前面)即可_。`Does`+`主语`+`V`
 
   e.g. `Does he want this job?`
 
@@ -732,13 +751,27 @@ e.g. `Are you going to come tomorrow?` => `Do you come tomorrow?`
 
   _先把陈述句中的`does`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`this job`进行提问，并将其提到句首_
 
-**动词加s/es**：一般现在时中，当主语是第三人称单数时，实义动词要用第三人称单数形式
+**动词第三人称单数的变化**：一般现在时中，当主语是第三人称单数时，实义动词要用第三人称单数形式
 
 - ①一般情况下在词尾直接加`s`
+
+  e.g. `want` => `wants`
+
 - ②以辅音字母加`y`结尾的动词，将`y`改为`i`，再加`-es`，读`/z/`
+
+  e.g. `fly` => `flies`、`cry` => `cries`
+
 - ③以元音字母加`y`结尾的动词，在词尾直接加`-s`，读`/z/`
+
+  e.g. `play` => `plays`
+
 - ④以字母`s`、`x`、`o`、`z`、`ch`、`sh`结尾的动词，这词尾直接加`-es`，读`/iz/`
-- ⑤不规则变化：`have` => `has`
+
+  e.g. `go` => `goes`、`watch` => `watches`
+
+- ⑤不规则变化
+
+  e.g. `have` => `has`
 
 :::
 
@@ -770,7 +803,13 @@ e.g. `How often do you go to the cinema?`
 **like的不同词性**
 
 - 当其做动词时表示「**喜欢、想要**」
+
+  e.g. `I like that sweet girl.`
+
 - 当其做介词时表示「**怎么样、像...一样**」
+
+  e.g. `His car is like mine.`
+
 - 当其做形容词时表示「**类似的、相似的**」
 
 :::
@@ -789,6 +828,8 @@ e.g. `Their father takes them to school every day.`
 
 ## Lesson 57~58
 
+### 时间的表达方式
+
 :::danger ⚡本课重点
 **一般现在时与现在进行时**
 
@@ -800,19 +841,19 @@ e.g. `Their father takes them to school every day.`
 
   e.g. `now`、`at the moment`、`today`、`this morning`、`tonight`等
 
-**时间表达**
+**时间的表达方式**
 
 - 通用表达
 
-  e.g. 6点整 => `six o'clock`、10点10分 => `ten ten`、12点40分 => `twelve forty`、
+  e.g. `six o'clock` => 6点整、`ten ten` => 10点10分、`twelve forty` => 12点40分
 
 - **分 past 时**：表示「**某个整点时间过去了多少分钟**」，这种方式要求当前的自然分钟数必须`小于等于30`
 
-  e.g. 6点半 => `half past six`、10点15分 => `a quarter past ten`、 12点5分 => `five past twelve`
+  e.g. `half past six` => 6点半、`a quarter past ten` => 10点15分、`five past twelve` => 12点5分
 
 - **分 to 时**：表示「**距离某个整点时间还差多少分钟**」，这种方式要求当前的自然分钟数必须`大于30`
 
-  e.g. 6点50分 => `ten to seven`、10点45分 => `a quarter to eleven`、
+  e.g. `ten to seven` => 6点50分、`a quarter to eleven` => 10点45分
 
   _在口语环境中，当谈话双方对当前的时间都有个大致的掌握时，可以省略掉介词`to`。例如：差15分钟就1点 => `quarter one`_
 
@@ -827,11 +868,13 @@ e.g. `Their father takes them to school every day.`
 
 - **否定句**：_可以在`have/has`后面直接加`not`，也可以借助一般现在时助动词`do/does`的否定形式_。`have not`=`haven't`，`has not`=`hasn't`
 
-  e.g. `I have a car.` => `I haven't a car.` => `I don't have a car.`、`He has a car.` => `He hasn't a car.` => `He doesn't have a car.`
+  - e.g. `I have a car.` => `I haven't a car.` => `I don't have a car.`
+  - e.g. `He has a car.` => `He hasn't a car.` => `He doesn't have a car.`
 
 - **一般疑问句**：_将`have/has`提到句首(主语前面)，或者借助一般现在时助动词`do/does`_
 
-  e.g. `Have you a car?` => `Do you have a car?`、`Has he a car?` => `Does he have a car?`
+  - e.g. `Have you a car?` => `Do you have a car?`
+  - e.g. `Has he a car?` => `Does he have a car?`
 
 **else**：常常跟在疑问代词、不定代词、疑问副词的后面
 
@@ -923,23 +966,23 @@ e.g. `What else do you want?`、`Who else is from Japan?`
 | am/is      | was        |
 | are        | were       |
 
-**一般过去时**：动作没有具体的状态(零状态)，但是动作发生的时间可以是「**过去**」
+**一般过去时①**：动作没有具体的状态(零状态)，动作发生的时间是「**过去**」
 
-本课主要讲的是`主语`+`was/were`+`名词/形容词`的「**主系表结构**」一般过去时
+本课主要讲的是`主语`+`was/were`+`名词/形容词`句式的「**主系表结构**」一般过去时，这种句式的谓语是`be`动词
 
-- **肯定句**：表示过去发生的动作、或存在的事实、状态。`主语`+`was/were`
+- **肯定句**：_表示过去发生的动作、或存在的事实、状态_。`主语`+`was/were`
 
   e.g. `I was a student.`、`We were at home in the morning.`
 
-- **否定句**：只需在`be`的后面加上`not`即可。`主语`+`was/were`+`not`
+- **否定句**：_只需在`be`的后面加上`not`即可_。`主语`+`was/were`+`not`
 
   e.g. `He wasn't a teacher.`、`They were not at school.`
 
-- **一般疑问句**：只需将`be`提到句首(主语前面)即可。`Was/Were`+`主语`
+- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。`Was/Were`+`主语`
 
   e.g. `Was she hungry?`、`Were you happy?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`was/were`(+`主语`)
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`was/were`+`主语`
 
   e.g. `He was a teacher.` => `Was he a teacher?` => `What was he job?`
 
@@ -956,15 +999,6 @@ e.g. `What else do you want?`、`Who else is from Japan?`
 - 叙述没有具体的过去时间的动作或存在的状态
 
   e.g. `They were at school.`
-
-**动词过去式和过去分词的变化规则**：
-
-- ①一般的动词后面直接加`ed`
-  - 清辅音后面加`ed`时，读`/t/`
-  - 浊辅音或元音后面加`ed`时，读`/d/`
-- ②以不发音的`e`结尾的动词，直接加`d`
-- ③以短元音加一个辅音字母结尾的动词，先双写这个辅音字母再加`ed`
-- ④以辅音字母加`y`结尾的动词，变`y`为`i`再加`ed`
 
 **否定疑问句**：_谓语部分为否定形式的疑问句_。表示说话者惊异的情绪、责难的口吻或赞叹；也可以表示说话者的某种建议、邀请、请求或看法等
 
@@ -998,3 +1032,76 @@ e.g. `Aren't you lucky.`
   e.g. `in the evening`、`in March`、`in summer`、`in 1999`、`in the 20th century`
 
 :::
+
+## Lesson 71~72
+
+### 动词过去式变化
+
+:::danger ⚡本课重点
+**一般过去时②**：在[67~68课](#lesson-67-68)中主要讲的是「**主系表结构**」的一般过去时。而本课则是着重讲`主语`+`动词过去式`的「**主谓宾结构**」一般过去时，它的谓语是`实义动词`
+
+- **肯定句**：_表示过去发生的动作、或存在的事实、状态_。`主语`+`V.d/ed`
+
+  e.g. `I loved you.`、`He talked to me yesterday.`、`We played with our parents yesterday.`
+
+- **否定句**：_只需将实义动词改为原形并在其前面加上`did not`即可_。`主语`+`did not`+`V`
+
+  e.g. `I did not live in Beijing last year.`、`He didn't talk to me yesterday.`
+
+- **一般疑问句**：_只需将实义动词改为原形并把`did`加到句首(主语前面)即可_。`Did`+`主语`+`V`
+
+  e.g. `Did you love me?`、`Did he talk to me yesterday?`
+
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`did`+`主语`+`V`
+
+  e.g. `He talked to me yesterday.` => `Did he talk to me yesterday?` => `What did he do yesterday?`
+
+  _先把陈述句中的`实义动词`改为原形，然后在句首加上`did`得到一般疑问句，最后用`what`对一般疑问句中的答案`talk to me`进行提问，并将其提到句首_
+
+**动词过去式和过去分词的变化**：
+
+- ①一般的动词后面直接加`ed`
+
+  - 清辅音后面加`ed`时，读`/t/`
+
+    e.g. `talk` => `talked`
+
+  - 浊辅音或元音后面加`ed`时，读`/d/`
+
+    e.g. `climb` => `climbed`
+
+- ②以不发音的`e`结尾的动词，直接在词尾加`d`
+
+  e.g. `love` => `loved`、`live` => `lived`
+
+- ③以辅音字母加`y`结尾的动词，变`y`为`i`再加`ed`
+
+  e.g. `study` => `studied`、`carry` => `carried`
+
+- ④以元音字母加`y`结尾的动词，直接在词尾加`ed`
+
+  e.g. `play` => `played`
+
+- ⑤以短元音加一个辅音字母结尾的动词，先双写这个辅音字母再加`ed`
+
+  e.g. `stop` => `stopped`、`plan` => `planned`
+
+- ⑥以`ic`结尾的动词，直接在词尾加`ked`
+
+  e.g. `traffic` => `trafficked`、`picnic` => `picnicked`
+
+- ⑦不规则变化
+
+  e.g. `do` => `did`、`say` => `said`
+
+**time**
+
+- 作为不可数名词时，表示「**时间**」
+- 作为可数名词时，表示「**次数**」。3次或3次以上时，通常用`基数词`+`times`
+
+  e.g. `once`、`twice`、`three times`
+
+**speak to sb.**：表示「**与某人说话**」
+:::
+
+- 学习了动词过去式的变化规则
