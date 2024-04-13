@@ -64,7 +64,8 @@ document.head.appendChild(script)
 ::: details 示例1
 
 ```js
-0.123       =>      01
+0.125       =>      01
+
 0.125 * 2 = 0.5     0
 0.5 * 2 = 1.0       1
 0.0                 结束
@@ -76,6 +77,7 @@ document.head.appendChild(script)
 
 ```js
 0.2       =>        00110011...
+
 0.2 * 2 = 0.4       0
 0.4 * 2 = 0.8       0
 0.8 * 2 = 1.6       1

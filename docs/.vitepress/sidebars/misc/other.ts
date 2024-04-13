@@ -15,5 +15,9 @@ export default {
       text: 'git常用命令',
       link: '/misc/git',
     },
+    {
+      text: 'ip地址计算',
+      link: '/misc/ip',
+    },
   ],
 } as DefaultTheme.SidebarItem

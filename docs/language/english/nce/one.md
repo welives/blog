@@ -20,7 +20,7 @@ e.g. `He is a teacher.` => `Is he a teacher?`
 ## Lesson 3~4
 
 :::danger ⚡本课重点
-含有be动词的简单陈述句
+含有`be`动词的简单陈述句
 
 e.g. `This is my umbrella.`
 
@@ -41,7 +41,7 @@ e.g. `Open the window, please.`
 - 以动词原形开头的句子，或在动词原型前面加`do`(只限于省略第二人称主语的句子)的句子，都是祈使句
 - 以`let`开头的句子也是祈使句
 
-**倒装句**：be动词放在here的后面，就可以成为简单的倒装句式
+**倒装句**：`be`动词放在`here`的后面，就可以成为简单的倒装句式
 
 e.g. `Here is my umbrella.`
 
@@ -81,7 +81,7 @@ Lesson 6 的`What make is it?`在生活中其实很少这么用，更多是用`W
 :::danger ⚡本课重点
 **特殊疑问句**：以特殊疑问词引导的问句都叫特殊疑问句。与一般疑问句的区别在于特殊疑问句不可以用`yes`或`no`回答。
 
-结构为: `特殊疑问词`+`助动词`+`主语`+`主动词` 或者是 `特殊疑问词`+`一般疑问句(去掉答案)`
+结构为: **`特殊疑问词`+`助动词`+`主语`+`实义动词`** 或者是 **`特殊疑问词`+`一般疑问句(去掉答案)`**
 
 | what | when | which  | why    | where | how  | who | whom     | whose |
 | ---- | ---- | ------ | ------ | ----- | ---- | --- | -------- | ----- |
@@ -242,19 +242,19 @@ e.g. `live` => `/laɪv/`
 
 这种句子结构中的`there`是个引词，本身没有实际意义，常弱读。句子中的`be`为谓语动词，`be`后面的名词为实际主语，句子最后部分为地点(时间)状语
 
-- **肯定句**：_表示某处有某物_。`There am/is/are`+`名词`(+`地点(时间)状语`)
+- **肯定句**：_表示某处有某物_。**`There am/is/are`+`名词`(+`地点(时间)状语`)**
 
   e.g. `There is a pen.`
 
-- **否定句**：_要在`be`的后面加上`not`即可_。`There am/is/are`+`not`+`名词`(+`地点(时间)状语`)
+- **否定句**：_要在`be`的后面加上`not`即可_。**`There am/is/are`+`not`+`名词`(+`地点(时间)状语`)**
 
   e.g. `There isn't a pen.`
 
-- **疑问句**：_只需将`be`提到句首(`there`前面)即可_。`Am/Is/Are there`+`名词`(+`地点(时间)状语`)
+- **疑问句**：_只需将`be`提到句首(`there`前面)即可_。**`Am/Is/Are there`+`名词`(+`地点(时间)状语`)**
 
   e.g. `Is  there a pen?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`am/is/are there`(+`地点(时间)状语`)
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。**`特殊疑问词`+`am/is/are there`(+`地点(时间)状语`)**
 
   e.g. `There is a pen.` => `Is  there a pen?` => `What is there?`
 
@@ -308,7 +308,7 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`where
 
 **介词on**：经常用在名词、名词短语、代词或动名词的前面，用来表示人物、事件等之间的各种关系，如空间关系、时间关系、因果关系等。介词始终带有宾语，即使介词与宾语之间分隔开时，这种关系仍然存在
 
-介词短语：`介词`+`名词`(+`介词`)
+介词短语：**`介词`+`名词`(+`介词`)**
 
 e.g. `on time`、`in the middle of`
 
@@ -393,19 +393,19 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 
 **情态动词must**：单词本义为「**必须**」。它必须与其他东西连用，没有时态、人称和数的变化
 
-- **肯定句**：_表示必须做某事_。`主语`+`must`+`V`
+- **肯定句**：_表示必须做某事_。**`主语`+`must`+`V`(+`其他`)**
 
   e.g. `I must drink some water.`
 
-- **否定句**：_只需在`must`的后面加上`not`即可。其否定形式表示「**禁止**」而不是简单的**非必须**，语气强烈，不要随便使用_。`主语`+`must not`+`V`
+- **否定句**：_只需在`must`的后面加上`not`即可。其否定形式表示「**禁止**」而不是简单的**非必须**，语气强烈，不要随便使用_。**`主语`+`must not`+`V`(+`其他`)**
 
   e.g. `You mustn't smoke here.`
 
-- **一般疑问句**：_只需将`must`提到句首(主语前面)即可_。`Must`+`主语`+`V`
+- **一般疑问句**：_只需将`must`提到句首(主语前面)即可_。**`Must`+`主语`+`V`(+`其他`)**
 
   e.g. `Must I do the homework today?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。`特殊疑问词`+`must`+`主语`+`V`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`must`+`主语`+`V`(+`其他`)**
 
   e.g. `I must drink some water.` => `Must I drink some water?` => `What must I do?`
 
@@ -422,23 +422,21 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 
 **动词的时态**：动作发生的时间和状态
 
-**现在进行时**：动作发生的状态是「**进行中**」，动作发生的时间是「**现在**」
+**现在进行时**：动作发生的状态是「**进行中**」，动作发生的时间是「**现在**」，核心结构是 **`be`+`V.ing`**
 
-由`be动词的现在时形式`+`动词现在分词`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`
-
-- **肯定句**：_表示现在正在进行或者发生的动作、状态_。`主语`+`am/is/are`+`V.ing`
+- **肯定句**：_表示现在正在进行或者发生的动作、状态_。**`主语`+`am/is/are`+`V.ing`(+`其他`)**
 
   e.g. `He's reading a book.`
 
-- **否定句**：_只需在`be`的后面加上`not`即可_。`主语`+`am/is/are`+`not`+`V.ing`
+- **否定句**：_只需在`be`的后面加上`not`即可_。**`主语`+`am/is/are`+`not`+`V.ing`(+`其他`)**
 
   e.g. `He's not reading a book.`
 
-- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。`Am/Is/Are`+`主语`+`V.ing`
+- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。**`Am/Is/Are`+`主语`+`V.ing`(+`其他`)**
 
   e.g. `Is he reading a book?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词_。`特殊疑问词`+`am/is/are`+`主语`+`V.ing`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词_。**`特殊疑问词`+`am/is/are`+`主语`+`V.ing`(+`其他`)**
 
   e.g. `He's reading a book.` => `Is he reading a book?` => `What is he doing?`
 
@@ -470,9 +468,9 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 ## Lesson 33~34
 
 :::danger ⚡本课重点
-在[31~32课](#lesson-31-32)中学习了现在进行时的`be动词`单数形式，本节来学习其复数形式
+在[31~32课](#lesson-31-32)中学习了现在进行时的`be`单数形式，本节来学习其复数形式
 
-当主语是复数时，`be动词`要使用其复数`are`
+当句中主语名词为复数、人称代词为第二人称或第三人称复数时，助动词`be`的现在时形式应为`are`
 
 e.g. `They are walking over the bridge.`
 
@@ -488,7 +486,7 @@ e.g. `There is a book on the desk.`、`The sky is over our heads.`
 :::danger ⚡本课重点
 **动词短语**：通常是指在动词的后面跟一个介词或副词短语形成的结构
 
-结构：`动词`+`介词` 、 `动词`+`副词小品词`
+结构：**`动词`+`介词/副词小品词`**
 
 在英语中存在着一种用动词短语代替与其同义的单个动词的用法，这种用法称为「**动词短语化**」。例如听到敲门声，我们会说`come in`，而不会用`enter`来表达。最常见的动词短语是由英语中最短小和最简单的动词构成的，这些动词常与表示位置或方向的词组合，例如`along`、`down`、`in`、`out`、`off`、`on`、`over`、`under`等
 
@@ -510,11 +508,11 @@ e.g. `put on your coat`、`put it on`
 ### 一般将来时
 
 :::danger ⚡本课重点
-**一般将来时**：动作没有具体的状态(零状态)，动作发生的时间是「**将来**」
+**一般将来时**：动作没有具体的状态(零状态)，动作发生的时间是「**将来**」，核心结构是 **`be`+`going to`+`V`**
 
-由`be动词的现在时形式`+`going to`+`动词原形`构成。当句中主语名词为复数、人称代词为第二人称或第三人称复数时，`be`的现在时形式应为`are`。在口语中常常会用`gonna`替代`going to`
+当句中主语名词为复数、人称代词为第二人称或第三人称复数时，助动词`be`的现在时形式应为`are`。在口语中常常会用`gonna`替代`going to`
 
-- **肯定句**：`主语`+`am/is/are`+`going to`+`V`
+- **肯定句**：**`主语`+`am/is/are`+`going to`+`V`(+`其他`)**
 
   - _表示打算、准备做某事_
 
@@ -528,15 +526,15 @@ e.g. `put on your coat`、`put it on`
 
     e.g. `It's going to rain.`
 
-- **否定句**：_只需在`be`的后面加上`not`即可_。`主语`+`am/is/are`+`not`+`going to`+`V`
+- **否定句**：_只需在`be`的后面加上`not`即可_。**`主语`+`am/is/are`+`not`+`going to`+`V`(+`其他`)**
 
   e.g. `He is not going to sleep.`
 
-- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。`Am/Is/Are`+`主语`+`going to`+`V`
+- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。**`Am/Is/Are`+`主语`+`going to`+`V`(+`其他`)**
 
   e.g. `Is he going to sleep?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词_。`特殊疑问词`+`am/is/are`+`主语`+`going to`+`V`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词_。**`特殊疑问词`+`am/is/are`+`主语`+`going to`+`V`(+`其他`)**
 
   e.g. `He is going to sleep.` => `Is he going to sleep?` => `What is he going to do?`
 
@@ -544,7 +542,7 @@ e.g. `put on your coat`、`put it on`
 
 ---
 
-**宾语补足语**：对宾语进行补充说明，`一个动词`+`代词(名词)`+`形容词`
+**宾语补足语**：对宾语进行补充说明，**`动词`+`代词(名词)`+`形容词`**
 
 e.g. `paint the bookcase pink.`
 
@@ -560,7 +558,7 @@ e.g. `paint the bookcase pink.`
 :::danger ⚡本课重点
 **祈使句否定形式**：在动词原形前面加上`Don't`或`Do not`。相关概念和肯定句式参考[3~4课](#lesson-3-4)
 
-- 结构：`Don't(Do not)`+`动词原形`+`名词(代词)`
+- 结构：**`Don't(Do not)`+`动词原形`+`名词(代词)`**
 
   e.g. `Don't do it`
 
@@ -592,11 +590,11 @@ e.g. `paint the bookcase pink.`
 
 **There be结构中使用可数名词和不可数名词**：当`There be`后面跟单数名词或不可数名词时，`be`要用`is`；而当后面跟复数名词时，`be`要用`are`。`There be`后面的名词是句子的主语
 
-- `There is`+`名词单数/不可数名词`(+`地点(时间)状语`)
+- **`There is`+`名词单数/不可数名词`(+`地点(时间)状语`)**
 
   e.g. `There's some milk.`
 
-- `There are`+`可数名词复数`(+`地点(时间)状语`)
+- **`There are`+`可数名词复数`(+`地点(时间)状语`)**
 
   e.g. `There're two books on the desk.`
 
@@ -613,19 +611,19 @@ e.g. `paint the bookcase pink.`
 :::danger ⚡本课重点
 **情态动词can**：单词本义为「**能**」。它本身不表示动作，只表示体力和脑力方面的能力或客观可能，它必须与其他东西连用，没有人称和数的变化
 
-- **肯定句**：_表示能力或可能_。`主语`+`can`+`V`
+- **肯定句**：_表示能力或可能_。**`主语`+`can`+`V`(+`其他`)**
 
   e.g. `The bird can fly in the sky.`
 
-- **否定句**：_只需在`can`的后面加上`not`即可_。`主语`+`can`+`not`+`V`
+- **否定句**：_只需在`can`的后面加上`not`即可_。**`主语`+`can`+`not`+`V`(+`其他`)**
 
   e.g. `The dog can not fly in the sky.`
 
-- **一般疑问句**：_只需将`can`提到句首(主语前面)即可_。`Can`+`主语`+`V`
+- **一般疑问句**：_只需将`can`提到句首(主语前面)即可_。**`Can`+`主语`+`V`(+`其他`)**
 
   e.g. `Can the bird fly in the sky?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。`特殊疑问词`+`can`+`主语`+`V`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`can`+`主语`+`V`(+`其他`)**
 
   e.g. `The bird can fly in the sky.` => `Can the bird fly in the sky?` => `What can the bird do?`
 
@@ -641,7 +639,7 @@ e.g. `paint the bookcase pink.`
 :::danger ⚡本课重点
 **can的否定特殊疑问句**：和其肯定句的特殊疑问句一样，在`can`的后面加上`not`即可
 
-- 结构：`特殊疑问词`+`can't`+`主语`+`V`
+- 结构：**`特殊疑问词`+`can't`+`主语`+`V`(+`其他`)**
 
   e.g. `Can Pamela read the letter?` => `Why can't Pamela read the letter?`
 
@@ -659,27 +657,27 @@ e.g. `paint the bookcase pink.`
 :::danger ⚡本课重点
 **一般现在时①**：动作没有具体的状态(零状态)，但是动作发生的时间可以是「**过去、现在、将来**」
 
-在本课之前见过的各种`主语`+`am/is/are`+`名词/形容词`句式其实是「**主系表结构**」一般现在时，这种句式的谓语是`be`动词
+在本节课之前见过的各种 **`主语`+`am/is/are`+`名词/形容词`** 句式其实就是「**主系表结构**」的一般现在时，这种句式的谓语是`be`动词
 
 - 表示客观事实或存在状态
 
   e.g. `It's very hot today.`
 
-而本课则是着重讲`主语`+`V`的「**主谓宾结构**」一般现在时，它的谓语是`实义动词`
+而本节课则主要讲解其「**主谓宾结构**」的一般现在时非三单形式，核心结构是 **`主语`+`V`**，它的谓语是`实义动词`
 
-- **肯定句**：_实义动词的前面其实有个隐式的`do`，只是肯定句中经常省略而已_。`主语`(+`do`)+`V`
+- **肯定句**：_实义动词的前面其实有个隐式的`do`，只是肯定句中经常省略而已_。**`主语`(+`do`)+`V`(+`其他`)**
 
   e.g. `I want this job.`、`I do like tea.`
 
-- **否定句**：_显式使用`do`并在后面加上`not`即可_。`主语`+`do not`+`V`
+- **否定句**：_显式使用`do`并在后面加上`not`即可_。**`主语`+`do not`+`V`(+`其他`)**
 
   e.g. `I do not want this job.`、`I don't like tea.`
 
-- **一般疑问句**：_显式使用`do`并将其提到句首(主语前面)即可_。`Do`+`主语`+`V`
+- **一般疑问句**：_显式使用`do`并将其提到句首(主语前面)即可_。**`Do`+`主语`+`V`(+`其他`)**
 
   e.g. `Do you want this job?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`do`+`主语`+`V`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。**`特殊疑问词`+`do`+`主语`+`V`(+`其他`)**
 
   e.g. `I want this job.` => `Do you want this job?` => `What do you want?`
 
@@ -705,21 +703,21 @@ e.g. `Are you going to come tomorrow?` => `Do you come tomorrow?`
 ### 动词三单变化
 
 :::danger ⚡本课重点
-**一般现在时②**：在[47~48课](#lesson-47-48)中主要讲的是「**主谓宾结构**」一般现在时的非三单形式，而本节课则主要讲解其三单形式。`do`的第三人称单数为`does`
+**一般现在时②**：在[47~48课](#lesson-47-48)中讲的主要是「**主谓宾结构**」的一般现在时非三单形式，而本节课则主要讲解其三单形式。`do`的第三人称单数为`does`
 
-- **肯定句**：_当`does`隐藏时，实义动词要用第三人称单数形式；显式使用`does`的时候，实义动词要用原形_。`主语`(+`does`)+`V.s/es`
+- **肯定句**：_当`does`隐藏时，实义动词要用第三人称单数形式；显式使用`does`的时候，实义动词要用原形_。**`主语`(+`does`)+`V.s/es`(+`其他`)**
 
   e.g. `He wants this job.`、`She does like tea.`
 
-- **否定句**：_显式使用`does`并在后面加上`not`即可_。`主语`+`does not`+`V`
+- **否定句**：_显式使用`does`并在后面加上`not`即可_。**`主语`+`does not`+`V`(+`其他`)**
 
   e.g. `He does not want this job.`、`She doesn't like tea.`
 
-- **一般疑问句**：_显式使用`does`并将其提到句首(主语前面)即可_。`Does`+`主语`+`V`
+- **一般疑问句**：_显式使用`does`并将其提到句首(主语前面)即可_。**`Does`+`主语`+`V`(+`其他`)**
 
   e.g. `Does he want this job?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`does`+`主语`+`V`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。**`特殊疑问词`+`does`+`主语`+`V`(+`其他`)**
 
   e.g. `He wants this job.` => `Does he want this job?` => `What does he want?`
 
@@ -840,12 +838,12 @@ e.g. `Their father takes them to school every day.`
 :::danger ⚡本课重点
 **have用法①**：单词本义为「**有、拥有**」。它作为动词时有第三人称单数形式`has`，当它表示「有」这个概念时，其否定形式和疑问形式各有两种
 
-- **否定句**：_可以在`have/has`后面直接加`not`，也可以借助一般现在时助动词`do/does`的否定形式_。`have not`=`haven't`，`has not`=`hasn't`
+- **否定句**：_可以在`have/has`后面直接加`not`，也可以用助动词`do/does`的否定形式_。`have not`=`haven't`，`has not`=`hasn't`
 
   - e.g. `I have a car.` => `I haven't a car.` => `I don't have a car.`
   - e.g. `He has a car.` => `He hasn't a car.` => `He doesn't have a car.`
 
-- **一般疑问句**：_将`have/has`提到句首(主语前面)，或者借助一般现在时助动词`do/does`_
+- **一般疑问句**：_将`have/has`提到句首(主语前面)，或者用助动词`do/does`_
 
   - e.g. `Have you a car?` => `Do you have a car?`
   - e.g. `Has he a car?` => `Does he have a car?`
@@ -928,11 +926,21 @@ e.g. `What else do you want?`、`Who else is from Japan?`
 
 ---
 
-**want to do sth.**：想要做某事
-
 **dad和mum**：它们前面如果没有「所有格代词」或「名词所有格」作修饰的话，就特指自己的父母，此时要大写开头
 
 **this、next、every等词开头的时间状语前面通常不加介词**
+
+**want to do sth.**：想要做某事
+
+**keep up with sb.**：赶上某人
+
+**keep on doing sth.**：继续保持做某事
+
+**cost和pay**
+
+- **cost**：物做主语，表示「某物的售价」
+- **pay**：人做主语，表示「人为某物付钱」
+
 :::
 
 ## Lesson 67~68
@@ -948,21 +956,21 @@ e.g. `What else do you want?`、`Who else is from Japan?`
 
 **一般过去时①**：动作没有具体的状态(零状态)，动作发生的时间是「**过去**」
 
-本课主要讲的是`主语`+`was/were`+`名词/形容词`句式的「**主系表结构**」一般过去时，这种句式的谓语是`be`动词
+本节课主要讲的是 **`主语`+`was/were`+`名词/形容词`** 句式的「**主系表结构**」一般过去时，这种句式的谓语是`be`动词
 
-- **肯定句**：_表示过去发生的动作、或存在的事实、状态_。`主语`+`was/were`
+- **肯定句**：_表示过去发生的动作、或存在的事实、状态_。**`主语`+`was/were`+`名词/形容词`**
 
   e.g. `I was a student.`、`We were at home in the morning.`
 
-- **否定句**：_只需在`be`的后面加上`not`即可_。`主语`+`was/were`+`not`
+- **否定句**：_只需在`be`的后面加上`not`即可_。**`主语`+`was/were`+`not`+`名词/形容词`**
 
   e.g. `He wasn't a teacher.`、`They were not at school.`
 
-- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。`Was/Were`+`主语`
+- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。**`Was/Were`+`主语`+`名词/形容词`**
 
   e.g. `Was she hungry?`、`Were you happy?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`was/were`+`主语`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。**`特殊疑问词`+`was/were`+`主语`+`名词/形容词`**
 
   e.g. `He was a teacher.` => `Was he a teacher?` => `What was he job?`
 
@@ -1020,21 +1028,21 @@ e.g. `Aren't you lucky.`
 ### 动词过去式变化
 
 :::danger ⚡本课重点
-**一般过去时②**：在[67~68课](#lesson-67-68)中主要讲的是「**主系表结构**」的一般过去时。而本课则是着重讲`主语`+`动词过去式`的「**主谓宾结构**」一般过去时，它的谓语是`实义动词`
+**一般过去时②**：在[67~68课](#lesson-67-68)中讲的主要是「**主系表结构**」的一般过去时。而本节课则主要讲解其「**主谓宾结构**」的一般过去时，核心结构是 **`主语`+`动词过去式`**，它的谓语是`实义动词`
 
-- **肯定句**：_表示过去发生的动作、或存在的事实、状态_。`主语`+`V.d/ed`
+- **肯定句**：_表示过去发生的动作、或存在的事实、状态_。**`主语`+`V.d/ed`(+`其他`)**
 
   e.g. `I loved you.`、`He talked to me yesterday.`、`We played with our parents yesterday.`
 
-- **否定句**：_只需将实义动词改为原形并在其前面加上`did not`即可_。`主语`+`did not`+`V`
+- **否定句**：_只需将实义动词改为原形并在其前面加上`did not`即可_。**`主语`+`did not`+`V`(+`其他`)**
 
   e.g. `I did not live in Beijing last year.`、`He didn't talk to me yesterday.`
 
-- **一般疑问句**：_只需将实义动词改为原形并把`did`加到句首(主语前面)即可_。`Did`+`主语`+`V`
+- **一般疑问句**：_只需将实义动词改为原形并把`did`加到句首(主语前面)即可_。**`Did`+`主语`+`V`(+`其他`)**
 
   e.g. `Did you love me?`、`Did he talk to me yesterday?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。`特殊疑问词`+`did`+`主语`+`V`
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。**`特殊疑问词`+`did`+`主语`+`V`(+`其他`)**
 
   e.g. `He talked to me yesterday.` => `Did he talk to me yesterday?` => `What did he do yesterday?`
 
@@ -1136,11 +1144,11 @@ e.g. `Aren't you lucky.`
 :::danger ⚡本课重点
 **宾语从句**：由一个句子来充当宾语。主句和宾语从句之间用`that`连接，当主句是一般现在时，从句可以用任何时态
 
-- 跟在表示人的情感或心理活动的形容词后面。`主语`+`be`+`形容词`+`that`+`从句`
+- 跟在表示人的情感或心理活动的形容词后面。**`主语`+`be`+`形容词`+`that`+`从句`**
 
   e.g. `I'm afraid that I can't come tomorrow.`、`I'm glad that you can help them.`
 
-- 跟在普通动词后面。`主语`+`V`+`that`+`从句`
+- 跟在普通动词后面。**`主语`+`V`+`that`+`从句`**
 
   e.g. `I think that you are right.`、`She knows that you will come.`
 
@@ -1183,23 +1191,39 @@ e.g. `in March`、`in sumber`、`in China`、`in Beijing`
 
 e.g. `I have a car.`=`I have got a car.`
 
-- **肯定句**：_表示某人有某物_。`主语`+`have/has got`。
+**虽然have got在形式上看起来和现在完成时的结构很像，但have got并不属于现在完成时**
+
+- **肯定句**：_表示某人有某物_。**`主语`+`have/has got`+`其他`**
 
   e.g. `I have got a car.`=`I've got a car.`、`He has got a car.`=`He's got a car.`
 
-- **否定句**：_直接在`have或has`的后面加上`not`即可_。`主语`+`haven't/hasn't got`
+- **否定句**：_直接在`have或has`的后面加上`not`即可，也可以用助动词`do/does`_。**`主语`+`haven't/hasn't got`+`其他`**
 
-  e.g. `I haven't got a car.`=`I haven't a car.`、`He hasn't got a car.`=`He hasn't a car.`
+  e.g. `I haven't got a car.`=`I don't have a car.`、`He hasn't got a car.`=`He doesn't have a car.`
 
-- **一般疑问句**：_只需将`have或has`提到句首(主语前面)即可_。`Have/Has`+`主语`+`got`
+- **一般疑问句**：_只需将`have或has`提到句首(主语前面)即可，也可以用助动词`do/does`_。**`Have/Has`+`主语`+`got`+`其他`**
 
   e.g. `Have you got a car?`=`Do you have a car?`、`Has he got a car?`=`Does he have a car?`
 
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。**`特殊疑问词`+`have/has`+`主语`+`got`+`其他`**
+
+  e.g. `I have got a car.` => `Have you got a car?` => `What have you got?`=`What do you have?`
+
+  _先把陈述句中的`have`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`a car`进行提问，并将其提到句首_
+
 ---
 
-**a lot of**：表示「**许多**」。既可修饰可数名词，也可以修饰不可数名词，能用在各种句式中
+**need**：单词本义为「**需要**」
 
-e.g. `I've got a lot of money.`、`We've got a lot of apples.`、`He hasn't got a lot of free time.`
+- 当作为情态动词时，没有人称、数和时态上的变化，可以直接对其加`not`构成否定形式，常用于否定和疑问句中。**`need`+`V`**
+
+  e.g. `You needn't hurry.`、`Need I make an appointment?`
+
+- 当作为实义动词时，就要有人称、数和时态上的变化，能用在各种句式中，否定和疑问句时需要用助动词`do/does`。**`need`(+`to`)+`V`**
+
+  e.g. `He needs some rest.`、`I don't need to rest.`、`Do you need to rest?`
+
+---
 
 **much和many**：都表示「**许多**」
 
@@ -1211,16 +1235,73 @@ e.g. `I've got a lot of money.`、`We've got a lot of apples.`、`He hasn't got 
 
   e.g. `There are many cars in the park?`、`There aren't many dishes in the kitchen?`、`How many photos did you take?`
 
+**a lot of**：表示「**许多**」。既可修饰可数名词，也可以修饰不可数名词，能用在各种句式中
+
+e.g. `I've got a lot of money.`、`We've got a lot of apples.`、`He hasn't got a lot of free time.`
+
+转换为在否定和疑问句
+
+- 如果`a lot of`后面跟可数名词，则把`a lot of`换成`many`
+
+  e.g. `I've got a lot of friends.` => `I haven't got many friends.` => `Have you got many friends?`
+
+- 如果`a lot of`后面跟不可数名词，则把`a lot of`换成`much`
+
+  e.g. `I've got a lot of money.` => `I haven't got much money.` => `Have you got much money?`
+
+:::
+
+## Lesson 81~82
+
+:::danger ⚡本课重点
+之前在[59-60课](#lesson-59-60)和[61-62课](#lesson-61-62)中已经讲解了`have`的两种常见用法，本节课主要讲解其第三种用法
+
+**have用法③**：`have`(+`a`)+`名词`，作用是将名词「**动词化**」。其中`have`作为实义动词使用，可以代替一些常用动词，例如`eat`、`enjoy`、`drink`、`take`等。这时它就有各种时态上的变化了
+
+- 现在进行时(`be V.ing`)：`I'm having lunch.`、`She's having a bath.`
+- 一般现在时(`have/has`)：`I have a bath every night.`、`She has breakfast every morning.`
+  - _否定句和疑问句时必须用`do/does`_：`Does he have lessons on Friday?`、`He doesn't have lessons on Friday.`
+- 一般过去时(`had`)：`I had a meeting 2 hours ago.`、`He had a party last night.`
+  - _否定句和疑问句时必须用`did`_：`Did you have lunch?`、`We didn't have lunch.`
+- 一般将来时(`be going to V`)：`I'm going to have a bath tonight.`
+
+_因为到本节课为止只学了这四个时态，所以先只列出这四个时态的用法_
+
+:::
+
+## Lesson 83~84
+
+### 现在完成时
+
+:::danger ⚡本课重点
+**现在完成时**：核心结构 **`have/has`+`过去分词`**，此时的`have/has`在句中的功能类似「**主系表结构**」中的`be`动词
+
+用法①：「**言之过去，意在当下**」。大白话讲就是在过去不确定的时间里发生的并与现在有着某种联系的动作。_翻译时需要根据上下文语境和场景，才能知道现在完成时所要表达的真实意思_
+
+- `Do you want to have some food?`
+- `No, thanks, I have just had some food.`，使用现在完成时来回答，字面意思是「我刚才吃过了」，但根据上下文语境，真正想表达的是「我刚才吃过了，肚子很饱，现在吃不下了」
+
+用法②：表示从过去一直持续到现在的动作或状态
+
+- **肯定句**：**`主语`+`have/has`+`过去分词`+`其他`**
+
+  e.g. `I've packed my bag.`、`He has lost his key.`
+
+- **否定句**：_直接在`have或has`的后面加上`not`即可_。**`主语`+`have/has`+`not`+`过去分词`+`其他`**
+
+  e.g. `I haven't packed my bag.`、`He hasn't lost his key.`
+
+- **一般疑问句**：_只需将`have或has`提到句首(主语前面)即可_。**`Have/Has`+`主语`+`过去分词`+`其他`**
+
+  e.g. `Have you packed your bag?`、`Has he lost his key.`
+
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。**`特殊疑问词`+`have/has`+`主语`+`过去分词`+`其他`**
+
+  e.g. `He has lost his key.` => `Has he lost his key.` => `What has he lost?`
+
+  _先把陈述句中的`has`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`his key`进行提问，并将其提到句首_
+
 ---
 
-**need**：单词本义为「**需要**」
-
-- 当作为情态动词时，没有人称、数和时态上的变化，可以直接对其加`not`构成否定形式，常用于否定和疑问句中。`need`+`V`
-
-  e.g. `You needn't hurry.`、`Need I make an appointment?`
-
-- 当作为实义动词时，就要有人称、数和时态上的变化，能用在各种句式中，否定和疑问句时需要用助动词`do`。`need`(+`to`)+`V`
-
-  e.g. `He needs some rest.`、`I don't need to rest.`、`Do you need to rest?`
-
+**动词过去分词**：过去分词的「规则变化」规律与动词过去式保持一致，在[71-72课](#lesson-71-72)中已经讲解过了。而「不规则变化」只能死记硬背，以后见到一个背一个
 :::

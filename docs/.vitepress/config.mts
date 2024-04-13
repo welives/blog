@@ -101,6 +101,7 @@ export default defineConfig({
     },
   },
   markdown: {
+    math: true,
     lineNumbers: true,
     config: (md) => {
       const docRoot = fileURLToPath(new URL('../', import.meta.url))
