@@ -74,7 +74,7 @@ telnet 192.168.0.254 // 输入登录密码即可进入交换机
 
 二层交换机常常作为接入层交换机使用
 
-![](./assets/二层交换机VLAN配置.png)
+![](./assets/device/二层交换机VLAN配置.png)
 
 :::warning 💥正常来说，接入层交换机的上网VLAN是不应该配置IP地址的，IP要从上层路由设备获取。要管理接入层交换机应该用一个单独的VLAN，这里只是为了演示而已
 :::
@@ -132,7 +132,7 @@ Building configuration...
 :::tip ⚡实现方式为创建三层交换机的VLAN间路由
 :::
 
-![](./assets/三层交换机VLAN配置_1.png)
+![](./assets/device/三层交换机VLAN配置_1.png)
 
 - **①创建VLAN**
 
@@ -221,7 +221,7 @@ C    192.168.20.0/24 is directly connected, Vlan20
 :::tip ⚡实现方式为创建三层交换机的VLAN间路由
 :::
 
-![](./assets/三层交换机VLAN配置_2.png)
+![](./assets/device/三层交换机VLAN配置_2.png)
 
 - **①先在二层交换机中创建VLAN，并将上行端口改为trunk模式**
 
@@ -333,7 +333,7 @@ C    192.168.20.0/24 is directly connected, Vlan20
 :::tip ⚡实现方式为将三层交换机的交换端口改为路由端口，二层交换机作为接入层交换机保持默认就行
 :::
 
-![](./assets/三层交换机VLAN配置_3.png)
+![](./assets/device/三层交换机VLAN配置_3.png)
 
 - **①配置三层交换机路由端口**
 
