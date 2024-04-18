@@ -5,19 +5,19 @@ export default {
   items: [
     {
       text: '基础',
-      link: '/misc/docker/basic',
+      link: '/devops/docker/basic',
     },
     {
       text: '搭建远程开发环境',
-      link: '/misc/docker/remote-dev',
+      link: '/devops/docker/remote-dev',
     },
     {
       text: '安装MySQL服务',
-      link: '/misc/docker/mysql',
+      link: '/devops/docker/mysql',
     },
     {
       text: '安装MongoDB服务',
-      link: '/misc/docker/mongodb',
+      link: '/devops/docker/mongodb',
     },
   ],
 } as DefaultTheme.SidebarItem

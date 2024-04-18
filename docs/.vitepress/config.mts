@@ -73,6 +73,7 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       { text: '前端', link: '/front-end/' },
+      { text: '运维', link: '/devops/' },
       { text: '自然语言', link: '/language/' },
       { text: '杂项', link: '/misc/' },
       { text: '关于', link: '/about' },
