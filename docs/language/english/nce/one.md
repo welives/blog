@@ -34,7 +34,7 @@ e.g. `This is not my umbrella.`
 
 **祈使句**：用来表达命令、要求、请求或劝告等，它的主语是`you(即听的一方)`，但通常不显示说明
 
-结构：`动词原形`+`名词(代词)`
+结构：**`动词原形`+`名词(代词)`**
 
 e.g. `Open the window, please.`
 
@@ -58,7 +58,7 @@ e.g. `Here is my umbrella.`
 - a用于辅音音标的普通名词之前，发音为`/ə/`
 - an用于元音音标的单词之前，发音为`/ən/`
 
-e.g. `This is a B/C/D/G/J/K/P/Q/R/T/U/V/W/Y/Z .`、`This is an A/E/F/H/I/L/M/N/O/S/X`
+e.g. `This is a B/C/D/G/J/K/P/Q/R/T/U/V/W/Y/Z`、`This is an A/E/F/H/I/L/M/N/O/S/X`
 
 ---
 
@@ -79,7 +79,7 @@ Lesson 6 的`What make is it?`在生活中其实很少这么用，更多是用`W
 ## Lesson 7~8
 
 :::danger ⚡本课重点
-**特殊疑问句**：以特殊疑问词引导的问句都叫特殊疑问句。与一般疑问句的区别在于特殊疑问句不可以用`yes`或`no`回答。
+**特殊疑问句**：以特殊疑问词引导的问句都叫特殊疑问句。与一般疑问句的区别在于特殊疑问句不可以用`yes`或`no`回答
 
 结构为: **`特殊疑问词`+`助动词`+`主语`+`实义动词`** 或者是 **`特殊疑问词`+`一般疑问句(去掉答案)`**
 
@@ -87,7 +87,7 @@ Lesson 6 的`What make is it?`在生活中其实很少这么用，更多是用`W
 | ---- | ---- | ------ | ------ | ----- | ---- | --- | -------- | ----- |
 | 什么 | 何时 | 哪一个 | 为什么 | 哪里  | 如何 | 谁  | 谁(宾格) | 谁的  |
 
-**too和either**：两个都表示「也」的意思，too一般用于肯定句，either用于否定句和疑问句，它们一般都是放在句尾，且前面通常用逗号隔开。
+**too和either**：两者都表示「**也**」的意思，`too`一般用于肯定句，`either`用于否定句和疑问句，它们一般都是放在句尾，且前面通常用逗号隔开
 
 `What nationality are you?` = `Where are you from?`
 :::
@@ -329,7 +329,7 @@ e.g. `on time`、`in the middle of`
 ## Lesson 25~26
 
 :::danger ⚡本课重点
-**介词in**：表示地点、场所、部位等，本课学习的是其「**在…里面**」的意思
+**介词in**：表示「**地点、场所、部位**」等，它的用法很多，本课学习的是其「**在…里面**」的意思
 
 - 在某范围或空间内
 
@@ -508,7 +508,9 @@ e.g. `put on your coat`、`put it on`
 ### 一般将来时
 
 :::danger ⚡本课重点
-**一般将来时**：动作没有具体的状态(零状态)，动作发生的时间是「**将来**」，核心结构是 **`be`+`going to`+`V`**
+**一般将来时①**：动作没有具体的状态(零状态)，动作发生的时间是「**将来**」
+
+本节课要学习的是 **`be`+`going to`+`V`** 结构的一般将来时。在之后的[91~92课](#lesson-91-92)中再学习 **`will/shall`+`V`** 结构的一般将来时
 
 当句中主语名词为复数、人称代词为第二人称或第三人称复数时，助动词`be`的现在时形式应为`are`。在口语中常常会用`gonna`替代`going to`
 
@@ -556,11 +558,9 @@ e.g. `paint the bookcase pink.`
 ## Lesson 39~40
 
 :::danger ⚡本课重点
-**祈使句否定形式**：在动词原形前面加上`Don't`或`Do not`。相关概念和肯定句式参考[3~4课](#lesson-3-4)
+**祈使句否定形式**：在动词原形前面加上`Don't`或`Do not`即可，结构为 **`Don't(Do not)`+`动词原形`+`名词(代词)`**。相关概念和肯定句式参考[3~4课](#lesson-3-4)
 
-- 结构：**`Don't(Do not)`+`动词原形`+`名词(代词)`**
-
-  e.g. `Don't do it`
+e.g. `Don't do it`
 
 ---
 
@@ -637,11 +637,9 @@ e.g. `paint the bookcase pink.`
 ## Lesson 45~46
 
 :::danger ⚡本课重点
-**can的否定特殊疑问句**：和其肯定句的特殊疑问句一样，在`can`的后面加上`not`即可
+**can的否定特殊疑问句**：在`can`的后面加上`not`即可，结构为 **`特殊疑问词`+`can't`+`主语`+`V`(+`其他`)**
 
-- 结构：**`特殊疑问词`+`can't`+`主语`+`V`(+`其他`)**
-
-  e.g. `Can Pamela read the letter?` => `Why can't Pamela read the letter?`
+e.g. `Can Pamela read the letter?` => `Why can't Pamela read the letter?`
 
 ---
 
@@ -663,7 +661,7 @@ e.g. `paint the bookcase pink.`
 
   e.g. `It's very hot today.`
 
-而本节课则主要讲解其「**主谓宾结构**」的一般现在时非三单形式，核心结构是 **`主语`+`V`**，它的谓语是`实义动词`
+而本节课则主要学习其「**主谓宾结构**」的一般现在时非三单形式，核心结构是 **`主语`+`V`**，它的谓语是`实义动词`。而其三单形式可以看之后的[49~50课](#lesson-49-50)
 
 - **肯定句**：_实义动词的前面其实有个隐式的`do`，只是肯定句中经常省略而已_。**`主语`(+`do`)+`V`(+`其他`)**
 
@@ -703,7 +701,7 @@ e.g. `Are you going to come tomorrow?` => `Do you come tomorrow?`
 ### 动词三单变化
 
 :::danger ⚡本课重点
-**一般现在时②**：在[47~48课](#lesson-47-48)中讲的主要是「**主谓宾结构**」的一般现在时非三单形式，而本节课则主要讲解其三单形式。`do`的第三人称单数为`does`
+**一般现在时②**：在[47~48课](#lesson-47-48)中学习的主要是「**主谓宾结构**」的一般现在时非三单形式，而本节课则主要学习其三单形式。`do`的第三人称单数为`does`
 
 - **肯定句**：_当`does`隐藏时，实义动词要用第三人称单数形式；显式使用`does`的时候，实义动词要用原形_。**`主语`(+`does`)+`V.s/es`(+`其他`)**
 
@@ -836,7 +834,7 @@ e.g. `Their father takes them to school every day.`
 ## Lesson 59~60
 
 :::danger ⚡本课重点
-**have用法①**：单词本义为「**有、拥有**」。它作为动词时有第三人称单数形式`has`，当它表示「有」这个概念时，其否定形式和疑问形式各有两种
+**have用法①**：单词本义为「**有、拥有**」。它作为动词时有第三人称单数形式`has`，当它表示「有」这个概念时，其否定形式和疑问形式各有两种。
 
 - **否定句**：_可以在`have/has`后面直接加`not`，也可以用助动词`do/does`的否定形式_。`have not`=`haven't`，`has not`=`hasn't`
 
@@ -847,6 +845,8 @@ e.g. `Their father takes them to school every day.`
 
   - e.g. `Have you a car?` => `Do you have a car?`
   - e.g. `Has he a car?` => `Does he have a car?`
+
+`have`的另外三种用法参考[61~62课](#lesson-61-62)、[81~82课](#lesson-81-82)和[87~88课](#lesson-87-88)
 
 ---
 
@@ -880,6 +880,8 @@ e.g. `What else do you want?`、`Who else is from Japan?`
 - `the`也可以跟`flu`、`measles`、`mumps`等词连用
 
   e.g. `He's got the flu.`
+
+`have`的另外三种用法参考[59~60课](#lesson-59-60)、[81~82课](#lesson-81-82)和[87~88课](#lesson-87-88)
 
 :::
 
@@ -954,9 +956,9 @@ e.g. `What else do you want?`、`Who else is from Japan?`
 | am/is      | was        |
 | are        | were       |
 
-**一般过去时①**：动作没有具体的状态(零状态)，动作发生的时间是「**过去**」
+**一般过去时①**：动作没有具体的状态(零状态)，动作发生的时间是「**过去**」，常常与表示动作完成的时间状语连用
 
-本节课主要讲的是 **`主语`+`was/were`+`名词/形容词`** 句式的「**主系表结构**」一般过去时，这种句式的谓语是`be`动词
+本节课主要学习的是 **`主语`+`was/were`+`名词/形容词`** 句式的「**主系表结构**」一般过去时，这种句式的谓语是`be`动词。在之后的[71~72课](#lesson-71-72)中再学习 **`主语`+`动词过去式`** 的「**主谓宾结构**」一般过去时
 
 - **肯定句**：_表示过去发生的动作、或存在的事实、状态_。**`主语`+`was/were`+`名词/形容词`**
 
@@ -1028,7 +1030,7 @@ e.g. `Aren't you lucky.`
 ### 动词过去式变化
 
 :::danger ⚡本课重点
-**一般过去时②**：在[67~68课](#lesson-67-68)中讲的主要是「**主系表结构**」的一般过去时。而本节课则主要讲解其「**主谓宾结构**」的一般过去时，核心结构是 **`主语`+`动词过去式`**，它的谓语是`实义动词`
+**一般过去时②**：在[67~68课](#lesson-67-68)中学习的主要是「**主系表结构**」的一般过去时。而本节课则主要学习其「**主谓宾结构**」的一般过去时，核心结构是 **`主语`+`动词过去式`**，它的谓语是`实义动词`
 
 - **肯定句**：_表示过去发生的动作、或存在的事实、状态_。**`主语`+`V.d/ed`(+`其他`)**
 
@@ -1101,7 +1103,7 @@ e.g. `Aren't you lucky.`
 ### 形容词变副词
 
 :::danger ⚡本课重点
-**副词(adv.)**：它在句子中的作用是「**修饰动词作状语**」。它对动词进行补充说明，告诉我们所修饰的动词在句子中的**动作的状态、程度**。副词可以是单个的词或词组
+**副词**：它在句子中的作用是「**修饰动词作状语**」。它对动词进行补充说明，告诉我们所修饰的动词在句子中的**动作的状态、程度**。副词可以是单个的词或词组
 
 **形容词变副词的规则**
 
@@ -1141,16 +1143,22 @@ e.g. `Aren't you lucky.`
 
 ## Lesson 75~76
 
-:::danger ⚡本课重点
-**宾语从句**：由一个句子来充当宾语。主句和宾语从句之间用`that`连接，当主句是一般现在时，从句可以用任何时态
+### 宾语从句
 
-- 跟在表示人的情感或心理活动的形容词后面。**`主语`+`be`+`形容词`+`that`+`从句`**
+:::danger ⚡本课重点
+**宾语从句**：一个句子来充当宾语就叫做**宾语从句**。主句和从句之间用`that`连接，虽然`that`是可以被省略的。当主句是一般现在时，从句可以用任何时态
+
+- 跟在表示人的情感或心理活动的形容词后面。**`主语`+`be`+`形容词`(+`that`)+`从句`**
 
   e.g. `I'm afraid that I can't come tomorrow.`、`I'm glad that you can help them.`
 
-- 跟在普通动词后面。**`主语`+`V`+`that`+`从句`**
+- 跟在普通动词后面。**`主语`+`V`(+`that`)+`从句`**
 
   e.g. `I think that you are right.`、`She knows that you will come.`
+
+**间接引语**：把说话人的原话作为宾语从句。大白话就是「转述了别人说的话」。在间接引语中，宾语从句中的动词与主句中的主要动词在时态上必须保持一致
+
+e.g. `The doctor says that he will come at once.`
 
 ---
 
@@ -1187,11 +1195,11 @@ e.g. `in March`、`in sumber`、`in China`、`in Beijing`
 ### have got
 
 :::danger ⚡本课重点
-**have和have got**：两者所表达的意思相同，都是「**有**」。`have got`通常用于口语中，在「过去时态」和「重复动作」这两种情况下，`have/has got`不能代替`have`
+**have和have got**：两者所表达的意思相同，都是「**有**」。`have got`通常用于口语中，在「**过去时态**」和「**重复动作**」这两种情况下，`have/has got`不能代替`have`
 
 e.g. `I have a car.`=`I have got a car.`
 
-**虽然have got在形式上看起来和现在完成时的结构很像，但have got并不属于现在完成时**
+**注意，虽然have got在形式上看起来和现在完成时的结构很像，但have got并不属于现在完成时**
 
 - **肯定句**：_表示某人有某物_。**`主语`+`have/has got`+`其他`**
 
@@ -1254,9 +1262,7 @@ e.g. `I've got a lot of money.`、`We've got a lot of apples.`、`He hasn't got 
 ## Lesson 81~82
 
 :::danger ⚡本课重点
-之前在[59-60课](#lesson-59-60)和[61-62课](#lesson-61-62)中已经讲解了`have`的两种常见用法，本节课主要讲解其第三种用法
-
-**have用法③**：`have`(+`a`)+`名词`，作用是将名词「**动词化**」。其中`have`作为实义动词使用，可以代替一些常用动词，例如`eat`、`enjoy`、`drink`、`take`等。这时它就有各种时态上的变化了
+**have用法③**：**`have`(+`a`)+`名词`**，作用是将名词「**动词化**」。其中`have`作为实义动词使用，可以代替一些常用动词，例如`eat`、`enjoy`、`drink`、`take`等。这时它就有各种时态上的变化了
 
 - 现在进行时(`be V.ing`)：`I'm having lunch.`、`She's having a bath.`
 - 一般现在时(`have/has`)：`I have a bath every night.`、`She has breakfast every morning.`
@@ -1267,6 +1273,8 @@ e.g. `I've got a lot of money.`、`We've got a lot of apples.`、`He hasn't got 
 
 _因为到本节课为止只学了这四个时态，所以先只列出这四个时态的用法_
 
+`have`的另外三种用法参考[59~60课](#lesson-59-60)、[61~62课](#lesson-61-62)和[87~88课](#lesson-87-88)
+
 :::
 
 ## Lesson 83~84
@@ -1274,14 +1282,11 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ### 现在完成时
 
 :::danger ⚡本课重点
-**现在完成时**：核心结构 **`have/has`+`过去分词`**，此时的`have/has`在句中的功能类似「**主系表结构**」中的`be`动词
+**现在完成时**：核心结构 **`have/has`+`过去分词`**，此时的`have/has`在句中的功能类似「**主系表结构**」中的`be`动词。现在完成时**不能**与表示动作完成的具体时间连用
 
-用法①：「**言之过去，意在当下**」。大白话讲就是在过去不确定的时间里发生的并与现在有着某种联系的动作。_翻译时需要根据上下文语境和场景，才能知道现在完成时所要表达的真实意思_
+**用法①**：「**言之过去，意在当下**」。大白话讲就是在过去不确定的时间里发生的并与现在有着某种联系的动作。在之后的[89~90课](#lesson-89-90)会学习其另一种用法
 
-- `Do you want to have some food?`
-- `No, thanks, I have just had some food.`，使用现在完成时来回答，字面意思是「我刚才吃过了」，但根据上下文语境，真正想表达的是「我刚才吃过了，肚子很饱，现在吃不下了」
-
-用法②：表示从过去一直持续到现在的动作或状态
+翻译时需要根据上下文语境和场景，才能知道现在完成时所要表达的真实意思。例如，`Do you want to have some food? No, thanks, I have just had some food.`，使用现在完成时来回答，字面意思是「我刚才吃过了」，但根据上下文语境，真正想表达的是「我刚才吃过了，肚子很饱，现在吃不下了」
 
 - **肯定句**：**`主语`+`have/has`+`过去分词`+`其他`**
 
@@ -1293,15 +1298,222 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 
 - **一般疑问句**：_只需将`have或has`提到句首(主语前面)即可_。**`Have/Has`+`主语`+`过去分词`+`其他`**
 
-  e.g. `Have you packed your bag?`、`Has he lost his key.`
+  e.g. `Have you packed your bag?`、`Has he lost his key?`
 
 - **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。**`特殊疑问词`+`have/has`+`主语`+`过去分词`+`其他`**
 
-  e.g. `He has lost his key.` => `Has he lost his key.` => `What has he lost?`
+  e.g. `He has lost his key.` => `Has he lost his key?` => `What has he lost?`
 
   _先把陈述句中的`has`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`his key`进行提问，并将其提到句首_
 
 ---
 
-**动词过去分词**：过去分词的「规则变化」规律与动词过去式保持一致，在[71-72课](#lesson-71-72)中已经讲解过了。而「不规则变化」只能死记硬背，以后见到一个背一个
+**动词过去分词**：过去分词的「规则变化」规律与动词过去式保持一致，在[71~72课](#lesson-71-72)中已经学习过了。而「不规则变化」只能死记硬背，以后见到一个背一个
+
+**'s缩写形式**：这里的 **s** 可能代表`is`或`has`，判断方法是看后边跟的什么词，如果是名词的情况则为`is`，如果是动词过去分词则为`has`
+
+e.g. `is` => `He's boy.`、`has` => `He's got a car.`、`has` => `He's had lunch.`
+
+:::
+
+## Lesson 85~86
+
+:::danger ⚡本课重点
+**have/has gone**：表示「**去了**」。去了某个地方(_可能在路上也可能已经到了_)，但是没有回来
+
+e.g. `I went to Beijing last week and I am in Beijing now.` => `I have gone to Beijing.`
+
+**have/has been**：表示「**去过**」。去了某个地方并且回来了
+
+e.g. `Sally went to Paris last week and she arrived in Beijing yesterday.` => `She has been to Paris.`
+
+**ever**：常用于否定句、疑问句，以及表示条件的从句
+
+e.g. `Has George ever been to Paris?`
+
+**never ever**：表示「**永远**」
+
+e.g. `Never ever give up`
+
+:::
+
+## Lesson 87~88
+
+### 动词不定式
+
+:::danger ⚡本课重点
+**动词不定式**：是一种非谓语动词形式，它没有人称和数的变化，不能在句子中作谓语
+
+|            | 主动                 | 被动                |
+| ---------- | -------------------- | ------------------- |
+| 一般式     | `to V`               | `to be V.ed`        |
+| 进行式     | `to be V.ing`        |                     |
+| 完成式     | `to have V.ed`       | `to have beed V.ed` |
+| 完成进行式 | `to have been V.ing` | `to have beed V.ed` |
+
+- **一般式**：表示动作通常与谓语动词同时或几乎同时发生，又或是在它之后发生。核心结构为 **`to V`**
+
+  e.g. `He appears to be very happy.`、`She has decided to sell her car.`
+
+- **进行式**：表示正在进行的或与谓语动词同时发生的动作。核心结构为 **`to be V.ing`**
+
+  e.g. `It happened to be raining when I got there.`
+
+- **完成式**：表示动作在谓语动词之前发生。核心结构为 **`to have V.ed`**
+
+  e.g. `I'm sorry to have lost your key.`
+
+- **完成进行式**：表示动作在谓语动词之前发生并且一直进行着。核心结构为 **`to have been V.ing`**
+
+  e.g. `He was said to have been living in London for twenty years.`
+
+- **被动式**：当不定式逻辑上的主语是这个不定式表示的动作的承受者时，不定式一般要用被动形式。被动式根据其与谓语动作发生的先后关系，有一般式和完成时两种
+
+  - **被动一般式**：`to be V.ed`
+
+    e.g. `These are the books to be given out to the students.`
+
+  - **被动完成式**：`to have beed V.ed`
+
+    e.g. `The novel is said to have been translated into many languages.`
+
+---
+
+**have用法④**：可以和具有动词和名词词性的动词搭配成词组。另外三种用法参考[59~60课](#lesson-59-60)、[61~62课](#lesson-61-62)和[81~82课](#lesson-81-82)
+
+e.g. `have a look`、`have a rest`、`have a crash`、`have a swin`、`have a try`、`have a walk`
+
+**修理的四种常见单词的区别**
+
+- `repair`：需要有一定的专业技能
+- `fix`：和`repair`一样，但更多用在美语环境中
+- `mend`：一般指修理结构较为简单的东西，不需要特殊的专业技能
+- `do up`：修理结构更为简单的小东西，例如补衣服，补轮胎
+
+**receptionist和attendant**：两者都表示「**前台服务员**」，但在日常生活中，**receptionist**的使用频率要比**attendant**高得多
+
+**bring**：表示「**送来、带来、拿来**」。在方位上多指朝着说话人而来
+
+**yet**：表示「**直到现在**」。用于否定句和疑问句中，通常出现在句尾
+
+e.g. `The train hasn't left yet.`、`Have you started your new job yet?`
+
+**try to do sth**：尝试做某事
+:::
+
+## Lesson 89~90
+
+:::danger ⚡本课重点
+在[83~84课](#lesson-83-84)中学习了现在完成时的第一种用法，本节课来学习它的第二种用法
+
+**现在完成时用法②**：一个动作`done`或者状态`been`，从过去一直持续或重复到现在的动作或状态。这种用法常常与`for + 时间段`(_表示持续多长时间_)或者`since + 时间点`(_表示从何时开始_)连用。两种用法在结构上是一样的
+
+- **肯定句**： **`主语`+`have/has`+`过去分词`+`其他`**
+
+  e.g. `I've lived in Beijing since 2008.`、`He's been working here for 5 years.`
+
+- **否定句**：_直接在`have或has`的后面加上`not`即可_。**`主语`+`have/has`+`not`+`过去分词`+`其他`**
+
+  e.g. `I haven't lived in Beijing since 2008.`、`He hasn't been working here for 5 years.`
+
+- **一般疑问句**：_只需将`have或has`提到句首(主语前面)即可_。**`Have/Has`+`主语`+`过去分词`+`其他`**
+
+  e.g. `Have you lived in Beijing scine 2008?`、`Has he worked here for 5 years?`
+
+- **特殊疑问句**：_在一般疑问句的句首加上`how long`，并去掉答案_。**`how long`+`have/has`+`主语`+`过去分词`+`其他`**
+
+  e.g. `I've lived in Beijing since 2008.` => `Have you lived in Beijing scine 2008?` => `How long have you lived in Beijing?`
+
+  _先把陈述句中的`have`提到句首得到一般疑问句，再用`how long`对一般疑问句中的答案`scine 2008`进行提问，并将其提到句首_
+
+:::
+
+## Lesson 91~92
+
+:::danger ⚡本课重点
+本节课要学习的是 **`will/shall`+`V`** 结构的一般将来时。在之前的[37~38课](#lesson-37-38)中学习了 **`be`+`going to`+`V`** 结构的一般将来时
+
+**一般将来时**：动作没有具体的状态(零状态)，动作发生的时间是「**将来**」。表示打算、将来要做的事情或将要发生的事情，常与表示将来意义的时间状语连用
+
+**注意，其中的`will`可用于所有人称，而`shall`只能用于第一人称`I`和`we`**
+
+- **肯定句**：**`主语`+`will/shall`+`V`+`其他`**
+
+  e.g. `I'll miss you.`、`I shall answer the phone.`、`Tom will be late.`
+
+- **否定句**：_直接在`will或shall`的后面加上`not`即可_。**`主语`+`will/shall`+`not`+`V`+`其他`**
+
+  e.g. `I won't miss you.`、`I shan't answer the phone.`、`They won't get married.`
+
+- **一般疑问句**：_只需将`will或shall`提到句首(主语前面)即可_。**`Will/Shall`+`主语`+`V`+`其他`**
+
+  e.g. `Will you miss me?`、`Shall I answer the phone?`
+
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词，并去掉答案_。**`特殊疑问词`+`will/shall`+`主语`+`V`+`其他`**
+
+  e.g. `I'll miss you.` => `Will you miss me?` => `Who will you miss?`
+
+  _先把陈述句中的`will`提到句首，并进行人称对调以符合语言习惯，从而得到一般疑问句，再用`who`对一般疑问句中的答案`me`进行提问，并将其提到句首_
+
+**但注意，`will`不用来表示事先安排好或决定做的事情**
+
+:::
+
+## Lesson 93~94
+
+:::danger ⚡本课重点
+**before last**：上一个
+
+e.g. `the week before last` => 前一周
+
+**after next**：下一个
+
+e.g. `the year after next` => 后年
+
+:::
+
+## Lesson 95~96
+
+:::danger ⚡本课重点
+**had better**：表示「**最好、最好还是**」，常用来表达某种忠告或建议，用在现在时或将来时中
+
+这里的`had`并非表示过去时态，而是英语的一种语言习惯，是一种**固定搭配用法**
+
+- **肯定句**：**`主语`+`had better`+`V`+`其他`**
+
+  e.g. `You'd better sleep.`
+
+- **否定句**：_直接在`had better`的后面加上`not`即可_。**`主语`+`had better`+`not`+`V`+`其他`**
+
+  e.g. `You'd better not do that.`
+
+**in xxx time**：表示「**在...之后**」。单数时用`'s`，复数时用`s'`
+
+e.g. `in an hour's time`、`in three days' time`、`in two weeks' time`
+
+**plenty of**：表示「**大量**」，后面可以跟可数和不可数名词，只能用于肯定句
+
+e.g. `We've got plenty of time.`
+
+:::
+
+## Lesson 97~98
+
+:::danger ⚡本课重点
+**belong to sb**：表示「**属于某人**」，单数的时候`belong`后面加`s`，复数时不用加
+
+e.g. `This is my book.` => `This book belongs to me.`、`These are our letters.` => `They belong to us.`
+
+:::
+
+## Lesson 99~100
+
+:::danger ⚡本课重点
+**宾语从句**：参考[75~76课](#lesson-75-76)
+
+**help sb. (to) do sth.**：帮某人做某事
+
+**offer help to sb.**：给某人提供帮助
+
+**provide help to sb.**：给某人提供(免费的)帮助
 :::

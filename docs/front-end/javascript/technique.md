@@ -158,3 +158,37 @@ const a = {
 ```
 
 :::
+
+## 请求队列
+
+```js
+const handleQueue = (
+  maxNum = 6 // 最大并发数
+) => {
+  const requestQueue = () => {
+    const queue = [] // 请求队列
+    let current = 0 // 当前请求了多少条
+
+    const dequeue = () => {
+      while (current < maxNum && queue.length) {
+        current++
+        const currentPromise = queue.shift() // 出列
+        currentPromise().finally(() => {
+          current--
+          dequeue()
+        })
+      }
+    }
+    return (promise) => {
+      queue.push(promise) // 入列
+      dequeue()
+    }
+  }
+  return requestQueue()
+}
+
+// 使用示例
+for (let i = 0; i < 20; i++) {
+  handleQueue()(() => Promise.resolve(i).then((res) => console.log(res)))
+}
+```
