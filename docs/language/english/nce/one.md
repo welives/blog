@@ -1148,17 +1148,13 @@ e.g. `Aren't you lucky.`
 :::danger ⚡本课重点
 **宾语从句**：一个句子来充当宾语就叫做**宾语从句**。主句和从句之间用`that`连接，虽然`that`是可以被省略的。当主句是一般现在时，从句可以用任何时态
 
-- 跟在表示人的情感或心理活动的形容词后面。**`主语`+`be`+`形容词`(+`that`)+`从句`**
+- 跟在表示人的情感或心理活动的**形容词**后面。**`主语`+`be`+`形容词`(+`that`)+`从句`**
 
   e.g. `I'm afraid that I can't come tomorrow.`、`I'm glad that you can help them.`
 
-- 跟在普通动词后面。**`主语`+`V`(+`that`)+`从句`**
+- 跟在**普通动词**后面。**`主语`+`V`(+`that`)+`从句`**
 
   e.g. `I think that you are right.`、`She knows that you will come.`
-
-**间接引语**：把说话人的原话作为宾语从句。大白话就是「转述了别人说的话」。在间接引语中，宾语从句中的动词与主句中的主要动词在时态上必须保持一致
-
-e.g. `The doctor says that he will come at once.`
 
 ---
 
@@ -1342,7 +1338,13 @@ e.g. `Never ever give up`
 ### 动词不定式
 
 :::danger ⚡本课重点
-**动词不定式**：是一种非谓语动词形式，它没有人称和数的变化，不能在句子中作谓语
+在英语中，当两个动词紧跟时，它们之间必须加一个不定式符号`to`。**不定式符号后面的动词只能是原形**，而不能是过去式或分词形式
+
+- 当然也是有特例情况的，有些动词是可以在`to`的前面加上`名词/宾格代词`的，即 **`动词`+`名词/宾格代词`+`to V`**
+
+e.g. `I want you to carry it.`、`Tell him to move it.`
+
+**动词不定式**：是一种非谓语动词形式，它没有人称和数的变化，不能在句子中作谓语。其否定形式是在`to`的前面加`not`
 
 |            | 主动                 | 被动                |
 | ---------- | -------------------- | ------------------- |
@@ -1406,7 +1408,7 @@ e.g. `The train hasn't left yet.`、`Have you started your new job yet?`
 :::danger ⚡本课重点
 在[83~84课](#lesson-83-84)中学习了现在完成时的第一种用法，本节课来学习它的第二种用法
 
-**现在完成时用法②**：一个动作`done`或者状态`been`，从过去一直持续或重复到现在的动作或状态。这种用法常常与`for + 时间段`(_表示持续多长时间_)或者`since + 时间点`(_表示从何时开始_)连用。两种用法在结构上是一样的
+**现在完成时用法②**：一个动作`done`或者状态`been`，从过去一直持续或重复到现在的动作或状态。这种用法常常与 **`for + 时间段`**(_表示持续多长时间_)或者 **`since + 时间点`**(_表示从何时开始_)连用。两种用法在结构上是一样的
 
 - **肯定句**： **`主语`+`have/has`+`过去分词`+`其他`**
 
@@ -1487,7 +1489,7 @@ e.g. `the year after next` => 后年
 
   e.g. `You'd better not do that.`
 
-**in xxx time**：表示「**在...之后**」。单数时用`'s`，复数时用`s'`
+**in xxx time**：表示「**在...之后**」。单数时用`'s`，复数时用`s'`。后面的`time`可以省略
 
 e.g. `in an hour's time`、`in three days' time`、`in two weeks' time`
 
@@ -1511,9 +1513,296 @@ e.g. `This is my book.` => `This book belongs to me.`、`These are our letters.`
 :::danger ⚡本课重点
 **宾语从句**：参考[75~76课](#lesson-75-76)
 
+**直接引语**：把别人的原话加上引号进行复述
+
+e.g. `The doctor says, "I will come at once."`
+
+**间接引语**：把别人的原话进行人称转换后再说一遍，大白话就是「转述了别人说的话」。间接引语其实就是宾语从句，它的动词与主句中的主要动词在时态上必须保持一致
+
+e.g. `The doctor says that he will come at once.`
+
+**直接引语变间接引语的步骤**
+
+- ①去掉引号
+- ②转换人称
+- ③添加引导词`that`
+
 **help sb. (to) do sth.**：帮某人做某事
 
 **offer help to sb.**：给某人提供帮助
 
 **provide help to sb.**：给某人提供(免费的)帮助
+:::
+
+## Lesson 101~102
+
+### 反意疑问句
+
+:::danger ⚡本课重点
+**反意疑问句**：用来询问某种情况是否真实，或者别人是否同意自己。它的组成分为两部分：**逗号前面为主句，后面为反意疑问句**。在口语中，逗号后的问句可以用`right?`代替
+
+- 当前面是肯定句时，后面就是否定句
+
+  e.g. `Sally can speak French, can't she?`
+
+- 当前面是否定句时，后面就是肯定句
+
+  e.g. `Sally can't speak French, can she?`
+
+**其特点为**：
+
+- 问句的主语和主句的主语一致
+- 前后的助动词一致
+- 前后的时态一致
+
+**在语调上的区别**：
+
+- **升调**：表示疑问，期待对方回答
+- **降调**：表示确定，不需要回答
+
+:::
+
+## Lesson 103~104
+
+:::danger ⚡本课重点
+**程度副词**：`too` > `very` > `enough`
+
+**too**：用于表示程度时，其意思为「**太、过于**」
+
+- 可以用在 **`too adj.`(+`for sb.`)+`to V sth.`** 结构中
+
+  e.g. `This skirt is too big for me.`、`The wall is too high for me to climb.`、`She is too young to live alone.`
+
+**enough**：单词本义为「**足够**」
+
+- 在形容词之后使用，**`adj.`+`enough`(+`for sb.`)+`to V`**
+
+  e.g. `He failed the exam because it wasn't easy enough.`、`She is old enough to get married.`、`This question is easy enough for me to answer.`
+
+- 在名词之前使用
+
+  e.g. `We don't have enough money.`
+
+- 可以用在 **`enough ... for sb./sth.`** 或 **`enough ... to V sth.`** 结构中
+
+  e.g. `She hasn't got enough money for a holiday.`、`She isn't old enough to live alone.`、`There isn't nearly enough time to get there now`
+
+**could**：`can`的过去式，用法和`can`几乎一样，具体参考[43~44课](#lesson-43-44)
+
+**hate to do sth.**：讨厌做某事(一次性的)
+
+**hate doing sth.**：讨厌做某事(经常性的)
+:::
+
+## Lesson 105~106
+
+:::danger ⚡本课重点
+**动词不定式**：具体参考[87~88课](#lesson-87-88)
+
+**be full of**：一种习惯用法，表示「**充满**」
+
+e.g. `He is full of energy.`、`Your story is full of mistakes.`
+
+**want to do sth.**：想要做某事，在口语中，常常把`want to`说成`wanna`，即`wanna do sth.`
+
+e.g. `I want to buy a new car.` => `I wanna buy a new car.`
+
+**tell sb. to do sth.**：告诉某人做某事
+
+e.g. `Please tell him to bring me some coffee.`
+:::
+
+## Lesson 107~108
+
+### 比较级和最高级
+
+:::danger ⚡本课重点
+
+**形容词的比较级和最高级**：以`er`结尾的形容词属于「**比较级**」，而以`est`结尾的形容词属于「**最高级**」
+
+**其变化规则如下**
+
+- ①一般情况下，单音节形容词的词尾直接加`er/est`
+
+  e.g. `small` => `smaller` => `smallest`、`new` => `newer` => `newest`
+
+- ②以`e`结尾的形容词，直接在词尾加`r/st`
+
+  e.g. `nice` => `nicer` => `nicest`、`large` => `larger` => `largest`
+
+- ③以辅音字母加`y`结尾的形容词，将`y`改为`i`，再加`er/est`
+
+  e.g. `easy` => `easier` => `easiest`、`heavy` => `heavier` => `heaviest`
+
+- ④当单音节形容词只有一个元音字母，并且以一个辅音字母结尾时(_往往以重读闭音节的形式出现，即`辅元辅`_)，先双写词尾辅音字母再加`er/est`
+
+  e.g. `big` => `bigger` => `biggest`、`thin` => `thinner` => `thinnest`
+
+- ⑤不规则变化
+
+  e.g. `good/well` => `better` => `best`、`bad/ill` => `worse` => `worst`、`little` => `less` => `least`、`many/much` => `more` => `most`
+
+- ⑥大多数较长的形容词(_即有两个以上音节的词_)可与`more/less`连用构成比较级，与`most/least`连用构成最高级
+
+  e.g. `She's more beautiful than her sister.`、`She's the most beautiful in her class.`
+
+**用法**：
+
+- 比较级**只用于两者之间**，通常与`than`连用，结构为 **`主语`+`be`+`adj.er`+`than`+`比较对象`**。如果所指代事物很明确，也可以独立存在
+
+  e.g. `He's taller than his father.`、`I haven't got a larger dress.`
+
+- 最高级**用于三者或以上**的情况，在使用时必须加定冠词`the`，并常伴有一个表示范围的介词短语或从句，其常见结构如下
+
+  - **`主语`+`be`+`the`+`adj.est`(+`n.`)+`范围`**
+
+    e.g. `That girl is the tallest student in our class.`
+
+  - **`主语`+`be`+`the`+`adj.est`(+`n.`)+`I've ever 过去分词`**
+
+    e.g. `This is the craziest thing I've ever done.`
+
+- **排除自己**：使用`other`
+
+  e.g. `He's taller than any other students in his class`、`Shanghai is larger than other cities in China.`
+
+---
+
+**would**：`will`的过去式，表示「**愿意**」。常常与`like`连用构成`would like`，缩写形式为`'d like`
+
+- **`would like`+ `n.`**：愿意尝试某物/事
+
+  e.g. `I would like some tea.` => `I'd like some tea.`
+
+- **`would like`+`to do sth.`**：愿意做某事
+
+  e.g. `I would like to help him.`
+
+:::
+
+## Lesson 109~110
+
+:::danger ⚡本课重点
+
+**不可数名词的多与少，用`much`和`little`来表达；可数名词的多与少，用`many`和`few`来表达**。在之前的[79~80课](#lesson-79-80)中学习了`much`和`many`的用法，本节课来学习`little`和`few`
+
+**little**：单词本义为「**一点、少许**」
+
+- **`a little`+`un.`**：表示肯定含义，即剩余的数量刚好够完成接下来要做的事
+
+  e.g. `There is a little milk in the fridge. You can drink that.`、`They have a little money, so they're not very poor.`
+
+- **`little`+`un.`**：表示否定含义，即剩余的数量不足以完成接下来要做的事
+
+  e.g. `There is little milk in the fridge. We need to buy some.`、`They have little money. They're very poor.`
+
+**few**：单词本义为「**几个**」
+
+- **`a few`+`cn.`**：表示肯定含义
+
+  e.g. `There are a few apples in the basket.`、`I've got a few friends, so I'm not lonely.`
+
+- **`few`+`cn.`**：表示否定含义
+
+  e.g. `There are few apples in the basket. It's nearly empty.`、`I've got few friends. I'm sad and lonely.`
+
+---
+
+**had better do sth.**：最好做某事
+
+**advice sb. to do sth.**：建议某人做某事
+:::
+
+## Lesson 111~112
+
+:::danger ⚡本课重点
+**形容词的比较形式有三种**
+
+- **较高比较级**：`more adj.`，表示「**比...更**」。`the most adj.`，表示「**最...**」
+
+  e.g. `She's more beautiful than her sister.`、`He's the most intelligent in his class.`
+
+- **较低比较级**：`less adj.`，表示「**更少...**」，但通常为了翻译时信达雅，更通俗的意思是「**不如、不及**」。`the least adj.`，也表示「**最...**」，但意思是**反向的最**
+
+  e.g. `She's less beautiful than her sister.`、`He's the least intelligent in his class.`
+
+- **平级比较级**：`as adj. as`，表示「**和...一样**」
+
+  e.g. `She is as tall as her mother.`
+
+---
+
+**总结**
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>结构</th>
+      <th>含义</th>
+      <th>例句</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>A = B</b></td>
+      <td><code>as adj. as</code></td>
+      <td><b>和...一样</b></td>
+      <td><code>She is as tall as her mother.</code><div>她和她妈妈一样高</div></td>
+    </tr>
+    <tr>
+      <td rowspan="2"><b>A &gt; B</b></td>
+      <td><code>adj.er than</code></td>
+      <td><b>比...</b></td>
+      <td><code>She looks younger than her sister.</code><div>她看起来比她妹妹年轻</div></td>
+    </tr>
+    <tr>
+      <td><code>more adj. than</code></td>
+      <td><b>比...更</b></td>
+      <td><code>She's more beautiful than her sister.</code><div>她比她妹妹更漂亮</div></td>
+    </tr>
+    <tr>
+      <td rowspan="2"><b>A &lt; B</b></td>
+      <td><code>not as/so adj. as</code></td>
+      <td rowspan="2"><b>不如、不及</b></td>
+      <td><code>She looks not as/so young as her sister.</code><div>她看起来不如她妹妹年轻</div></td>
+    </tr>
+    <tr>
+      <td><code>less adj. than</code></td>
+      <td><code>She's less beautiful than her sister.</code><div>她不如她妹妹漂亮</div></td>
+    </tr>
+    <tr>
+      <td rowspan="3">三者或以上</td>
+      <td><code>the adj.est 范围/从句</code></td>
+      <td rowspan="3"><b>最...</b></td>
+      <td><code>He's the tallest in his class.</code><div>他是班里个子最高的</div></td>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>the most/least adj. 范围/从句</code></td>
+      <td><code>He's the most intelligent in his class.</code><div>他是班里最聪明的</div></td>
+    </tr>
+    <tr>
+      <td><code>He's the least intelligent in his class.</code><div>他是班里最不聪明的</div></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><code>adj.er and adj.er</code></td>
+      <td><b>越来越...</b></td>
+      <td><code>She is becoming more and more beautiful.</code><div>她越来越漂亮了</div></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><code>the adj.er, the adj.er</code></td>
+      <td><b>越...，越...</b></td>
+      <td><code>The more careful you are, the fewer mistakes you would make.</code><div>你越仔细,就越少出错</div></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><code>one of the adj.est</code></td>
+      <td><b>最...之一</b></td>
+      <td><code>Mr. Lee is one of the most popular teachers in our school.</code><div>李老师是我们学校最受欢迎的老师之一</div></td>
+    </tr>
+  </tbody>
+</table>
+
 :::
