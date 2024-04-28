@@ -9,8 +9,33 @@ title: 英语基础概念
 
 **英文是一门结构性语言！**
 
-为什么这么说？因为英文要表达具体的意思时，需要使用固定的`语法结构`+`单词变化`的形式来实现。这一点和汉语不同，汉语是一种相对更高级的自然语言，中文汉字本身就能直观的表达出意思，不需要乱七八糟的语法结构和单词变化
+为什么这么说？因为英文要表达具体的意思时，需要使用固定的 **`语法结构`+`单词变化`** 的形式来实现。这一点和汉语不同，汉语是一种相对更高级的自然语言，中文汉字本身就能直观的表达出意思，不需要乱七八糟的语法结构和单词变化
 :::
+
+## 词性缩写
+
+| 缩写     | 原版               | 含义       | 作用                                             |
+| -------- | ------------------ | ---------- | ------------------------------------------------ |
+| n.       | noun               | 名词       | 表示人或事物的名称                               |
+| un.      | uncountable noun   | 不可数名词 |                                                  |
+| cn.      | countable noun     | 可数名词   |                                                  |
+| v.       | verb               | 动词       | 表示人或事物的动作或状态                         |
+| vi.      | intransitive verb  | 不及物动词 |                                                  |
+| vt.      | transitive verb    | 及物动词   |                                                  |
+| aux.v.   | auxiliary verb     | 助动词     |                                                  |
+| link.v.  |                    | 系动词     |                                                  |
+| modal.v. | modal verb         | 情态动词   |                                                  |
+| conj.    | conjunction        | 连接词     | 用来连接词、短语或句子                           |
+| adj.     | adjective          | 形容词     | 用来修饰名词，表示人或事物的特征                 |
+| adv.     | adverb             | 副词       | 用来修饰动词、形容词或其他副词，表示动作的特征   |
+| art.     | article            | 冠词       | 用在名词前，辅助说明名词所指的人或事物           |
+| prep.    | preposition        | 介词       | 用在名词、代词等前面，说明句子中词与词之间的关系 |
+| pron.    | pronoun            | 代词       | 用来代替名称、形容词或数词等                     |
+| num.     | numeral            | 数词       | 表示数量或顺序                                   |
+| int.     | interjection       | 感叹词     | 表示说话时的感情或口气                           |
+| pt.      | past tense         | 过去式     |                                                  |
+| pp.      | past participle    | 过去分词   |                                                  |
+| p.pr     | present participle | 现在分词   |                                                  |
 
 ## 人称代词
 
@@ -94,7 +119,7 @@ title: 英语基础概念
   </tbody>
 </table>
 
-:::info 💡
+:::danger ⚡
 主格一般作主语，放在句首
 
 宾格作宾语，放在动词或介词的后面
@@ -103,6 +128,85 @@ title: 英语基础概念
 
 名词性物主代词可以单独使用
 :::
+
+## 不定代词
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>every(每一)</th>
+      <th>no(无)</th>
+      <th>any(任一)</th>
+      <th>some(一些)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3">复合代词</td>
+      <td>everyone</td>
+      <td>no one</td>
+      <td>anyone</td>
+      <td>someone</td>
+    </tr>
+    <tr>
+      <td>everybody</td>
+      <td>nobody</td>
+      <td>anybody</td>
+      <td>somebody</td>
+    </tr>
+    <tr>
+      <td>everything</td>
+      <td>nowhere</td>
+      <td>anywhere</td>
+      <td>somewhere</td>
+    </tr>
+    <tr>
+      <td>复合副词</td>
+      <td>everywhere</td>
+      <td>nothing</td>
+      <td>anything</td>
+      <td>something</td>
+    </tr>
+  </tbody>
+</table>
+
+:::danger ⚡
+**对于未知的事物通常使用`something`指代**
+
+**`any-`** 前缀的不定代词用于疑问句和否定句，**`some-`** 前缀的不定代词通常用于肯定句
+
+**-one和-body的区别**：尽管它们的所代表的含义都相同，但在使用时还是有一些细微区别的
+
+- `-body`通常只会用来指代**人**，而`-one`则可以指代**人**或**物**
+
+不定代词可以作主语、宾语和表语。它后面如果有`be`动词的话，那只能是单数形式
+
+- **作主语**
+
+  e.g. `Everyone is asleep.`、`Nobody has told me about it.`
+
+- **作宾语**
+
+  e.g. `I've got nothing to wear.`、`I saw no one.`
+
+- **作表语**
+
+  e.g. `There's nothing on the table.`、`There's somebody in the garden.`
+
+:::
+
+## 五大句式
+
+**S＝主语；V＝谓语；P＝表语；O＝宾语；O1＝间接宾语；O2＝直接宾语；C＝补语**
+
+| 结构              | 含义         | 例句                            |
+| ----------------- | ------------ | ------------------------------- |
+| `S`+`V`           | 主谓结构     | `He runs quickly.`              |
+| `S`+`V`+`P`       | 主系表结构   | `The story sounds interesting.` |
+| `S`+`V`+`O`       | 主谓宾结构   | `I love you.`                   |
+| `S`+`V`+`O1`+`O2` | 主谓双宾结构 | `He gave me a book.`            |
+| `S`+`V`+`O`+`C`   | 主谓宾补结构 | `They made the girl angry.`     |
 
 ## 句子成分
 
@@ -126,7 +230,7 @@ _这里的名词是广义上的名词，它包括了名词、代词、数词以�
 
 e.g. `I study english.`
 
-`I`是主语，这个句子围绕「我」做什么展开
+**`I`** 是主语，这个句子围绕「我」做什么展开
 :::
 
 ### 系动词
@@ -144,7 +248,7 @@ e.g. `I study english.`
 
 e.g. `I am a student.`
 
-`a student`是表语，对主语`I`的补充
+**`a student`** 是表语，对主语 **`I`** 的补充
 :::
 
 ### 谓语
@@ -154,7 +258,7 @@ e.g. `I am a student.`
 
 e.g. `I drink water.`
 
-`drink`是谓语，主语`I`发出的动作
+**`drink`** 是谓语，主语 **`I`** 发出的动作
 :::
 
 ### 宾语
@@ -164,7 +268,7 @@ e.g. `I drink water.`
 
 e.g. `These children are playing football.`
 
-`football`是宾语，是动作`play`的作用对象
+**`football`** 是宾语，是动作 **`play`** 的作用对象
 :::
 
 ### 双宾语
@@ -175,7 +279,7 @@ e.g. `These children are playing football.`
 - 直接宾语：是动作的承受者
 - 间接宾语：表示动作的方向(对谁做)、或动作的目标(为谁做)。一般紧跟在谓语动词后面
 
-常见句型结构：`主语`+`谓语(及物动词)`+`间接宾语`+`直接宾语`
+常见句型结构：**`主语`+`谓语(及物动词)`+`间接宾语`+`直接宾语`**
 :::
 
 ### 定语
@@ -187,7 +291,7 @@ e.g. `These children are playing football.`
 
 e.g. `I don't know the man over there.`
 
-`over there`是后置定语，修饰`the man`
+**`over there`** 是后置定语，修饰 **`the man`**
 :::
 
 ### 状语
@@ -199,7 +303,7 @@ e.g. `I don't know the man over there.`
 
 e.g. `He is very fat.`
 
-`very`是状语，修饰`fat`
+**`very`** 是状语，修饰 **`fat`**
 :::
 
 ### 补语
@@ -213,6 +317,6 @@ e.g. `He is very fat.`
 
 e.g. `You should keep the room clean and tidy.`
 
-`clean and tidy`是宾语补足语，对宾语`the room`进行补充说明；同时还是对实义动词`keep`的补充说明
+**`clean and tidy`** 是宾语补足语，对宾语 **`the room`** 进行补充说明；同时还是对实义动词 **`keep`** 的补充说明
 
 :::

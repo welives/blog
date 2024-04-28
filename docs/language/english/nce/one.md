@@ -89,7 +89,7 @@ Lesson 6 的`What make is it?`在生活中其实很少这么用，更多是用`W
 
 **too和either**：两者都表示「**也**」的意思，`too`一般用于肯定句，`either`用于否定句和疑问句，它们一般都是放在句尾，且前面通常用逗号隔开
 
-`What nationality are you?` = `Where are you from?`
+**询问国籍**：**`What nationality are you?` 等价于 `Where are you from?`**
 :::
 
 ## Lesson 9~10
@@ -284,15 +284,15 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`which
 :::danger ⚡本课重点
 **双宾语**：有些动词可以有两个宾语，往往一个指代人，一个指代物。指人的叫「**间接宾语**」，指物的叫「**直接宾语**」
 
-- 间接宾语一般放在直接宾语的前面，人要用代词的宾格。`give sb. sth.`
+- 间接宾语一般放在直接宾语的前面，人要用代词的宾格。**`give sb. sth.`**
 
   e.g. `show me the money`
 
-- 如果直接宾语是个人称代词时，就需要在间接宾语的前面加上介词`to`，并把这个带`to`的间接宾语放在直接宾语的后面。`give sth. to sb.`
+- 如果直接宾语是个人称代词时，就需要在间接宾语的前面加上介词`to`，并把这个带`to`的间接宾语放在直接宾语的后面。**`give sth. to sb.`**
 
   e.g. `give it to me`
 
-  `give sb. sth.` = `give sth. to sb.`，两者是同义结构，可以相互转换
+  **`give sb. sth.` 等价于 `give sth. to sb.`**，两者是同义结构，可以相互转换
 
 - 当直接宾语是名词时，它既可以放在间接宾语的后面，也可以在间接宾语的前面加`to`，并把这个带`to`的间接宾语放在直接宾语的后面
 
@@ -418,11 +418,11 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 ### 现在进行时
 
 :::danger ⚡本课重点
-**时态**：动词的变化规则、时间的状态
+**时**：动作发生的时间
 
-**动词的时态**：动作发生的时间和状态
+**态**：动作的样子和状态
 
-**现在进行时**：动作发生的状态是「**进行中**」，动作发生的时间是「**现在**」，核心结构是 **`be`+`V.ing`**
+**现在进行时**：动作发生的时间是「**现在**」，动作的状态是「**进行中**」。核心结构是 **`am/is/are`+`V.ing`**，其中助动词`be`表示动作发生的时间，实义动词`V.ing`表示动作的状态
 
 - **肯定句**：_表示现在正在进行或者发生的动作、状态_。**`主语`+`am/is/are`+`V.ing`(+`其他`)**
 
@@ -442,6 +442,8 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 
   _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`reading a book`进行提问，并将其提到句首_
 
+---
+
 **动词现在分词的规则变化**
 
 - 对于大多数动词来说，在动词后面直接加`-ing`即可构成现在分词
@@ -452,9 +454,15 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 
   e.g. `making`、`coming`
 
-- 如果动词只有一个元音字母，并且其后面跟了一个辅音字母时，需要先将辅音字母双写再加`-ing`
+- 如果动词只有一个元音字母，并且其后面跟了一个辅音字母时(_往往以重读闭音节的形式出现，即`辅元辅`_)，先双写词尾辅音字母再加`-ing`
 
   e.g. `running`、`sitting`
+
+---
+
+**现在进行时还能表示将来**：某些非延续性动词的现在进行时可表示按计划、安排将要发生的动作，常见的有`go`、`come`、`arrive`、`leave`、`start`等
+
+e.g. `They're getting married next month.`、`They're leaving for Beijing.`
 
 ---
 
@@ -508,11 +516,13 @@ e.g. `put on your coat`、`put it on`
 ### 一般将来时
 
 :::danger ⚡本课重点
-**一般将来时①**：动作没有具体的状态(零状态)，动作发生的时间是「**将来**」
+**一般将来时**：动作发生的时间是「**将来**」，动作没有具体的状态(**零状态**)
 
-本节课要学习的是 **`be`+`going to`+`V`** 结构的一般将来时。在之后的[91~92课](#lesson-91-92)中再学习 **`will/shall`+`V`** 结构的一般将来时
+本节课要学习的是 **`be`+`going to`+`V`** 结构的一般将来时。在之后的[91~92课](#lesson-91-92)中会学习 **`will/shall`+`V`** 结构的一般将来时
 
 当句中主语名词为复数、人称代词为第二人称或第三人称复数时，助动词`be`的现在时形式应为`are`。在口语中常常会用`gonna`替代`going to`
+
+**be going to表示将来**
 
 - **肯定句**：**`主语`+`am/is/are`+`going to`+`V`(+`其他`)**
 
@@ -558,13 +568,13 @@ e.g. `paint the bookcase pink.`
 ## Lesson 39~40
 
 :::danger ⚡本课重点
-**祈使句否定形式**：在动词原形前面加上`Don't`或`Do not`即可，结构为 **`Don't(Do not)`+`动词原形`+`名词(代词)`**。相关概念和肯定句式参考[3~4课](#lesson-3-4)
+**祈使句否定形式**：在动词原形前面加上`Don't`或`Do not`即可，结构为 **`Don't(Do not)`+`动词原形`+`名词(代词)`**。相关概念和肯定句式参考之前的[3~4课](#lesson-3-4)
 
 e.g. `Don't do it`
 
 ---
 
-**双宾语**：相关概念参考[23~24课](#lesson-23-24)，但本课着重讲的是其`give sth. to sb.`的形式
+**双宾语**：相关概念参考之前的[23~24课](#lesson-23-24)，本节课主要讲的是其`give sth. to sb.`的形式
 
 **`动词`+`介词`的词组**，如果再加名词的话，可以放中间也可以放后面。而如果是代词的话，只能放中间
 
@@ -653,15 +663,17 @@ e.g. `Can Pamela read the letter?` => `Why can't Pamela read the letter?`
 ### 一般现在时
 
 :::danger ⚡本课重点
-**一般现在时①**：动作没有具体的状态(零状态)，但是动作发生的时间可以是「**过去、现在、将来**」
+**一般现在时**：动作发生的时间可以是「**过去、现在、将来**」，动作没有具体的状态(**零状态**)
 
-在本节课之前见过的各种 **`主语`+`am/is/are`+`名词/形容词`** 句式其实就是「**主系表结构**」的一般现在时，这种句式的谓语是`be`动词
+在本节课之前见过的各种 **`主语`+`am/is/are`+`名词/形容词`** 句式其实就是「**主系表结构**」的一般现在时，这种句式的谓语是助动词`be`
 
 - 表示客观事实或存在状态
 
   e.g. `It's very hot today.`
 
-而本节课则主要学习其「**主谓宾结构**」的一般现在时非三单形式，核心结构是 **`主语`+`V`**，它的谓语是`实义动词`。而其三单形式可以看之后的[49~50课](#lesson-49-50)
+而本节课则主要学习其「**主谓宾结构**」的一般现在时**非三单形式**，核心结构是 **`主语`+`V`**，它的谓语是`实义动词`。而其三单形式可以看之后的[49~50课](#lesson-49-50)
+
+**一般现在时非三单形式**
 
 - **肯定句**：_实义动词的前面其实有个隐式的`do`，只是肯定句中经常省略而已_。**`主语`(+`do`)+`V`(+`其他`)**
 
@@ -681,15 +693,17 @@ e.g. `Can Pamela read the letter?` => `Why can't Pamela read the letter?`
 
   _先把陈述句中的`do`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`this job`进行提问，并将其提到句首_
 
+---
+
 **一般现在时还有如下两种常见用法**
 
 - 表示习惯或反复的动作
 
 e.g. `She gets up at 7 o'clock every day.`
 
-- 代替一般将来时
+- 表示将来。主要用于时间、条件让步状语从句中，或表示按时间表、安排等到某时间就发生的事情或动作
 
-e.g. `Are you going to come tomorrow?` => `Do you come tomorrow?`
+e.g. `The train leaves London at six and arrives in Birmingham at eight.`
 
 ---
 
@@ -701,7 +715,11 @@ e.g. `Are you going to come tomorrow?` => `Do you come tomorrow?`
 ### 动词三单变化
 
 :::danger ⚡本课重点
-**一般现在时②**：在[47~48课](#lesson-47-48)中学习的主要是「**主谓宾结构**」的一般现在时非三单形式，而本节课则主要学习其三单形式。`do`的第三人称单数为`does`
+在[47~48课](#lesson-47-48)中学习的主要是「**主谓宾结构**」的一般现在时非三单形式，而本节课则主要学习其**三单形式**
+
+**一般现在时三单形式**
+
+`do`的第三人称单数为`does`
 
 - **肯定句**：_当`does`隐藏时，实义动词要用第三人称单数形式；显式使用`does`的时候，实义动词要用原形_。**`主语`(+`does`)+`V.s/es`(+`其他`)**
 
@@ -720,6 +738,8 @@ e.g. `Are you going to come tomorrow?` => `Do you come tomorrow?`
   e.g. `He wants this job.` => `Does he want this job?` => `What does he want?`
 
   _先把陈述句中的`does`提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`this job`进行提问，并将其提到句首_
+
+---
 
 **动词第三人称单数的变化**：一般现在时中，当主语是第三人称单数时，实义动词要用第三人称单数形式
 
@@ -801,18 +821,6 @@ e.g. `Their father takes them to school every day.`
 ### 时间的表达方式
 
 :::danger ⚡本课重点
-**一般现在时与现在进行时**
-
-- 一般现在时表达「习惯或反复的动作」时，通常与时间频率副词连用
-
-  e.g. `always`、`often`、`usually`、`sometimes`、`never`
-
-- 现在进行时表达「此刻正在进行的事情或动作」时，通常与时间状语连用
-
-  e.g. `now`、`at the moment`、`today`、`this morning`、`tonight`等
-
----
-
 **时间的表达方式**
 
 - 通用表达
@@ -828,6 +836,18 @@ e.g. `Their father takes them to school every day.`
   e.g. `ten to seven` => 6点50分、`a quarter to eleven` => 10点45分
 
   _在口语环境中，当谈话双方对当前的时间都有个大致的掌握时，可以省略掉介词`to`。例如：差15分钟就1点 => `quarter one`_
+
+---
+
+**一般现在时与现在进行时**
+
+- 一般现在时表达「习惯或反复的动作」时，通常与时间频率副词连用
+
+  e.g. `always`、`often`、`usually`、`sometimes`、`never`
+
+- 现在进行时表达「此刻正在进行的事情或动作」时，通常与时间状语连用
+
+  e.g. `now`、`at the moment`、`today`、`this morning`、`tonight`等
 
 :::
 
@@ -888,7 +908,7 @@ e.g. `What else do you want?`、`Who else is from Japan?`
 ## Lesson 63~64
 
 :::danger ⚡本课重点
-本节课又讲了一次`must`的用法，关于`must`的相关笔记，我已经在[29~30课](#lesson-29-30)中记录过了
+**must**：参考之前的[29~30课](#lesson-29-30)
 
 **so**
 
@@ -950,15 +970,16 @@ e.g. `What else do you want?`、`Who else is from Japan?`
 ### 一般过去时
 
 :::danger ⚡本课重点
+**一般过去时**：动作发生的时间是「**过去**」，动作没有具体的状态(**零状态**)，常常与表示动作完成的时间状语连用
+
+本节课主要学习的是 **`主语`+`was/were`+`名词/形容词`** 句式的「**主系表结构**」一般过去时，这种句式的谓语是助动词`be`。在之后的[71~72课](#lesson-71-72)中再学习 **`主语`+`V.ed`** 的「**主谓宾结构**」一般过去时
 
 | be的现在时 | be的过去时 |
 | ---------- | ---------- |
 | am/is      | was        |
 | are        | were       |
 
-**一般过去时①**：动作没有具体的状态(零状态)，动作发生的时间是「**过去**」，常常与表示动作完成的时间状语连用
-
-本节课主要学习的是 **`主语`+`was/were`+`名词/形容词`** 句式的「**主系表结构**」一般过去时，这种句式的谓语是`be`动词。在之后的[71~72课](#lesson-71-72)中再学习 **`主语`+`动词过去式`** 的「**主谓宾结构**」一般过去时
+**主系表结构一般过去时**：助动词`be`表示动作发生的时间
 
 - **肯定句**：_表示过去发生的动作、或存在的事实、状态_。**`主语`+`was/were`+`名词/形容词`**
 
@@ -977,6 +998,8 @@ e.g. `What else do you want?`、`Who else is from Japan?`
   e.g. `He was a teacher.` => `Was he a teacher?` => `What was he job?`
 
   _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`teacher`进行提问，并将其提到句首_
+
+---
 
 **一般过去时常见的使用场景有**
 
@@ -1030,9 +1053,11 @@ e.g. `Aren't you lucky.`
 ### 动词过去式变化
 
 :::danger ⚡本课重点
-**一般过去时②**：在[67~68课](#lesson-67-68)中学习的主要是「**主系表结构**」的一般过去时。而本节课则主要学习其「**主谓宾结构**」的一般过去时，核心结构是 **`主语`+`动词过去式`**，它的谓语是`实义动词`
+在[67~68课](#lesson-67-68)中学习的主要是「**主系表结构**」的一般过去时。而本节课则主要学习其「**主谓宾结构**」的一般过去时，核心结构是 **`主语`+`V.ed`**，它的谓语是实义动词`V.ed`
 
-- **肯定句**：_表示过去发生的动作、或存在的事实、状态_。**`主语`+`V.d/ed`(+`其他`)**
+**主谓宾结构一般过去时**：隐式助动词`did`表示动作发生的时间
+
+- **肯定句**：_表示过去发生的动作、或存在的事实、状态_。**`主语`+`V.ed`(+`其他`)**
 
   e.g. `I loved you.`、`He talked to me yesterday.`、`We played with our parents yesterday.`
 
@@ -1049,6 +1074,8 @@ e.g. `Aren't you lucky.`
   e.g. `He talked to me yesterday.` => `Did he talk to me yesterday?` => `What did he do yesterday?`
 
   _先把陈述句中的`实义动词`改为原形，然后在句首加上`did`得到一般疑问句，最后用`what`对一般疑问句中的答案`talk to me`进行提问，并将其提到句首_
+
+---
 
 **动词过去式和过去分词的变化**：
 
@@ -1074,7 +1101,7 @@ e.g. `Aren't you lucky.`
 
   e.g. `play` => `played`
 
-- ⑤以短元音加一个辅音字母结尾的动词，先双写这个辅音字母再加`ed`
+- ⑤以短元音加一个辅音字母结尾的动词(_往往以重读闭音节的形式出现，即`辅元辅`_)，先双写这个辅音字母再加`ed`
 
   e.g. `stop` => `stopped`、`plan` => `planned`
 
@@ -1091,7 +1118,7 @@ e.g. `Aren't you lucky.`
 **time**
 
 - 作为不可数名词时，表示「**时间**」
-- 作为可数名词时，表示「**次数**」。3次或3次以上时，通常用`基数词`+`times`
+- 作为可数名词时，表示「**次数**」。3次或3次以上时，通常用`数词`+`times`
 
   e.g. `once`、`twice`、`three times`
 
@@ -1146,7 +1173,7 @@ e.g. `Aren't you lucky.`
 ### 宾语从句
 
 :::danger ⚡本课重点
-**宾语从句**：一个句子来充当宾语就叫做**宾语从句**。主句和从句之间用`that`连接，虽然`that`是可以被省略的。当主句是一般现在时，从句可以用任何时态
+**宾语从句**：一个句子来充当宾语就叫做**宾语从句**。主句和从句之间用`that`连接，但`that`是可以被省略的。当主句是一般现在时，从句可以用任何时态
 
 - 跟在表示人的情感或心理活动的**形容词**后面。**`主语`+`be`+`形容词`(+`that`)+`从句`**
 
@@ -1278,7 +1305,9 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ### 现在完成时
 
 :::danger ⚡本课重点
-**现在完成时**：核心结构 **`have/has`+`过去分词`**，此时的`have/has`在句中的功能类似「**主系表结构**」中的`be`动词。现在完成时**不能**与表示动作完成的具体时间连用
+**现在完成时**：动作发生的时间是「**过去**」，动作的状态是「**完成**」。核心结构 **`have/has`+`过去分词`**
+
+此时的`have/has`在句中的功能类似「**主系表结构**」中的`be`动词，用来表示动作发生的时间，而`过去分词`表示动作的状态。现在完成时**不能**与表示动作完成的具体时间连用
 
 **用法①**：「**言之过去，意在当下**」。大白话讲就是在过去不确定的时间里发生的并与现在有着某种联系的动作。在之后的[89~90课](#lesson-89-90)会学习其另一种用法
 
@@ -1435,7 +1464,7 @@ e.g. `The train hasn't left yet.`、`Have you started your new job yet?`
 :::danger ⚡本课重点
 本节课要学习的是 **`will/shall`+`V`** 结构的一般将来时。在之前的[37~38课](#lesson-37-38)中学习了 **`be`+`going to`+`V`** 结构的一般将来时
 
-**一般将来时**：动作没有具体的状态(零状态)，动作发生的时间是「**将来**」。表示打算、将来要做的事情或将要发生的事情，常与表示将来意义的时间状语连用
+**一般将来时**：动作发生的时间是「**将来**」，动作没有具体的状态(**零状态**)。表示打算、将来要做的事情或将要发生的事情，常与表示将来意义的时间状语连用
 
 **注意，其中的`will`可用于所有人称，而`shall`只能用于第一人称`I`和`we`**
 
@@ -1527,6 +1556,8 @@ e.g. `The doctor says that he will come at once.`
 - ②转换人称
 - ③添加引导词`that`
 
+---
+
 **help sb. (to) do sth.**：帮某人做某事
 
 **offer help to sb.**：给某人提供帮助
@@ -1586,6 +1617,8 @@ e.g. `The doctor says that he will come at once.`
 - 可以用在 **`enough ... for sb./sth.`** 或 **`enough ... to V sth.`** 结构中
 
   e.g. `She hasn't got enough money for a holiday.`、`She isn't old enough to live alone.`、`There isn't nearly enough time to get there now`
+
+---
 
 **could**：`can`的过去式，用法和`can`几乎一样，具体参考[43~44课](#lesson-43-44)
 
@@ -1772,7 +1805,7 @@ e.g. `Please tell him to bring me some coffee.`
       <td><code>She's less beautiful than her sister.</code><div>她不如她妹妹漂亮</div></td>
     </tr>
     <tr>
-      <td rowspan="3">三者或以上</td>
+      <td rowspan="3"><b>三者或以上</b></td>
       <td><code>the adj.est 范围/从句</code></td>
       <td rowspan="3"><b>最...</b></td>
       <td><code>He's the tallest in his class.</code><div>他是班里个子最高的</div></td>
@@ -1804,5 +1837,160 @@ e.g. `Please tell him to bring me some coffee.`
     </tr>
   </tbody>
 </table>
+
+:::
+
+## Lesson 113~114
+
+:::danger ⚡本课重点
+**not、no、none之间的关系**
+
+- **`not`+`any/a/an` 等价于 `no`+`n.`**，看如下例子
+
+  - `I didn't see any cars in the street.` => `I saw no cars in the street.`
+  - `There aren't any books on the shelves.` => `There are no books on the shelves.`
+  - `I haven't got any time.` => `I've got no time.`
+  - `I haven't got any money.` => `I've got no money.`
+
+- **`no`+`n.` 等价于 `none`**。注意，`none`本身表示「**一无所有**」，使用时要结合上下文才能知道`none`指代什么，尽量不要单独使用。看如下例子
+  - `We haven't got any beer.` => `We've got no beer.` => `We've got none.`
+  - `There aren't any students.` => `There are no students.` => `There are none.`
+
+**so和neither**：以`so`或`neither`开头的简短回答，必须用倒装句式。使用时注意如下三点
+
+- **时态一致，人称一致**
+- 肯定：**`so`+`助动词/情态动词/be`+`主语`**
+- 否定：**`neither`+`助动词/情态动词/be`+`主语`**
+
+e.g. `I like ice cream.` => `So do I`、`I don't want to work.` => `Neither do I.`
+
+:::
+
+## Lesson 115~116
+
+### 不定代词
+
+参考[基础概念中的不定代词](../basic_concept.md#不定代词)
+
+:::danger ⚡本课重点
+
+**`not anyone` 等价于 `no one`**
+
+e.g. `There isn't anyone in the room.` => `There is no one in the room.`
+
+**`not anybody` 等价于 `nobody`**
+
+e.g. `There isn't anybody in the room.` => `There is nobody in the room.`
+
+**`not anything` 等价于 `nothing`**
+
+e.g. `There isn't anything in the bag.` => `There is nothing in the bag.`
+
+**`not anywhere` 等价于 `nowhere`**
+
+e.g. `I didn't go anywhere.` => `I went nowhere.`
+
+**规律**
+
+- 动词否定形式+`anyone/anybody/anything/anywhere`
+- 动词肯定形式+`no one/nobody/nothing/nowhere`
+
+:::
+
+## Lesson 117~118
+
+### 过去进行时
+
+:::danger ⚡本课重点
+
+**过去进行时**：动作发生的时间是「**过去**」，动作的状态是「**进行中**」。核心结构是 **`was/were`+`V.ing`**，其中助动词`be`表示动作发生的时间，实义动词`V.ing`表示动作的状态
+
+- **肯定句**：_表示过去某个时间正在进行或者发生的动作、状态_。**`主语`+`was/were`+`V.ing`(+`其他`)**
+
+  e.g. `He was watching TV at 8 o'clock last night.`
+
+- **否定句**：_只需在`be`的后面加上`not`即可_。**`主语`+`was/were`+`not`+`V.ing`(+`其他`)**
+
+  e.g. `He wasn't watching TV at 8 o'clock last night.`
+
+- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。**`Was/Were`+`主语`+`V.ing`(+`其他`)**
+
+  e.g. `Was he watching TV at 8 o'clock last night?`
+
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词_。**`特殊疑问词`+`was/were`+`主语`+`V.ing`(+`其他`)**
+
+  e.g. `He was watching TV at 8 o'clock last night.` => `Was he watching TV at 8 o'clock last night?` => `What was he doing at 8 o'clock last night?`
+
+  _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`watching TV`进行提问，并将其提到句首_
+
+---
+
+**时间状语**：表某个动作或完成对应的时间。在上面的例子中，`at 8 o'clock last night`就是时间状语，其目的是交代实义动词`watching`所发生的时间
+
+**时间状语从句**：用一个句子来充当时间状语。例如下面的`when he was having dinner`
+
+**过去进行时的时间状语从句一般由`when`、`while`、`just as`等来引导**
+
+- **`when`+`was/were V.ing/ed`**：可以引导过去进行时和一般过去时。表示「**当...的时候**」
+
+  e.g. `He was watching TV when he was having dinner.`、`When I was sleeping my friend phoned me.`
+
+- **`while`+`was/were V.ing`**：通常只会引导过去进行时，_但也存在一般过去时的可能，只是很少见_。表示「**在...的时候**(_强调两个动作的同时进行_)」
+
+  e.g. `While I was cooking the dinner, he was working in the room.`
+
+- **`just as`+`was/were V.ing`**：引导过去进行时，表示「**正当...的时候**」
+
+  e.g. `The telephone rang just as I was opening the door.`
+
+:::
+
+## Lesson 119~120
+
+### 过去完成时
+
+:::danger ⚡本课重点
+
+**过去完成时**：动作发生的时间是「**过去**」，动作的状态是「**完成**」。核心结构是 **`had`+`过去分词`**，其中助动词`had`表示动作发生的时间，`过去分词`表示动作的状态。强调**过去某一动作发生在另一个动作或状态之前(_过去的过去_)**
+
+- **肯定句**：_表示过去某个时间之前已经完成的动作、状态_。**`主语`+`had`+`过去分词`(+`其他`)**
+
+  e.g. `He had swallowed the coins.`
+
+- **否定句**：_直接在`had`的后面加上`not`即可_。**`主语`+`had`+`not`+`过去分词`(+`其他`)**
+
+  e.g. `He hadn't swallowed the coins.`
+
+- **一般疑问句**：_只需将`had`提到句首(主语前面)即可_。**`Had`+`主语`+`过去分词`(+`其他`)**
+
+  e.g. `Had he swallowed the coins?`
+
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词_。**`特殊疑问词`+`had`+`主语`+`过去分词`(+`其他`)**
+
+  e.g. `He had swallowed the coins.` => `Had he swallowed the coins?` => `What had he swallowed?`
+
+  _先把陈述句中的`had`动词提到句首得到一般疑问句，再用`what`对一般疑问句中的答案`the coins`进行提问，并将其提到句首_
+
+---
+
+**与`after`连用**：`after A, B`等价于`B after A`，都表示「**先A后B**」
+
+- **after A, B**：**动作A完成之后再进行动作B**
+
+  e.g. `After I had watched television, I had a bath.`
+
+- **B after A**：**动作A完成之后再进行动作B**
+
+  e.g. `I had a bath after I had watched television.`
+
+**与`before`连用**：`before B, A`等价于`A before B`，都表示「**A在B之前**」
+
+- **before B, A**：**在进行动作B之前发生了动作A**
+
+  e.g. `Before I had a bath, I had watched television.`
+
+- **A before B**：**在进行动作B之前发生了动作A**
+
+  e.g. `I had watched television before I had a bath.`
 
 :::
