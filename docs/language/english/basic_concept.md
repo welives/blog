@@ -20,8 +20,8 @@ title: 英语基础概念
 | un.      | uncountable noun   | 不可数名词 |                                                  |
 | cn.      | countable noun     | 可数名词   |                                                  |
 | v.       | verb               | 动词       | 表示人或事物的动作或状态                         |
-| vi.      | intransitive verb  | 不及物动词 |                                                  |
-| vt.      | transitive verb    | 及物动词   |                                                  |
+| vi.      | intransitive verb  | 不及物动词 | 本身意思完整，后面不需要跟宾语的动词             |
+| vt.      | transitive verb    | 及物动词   | 后面必须跟宾语才能使其意思完整的动词             |
 | aux.v.   | auxiliary verb     | 助动词     |                                                  |
 | link.v.  |                    | 系动词     |                                                  |
 | modal.v. | modal verb         | 情态动词   |                                                  |
@@ -223,9 +223,7 @@ _这里的名词是广义上的名词，它包括了名词、代词、数词以�
 
 ### 主语
 
-:::danger ⚡
-主语是句子中执行动作或被描述的对象，通常位于句首，也可以是句中或句尾。可以理解为，这个句子围绕谁展开，谁就是主语
-
+:::danger ⚡主语是句子中执行动作或被描述的对象，通常位于句首，也可以是句中或句尾。可以理解为，这个句子围绕谁展开，谁就是主语
 主语可以由名词、代词、数词、不定式、动名词、从句(如主语从句)或it(作为形式主语)担任
 
 e.g. `I study english.`
@@ -235,17 +233,13 @@ e.g. `I study english.`
 
 ### 系动词
 
-:::danger ⚡
-这种词没有具体的动作，只是起连接主语和后面成分的作用
-
+:::danger ⚡这种词没有具体的动作，只是起连接主语和后面成分的作用
 常见的系动词有：`be`、`look`、`feel`、`sound`、`smell`、`taste`、`seem`、`become`、`turn`、`grow`、`get`、`go`、`fall`
 :::
 
 ### 表语
 
-:::danger ⚡
-又叫主语补足语，对主语进行补充说明，是紧跟在系动词后面的成分
-
+:::danger ⚡又叫主语补足语，对主语进行补充说明，是紧跟在系动词后面的成分
 e.g. `I am a student.`
 
 **`a student`** 是表语，对主语 **`I`** 的补充
@@ -253,9 +247,7 @@ e.g. `I am a student.`
 
 ### 谓语
 
-:::danger ⚡
-谓语用于说明主语的状态或执行的动作，通常紧跟在主语之后。谓语由动词构成，是句子中时态和语态变化的主角
-
+:::danger ⚡谓语用于说明主语的状态或执行的动作，通常紧跟在主语之后。谓语由动词构成，是句子中时态和语态变化的主角
 e.g. `I drink water.`
 
 **`drink`** 是谓语，主语 **`I`** 发出的动作
@@ -263,21 +255,18 @@ e.g. `I drink water.`
 
 ### 宾语
 
-:::danger ⚡
-宾语是句子中动作的接受者或受益者，通常位于谓语动词之后。宾语可以是名词或代词，且代词必须是宾格形式
-
+:::danger ⚡宾语是句子中动作的接受者或受益者，通常位于谓语动词之后。宾语可以是名词或代词，且代词必须是宾格形式
 e.g. `These children are playing football.`
 
 **`football`** 是宾语，是动作 **`play`** 的作用对象
 :::
 
-### 双宾语
+#### 双宾语
 
-:::danger ⚡
-宾语包含两部分，「**直接宾语**」和「**间接宾语**」
+:::danger ⚡宾语包含两部分，「**直接宾语**」和「**间接宾语**」
 
-- 直接宾语：是动作的承受者
-- 间接宾语：表示动作的方向(对谁做)、或动作的目标(为谁做)。一般紧跟在谓语动词后面
+- **直接宾语(物)**：是动作的承受者
+- **间接宾语(人)**：表示动作的方向(对谁做)、或动作的目标(为谁做)。一般紧跟在谓语动词后面
 
 常见句型结构：**`主语`+`谓语(及物动词)`+`间接宾语`+`直接宾语`**
 :::
@@ -320,3 +309,93 @@ e.g. `You should keep the room clean and tidy.`
 **`clean and tidy`** 是宾语补足语，对宾语 **`the room`** 进行补充说明；同时还是对实义动词 **`keep`** 的补充说明
 
 :::
+
+## 名词性从句
+
+:::danger ⚡在句子中起名词作用的从句
+它可以分为主语从句、表语从句、宾语从句和同位语从句
+:::
+
+### 主语从句
+
+一个句子在整个句子中充当主语的成分。通常由`that`、`whether`、`what`、`who`、`which`、`how`、`when`、`where`、`why`等引导，**放在谓语动词之前**
+
+e.g. `What he said is true.`
+
+### 表语从句
+
+一个句子在整个句子中充当表语的成分。通常由`that`、`whether`、`what`、`who`、`which`、`how`、`when`、`where`、`why`等引导，**放在系动词之后**
+
+e.g. `The problem is how we can solve it.`
+
+### 宾语从句
+
+一个句子在整个句子中充当宾语的成分。通常由`that`、`if`、`whether`、`what`、`who`、`which`、`how`、`when`、`where`、`why`等引导，**放在及物动词或介词之后**
+
+e.g. `I don’t know whether he will come.`
+
+### 同位语从句
+
+一个句子在整个句子中充当同位语的成分。通常由`that`引导，**放在某些名词之后**，对名词进行解释或说明
+
+e.g. `The news that he passed the exam made us happy.`
+
+## 形容性从句
+
+:::danger ⚡在句子中起形容词作用的从句
+也叫定语从句，一个句子在整个句子中充当定语的成分，它用来修饰先行词(_即名词或代词_)。通常由关系代词`who`、`whom`、`whose`、`which`、`that`或关系副词`when`、`where`、`why`引导，**放在先行词之后**
+:::
+
+### 限定性定语从句
+
+对先行词起到限定作用的定语从句，它是句子的必要成分，不能省略，也不用逗号分隔
+
+e.g. `The man who is talking to my father is a teacher.`
+
+### 非限定性定语从句
+
+对先行词起到补充说明作用的定语从句，它是句子的非必要成分，可以省略，要用逗号分隔
+
+e.g. `My brother, who lives in Beijing, is a doctor.`
+
+## 副词性从句
+
+:::danger ⚡在句子中起副词作用的从句
+也叫状语从句，一个句子在整个句子中充当状语的成分，它用来修饰主句的谓语或整个句子，表示`时间`、`地点`、`原因`、`目的`、`结果`、`条件`、`方式`、`比较`、`让步`等。通常由各种从属连词引导，**放在主句之前或之后**
+:::
+
+### 时间状语从句
+
+e.g. `When I got home, I found the door open.`
+
+### 地点状语从句
+
+e.g. `He went to the library where he could find the book.`
+
+### 原因状语从句
+
+e.g. `Because it was raining, we stayed at home.`
+
+### 目的状语从句
+
+e.g. `He studied hard so that he could pass the exam.`
+
+### 结果状语从句
+
+e.g. `He was so tired that he fell asleep at once.`
+
+### 条件状语从句
+
+e.g. `If you work hard, you will succeed.`
+
+### 方式状语从句
+
+e.g. `He did it as I told him.`
+
+### 比较状语从句
+
+e.g. `She is taller than I am.`
+
+### 让步状语从句
+
+e.g. `Although he is old, he is still healthy.`
