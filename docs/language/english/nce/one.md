@@ -12,7 +12,7 @@ head:
 ## 总结
 
 :::tip ✨新概念英语第一册主要知识点快速索引
-**时态**：[现在进行时](#lesson-31-32)、[一般现在时非三单](#lesson-47-48)、[一般现在时三单](#lesson-49-50)、[一般将来时①](#lesson-37-38)、[一般将来时②](#lesson-91-92)、[现在完成时①](#lesson-83-84)、[现在完成时②](#lesson-89-90)、[过去进行时](#lesson-117-118)、[过去完成时](#lesson-119-120)
+**时态**：[现在进行时](#lesson-31-32)、[一般现在时非三单](#lesson-47-48)、[一般现在时三单](#lesson-49-50)、[一般将来时①](#lesson-37-38)、[一般将来时②](#lesson-91-92)、[一般过去时①](#lesson-67-68)、[一般过去时②](#lesson-71-72)、[现在完成时①](#lesson-83-84)、[现在完成时②](#lesson-89-90)、[过去进行时](#lesson-117-118)、[过去完成时](#lesson-119-120)
 
 [**There be结构**](#lesson-19-20)
 
@@ -439,19 +439,19 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 
 **情态动词must**：单词本义为「**必须**」。它必须与其他东西连用，没有时态、人称和数的变化
 
-- **肯定句**：_表示必须做某事_。**`主语`+`must`+`V`(+`其他`)**
+- **肯定句**：_表示必须做某事_。**`主语`+`must`+`V.`(+`其他`)**
 
   e.g. `I must drink some water.`
 
-- **否定句**：_只需在`must`的后面加上`not`即可。其否定形式表示「**禁止**」而不是简单的**非必须**，语气强烈，不要随便使用_。**`主语`+`must not`+`V`(+`其他`)**
+- **否定句**：_只需在`must`的后面加上`not`即可。其否定形式表示「**禁止**」而不是简单的**非必须**，语气强烈，不要随便使用_。**`主语`+`must not`+`V.`(+`其他`)**
 
   e.g. `You mustn't smoke here.`
 
-- **一般疑问句**：_只需将`must`提到句首(主语前面)即可_。**`Must`+`主语`+`V`(+`其他`)**
+- **一般疑问句**：_只需将`must`提到句首(主语前面)即可_。**`Must`+`主语`+`V.`(+`其他`)**
 
   e.g. `Must I do the homework today?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`must`+`主语`+`V`(+`其他`)**
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`must`+`主语`+`V.`(+`其他`)**
 
   e.g. `I must drink some water.` => `Must I drink some water?` => `What must I do?`
 
@@ -564,13 +564,13 @@ e.g. `put on your coat`、`put it on`
 :::danger ⚡本课重点
 **一般将来时**：动作发生的时间是「**将来**」，动作没有具体的状态(**零状态**)
 
-本节课要学习的是 **`be`+`going to`+`V`** 结构的一般将来时。在之后的[91~92课](#lesson-91-92)中会学习 **`will/shall`+`V`** 结构的一般将来时
+本节课要学习的是 **`be`+`going to`+`V.`** 结构的一般将来时。在之后的[91~92课](#lesson-91-92)中会学习 **`will/shall`+`V.`** 结构的一般将来时
 
 当句中主语名词为复数、人称代词为第二人称或第三人称复数时，助动词`be`的现在时形式应为`are`。在口语中常常会用`gonna`替代`going to`
 
 **be going to表示将来**
 
-- **肯定句**：**`主语`+`am/is/are`+`going to`+`V`(+`其他`)**
+- **肯定句**：**`主语`+`am/is/are`+`going to`+`V.`(+`其他`)**
 
   - _表示打算、准备做某事_
 
@@ -584,15 +584,15 @@ e.g. `put on your coat`、`put it on`
 
     e.g. `It's going to rain.`
 
-- **否定句**：_只需在`be`的后面加上`not`即可_。**`主语`+`am/is/are`+`not`+`going to`+`V`(+`其他`)**
+- **否定句**：_只需在`be`的后面加上`not`即可_。**`主语`+`am/is/are`+`not`+`going to`+`V.`(+`其他`)**
 
   e.g. `He is not going to sleep.`
 
-- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。**`Am/Is/Are`+`主语`+`going to`+`V`(+`其他`)**
+- **一般疑问句**：_只需将`be`提到句首(主语前面)即可_。**`Am/Is/Are`+`主语`+`going to`+`V.`(+`其他`)**
 
   e.g. `Is he going to sleep?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`am/is/are`+`主语`+`going to`+`V`(+`其他`)**
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`am/is/are`+`主语`+`going to`+`V.`(+`其他`)**
 
   e.g. `He is going to sleep.` => `Is he going to sleep?` => `What is he going to do?`
 
@@ -614,7 +614,7 @@ e.g. `paint the bookcase pink.`
 ## Lesson 39~40
 
 :::danger ⚡本课重点
-**祈使句否定形式**：在动词原形前面加上`Don't`或`Do not`即可，结构为 **`Don't(Do not)`+`V`+`名词(代词)`**。相关概念和肯定句式参考之前的[3~4课](#lesson-3-4)
+**祈使句否定形式**：在动词原形前面加上`Don't`或`Do not`即可，结构为 **`Don't(Do not)`+`V.`+`名词(代词)`**。相关概念和肯定句式参考之前的[3~4课](#lesson-3-4)
 
 e.g. `Don't do it`
 
@@ -667,19 +667,19 @@ e.g. `Don't do it`
 :::danger ⚡本课重点
 **情态动词can**：单词本义为「**能**」。它本身不表示动作，只表示体力和脑力方面的能力或客观可能，它必须与其他东西连用，没有人称和数的变化
 
-- **肯定句**：_表示能力或可能_。**`主语`+`can`+`V`(+`其他`)**
+- **肯定句**：_表示能力或可能_。**`主语`+`can`+`V.`(+`其他`)**
 
   e.g. `The bird can fly in the sky.`
 
-- **否定句**：_只需在`can`的后面加上`not`即可_。**`主语`+`can`+`not`+`V`(+`其他`)**
+- **否定句**：_只需在`can`的后面加上`not`即可_。**`主语`+`can`+`not`+`V.`(+`其他`)**
 
   e.g. `The dog can not fly in the sky.`
 
-- **一般疑问句**：_只需将`can`提到句首(主语前面)即可_。**`Can`+`主语`+`V`(+`其他`)**
+- **一般疑问句**：_只需将`can`提到句首(主语前面)即可_。**`Can`+`主语`+`V.`(+`其他`)**
 
   e.g. `Can the bird fly in the sky?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`can`+`主语`+`V`(+`其他`)**
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`can`+`主语`+`V.`(+`其他`)**
 
   e.g. `The bird can fly in the sky.` => `Can the bird fly in the sky?` => `What can the bird do?`
 
@@ -693,7 +693,7 @@ e.g. `Don't do it`
 ## Lesson 45~46
 
 :::danger ⚡本课重点
-**can的否定特殊疑问句**：在`can`的后面加上`not`即可，结构为 **`特殊疑问词`+`can't`+`主语`+`V`(+`其他`)**
+**can的否定特殊疑问句**：在`can`的后面加上`not`即可，结构为 **`特殊疑问词`+`can't`+`主语`+`V.`(+`其他`)**
 
 e.g. `Can Pamela read the letter?` => `Why can't Pamela read the letter?`
 
@@ -717,23 +717,23 @@ e.g. `Can Pamela read the letter?` => `Why can't Pamela read the letter?`
 
   e.g. `It's very hot today.`
 
-而本节课则主要学习其「**主谓宾结构**」的一般现在时**非三单形式**，核心结构是 **`主语`+`V`**，它的谓语是`实义动词`。而其三单形式可以看之后的[49~50课](#lesson-49-50)
+而本节课则主要学习其「**主谓宾结构**」的一般现在时**非三单形式**，核心结构是 **`主语`+`V.`**，它的谓语是`实义动词`。而其三单形式可以看之后的[49~50课](#lesson-49-50)
 
 **一般现在时非三单形式**
 
-- **肯定句**：_实义动词的前面其实有个隐式的`do`，只是肯定句中经常省略而已_。**`主语`(+`do`)+`V`(+`其他`)**
+- **肯定句**：_实义动词的前面其实有个隐式的`do`，只是肯定句中经常省略而已_。**`主语`(+`do`)+`V.`(+`其他`)**
 
   e.g. `I want this job.`、`I do like tea.`
 
-- **否定句**：_显式使用`do`并在后面加上`not`即可_。**`主语`+`do not`+`V`(+`其他`)**
+- **否定句**：_显式使用`do`并在后面加上`not`即可_。**`主语`+`do not`+`V.`(+`其他`)**
 
   e.g. `I do not want this job.`、`I don't like tea.`
 
-- **一般疑问句**：_显式使用`do`并将其提到句首(主语前面)即可_。**`Do`+`主语`+`V`(+`其他`)**
+- **一般疑问句**：_显式使用`do`并将其提到句首(主语前面)即可_。**`Do`+`主语`+`V.`(+`其他`)**
 
   e.g. `Do you want this job?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`do`+`主语`+`V`(+`其他`)**
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`do`+`主语`+`V.`(+`其他`)**
 
   e.g. `I want this job.` => `Do you want this job?` => `What do you want?`
 
@@ -771,15 +771,15 @@ e.g. `The train leaves London at six and arrives in Birmingham at eight.`
 
   e.g. `He wants this job.`、`She does like tea.`
 
-- **否定句**：_显式使用`does`并在后面加上`not`即可_。**`主语`+`does not`+`V`(+`其他`)**
+- **否定句**：_显式使用`does`并在后面加上`not`即可_。**`主语`+`does not`+`V.`(+`其他`)**
 
   e.g. `He does not want this job.`、`She doesn't like tea.`
 
-- **一般疑问句**：_显式使用`does`并将其提到句首(主语前面)即可_。**`Does`+`主语`+`V`(+`其他`)**
+- **一般疑问句**：_显式使用`does`并将其提到句首(主语前面)即可_。**`Does`+`主语`+`V.`(+`其他`)**
 
   e.g. `Does he want this job?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`does`+`主语`+`V`(+`其他`)**
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`does`+`主语`+`V.`(+`其他`)**
 
   e.g. `He wants this job.` => `Does he want this job?` => `What does he want?`
 
@@ -1112,15 +1112,15 @@ e.g. `Aren't you lucky.`
 
   e.g. `I loved you.`、`He talked to me yesterday.`、`We played with our parents yesterday.`
 
-- **否定句**：_只需将实义动词改为原形并在其前面加上`did not`即可_。**`主语`+`did not`+`V`(+`其他`)**
+- **否定句**：_只需将实义动词改为原形并在其前面加上`did not`即可_。**`主语`+`did not`+`V.`(+`其他`)**
 
   e.g. `I did not live in Beijing last year.`、`He didn't talk to me yesterday.`
 
-- **一般疑问句**：_只需将实义动词改为原形并把`did`加到句首(主语前面)即可_。**`Did`+`主语`+`V`(+`其他`)**
+- **一般疑问句**：_只需将实义动词改为原形并把`did`加到句首(主语前面)即可_。**`Did`+`主语`+`V.`(+`其他`)**
 
   e.g. `Did you love me?`、`Did he talk to me yesterday?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`did`+`主语`+`V`(+`其他`)**
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`did`+`主语`+`V.`(+`其他`)**
 
   e.g. `He talked to me yesterday.` => `Did he talk to me yesterday?` => `What did he do yesterday?`
 
@@ -1301,11 +1301,11 @@ e.g. `I have a car.`=`I have got a car.`
 
 **need**：单词本义为「**需要**」
 
-- 当作为情态动词时，没有人称、数和时态上的变化，可以直接对其加`not`构成否定形式，常用于否定和疑问句中。**`need`+`V`**
+- 当作为情态动词时，没有人称、数和时态上的变化，可以直接对其加`not`构成否定形式，常用于否定和疑问句中。**`need`+`V.`**
 
   e.g. `You needn't hurry.`、`Need I make an appointment?`
 
-- 当作为实义动词时，就要有人称、数和时态上的变化，能用在各种句式中，否定和疑问句时需要用助动词`do/does`。**`need`(+`to`)+`V`**
+- 当作为实义动词时，就要有人称、数和时态上的变化，能用在各种句式中，否定和疑问句时需要用助动词`do/does`。**`need`(+`to`)+`V.`**
 
   e.g. `He needs some rest.`、`I don't need to rest.`、`Do you need to rest?`
 
@@ -1349,7 +1349,7 @@ e.g. `I've got a lot of money.`、`We've got a lot of apples.`、`He hasn't got 
   - _否定句和疑问句时必须用`do/does`_：`Does he have lessons on Friday?`、`He doesn't have lessons on Friday.`
 - 一般过去时(`had`)：`I had a meeting 2 hours ago.`、`He had a party last night.`
   - _否定句和疑问句时必须用`did`_：`Did you have lunch?`、`We didn't have lunch.`
-- 一般将来时(`be going to V`)：`I'm going to have a bath tonight.`
+- 一般将来时(`be going to V.`)：`I'm going to have a bath tonight.`
 
 _因为到本节课为止只学了这四个时态，所以先只列出这四个时态的用法_
 
@@ -1444,18 +1444,18 @@ e.g. `have a look`、`have a rest`、`have a crash`、`have a swin`、`have a tr
 
 在英语中，当两个动词紧跟时，它们之间必须加一个不定式符号`to`。**不定式符号后面的动词只能是原形**，而不能是过去式或分词形式
 
-- 当然也是有特例情况的，有些动词是可以在`to`的前面加上`名词/宾格代词`的，即 **`动词`+`名词/宾格代词`+`to V`**
+- 当然也是有特例情况的，有些动词是可以在`to`的前面加上`名词/宾格代词`的，即 **`动词`+`名词/宾格代词`+`to V.`**
 
 e.g. `I want you to carry it.`、`Tell him to move it.`
 
-|            | 主动                 | 被动                |
-| ---------- | -------------------- | ------------------- |
-| 一般式     | `to V`               | `to be V.ed`        |
-| 进行式     | `to be V.ing`        |                     |
-| 完成式     | `to have V.ed`       | `to have beed V.ed` |
-| 完成进行式 | `to have been V.ing` | `to have beed V.ed` |
+|            | 主动                 | 被动                 |
+| ---------- | -------------------- | -------------------- |
+| 一般式     | `to V.`              | `to be V.pp.`        |
+| 进行式     | `to be V.ing`        |                      |
+| 完成式     | `to have V.pp.`      | `to have been V.pp.` |
+| 完成进行式 | `to have been V.ing` |                      |
 
-- **一般式**：表示动作通常与谓语动词同时或几乎同时发生，又或是在它之后发生。核心结构为 **`to V`**
+- **一般式**：表示动作通常与谓语动词同时或几乎同时发生，又或是在它之后发生。核心结构为 **`to V.`**
 
   e.g. `He appears to be very happy.`、`She has decided to sell her car.`
 
@@ -1463,7 +1463,7 @@ e.g. `I want you to carry it.`、`Tell him to move it.`
 
   e.g. `It happened to be raining when I got there.`
 
-- **完成式**：表示动作在谓语动词之前发生。核心结构为 **`to have V.ed`**
+- **完成式**：表示动作在谓语动词之前发生。核心结构为 **`to have V.pp.`**
 
   e.g. `I'm sorry to have lost your key.`
 
@@ -1473,11 +1473,11 @@ e.g. `I want you to carry it.`、`Tell him to move it.`
 
 - **被动式**：当不定式逻辑上的主语是这个不定式表示的动作的承受者时，不定式一般要用被动形式。被动式根据其与谓语动作发生的先后关系，有一般式和完成时两种
 
-  - **被动一般式**：`to be V.ed`
+  - **被动一般式**：**`to be V.pp.`**
 
     e.g. `These are the books to be given out to the students.`
 
-  - **被动完成式**：`to have beed V.ed`
+  - **被动完成式**：**`to have been V.pp.`**
 
     e.g. `The novel is said to have been translated into many languages.`
 
@@ -1531,25 +1531,25 @@ e.g. `The train hasn't left yet.`、`Have you started your new job yet?`
 ## Lesson 91~92
 
 :::danger ⚡本课重点
-本节课要学习的是 **`will/shall`+`V`** 结构的一般将来时。在之前的[37~38课](#lesson-37-38)中学习了 **`be`+`going to`+`V`** 结构的一般将来时
+本节课要学习的是 **`will/shall`+`V.`** 结构的一般将来时。在之前的[37~38课](#lesson-37-38)中学习了 **`be`+`going to`+`V.`** 结构的一般将来时
 
 **一般将来时**：动作发生的时间是「**将来**」，动作没有具体的状态(**零状态**)。表示打算、将来要做的事情或将要发生的事情，常与表示将来意义的时间状语连用
 
 **注意，其中的`will`可用于所有人称，而`shall`只能用于第一人称`I`和`we`**
 
-- **肯定句**：**`主语`+`will/shall`+`V`+`其他`**
+- **肯定句**：**`主语`+`will/shall`+`V.`+`其他`**
 
   e.g. `I'll miss you.`、`I shall answer the phone.`、`Tom will be late.`
 
-- **否定句**：_直接在`will或shall`的后面加上`not`即可_。**`主语`+`will/shall`+`not`+`V`+`其他`**
+- **否定句**：_直接在`will或shall`的后面加上`not`即可_。**`主语`+`will/shall`+`not`+`V.`+`其他`**
 
   e.g. `I won't miss you.`、`I shan't answer the phone.`、`They won't get married.`
 
-- **一般疑问句**：_只需将`will或shall`提到句首(主语前面)即可_。**`Will/Shall`+`主语`+`V`+`其他`**
+- **一般疑问句**：_只需将`will或shall`提到句首(主语前面)即可_。**`Will/Shall`+`主语`+`V.`+`其他`**
 
   e.g. `Will you miss me?`、`Shall I answer the phone?`
 
-- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`will/shall`+`主语`+`V`+`其他`**
+- **特殊疑问句**：_在一般疑问句的句首加上特殊疑问词并去掉答案_。**`特殊疑问词`+`will/shall`+`主语`+`V.`+`其他`**
 
   e.g. `I'll miss you.` => `Will you miss me?` => `Who will you miss?`
 
@@ -1584,15 +1584,15 @@ e.g. `the year after next` => 后年
 ### had better
 
 :::danger ⚡本课重点
-**had better**：表示「**最好、最好还是**」，常用来表达某种忠告或建议，用在现在时或将来时中
+**had better**：表示「**最好、最好还是**」，常用来表达某种忠告或建议，用在现在时或将来时中，后面跟动词原形
 
 这里的`had`并非表示过去时态，而是英语的一种语言习惯，是一种**固定搭配用法**
 
-- **肯定句**：**`主语`+`had better`+`V`+`其他`**
+- **肯定句**：**`主语`+`had better`+`V.`+`其他`**
 
   e.g. `You'd better sleep.`
 
-- **否定句**：_直接在`had better`的后面加上`not`即可_。**`主语`+`had better`+`not`+`V`+`其他`**
+- **否定句**：_直接在`had better`的后面加上`not`即可_。**`主语`+`had better`+`not`+`V.`+`其他`**
 
   e.g. `You'd better not do that.`
 
@@ -1678,13 +1678,13 @@ e.g. `The doctor says that he will come at once.`
 
 **too**：用于表示程度时，其意思为「**太、过于**」
 
-- 可以用在 **`too adj.`(+`for sb.`)+`to V sth.`** 结构中
+- 可以用在 **`too adj.`(+`for sb.`)+`to V. sth.`** 结构中
 
   e.g. `This skirt is too big for me.`、`The wall is too high for me to climb.`、`She is too young to live alone.`
 
 **enough**：单词本义为「**足够**」
 
-- 在形容词之后使用，**`adj.`+`enough`(+`for sb.`)+`to V`**
+- 在形容词之后使用，**`adj.`+`enough`(+`for sb.`)+`to V.`**
 
   e.g. `He failed the exam because it wasn't easy enough.`、`She is old enough to get married.`、`This question is easy enough for me to answer.`
 
@@ -1692,7 +1692,7 @@ e.g. `The doctor says that he will come at once.`
 
   e.g. `We don't have enough money.`
 
-- 可以用在 **`enough ... for sb./sth.`** 或 **`enough ... to V sth.`** 结构中
+- 可以用在 **`enough ... for sb./sth.`** 或 **`enough ... to V. sth.`** 结构中
 
   e.g. `She hasn't got enough money for a holiday.`、`She isn't old enough to live alone.`、`There isn't nearly enough time to get there now`
 
@@ -2154,33 +2154,33 @@ e.g. `I didn't go anywhere.` => `I went nowhere.`
 
 **先行词是人**
 
-- **`who`+`v.`**
+- **`who`+`动词`**
 
   - `He is the man who called me yesterday.`，先行词在从句中作主语，`who`不能省略
   - `The woman (who is) standing behind the counter served me.`，先行词在从句中作主语，并且从句是进行时态，这个时候`who`和`be`均可省略
   - `He is the man (who) I met yesterday.`，先行词在从句中作宾语，`who`可以省略
 
-- **`whom`+`v.`+`prep.`**
+- **`whom`+`动词`+`prep.`**
 
   - `The man (whom) I spoke to is my uncle.`，先行词在从句中作宾语，`whom`可以省略
   - `The man to whom I spoke is my uncle.`，把介词提前的反习惯用法(_正常人不会这么用_)，这个时候`whom`不能省略
 
 **先行词是物**
 
-- **`which`+`vt.`**
+- **`which`+`及物动词`**
 
   - `The bus which takes us to school often breaks down.`，先行词在从句中作主语，`which`不能省略
   - `The dog (which is) carrying the basket is mine.`，先行词在从句中作主语，并且从句是进行时态，这个时候`which`和`be`均可省略
   - `This is the letter (which) I received yesterday.`，先行词在从句中作宾语，`which`可以省略
 
-- **`which`+`vi.`+`prep.`**
+- **`which`+`不及物动词`+`prep.`**
 
   - `These are the books (which) I told you about.`，先行词在从句中作宾语，`which`可以省略，还可以用介词结尾
   - `These are the books about which I told you.`，把介词提前的反习惯用法(_正常人不会这么用_)，这个时候`which`不能省略
 
 **先行词是人或物**
 
-- **`whose`+`n.`**：先行词在从句中作定语，`whose`不能省略
+- **`whose`+`名词`**：先行词在从句中作定语，`whose`不能省略
 
   - `I have a friend whose mother is a teacher.`，关系代词`whose`指代`My friend's`，作`mother`的定语
 
@@ -2191,7 +2191,7 @@ e.g. `I didn't go anywhere.` => `I went nowhere.`
 
 ---
 
-**感叹句**：**`what`+`a/an`+`adj.`+`n.`**
+**感叹句**：**`what`+`a/an`+`adj.`+`名词`**
 
 e.g. `What a beautiful ship!`、`What an interesting program!`
 
@@ -2343,7 +2343,7 @@ e.g. `Will he be late for school, do you think?`
 
 **对现在或将来推测**
 
-- **`may/might (not)`+`V`**
+- **`may/might (not)`+`V.`**
 
   e.g. `He may (not) know the answer.`、`We might not go anywhere.`
 
@@ -2502,7 +2502,7 @@ e.g. `Will he be late for school, do you think?`
 
 :::danger ⚡本课重点
 
-**let**：表示「**允许、让**」。它与一般动词不同，使用结构为 **`let`+`名词/代词`+`V`**，其中`V`表示不带`to`的动词不定式
+**let**：表示「**允许、让**」。它与一般动词不同，使用结构为 **`let`+`名词/代词`+`V.`**，其中`V`表示不带`to`的动词不定式
 
 e.g. `She lets her son play in the garden.`
 

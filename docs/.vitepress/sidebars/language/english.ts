@@ -13,6 +13,10 @@ export default {
       link: '/language/english/basic_concept',
     },
     {
+      text: '语法',
+      link: '/language/english/grammar',
+    },
+    {
       text: '新概念英语',
       collapsed: true,
       items: [
