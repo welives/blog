@@ -1,6 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
 export default {
-  text: 'Web前端',
+  text: '🧊Web前端',
   link: '/front-end/',
   collapsed: false,
   items: [

@@ -1,6 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
 export default {
-  text: 'NodeJS',
+  text: '☕NodeJS',
   collapsed: false,
   items: [
     {

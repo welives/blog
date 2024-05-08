@@ -1,6 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
 export default {
-  text: '网络设备',
+  text: '🔗网络设备',
   collapsed: false,
   items: [
     {

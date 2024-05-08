@@ -9,9 +9,9 @@ head:
       content: vitepress deploy GithubActions 部署 博客部署
 ---
 
-本文将介绍`VitePress`博客的两种部署方案
+本文将介绍`VitePress`博客的三种部署方案
 
-::: tip 注意 ⚡
+::: tip ⚡二级路由配置注意
 仓库名要和`VitePress`配置中的`base`一致，否则会部署失败，例如我这个项目在 github 的仓库名是`blog`，那么`base`要写成`/blog`
 
 ```js
@@ -35,8 +35,6 @@ export default defineConfig({
 ![](./assets/deploy-blog/github_actions.png)
 
 - 在项目根目录下新建`.github/workflows/deploy.yml`文件，内容如下
-
-::: details 查看
 
 ```yml
 # 工作流名称
@@ -125,8 +123,6 @@ jobs:
         uses: actions/deploy-pages@v2
 ```
 
-:::
-
 - 当推送`main`分支的代码时，Github 会自动进入 CI/CD 流程，过个几分钟，就可以看到博客已经部署成功了
 
 ### 自动同步到Gitee（可选）
@@ -185,8 +181,6 @@ jobs:
 
 - 在项目根目录下新建`deploy.sh`脚本，内容如下
 
-::: details 查看
-
 ```sh
 #!/usr/sh
 
@@ -218,8 +212,6 @@ cd -
 rm -rf docs/.vitepress/dist  #删除dist文件夹
 ```
 
-:::
-
 - 修改`package.json`，添加部署脚本
 
 ```json
@@ -238,3 +230,158 @@ rm -rf docs/.vitepress/dist  #删除dist文件夹
 - 在代码仓库页切到`Settings`选项卡，选择左侧菜单的`Pages`项，在页面中`Build and deployment`部分选择`Deploy form a branch`，接着选择`gh-pages`分支，然后点击`Save`按钮保存
 
 ![](./assets/deploy-blog/gh-pages.png)
+
+## 使用Docker进行本地部署
+
+项目根目录新建`nginx.conf`、`Dockerfile`、`.dockerignore`，具体内容如下
+
+::: code-group
+
+```nginx [nginx.conf]
+server {
+    listen 80;
+    # 设置服务器名称，本地部署时使用localhost
+    server_name localhost;
+
+    location / {
+        # 设置HTTP头部，禁用缓存策略
+        add_header Cache-Control no-cache;
+        # 设置网站根目录位置
+        root /usr/share/nginx/html;
+        # 网站首页
+        index index.html;
+        # 尝试访问的文件不存在时，重定向到/index.html，支持SPA应用
+        try_files $uri $uri/ /index.html;
+    }
+
+    # 因为我的博客站点设置了二级路由地址/blog，所以需要添加这一层的配置
+    location ^~ /blog/ {
+        # 二级路由文件的存储位置
+        alias /usr/share/nginx/html/;
+        index index.html;
+        try_files $uri $uri/ /blog/index.html;
+    }
+}
+```
+
+```Dockerfile
+# 阶段一：构建Vitepress应用
+# 使用官方Node.js 20镜像作为构建环境
+FROM node:20 as builder
+# 设置工作目录为/app
+WORKDIR /app
+# 复制项目的package.json和package-lock到工作目录
+COPY package.json package-lock.* ./
+# 安装项目依赖，使用中国镜像加速
+RUN npm install -g pnpm --registry=https://registry.npmmirror.com
+RUN pnpm install --registry=https://registry.npmmirror.com
+# 复制项目所有文件到工作目录
+COPY . .
+# 构建Vitepress项目
+RUN pnpm run build
+
+# 阶段二：构建Nginx映像并复制Vitepress构建结果
+# 使用官方nginx:latest镜像作为构建环境
+FROM nginx:latest
+# 暴露80端口
+EXPOSE 80
+# 删除nginx默认配置
+RUN rm /etc/nginx/conf.d/default.conf
+# 复制自定义nginx配置到容器中
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+# 将阶段一构建的Vitepress应用复制到nginx的服务目录
+COPY --from=builder /app/docs/.vitepress/dist /usr/share/nginx/html
+```
+
+```ini [.dockerignore]
+node_modules
+.git
+.github
+README.md
+docs/.vuepress/cache
+docs/.vuepress/dist
+*.sh
+```
+
+:::
+
+**有两点需要说明**
+
+1. 如果你的博客没有设置二级路由地址的话，可以把下面这段`nginx`配置给删了
+
+```nginx
+location ^~ /blog/ {
+  # 二级路由文件的存储位置
+  alias /usr/share/nginx/html/;
+  index index.html;
+  try_files $uri $uri/ /blog/index.html;
+}
+```
+
+2. 如果你的Vitepress博客项目没有使用`docs`目录包一层的话，上面的`Dockerfile`最后一步复制构建产物就变成
+
+```Dockerfile
+COPY --from=builder /app/.vitepress/dist /usr/share/nginx/html
+```
+
+### 构建镜像
+
+在项目根目录执行如下命令
+
+```sh
+docker build -t vitepress-app .
+```
+
+### 运行容器
+
+用上面构建好的镜像运行一个容器
+
+```sh
+docker run -d -p 3000:80 --name vitepress-blog vitepress-app
+```
+
+这将创建并启动一个名为`vitepress-blog`的容器，将容器的`80`端口映射到宿主机的`3000`端口。启动成功后使用浏览器打开`http://localhost:3000`即可访问你的博客站点
+
+### 停止容器
+
+```sh
+docker stop vitepress-blog
+```
+
+### 删除容器
+
+```sh
+docker rm vitepress-blog
+```
+
+### 使用Docker Compose
+
+有了上面的`Dockerfile`之后，还可以使用 Docker Compose 来配置一键部署
+
+在项目根目录新建`docker-compose.yml`，具体内容如下
+
+```yml
+version: '3'
+services:
+  vitepress: #服务名
+    build: # 使用Dockerfile构建镜像
+      context: . # 指定 Dockerfile 所在目录
+      dockerfile: Dockerfile # 指定 Dockerfile 文件名
+    container_name: vitepress-blog # 容器名称
+    ports:
+      - 3000:80
+```
+
+#### 构建服务并后台运行
+
+```sh
+docker compose up --build -d
+```
+
+构建成功后使用浏览器打开`http://localhost:3000`即可访问你的博客站点
+
+#### 停止并移除服务
+
+```sh
+docker compose down
+```

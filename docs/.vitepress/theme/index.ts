@@ -6,7 +6,7 @@ import { useMediumZoomProvider, useBackToTop } from '../hooks'
 import './global.css'
 
 export default {
-  ...DefaultTheme,
+  extends: DefaultTheme,
   enhanceApp(ctx) {
     const { app, router } = ctx
     useMediumZoomProvider(app, router)

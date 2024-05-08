@@ -5,7 +5,7 @@ import docker from './docker'
 export default {
   '/devops/': [
     {
-      text: 'ip地址计算',
+      text: '🍍ip地址计算',
       link: '/devops/ip',
     },
     device,

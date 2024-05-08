@@ -1,6 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
 export default {
-  text: 'Monorepo',
+  text: '🥧Monorepo',
   items: [
     {
       text: '代码演示插件实战',

@@ -1,6 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
 export default {
-  text: 'VitePress优化',
+  text: '🍑VitePress优化',
   collapsed: false,
   items: [
     {

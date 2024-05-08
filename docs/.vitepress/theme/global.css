@@ -1,3 +1,13 @@
+:root {
+  --vp-c-brand-1: #10b981;
+  --vp-c-brand-2: #34d399;
+  --vp-c-brand-3: #10b981;
+}
+
+.vp-doc a {
+  text-decoration: none;
+}
+
 /* 定义滚动条高宽及背景 */
 ::-webkit-scrollbar {
   width: 8px;

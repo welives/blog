@@ -192,3 +192,51 @@ for (let i = 0; i < 20; i++) {
   handleQueue()(() => Promise.resolve(i).then((res) => console.log(res)))
 }
 ```
+
+## 计算超出隐藏的单行文本实际宽度
+
+```js
+function getStyles(elem, prop) {
+  if (window.getComputedStyle) {
+    if (prop) {
+      return window.getComputedStyle(elem, null)[prop]
+    } else {
+      return window.getComputedStyle(elem, null)
+    }
+  } else {
+    if (prop) {
+      return elem.currentStyle[prop]
+    } else {
+      return elem.currentStyle
+    }
+  }
+}
+function showRealProp(elem, ...prop) {
+  if (!elem) throw new Error('dom 节点不能为空')
+  // 如果属性值为空 则退出
+  if (prop.length === 0) return
+  // 真正的width
+  let realProp = {}
+  // 克隆dom
+  const cpNode = elem.cloneNode(true)
+  // 重置style样式
+  cpNode.setAttribute(
+    'style',
+    'display: inline-block;height: 0;visibility: hidden;font-size: 14px;font-family: Helvetica, "Microsoft Yahei"'
+  )
+  // 将dom添加到body后面，如果不添加 下面无法计算盒子的宽度
+  document.body.appendChild(cpNode)
+  prop.forEach((item) => {
+    if (!item) return
+    // 获取真正属性的styles值
+    realProp[item] = getStyles(cpNode)[item]
+  })
+  // 计算完成后移除该dom节点
+  document.body.removeChild(cpNode)
+  return realProp
+}
+
+// 使用示例
+const elem = document.getElementById('test')
+showRealProp(elem, ...['width', 'min-width'])
+```

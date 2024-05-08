@@ -1,6 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
 export default {
-  text: '英语',
+  text: '🍎英语',
   collapsed: false,
   link: '/language/english/',
   items: [
@@ -23,6 +23,10 @@ export default {
         {
           text: '第一册',
           link: '/language/english/nce/one',
+        },
+        {
+          text: '第二册',
+          link: '/language/english/nce/two',
         },
       ],
     },

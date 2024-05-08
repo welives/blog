@@ -23,7 +23,7 @@ docker pull mongo
 docker run -dit -p 27017:27017 --name MongoDB mongo --auth
 ```
 
-::: tip
+::: tip 提示
 `--auth`的意思是需要密码才能访问容器服务，因为 MongoDB 默认是不开启权限验证的，这里就相当于修改了 MongoDB 的配置`auth=ture`启用权限访问
 :::
 
