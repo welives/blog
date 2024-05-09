@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import DemoPreview, { useComponents } from '@vitepress-code-preview/container'
 import '@vitepress-code-preview/container/dist/style.css'
 import { useMediumZoomProvider, useBackToTop } from '../hooks'
+import './tailwind.css'
 import './global.css'
 
 export default {

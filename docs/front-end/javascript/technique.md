@@ -240,3 +240,47 @@ function showRealProp(elem, ...prop) {
 const elem = document.getElementById('test')
 showRealProp(elem, ...['width', 'min-width'])
 ```
+
+## 计算localStorage的已使用的容量
+
+```js
+/** @description 计算字符串的字节数 */
+function calculateUtf8ByteSize(str) {
+  // 非字符串 不作计算
+  if (typeof str !== 'string') 0
+  // 定义变量，用于累加字节数
+  let byteCount = 0
+  // 遍历字符串中的每个字符
+  for (let i = 0, len = str.length; i < len; i++) {
+    // 获取当前字符的Unicode码
+    const charCode = str.charCodeAt(i)
+    // 根据字符的Unicode码，计算其占用的字节数
+    if (charCode <= 0x007f) {
+      byteCount += 1 // 在000000-00007F之间的字符(如字母)，占用1个字节
+    } else if (charCode <= 0x07ff) {
+      byteCount += 2 // 在000080-0007FF之间的字符(如中文)，占用2个字节
+    } else if (charCode <= 0xffff) {
+      byteCount += 3 // 000800-00FFFF之间的字符(如中文)，占用3个字节
+    } else if (charCode <= 0x10ffff) {
+      byteCount += 4 // 010000-10FFFF之间的字符(如表情)，占用4个字节
+    } else {
+      console.log('该字符超出Unicode编码范围')
+    }
+  }
+  return byteCount
+}
+/** @description 计算localStorage已使用的容量 */
+const computedUsed = () => {
+  let cacheLen = 0
+  // 遍历所有key
+  for (const key in localStorage) {
+    // 拿到非原型key
+    if (Object.hasOwnProperty.call(localStorage, key)) {
+      // 累加缓存的字符串长度
+      cacheLen += localStorage.getItem(key)
+    }
+  }
+  // 计算缓存字符串所占字节数,并转换为KB
+  return (calculateUtf8ByteSize(cacheLen) / 1024).toFixed(2)
+}
+```

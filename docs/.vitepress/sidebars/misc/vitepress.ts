@@ -4,6 +4,10 @@ export default {
   collapsed: false,
   items: [
     {
+      text: '引入TailwindCSS',
+      link: '/misc/vitepress/tailwindcss',
+    },
+    {
       text: '图片缩放功能',
       link: '/misc/vitepress/image-zoom',
     },
