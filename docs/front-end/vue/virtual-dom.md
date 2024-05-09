@@ -10,7 +10,7 @@ title: Vue的虚拟DOM
 
 `diff`的过程就是调用名为`patch`的函数，比较新旧节点，一边比较一边给**真实的 DOM**打补丁
 
-## Virtual DOM 和真实 DOM 的区别
+## VirtualDOM和真实DOM的区别
 
 `Virtual DOM`是将真实的 DOM 的数据抽取出来，以对象的形式模拟树形结构。比如 dom 是这样的：
 
@@ -25,7 +25,7 @@ title: Vue的虚拟DOM
 ```js
 var Vnode = {
   tag: 'div',
-  children: [{ tag: 'p', text: '123' }]
+  children: [{ tag: 'p', text: '123' }],
 }
 ```
 

@@ -29,7 +29,7 @@ Vue.prototype._init = function (options?: Record<string, any>) {
 
 `Vue`初始化主要就干了几件事情，**合并配置**，**初始化生命周期**，**初始化事件中心**，**初始化渲染**，初始化`data`、`props`、`computed`、`watcher`等等
 
-## Vue 实例挂载
+## Vue实例挂载
 
 `Vue`中是通过`$mount`实例方法去挂载 dom 的，下面我们通过分析`compiler`版本的`mount`实现，相关源码在目录`src/platforms/web/runtime-with-compiler.ts`文件中定义：
 
@@ -83,7 +83,7 @@ export function mountComponent(
       if (vm._isMounted && !vm._isDestroyed) {
         callHook(vm, 'beforeUpdate')
       }
-    }
+    },
   }
   // 省略一系列其它代码
 

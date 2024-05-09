@@ -11,7 +11,7 @@ head:
 
 > 如果在 Windows 上还没搭建好基础的 docker 运行环境的话，去这里看：[启用 Windows 的 WSL 功能](/misc/win10-dev-environment.html#enable-wsl)和[安装 Docker](/misc/win10-dev-environment.html#install-docker)
 
-## docker 是什么
+## docker是什么
 
 Docker 是一个应用打包、分发、部署的工具
 
@@ -43,7 +43,7 @@ Docker 是一个应用打包、分发、部署的工具
 - **`ENV`**：也是设置环境变量。构建镜像阶段和容器运行阶段都生效
 - **`VOLUME`**：创建一个挂载点来持久化数据
 
-## Docker 快速安装软件
+## Docker快速安装软件
 
 在过去，我们上手一台新机器时总会需要到处下载各种软件来搭建开发环境或运行环境，这个过程比较繁琐，而Docker很好的解决的这一痛点
 
@@ -64,7 +64,7 @@ Docker 是一个应用打包、分发、部署的工具
 - 不同系统和硬件，只要安装好 Docker 其他都一样了，一个命令搞定所有
 - 用完就删，没有残留
 
-### 安装个 Nginx 试试
+### 安装个Nginx试试
 
 ```sh
 # 下载一个镜像
@@ -76,7 +76,7 @@ docker run -d -p 8080:80 --name docker-nginx nginx
 
 好了，这样就得到了一个 Nginx 服务，是不是超级简单？接着来试试访问下 `127.0.0.1:8080`，在终端输入`curl 127.0.0.1:8080`，或者在浏览器中打开
 
-## 来做一个简单的 Hello World 镜像
+## 来做一个简单的HelloWorld镜像
 
 1. 在 WSL 中的任意目录下(_我这里是`/home`_)新建一个`demo`目录，接着输入
 

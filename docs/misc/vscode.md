@@ -11,14 +11,14 @@ head:
 
 **我的 VSCode 常用插件**
 
-## Vue 插件
+## Vue插件
 
 - [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) 是一款为 Vue2 编写的语法高亮、自动完成、格式化、错误检查等功能的插件。注意，次此插件与 **Vue Language Features (Volar)** 存在冲突，不能同时启用，如果是 Vue2 项目时建议禁用 **Vue Language Features (Volar)**
 - [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets) 是一款快速生成 Vue 代码片段的插件，支持 Vue2 和 Vue3
 - [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 是一款为 Vue3 编写的语法高亮、自动完成、格式化、错误检查等功能的插件。注意，次此插件与 **Vetur** 存在冲突，不能同时启用，如果是 Vue3 项目时建议禁用 **Vetur**
 - [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) 是一款用于支持在 Typescript 中`import *.vue`文件的插件，此插件建议配合 **Vue Language Features (Volar)** 一起使用
 
-## uni-app 插件
+## uni-app插件
 
 - [uni-create-view](https://marketplace.visualstudio.com/items?itemName=mrmaoddxxaa.create-uniapp-view) 此插件可以快捷创建 uni-app 页面并添加到 pages.json，也可以快速创建 uni-app 组件
 - [uni-helper](https://marketplace.visualstudio.com/items?itemName=uni-helper.uni-helper-vscode) 是一款增强 uni-app 系列产品在 VSCode 内的开发体验的插件，此插件其实是以下五个插件的扩展包
@@ -28,7 +28,7 @@ head:
   - [uni-ui-snippets](https://marketplace.visualstudio.com/items?itemName=uni-helper.uni-ui-snippets-vscode) 提供 uni-ui 基本能力代码片段
   - [uni-highlight](https://marketplace.visualstudio.com/items?itemName=uni-helper.uni-highlight-vscode) 在 VSCode 中对条件编译的代码注释部分提供了语法高亮
 
-## React 插件
+## React插件
 
 - [Simple React Snippets](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets) 一款快速生成 React 代码片段的插件，不支持 Redux 和 RN
 - [ES7+ React/Redux/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets) 也是一款快速生成 React 代码片段的插件，支持 Redux 和 RN，此插件相当于补足了 **Simple React Snippets** 的缺失部分
@@ -37,19 +37,19 @@ head:
 - [Antd Rush](https://marketplace.visualstudio.com/items?itemName=fi3ework.vscode-antd-rush) 此插件可以为 Ant Design 组件及属性显示对应官方文档
 - [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components) 在 React 开发生态中提供 CSS in JS 解决方案的`styled-components`的官方插件
 
-## React Native 插件
+## ReactNative插件
 
 - [React Native Tools](https://marketplace.visualstudio.com/items?itemName=msjsdiag.vscode-react-native) 微软官方专门为 RN 在 VSCode 在中进行调试而开发的插件
 - [Expo Tools](https://marketplace.visualstudio.com/items?itemName=expo.vscode-expo-tools) RN 的社区版脚手架`create-expo-app`在 VSCode 中的官方插件
 
-## CSS 插件
+## CSS插件
 
 - [Autoprefixer](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-autoprefixer) 为 CSS 代码快速生成浏览器厂商前缀
 - [CSS Peek](https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek) 快速查看项目中的 CSS 类名定义
 - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) CSS 代码风格校验插件
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) TailwindCSS 的官方插件
 
-## HTML 插件
+## HTML插件
 
 - [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag) 标签自动闭合
 - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) 标签对自动改名
@@ -58,7 +58,7 @@ head:
 - [IntelliSense for CSS class names in HTML](https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion) 智能感知项目中的 CSS 类名，并在 HTML 文件中进行提示
 - [WXML - Language Service](https://marketplace.visualstudio.com/items?itemName=qiu8310.minapp-vscode) 微信原生小程序的 .wxml 文件代码高亮，标签、属性的智能补全
 
-## JS/TS 插件
+## JS/TS插件
 
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) JS 代码风格校验插件
 - [JavaScript Snippet Pack](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-javascript-snippet-pack) 快速生成 JS 代码片段，不支持 ES6
@@ -72,7 +72,7 @@ head:
 - [npm Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense) 智能感知`node_modules`文件夹中的模块，并在 import 或 require 的时候进行提示
 - [Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost) 显示所导入的 npm 模块的大小
 
-## Flutter 插件
+## Flutter插件
 
 - [Dart](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) Dart 官方插件，支持 Dart 编程语言，并提供用于有效编辑、重构、运行和重新加载 Flutter 移动应用程序的工具
 - [Dart (Syntax Highlighting Only)](https://marketplace.visualstudio.com/items?itemName=oscarcs.dart-syntax-highlighting-only) Dart 代码语法高亮提示
@@ -81,7 +81,7 @@ head:
 - [Flutter Widget Snippets](https://marketplace.visualstudio.com/items?itemName=alexisvt.flutter-snippets) 快速生成 Flutter 代码片段
 - [Pubspec Assist](https://marketplace.visualstudio.com/items?itemName=jeroen-meijer.pubspec-assist) Dart 和 Flutter 的依赖管理器
 
-## PHP 插件
+## PHP插件
 
 - [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client) PHP 代码智能提示
 - [PHP Server](https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver) 启动一个本地的 PHP 服务器
@@ -89,12 +89,12 @@ head:
 - [PHP DocBlocker](https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker) 快速生成 PHP 代码注解
 - [PHP Debug](https://marketplace.visualstudio.com/items?itemName=xdebug.php-debug) 提供在 VSCode 中调试 PHP 代码的支持
 
-## Git 插件
+## Git插件
 
 - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) 主要是用来显示`git log`
 - [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) 可以将各种常用的`git`命令通过 GUI 进行操作
 
-## Markdown 插件
+## Markdown插件
 
 - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced) markdown 预览效果增强插件
@@ -143,7 +143,7 @@ head:
 - [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) VSCode 的微软官方 WSL 插件
 - [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) 提供在 Docker 容器中进行开发的能力
 
-## 我的 VSCode 用户配置
+## 我的VSCode用户配置
 
 ::: details 查看
 <<< ./assets/vscode.settings.json

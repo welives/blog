@@ -2,7 +2,7 @@
 title: Vue常见优化手段
 ---
 
-## 使用 Key
+## 使用Key
 
 对于通过循环生成的列表，应给每个列表项一个稳定且唯一的 Key，这有利于在列表变动时，尽量少的删除、新增、改动元素
 
@@ -107,9 +107,9 @@ import defer from './mixins/defer'
 export default {
   name: 'App',
   components: {
-    HeavyComp
+    HeavyComp,
   },
-  mixins: [defer()]
+  mixins: [defer()],
 }
 </script>
 
@@ -135,7 +135,7 @@ export default {
 
 <script>
 export default {
-  props: ['num']
+  props: ['num'],
 }
 </script>
 
@@ -178,7 +178,7 @@ export default function (maxFrameCount = 300) {
     data() {
       return {
         // 浏览器的重绘次数
-        frameCount: 0
+        frameCount: 0,
       }
     },
     mounted() {
@@ -200,8 +200,8 @@ export default function (maxFrameCount = 300) {
        */
       defer(showInFrameCount) {
         return this.frameCount >= showInFrameCount
-      }
-    }
+      },
+    },
   }
 }
 ```

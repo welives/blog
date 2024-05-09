@@ -9,7 +9,7 @@ head:
       content: docker remote 容器 镜像 远程开发
 ---
 
-## Docker 搭建远程开发环境
+## Docker搭建远程开发环境
 
 > 如果在 Windows 上还没搭建好基础的 docker 运行环境的话，去这里看：[启用 Windows 的 WSL 功能](/misc/win10-dev-environment.html#enable-wsl)和[安装 Docker](/misc/win10-dev-environment.html#install-docker)
 

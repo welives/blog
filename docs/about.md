@@ -19,7 +19,7 @@
 
 ### 后端
 
-- <span class="icon-[devicon--nodejs] mx-1 translate-y-0.5" />**Nodejs** + <span class="icon-[logos--express] mx-1 translate-y-1" /> + <span class="icon-[logos--koa] mx-1 translate-y-0.5" /> + <span class="icon-[devicon--nestjs] mx-1 translate-y-0.5" />**Nest.js** + <span class="icon-[devicon--prisma] mx-1 translate-y-0.5" />**Prisma** + **TypeORM**，熟练掌握
+- <span class="icon-[devicon--nodejs] mx-1 translate-y-0.5" />**Nodejs** + <span class="icon-[logos--express] mx-1 translate-y-1" /> + <span class="icon-[logos--koa] mx-1 translate-y-0.5" /> + <span class="icon-[devicon--nestjs] mx-1 translate-y-0.5" />**Nest.js** + <span class="icon-[devicon--prisma] mx-1 translate-y-0.5" />**Prisma** + <span class="icon-[logos--typeorm] mx-1 translate-y-0.5" />**TypeORM**，熟练掌握
 - <span class="icon-[devicon--mysql] mx-1 translate-y-0.5" />**MySQL** + <span class="icon-[devicon--mongodb] mx-1 translate-y-0.5" />**MongoDB** + <span class="icon-[devicon--redis] mx-1 translate-y-0.5" />**Redis**，我常用的就这三
 - 一些常用的配套工具：<span class="icon-[logos--pm2-icon] mx-1 translate-y-0.5" />**PM2** + <span class="icon-[devicon--nodemon] mx-1 translate-y-0.5" />**Nodemon** + <span class="icon-[logos--jwt-icon] mx-1 translate-y-0.5" />**JWT** + <span class="icon-[devicon--swagger] mx-1 translate-y-0.5" />**Swagger**
 

@@ -49,7 +49,7 @@ console.log(a instanceof Mobile) // true
 
 :::
 
-## 盗用构造函数(借助 call 或 apply)
+## 盗用构造函数(借助call或apply)
 
 盗用构造函数实现继承的原理是：在子函数上面执行了父函数的所有的代码，所以，通过子函数构造的每一个实例都拥有自己的继承自父函数的属性和方法，实例之间**不共享**引用类型
 
@@ -301,7 +301,7 @@ console.log(b instanceof Mobile) // true
 
 :::
 
-## ES6 的 `class`和`extends`
+## ES6的`class`和`extends`
 
 寄生组合式继承就是目前 ES6 的`class`和`extends`的实现方式
 

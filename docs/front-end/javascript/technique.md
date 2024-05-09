@@ -9,7 +9,7 @@ head:
       content: js 技巧 demo
 ---
 
-## 在 VSCode 中给获取到的`canvas`对象增加代码提示
+## 在VSCode中给获取到的`canvas`对象增加代码提示
 
 ```js
 // 在获取 canvas 对象的前一行，加上下面这行注释，即可获得代码提示
@@ -241,7 +241,7 @@ const elem = document.getElementById('test')
 showRealProp(elem, ...['width', 'min-width'])
 ```
 
-## 计算localStorage的已使用的容量
+## 计算localStorage的已使用容量
 
 ```js
 /** @description 计算字符串的字节数 */

@@ -48,21 +48,21 @@ export default {
     methods: {
       showName() {
         console.log(this.name)
-      }
+      },
     },
-    template: '<div>{{name}}</div>'
+    template: '<div>{{name}}</div>',
   })
   new Vue({
     el: '#app',
     data: function () {
       return {
-        childName: ''
+        childName: '',
       }
     },
     mounted() {
       this.childName = '我是子组件名字'
       this.$refs.child.showName() // '' 空
-    }
+    },
   })
 </script>
 ```
@@ -95,7 +95,7 @@ this.$nextTick(() => {
 })
 ```
 
-## nextTick 源码分析
+## nextTick源码分析
 
 了解了`nextTick`的用法和原理之后，我们就来看一下`Vue`是怎么来实现这波“操作”的
 
@@ -149,7 +149,7 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
   const observer = new MutationObserver(flushCallbacks)
   const textNode = document.createTextNode(String(counter))
   observer.observe(textNode, {
-    characterData: true
+    characterData: true,
   })
   timerFunc = () => {
     counter = (counter + 1) % 2
@@ -223,7 +223,7 @@ const observer = new MutationObserver(callback)
 ```js
 const domTarget = document.xxx
 observer.observe(domTarget, {
-  characterData: true // 说明监听文本内容的修改。
+  characterData: true, // 说明监听文本内容的修改。
 })
 ```
 
@@ -233,7 +233,7 @@ observer.observe(domTarget, {
 
 其实使用`MutationObserver`的原因就是`nextTick`想要一个异步 API，用来在当前的同步代码执行完毕后，执行我想执行的异步回调，包括`Promise`和`setTimeout`都是基于这个原因
 
-## 实现一个简易的 nextTick
+## 实现一个简易的nextTick
 
 ```js
 let callbacks = []

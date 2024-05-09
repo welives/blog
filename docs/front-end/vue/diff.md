@@ -12,7 +12,7 @@ title: Vue的Diff算法
 
 从上面的示例图可以看到，`Diff`算法中只会对同一层的元素进行比较，并且必须拥有相同节点元素，才会对其子节点进行比较，其他多余的同层节点都会一律做删除或添加操作
 
-## Diff 流程图
+## Diff流程图
 
 当数据发生改变时，`set`方法会调用`Dep.notify`通知所有订阅者`Watcher`，订阅者就会调用`patch`给真实的 DOM 打补丁，更新相应的视图
 
@@ -323,7 +323,7 @@ function updateChildren(parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly)
 }
 ```
 
-## 具体的 diff 分析
+## 具体的diff分析
 
 我们可以假设有旧的`Vnode`数组和新的`Vnode`数组这两个数组，而且有四个变量充当指针分别指到两个数组的头尾
 

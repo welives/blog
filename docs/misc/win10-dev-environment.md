@@ -57,7 +57,7 @@ head:
 
 ![](./assets/win10-dev-environment/magic_setup_5.png)
 
-## 启用 Windows 的 WSL 功能 {#enable-wsl}
+## 启用Windows的WSL功能{#enable-wsl}
 
 ::: tip
 可以通过在 PowerShell 执行`wsl --install`命令进行 WSL 的初始化安装，默认会安装 Ubuntu 作为 Linux 子系统，此时会自动更新到 WSL2。输入`wsl -l -o`可以查看官方提供的 Linux 发行版列表
@@ -91,7 +91,7 @@ head:
 
 安装完成后根据提示设置系统用户名和密码，输入`sudo passwd`来初始化`root`用户的密码，会提示输入当前系统用户的密码，接着才是设置`root`用户的密码，要输入两次。之后如果想切到`root`用户的话就键入`su`
 
-### 安装 Windows Terminal
+### 安装Windows Terminal
 
 在微软应用商店搜索`Windows Terminal`，然后安装它，用它来配合 WSL 的使用体验我个人是觉得很爽的
 
@@ -109,7 +109,7 @@ head:
 
 如果要在 Windows 的文件资源管理器中查看 Linux 的文件的话，只需在地址栏中输入`\\wsl$`即可打开 Linux 的文件系统
 
-### WSL 端口映射
+### WSL端口映射
 
 由于每次重启宿主机后，WSL 的 ip 地址都会发生变化(_稍后讲 WSL 设置静态 IP 的方法_)，所以需要重新映射，在 PowerShell 中执行
 
@@ -121,7 +121,7 @@ netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=win10端�
 
 在 Ubuntu 中查看 ip 地址的命令是`ifconfig`，其中`eth0`中的`inet`就是虚拟机的 ip 地址
 
-### WSL 设置静态 IP
+### WSL设置静态IP
 
 比如，我要给 WSL 设置的静态 IP 为`172.20.19.2`，其网关地址为`172.20.19.1`
 
@@ -177,7 +177,7 @@ New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEth
 
 ![](./assets/win10-dev-environment/windows_firewall.png)
 
-### SSH 配置
+### SSH配置
 
 在新安装的 Ubuntu 中把`openssh-server`给卸载了，因为它预装的可能不完整，需要重新安装一下，切到`root`用户
 
@@ -215,7 +215,7 @@ netsh advfirewall firewall add rule name=WSL2 dir=in action=allow protocol=TCP l
 如果在使用`Xshell`连接时提示`找不到匹配的key exchange算法`或`找不到匹配的host key算法`，更新`Xshell`到一个比较新的版本就好了，因为服务端的`openssh-server`加密算法更新了
 :::
 
-### WSL 设置代理
+### WSL设置代理
 
 1. 先在宿主机中查看 vEthernet (WSL)的 ip 地址，我这里的是`172.20.19.1`，然后确保 WSL 子系统和宿主机之间能够双向 ping 通
 
@@ -250,7 +250,7 @@ sudo ln -s /home/code/test /mnt/d/Workspace/test
 上面的`/mnt`可以理解成是`Windows`系统，然后`/d`表示 D 盘，后面的文件夹就很好理解了，不再展开说明
 :::
 
-## WSL 迁出系统盘
+## WSL迁出系统盘
 
 由于 WSL 是作为一个 WindowsApp 默认安装在系统盘中的，而系统盘的可用空间会随着使用时间的推移而逐渐变少，所以需要将 WSL 迁出到其他盘，比如我这里将 WSL 迁到了`D`盘
 
@@ -270,11 +270,11 @@ sudo ln -s /home/code/test /mnt/d/Workspace/test
 
 迁移完成后把之前生成的备份文件`Ubuntu.tar`删除
 
-## 安装 Docker {#install-docker}
+## 安装Docker{#install-docker}
 
 在 Windows 中使用 Docker 有以下两种方式
 
-### 直接在 WSL2 里面安装
+### 直接在WSL2里面安装
 
 这种安装方式要求对 docker 非常熟练，因为所有操作全都是执行命令，`docker-compose`需要单独安装
 
@@ -303,7 +303,7 @@ rm -rf get-docker.sh
 
 默认情况下，docker server 是不跟随 WSL 的启动而启动的，所以需要手动将其加入自启服务，执行`sudo systemctl enable docker`即可
 
-### 在 Windows 上安装 Docker Desktop
+### 在Windows上安装Docker Desktop
 
 这种安装方式使用起来适合 docker 新手，因为有 GUI，而且软件内置有`docker-compose`
 
@@ -344,7 +344,7 @@ rm -rf get-docker.sh
 
 ![](./assets/win10-dev-environment/docker_setup_4.png)
 
-## 在 WSL 中安装宝塔
+## 在WSL中安装宝塔
 
 上面讲了 Docker 的安装之后，其实宝塔有没有都无所谓了，但它在我还不会玩 Docker 的那段时间还是帮了我不少，姑且还是讲讲吧
 
@@ -360,7 +360,7 @@ wget -O install.sh https://download.bt.cn/install/install-ubuntu_6.0.sh && sudo 
 接下来安装运行环境的软件时一定要记得选**编译安装**
 :::
 
-### 设置宝塔面板跟随 Windows 开机自启
+### 设置宝塔面板跟随Windows开机自启
 
 1. 在 Ubuntu 中创建一个脚本`sudo vim /etc/init.d/wsl-init.sh`，内容如下
 
@@ -377,7 +377,7 @@ bt start
 2. 给该脚本添加执行权限`sudo chmod +x /etc/init.d/wsl-init.sh`
 3. 将该脚本添加到上面的`ubuntu_start.bat`开机脚本中，这样每次 Windows 启动时就会自动执行`wsl-init.sh`脚本了
 
-## git 和 TortoiseGit 的配置
+## git和TortoiseGit的配置
 
 先去下载[git](https://git-scm.com/downloads) 和 [TortoiseGit](https://tortoisegit.org/download/)，具体的安装步骤就不说了，百度一搜各种各样的都有，这里主要讲我对 git 的环境变量配置
 
@@ -406,7 +406,7 @@ ssh-keygen -m PEM -t ed25519 -C "***@gmail.com"
 git config credential.helper store
 ```
 
-## nvm 和 nodejs 的配置
+## nvm和nodejs的配置
 
 ### Ubuntu 中安装 [nvm](https://github.com/nvm-sh/nvm)
 
@@ -414,7 +414,7 @@ git config credential.helper store
 2. 查看所有可用的 node 版本`nvm ls-remote`
 3. 安装 LTS 版本的 node，`nvm install --lts`，安装后会自动切到这个版本
 
-### Windows 中安装 nvm
+### Windows中安装nvm
 
 先去 Github 下载[nvm](https://github.com/coreybutler/nvm-windows)
 
@@ -471,7 +471,7 @@ npm config set registry https://registry.npmmirror.com
 ::: tip ⚡ npm 的官方源是 `https://registry.npmjs.org`
 :::
 
-#### 安装 yarn
+#### 安装yarn
 
 ```sh
 npm i -g yarn
@@ -484,7 +484,7 @@ yarn config set global-folder "D:\Develop\nvm\Yarn\Global"
 yarn config set cache-folder "D:\Develop\nvm\Yarn\Cache"
 ```
 
-#### 安装 pnpm
+#### 安装pnpm
 
 ```sh
 npm i -g pnpm
@@ -524,13 +524,13 @@ pnpm config set state-dir "D:\Develop\nvm\pnpm\state"
 
 > 至此，nvm 和 nodejs 的环境配置结束
 
-## JDK 配置
+## JDK配置
 
 1. 根据所安装的 JDK 版本，新建一个带有大版本号的用户变量，例如`JAVA17_HOME`，变量值填入安装路径`D:\Develop\Java\jdk-17`
 2. 再新建一个用户变量`JAVA_HOME`，变量值填入`%JAVA17_HOME%`。如果安装有多个 JDK 版本时，只需要修改`JAVA_HOME`变量的值即可切换全局的 JDK 版本，例如修改为`%JAVA11_HOME%`
 3. 给用户变量`Path`添加一个值`%JAVA_HOME%\bin`
 
-## Android Studio 配置
+## AndroidStudio配置
 
 安装 Android Studio 并下载所需要的相关 SDK 后可以选择设置全局环境变量也可以给某个 Flutter 版本设置局部环境变量：
 
@@ -553,7 +553,7 @@ pnpm config set state-dir "D:\Develop\nvm\pnpm\state"
 - 查看安装有哪些安卓模拟器：`emulator -list-avds`
 - 修改安卓模拟器的 dns 网关地址，实现模拟器联网：`emulator -avd 模拟器名 -dns-server 局域网网关`
 
-## Dart、fvm、Flutter 的安装配置
+## Dart、fvm、Flutter的安装配置
 
 先去下载[Dart](http://gekorm.com/dart-windows/)
 
