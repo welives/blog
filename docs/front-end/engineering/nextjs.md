@@ -22,6 +22,7 @@ UI框架以 Vant 为例
 ## 相关文档
 
 - [Next.js](https://www.nextjs.cn/)
+- [shadcn](https://www.shadcn.com.cn/)
 - [React-Vant](https://react-vant.3lang.dev/)
 - [TailwindCSS](https://tailwind.nodejs.cn/)
 - [TypeScript](https://www.tslang.cn/)
@@ -157,11 +158,110 @@ module.exports = {
 
 关于 Next.js 的环境变量[详细文档看这里](https://www.nextjs.cn/docs/basic-features/environment-variables)
 
-## 助手函数
+## UI框架
 
-根目录新建`utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
+### 使用shadcn
 
-## 使用Vant
+```sh
+pnpm dlx shadcn-ui@latest init
+```
+
+根据自己的喜好选择就行
+
+![](./assets//nextjs/install-shadcn.png)
+
+#### TailwindCSS debug插件
+
+```sh
+pnpm add -D tailwindcss-debug-screens
+```
+
+编辑`app/layout.tsx`和`tailwind.config.ts`
+
+::: code-group
+
+```tsx{11} [layout.tsx]
+// ...
+import { cn } from '@/lib/utils' // [!code ++]
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body className={cn('debug-screens', inter.className)}>{children}</body>
+    </html>
+  )
+}
+```
+
+```ts{5-8} [tailwind.config.ts]
+// ...
+const config = {
+  // ...
+  theme: {
+    debugScreens: {
+      position: ['bottom', 'right'],
+      ignore: ['dark'],
+    },
+    // ...
+  },
+  plugins: [
+    // 开发模式下加载显示屏幕大小的插件
+    process.env.NODE_ENV === 'development' && require('tailwindcss-debug-screens'), // [!code ++]
+  ],
+}
+```
+
+:::
+
+#### 设置字体
+
+编辑`app/layout.tsx`和`tailwind.config.ts`
+
+::: code-group
+
+```tsx{2,11} [layout.tsx]
+// ...
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body className={cn('debug-screens min-h-screen bg-background font-sans antialiased', inter.variable)}>
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+```ts{8-10} [tailwind.config.ts]
+// ...
+import { fontFamily } from 'tailwindcss/defaultTheme' // [!code ++]
+const config = {
+  // ...
+  theme: {
+    // ...
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', ...fontFamily.sans],
+      },
+      // ...
+    },
+  },
+}
+```
+
+:::
+
+### 使用Vant
 
 ```sh
 pnpm add react-vant @react-vant/icons
@@ -183,7 +283,7 @@ const nextConfig = {
 module.exports = withPlugins([withImages], nextConfig)
 ```
 
-## 移动端适配
+#### 移动端适配
 
 ```sh
 pnpm add -D postcss-px-to-viewport-8-plugin

@@ -25,6 +25,10 @@ export default {
           link: '/front-end/css/linear-gradient',
         },
         {
+          text: 'TailwindCSS',
+          link: '/front-end/css/tailwindcss',
+        },
+        {
           text: '奇技淫巧',
           link: '/front-end/css/technique',
         },

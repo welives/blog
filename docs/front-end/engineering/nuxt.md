@@ -62,6 +62,10 @@ git clone -b v3 --single-branch git@github.com:nuxt/starter.git
 由于 Nuxt 的官方初始模板缺少了`ESLint`和`Prettier`等配置，所以需要自己手动安装
 :::
 
+:::danger 🥧一步到胃
+**如果你不想尝试一次手动搭基础模板的过程，那么也可以直接食用[Nuxt团队的Anthony Fu大佬的模板](https://github.com/antfu-collective/vitesse-nuxt3)**
+:::
+
 ### 配置EditorConfig
 
 新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
@@ -91,7 +95,11 @@ trim_trailing_whitespace = false
 
 :::
 
-### 安装ESLint
+### 安装ESLint和Prettier
+
+::: details ~~这个方案废弃，因为Nuxt官方整了一个ESLint的模块包，看下面~~
+
+- **ESLint**
 
 ```sh
 npx eslint --init
@@ -125,21 +133,15 @@ npx eslint --init
 
 ![](./assets/nuxt/eslint_setup_7.png)
 
-### 安装Prettier
+- **Prettier**
 
 ```sh
 pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
-新建`.prettierrc`文件，填入自己喜欢的配置
+根目录新建`.prettierrc`文件，填入自己喜欢的配置
 
-::: code-group
-
-```sh
-touch .prettierrc
-```
-
-```json [.prettierrc]
+```json
 {
   "$schema": "https://json.schemastore.org/prettierrc",
   "semi": false,
@@ -150,20 +152,11 @@ touch .prettierrc
 }
 ```
 
-:::
+- **ESLint和Prettier的忽略文件**
 
-### ESLint和Prettier的忽略文件
+根目录新建`.eslintignore`和`.prettierignore`文件，填入自己喜欢的配置
 
-新建`.eslintignore`和`.prettierignore`文件，填入自己喜欢的配置
-
-::: code-group
-
-```sh
-touch .eslintignore
-touch .prettierignore
 ```
-
-```ini [.eslintignore]
 .DS_Store
 node_modules
 dist
@@ -172,18 +165,7 @@ dist
 .nuxt
 ```
 
-```ini [.prettierignore]
-.DS_Store
-node_modules
-dist
-.idea
-.vscode
-.nuxt
-```
-
-:::
-
-### 在`.eslintrc.js`中集成Prettier
+- **在`.eslintrc.js`中集成Prettier**
 
 ```js
 module.exports = {
@@ -205,64 +187,62 @@ module.exports = {
 }
 ```
 
-## 安装TailwindCSS
+:::
 
-TailwindCSS 已经被 Nuxt 官方集成，所以安装起来非常简单，只需要安装`@nuxtjs/tailwindcss`即可
+::: tip ✨Nuxt安装ESLint的新方案
 
 ```sh
-pnpm add -D @nuxtjs/tailwindcss
-npx tailwindcss init
+// 使用脚手架进行配置
+pnpm dlx @antfu/eslint-config@latest
+// 或者下面手动配置
+pnpm add -D eslint @nuxt/eslint @antfu/eslint-config eslint-plugin-format
 ```
 
-在项目根目录下新建`./assets/css/tailwind.css`文件，如果缺少相应的文件夹则顺便创建一下，填入如下内容
+新建`eslint.config.mjs`，编辑`nuxt.config.ts`
 
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+::: code-group
+
+```js [eslint.config.mjs]
+import antfu from '@antfu/eslint-config'
+import withNuxt from './.nuxt/eslint.config.mjs'
+
+export default withNuxt(
+  antfu({
+    formatters: true,
+    typescript: true,
+    vue: true,
+  })
+)
 ```
 
-编辑`tailwind.config.js`
-
-```js
-const colors = require('tailwindcss/colors')
-delete colors.lightBlue
-delete colors.warmGray
-delete colors.trueGray
-delete colors.coolGray
-delete colors.blueGray
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    './components/**/*.{vue,jsx,tsx}',
-    './layouts/**/*.{vue,jsx,tsx}',
-    './pages/**/*.{vue,jsx,tsx}',
-    './app.{vue,jsx,tsx}',
-    './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}',
-  ],
-  theme: {
-    extend: { colors },
-  },
-  corePlugins: {
-    preflight: false,
-  },
-  plugins: [],
-}
-```
-
-编辑`nuxt.config.ts`，增加如下配置
-
-```ts
+```ts [nuxt.config.ts]
 export default defineNuxtConfig({
-  modules: [
-    // ...
-    '@nuxtjs/tailwindcss', // [!code ++]
-  ],
+  devtools: { enabled: true },
+  modules: ['@nuxt/eslint'], // [!code ++]
+  eslint: {}, // [!code ++]
 })
 ```
 
-## 配置环境变量
+:::
+
+### TypeScript检查
+
+```sh
+pnpm add -D typescript vue-tsc
+```
+
+编辑`package.json`
+
+```json
+{
+  "scripts": {
+    // ...
+    "typecheck": "vue-tsc --noEmit" // [!code ++]
+  }
+}
+```
+
+## 环境变量
 
 关于 Nuxt3 的环境变量详细文档[看这里](https://nuxt.com.cn/docs/getting-started/configuration#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%92%8C%E7%A7%81%E6%9C%89%E4%BB%A4%E7%89%8C)
 
@@ -271,15 +251,15 @@ Nuxt 在运行或者打包生产环境时都是使用`dotenv`来加载`.env`文�
 新建`.env`文件，填入项目所需的环境变量。注意，环境变量名必须以`NUXT_`开头，否则不会被识别，例如
 
 ```ini
-NUXT_APP_NAME=ts-vant-starter
+NUXT_APP_NAME=nuxt-starter
 NUXT_APP_HOST=localhost
 NUXT_APP_PORT=3000
 NUXT_API_SECRET=secret_string
 ```
 
-### 使用环境变量
+### 使用
 
-- 在`nuxt.config.ts`中通过`runtimeConfig`配置项透传环境变量到应用中
+- 在`nuxt.config.ts`中可以通过`runtimeConfig`配置项透传环境变量到应用中
 
 `runtimeConfig`配置项中的`app`和`public`变量被暴露到客户端中，而与它们**平级**的其他变量则只会在服务端可用
 
@@ -298,7 +278,7 @@ export default defineNuxtConfig({
 })
 ```
 
-- 在`nuxt.config.ts`中通过`appConfig`配置项透传环境变量到应用中
+- 在`nuxt.config.ts`中可以通过`appConfig`配置项透传环境变量到应用中
 
 注意，这种方式透传的所有变量都会暴露到客户端中，所以不要把敏感信息放到这里
 
@@ -341,20 +321,83 @@ export default defineNuxtConfig({
 
 ![](./assets/nuxt/打印appConfig.png)
 
-::: warning ⚡ 注意
+::: warning ⚡注意
 这个文件有点特别，在这里无法读取到环境变量的值，但可以在这里定义一些有明确初始值的变量。这个文件的作用更像是预先定义一些占位的变量，等待`nuxt.config.ts`中的`appConfig`合并到此，然后在应用运行生命周期内进行修改
 :::
 
+## 安装TailwindCSS
+
+TailwindCSS 已经被 Nuxt 官方集成，所以安装起来非常简单
+
+```sh
+pnpm add -D @nuxtjs/tailwindcss
+```
+
+接着编辑`nuxt.config.ts`，添加如下配置
+
+```ts
+export default defineNuxtConfig({
+  modules: [
+    // ...
+    '@nuxtjs/tailwindcss', // [!code ++]
+  ],
+})
+```
+
+虽然官方文档说这样就行了，`assets/css/tailwind.css`和`tailwind.config.{ts,js}`这两个文件会在执行`npm run dev`后自动生成到`.nuxt`目录中
+
+但是...在实际使用过程肯定会需要给 TailwindCSS 扩展点内容的，而根据配置文件功能尽量单一的原则，还是建议手动创建这两个文件
+
+- **初始化 TailwindCSS**
+
+```sh
+pnpm dlx tailwindcss init
+```
+
+在根目录新建`assets/css/tailwind.css`文件，如果缺少相应的文件夹则顺便创建一下，填入如下内容
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+编辑`tailwind.config.js`
+
+```js
+const colors = require('tailwindcss/colors')
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './components/**/*.{vue,jsx,tsx}',
+    './layouts/**/*.{vue,jsx,tsx}',
+    './pages/**/*.{vue,jsx,tsx}',
+    './plugins/**/*.{js,ts}',
+    './libs/**/*.{js,ts}',
+    './app.{vue,jsx,tsx}',
+    './nuxt.config.{js,ts}',
+  ],
+  theme: {
+    extend: { colors },
+  },
+  corePlugins: {
+    preflight: false,
+  },
+  plugins: [],
+}
+```
+
 ## 助手函数
 
-根目录新建`utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
+根目录新建`libs/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
 
 ## 状态管理
 
 Pinia 同样也被 Nuxt 官方集成了
 
 ```sh
-pnpm add pinia @pinia/nuxt
+pnpm add -D pinia @pinia/nuxt
 ```
 
 编辑`nuxt.config.ts`，在`modules`中增加`@pinia/nuxt`并设置自动导入，指定`stores`目录
@@ -390,7 +433,9 @@ export default defineNuxtConfig({
 到这里，基于 Nuxt3 的 Vant 基础项目模板就搭建完成了
 :::
 
-## 使用Vant
+## UI框架
+
+### 使用Vant
 
 Vant 同样也被 Nuxt 官方集成了
 
@@ -410,7 +455,7 @@ export default defineNuxtConfig({
 })
 ```
 
-## 移动端适配 {#mobile-adaptation}
+#### 移动端适配 {#mobile-adaptation}
 
 安装所需依赖，此插件的参数配置文档[看这里](https://github.com/lkxian888/postcss-px-to-viewport-8-plugin#readme)
 
