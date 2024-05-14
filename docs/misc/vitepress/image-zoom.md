@@ -33,7 +33,7 @@ import mediumZoom from 'medium-zoom'
 import './global.css'
 
 export default {
-  ...DefaultTheme,
+  extends: DefaultTheme,
   // [!code focus:15]
   setup() {
     const route = useRoute()
@@ -54,7 +54,7 @@ export default {
 
 这时候，点击图片放大的功能已经实现了，但是效果不尽如人意，会被其他层级的元素遮挡图片(_例如左侧的导航栏_)，所以需要修改一下样式
 
-新建`docs/.vitepress/theme/global.css`，添加如下样式代码，然后在上面的提到的`theme/index.ts`中引入它
+新建`docs/.vitepress/theme/global.css`，添加如下样式代码，然后在`docs/.vitepress/theme/index.ts`引入它
 
 ```css
 .medium-zoom-overlay {
@@ -97,7 +97,6 @@ export function useMediumZoom() {
 }
 
 export function useMediumZoomProvider(app: App, router: Router) {
-  // 如果是TS项目, 必须要有`.vitepress/.env.d.ts`文件,否则这里会报错说 import.mata对象上没有env属性
   if (import.meta.env.SSR) return
   const zoom = mediumZoom()
   zoom.refresh = () => {
@@ -136,7 +135,7 @@ import { useMediumZoomProvider } from '../hooks' // [!code ++]
 import './global.css'
 
 export default {
-  ...DefaultTheme,
+  extends: DefaultTheme,
   enhanceApp(ctx: EnhanceAppContext) {
     const { app, router, siteData } = ctx
     useMediumZoomProvider(app, router) // [!code ++]
@@ -189,6 +188,6 @@ export default defineConfig({
 })
 ```
 
-::: tip 🎉
+::: tip 🎉搞定
 现在`markdown`中的所有图片都能实现点击放大效果了，并且使用了原生自带的懒加载
 :::

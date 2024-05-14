@@ -215,7 +215,6 @@
   },
   "eslint.format.enable": false,
   "eslint.options": {
-    "configFile": ".eslintrc.js",
     "extensions": [".html", ".vue", ".css", ".scss", ".js", ".ts", ".jsx", ".tsx"]
   },
   "eslint.quiet": true,
@@ -310,11 +309,6 @@
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
   "react-native-tools.showUserTips": false,
-  "remote.SSH.remotePlatform": {
-    "172.18.242.131": "linux",
-    "WSL_Ubuntu": "linux",
-    "腾讯云Docker": "linux"
-  },
   "stylelint.enable": true,
   "stylelint.validate": ["css", "less", "postcss", "scss", "sass", "vue"],
   "svg.preview.mode": "svg",
@@ -331,6 +325,14 @@
   "[html]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[json]": {
     "editor.formatOnSave": true,

@@ -34,25 +34,27 @@ pnpm add @vitepress-code-preview/container @vitepress-code-preview/plugin
 
 ```ts
 import { defineConfig } from 'vite'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import { viteDemoPreviewPlugin } from '@vitepress-code-preview/plugin'
+import vueJsx from '@vitejs/plugin-vue-jsx' // [!code ++]
+import { viteDemoPreviewPlugin } from '@vitepress-code-preview/plugin' // [!code ++]
 export default defineConfig({
-  plugins: [viteDemoPreviewPlugin(), vueJsx()],
+  // ...
+  plugins: [viteDemoPreviewPlugin(), vueJsx()], // [!code ++]
 })
 ```
 
 - ② 编辑 `docs/.vitepress/config.ts`，注册 markdown 插件
 
 ```ts
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from 'node:url' // [!code ++]
 import { defineConfig } from 'vitepress'
-import { demoPreviewPlugin } from '@vitepress-code-preview/plugin'
+import { demoPreviewPlugin } from '@vitepress-code-preview/plugin' // [!code ++]
 
 export default defineConfig({
+  // ...
   markdown: {
     config(md) {
-      const docRoot = fileURLToPath(new URL('../', import.meta.url))
-      md.use(demoPreviewPlugin, { docRoot })
+      const docRoot = fileURLToPath(new URL('../', import.meta.url)) // [!code ++]
+      md.use(demoPreviewPlugin, { docRoot }) // [!code ++]
     },
   },
 })
@@ -63,13 +65,13 @@ export default defineConfig({
 ```ts
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import DemoPreview, { useComponents } from '@vitepress-code-preview/container'
-import '@vitepress-code-preview/container/dist/style.css'
+import DemoPreview, { useComponents } from '@vitepress-code-preview/container' // [!code ++]
+import '@vitepress-code-preview/container/dist/style.css' // [!code ++]
 
 export default {
-  ...DefaultTheme,
+  extends: DefaultTheme,
   enhanceApp(ctx) {
-    useComponents(ctx.app, DemoPreview)
+    useComponents(ctx.app, DemoPreview) // [!code ++]
   },
 } satisfies Theme
 ```

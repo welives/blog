@@ -12,8 +12,6 @@ head:
 ::: tip ✨
 搭建一个开箱即用的基于 Next.js + Vant + TailwindCSS + TypeScript 的工程
 
-UI框架以 Vant 为例
-
 [本工程的Github地址](https://github.com/welives/nextjs-starter)
 
 编写此笔记时所使用的`Next`版本为`13.5.6`

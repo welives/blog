@@ -5,6 +5,10 @@ export default {
   collapsed: false,
   items: [
     {
+      text: '前端生态的优秀库',
+      link: '/front-end/package',
+    },
+    {
       text: 'CSS',
       collapsed: true,
       items: [
@@ -167,9 +171,6 @@ export default {
         },
       ],
     },
-    // {
-    //   text: '制作NPM包',
-    //   link: '/front-end/npm/create-package',
-    // },
+
   ],
 } as DefaultTheme.SidebarItem

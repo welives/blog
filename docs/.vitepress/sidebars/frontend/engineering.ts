@@ -12,7 +12,7 @@ export default {
       link: '/front-end/engineering/vite',
     },
     {
-      text: 'Nuxt',
+      text: 'Nuxt.js',
       link: '/front-end/engineering/nuxt',
     },
     {
