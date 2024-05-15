@@ -53,20 +53,16 @@ vue create vue-cli-starter
 ```json
 {
   "compilerOptions": {
-    "strictNullChecks": false
+    // ...
+    "strictNullChecks": false, // [!code ++]
+    "noImplicitAny": false // [!code ++]
   }
 }
 ```
 
-## 配置EditorConfig
+### 配置EditorConfig
 
 新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
-
-::: code-group
-
-```sh
-touch .editorconfig
-```
 
 ```ini [.editorconfig]
 # https://editorconfig.org
@@ -85,18 +81,11 @@ insert_final_newline = false
 trim_trailing_whitespace = false
 ```
 
-:::
-
-## 配置ESLint
+### 配置ESLint和Prettier
 
 新建`.prettierrc`和`.prettierignore`文件，填入自己喜欢的配置
 
 ::: code-group
-
-```sh
-touch .prettierrc
-touch .prettierignore
-```
 
 ```json [.prettierrc]
 {
@@ -109,14 +98,9 @@ touch .prettierignore
 }
 ```
 
-```ini [.prettierignore]
+```txt [.prettierignore]
 node_modules
-android
-ios
-.expo
-.expo-shared
-.vscode
-.idea
+dist
 ```
 
 :::
@@ -179,11 +163,11 @@ module.exports = {
 }
 ```
 
-新建`src/assets/main.css`，填写如下内容，然后在`src/main.ts`引入它
+新建`src/assets/tailwind.css`，填写如下内容，然后在`src/main.ts`引入它
 
 ::: code-group
 
-```css [main.css]
+```css [tailwind.css]
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -191,7 +175,7 @@ module.exports = {
 
 ```ts [main.ts]
 // ...
-import './assets/main.css' // [!code ++]
+import './assets/tailwind.css' // [!code ++]
 ```
 
 :::
@@ -357,7 +341,7 @@ const { increment, decrement } = useMutations(['increment', 'decrement'])
 pnpm add vuex-persistedstate
 ```
 
-新建`src/store/modules/user.ts`
+- 新建`src/store/modules/user.ts`
 
 ```ts
 type State = typeof state
@@ -384,7 +368,7 @@ export default {
 }
 ```
 
-编辑`src/store/index.ts`
+- 编辑`src/store/index.ts`
 
 ```ts
 // ...
@@ -404,7 +388,7 @@ export default new Vuex.Store({
 })
 ```
 
-使用
+- **使用**
 
 ```vue
 <template>
@@ -424,15 +408,17 @@ const login = async () => {
 </script>
 ```
 
-## 使用Vant
+## UI框架
+
+### 使用Vant
 
 ```sh
 pnpm add vant@latest-v2
 ```
 
-### 按需引入
+#### 按需引入
 
-::: tip ⚡ 注意
+::: warning ⚡ 注意
 由于迁移至`Vue2.7`后，`Vant2`文档中的使用`babel-plugin-import`进行按需加载的方式失效了。需要改成用`Vue3`的方式进行按需加载
 :::
 
@@ -459,7 +445,7 @@ module.exports = defineConfig({
 
 这样就完成了 Vant 的按需引入，就可以直接在模板中使用 Vant 组件了，`unplugin-vue-components`会解析模板并自动注册对应的组件，`@vant/auto-import-resolver`会自动引入对应的组件样式
 
-## 移动端适配
+#### 移动端适配
 
 此插件的参数配置文档[看这里](https://github.com/lkxian888/postcss-px-to-viewport-8-plugin#readme)
 
@@ -467,7 +453,7 @@ module.exports = defineConfig({
 pnpm add -D postcss-px-to-viewport-8-plugin
 ```
 
-::: warning ⚡
+::: warning ⚡注意
 由于`Vant`使用的设计稿宽度是`375`，而通常情况下，设计师使用的设计稿宽度更多是`750`，那么`Vant`组件在`750`设计稿下会出现样式缩小的问题
 
 解决方案: 当读取的`node_modules`文件是`vant`时，那么就将设计稿宽度变为`375`，读取的文件不是`vant`时，就将设计稿宽度变为`750`

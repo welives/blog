@@ -10,11 +10,11 @@ head:
 ---
 
 ::: tip ✨
-搭建一个开箱即用的基于 Next.js + Vant + TailwindCSS + TypeScript 的工程
+搭建一个开箱即用的基于 Next.js + TailwindCSS + Prettier + TypeScript 的工程
 
 [本工程的Github地址](https://github.com/welives/nextjs-starter)
 
-编写此笔记时所使用的`Next`版本为`13.5.6`
+编写此笔记时所使用的`Next.js`版本为`14.2.3`
 :::
 
 ## 相关文档
@@ -43,13 +43,7 @@ pnpm create next-app
 
 新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
 
-::: code-group
-
-```sh
-touch .editorconfig
-```
-
-```ini [.editorconfig]
+```ini
 # https://editorconfig.org
 root = true
 
@@ -66,20 +60,48 @@ insert_final_newline = false
 trim_trailing_whitespace = false
 ```
 
-:::
+### 配置ESLint和Prettier
 
-### 安装`Prettier`
+脚手架预设的`ESLint`还不够完善，这里直接使用[Nuxt团队的Anthony Fu大佬的eslint-config](https://github.com/antfu/eslint-config)进行完善
 
 ```sh
-pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
+pnpm dlx @antfu/eslint-config@latest
 ```
 
-新建`.prettierrc`文件，填入自己喜欢的配置
+![](./assets/nextjs/eslint-config.png)
+
+编辑`eslint.config.mjs`
+
+```js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  ignores: ['node_modules', '**/node_modules/**', 'dist', '**/dist/**', '.next', '**/.next/**'],
+  formatters: true,
+  typescript: true,
+  react: true,
+})
+```
+
+编辑`package.json`，添加如下内容
+
+```json
+{
+  // ...
+  "scripts": {
+    // ...
+    "lint": "eslint .", // [!code ++]
+    "lint:fix": "eslint . --fix" // [!code ++]
+  }
+}
+```
+
+由于 **Anthony Fu** 大佬的这套`eslint-config`默认禁用`prettier`，如果你想配合`prettier`一起用的话就安装它(_不用的话就跳过_)，然后在根目录新建`.prettierrc`，填入自己喜欢的配置
 
 ::: code-group
 
-```sh
-touch .prettierrc
+```sh [terminal]
+pnpm add -D prettier
 ```
 
 ```json [.prettierrc]
@@ -95,60 +117,12 @@ touch .prettierrc
 
 :::
 
-### `ESLint`和`Prettier`的忽略文件
+接着编辑`.vscode/settings.json`，把`prettier`启用即可
 
-新建`.eslintignore`和`.prettierignore`文件，填入自己喜欢的配置
-
-::: code-group
-
-```sh
-touch .eslintignore
-touch .prettierignore
-```
-
-```ini [.eslintignore]
-.DS_Store
-node_modules
-dist
-.idea
-.vscode
-.next
-```
-
-```ini [.prettierignore]
-.DS_Store
-node_modules
-dist
-.idea
-.vscode
-.next
-```
-
-:::
-
-### 在`.eslintrc.js`中集成`prettier`
-
-把默认生成的`.eslintrc.json`改成 JS 文件
-
-```js
-module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    node: true,
-  },
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
-  extends: ['next/core-web-vitals', 'prettier', 'plugin:prettier/recommended'],
-  plugins: ['prettier'],
-  rules: {
-    complexity: ['error', 10],
-    'prettier/prettier': 'error',
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-  },
+```json
+{
+  "prettier.enable": true // [!code hl]
+  // ...
 }
 ```
 
@@ -160,6 +134,8 @@ module.exports = {
 
 ### 使用shadcn
 
+`Shadcn`和`TailwindCSS`默认是绑定在一起的，会自动安装`TailwindCSS`
+
 ```sh
 pnpm dlx shadcn-ui@latest init
 ```
@@ -167,6 +143,20 @@ pnpm dlx shadcn-ui@latest init
 根据自己的喜好选择就行
 
 ![](./assets//nextjs/install-shadcn.png)
+
+#### 类排序插件
+
+```sh
+pnpm add -D prettier prettier-plugin-tailwindcss
+```
+
+编辑`.prettierrc`，注册插件
+
+```json
+{
+  "plugins": ["prettier-plugin-tailwindcss"] // [!code ++]
+}
+```
 
 #### TailwindCSS debug插件
 

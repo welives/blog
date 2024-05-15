@@ -215,6 +215,7 @@
   },
   "eslint.format.enable": false,
   "eslint.options": {
+    "configFile": ".eslintrc",
     "extensions": [".html", ".vue", ".css", ".scss", ".js", ".ts", ".jsx", ".tsx"]
   },
   "eslint.quiet": true,

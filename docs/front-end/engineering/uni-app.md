@@ -10,9 +10,7 @@ head:
 ---
 
 ::: tip ✨
-搭建一个开箱即用的基于 uniapp + Vue3 + Pinia + Vant + TailwindCSS + TypeScript 的工程
-
-UI框架以 Vant 为例
+搭建一个开箱即用的基于 uniapp + Vue3 + Pinia + TailwindCSS + TypeScript 的工程
 
 [本工程的Github地址](https://github.com/welives/uni-app-starter)
 :::
@@ -53,13 +51,7 @@ npx @dcloudio/uvm@latest
 
 新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
 
-::: code-group
-
-```sh
-touch .editorconfig
-```
-
-```ini [.editorconfig]
+```ini
 # https://editorconfig.org
 root = true
 
@@ -76,36 +68,11 @@ insert_final_newline = false
 trim_trailing_whitespace = false
 ```
 
-:::
+### 配置ESLint和Prettier
 
-### 安装Prettier
+:::: details ~~这个方案废弃，因为有大佬做了个整合插件，看下面~~
 
-```sh
-pnpm add -D prettier
-```
-
-新建`.prettierrc`文件，填入自己喜欢的配置
-
-::: code-group
-
-```sh
-touch .prettierrc
-```
-
-```json [.prettierrc]
-{
-  "$schema": "https://json.schemastore.org/prettierrc",
-  "semi": false,
-  "tabWidth": 2,
-  "printWidth": 120,
-  "singleQuote": true,
-  "trailingComma": "es5"
-}
-```
-
-:::
-
-### 安装ESLint
+- **安装ESLint**
 
 ```sh
 npx eslint --init
@@ -139,7 +106,7 @@ npx eslint --init
 
 ![](./assets/nuxt/eslint_setup_7.png)
 
-### 安装Vue3的ESLint整合插件
+- **安装Vue3的ESLint整合插件**
 
 由于整合插件内已经包含有`@typescript-eslint/eslint-plugin`和`@typescript-eslint/parser`，所以先卸载掉项目中的
 
@@ -148,36 +115,25 @@ pnpm rm @typescript-eslint/eslint-plugin @typescript-eslint/parser
 pnpm add -D @vue/eslint-config-typescript @vue/eslint-config-prettier
 ```
 
-### ESLint和Prettier的忽略文件
+- **ESLint和Prettier的忽略文件**
 
 新建`.eslintignore`和`.prettierignore`文件，填入自己喜欢的配置
 
 ::: code-group
 
-```sh
-touch .eslintignore
-touch .prettierignore
-```
-
 ```ini [.eslintignore]
-.DS_Store
 node_modules
 dist
-.idea
-.vscode
 ```
 
 ```ini [.prettierignore]
-.DS_Store
 node_modules
 dist
-.idea
-.vscode
 ```
 
 :::
 
-### `.eslintrc.js`配置文件
+- **`.eslintrc.js`配置文件**
 
 ```js
 module.exports = {
@@ -216,6 +172,78 @@ module.exports = {
   },
 }
 ```
+
+::::
+
+:::: tip ✨新方案，直接使用[Nuxt团队Anthony Fu大佬的eslint-config](https://github.com/antfu/eslint-config)
+
+```sh
+pnpm dlx @antfu/eslint-config@latest
+```
+
+![](./assets/uniapp/eslint-config.png)
+
+编辑`eslint.config.mjs`，覆盖规则解决在`uniapp`里面驼峰命名组件无效的问题
+
+```js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  ignores: ['node_modules', '**/node_modules/**', 'dist', '**/dist/**'],
+  formatters: true,
+  typescript: true,
+  vue: {
+    overrides: {
+      'vue/component-name-in-template-casing': ['off'],
+    },
+  },
+})
+```
+
+编辑`package.json`，添加如下内容
+
+```json
+{
+  // ...
+  "scripts": {
+    // ...
+    "lint": "eslint .", // [!code ++]
+    "lint:fix": "eslint . --fix" // [!code ++]
+  }
+}
+```
+
+由于 **Anthony Fu** 大佬的这套`eslint-config`默认禁用`prettier`，如果你想配合`prettier`一起用的话就安装它(_不用的话就跳过_)，然后在根目录新建`.prettierrc`，填入自己喜欢的配置
+
+::: code-group
+
+```sh [terminal]
+pnpm add -D prettier
+```
+
+```json [.prettierrc]
+{
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "semi": false,
+  "tabWidth": 2,
+  "printWidth": 120,
+  "singleQuote": true,
+  "trailingComma": "es5"
+}
+```
+
+:::
+
+接着编辑`.vscode/settings.json`，把`prettier`启用即可
+
+```json
+{
+  "prettier.enable": true // [!code hl]
+  // ...
+}
+```
+
+::::
 
 ## 路径别名
 
@@ -470,7 +498,7 @@ export default defineConfig(({ mode }) => {
 
 ## 助手函数
 
-新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
+新建`src/libs/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
 
 ## 请求模块
 
@@ -1234,7 +1262,7 @@ export function createApp() {
 }
 ```
 
-新建`src/utils/storage.ts`和`src/stores/user.ts`
+新建`src/libs/storage.ts`和`src/stores/user.ts`
 
 ::: code-group
 
@@ -1255,10 +1283,8 @@ function removeItem(key: string) {
   uni.removeStorageSync(key)
 }
 
-export { getItem, setItem, removeItem, StorageSceneKey }
-
 /** @description 用来覆盖pinia持久化存储的方法 */
-export const piniaStorage: StorageLike = {
+const piniaStorage: StorageLike = {
   getItem: (key) => {
     const value = uni.getStorageSync(key)
     return value ?? null
@@ -1267,12 +1293,14 @@ export const piniaStorage: StorageLike = {
     uni.setStorageSync(key, value)
   },
 }
+
+export { getItem, setItem, removeItem, StorageSceneKey, piniaStorage }
 ```
 
 ```ts [user.ts]
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { StorageSceneKey, piniaStorage } from '../utils'
+import { StorageSceneKey, piniaStorage } from '../libs'
 
 export const useUserStore = defineStore(
   'user',
@@ -1306,13 +1334,13 @@ export const useUserStore = defineStore(
 
 ### ①路由状态
 
-新建`src/stores/auth.ts`，用来记录重定向的信息，编辑`src/utils/storage.ts`，增加一个`pinia`持久化场景
+新建`src/stores/auth.ts`，用来记录重定向的信息，编辑`src/libs/storage.ts`，增加一个`pinia`持久化场景
 
 ::: code-group
 
 ```ts [auth.ts]
 import { defineStore } from 'pinia'
-import { StorageSceneKey, piniaStorage } from '../utils'
+import { StorageSceneKey, piniaStorage } from '../libs'
 
 interface Redirect {
   url: string
@@ -1366,7 +1394,7 @@ pnpm add -D @types/qs
 ```ts
 import { stringify, parse } from 'qs'
 import { useUserStore } from '../stores'
-import { utils } from '../utils'
+import { utils } from '../libs'
 
 interface AnyObj {
   [key: string]: any
@@ -1626,6 +1654,8 @@ const counter = useCounterStore()
 
 ## UI框架
 
+### 使用Vant
+
 由于`Vant`没有针对`uni-app`做适配，所以这里以小程序端的[Vant-Weapp](https://vant-contrib.gitee.io/vant-weapp/#/home)为例
 
 ```sh
@@ -1646,7 +1676,7 @@ mklink /j "./src/wxcomponents/vant-weapp" "./node_modules/@vant/weapp/dist"
 如果是`Linux`要用`ln -s ./src/wxcomponents/vant-weapp ./node_modules/@vant/weapp/dist`
 :::
 
-### 引入组件
+#### 引入组件
 
 编辑`src/pages.json`，用到的组件在`globalStyle`的`usingComponents`字段中注册，然后就可以在 Vue 组件中使用了
 

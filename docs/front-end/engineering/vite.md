@@ -45,23 +45,15 @@ pnpm create vue
 通过上述交互式命令的选项，我们创建了一个带有`vue-router`、`pinia`、`ESLint`和`Prettier`的基于 Vite 脚手架的 Vue 项目
 :::
 
-### 初始化`git`
-
-```sh
-git init
-```
+:::danger 🥧一步到胃
+**如果你不想尝试一次手动搭建基础模板的过程，那么也可以直接食用[Nuxt团队的Anthony Fu大佬的模板](https://github.com/antfu-collective/vitesse)**
+:::
 
 ### 配置EditorConfig
 
 新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
 
-::: code-group
-
-```sh
-touch .editorconfig
-```
-
-```ini [.editorconfig]
+```ini
 # https://editorconfig.org
 root = true
 
@@ -78,36 +70,71 @@ insert_final_newline = false
 trim_trailing_whitespace = false
 ```
 
-:::
+### 配置ESLint和Prettier
 
-### ESLint和Prettier的忽略文件
+脚手架预设的`ESLint`还不够完善，这里直接使用[Nuxt团队的Anthony Fu大佬的eslint-config](https://github.com/antfu/eslint-config)进行完善
 
-新建`.eslintignore`和`.prettierignore`文件，填入自己喜欢的配置
+```sh
+pnpm dlx @antfu/eslint-config@latest
+```
+
+![](./assets/vite/eslint-config.png)
+
+编辑`eslint.config.js`
+
+```js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  ignores: ['node_modules', '**/node_modules/**', 'dist', '**/dist/**'],
+  formatters: true,
+  typescript: true,
+  vue: true,
+})
+```
+
+编辑`package.json`，添加如下内容
+
+```json
+{
+  // ...
+  "scripts": {
+    // ...
+    "lint": "eslint .", // [!code ++]
+    "lint:fix": "eslint . --fix" // [!code ++]
+  }
+}
+```
+
+由于 **Anthony Fu** 大佬的这套`eslint-config`默认禁用`prettier`，如果你想配合`prettier`一起用的话就安装它(_不用的话就跳过_)，然后在根目录新建`.prettierrc`，填入自己喜欢的配置
 
 ::: code-group
 
-```sh
-touch .eslintignore
-touch .prettierignore
+```sh [terminal]
+pnpm add -D prettier
 ```
 
-```ini [.eslintignore]
-.DS_Store
-node_modules
-dist
-.idea
-.vscode
-```
-
-```ini [.prettierignore]
-.DS_Store
-node_modules
-dist
-.idea
-.vscode
+```json [.prettierrc]
+{
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "semi": false,
+  "tabWidth": 2,
+  "printWidth": 120,
+  "singleQuote": true,
+  "trailingComma": "es5"
+}
 ```
 
 :::
+
+接着编辑`.vscode/settings.json`，把`prettier`启用即可
+
+```json
+{
+  "prettier.enable": true // [!code hl]
+  // ...
+}
+```
 
 ## 安装TailwindCSS
 
@@ -250,7 +277,7 @@ module.exports = {
 
 ## 助手函数
 
-新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
+新建`src/libs/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
 
 ## 请求模块
 
@@ -326,7 +353,7 @@ const app = createApp(App)
 app.use(createPinia().use(piniaPluginPersistedstate)).use(router).mount('#app') // [!code ++]
 ```
 
-新建`src/utils/storage.ts`和`src/stores/user.ts`
+新建`src/libs/storage.ts`和`src/stores/user.ts`
 
 ::: code-group
 
@@ -350,7 +377,7 @@ export { getItem, setItem, removeItem, StorageSceneKey }
 ```ts [user.ts]
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { StorageSceneKey } from '../utils'
+import { StorageSceneKey } from '../libs'
 export const useUserStore = defineStore(
   'user',
   () => {
@@ -377,13 +404,15 @@ export const useUserStore = defineStore(
 
 :::
 
-## 使用Vant
+## UI框架
+
+### 使用Vant
 
 ```sh
 pnpm add vant
 ```
 
-### 按需引入
+#### 按需引入
 
 ```sh
 pnpm add -D @vant/auto-import-resolver unplugin-vue-components
@@ -407,7 +436,7 @@ export default defineConfig(({ mode }) => {
 
 这样就完成了 Vant 的按需引入，就可以直接在模板中使用 Vant 组件了，`unplugin-vue-components`会解析模板并自动注册对应的组件，`@vant/auto-import-resolver`会自动引入对应的组件样式
 
-## 移动端适配
+#### 移动端适配
 
 此插件的参数配置文档[看这里](https://github.com/lkxian888/postcss-px-to-viewport-8-plugin#readme)
 
@@ -483,26 +512,44 @@ pnpm create vite
 
 EditorConfig [参考上面的配置](#配置editorconfig)
 
-### 补充ESLint插件
+### ESLint和Prettier
 
 ```sh
-pnpm add -D eslint-plugin-react
+pnpm dlx @antfu/eslint-config@latest
 ```
 
-### 安装Prettier
+编辑`eslint.config.js`
 
-`ESLint`和`Prettier`的忽略文件[参考上面的配置](#eslint和prettier的忽略文件)
+```js
+import antfu from '@antfu/eslint-config'
 
-```sh
-pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
+export default antfu({
+  ignores: ['node_modules', '**/node_modules/**', 'dist', '**/dist/**'],
+  formatters: true,
+  typescript: true,
+  react: true,
+})
 ```
 
-新建`.prettierrc`文件，填入自己喜欢的配置
+编辑`package.json`，添加如下内容
+
+```json
+{
+  // ...
+  "scripts": {
+    // ...
+    "lint": "eslint .", // [!code ++]
+    "lint:fix": "eslint . --fix" // [!code ++]
+  }
+}
+```
+
+由于 **Anthony Fu** 大佬的这套`eslint-config`默认禁用`prettier`，如果你想配合`prettier`一起用的话就安装它(_不用的话就跳过_)，然后在根目录新建`.prettierrc`，填入自己喜欢的配置
 
 ::: code-group
 
-```sh
-touch .prettierrc
+```sh [terminal]
+pnpm add -D prettier
 ```
 
 ```json [.prettierrc]
@@ -518,34 +565,12 @@ touch .prettierrc
 
 :::
 
-在`.eslintrc.js`中集成`prettier`
+接着编辑`.vscode/settings.json`，把`prettier`启用即可
 
-```js
-module.exports = {
-  root: true,
-  env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'prettier',
-    'plugin:prettier/recommended',
-  ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
-  plugins: ['react-refresh', 'prettier'],
-  rules: {
-    complexity: ['error', 10],
-    'prettier/prettier': 'error',
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-  },
+```json
+{
+  "prettier.enable": true // [!code hl]
+  // ...
 }
 ```
 
@@ -655,7 +680,7 @@ function App() {
 
 #### 持久化
 
-新建`src/utils/storage.ts`和`src/models/user.ts`
+新建`src/libs/storage.ts`和`src/models/user.ts`
 
 ::: code-group
 
@@ -681,7 +706,7 @@ import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import { createJSONStorage, persist, StateStorage } from 'zustand/middleware'
 import createSelectors from './selectors'
-import { StorageSceneKey } from '../utils'
+import { StorageSceneKey } from '../libs'
 interface State {
   token: string
   isLogged: boolean

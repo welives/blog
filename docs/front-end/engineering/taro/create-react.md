@@ -33,7 +33,7 @@ UI框架以 NutUI-React 为例
 ## 项目初始化
 
 ```sh
-npm install -g @tarojs/cli
+pnpm install -g @tarojs/cli
 taro init taro-react-starter
 ```
 
@@ -45,7 +45,11 @@ taro init taro-react-starter
 通过上述交互式命令的选项，我们创建了一个带有`ESLint`的 React 基础工程，接下来我们对它做亿点点额外的配置
 :::
 
-### 安装Prettier
+### 配置ESLint和Prettier
+
+:::: details ~~这个方案废弃，因为有大佬做了个整合插件，看下面~~
+
+- **安装Prettier**
 
 ```sh
 pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
@@ -54,11 +58,6 @@ pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
 新建`.prettierrc`和`.prettierignore`文件，填入自己喜欢的配置
 
 ::: code-group
-
-```sh
-touch .prettierrc
-touch .prettierignore
-```
 
 ```json [.prettierrc]
 {
@@ -73,21 +72,12 @@ touch .prettierignore
 
 ```ini [.prettierignore]
 node_modules
-android
-ios
-.expo
-.expo-shared
-.vscode
-.idea
+dist
 ```
 
 :::
 
-### 整合`ESLint`和`Prettier`
-
-把`.eslintrc`改成`.eslintrc.js`，并填入以下配置
-
-::: details 查看
+- 把`.eslintrc`改成`.eslintrc.js`，并填入以下配置
 
 ```js
 module.exports = {
@@ -132,7 +122,73 @@ module.exports = {
 }
 ```
 
+::::
+
+:::: tip ✨新方案，直接使用[Nuxt团队的Anthony Fu大佬的eslint-config](https://github.com/antfu/eslint-config)
+
+```sh
+pnpm dlx @antfu/eslint-config@latest
+```
+
+![](../assets/taro/eslint-config.png)
+
+编辑`eslint.config.mjs`
+
+```js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  ignores: ['node_modules', '**/node_modules/**', 'dist', '**/dist/**', '.swc', '**/.swc/**'],
+  formatters: true,
+  typescript: true,
+  react: true,
+})
+```
+
+编辑`package.json`，添加如下内容
+
+```json
+{
+  // ...
+  "scripts": {
+    // ...
+    "lint": "eslint .", // [!code ++]
+    "lint:fix": "eslint . --fix" // [!code ++]
+  }
+}
+```
+
+由于 **Anthony Fu** 大佬的这套`eslint-config`默认禁用`prettier`，如果你想配合`prettier`一起用的话就安装它(_不用的话就跳过_)，然后在根目录新建`.prettierrc`，填入自己喜欢的配置
+
+::: code-group
+
+```sh [terminal]
+pnpm add -D prettier
+```
+
+```json [.prettierrc]
+{
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "semi": false,
+  "tabWidth": 2,
+  "printWidth": 120,
+  "singleQuote": true,
+  "trailingComma": "es5"
+}
+```
+
 :::
+
+接着编辑`.vscode/settings.json`，把`prettier`启用即可
+
+```json
+{
+  "prettier.enable": true // [!code hl]
+  // ...
+}
+```
+
+::::
 
 ## 环境变量
 
@@ -258,7 +314,7 @@ export default defineConfig(async (merge, { command, mode }) => {
 
 ## 助手函数
 
-新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../../encapsulation.md#helper)
+新建`src/libs/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../../encapsulation.md#helper)
 
 ## 请求模块
 
@@ -477,7 +533,7 @@ export default function Profile() {
 
 ### 持久化
 
-新建`src/utils/storage.ts`和`src/models/user.ts`
+新建`src/libs/storage.ts`和`src/models/user.ts`
 
 ::: code-group
 
@@ -520,7 +576,7 @@ import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import createSelectors from './selectors'
-import { zustandStorage, StorageSceneKey } from '../utils'
+import { zustandStorage, StorageSceneKey } from '../libs'
 
 interface State {
   token: string
@@ -565,7 +621,7 @@ export function useUserReset() {
 
 ### ①路由状态
 
-新建`src/models/auth.ts`，用来记录重定向的信息，编辑`src/utils/storage.ts`，增加一个`zustand`持久化场景
+新建`src/models/auth.ts`，用来记录重定向的信息，编辑`src/libs/storage.ts`，增加一个`zustand`持久化场景
 
 ::: code-group
 
@@ -574,7 +630,7 @@ import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import createSelectors from './selectors'
-import { zustandStorage, StorageSceneKey } from '../utils'
+import { zustandStorage, StorageSceneKey } from '../libs'
 
 interface Redirect {
   url: string
@@ -629,7 +685,7 @@ enum StorageSceneKey {
 ```ts
 import Taro from '@tarojs/taro'
 import { useUserStore } from '../models'
-import { utils } from '../utils'
+import { utils } from '../libs'
 
 interface AnyObj {
   [key: string]: any
@@ -897,9 +953,11 @@ export default function Home() {
 
 :::
 
-## UI组件库
+## UI框架
 
-这里选用的是[NutUI-React](https://nutui.jd.com/#/)
+### 使用NutUI-React
+
+详细的文档[看这里](https://nutui.jd.com/#/)
 
 ```sh
 pnpm add @nutui/nutui-react-taro @nutui/icons-react-taro @tarojs/plugin-html
@@ -950,7 +1008,7 @@ export default defineConfig(async (merge, { command, mode }) => {
 })
 ```
 
-### 按需引入
+#### 按需引入
 
 ```sh
 pnpm add -D babel-plugin-import

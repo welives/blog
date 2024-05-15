@@ -47,15 +47,11 @@ pnpm add -D cross-env
 这样就创建好一个以`UmiJS`为脚手架的基础工程了，接下来我们对它做亿点点额外的配置
 :::
 
-### EditorConfig
+### 配置EditorConfig
 
-::: code-group
+新建`.editorconfig`，设置编辑器和 IDE 规范，内容根据自己的喜好或者团队规范
 
-```sh
-touch .editorconfig
-```
-
-```ini [.editorconfig]
+```ini
 # http://editorconfig.org
 root = true
 
@@ -74,94 +70,15 @@ trim_trailing_whitespace = false
 indent_style = tab
 ```
 
-:::
+### 配置ESLint
 
-### Prettier
+#### Umi的方案
 
-详细的文档[看这里](https://umijs.org/docs/guides/generator#prettier-%E9%85%8D%E7%BD%AE%E7%94%9F%E6%88%90%E5%99%A8)
-
-::: tip ⚡
-`prettier-plugin-organize-imports`这个插件的作用是自动移除**没有被使用的导入**，如果不想要这个功能就在`plugins`字段中移除
-:::
+详细文档[看这里](https://umijs.org/docs/guides/lint)
 
 ::: code-group
 
-```sh
-pnpm umi g prettier
-```
-
-```json [.prettierrc]
-{
-  "printWidth": 120,
-  "semi": false,
-  "tabWidth": 2,
-  "singleQuote": true,
-  "trailingComma": "es5",
-  "proseWrap": "never",
-  "overrides": [{ "files": ".prettierrc", "options": { "parser": "json" } }],
-  "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-packagejson"]
-}
-```
-
-```json [.prettierignore]
-node_modules
-.umi
-.umi-production
-.DS_Store
-dist
-.idea
-.vscode
-```
-
-:::
-
-### TailwindCSS
-
-::: code-group
-
-```sh
-pnpm umi g tailwindcss
-```
-
-```js [tailwind.config.js]
-const colors = require('tailwindcss/colors')
-delete colors.lightBlue
-delete colors.warmGray
-delete colors.trueGray
-delete colors.coolGray
-delete colors.blueGray
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    './src/pages/**/*.{jsx,tsx}',
-    './src/components/**/*.{jsx,tsx}',
-    './src/layouts/**/*.{jsx,tsx}',
-  ],
-  theme: {
-    extend: { colors },
-  },
-  corePlugins: {
-    preflight: false,
-  },
-  plugins: [],
-}
-```
-
-```css [tailwind.css]
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-:::
-
-### ESLint
-
-详细的文档[看这里](https://umijs.org/docs/guides/lint)
-
-::: code-group
-
-```sh
+```sh [terminal]
 pnpm add -D @umijs/lint eslint stylelint
 touch .eslintrc.js
 touch .eslintignore
@@ -214,6 +131,135 @@ module.exports = {
 
 :::
 
+#### 社区方案
+
+如果你想用其他的社区方案的话，这里推荐使用[Nuxt团队的Anthony Fu大佬的eslint-config](https://github.com/antfu/eslint-config)
+
+```sh
+pnpm dlx @antfu/eslint-config@latest
+```
+
+![](./assets/umi/eslint-config.png)
+
+编辑`eslint.config.mjs`
+
+```js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  ignores: ['node_modules', '**/node_modules/**', 'dist', '**/dist/**', '.umi', '**/.umi/**'],
+  formatters: true,
+  typescript: true,
+  react: true,
+})
+```
+
+编辑`package.json`，添加如下内容
+
+```json
+{
+  // ...
+  "scripts": {
+    // ...
+    "lint": "eslint .", // [!code ++]
+    "lint:fix": "eslint . --fix" // [!code ++]
+  }
+}
+```
+
+### 配置Prettier
+
+官方脚手架有快速生成`Prettier`配置的指令，详细的文档[看这里](https://umijs.org/docs/guides/generator#prettier-%E9%85%8D%E7%BD%AE%E7%94%9F%E6%88%90%E5%99%A8)
+
+::: tip ⚡提示
+`prettier-plugin-organize-imports`这个插件的作用是**自动移除没有被使用的`import`**，如果不想要这个功能就在`plugins`字段中移除
+:::
+
+::: code-group
+
+```sh [terminal]
+pnpm umi g prettier
+```
+
+```json [.prettierrc]
+{
+  "printWidth": 120,
+  "semi": false,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "proseWrap": "never",
+  "overrides": [{ "files": ".prettierrc", "options": { "parser": "json" } }],
+  "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-packagejson"]
+}
+```
+
+```txt [.prettierignore]
+node_modules
+.umi
+.umi-production
+.DS_Store
+dist
+.idea
+.vscode
+```
+
+:::
+
+::: warning ⚡注意
+如果你的`ESLint`配置使用的是上述社区方案，并且又想同时使用`prettier`的话，需要编辑`.vscode/settings.json`，把`prettier`启用。因为 **Anthony Fu** 大佬的这套`eslint-config`默认禁用`prettier`
+
+```json
+{
+  "prettier.enable": true // [!code hl]
+  // ...
+}
+```
+
+:::
+
+## 安装TailwindCSS
+
+官方脚手架有快速生成`TailwindCSS`配置的指令，详细的文档[看这里](https://umijs.org/docs/guides/generator#tailwind-css-%E9%85%8D%E7%BD%AE%E7%94%9F%E6%88%90%E5%99%A8)
+
+::: code-group
+
+```sh [terminal]
+pnpm umi g tailwindcss
+```
+
+```js [tailwind.config.js]
+const colors = require('tailwindcss/colors')
+delete colors.lightBlue
+delete colors.warmGray
+delete colors.trueGray
+delete colors.coolGray
+delete colors.blueGray
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{jsx,tsx}',
+    './src/components/**/*.{jsx,tsx}',
+    './src/layouts/**/*.{jsx,tsx}',
+  ],
+  theme: {
+    extend: { colors },
+  },
+  corePlugins: {
+    preflight: false,
+  },
+  plugins: [],
+}
+```
+
+```css [tailwind.css]
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+:::
+
 ## 助手函数
 
 新建`src/utils/utils.ts`，封装一些辅助函数，具体代码参考我的[助手函数封装](../encapsulation.md#helper)
@@ -228,7 +274,7 @@ pnpm add -D @umijs/plugins
 
 关于 Umi 插件的详细文档[看这里](https://umijs.org/docs/guides/use-plugins)，Umi 的官方插件列表[看这里](https://github.com/umijs/plugins)
 
-### 数据流
+## 数据流插件
 
 为了拥有良好的开发体验，以`hooks`范式使用和管理全局状态，我们需要启用`@umijs/plugin-model`插件
 
@@ -245,13 +291,13 @@ export default defineConfig({
 })
 ```
 
-#### 示例
+### 示例
 
 数据流插件要求在`src`目录下创建一个`models`目录，该目录下存放需要全局共享的数据
 
 ::: code-group
 
-```sh
+```sh [terminal]
 mkdir src/models
 touch src/models/count.ts
 ```
@@ -309,7 +355,7 @@ export default function DocsPage() {
 
 启动项目查看这个计数器例子，可以看到在`HomePage`页面中修改了`counter`的值后，`DocsPage`页面中也会跟着改变
 
-### 请求
+## 请求插件
 
 编辑`.umirc.ts`或`config/config.ts`
 
@@ -439,7 +485,7 @@ export const request: RequestConfig = {
 
 :::
 
-#### Mock
+### Mock
 
 根目录新建`mock/index.ts`，示例如下，根据自己的情况添加添加接口
 
@@ -461,9 +507,9 @@ import { request } from 'umi'
 request('/api/login', { method: 'POST' })
 ```
 
-## UI库
+## UI框架
 
-### Ant-Design
+### 使用Ant-Design
 
 ```sh
 pnpm add antd @ant-design/icons
@@ -519,7 +565,7 @@ export const layout: RunTimeLayoutConfig = () => {
 }
 ```
 
-### React-Vant
+### 使用React-Vant
 
 ```sh
 pnpm add react react-dom react-vant @react-vant/icons

@@ -14,12 +14,12 @@ head:
 
 [本工程的Github地址](https://github.com/welives/nuxt-starter)
 
-编写此笔记时所使用的`Nuxt`版本为`3.11.2`
+编写此笔记时所使用的`Nuxt.js`版本为`3.11.2`
 :::
 
 ## 相关文档
 
-- [Nuxt3](https://nuxt.com.cn/)
+- [Nuxt.js](https://nuxt.com.cn/)
 - [Pinia](https://pinia.vuejs.org/zh/)
 - [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/)
 - [Shadcn-vue](https://github.com/radix-vue/shadcn-vue)
@@ -34,32 +34,6 @@ head:
 ```sh
 pnpm dlx nuxi init
 ```
-
-::: warning ⚡ 提示
-
-如果安装时报错`Error: Failed to download template from registry: fetch failed`，则给 host 文件添加如下内容
-
-```ini
-# Nuxt3
-185.199.108.133 raw.githubusercontent.com
-185.199.109.133 raw.githubusercontent.com
-185.199.110.133 raw.githubusercontent.com
-185.199.111.133 raw.githubusercontent.com
-```
-
-:::
-
-如果修改 host 还是报错的话，那就去[官方的模板仓库](https://github.com/nuxt/starter) clone 代码，我这里 clone 的是`v3`分支
-
-```sh
-git clone -b v3 --single-branch git@github.com:nuxt/starter.git
-```
-
-接着安装依赖`pnpm install`
-
-::: tip ⚡ 注意
-由于 Nuxt 的官方初始模板缺少了`ESLint`和`Prettier`等配置，所以需要自己手动安装
-:::
 
 :::danger 🥧一步到胃
 **如果你不想尝试一次手动搭建基础模板的过程，那么也可以直接食用[Nuxt团队的Anthony Fu大佬的模板](https://github.com/antfu-collective/vitesse-nuxt3)**
@@ -86,9 +60,13 @@ insert_final_newline = false
 trim_trailing_whitespace = false
 ```
 
-### 安装ESLint和Prettier
+### 配置ESLint和Prettier
 
-::: details ~~这个方案废弃，因为Nuxt官方整了一个ESLint的模块包，看下面~~
+::: warning ⚡ 注意
+由于 Nuxt 的官方初始模板缺少了`ESLint`和`Prettier`等配置，所以需要自己手动安装
+:::
+
+::: details ~~这个方案废弃，因为有大佬做了个整合插件，看下面~~
 
 - **ESLint**
 
@@ -180,12 +158,13 @@ module.exports = {
 
 :::
 
-:::: tip ✨Nuxt安装ESLint的新方案，[官方文档看这里](https://eslint.nuxt.com/packages/module)
+:::: tip ✨新方案，直接使用[Nuxt团队的Anthony Fu大佬的eslint-config](https://github.com/antfu/eslint-config)
 
 ```sh
 pnpm dlx @antfu/eslint-config@latest
-pnpm add -D eslint-plugin-format
 ```
+
+![](./assets/nuxt/eslint-config.png)
 
 编辑`eslint.config.js`和`nuxt.config.ts`
 
@@ -197,6 +176,7 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
   antfu({
+    ignores: ['node_modules', '**/node_modules/**', 'dist', '**/dist/**', '.nuxt', '**/.nuxt/**'],
     formatters: true,
     typescript: true,
     vue: true,
@@ -218,7 +198,26 @@ export default defineNuxtConfig({
 
 :::
 
-Nuxt 官方的这套`eslint-config`是默认禁用`prettier`的，如果你想配合`prettier`一起用的话，就在根目录新建`.prettierrc`，填入自己喜欢的配置
+由于 **Anthony Fu** 大佬的这套`eslint-config`默认禁用`prettier`，如果你想配合`prettier`一起用的话就安装它(_不用的话就跳过_)，然后在根目录新建`.prettierrc`，填入自己喜欢的配置
+
+::: code-group
+
+```sh [terminal]
+pnpm add -D prettier
+```
+
+```json [.prettierrc]
+{
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "semi": false,
+  "tabWidth": 2,
+  "printWidth": 120,
+  "singleQuote": true,
+  "trailingComma": "es5"
+}
+```
+
+:::
 
 接着编辑`.vscode/settings.json`，把`prettier`启用即可
 
@@ -473,6 +472,20 @@ export default {
 }
 ```
 
+### 类排序插件
+
+```sh
+pnpm add -D prettier prettier-plugin-tailwindcss
+```
+
+编辑`.prettierrc`，注册插件
+
+```json
+{
+  "plugins": ["prettier-plugin-tailwindcss"] // [!code ++]
+}
+```
+
 ### debug插件
 
 ```sh
@@ -498,16 +511,34 @@ export default {
 }
 ```
 
+### 设置字体
+
+编辑`tailwind.config.js`
+
+```js
+const { fontFamily } = require('tailwindcss/defaultTheme') // [!code ++]
+/** @type {import('tailwindcss').Config} */
+export default {
+  // ...
+  theme: {
+    // ...
+    extend: {
+      fontFamily: {
+        sans: ['Inter var', 'Inter', ...fontFamily.sans], // [!code ++]
+      },
+    },
+  },
+}
+```
+
 ## UI框架
 
 ### 使用Shadcn
 
 由于`Shadcn`和`TailwindCSS`是绑定在一起的，所以请务必先安装[TailwindCSS](#tailwindcss)
 
-安装好`TailwindCSS`之后执行如下命令
-
 ```sh
-pnpm dlx nuxi@latest module add shadcn-nuxt
+pnpm add -D shadcn-nuxt
 ```
 
 编辑`nuxt.config.ts`，添加如下配置
@@ -525,7 +556,7 @@ export default defineNuxtConfig({
 })
 ```
 
-接着执行命令初始化`Shadcn`
+接着执行命令初始化`Shadcn-vue`
 
 ```sh
 pnpm dlx shadcn-vue@latest init
