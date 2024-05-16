@@ -242,14 +242,14 @@ server {
     listen 80;
     # 设置服务器名称，本地部署时使用localhost
     server_name localhost;
+    # 设置网站根目录位置
+    root /usr/share/nginx/html;
+    # 网站首页
+    index index.html index.htm;
 
     location / {
         # 设置HTTP头部，禁用缓存策略
         add_header Cache-Control no-cache;
-        # 设置网站根目录位置
-        root /usr/share/nginx/html;
-        # 网站首页
-        index index.html;
         # 尝试访问的文件不存在时，重定向到/index.html，支持SPA应用
         try_files $uri $uri/ /index.html;
     }
@@ -258,16 +258,17 @@ server {
     location ^~ /blog/ {
         # 二级路由文件的存储位置
         alias /usr/share/nginx/html/;
-        index index.html;
+        index index.html index.htm;
         try_files $uri $uri/ /blog/index.html;
     }
 }
 ```
 
 ```Dockerfile
-# 阶段一：构建Vitepress应用
+# 阶段一：构建应用
+#
 # 使用官方Node.js 20镜像作为构建环境
-FROM node:20 as builder
+FROM node:20 as build-stage
 # 设置工作目录为/app
 WORKDIR /app
 # 复制项目的package.json和package-lock到工作目录
@@ -277,20 +278,25 @@ RUN npm install -g pnpm --registry=https://registry.npmmirror.com
 RUN pnpm install --registry=https://registry.npmmirror.com
 # 复制项目所有文件到工作目录
 COPY . .
-# 构建Vitepress项目
+# 构建项目
 RUN pnpm run build
 
-# 阶段二：构建Nginx映像并复制Vitepress构建结果
+# 阶段二：构建Nginx镜像部署阶段一的产物
+#
 # 使用官方nginx:latest镜像作为构建环境
-FROM nginx:latest
-# 暴露80端口
-EXPOSE 80
+FROM nginx:latest as deploy-stage
+# 删除ngnix的默认页面
+RUN rm -rf /usr/share/nginx/html/*
 # 删除nginx默认配置
 RUN rm /etc/nginx/conf.d/default.conf
 # 复制自定义nginx配置到容器中
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-# 将阶段一构建的Vitepress应用复制到nginx的服务目录
-COPY --from=builder /app/docs/.vitepress/dist /usr/share/nginx/html
+# 将阶段一构建产物复制到nginx的服务目录
+COPY --from=build-stage /app/docs/.vitepress/dist /usr/share/nginx/html
+# 暴露80端口
+EXPOSE 80
+# 将nginx转为前台进程
+CMD ["nginx", "-g", "daemon off;"]
 ```
 
 ```ini [.dockerignore]
@@ -313,20 +319,20 @@ docs/.vuepress/dist
 location ^~ /blog/ {
   # 二级路由文件的存储位置
   alias /usr/share/nginx/html/;
-  index index.html;
+  index index.html index.htm;
   try_files $uri $uri/ /blog/index.html;
 }
 ```
 
-2. 如果你的Vitepress博客项目没有使用`docs`目录包一层的话，上面的`Dockerfile`最后一步复制构建产物就变成
+2. 如果你的`Vitepress`项目没有使用`docs`目录包裹一层的话，上面`Dockerfile`的复制构建产物到`nginx`的服务目录就变成
 
 ```Dockerfile
-COPY --from=builder /app/.vitepress/dist /usr/share/nginx/html
+COPY --from=build-stage /app/.vitepress/dist /usr/share/nginx/html
 ```
 
 ### 构建镜像
 
-在项目根目录执行如下命令
+这里以构建一个名为`vitepress-app`的镜像为例，在项目根目录执行如下命令
 
 ```sh
 docker build -t vitepress-app .
@@ -334,7 +340,7 @@ docker build -t vitepress-app .
 
 ### 运行容器
 
-用上面构建好的镜像运行一个容器
+用上面构建好的`vitepress-app`镜像运行一个容器
 
 ```sh
 docker run -d -p 3000:80 --name vitepress-blog vitepress-app
@@ -361,13 +367,15 @@ docker rm vitepress-blog
 在项目根目录新建`docker-compose.yml`，具体内容如下
 
 ```yml
-version: '3'
+version: '3.8'
 services:
-  vitepress: #服务名
+  web_app: #服务名
     build: # 使用Dockerfile构建镜像
       context: . # 指定 Dockerfile 所在目录
       dockerfile: Dockerfile # 指定 Dockerfile 文件名
+    image: vitepress-app #镜像名称
     container_name: vitepress-blog # 容器名称
+    restart: always # 自动重启
     ports:
       - 3000:80
 ```

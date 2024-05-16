@@ -1,9 +1,11 @@
-version: "3"
+version: "3.8"
 services:
-  vitepress: #服务名
+  web_app: #服务名
     build: # 使用Dockerfile构建镜像
       context: . # 指定 Dockerfile 所在目录
       dockerfile: Dockerfile # 指定 Dockerfile 文件名
+    image: vitepress-app #镜像名称
     container_name: vitepress-blog # 容器名称
+    restart: always # 自动重启
     ports:
       - 3000:80
