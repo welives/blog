@@ -1,7 +1,7 @@
 import type { DefaultTheme } from 'vitepress'
 export default {
   text: '🍱工程化',
-  collapsed: false,
+  collapsed: true,
   items: [
     {
       text: 'Vue-Cli',

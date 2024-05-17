@@ -26,7 +26,7 @@ UI框架以 Vant 为例
 - [Pinia](https://pinia.vuejs.org/zh/)
 - [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/)
 - [Vant](https://vant-ui.github.io/vant/#/zh-CN)
-- [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TailwindCSS](https://www.tailwindcss.cn/)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)

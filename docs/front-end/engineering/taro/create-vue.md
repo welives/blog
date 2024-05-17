@@ -25,7 +25,7 @@ UI框架以 NutUI-Vue 为例
 - [Pinia](https://pinia.vuejs.org/zh/)
 - [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/)
 - [NutUI-Vue](https://nutui.jd.com/)
-- [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TailwindCSS](https://www.tailwindcss.cn/)
 - [weapp-tailwindcss](https://weapp-tw.icebreaker.top/docs/intro)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)

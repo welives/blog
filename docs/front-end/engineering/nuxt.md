@@ -24,7 +24,8 @@ head:
 - [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/)
 - [Shadcn-vue](https://github.com/radix-vue/shadcn-vue)
 - [Vant](https://vant-ui.github.io/vant/#/zh-CN)
-- [TailwindCSS](https://tailwind.nodejs.cn/)
+- [Iconify](https://iconify.design/)
+- [TailwindCSS](https://www.tailwindcss.cn/)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)
@@ -176,7 +177,16 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
   antfu({
-    ignores: ['node_modules', '**/node_modules/**', 'dist', '**/dist/**', '.nuxt', '**/.nuxt/**'],
+    ignores: [
+      'node_modules',
+      '**/node_modules/**',
+      'dist',
+      '**/dist/**',
+      '.nuxt',
+      '**/.nuxt/**',
+      '.output',
+      '**/.output/**',
+    ],
     formatters: true,
     typescript: true,
     vue: true,
@@ -336,7 +346,7 @@ export default defineNuxtConfig({
 pnpm add -D @nuxtjs/color-mode
 ```
 
-编辑`nuxt.config.ts`，添加如下配置
+编辑`nuxt.config.ts`，注册`@nuxtjs/color-mode`模块
 
 ```ts
 export default defineNuxtConfig({
@@ -353,7 +363,7 @@ export default defineNuxtConfig({
 pnpm add -D @vueuse/nuxt
 ```
 
-编辑`nuxt.config.ts`，添加如下配置
+编辑`nuxt.config.ts`，注册`@vueuse/nuxt`模块
 
 ```ts
 export default defineNuxtConfig({
@@ -370,7 +380,7 @@ export default defineNuxtConfig({
 pnpm add -D @vite-pwa/nuxt
 ```
 
-编辑`nuxt.config.ts`，添加如下配置
+编辑`nuxt.config.ts`，注册`@vite-pwa/nuxt`模块
 
 ```ts
 export default defineNuxtConfig({
@@ -387,7 +397,7 @@ export default defineNuxtConfig({
 pnpm add -D pinia @pinia/nuxt
 ```
 
-编辑`nuxt.config.ts`，在`modules`中增加`@pinia/nuxt`并设置自动导入，指定`stores`目录
+编辑`nuxt.config.ts`，注册`@pinia/nuxt`模块并设置自动导入，同时指定`stores`目录
 
 ```ts
 export default defineNuxtConfig({
@@ -405,7 +415,7 @@ export default defineNuxtConfig({
 pnpm add -D @pinia-plugin-persistedstate/nuxt
 ```
 
-编辑`nuxt.config.ts`，添加如下配置
+编辑`nuxt.config.ts`，注册`@pinia-plugin-persistedstate/nuxt`模块
 
 ```ts
 export default defineNuxtConfig({
@@ -422,7 +432,7 @@ export default defineNuxtConfig({
 pnpm add -D @nuxtjs/tailwindcss
 ```
 
-编辑`nuxt.config.ts`，添加如下配置
+编辑`nuxt.config.ts`，注册`@nuxtjs/tailwindcss`模块
 
 ```ts
 export default defineNuxtConfig({
@@ -461,12 +471,12 @@ export default {
     './layouts/**/*.{vue,jsx,tsx}',
     './pages/**/*.{vue,jsx,tsx}',
     './plugins/**/*.{js,ts}',
-    './lib/**/*.{js,ts}',
+    './libs/**/*.{js,ts}',
     './app.{vue,jsx,tsx}',
     './nuxt.config.{js,ts}',
   ],
   corePlugins: {
-    preflight: false,
+    preflight: true,
   },
   plugins: [],
 }
@@ -504,7 +514,6 @@ export default {
       ignore: ['dark'],
     },
   },
-
   plugins: [
     process.env.NODE_ENV === 'development' && require('tailwindcss-debug-screens'), // [!code ++]
   ],
@@ -531,7 +540,77 @@ export default {
 }
 ```
 
+## Iconify图标
+
+这里以`tailwind`使用`lucide`图标集为例
+
+```sh
+pnpm add -D @iconify/tailwind @iconify-json/lucide
+```
+
+编辑`tailwind.config.js`，注册插件
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  // ...
+  plugins: [
+    // ...
+    require('@iconify/tailwind').addDynamicIconSelectors(), // [!code ++]
+  ],
+}
+```
+
+在页面中的使用方式有如下两种
+
+```vue
+<template>
+  <span class="icon-[lucide--contrast]"></span>
+  <span class="i-lucide-contrast"></span>
+</template>
+```
+
+封装成组件的话，可以参考如下
+
+```vue
+<script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
+import { cn } from '../libs'
+interface Props {
+  name: string
+  class?: HTMLAttributes['class']
+}
+defineOptions({
+  name: 'Iconify',
+})
+const props = defineProps<Props>()
+</script>
+
+<template>
+  <span :class="cn(props.name, props.class)"></span>
+</template>
+```
+
 ## UI框架
+
+### 使用NuxtUI
+
+```sh
+pnpm add -D @nuxt/ui
+```
+
+编辑`nuxt.config.ts`，注册`@nuxt/ui`模块。由于`@nuxt/ui`内置且自动加载`@nuxtjs/tailwindcss`和`@nuxtjs/color-mode`模块，所以这两个可以移除掉了
+
+```ts{6-9}
+export default defineNuxtConfig({
+  modules: [
+    // ...
+    '@nuxt/ui', // [!code ++]
+    '@nuxtjs/tailwindcss', // [!code --]
+    '@nuxtjs/color-mode', // [!code --]
+  ],
+})
+```
 
 ### 使用Shadcn
 
@@ -541,7 +620,7 @@ export default {
 pnpm add -D shadcn-nuxt
 ```
 
-编辑`nuxt.config.ts`，添加如下配置
+编辑`nuxt.config.ts`，注册`shadcn-nuxt`模块
 
 ```ts{6-9}
 export default defineNuxtConfig({
@@ -570,7 +649,7 @@ pnpm dlx shadcn-vue@latest init
 pnpm add -D vant @vant/nuxt
 ```
 
-编辑`nuxt.config.ts`，在`modules`中增加`@vant/nuxt`并设置懒加载
+编辑`nuxt.config.ts`，注册`@vant/nuxt`模块并设置懒加载
 
 ```ts
 export default defineNuxtConfig({
@@ -590,7 +669,7 @@ export default defineNuxtConfig({
 pnpm add -D postcss-px-to-viewport-8-plugin
 ```
 
-::: warning ⚡
+::: warning ⚡注意
 由于`Vant`使用的设计稿宽度是`375`，而通常情况下，设计师使用的设计稿宽度更多是`750`，那么`Vant`组件在`750`设计稿下会出现样式缩小的问题
 
 解决方案: 当读取的`node_modules`文件是`vant`时，那么就将设计稿宽度变为`375`，读取的文件不是`vant`时，就将设计稿宽度变为`750`
@@ -619,3 +698,96 @@ export default defineNuxtConfig({
 ::: tip 🔔
 如果通过`exclude: [/node_modules\/vant/i]`直接忽略`Vant`的话，那么`viewportWidth`则可以直接给个固定的值而不是传入函数进行处理
 :::
+
+## Docker本地部署
+
+项目根目录新建`Dockerfile`、`docker-compose.yml`、`.dockerignore`和`nginx.conf`，居体内容参考如下
+
+::: code-group
+
+```Dockerfile
+# 阶段一：构建应用
+#
+# 使用官方Node.js 20镜像作为构建环境
+FROM node:20 as build-stage
+# 设置工作目录为/app
+WORKDIR /app
+# 复制项目的package.json和package-lock到工作目录
+COPY package.json package-lock.* ./
+# 安装项目依赖，使用中国镜像加速
+RUN npm install -g pnpm --registry=https://registry.npmmirror.com
+RUN pnpm install --registry=https://registry.npmmirror.com
+# 复制项目所有文件到工作目录
+COPY . .
+# 构建项目
+RUN pnpm run build && pnpm run generate
+
+# 阶段二：构建Nginx镜像部署阶段一的产物
+#
+# 使用官方nginx:latest镜像作为构建环境
+FROM nginx:latest as deploy-stage
+# 删除ngnix的默认页面
+RUN rm -rf /usr/share/nginx/html/*
+# 删除nginx默认配置
+RUN rm /etc/nginx/conf.d/default.conf
+# 复制自定义nginx配置到容器中
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+# 将阶段一构建产物复制到nginx的服务目录
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+# 暴露80端口
+EXPOSE 80
+# 将nginx转为前台进程
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+```yml [docker-compose.yml]
+version: '3.8'
+services:
+  web_app: #服务名
+    build: # 使用Dockerfile构建镜像
+      context: . # 指定 Dockerfile 所在目录
+      dockerfile: Dockerfile # 指定 Dockerfile 文件名
+    image: nuxt-app # 镜像名称
+    container_name: nuxt-app # 容器名称
+    restart: always # 自动重启
+    ports:
+      - 5000:80
+```
+
+```txt [.dockerignore]
+node_modules
+dist
+.git
+.nuxt
+.output
+README.md
+```
+
+```nginx [nginx.conf]
+server {
+    listen 80;
+    # 设置服务器名称，本地部署时使用localhost
+    server_name localhost;
+    # 设置网站根目录位置
+    root /usr/share/nginx/html;
+    # 网站首页
+    index index.html index.htm;
+
+    error_page 404 /404.html;
+    location / {
+        # 设置HTTP头部，禁用缓存策略
+        add_header Cache-Control no-cache;
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
+
+:::
+
+### docker-compose一键部署
+
+```sh
+docker-compose up --build -d
+```
+
+在宿主机浏览器中访问`http://localhost:5000`

@@ -1,7 +1,7 @@
 import type { DefaultTheme } from 'vitepress'
 export default {
   text: '🌶Flutter',
-  collapsed: false,
+  collapsed: true,
   items: [
     {
       text: 'Dart基础',

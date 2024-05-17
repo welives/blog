@@ -9,6 +9,10 @@ export default {
       link: '/front-end/package',
     },
     {
+      text: '常用工具封装',
+      link: '/front-end/encapsulation',
+    },
+    {
       text: 'CSS',
       collapsed: true,
       items: [
@@ -27,10 +31,6 @@ export default {
         {
           text: '线性渐变',
           link: '/front-end/css/linear-gradient',
-        },
-        {
-          text: 'TailwindCSS',
-          link: '/front-end/css/tailwindcss',
         },
         {
           text: '奇技淫巧',
@@ -155,10 +155,6 @@ export default {
           link: '/front-end/react/basic',
         },
       ],
-    },
-    {
-      text: '常用工具封装',
-      link: '/front-end/encapsulation',
     },
     {
       text: '一些Demo',

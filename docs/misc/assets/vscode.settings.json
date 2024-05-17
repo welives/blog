@@ -19,7 +19,6 @@
   "workbench.list.smoothScrolling": true,
   "workbench.preferredDarkColorTheme": "Dracula",
   "workbench.preferredLightColorTheme": "Dracula Soft",
-  "workbench.productIconTheme": "icons-carbon",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tree.indent": 10,
@@ -317,6 +316,7 @@
     "plaintext": "html"
   },
   "tailwindCSS.experimental.classRegex": ["tw`([^`]*)", ["tw.style\\(([^)]*)\\)", "'([^']*)'"]],
+  "vue.server.hybridMode": false, // 解决vue的代码提示出现两次的问题
 
   // ========== 格式化关联配置 ==========
   "[css]": {
@@ -326,6 +326,9 @@
   "[html]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
   },
   "[javascript]": {
     "editor.formatOnSave": true,

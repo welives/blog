@@ -23,7 +23,7 @@ UI框架以`Ant-Design`为例
 
 - [UmiJS](https://umijs.org/)
 - [AntDesign](https://ant-design.antgroup.com/index-cn)
-- [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TailwindCSS](https://www.tailwindcss.cn/)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)

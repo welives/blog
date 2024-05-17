@@ -28,7 +28,7 @@ UI框架以 Vant 为例
 - [vuex-composition-helpers](https://github.com/greenpress/vuex-composition-helpers#readme)
 - [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate)
 - [Vant](https://vant-contrib.gitee.io/vant/v2/#/zh-CN/)
-- [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TailwindCSS](https://www.tailwindcss.cn/)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)

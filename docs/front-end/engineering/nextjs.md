@@ -22,7 +22,7 @@ head:
 - [Next.js](https://www.nextjs.cn/)
 - [shadcn](https://www.shadcn.com.cn/)
 - [React-Vant](https://react-vant.3lang.dev/)
-- [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TailwindCSS](https://www.tailwindcss.cn/)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)
 - [Prettier](https://prettier.nodejs.cn/)

@@ -25,7 +25,7 @@ head:
 - [Zustand](https://zustand-demo.pmnd.rs/)
 - [immer](https://immerjs.github.io/immer/)
 - [react-native-mmkv](https://github.com/mrousavy/react-native-mmkv#readme)
-- [TailwindCSS](https://tailwind.nodejs.cn/)
+- [TailwindCSS](https://www.tailwindcss.cn/)
 - [twrnc](https://github.com/jaredh159/tailwind-react-native-classnames)
 - [TypeScript](https://www.tslang.cn/)
 - [ESLint](https://eslint.nodejs.cn/)

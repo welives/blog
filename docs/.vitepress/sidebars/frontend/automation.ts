@@ -1,7 +1,7 @@
 import type { DefaultTheme } from 'vitepress'
 export default {
   text: '🍈自动化',
-  collapsed: false,
+  collapsed: true,
   items: [
     {
       text: 'Selenium',
