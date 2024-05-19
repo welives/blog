@@ -218,18 +218,9 @@ npx tailwindcss init -p
 编辑生成的`tailwind.config.js`
 
 ```js
-const colors = require('tailwindcss/colors')
-delete colors.lightBlue
-delete colors.warmGray
-delete colors.trueGray
-delete colors.coolGray
-delete colors.blueGray
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./public/index.html', './src/**/*.{html,vue,js,ts,jsx,tsx}'], // [!code focus]
-  theme: {
-    extend: { colors }, // [!code focus]
-  },
   // [!code focus:4]
   corePlugins: {
     preflight: false,

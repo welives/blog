@@ -44,3 +44,32 @@ head:
   高度自动的过渡效果</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
+
+## 图片高度占位
+
+### grid布局
+
+<iframe src="/blog/demo/图片高度占位/grid.html" title="grid布局图片高度占位" height="600" width="100%" scrolling="auto" frameborder="0"></iframe>
+
+### flex流式布局
+
+三列布局
+
+```css
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 1rem;
+}
+.flex:nth-child(3n + 3) {
+  margin-right: 0;
+}
+.f-child {
+  width: calc((100% - 2rem) / 3);
+  box-sizing: border-box;
+}
+```
+
+<iframe src="/blog/demo/图片高度占位/flex.html" title="flex流式布局图片高度占位" height="600" width="100%" scrolling="auto" frameborder="0"></iframe>

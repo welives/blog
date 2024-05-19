@@ -184,6 +184,8 @@ TailwindCSS 中的`space-*`是利用`margin`属性在父元素中为子元素设
 
 TailwindCSS 中的`ring-*`是利用`box-shadow`创建带有环绕轮廓效果的边框，并不是`outline`或`border`
 
+常见的使用场景是给元素描边
+
 例如
 
 ```

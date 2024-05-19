@@ -22,6 +22,7 @@ head:
 - [Nuxt.js](https://nuxt.com.cn/)
 - [Pinia](https://pinia.vuejs.org/zh/)
 - [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/)
+- [NuxtUI](https://ui.nuxt.com/)
 - [Shadcn-vue](https://github.com/radix-vue/shadcn-vue)
 - [Vant](https://vant-ui.github.io/vant/#/zh-CN)
 - [Iconify](https://iconify.design/)
@@ -701,7 +702,7 @@ export default defineNuxtConfig({
 
 ## Docker本地部署
 
-项目根目录新建`Dockerfile`、`docker-compose.yml`、`.dockerignore`和`nginx.conf`，居体内容参考如下
+项目根目录新建`Dockerfile`、`docker-compose.yml`、`.dockerignore`和`nginx.conf`，具体内容参考如下
 
 ::: code-group
 

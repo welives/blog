@@ -312,10 +312,16 @@
   "stylelint.enable": true,
   "stylelint.validate": ["css", "less", "postcss", "scss", "sass", "vue"],
   "svg.preview.mode": "svg",
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "ui"],
   "tailwindCSS.includeLanguages": {
     "plaintext": "html"
   },
-  "tailwindCSS.experimental.classRegex": ["tw`([^`]*)", ["tw.style\\(([^)]*)\\)", "'([^']*)'"]],
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)",
+    ["tw.style\\(([^)]*)\\)", "'([^']*)'"],
+    ["ui:\\s*{([^)]*)\\s*}", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["/\\*\\s?ui\\s?\\*/\\s*{([^;]*)}", ":\\s*[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
   "vue.server.hybridMode": false, // 解决vue的代码提示出现两次的问题
 
   // ========== 格式化关联配置 ==========
@@ -328,6 +334,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[vue]": {
+    "editor.formatOnSave": true,
     "editor.defaultFormatter": "Vue.volar"
   },
   "[javascript]": {

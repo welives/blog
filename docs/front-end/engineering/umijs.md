@@ -229,12 +229,6 @@ pnpm umi g tailwindcss
 ```
 
 ```js [tailwind.config.js]
-const colors = require('tailwindcss/colors')
-delete colors.lightBlue
-delete colors.warmGray
-delete colors.trueGray
-delete colors.coolGray
-delete colors.blueGray
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -242,11 +236,8 @@ module.exports = {
     './src/components/**/*.{jsx,tsx}',
     './src/layouts/**/*.{jsx,tsx}',
   ],
-  theme: {
-    extend: { colors },
-  },
   corePlugins: {
-    preflight: false,
+    preflight: true,
   },
   plugins: [],
 }
