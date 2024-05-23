@@ -29,6 +29,16 @@ head:
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
+## 不占用空间的边框
+
+<div style="display:flex;justify-content:center;align-items:center;width:200px;height:40px;border-radius:5px;box-shadow: inset 0 0 0 1px rgb(167 139 250);">
+利用shadow实现
+</div>
+
+```css
+box-shadow: inset 0 0 0 1px rgb(167 139 250);
+```
+
 ## 文字排列方向
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="诗歌排列" src="https://codepen.io/welives/embed/poqbYgN?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">

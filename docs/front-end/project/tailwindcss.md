@@ -167,6 +167,12 @@ bg-gradient-to-目标点 [from-颜色] [via-颜色] [to-颜色]
 bg-gradient-to-b from-cyan-500 via-pink-500 to-blue-500
 ```
 
+## 匹配子元素
+
+```
+[&>*]:mx-auto
+```
+
 ## 子元素间距
 
 - **space-x-\***：水平间距，例如`space-x-2`
@@ -190,4 +196,64 @@ TailwindCSS 中的`ring-*`是利用`box-shadow`创建带有环绕轮廓效果的
 
 ```
 ring ring-slate-100
+```
+
+## 夜间模式在Vue中的写法
+
+在`scoped`中使用`@apply`指令可以正确解析`dark:`这个主题断点
+
+当然，也可以使用传统的css权重写法来匹配主题类
+
+::: code-group
+
+```vue [使用@apply解析断点]
+<template>
+  <div class="test">
+    <slot />
+  </div>
+</template>
+
+<style scoped>
+.test {
+  @apply border border-[#ddd] text-gray-800 dark:border-[#333] dark:text-gray-100;
+}
+</style>
+```
+
+```vue [传统css权重写法]
+<template>
+  <div class="test">
+    <slot />
+  </div>
+</template>
+
+<style scoped>
+.test {
+  @apply border border-[#ddd] text-gray-800;
+}
+.dark .test {
+  @apply border-[#333] text-gray-100;
+}
+</style>
+```
+
+:::
+
+而在`css-module`中，`@apply`指令无法解析类似`dark:`这类主题断点，必须使用`:global`来匹配主题类
+
+```vue
+<template>
+  <div :class="$style.test">
+    <slot />
+  </div>
+</template>
+
+<style module>
+.test {
+  @apply border border-[#ddd] text-gray-800;
+}
+:global(.dark) .test {
+  @apply border-[#333] text-gray-100;
+}
+</style>
 ```

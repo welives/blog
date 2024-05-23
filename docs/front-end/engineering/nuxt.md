@@ -471,8 +471,7 @@ export default {
     './components/**/*.{vue,jsx,tsx}',
     './layouts/**/*.{vue,jsx,tsx}',
     './pages/**/*.{vue,jsx,tsx}',
-    './plugins/**/*.{js,ts}',
-    './libs/**/*.{js,ts}',
+    './stores/**/*.{js,ts}',
     './app.{vue,jsx,tsx}',
     './nuxt.config.{js,ts}',
   ],
@@ -584,7 +583,9 @@ interface Props {
 defineOptions({
   name: 'Iconify',
 })
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  class: 'w-5 h-5',
+})
 </script>
 
 <template>
