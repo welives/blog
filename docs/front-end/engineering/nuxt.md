@@ -398,7 +398,7 @@ export default defineNuxtConfig({
 pnpm add -D pinia @pinia/nuxt
 ```
 
-编辑`nuxt.config.ts`，注册`@pinia/nuxt`模块并设置自动导入，同时指定`stores`目录
+编辑`nuxt.config.ts`，注册`@pinia/nuxt`模块并设置自动导入，同时指定`store`目录
 
 ```ts
 export default defineNuxtConfig({
@@ -406,7 +406,7 @@ export default defineNuxtConfig({
     // ...
     ['@pinia/nuxt', { autoImports: ['defineStore'] }], // [!code ++]
   ],
-  imports: { dirs: ['./stores'] }, // [!code ++]
+  imports: { dirs: ['./store'] }, // [!code ++]
 })
 ```
 
@@ -471,7 +471,8 @@ export default {
     './components/**/*.{vue,jsx,tsx}',
     './layouts/**/*.{vue,jsx,tsx}',
     './pages/**/*.{vue,jsx,tsx}',
-    './stores/**/*.{js,ts}',
+    './store/**/*.{js,ts}',
+    './plugins/**/*.{js,ts}',
     './app.{vue,jsx,tsx}',
     './nuxt.config.{js,ts}',
   ],

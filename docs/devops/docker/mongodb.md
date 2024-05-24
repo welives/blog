@@ -19,18 +19,36 @@ docker pull mongo
 
 ## 创建MongoDB容器
 
+### 无账号
+
 ```sh
-docker run -dit -p 27017:27017 --name MongoDB mongo --auth
+docker run -d -p 27017:27017 --name my-mongo mongo
+```
+
+这样就创建好一个免验证的MongoDB服务了，可以通过`mongodb://localhost:27017`来连接数据库
+
+### 需要账号
+
+```sh
+docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=123456 --name my-mongo mongo --auth
 ```
 
 ::: tip 提示
+环境变量`MONGO_INITDB_ROOT_USERNAME`和`MONGO_INITDB_ROOT_PASSWORD`用来设置初始的默认账号和密码
+
 `--auth`的意思是需要密码才能访问容器服务，因为 MongoDB 默认是不开启权限验证的，这里就相当于修改了 MongoDB 的配置`auth=ture`启用权限访问
 :::
+
+或者先不设置账号密码，过后通过命令行进行设置
+
+```sh
+docker run -dit -p 27017:27017 --name my-mongo mongo --auth
+```
 
 进入容器，连接`admin`数据库
 
 ```sh
-docker exec -it MongoDB mongosh admin
+docker exec -it my-mongo mongosh admin
 ```
 
 创建`root`用户并授权登录
