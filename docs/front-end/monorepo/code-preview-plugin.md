@@ -50,13 +50,13 @@ head:
 - `sequential`：如果多个插件实现了此钩子，则所有插件都将按照指定的插件顺序运行。如果某个钩子是 `async`，则此类后续钩子将等待，直到当前钩子被解析
 - `parallel`：如果多个插件实现了此钩子，则所有插件都将按照指定的插件顺序运行。 如果一个钩子是 `async`，则后续的此类钩子将并行运行，而不等待当前的钩子
 
-![](./assets/rollup-lifecycle.png)
+![](./assets/code-preview/rollup-lifecycle.png)
 
 ## 项目初始化
 
 ::: code-group
 
-```sh [init]
+```sh [terminal]
 # 创建项目的根目录
 mkdir code-preview && cd code-preview
 git init
@@ -112,7 +112,7 @@ indent_style = tab
 
 ### pnpm初始化
 
-```sh
+```sh [terminal]
 pnpm init
 # 声明工作空间
 touch pnpm-workspace.yaml
@@ -151,7 +151,7 @@ packages:
 
 ::: code-group
 
-```sh
+```sh [terminal]
 pnpm add -wD typescript @types/node
 npx tsc --init
 ```
@@ -297,7 +297,7 @@ pnpm add -D vitepress --filter ./docs
 pnpm vitepress init
 ```
 
-![](./assets/vitepress-init.png)
+![](./assets/code-preview/vitepress-init.png)
 
 ### TS配置
 
@@ -576,10 +576,10 @@ const componentProps = {
 - 新建`packages/container/style/transition.css`
 - 记得在`packages/container/style/index.css`中导入`transition.css`
 
-::: details 查看
+:::: details 查看
 ::: code-group
 
-<<< ./assets/useNamespace.ts
+<<< ./assets/code-preview/useNamespace.ts
 
 ```vue [CollapseTransition.vue]
 <template>
@@ -665,7 +665,7 @@ const on = {
 </script>
 ```
 
-<<< ./assets/transition.css
+<<< ./assets/code-preview/transition.css
 
 ```css [index.css]
 @import './transition.css';
@@ -673,6 +673,7 @@ const on = {
 ```
 
 :::
+::::
 
 ### 容器组件本体
 
@@ -1084,7 +1085,7 @@ const title = ref('this is basic demo')
 
 通过观察发现，`tokens`流是个对象数组，对象中的`type`值为`container_demo_open`且`nesting`为`1`时代表我们的自定义容器的开始标签；`type`值为`fence`的时候就是容器内部的代码块
 
-![](./assets/markdown-debug-1.png)
+![](./assets/code-preview/markdown-debug-1.png)
 
 新建`docs/examples/Input.vue`，在里面随便写点vue的代码
 
@@ -1097,7 +1098,7 @@ const title = ref('this is basic demo')
 
 观察一下终端的输出可以看到，这次输出的`tokens`中没有`type`值为`fence`的节点数据了
 
-![](./assets/markdown-debug-2.png)
+![](./assets/code-preview/markdown-debug-2.png)
 
 了解以上这些规律后，我们就可以来补全`markdown`插件的代码了
 
@@ -1258,7 +1259,7 @@ export default defineConfig({
 ::: tip 其中`id`就是 markdown 文件的路径，`code`就是 markdown 文件的内容
 :::
 
-![](./assets/transform-debug-1.png)
+![](./assets/code-preview/transform-debug-1.png)
 
 知道了这些信息后，我们就可以开始着手编写解析 markdown 文件内容的逻辑了
 
@@ -1311,7 +1312,7 @@ export function viteDemoPreviewPlugin(): Plugin {
 
 可以看到，`remark`解析后的结果是一个虚拟文件对象，它是从`mdast`抽象语法树转换得来，里面包含了 markdown 文件中的所有内容，包括元信息、代码块
 
-![](./assets/transform-debug-2.png)
+![](./assets/code-preview/transform-debug-2.png)
 
 那么，如何从`mdast`抽象语法树中获取成我们想要的代码并转换成组件呢？答案就是`remark`的插件机制
 
@@ -1340,7 +1341,7 @@ export async function markdownToComponent(code: string, id: string, root: string
 
 可以看到，这次输出的是`mdast`抽象语法树结构的数据了
 
-![](./assets/transform-debug-3.png)
+![](./assets/code-preview/transform-debug-3.png)
 
 我们再改造一下自定义的`remark`插件方法，对`mdast`抽象语法树进行遍历一下
 
@@ -1364,7 +1365,7 @@ const parsed = await unified()
 - 如果是引入文件的情况，`:::demo`后面会带有`src=xxx`之类的内容，可以使用正则表达式提取出来
 - 如果 markdown 中直接插入 html 标签的话，节点数据中的`type`值为`html`，而`value`就是这个标签对的内容(含标签)
 
-![](./assets/transform-debug-4.png)
+![](./assets/code-preview/transform-debug-4.png)
 
 得到以上规律后，我们来补全一下`markdownToComponent`函数的逻辑
 
@@ -1520,7 +1521,7 @@ export const cacheFile = new Map<string, string[]>()
 - `Virtual-${hashKey}`追加到`:::demo`的后面是为了给 markdown 渲染时用的，它在渲染成`VNode`时表示虚拟组件的插入点
 - 当使用引入文件的模式时，`cacheFile`这个`Map`对象是用来保存每个 markdown 文件所引用到的文件，手动管理 HMR 更新时需要用到
 
-![](./assets/virtual-module.png)
+![](./assets/code-preview/virtual-module.png)
 
 :::
 
@@ -1544,7 +1545,7 @@ export function viteDemoPreviewPlugin(): Plugin {
 
 这时，示例项目应该会出现类似下面这样的错误
 
-![](./assets/transform-error.png)
+![](./assets/code-preview/transform-error.png)
 
 不要慌，这是因为之前的 markdown 插件中的`createDemoContainer`函数中的正则表达式还没有处理`Virtual-${hashKey}`的情况，也就是上文提到的 markdown 渲染成`VNode`时虚拟组件的插入点
 
@@ -1576,7 +1577,7 @@ function createDemoContainer(md: MarkdownIt, options: PreviewPluginOptions) {
 
 这是因为 Vite 插件`viteDemoPreviewPlugin`中缺少了`resolveId`和`load`钩子函数，其中`resolveId`用来识别指定的虚拟模块，`load`用来加载被识别到的指定虚拟模块
 
-![](./assets/resolveId-error.png)
+![](./assets/code-preview/resolveId-error.png)
 
 编辑`viteDemoPreviewPlugin`函数，补上这两个钩子
 
@@ -1607,7 +1608,7 @@ export function viteDemoPreviewPlugin(): Plugin {
 
 这回好了，没有报错，但是页面没有显示`demo`内嵌代码模式的示例，咋回事？
 
-![](./assets/before-container-register.png)
+![](./assets/code-preview/before-container-register.png)
 
 因为我们还没在 VitePress 中注册之前编写好的`container`容器组件
 
@@ -1629,7 +1630,7 @@ export default {
 
 刷新页面，这回可以看到示例项目已经正确的渲染出来了
 
-![](./assets/after-container-register.png)
+![](./assets/code-preview/after-container-register.png)
 
 但是此时修改示例代码还不会触发重新渲染，而修改 markdown 文件虽然会触发 Vite 默认的 `HMR`，但不会重新加载虚拟模块。这是因为之前加载虚拟模块的代码是发生在`load`钩子中的，而此钩子在编译阶段成功加载到数据后就不会重复加载了，所以此时虚拟模块的代码还是旧的
 
@@ -2005,29 +2006,29 @@ pnpm changeset init
 }
 ```
 
-执行`pnpm changeset`，构建日志信息
+生成日志的步骤：执行`pnpm changeset`，构建日志信息
 
-- 首先是让你选择哪些项目需要生成更新信息
+- ①首先是让你选择哪些项目需要生成更新信息
 
-![](./assets/update-log-setup-1.png)
+![](./assets/code-preview/update-log-setup-1.png)
 
-- 这一步是让你选择哪些项目需要进行`major`级别(_就是主版本号更新_)的更新，如果不需要则按回车跳过
+- ②这一步是让你选择哪些项目需要进行`major`级别(_就是主版本号更新_)的更新，如果不需要则按回车跳过
 
-![](./assets/update-log-setup-2.png)
+![](./assets/code-preview/update-log-setup-2.png)
 
-- 这一步是让你选择哪些项目需要进行`minor`级别(_就是次版本号更新_)的更新，如果不需要则按回车跳过
+- ③这一步是让你选择哪些项目需要进行`minor`级别(_就是次版本号更新_)的更新，如果不需要则按回车跳过
 
-![](./assets/update-log-setup-3.png)
+![](./assets/code-preview/update-log-setup-3.png)
 
-- 如果前两个选择都跳过了，那么直接就是`patch`级别(_就是补丁版本号更新_)的更新了，会让你输入更新信息
+- ④如果前两个选择都跳过了，那么直接就是`patch`级别(_就是补丁版本号更新_)的更新了，会让你输入更新信息
 
-![](./assets/update-log-setup-4.png)
+![](./assets/code-preview/update-log-setup-4.png)
 
-- 最后一步是让你确认操作是否没问题，没问题的话按回车同意会生成更新文件等待应用
+- ⑤最后一步是让你确认操作是否没问题，没问题的话按回车同意会生成更新文件等待应用
 
-![](./assets/update-log-setup-5.png)
+![](./assets/code-preview/update-log-setup-5.png)
 
-执行`pnpm changeset-version` 应用更新信息
+- ⑥执行`pnpm changeset-version` 应用更新信息
 
 ## 在终端登录npm账号
 
@@ -2041,10 +2042,10 @@ pnpm changeset init
 npm login
 ```
 
-![](./assets/npm-login.png)
+![](./assets/code-preview/npm-login.png)
 
 ::: warning ⚡ 提示
-![](./assets/npm-login-error.png)
+![](./assets/code-preview/npm-login-error.png)
 
 如果提示你打开浏览器进行操作的话，那么需要对 nodejs 进行降级处理，这里以降级到`16.19.0`版本为例。
 
@@ -2067,7 +2068,7 @@ nvm use 16.19.0
 
 如果不存在命名空间，你可以自己创建一个。去 npm 官网登录你的账号，在个人设置页可以找到创建入口
 
-![](./assets/npm-organizations.png)
+![](./assets/code-preview/npm-organizations.png)
 
 创建完毕后执行`pnpm publish --access public`
 
