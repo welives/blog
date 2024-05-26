@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>条纹进度条</title>
+    <style>
+      :root {
+        --bg-color: #f1f1f1;
+        --main-color: #fff;
+        --light-color: #ff0000;
+        --shadow-color: rgba(255, 0, 0, 0.15);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        user-select: none;
+        list-style-type: none;
+      }
+      html,
+      body {
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--bg-color);
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      .stripe {
+        width: 50%;
+        height: 10vh;
+        position: relative;
+        background-color: var(--main-color);
+        border: 1px solid var(--main-color);
+        box-shadow: 1vw 3vh 10vh var(--shadow-color);
+        border-radius: 10px;
+        background-size: 5rem 5rem;
+        background-image: repeating-linear-gradient(
+          -45deg,
+          transparent 0 25%,
+          var(--light-color) 25% 50%
+        );
+        animation: stripe-animation 1s infinite linear;
+        -o-animation: stripe-animation 1s infinite linear;
+        -webkit-animation: stripe-animation 1s infinite linear;
+        -moz-animation: stripe-animation 1s infinite linear;
+      }
+      .stripe::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        border-radius: 10px;
+        background-image: linear-gradient(
+          var(--main-color) 0,
+          transparent 30%,
+          transparent 70%,
+          var(--main-color) 100%
+        );
+      }
+
+      @keyframes stripe-animation {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 5rem 0;
+        }
+      }
+      @-o-keyframes stripe-animation {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 5rem 0;
+        }
+      }
+      @-webkit-keyframes stripe-animation {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 5rem 0;
+        }
+      }
+      @-moz-keyframes stripe-animation {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 5rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="stripe"></div>
+    </div>
+  </body>
+</html>

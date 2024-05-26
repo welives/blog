@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grid布局图片高度占位</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #fff;
+        font-size: 16px;
+      }
+      .wrap {
+        margin: 2rem auto;
+        max-width: 1000px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .g-child {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: #f0f0f0;
+        overflow: hidden;
+        border: #ddd solid 1px;
+        border-radius: 5px;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+      }
+      .g-child:hover {
+        border-color: rgb(167 139 250);
+      }
+      .g-child .desc {
+        padding: 1rem;
+        text-align: left;
+      }
+      .g-child .desc h6 {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
+      .g-child .desc p {
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        color: #333;
+      }
+      .g-child .cover {
+        position: relative;
+        overflow: hidden;
+        font-size: 0px;
+      }
+      .cover img {
+        width: 100%;
+        object-fit: cover;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+      .cover:hover img {
+        opacity: 1;
+        padding: 1px;
+      }
+      /* 使用padding进行占位 */
+      .with-padding::after {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: calc((9 / 16) * 100%);
+      }
+      .with-padding img {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      /* 使用CSS3新特性进行占位 */
+      .with-aspect-ratio img {
+        aspect-ratio: 16 / 9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="grid">
+        <div class="g-child">
+          <div class="cover with-padding">
+            <img src="http://unsplash.it/g/800/600?random" alt="cover" />
+          </div>
+          <div class="desc">
+            <h6>padding占位</h6>
+            <p>实现方式为图片父容器通过伪元素设置padding-top的百分比,然后给图片绝对定位撑满容器</p>
+          </div>
+        </div>
+        <div class="g-child">
+          <div class="cover with-aspect-ratio">
+            <img src="http://unsplash.it/g/800/600?random" alt="cover" />
+          </div>
+          <div class="desc">
+            <h6>aspect-ratio占位</h6>
+            <p>通过CSS3的新特性aspect-ratio进行占位</p>
+          </div>
+        </div>
+        <div class="g-child">
+          <div class="cover with-padding">
+            <img src="http://unsplash.it/g/800/600?random" alt="cover" />
+          </div>
+          <div class="desc">
+            <h6>padding占位</h6>
+            <p>实现方式为图片父容器通过伪元素设置padding-top的百分比,然后给图片绝对定位撑满容器</p>
+          </div>
+        </div>
+        <div class="g-child">
+          <div class="cover with-aspect-ratio">
+            <img src="http://unsplash.it/g/800/600?random" alt="cover" />
+          </div>
+          <div class="desc">
+            <h6>aspect-ratio占位</h6>
+            <p>通过CSS3的新特性aspect-ratio进行占位</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
