@@ -15,6 +15,14 @@ export default {
           text: '搭建工程',
           link: '/front-end/monorepo/capsule-english/part-one',
         },
+        {
+          text: 'Nuxt3配置',
+          link: '/front-end/monorepo/capsule-english/part-two',
+        },
+        {
+          text: 'Nestjs配置',
+          link: '/front-end/monorepo/capsule-english/part-three',
+        },
       ],
     },
   ],

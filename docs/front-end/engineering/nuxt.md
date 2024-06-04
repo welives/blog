@@ -264,7 +264,7 @@ pnpm add -D typescript vue-tsc
 
 Nuxt 在运行或者打包生产环境时都是使用`dotenv`来加载`.env`文件中的环境变量的
 
-新建`.env`文件，填入项目所需的环境变量。注意，环境变量名必须以`NUXT_`开头，否则不会被识别，例如
+新建`.env`文件，填入项目所需的环境变量。~~注意，环境变量名必须以`NUXT_`开头，否则不会被识别~~，早期还没发布正式版本的时候是这样，现在已经不强制要求`NUXT_`开头了
 
 ```ini
 NUXT_APP_NAME=nuxt-starter
@@ -471,7 +471,6 @@ export default {
     './components/**/*.{vue,jsx,tsx}',
     './layouts/**/*.{vue,jsx,tsx}',
     './pages/**/*.{vue,jsx,tsx}',
-    './store/**/*.{js,ts}',
     './plugins/**/*.{js,ts}',
     './app.{vue,jsx,tsx}',
     './nuxt.config.{js,ts}',

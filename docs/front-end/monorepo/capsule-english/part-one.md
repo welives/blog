@@ -81,20 +81,21 @@ npx tsc --init
     "baseUrl": ".",
     "module": "ESNext",
     "target": "ESNext",
-    "jsx": "preserve",
     "moduleResolution": "Node",
-    "strict": true,
-    "noEmit": true,
-    "sourceMap": true,
-    "declaration": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "noUnusedLocals": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
     "allowJs": true,
+    "sourceMap": true,
+    "strict": true, // 启用所有严格类型检查选项
+    "noEmit": true, // 不生成输出文件
+    "declaration": true, // 生成相应的 '.d.ts' 文件
+    "isolatedModules": true, // 将每个文件做为单独的模块
+    "resolveJsonModule": true, // 允许加载 JSON 文件
+    "skipLibCheck": true, // 跳过.d.ts类型声明文件的类型检查
+    "noUnusedLocals": true, // 有未使用的变量时，抛出错误
+    "noImplicitAny": true, // 在表达式和声明上有隐含的 any类型时报错
+    "strictNullChecks": false, // 启用严格的 null 检查
+    "esModuleInterop": true, // 用来兼容commonjs的
+    "emitDecoratorMetadata": true, // 为装饰器提供元数据的支持
+    "experimentalDecorators": true, // 启用装饰器
     "types": ["node"]
   },
   "exclude": ["**/node_modules/**", "**/dist/**"]
@@ -175,7 +176,7 @@ dist
 ### git提交检查
 
 ```sh
-pnpm add -wD simple-git-hooks lint-staged tsx
+pnpm add -wD simple-git-hooks lint-staged tsx dotenv
 ```
 
 初始化`simple-git-hooks`
@@ -233,7 +234,6 @@ if (!commitRE.test(msg)) {
 
 ```json
   "scripts": {
-    "prepare": "simple-git-hooks", // [!code ++]
     "format": "prettier --write --cache .", // [!code ++]
     "format-check": "prettier --check --cache .", // [!code ++]
   },
@@ -288,343 +288,172 @@ cd apps
 pnpm dlx nuxi init client
 ```
 
-然后编辑`client`应用的`package.json`的`name`字段值为`client`，表示前端项目的名称，以后给子项目安装依赖的时候会用到
+然后编辑`client`项目的`package.json`的`name`字段值为`client`，表示前端项目的名称，以后给子项目安装依赖的时候会用到
 
 ### Nestjs
 
 进入`apps`目录，创建后端项目
 
-如果之前没有安装过`Nestjs`的官方脚手架的话就先安装一下，然后通过命令`nest new`创建项目
+如果之前没有安装过`Nestjs`的官方脚手架的话就先安装一下，然后通过命令`nest new`创建项目，加上`-g`参数表示不生成`git`存储库
 
 ```sh
 npm i -g @nestjs/cli
-nest new server
+nest new server -g
 ```
 
-然后编辑`server`应用的`package.json`的`name`字段值为`server`
+然后编辑`server`项目的`package.json`的`name`字段值为`server`
 
 ![](../assets/capsule-english/nestjs-init.png)
 
-## 配置Nuxt3
+## 环境变量
 
-安装一些好用的`Nuxt3`模块
+在主项目根目录新建`.env`文件，用来统一管理所有子项目的环境变量
 
-```sh
-pnpm add -D -F client @vueuse/nuxt @vite-pwa/nuxt @pinia/nuxt @pinia-plugin-persistedstate/nuxt @nuxtjs/i18n @nuxtjs/tailwindcss
+## 使用[Logto](https://logto.io/)
+
+由于登录鉴权是每个项目都要开发一次的重复性同质化工作，为了省事我直接接入 Logto 来实现这部分功能
+
+### Logto本地部署
+
+[官方文档看这里](https://docs.logto.io/docs/tutorials/get-started/#local)
+
+把 Logto 的配置填入环境变量中，用于下面的`docker-compose`配置。Logto 官方的 Docker 镜像所支持的环境变量名[参考官方文档](https://docs.logto.io/docs/references/core/configuration/#variables)
+
+```yml
+version: '3.9'
+
+services:
+  # logto管理端本地部署
+  logto:
+    depends_on:
+      logto_postgres:
+        condition: service_healthy
+    image: svhd/logto:${TAG-latest}
+    restart: always
+    # 启动脚本
+    entrypoint: ['sh', '-c', 'npm run cli db seed -- --swe && npm start']
+    # 端口映射
+    ports:
+      - 5001:5001
+      - 5002:5002
+    environment:
+      TRUST_PROXY_HEADER: 1
+      DB_URL: ${LOGTO_DB_DSN}
+      # Mandatory for GitPod to map host env to the container, thus GitPod can dynamically configure the public URL of Logto;
+      # Or, you can leverage it for local testing.
+      PORT: ${LOGTO_PORT}
+      ADMIN_PORT: ${LOGTO_ADMIN_PORT}
+      ENDPOINT:
+      ADMIN_ENDPOINT:
+  # logto的官方镜像强制绑定要使用这个 postgres 服务名的数据服务,否则就无法初始化数据
+  logto_postgres:
+    image: postgres:14-alpine
+    restart: always
+    # 环境变量
+    environment:
+      POSTGRES_USER: ${LOGTO_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${LOGTO_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${LOGTO_POSTGRES_DB}
+    ports:
+      - 5435:5432
+    # 数据卷映射
+    volumes:
+      - '.volumes/logto_db:/var/lib/postgresql/data'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready']
+      interval: 10s
+      timeout: 5s
+      retries: 5
 ```
 
-其他有用的包和插件
+执行`docker compose up --build -d`构建服务，接着访问`http://localhost:5002/`，注册一个本地的管理员账号
 
-```sh
-# 安装到主项目
-pnpm add -wD prettier-plugin-tailwindcss postcss
-# 安装到Nuxt3开发依赖
-pnpm add -D -F client daisyui vue-tsc clsx tailwind-merge tailwindcss-debug-screens
-pnpm add -D -F client @iconify/tailwind @iconify-json/logos
-# 安装到生产依赖
-pnpm add -F client axios dayjs
-```
-
-:::tip ✨提示
-这里的`-F`是`--filter`的缩写，它们都是`pnpm`的参数，表示把依赖安装到`client`项目下，一般用在主项目根目录下。如果直接进入到`client`项目目录进行安装的话就不需要`-F`参数了
+:::tip 注意
+Logto 本地部署的默认管理端口是`3002`，我这里给改成`5002`了
 :::
 
-编辑`apps/client/nuxt.config.ts`，添加如下配置，注册刚才安装的`Nuxt3`模块
+![](../assets/capsule-english/logto-local.png)
 
-```ts
-export default defineNuxtConfig({
-  modules: [
-    '@vueuse/nuxt', // [!code ++]
-    '@pinia/nuxt', // [!code ++]
-    '@pinia-plugin-persistedstate/nuxt', // [!code ++]
-    '@vite-pwa/nuxt', // [!code ++]
-    '@nuxtjs/i18n', // [!code ++]
-    '@nuxtjs/tailwindcss', // [!code ++]
-  ],
-})
-```
+本地 Logto 的管理员创建完毕后，下面开始创建应用
 
-### 初始化Tailwind
+### 创建API资源
 
-```sh
-pnpm dlx tailwindcss init
-```
+![](../assets/capsule-english/logto-api-resource-create-1.png)
 
-在`client`应用中新建`assets/css/main.css`文件，填入如下内容
+Logto 目前支持的API资源类型有`Node.js`、`Python`和`Java`，根据自己项目的实际情况选择API资源，因为我是`Node.js`全栈，所以这里就选择的`Express`
 
-```css
-@layer base {
-  /* 定义滚动条高宽及背景 */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  /* 定义滚动条轨道内阴影+圆角 */
-  ::-webkit-scrollbar-track {
-    @apply bg-zinc-100;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-  }
-  /* 定义滑块内阴影+圆角 */
-  ::-webkit-scrollbar-thumb {
-    @apply bg-violet-400;
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(167, 139, 250, 0.3);
-  }
-  .bg-light {
-    @apply bg-[#ffffff];
-  }
-  .bg-dark {
-    @apply bg-[#222222];
-  }
-}
-```
+![](../assets/capsule-english/logto-api-resource-create-2.png)
 
-编辑`apps/client/tailwind.config.js`，添加如下配置
+因为我在部署Logto本地服务时，把`PORT`设置为`5001`了，所以这里就是`http://localhost:5001/`，如果用默认部署的话则是`http://localhost:3001/`
 
-```js
-/** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: 'class',
-  content: [
-    './components/**/*.{vue,jsx,tsx}',
-    './layouts/**/*.{vue,jsx,tsx}',
-    './pages/**/*.{vue,jsx,tsx}',
-    './store/**/*.{js,ts}',
-    './plugins/**/*.{js,ts}',
-    './app.{vue,jsx,tsx}',
-    './nuxt.config.{js,ts}',
-  ],
-  theme: {
-    debugScreens: {
-      position: ['bottom', 'right'],
-      ignore: ['dark'],
-    },
-    extend: {
-      keyframes: {
-        flashing: {
-          '0%, 100%': { opacity: '0.2' },
-          '20%': { opacity: '1' },
-        },
-        'fade-in': {
-          from: {
-            opacity: '0',
-          },
-          to: {
-            opacity: '1',
-          },
-        },
-      },
-      animation: {
-        flashing: 'flashing 1.4s infinite linear',
-        'fade-in': 'fade-in 0.5s linear forwards',
-      },
-    },
-  },
-  corePlugins: {
-    /** @see https://www.tailwindcss.cn/docs/preflight 重置浏览器样式 */
-    preflight: true,
-  },
-  plugins: [
-    process.env.NODE_ENV === 'development' && require('tailwindcss-debug-screens'),
-    // 注册UI组件库插件
-    require('daisyui'),
-    // 组件svg图标库插件
-    require('@iconify/tailwind').addDynamicIconSelectors(),
-  ],
-}
-```
+记得要把`http://localhost:5001/`也保存到环境变量中
 
-再次编辑`apps/client/nuxt.config.ts`，添加如下配置
+![](../assets/capsule-english/logto-api-resource-create-3.png)
 
-```ts
-export default defineNuxtConfig({
-  // ...
-  postcss: {
-    plugins: {
-      tailwindcss: {}, // [!code ++]
-      autoprefixer: {}, // [!code ++]
-    },
-  },
-  css: ['./assets/css/main.css'], // [!code ++]
-})
-```
+至此，API 资源部分配置完成 🎉
 
-### PWA
+### 创建Logto前端应用
 
-新建`apps/client/config/pwa.ts`，参考代码如下
+我这里以 Nuxt3 为例
 
-:::details 查看
-
-```ts
-import process from 'node:process'
-import type { ModuleOptions } from '@vite-pwa/nuxt'
-import { appDescription, appName } from '../constants/index'
-
-const scope = '/'
-
-export const pwa: ModuleOptions = {
-  registerType: 'autoUpdate',
-  scope,
-  base: scope,
-  manifest: {
-    id: scope,
-    scope,
-    name: appName,
-    short_name: appName,
-    description: appDescription,
-    theme_color: '#ffffff',
-    icons: [
-      {
-        src: 'pwa-192x192.png',
-        sizes: '192x192',
-        type: 'image/png',
-      },
-      {
-        src: 'pwa-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-      },
-      {
-        src: 'maskable-icon.png',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'any maskable',
-      },
-    ],
-  },
-  workbox: {
-    globPatterns: ['**/*.{js,css,html,txt,png,ico,svg}'],
-    navigateFallbackDenylist: [/^\/api\//],
-    navigateFallback: '/',
-    cleanupOutdatedCaches: true,
-    runtimeCaching: [
-      {
-        urlPattern: /^https:\/\/fonts.googleapis.com\/.*/i,
-        handler: 'CacheFirst',
-        options: {
-          cacheName: 'google-fonts-cache',
-          expiration: {
-            maxEntries: 10,
-            maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
-          },
-          cacheableResponse: {
-            statuses: [0, 200],
-          },
-        },
-      },
-      {
-        urlPattern: /^https:\/\/fonts.gstatic.com\/.*/i,
-        handler: 'CacheFirst',
-        options: {
-          cacheName: 'gstatic-fonts-cache',
-          expiration: {
-            maxEntries: 10,
-            maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
-          },
-          cacheableResponse: {
-            statuses: [0, 200],
-          },
-        },
-      },
-    ],
-  },
-  registerWebManifestInRouteRules: true,
-  writePlugin: true,
-  devOptions: {
-    enabled: process.env.VITE_PLUGIN_PWA === 'true',
-    navigateFallback: scope,
-  },
-}
-```
-
-:::
-
-编辑`nuxt.config.ts`，注册 PWA
-
-```ts
-import { pwa } from './config/pwa'
-export default defineNuxtConfig({
-  // ...
-  pwa, // [!code ++]
-})
-```
-
-编辑根组件`app.vue`
-
-```vue
-<template>
-  <VitePwaManifest /> // [!code ++]
-  <div class="debug-screens">
-    <NuxtWelcome />
-  </div>
-</template>
-```
-
-编辑`client`应用的`package.json`，添加如下一条指令
-
-```json
-{
-  "scripts": {
-    // ...
-    "dev:pwa": "VITE_PLUGIN_PWA=true nuxt dev" // [!code ++]
-  }
-}
-```
-
-### 环境变量
-
-新建`apps/client/.env`文件，内容参考如下
-
-```ini
-NUXT_PORT=3000
-```
-
-由于`Nuxt3`和`Nestjs`的默认开发端口都是`3000`，我这里把前端`client`项目的端口设置为`3000`，后端`server`项目端口定为`4000`，这样就不会冲突了
-
-### 使用[Logto](https://logto.io/)
-
-#### Logto前端应用
-
-![](../assets/capsule-english/create-logto-app.png)
+![](../assets/capsule-english/logto-client-app-create-1.png)
 
 配置`Logto URI`
 
-![](../assets/capsule-english/logto-uri-setup.png)
+- **重定向URI**：就是 Logto 校验成功或失败后跳转回我们Web应用的地址，默认为`http://localhost:3000/callback`
+- **退出登录后重定向URI**：如字面意思，退出后跳转到指定的地址，我这里就简单的跳到首页就行
 
-把你的 Logto 应用的`AppID`保存到环境变量文件中
+![](../assets/capsule-english/logto-client-app-create-2.png)
 
-![](../assets/capsule-english/logto-appid.png)
+把你的 Logto 前端应用中的一些重要信息保存到环境变量中
 
-安装依赖
+![](../assets/capsule-english/logto-client-app-create-3.png)
 
-```sh
-pnpm add -F client @logto/nuxt
+前端部分要用到的 Logto 环境变量如下
+
+```ini
+LOGTO_ENDPOINT=http://localhost:5001/
+NUXT_LOGTO_APP_ID=l9pj4cqwl9wi2f66q0979
+NUXT_LOGTO_APP_SECRET=iyTB7rwSNcYUwuRLiHrPQNZ4ycRZuLV3
+NUXT_LOGTO_COOKIE_ENCRYPTION_KEY=wlstRAtXj9GX80MJyY4QXmaUjlX7HP8T
+NUXT_LOGTO_PATHNAMES_SIGN_IN=/logto/sign-in
+NUXT_LOGTO_PATHNAMES_SIGN_OUT=/logto/sign-out
+NUXT_LOGTO_PATHNAMES_CALLBACK=/logto/callback
 ```
 
-编辑`nuxt.config.ts`，注册 Logto
+编辑`nuxt.config.ts`，填入到`runtimeConfig`配置项中
 
 ```ts
 export default defineNuxtConfig({
-  modules: [
-    // ...
-    '@logto/nuxt', // [!code ++]
-  ],
-})
+  runtimeConfig: {
+    logto: {
+      endpoint: config.LOGTO_ENDPOINT,
+      appId: config.NUXT_LOGTO_APP_ID,
+      appSecret: config.NUXT_LOGTO_APP_SECRET,
+      cookieEncryptionKey: config.NUXT_LOGTO_COOKIE_ENCRYPTION_KEY,
+      pathnames: {
+        signIn: config.NUXT_LOGTO_PATHNAMES_SIGN_IN,
+        signOut: config.NUXT_LOGTO_PATHNAMES_SIGN_OUT,
+        callback: config.NUXT_LOGTO_PATHNAMES_CALLBACK,
+      }
+    },
+  },
+}
 ```
 
-#### Logto后端应用
+至此，Logto 前端应用配置完成 🎉
+
+### 创建Logto后端应用
 
 和创建前端应用差不多，找`MACHINE-TO-MACHINE`开始构建
 
-![](../assets/capsule-english/logto-backend-app.png)
+![](../assets/capsule-english/logto-server-app-create-1.png)
 
-把后端应用的AppID和密钥保存到`server`项目的环境变量文件中
+把后端应用的`AppID`和密钥保存到环境变量中
 
-![](../assets/capsule-english//logto-backend-appid.png)
+![](../assets/capsule-english/logto-server-app-create-2.png)
 
-#### Logto管理员
+### Logto角色分配
 
 ![](../assets//capsule-english/create-logto-admin.png)
 
@@ -632,485 +461,17 @@ export default defineNuxtConfig({
 
 ![](../assets/capsule-english/logto角色分配应用.png)
 
-### 目录结构
+### 创建连接器
 
-```
-├── assets                    静态资源
-├── components                公共组件
-├── composables               放置自动导入方法
-├── config                    配置文件
-├── constants                 常量配置
-├── layouts                   布局组件
-├── libs                      公共方法及工具方法
-├── middleware                路由中间件
-├── pages                     页面
-├── plugins                   插件
-├── public
-├── server
-│   ├── api                   服务端API
-│   └── middleware            服务端中间件
-├── store                     状态管理
-├── app.vue                   根组件
-├── nuxt.config.ts            Nuxt3配置文件
-├── tailwindcss.config.ts     tailwind配置文件
-├── .env                      环境变量文件
-```
+这里以 Github OAuth 为例
 
-## 配置Nestjs
+打开你的 Github 个人设置页面，在左侧栏底部找到`<> Developer settings`，点击它
 
-把`server`项目改为`Monorepo`模式，因为之后要使用微服务功能，而且也要把一些通用的功能抽离出来
+![](../assets/capsule-english/github-oauth2-create-1.png)
 
-进入`apps/server`目录，执行如下命令，创建接口网关应用
+接着新建一个`OAuth App`
 
-```sh
-nest g app http-gateway
-```
+![](../assets/capsule-english/github-oauth2-create-2.png)
 
-执行这个命令之后，原先的单应用和新创建的`http-gateway`应用会被收录到`server/apps`目录下，接着把旧的那个单应用给删了，只保留`http-gateway`应用作为默认应用
-
-接着再编辑`nest-cli.json`，变成下面这样
-
-```json
-{
-  "$schema": "https://json.schemastore.org/nest-cli",
-  "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/http-gateway/src",
-  "compilerOptions": {
-    "deleteOutDir": true,
-    "webpack": true,
-    "tsConfigPath": "apps/http-gateway/tsconfig.app.json"
-  },
-  "monorepo": true,
-  "root": "apps/http-gateway",
-  "projects": {
-    "http-gateway": {
-      "type": "application",
-      "root": "apps/http-gateway",
-      "entryFile": "main",
-      "sourceRoot": "apps/http-gateway/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/http-gateway/tsconfig.app.json"
-      }
-    }
-  }
-}
-```
-
-编辑`package.json`
-
-```json
-{
-  // ...
-  "scripts": {
-    // ...
-    "start:prod": "node dist/apps/http-gateway/main",
-    "test:e2e": "jest --config ./apps/http-gateway/test/jest-e2e.json"
-  }
-}
-```
-
-删掉`http-gateway`应用的默认模块
-
-```sh
-rm -rf apps/http-gateway/src/http-gateway.*
-```
-
-接着给`http-gateway`应用创建一个`app`模块，`-p`参数不给值的话就表示创建到默认应用下，`--no-spec`参数表示不生成测试文件
-
-```sh
-nest g module -p --no-spec
-```
-
-```ts
-import { Module } from '@nestjs/common'
-
-@Module({
-  imports: [],
-})
-export class AppModule {}
-```
-
-编辑`http-gateway`服务的`main.ts`
-
-```ts
-import { NestFactory } from '@nestjs/core'
-import { AppModule } from './app/app.module' // [!code ++]
-
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule)
-  await app.listen(3000)
-}
-bootstrap()
-```
-
-### 移除ESLint
-
-由于我们已经在主项目中配置了全局的`ESLint`和`Prettier`，所以子项目中就不需要了，删掉相关的文件和依赖
-
-```sh
-pnpm rm -F server eslint eslint-config-prettier eslint-plugin-prettier prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin
-```
-
-### 公共模块
-
-由于项目规划是微服务架构，那么就需要把一些通用的功能抽离成公共模块，供多个 Nest 服务使用，不这么做的话需在每个服务中重复配置
-
-#### 配置管理模块
-
-```sh
-pnpm add -F server @nestjs/config joi
-# 创建config模块
-nest g library config --no-spec
-# 删除自动生成的无用文件
-rm libs/config/src/config.service.*
-```
-
-在`server`项目中新建`.env`文件，填入自己的环境变量
-
-编辑`server`项目的`libs/config/src/config.module.ts`，参考代码如下
-
-```ts
-import { Module } from '@nestjs/common'
-import { ConfigModule as NestConfigModule, ConfigService } from '@nestjs/config'
-import * as Joi from 'joi'
-
-const envFilePath =
-  process.env.NODE_ENV === 'production'
-    ? ['.env.production.local', '.env.production']
-    : [`.env.${process.env.NODE_ENV}.local`, '.env.local', '.env']
-
-@Module({
-  imports: [
-    NestConfigModule.forRoot({
-      envFilePath,
-      validationSchema: Joi.object({
-        NODE_ENV: Joi.string().valid('development', 'test', 'production').default('development'),
-        HTTP_GATEWAY_PORT: Joi.number().default(4000),
-        HTTP_GATEWAY_HOST: Joi.string().default('127.0.0.1'),
-        JWT_ACCESS_SECRET: Joi.string().required(),
-        JWT_REFRESH_SECRET: Joi.string().required(),
-        JWT_ACCESS_EXPIRY: Joi.string().default('60s'),
-        JWT_REFRESH_EXPIRY: Joi.string().default('7d'),
-        REDIS_PORT: Joi.number().default(6379),
-        REDIS_HOST: Joi.string().default('127.0.0.1'),
-        REDIS_USER: Joi.string().default('root'),
-        REDIS_PWD: Joi.string().required(),
-        DATABASE_DSN: Joi.string().required(),
-        DATABASE_HOST: Joi.string().required(),
-        DATABASE_PORT: Joi.string().required(),
-        DATABASE_USER: Joi.string().required(),
-        DATABASE_PWD: Joi.string().required(),
-        DATABASE_DBNAME: Joi.string().required(),
-      }),
-    }),
-  ],
-  providers: [ConfigService],
-  exports: [ConfigService],
-})
-export class ConfigModule {}
-```
-
-在`http-gateway`应用的`app`模块中注册我们的公共`config`模块
-
-```ts
-import { Module } from '@nestjs/common'
-import { ConfigModule } from '@libs/config' // [!code ++]
-
-@Module({
-  imports: [ConfigModule], // [!code ++]
-})
-export class AppModule {}
-```
-
-#### 日志模块
-
-在我的[另一篇Nestjs笔记](../../nodejs/nestjs/create.md#日志)中用的日志插件是`winston`，但这次我改用`pino`，因为设置起来更简单
-
-```sh
-pnpm add -F server nestjs-pino pino-http pino-pretty
-# 创建logger模块
-nest g library logger --no-spec
-# 删除自动生成的无用文件
-rm libs/logger/src/logger.service.*
-```
-
-编辑`server`项目的`libs/logger/src/logger.module.ts`，参考代码如下
-
-```ts
-import { Module } from '@nestjs/common'
-import { LoggerModule as PinoLoggerModule } from 'nestjs-pino'
-
-@Module({
-  imports: [
-    PinoLoggerModule.forRoot({
-      pinoHttp: {
-        transport: {
-          target: 'pino-pretty',
-          options: {
-            singleLine: true,
-          },
-        },
-      },
-    }),
-  ],
-})
-export class LoggerModule {}
-```
-
-在`http-gateway`应用的`app`模块中注册我们的公共`logger`模块，接着编辑`http-gateway`应用的`main.ts`，使用`nestjs-pino`提供的`Logger`服务
-
-```ts
-import { NestFactory } from '@nestjs/core'
-import { AppModule } from './app/app.module'
-import { Logger } from 'nestjs-pino' // [!code ++]
-
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
-    bufferLogs: true, // [!code ++]
-  })
-  app.useLogger(app.get(Logger)) // [!code ++]
-  await app.listen(3000)
-}
-bootstrap()
-```
-
-#### Redis模块
-
-```sh
-pnpm add -F server ioredis @liaoliaots/nestjs-redis
-# 创建redis模块
-nest g library redis --no-spec
-# 删除自动生成的无用文件
-rm libs/redis/src/redis.service.*
-```
-
-编辑`server`项目的`libs/redis/src/redis.module.ts`，参考代码如下
-
-```js
-import { Module } from '@nestjs/common'
-import { RedisModule as NestRedisModule } from '@liaoliaots/nestjs-redis'
-import { ConfigService } from '@nestjs/config'
-import { ConfigModule } from '@libs/config'
-
-@Module({
-  imports: [
-    NestRedisModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => {
-        return {
-          config: {
-            host: config.get('REDIS_HOST'),
-            port: config.get('REDIS_PORT'),
-            username: config.get('REDIS_USER'),
-            password: config.get('REDIS_PWD'),
-          },
-        }
-      },
-    }),
-  ],
-})
-export class RedisModule {}
-```
-
-#### common模块
-
-```sh
-# 创建common模块
-nest g library common --no-spec
-# 删除自动生成的无用文件
-rm libs/common/src/common.*
-```
-
-- 类型接口
-
-```sh
-nest g interface user-request interfaces -p common --flat
-```
-
-```ts
-import { Request } from 'express'
-export interface UserRequest extends Request {
-  user: {
-    userId: number | string
-    [key: string]: any
-  }
-}
-```
-
-- 装饰器
-
-```sh
-nest g decorator user-info decorators -p common --flat --no-spec
-nest g decorator open-api decorators -p common --flat --no-spec
-```
-
-:::code-group
-
-```ts [user-info]
-import { ExecutionContext, createParamDecorator } from '@nestjs/common'
-import { UserRequest } from '../interfaces/user-request.interface'
-/** 获取请求中携带的用户信息 */
-export const UserInfo = createParamDecorator((key: string, ctx: ExecutionContext) => {
-  const request = ctx.switchToHttp().getRequest<UserRequest>()
-  const user = request.user
-  return key ? user && user[key] : user
-})
-```
-
-```ts [open-api]
-import { SetMetadata } from '@nestjs/common'
-/** 公共接口装饰器 */
-export const OpenApi = (flag: boolean) => SetMetadata('open-api', flag)
-```
-
+:::tip 🎉好了，到这里工程的基础就搭建完成了。下一篇是[Nuxt3的配置](./part-two.md)
 :::
-
-- 守卫
-
-```sh
-nest g guard auth guards -p common --flat --no-spec
-```
-
-### 创建认证应用
-
-```sh
-# 安装微服务所需的依赖
-pnpm add -F server @nestjs/microservices @grpc/grpc-js @grpc/proto-loader
-# 创建应用
-nest g app grpc-auth --no-spec
-# 删除默认模块
-rm -rf apps/grpc-auth/src/grpc-auth.*
-# 创建app模块
-nest g module app -p grpc-auth --no-spec
-# 创建auth模块
-nest g module auth -p grpc-auth --no-spec
-```
-
-在`server`项目中新建`proto/auth.proto`文件，用来定义微服务的功能
-
-```proto
-syntax = "proto3";
-
-package auth;
-
-service AuthService {
-  rpc createToken (payload) returns (resultData) {}
-}
-
-message payload {
-  string userId = 1;
-}
-
-message resultData {
-  string token = 1;
-}
-```
-
-编辑`grpc-auth`应用`auth`模块的`auth.controller.ts`，填入用于测试`gRPC`微服务的示例代码
-
-```ts
-import { Controller } from '@nestjs/common'
-import { AuthService } from './auth.service'
-import { GrpcMethod } from '@nestjs/microservices'
-
-@Controller()
-export class AuthController {
-  constructor(private readonly authService: AuthService) {}
-
-  @GrpcMethod('AuthService', 'createToken')
-  public async createToken(data: { userId: string }) {
-    return { token: Math.random().toString(36) }
-  }
-}
-```
-
-编辑`grpc-auth`应用的入口文件`main.ts`，改为微服务模式
-
-```ts{10-18}
-import path from 'path'
-import { NestFactory } from '@nestjs/core'
-import { AppModule } from './app/app.module'
-import { Logger } from 'nestjs-pino'
-import { MicroserviceOptions, Transport } from '@nestjs/microservices'
-import { ConfigService } from '@nestjs/config'
-
-async function bootstrap() {
-  const config = new ConfigService()
-  const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
-    transport: Transport.GRPC,
-    options: {
-      url: `${config.get('GRPC_AUTH_HOST')}:${config.get('GRPC_AUTH_PORT')}`,
-      package: 'auth',
-      protoPath: path.resolve(process.cwd(), 'proto/auth.proto'),
-    },
-    bufferLogs: true,
-  })
-  app.useLogger(app.get(Logger))
-  await app.listen()
-}
-bootstrap()
-```
-
-编辑`http-gateway`应用的`app.module.ts`，订阅微服务
-
-```ts{11-26}
-import path from 'path'
-import { Module } from '@nestjs/common'
-import { ConfigModule } from '@libs/config'
-import { LoggerModule } from '@libs/logger'
-import { ConfigService } from '@nestjs/config'
-import { ClientProxyFactory, Transport } from '@nestjs/microservices'
-import { AppController } from './app.controller'
-
-@Module({
-  imports: [ConfigModule, LoggerModule],
-  providers: [
-    {
-      provide: 'GRPC_AUTH_SERVICE',
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => {
-        return ClientProxyFactory.create({
-          transport: Transport.GRPC,
-          options: {
-            url: `${config.get('GRPC_AUTH_HOST')}:${config.get('GRPC_AUTH_PORT')}`,
-            package: 'auth',
-            protoPath: path.resolve(process.cwd(), 'proto/auth.proto'),
-          },
-        })
-      },
-    },
-  ],
-  controllers: [AppController],
-})
-export class AppModule {}
-```
-
-编辑`http-gateway`应用的`app.controller.ts`，调用测试用的微服务功能
-
-```ts
-import { Controller, Get, OnModuleInit, Inject, Query } from '@nestjs/common'
-import { ClientGrpc } from '@nestjs/microservices'
-
-interface AuthService {
-  createToken(data: { userId: string }): Promise<any>
-}
-
-@Controller()
-export class AppController implements OnModuleInit {
-  private authService: AuthService
-  constructor(@Inject('GRPC_AUTH_SERVICE') private readonly client: ClientGrpc) {}
-
-  onModuleInit() {
-    this.authService = this.client.getService<AuthService>('AuthService')
-  }
-
-  @Get('/auth')
-  public async createToken(@Query() query) {
-    const token = await this.authService.createToken({ userId: query.id })
-    return token
-  }
-}
-```
-
-使用任意接口测试工具请求`http://localhost:3000/auth`

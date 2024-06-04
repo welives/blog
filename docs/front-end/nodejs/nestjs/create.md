@@ -1156,3 +1156,139 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 ::: tip 🎉
 基础的框架封装到这里就结束了
 :::
+
+## 微服务示例
+
+```sh
+# 安装微服务所需的依赖
+pnpm add -F server @nestjs/microservices @grpc/grpc-js @grpc/proto-loader
+# 创建应用
+nest g app grpc-auth --no-spec
+# 删除默认模块
+rm -rf apps/grpc-auth/src/grpc-auth.*
+# 创建app模块
+nest g module app -p grpc-auth --no-spec
+# 创建auth模块
+nest g module auth -p grpc-auth --no-spec
+```
+
+在项目根目录中新建`proto/auth.proto`文件，用来定义微服务的功能
+
+```proto
+syntax = "proto3";
+
+package auth;
+
+service AuthService {
+  rpc createToken (payload) returns (resultData) {}
+}
+
+message payload {
+  string userId = 1;
+}
+
+message resultData {
+  string token = 1;
+}
+```
+
+编辑`grpc-auth`应用`auth`模块的`auth.controller.ts`，填入用于测试`gRPC`微服务的示例代码
+
+```ts
+import { Controller } from '@nestjs/common'
+import { AuthService } from './auth.service'
+import { GrpcMethod } from '@nestjs/microservices'
+
+@Controller()
+export class AuthController {
+  constructor(private readonly authService: AuthService) {}
+
+  @GrpcMethod('AuthService', 'createToken')
+  public async createToken(data: { userId: string }) {
+    return { token: Math.random().toString(36) }
+  }
+}
+```
+
+编辑`grpc-auth`应用的入口文件`main.ts`，改为微服务模式
+
+```ts{10-18}
+import path from 'path'
+import { NestFactory } from '@nestjs/core'
+import { AppModule } from './app/app.module'
+import { MicroserviceOptions, Transport } from '@nestjs/microservices'
+import { ConfigService } from '@nestjs/config'
+
+async function bootstrap() {
+  const config = new ConfigService()
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
+    transport: Transport.GRPC,
+    options: {
+      url: `${config.get('GRPC_AUTH_HOST')}:${config.get('GRPC_AUTH_PORT')}`,
+      package: 'auth',
+      protoPath: path.resolve(process.cwd(), 'proto/auth.proto'),
+    },
+  })
+  await app.listen()
+}
+bootstrap()
+```
+
+编辑网关`api`应用的`app.module.ts`，订阅微服务
+
+```ts{8-23}
+import path from 'path'
+import { Module } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { ClientProxyFactory, Transport } from '@nestjs/microservices'
+
+@Module({
+  // ...
+  providers: [
+    {
+      provide: 'GRPC_AUTH_SERVICE',
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        return ClientProxyFactory.create({
+          transport: Transport.GRPC,
+          options: {
+            url: `${config.get('GRPC_AUTH_HOST')}:${config.get('GRPC_AUTH_PORT')}`,
+            package: 'auth',
+            protoPath: path.resolve(process.cwd(), 'proto/auth.proto'),
+          },
+        })
+      },
+    },
+  ],
+})
+export class AppModule {}
+```
+
+编辑网关`api`应用的`app.controller.ts`，调用测试用的微服务功能
+
+```ts
+import { Controller, Get, OnModuleInit, Inject, Query } from '@nestjs/common'
+import { ClientGrpc } from '@nestjs/microservices'
+
+interface AuthService {
+  createToken(data: { userId: string }): Promise<any>
+}
+
+@Controller()
+export class AppController implements OnModuleInit {
+  private authService: AuthService
+  constructor(@Inject('GRPC_AUTH_SERVICE') private readonly client: ClientGrpc) {}
+
+  onModuleInit() {
+    this.authService = this.client.getService<AuthService>('AuthService')
+  }
+
+  @Get('/auth')
+  public async createToken(@Query() query) {
+    const token = await this.authService.createToken({ userId: query.id })
+    return token
+  }
+}
+```
+
+使用任意接口测试工具请求`http://localhost:3000/auth`

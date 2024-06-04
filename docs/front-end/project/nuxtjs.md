@@ -268,3 +268,104 @@ export default defineNuxtConfig({
 ::: danger 💥注意
 但是这样做的话就难免会出现组件同名的情况，即多个组件共用一个组件类型声明，这并不是一个好事。所以不推荐这样做
 :::
+
+## 关于localStorage
+
+由于 Nuxt 默认是运行在`Node.js`中的，所以不支持`localStorage`。如果想要使用的话，需要将涉及`localStorage`的操作放到`onMounted`生命周期中
+
+同时建议使用[vueuse](https://vueuse.org/)这个 CompositionAPI 插件来操作`localStorage`，例如
+
+```ts
+const cacheDarkMode = useLocalStorage<Theme | null>(StorageSceneKey.DARK_MODE, null) // [!code hl]
+const setDarkMode = (state = false) => {
+  const themeValue = state ? Theme.DARK : Theme.LIGHT
+  document.documentElement.classList.toggle('dark', state)
+  // ...
+  cacheDarkMode.value = themeValue // [!code hl]
+  colorMode.value = themeValue
+}
+```
+
+## 关于document
+
+在编写自定义 CompositionAPI 时，不要在`setup`部分直接操作`document`，因为这时的编译环境是`Node.js`，可以将操作放到子函数内部并将其返回，在页面中的合适时机进行调用
+
+例如下面这个，我参考了[vitepress的issues](https://github.com/vuejs/vitepress/pull/2347)，将其封装成一个不涉及 UI 代码的 CompositionAPI
+
+```ts
+import { StorageSceneKey, Theme } from '../constants'
+
+/**
+ * @see https://github.com/vuejs/vitepress/pull/2347
+ */
+export function useDarkMode() {
+  const cacheDarkMode = useLocalStorage<Theme | null>(StorageSceneKey.DARK_MODE, null)
+  const colorMode = useColorMode()
+  const isDark = computed(() => colorMode.value === 'dark')
+
+  /** 设置暗黑模式 */
+  const setDarkMode = (state = false) => {
+    const themeValue = state ? Theme.DARK : Theme.LIGHT
+
+    document.documentElement.classList.toggle('dark', state)
+    useHead({
+      meta: [
+        {
+          id: 'theme-color',
+          name: 'theme-color',
+          content: () => (isDark.value ? '#222222' : 'white'),
+        },
+      ],
+    })
+    cacheDarkMode.value = themeValue
+    colorMode.value = themeValue
+  }
+
+  /** 初始化暗黑模式 */
+  const initDarkMode = () => {
+    if (isDark.value && !cacheDarkMode.value) {
+      setDarkMode(true)
+      return
+    }
+    setDarkMode(cacheDarkMode.value === Theme.DARK)
+  }
+
+  /** 切换暗黑模式 */
+  const toggleDarkMode = (event: MouseEvent) => {
+    const isAppearanceTransition =
+      document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!isAppearanceTransition) {
+      setDarkMode(!isDark.value)
+      return
+    }
+    const { clientX: x, clientY: y } = event
+    const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
+    // @ts-expect-error Transition API, https://developer.mozilla.org/zh-CN/docs/Web/API/View_Transitions_API
+    const transition = document.startViewTransition(() => {
+      setDarkMode(!isDark.value)
+      // await nextTick()
+    })
+    transition.ready.then(() => {
+      const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`]
+      document.documentElement.animate(
+        {
+          clipPath: isDark.value ? clipPath : clipPath.reverse(),
+        },
+        {
+          duration: 400,
+          easing: 'ease-in',
+          pseudoElement: isDark.value
+            ? '::view-transition-new(root)'
+            : '::view-transition-old(root)',
+        }
+      )
+    })
+  }
+  return {
+    initDarkMode,
+    toggleDarkMode,
+    setDarkMode,
+    isDark,
+  }
+}
+```
