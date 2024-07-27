@@ -29,10 +29,92 @@ head:
 
 ## 主应用构建
 
-新建一个`micro-app-demo`目录，然后把之前搭建的 [UmiJS](./engineering/umijs.md) 工程`clone`下来作为主应用
+新建一个`micro-app-demo`目录，这里将使用`pnpm`的`monorepo`模式管理各项目
+
+:::code-group
 
 ```sh
 mkdir micro-app-demo && cd micro-app-demo
+mkdir apps
+pnpm init
+touch pnpm-workspace.yaml
+pnpm add -wD typescript @types/node
+touch tsconfig.json
+touch .gitignore
+```
+
+```yaml [pnpm-workspace]
+packages:
+  - 'apps/*'
+```
+
+```json [tsconfig]
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true, // 启用所有严格类型检查选项
+    "noEmit": true, // 不生成输出文件
+    "declaration": true, // 生成相应的 '.d.ts' 文件
+    "isolatedModules": true, // 将每个文件做为单独的模块
+    "resolveJsonModule": true, // 允许加载 JSON 文件
+    "skipLibCheck": true, // 跳过.d.ts类型声明文件的类型检查
+    "noUnusedLocals": true, // 有未使用的变量时，抛出错误
+    "noImplicitAny": true, // 在表达式和声明上有隐含的 any类型时报错
+    "strictNullChecks": false, // 启用严格的 null 检查
+    "esModuleInterop": true, // 用来兼容commonjs的
+    "emitDecoratorMetadata": true, // 为装饰器提供元数据的支持
+    "experimentalDecorators": true, // 启用装饰器
+    "types": ["node"]
+  },
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/examples/**",
+    "**/docs/**",
+    "**/playground/**",
+    "**/test/**"
+  ]
+}
+```
+
+```ini [.gitignore]
+node_modules/
+.DS_Store
+dist/
+build/
+
+# editor config
+.vscode/
+.idea
+*.iml
+*.swp
+*.swo
+*.code-workspace
+
+# istanbul
+coverage
+
+# Local env files
+.env*.local
+
+# Logs
+logs
+*.log
+# eslint
+.eslintcache
+```
+
+:::
+
+然后在`apps`目录中把之前搭建的 [UmiJS](./engineering/umijs.md) 工程`clone`下来作为主应用
+
+```sh
+cd apps
 git clone https://github.com/welives/umijs-starter.git main-app
 cd main-app
 pnpm install
@@ -46,16 +128,38 @@ import microApp from '@micro-zoe/micro-app' // [!code ++]
 microApp.start() // [!code ++]
 ```
 
+之前整这个`UmiJS`的基础项目时，预先装了一些模块和包，有些在这里用不上，可以移除掉精简一下主应用，同时删掉目录下的`eslint`、`prettier`和`stylelint`的配置文件
+
+```json
+{
+  // ...
+  "dependencies": {
+    "@ant-design/icons": "^5.4.0",
+    "@micro-zoe/micro-app": "1.0.0-rc.2",
+    "antd": "^5.19.3",
+    "umi": "^4.3.10"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@umijs/plugins": "^4.3.10",
+    "typescript": "^5.5.4"
+  }
+}
+```
+
 ## 子应用构建
 
 理论上，通过`micro-app`构建微前端项目，在服务间不通信的前提下，子服务只需要配置跨域就可以，其他都不需要弄，可以说是完全零侵入、低成本的方案
 
+所有的子应用同样也是在`apps`目录下创建
+
 ### 子应用①
 
-这里使用`create-react-app`脚手架创建一个`react`子应用①
+这里使用`create-react-app`脚手架创建一个`react18`子应用①
 
 ```sh
-pnpm create react-app sub-react-app --template typescript
+pnpm create react-app child-react18 --template typescript
 ```
 
 通过`create-react-app`构建的项目默认就进行了跨域的相关配置。如果不放心，或者想更改`webpack`的配置，可以执行`npm run eject`把脚手架隐藏起来的配置暴露出来
@@ -69,6 +173,8 @@ BROWSER=none
 HOST=localhost
 # 本地端口
 PORT=3100
+# 部署用的二级路由
+PUBLIC_URL='/child/react18'
 ```
 
 编辑`src/App.tsx`，给其加上一个标识
@@ -90,7 +196,7 @@ function App() {
 这里使用`vue-cli`脚手架创建一个`vue2`默认配置的子应用②
 
 ```sh
-vue create vue-cli-app
+vue create child-vue2
 ```
 
 新建`.env`文件，添加如下环境变量，让子应用②运行在`3200`端口上
@@ -113,6 +219,8 @@ module.exports = defineConfig({
       'Access-Control-Allow-Origin': '*', // [!code ++]
     },
   },
+  // 配合部署用的
+  publicPath: '/child/vue2', // [!code ++]
 })
 ```
 
@@ -131,9 +239,7 @@ module.exports = defineConfig({
 这里使用`vite`脚手架创建一个`vue3`子应用③
 
 ```sh
-pnpm create vue vite-vue-app
-cd vite-vue-app
-pnpm install
+pnpm create vue child-vue3
 ```
 
 `vite`默认开启跨域支持，不需要额外配置
@@ -154,6 +260,8 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd()) // [!code ++]
   const PORT = parseInt(env.VITE_APP_PORT) // [!code ++]
   return {
+    // 配合部署用的
+    base: '/child/vite-vue3', // [!code ++]
     server: {
       host: env.VITE_APP_HOST, // [!code ++]
       port: isNaN(PORT) ? undefined : PORT, // [!code ++]
@@ -180,9 +288,7 @@ export default defineConfig(({ mode }) => {
 这里使用`vite`脚手架创建一个`svelte`子应用④
 
 ```sh
-pnpm create vue vite-svelte-app
-cd vite-svelte-app
-pnpm install
+pnpm create vue child-svelte
 ```
 
 新建`.env`文件，添加如下环境变量，让子应用④运行在`3400`端口上
@@ -201,6 +307,8 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd()) // [!code ++]
   const PORT = parseInt(env.VITE_APP_PORT) // [!code ++]
   return {
+    // 配合部署用的
+    base: '/child/vite-svelte', // [!code ++]
     server: {
       host: env.VITE_APP_HOST, // [!code ++]
       port: isNaN(PORT) ? undefined : PORT, // [!code ++]
@@ -220,21 +328,34 @@ export default defineConfig(({ mode }) => {
 
 ## 建立关联
 
-在主应用中新建`src/utils/childAppConfig.ts`文件，填入如下内容
+在主应用中新建`src/constants/index.ts`文件，填入如下内容
 
 ```ts
-type Key = 'sub-react-app' | 'vue-cli-app' | 'vite-vue-app' | 'vite-svelte-app'
-const config: Record<Key, string> = {
-  'sub-react-app': 'http://localhost:3100',
-  'vue-cli-app': 'http://localhost:3200',
-  'vite-vue-app': 'http://localhost:3300',
-  'vite-svelte-app': 'http://localhost:3400',
+export enum ChildAppName {
+  CHILD_REACT18 = 'child-react18',
+  CHILD_VUE2 = 'child-vue2',
+  CHILD_VUE3 = 'child-vue3',
+  CHILD_SVELTE = 'child-svelte',
 }
+```
+
+在主应用的根目录新建`micro-app-config.ts`
+
+```ts
+import { ChildAppName } from './src/constants'
+
+const config = {
+  [ChildAppName.CHILD_REACT18]: 'http://localhost:3100',
+  [ChildAppName.CHILD_VUE2]: 'http://localhost:3200',
+  [ChildAppName.CHILD_VUE3]: 'http://localhost:3300',
+  [ChildAppName.CHILD_SVELTE]: 'http://localhost:3400',
+}
+
 // 线上环境地址
 if (process.env.NODE_ENV === 'production') {
   // 基座应用和子应用部署在同一个域名下，这里使用location.origin进行补全
   Object.keys(config).forEach((key) => {
-    config[key as Key] = window.location.origin
+    config[key as `${ChildAppName}`] = window.location.origin
   })
 }
 export default Object.freeze(config)
@@ -242,58 +363,91 @@ export default Object.freeze(config)
 
 编辑主应用的`.umirc.ts`或`config/config.ts`文件，新增如下路由
 
-```ts
+```ts {3-13}
+import { ChildAppName } from './src/constants'
 export default defineConfig({
   routes: [
-    { path: '/sub-react-app', component: 'sub-react-app', name: 'Sub-React-App' },
-    { path: '/vue-cli-app', component: 'vue-cli-app', name: 'Vue-Cli-App' },
-    { path: '/vite-vue-app', component: 'vite-vue-app', name: 'Vite-Vue-App' },
-    { path: '/vite-svelte-app', component: 'vite-svelte-app', name: 'Vite-Svelte-App' },
+    { path: '/', component: 'index', name: 'Home' },
+    {
+      path: ChildAppName.CHILD_REACT18,
+      component: 'child-react18',
+      name: ChildAppName.CHILD_REACT18,
+    },
+    { path: ChildAppName.CHILD_VUE2, component: 'child-vue2', name: ChildAppName.CHILD_VUE2 },
+    { path: ChildAppName.CHILD_VUE3, component: 'child-vue3', name: ChildAppName.CHILD_VUE3 },
+    { path: ChildAppName.CHILD_SVELTE, component: 'child-svelte', name: ChildAppName.CHILD_SVELTE },
   ],
+  npmClient: 'pnpm',
+  plugins: ['@umijs/plugins/dist/model', '@umijs/plugins/dist/antd', '@umijs/plugins/dist/layout'],
+  model: {},
+  antd: {},
+  layout: {
+    title: 'UmiJS Starter',
+  },
 })
 ```
 
+新建如下四个页面，用来装载子应用
+
 ::: code-group
 
-```tsx [sub-react-app.tsx]
-import config from '../utils/childAppConfig'
+```tsx [child-react18.tsx]
+import { ChildAppName } from '../constants'
+import microAppConfig from '../../micro-app-config'
 export default function SubReactApp() {
   return (
     <div>
-      <micro-app name="sub-react-app" url={config['sub-react-app']}></micro-app>
+      <micro-app
+        name={ChildAppName.CHILD_REACT18}
+        url={`${microAppConfig[ChildAppName.CHILD_REACT18]}/child/react18`}
+      ></micro-app>
     </div>
   )
 }
 ```
 
-```tsx [vue-cli-app.tsx]
-import config from '../utils/childAppConfig'
+```tsx [child-vue2.tsx]
+import { ChildAppName } from '../constants'
+import microAppConfig from '../../micro-app-config'
 export default function VueCliApp() {
   return (
     <div>
-      <micro-app name="vue-cli-app" url={config['vue-cli-app']}></micro-app>
+      <micro-app
+        name={ChildAppName.CHILD_VUE2}
+        url={`${microAppConfig[ChildAppName.CHILD_VUE2]}/child/vue2`}
+      ></micro-app>
     </div>
   )
 }
 ```
 
-```tsx [vite-vue-app.tsx]
-import config from '../utils/childAppConfig'
+```tsx [child-vue3.tsx]
+import { ChildAppName } from '../constants'
+import microAppConfig from '../../micro-app-config'
 export default function ViteVueApp() {
   return (
     <div>
-      <micro-app name="vite-vue-app" url={config['vite-vue-app']} iframe></micro-app>
+      <micro-app
+        name={ChildAppName.CHILD_VUE3}
+        url={`${microAppConfig[ChildAppName.CHILD_VUE3]}/child/vite-vue3`}
+        iframe
+      ></micro-app>
     </div>
   )
 }
 ```
 
-```tsx [vite-svelte-app.tsx]
-import config from '../utils/childAppConfig'
+```tsx [child-svelte.tsx]
+import { ChildAppName } from '../constants'
+import microAppConfig from '../../micro-app-config'
 export default function ViteSvelteApp() {
   return (
     <div>
-      <micro-app name="vite-svelte-app" url={config['vite-svelte-app']} iframe></micro-app>
+      <micro-app
+        name={ChildAppName.CHILD_SVELTE}
+        url={`${microAppConfig[ChildAppName.CHILD_SVELTE]}/child/vite-svelte`}
+        iframe
+      ></micro-app>
     </div>
   )
 }
@@ -309,9 +463,9 @@ export default function ViteSvelteApp() {
 
 ### 生命周期
 
-同一种主应用框架中的每一个`<micro-app>`挂载点的生命周期事件写法都是一样的，所以这里以 `sub-react-app.tsx` 为例
+同一种主应用框架中的每一个`<micro-app>`挂载点的生命周期事件写法都是一样的，所以这里以 `child-react18.tsx` 为例
 
-```tsx [sub-react-app.tsx]
+```tsx [child-react18.tsx]
 /** @jsxRuntime classic */
 /** @jsx jsxCustomEvent */
 import jsxCustomEvent from '@micro-zoe/micro-app/polyfill/jsx-custom-event'
@@ -338,8 +492,8 @@ export default function SubReactApp() {
   return (
     <Space direction="vertical" size="middle">
       <micro-app
-        name="sub-react-app"
-        url={config['sub-react-app']}
+        name={ChildAppName.CHILD_REACT18}
+        url={`${microAppConfig[ChildAppName.CHILD_REACT18]}/child/react18`}
         onCreated={onCreated}
         onBeforemount={onBeforemount}
         onMounted={onMounted}
@@ -373,7 +527,7 @@ declare global {
     mount: () => void
     unmount: () => void
   }
-  type AnyObj = Record<string, unknown>
+  type AnyObj = Record<string, any>
 }
 const domNode = document.getElementById('root')
 let root: ReactDOM.Root
@@ -406,7 +560,7 @@ declare global {
     mount: () => void
     unmount: () => void
   }
-  type AnyObj = Record<string, unknown>
+  type AnyObj = Record<string, any>
 }
 let app: any = null
 // 👇 将渲染操作放入 mount 函数，子应用初始化时会自动执行
@@ -442,7 +596,7 @@ declare global {
     mount: () => void
     unmount: () => void
   }
-  type AnyObj = Record<string, unknown>
+  type AnyObj = Record<string, any>
 }
 let app: AppInstance | null = null
 let router: Router | null = null
@@ -481,7 +635,7 @@ declare global {
     mount: () => void
     unmount: () => void
   }
-  type AnyObj = Record<string, unknown>
+  type AnyObj = Record<string, any>
 }
 let app: any = null
 // 👇 将渲染操作放入 mount 函数，子应用初始化时会自动执行
@@ -507,23 +661,27 @@ if (!window.__MICRO_APP_ENVIRONMENT__) {
 
 ### 数据通信
 
-#### sub-react-app
+#### child-react18
 
 ::: code-group
 
-```tsx [sub-react-app.tsx]
+```tsx [child-react18.tsx]
 // ...
 import microApp from '@micro-zoe/micro-app'
 export default function SubReactApp() {
+  const childBaseRoute = `/${ChildAppName.CHILD_REACT18}`
   const [msg, setMsg] = useState('来自基座的初始数据')
   const [childMsg, setChildMsg] = useState()
+
+  // ...省略的代码参考上面生命周期
+
   // 获取子应用发送过来的数据
   const onDataChange = (e: CustomEvent) => {
     setChildMsg(e.detail.data)
   }
   // 手动发送数据给子应用,第二个参数只接受对象类型
   const sendData = () => {
-    microApp.setData('sub-react-app', { data: `来自基座的数据 ${+new Date()}` })
+    microApp.setData(ChildAppName.CHILD_REACT18, { data: `来自基座的数据 ${+new Date()}` })
   }
   return (
     <Space direction="vertical" size="middle">
@@ -535,8 +693,10 @@ export default function SubReactApp() {
         <Typography.Text>{JSON.stringify(childMsg)}</Typography.Text>
       </Space>
       <micro-app
-        name="sub-react-app"
-        url={config['sub-react-app']}
+        name={ChildAppName.CHILD_REACT18}
+        url={`${microAppConfig[ChildAppName.CHILD_REACT18]}/child/react18`}
+        baseroute={childBaseRoute}
+        disable-memory-router
         clear-data
         // 通过 data 属性发送数据给子应用
         data={{ msg }}
@@ -591,19 +751,20 @@ function App() {
 
 :::
 
-#### vue-cli-app
+#### child-vue2
 
 子应用② 演示了关闭虚拟路由并从基座获取基础路由，更详细的说明[参考官方文档](https://micro-zoe.github.io/micro-app/docs.html#/zh-cn/router)
 
 ::: code-group
 
-```tsx [vue-cli-app.tsx]
+```tsx [child-vue2.tsx]
 // ...
 import microApp from '@micro-zoe/micro-app'
 export default function VueCliApp() {
+  const childBaseRoute = `/${ChildAppName.CHILD_VUE2}`
   // 操作子应用的路由
   const controlChildRouter = () => {
-    microApp.router.push({ name: 'vue-cli-app', path: '/about' })
+    microApp.router.push({ name: ChildAppName.CHILD_VUE2, path: `${childBaseRoute}/about` })
   }
   return (
     <Space direction="vertical" size="middle">
@@ -613,9 +774,9 @@ export default function VueCliApp() {
         </Button>
       </Space>
       <micro-app
-        name="vue-cli-app"
-        url={config['vue-cli-app']}
-        baseroute="/vue-cli-app"
+        name={ChildAppName.CHILD_VUE2}
+        url={`${microAppConfig[ChildAppName.CHILD_VUE2]}/child/vue2`}
+        baseroute={childBaseRoute}
         disable-memory-router
       ></micro-app>
     </Space>
@@ -681,14 +842,15 @@ export default Vue.extend({
 
 :::
 
-#### vite-vue-app
+#### child-vue3
 
 ::: code-group
 
-```tsx [vite-vue-app.tsx]
+```tsx [child-vue3.tsx]
 // ...
 import microApp from '@micro-zoe/micro-app'
 export default function ViteVueApp() {
+  const childBaseRoute = `/${ChildAppName.CHILD_VUE3}`
   const [msg, setMsg] = useState('来自基座的初始数据')
   const [childMsg, setChildMsg] = useState()
   // 获取子应用发送过来的数据
@@ -697,11 +859,11 @@ export default function ViteVueApp() {
   }
   // 手动发送数据给子应用,第二个参数只接受对象类型
   const sendData = () => {
-    microApp.setData('vite-vue-app', { data: `来自基座的数据 ${+new Date()}` })
+    microApp.setData(ChildAppName.CHILD_VUE3, { data: `来自基座的数据 ${+new Date()}` })
   }
   // 操作子应用的路由
   const controlChildRouter = () => {
-    microApp.router.push({ name: 'vite-vue-app', path: '/about' })
+    microApp.router.push({ name: ChildAppName.CHILD_VUE3, path: '/about' })
   }
   return (
     <Space direction="vertical" size="middle">
@@ -716,8 +878,8 @@ export default function ViteVueApp() {
         <Typography.Text>{JSON.stringify(childMsg)}</Typography.Text>
       </Space>
       <micro-app
-        name="vite-vue-app"
-        url={config['vite-vue-app']}
+        name={ChildAppName.CHILD_VUE3}
+        url={`${microAppConfig[ChildAppName.CHILD_VUE3]}/child/vite-vue3`}
         iframe
         clear-data
         data={{ msg }}
@@ -769,14 +931,15 @@ const sendData = () => {
 
 :::
 
-#### vite-svelte-app
+#### child-svelte
 
 ::: code-group
 
-```tsx [vite-svelte-app.tsx]
+```tsx [child-svelte.tsx]
 // ...
 import microApp from '@micro-zoe/micro-app'
 export default function ViteSvelteApp() {
+  const childBaseRoute = `/${ChildAppName.CHILD_SVELTE}`
   const [msg, setMsg] = useState('来自基座的初始数据')
   const [childMsg, setChildMsg] = useState()
   // 获取子应用发送过来的数据
@@ -785,7 +948,7 @@ export default function ViteSvelteApp() {
   }
   // 手动发送数据给子应用,第二个参数只接受对象类型
   const sendData = () => {
-    microApp.setData('vite-svelte-app', { data: `来自基座的数据 ${+new Date()}` })
+    microApp.setData(ChildAppName.CHILD_SVELTE, { data: `来自基座的数据 ${+new Date()}` })
   }
   return (
     <Space direction="vertical" size="middle">
@@ -797,8 +960,10 @@ export default function ViteSvelteApp() {
         <Typography.Text>{JSON.stringify(childMsg)}</Typography.Text>
       </Space>
       <micro-app
-        name="vite-svelte-app"
-        url={config['vite-svelte-app']}
+        name={ChildAppName.CHILD_SVELTE}
+        url={`${microAppConfig[ChildAppName.CHILD_SVELTE]}/child/vite-svelte`}
+        baseroute={childBaseRoute}
+        disable-memory-router
         iframe
         clear-data
         data={{ msg }}
@@ -884,3 +1049,189 @@ import './public-path'
 /** @jsx jsxCustomEvent */
 import jsxCustomEvent from '@micro-zoe/micro-app/polyfill/jsx-custom-event'
 ```
+
+## 部署
+
+这里给出一个简易的`Docker` + `Nginx`的部署配置，更细化的部署配置请自己参考官方示例进行研究
+
+在`micro-app-demo`项目的根目录新建`Dockerfile`、`docker-compose.yml`、`.dockerignore`和`nginx.conf`四个文件
+
+:::code-group
+
+```Dockerfile
+# 设置基础的node镜像
+FROM node:20-slim AS base
+# 接收传入的变量
+ARG MAIN_APP_NAME
+ARG CHILD_REACT_NAME
+ARG CHILD_VUE2_NAME
+ARG CHILD_VUE3_NAME
+ARG CHILD_SVELTE_NAME
+
+ARG CHILD_REACT_FOLDER
+ARG CHILD_VUE2_FOLDER
+ARG CHILD_VUE3_FOLDER
+ARG CHILD_SVELTE_FOLDER
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+# 设置淘宝源,否则下载 corepack 时, 失败的概率极大, 虽然本来就挺容易失败的...
+RUN npm config set registry https://registry.npmmirror.com
+COPY . /app
+WORKDIR /app
+
+# 安装依赖
+FROM base AS installer
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
+# 打包
+FROM installer AS builder
+RUN pnpm --filter=$MAIN_APP_NAME build
+RUN pnpm --filter=$CHILD_REACT_NAME build
+RUN pnpm --filter=$CHILD_VUE2_NAME build
+RUN pnpm --filter=$CHILD_VUE3_NAME build
+RUN pnpm --filter=$CHILD_SVELTE_NAME build
+
+
+# 设置nginx镜像
+FROM nginx:latest
+# 接收传入的变量
+ARG MAIN_APP_NAME
+ARG CHILD_REACT_NAME
+ARG CHILD_VUE2_NAME
+ARG CHILD_VUE3_NAME
+ARG CHILD_SVELTE_NAME
+
+ARG CHILD_REACT_FOLDER
+ARG CHILD_VUE2_FOLDER
+ARG CHILD_VUE3_FOLDER
+ARG CHILD_SVELTE_FOLDER
+
+# 清理默认的ngnix配置
+RUN rm -rf /usr/share/nginx/html/*
+RUN rm /etc/nginx/conf.d/default.conf
+
+# 拷贝nginx的部署配置进去
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# 复制构建产物到nginx的服务目录
+COPY --from=builder /app/apps/${MAIN_APP_NAME}/dist /usr/share/nginx/html
+COPY --from=builder /app/apps/${CHILD_REACT_NAME}/build /usr/share/nginx/html/child/${CHILD_REACT_FOLDER}
+COPY --from=builder /app/apps/${CHILD_VUE2_NAME}/dist /usr/share/nginx/html/child/${CHILD_VUE2_FOLDER}
+COPY --from=builder /app/apps/${CHILD_VUE3_NAME}/dist /usr/share/nginx/html/child/${CHILD_VUE3_FOLDER}
+COPY --from=builder /app/apps/${CHILD_SVELTE_NAME}/dist /usr/share/nginx/html/child/${CHILD_SVELTE_FOLDER}
+
+# 暴露80端口
+EXPOSE 80
+# 将nginx转为前台进程
+CMD ["nginx", "-g", "daemon off;"]
+
+```
+
+```yml [docker-compose]
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # 传入环境变量
+        MAIN_APP_NAME: 'main-app'
+        CHILD_REACT_NAME: 'child-react18'
+        CHILD_VUE2_NAME: 'child-vue2'
+        CHILD_VUE3_NAME: 'child-vue3'
+        CHILD_SVELTE_NAME: 'child-svelte'
+
+        CHILD_REACT_FOLDER: 'react18'
+        CHILD_VUE2_FOLDER: 'vue2'
+        CHILD_VUE3_FOLDER: 'vite-vue3'
+        CHILD_SVELTE_FOLDER: 'vite-svelte'
+    ports:
+      - 8080:80
+```
+
+```ini [.dockerignore]
+node_modules
+.git
+.gitignore
+*.md
+dist
+```
+
+```nginx [nginx.conf]
+server {
+  listen 80;
+  # 设置服务器名称，本地部署时使用localhost
+  server_name localhost;
+
+  # 主应用 Umijs
+  location / {
+    # 设置网站根目录位置
+    root /usr/share/nginx/html;
+    # 网站首页
+    index index.php index.html index.htm;
+    # add_header Cache-Control;
+    add_header Access-Control-Allow-Origin *;
+    if ( $request_uri ~* ^.+.(js|css|jpg|png|gif|tif|dpg|jpeg|eot|svg|ttf|woff|json|mp4|rmvb|rm|wmv|avi|3gp)$ ){
+      add_header Cache-Control max-age=7776000;
+      add_header Access-Control-Allow-Origin *;
+    }
+    try_files $uri $uri/ /index.html;
+  }
+
+  # 子应用 react18
+  location /child/react18 {
+    root /usr/share/nginx/html;
+    add_header Access-Control-Allow-Origin *;
+    if ( $request_uri ~* ^.+.(js|css|jpg|png|gif|tif|dpg|jpeg|eot|svg|ttf|woff|json|mp4|rmvb|rm|wmv|avi|3gp)$ ){
+      add_header Cache-Control max-age=7776000;
+      add_header Access-Control-Allow-Origin *;
+    }
+    try_files $uri $uri/ /child/react18/index.html;
+  }
+
+  # 子应用 vue-cli-vue2
+  location /child/vue2 {
+    root /usr/share/nginx/html;
+    add_header Access-Control-Allow-Origin *;
+    if ( $request_uri ~* ^.+.(js|css|jpg|png|gif|tif|dpg|jpeg|eot|svg|ttf|woff|json|mp4|rmvb|rm|wmv|avi|3gp)$ ){
+      add_header Cache-Control max-age=7776000;
+      add_header Access-Control-Allow-Origin *;
+    }
+    try_files $uri $uri/ /child/vue2/index.html;
+  }
+
+  # 子应用 vite-vue3
+  location /child/vite-vue3 {
+    root /usr/share/nginx/html;
+    add_header Access-Control-Allow-Origin *;
+    if ( $request_uri ~* ^.+.(js|css|jpg|png|gif|tif|dpg|jpeg|eot|svg|ttf|woff|json|mp4|rmvb|rm|wmv|avi|3gp)$ ){
+      add_header Cache-Control max-age=7776000;
+      add_header Access-Control-Allow-Origin *;
+    }
+    try_files $uri $uri/ /child/vite-vue3/index.html;
+  }
+
+  # 子应用 vite-svelte
+  location /child/vite-svelte {
+    root /usr/share/nginx/html;
+    add_header Access-Control-Allow-Origin *;
+    if ( $request_uri ~* ^.+.(js|css|jpg|png|gif|tif|dpg|jpeg|eot|svg|ttf|woff|json|mp4|rmvb|rm|wmv|avi|3gp)$ ){
+      add_header Cache-Control max-age=7776000;
+      add_header Access-Control-Allow-Origin *;
+    }
+    try_files $uri $uri/ /child/vite-svelte/index.html;
+  }
+}
+```
+
+:::
+
+在项目根目录打开命令行终端，执行`docker compose up -d --build`，等待脚本运行成功后，浏览器访问`localhost:8080`就行
+
+:::warning ⚡注意
+在国区拉 docker 镜像比较看脸，我跑这套 docker 脚本的时候，经常出现`corepack`这个包下载失败的情况
+:::

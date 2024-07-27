@@ -384,11 +384,13 @@ Logto 目前支持的API资源类型有`Node.js`、`Python`和`Java`，根据自
 
 ![](../assets/capsule-english/logto-api-resource-create-2.png)
 
-因为我在部署Logto本地服务时，把`PORT`设置为`5001`了，所以这里就是`http://localhost:5001/`，如果用默认部署的话则是`http://localhost:3001/`
-
-记得要把`http://localhost:5001/`也保存到环境变量中
+填入你的后端服务地址，我这里用的是`Nest.js`，服务地址是`http://localhost:4000`，注意末尾一定不能有斜杠`/`
 
 ![](../assets/capsule-english/logto-api-resource-create-3.png)
+
+最后把你创建的API资源地址和Logto默认的API资源地址保存到环境变量中
+
+![](../assets/capsule-english/logto-api-resource-create-4.png)
 
 至此，API 资源部分配置完成 🎉
 
@@ -472,6 +474,40 @@ export default defineNuxtConfig({
 接着新建一个`OAuth App`
 
 ![](../assets/capsule-english/github-oauth2-create-2.png)
+
+填入你的 Logto 信息
+
+![](../assets/capsule-english/github-oauth2-create-3.png)
+
+点击右边的的按钮生成一个`Client Secret`，然后把它和`Client ID`填回 Logto 的连接器配置中
+
+![](../assets/capsule-english/github-oauth2-create-4.png)
+
+![](../assets/capsule-english/github-oauth2-create-5.png)
+
+最后所收集到的Logto环境变量如下
+
+```ini
+LOGTO_ENDPOINT=http://localhost:5001/
+LOGTO_M2M_API_RESOURCE=https://default.logto.app/api
+
+# logto前端应用
+NUXT_HOST=127.0.0.1
+NUXT_PORT=3000
+NUXT_LOGTO_APP_ID=l9pj4cqwl9wi2f66q0979
+NUXT_LOGTO_APP_SECRET=iyTB7rwSNcYUwuRLiHrPQNZ4ycRZuLV3
+NUXT_LOGTO_COOKIE_ENCRYPTION_KEY=wlstRAtXj9GX80MJyY4QXmaUjlX7HP8T
+NUXT_LOGTO_PATHNAMES_SIGN_IN=/logto/sign-in
+NUXT_LOGTO_PATHNAMES_SIGN_OUT=/logto/sign-out
+NUXT_LOGTO_PATHNAMES_CALLBACK=/logto/callback
+
+# logto后端应用
+NEST_HOST=127.0.0.1
+NEST_PORT=4000
+NEST_ENDPOINT=http://localhost:4000
+NEST_LOGTO_APP_ID=ipookums1xa2g0krtm3z0
+NEST_LOGTO_APP_SECRET=p7sahFWGtr4KobPfl5CSHLFOxFz5YN7y
+```
 
 :::tip 🎉好了，到这里工程的基础就搭建完成了。下一篇是[Nuxt3的配置](./part-two.md)
 :::
