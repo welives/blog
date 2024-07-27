@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例3 相框</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 95vh;
+      }
+      p {
+        text-align: center;
+      }
+      canvas {
+        /* 样式尺寸 */
+        width: 100vw;
+        height: 100vh;
+        background-color: #fefefe;
+      }
+    </style>
+  </head>
+  <body>
+    <p>练习canvas图片相关的API</p>
+    <canvas id="photo"></canvas>
+  </body>
+  <script>
+    const frame = {
+      width: 350,
+      height: 400,
+    }
+    const picture = {
+      width: 218,
+      height: 275,
+    }
+
+    // 加载相框
+    const getFramePromise = new Promise((resolve) => {
+      const img = new Image()
+      img.src = '../assets/picture-frame.jpg'
+      img.width = frame.width
+      img.height = frame.height
+      img.onload = () => resolve(img)
+    })
+    // 加载照片
+    const getPicturePromise = new Promise((resolve) => {
+      const img = new Image()
+      img.src = '../assets/tfboys.jpg'
+      img.width = picture.width
+      img.height = picture.height
+      img.onload = () => resolve(img)
+    })
+    /**
+     * 初始化canvas原始尺寸
+     * @param {HTMLCanvasElement} cvs
+     */
+    function init(cvs) {
+      cvs.width = cvs.clientWidth * devicePixelRatio
+      cvs.height = cvs.clientHeight * devicePixelRatio
+    }
+    /**
+     * 渲染canvas
+     * @param {string} id
+     * @param {HTMLImageElement[]} imgs
+     */
+    function render(id, imgs) {
+      id = id.replace('#', '')
+      /** @type {HTMLCanvasElement} */
+      const cvs = document.querySelector(`#${id}`)
+      if (cvs === null || !cvs.getContext) {
+        return false
+      }
+      const ctx = cvs.getContext('2d')
+      init(cvs)
+      /**
+       * 注意, 输入的参数数量不同时,每个参数所代表的意义可能会不同
+       * @see https://www.twle.cn/l/yufei/canvas/canvas-basic-image-drawimage.html
+       */
+      // 5 参数形式
+      ctx.drawImage(
+        imgs[0], // 要绘制的图片
+        100, // 图片将从画布的 dx 坐标位置开始绘制
+        100, // 图片将从画布的 dy 坐标位置开始绘制
+        imgs[0].width, // 图片的绘制宽度 dWidth
+        imgs[0].height, // 图片的绘制高度 dHeight
+      )
+
+      // 7 参数形式
+      ctx.drawImage(
+        imgs[1], // 要绘制的图片
+        20, // 图片裁剪框的起点坐标 sx, 即距离图片自身左上角(0,0)的水平距离
+        0, // 图片裁剪框的起点坐标 sy, 即距离图片自身左上角(0,0)的垂直距离
+        imgs[1].width, // 图片裁剪框的宽度 sWidth
+        imgs[1].height, // 图片裁剪框的高度 sHeight
+        165, // 图片将从画布的 dx 坐标位置开始绘制
+        158, // 图片将从画布的 dy 坐标位置开始绘制
+        imgs[1].width, // 图片的绘制宽度 dWidth
+        imgs[1].height, // 图片的绘制高度 dHeight
+      )
+
+      ctx.drawImage(
+        imgs[0],
+        100 + frame.width,
+        100,
+        imgs[0].width,
+        imgs[0].height,
+      )
+      ctx.drawImage(
+        imgs[1],
+        390,
+        0,
+        imgs[1].width,
+        imgs[1].height,
+        165 + frame.width,
+        158,
+        imgs[1].width,
+        imgs[1].height,
+      )
+
+      ctx.drawImage(
+        imgs[0],
+        100 + frame.width * 2,
+        100,
+        imgs[0].width,
+        imgs[0].height,
+      )
+      ctx.drawImage(
+        imgs[1],
+        740,
+        0,
+        imgs[1].width,
+        imgs[1].height,
+        165 + frame.width * 2,
+        158,
+        imgs[1].width,
+        imgs[1].height,
+      )
+    }
+    Promise.all([getFramePromise, getPicturePromise]).then((imgs) => {
+      render('#photo', imgs)
+    })
+  </script>
+</html>
