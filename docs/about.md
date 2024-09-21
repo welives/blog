@@ -10,32 +10,32 @@
 
 ### 前端
 
-- <span class="icon-[devicon--html5] mx-1 translate-y-0.5" />**HTML** + <span class="icon-[devicon--css3] mx-1 translate-y-0.5" />**CSS** + <span class="icon-[devicon--javascript] mx-1 translate-y-0.5" />**JavaScript** + <span class="icon-[devicon--typescript] mx-1 translate-y-0.5" />**TypeScript** + **SCSS**，熟练掌握
-- <span class="icon-[devicon--vuejs] mx-1 translate-y-0.5" />**Vue** + **Uniapp** + <span class="icon-[devicon--react] mx-1 translate-y-0.5" />**React** + **ReactNative** + **Taro** + **Ahooks** + <span class="icon-[devicon--tailwindcss] mx-1 translate-y-0.5" />**TailwindCSS**，熟练掌握
-- **Vuex** + <span class="icon-[skill-icons--pinia-light] mx-1 translate-y-0.5" />**Pinia** + <span class="icon-[skill-icons--redux] mx-1 translate-y-0.5" />**Redux** + **Zustand** + **MMKV**，这些是我在项目中使用过的状态管理库
-- <span class="icon-[devicon--nuxtjs] mx-1 translate-y-0.5" />**Nuxt.js** + <span class="icon-[devicon--nextjs] mx-1 translate-y-0.5" />**Next.js** + <span class="icon-[devicon--reactnavigation] mx-1 translate-y-0.5" />**ReactNavigation** + **TanStack Query** + <span class="icon-[devicon--antdesign] mx-1 translate-y-0.5" />**AntDesign** + **Umi.js** + <span class="icon-[logos--element] mx-1 translate-y-0.5" />**Element** + **Vant** + **uView** + **echarts**，都拿来做过项目，因为前端周边生态太繁杂，不敢说哪个熟练，都是看着文档在写
-- <span class="icon-[devicon--flutter] mx-1 translate-y-0.5" />**Flutter**，努力学习中
-- <span class="icon-[skill-icons--jquery] mx-1 translate-y-0.5" />**jQuery** + <span class="icon-[devicon--bootstrap] mx-1 translate-y-0.5" />**BootStrap**，现在很少用了
+- <span class="i-devicon:html5" />**HTML** + <span class="i-devicon:css3" />**CSS** + <span class="i-devicon:javascript" />**JavaScript** + <span class="i-devicon:typescript" />**TypeScript** + **SCSS**，熟练掌握
+- <span class="i-devicon:vuejs" />**Vue** + **Uniapp** + <span class="i-devicon:react" />**React** + **ReactNative** + **Taro** + **Ahooks** + <span class="i-devicon:tailwindcss" />**TailwindCSS**，熟练掌握
+- **Vuex** + <span class="i-logos:pinia" />**Pinia** + <span class="i-logos:redux" />**Redux** + **Zustand** + **MMKV**，这些是我在项目中使用过的状态管理库
+- <span class="i-devicon:nuxtjs" />**Nuxt.js** + <span class="i-devicon:nextjs" />**Next.js** + <span class="i-devicon:reactnavigation" />**ReactNavigation** + **TanStack Query** + <span class="i-devicon:antdesign" />**AntDesign** + **Umi.js** + <span class="i-logos:element" />**Element** + **Vant** + **uView** + **echarts**，都拿来做过项目，因为前端周边生态太繁杂，不敢说哪个熟练，都是看着文档在写
+- <span class="i-devicon:flutter" />**Flutter**，努力学习中
+- <span class="i-skill-icons:jquery" />**jQuery** + <span class="i-devicon:bootstrap" />**BootStrap**，现在很少用了
 
 ### 后端
 
-- <span class="icon-[devicon--nodejs] mx-1 translate-y-0.5" />**Nodejs** + <span class="icon-[logos--express] mx-1 translate-y-1" /> + <span class="icon-[logos--koa] mx-1 translate-y-0.5" /> + <span class="icon-[devicon--nestjs] mx-1 translate-y-0.5" />**Nest.js** + <span class="icon-[devicon--prisma] mx-1 translate-y-0.5" />**Prisma** + <span class="icon-[logos--typeorm] mx-1 translate-y-0.5" />**TypeORM**，熟练掌握
-- <span class="icon-[devicon--mysql] mx-1 translate-y-0.5" />**MySQL** + <span class="icon-[devicon--mongodb] mx-1 translate-y-0.5" />**MongoDB** + <span class="icon-[devicon--redis] mx-1 translate-y-0.5" />**Redis**，我常用的就这三
-- 一些常用的配套工具：<span class="icon-[logos--pm2-icon] mx-1 translate-y-0.5" />**PM2** + <span class="icon-[devicon--nodemon] mx-1 translate-y-0.5" />**Nodemon** + <span class="icon-[logos--jwt-icon] mx-1 translate-y-0.5" />**JWT** + <span class="icon-[devicon--swagger] mx-1 translate-y-0.5" />**Swagger**
+- <span class="i-devicon:nodejs" />**Nodejs** + <span class="i-logos:express" /> + <span class="i-logos:koa" /> + <span class="i-devicon:nestjs" />**Nest.js** + <span class="i-devicon:prisma" />**Prisma** + <span class="i-logos:typeorm" />**TypeORM**，熟练掌握
+- <span class="i-devicon:postgresql" />**PostgreSQL** + <span class="i-devicon:mysql" />**MySQL** + <span class="i-devicon:mongodb" />**MongoDB** + <span class="i-devicon:redis" />**Redis**
+- 一些常用的配套工具：<span class="i-logos:pm2-icon" />**PM2** + <span class="i-devicon:nodemon" />**Nodemon** + <span class="i-logos:jwt-icon" />**JWT** + <span class="i-devicon:swagger" />**Swagger**
 
 ### 工程化
 
-- <span class="icon-[devicon--vitejs] mx-1 translate-y-0.5" />**Vite** + <span class="icon-[devicon--webpack] mx-1 translate-y-0.5" />**Webpack** + <span class="icon-[devicon--postcss] mx-1 translate-y-0.5" />**PostCSS**，不敢说特别熟练，但也用来搭建过不少基础项目了，还写过一个Vite体系下的插件
-- <span class="icon-[devicon--eslint] mx-1 translate-y-0.5" />**ESLint** + **Prettier**，用来规范代码格式，熟练掌握
-- <span class="icon-[devicon--npm-wordmark] mx-1 translate-y-0.5" />**npm** + <span class="icon-[devicon--pnpm] mx-1 translate-y-0.5" />**pnpm**，现在都是用pnpm了，因为解决了幻影依赖的问题，而且速度也快
+- <span class="i-devicon:vitejs" />**Vite** + <span class="i-devicon:webpack" />**Webpack** + <span class="i-devicon:postcss" />**PostCSS**，不敢说特别熟练，但也用来搭建过不少基础项目了，还写过一个Vite体系下的插件
+- <span class="i-devicon:eslint" />**ESLint** + **Prettier**，用来规范代码格式，熟练掌握
+- <span class="i-devicon:npm-wordmark" />**npm** + <span class="i-devicon:pnpm" />**pnpm**，现在都是用pnpm了，因为解决了幻影依赖的问题，而且速度也快
 
 ### 其他
 
-- <span class="icon-[devicon--ubuntu] mx-1 translate-y-0.5" />**Ubuntu** + <span class="icon-[devicon--centos] mx-1 translate-y-0.5" />**Centos**，我常用的Linux就这俩
-- <span class="icon-[devicon--vscode] mx-1 translate-y-0.5" />**VsCode** + <span class="icon-[devicon--git] mx-1 translate-y-0.5" />**Git** + <span class="icon-[devicon--github] mx-1 translate-y-0.5" />**Github** + <span class="icon-[devicon--postman] mx-1 translate-y-0.5" />**PostMan**，必备的生产力工具
-- <span class="icon-[skill-icons--docker] mx-1 translate-y-0.5" />**Docker**，我主要用来本地部署项目和起数据库服务
-- <span class="icon-[skill-icons--nginx] mx-1 translate-y-0.5" />**Nginx**，配合Docker使用，做反向代理、负载均衡等
-- 面向搜索编程：<span class="icon-[devicon--google] mx-1 translate-y-0.5" />**Google** + <span class="icon-[logos--bing] mx-1 translate-y-0.5" />**Bing** + <span class="icon-[devicon--stackoverflow] mx-1 translate-y-0.5" />**StackOverflow** + <span class="icon-[devicon--github] mx-1 translate-y-0.5" />**Github** + **Gitee** + **ChatGPT**
+- <span class="i-devicon:ubuntu" />**Ubuntu** + <span class="i-devicon:centos" />**Centos**，我常用的Linux就这俩
+- <span class="i-devicon:vscode" />**VsCode** + <span class="i-devicon:git" />**Git** + <span class="i-devicon:github" />**Github** + <span class="i-devicon:postman" />**PostMan**，必备的生产力工具
+- <span class="i-skill-icons:docker" />**Docker**，我主要用来本地部署项目和起数据库服务
+- <span class="i-skill-icons:nginx" />**Nginx**，配合Docker使用，做反向代理、负载均衡等
+- 面向搜索编程：<span class="i-devicon:google" />**Google** + <span class="i-logos:bing" />**Bing** + <span class="i-devicon:stackoverflow" />**StackOverflow** + <span class="i-devicon:github" />**Github** + <span class="i-simple-icons:gitee" />**Gitee** + <span class="i-arcticons:openai-chatgpt" />**ChatGPT**
 - 二层/三层交换机配置，好久没摸了，有点生疏
 
 ### 外语
@@ -45,4 +45,4 @@
 
 ### 联系我
 
-<a href="https://github.com/welives" target="_blank"><span class="icon-[devicon--github] mx-1 translate-y-0.5" /></a> or <334059075@qq.com>
+<a href="https://github.com/welives" target="_blank"><span class="i-devicon:github" /></a> or <334059075@qq.com>

@@ -1,3 +1,10 @@
+@layer base {
+  /* 添加自己的样式 */
+  h2 {
+    @apply text-red-500;
+  }
+}
+
 :root {
   --vp-c-brand-1: #10b981;
   --vp-c-brand-2: #34d399;

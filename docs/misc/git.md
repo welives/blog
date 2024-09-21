@@ -114,3 +114,13 @@ head:
   - `git rebase -i <base-branch>` 将当前分支变基到指定分支，并进入交互模式
   - `git rebase --abort` 终止变基
   - `git rebase --continue` 继续变基
+
+## 本地拉取PR进行预览
+
+格式为`git fetch origin pull/PRId/head:LocalBranchName`
+
+其中，`PRId`为该 Pull Request 的序号，`LocalBranchName`为拉取到本地后的分支名称
+
+```shell
+git fetch origin pull/123/head:pr123
+```
