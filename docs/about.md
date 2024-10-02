@@ -45,4 +45,4 @@
 
 ### 联系我
 
-<a href="https://github.com/welives" target="_blank"><span class="i-devicon:github" /></a> or <334059075@qq.com>
+<a href="https://github.com/welives" target="_blank"><span class="i-devicon:github" /></a>

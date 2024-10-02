@@ -5,6 +5,10 @@
   }
 }
 
+kbd {
+  --uno: border-rounded bg-$vp-c-gray-1 bg-opacity-10 px-1 py-.5;
+}
+
 :root {
   --vp-c-brand-1: #10b981;
   --vp-c-brand-2: #34d399;

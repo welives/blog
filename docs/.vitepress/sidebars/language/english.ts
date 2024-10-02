@@ -23,11 +23,29 @@ export default {
         {
           text: '第一册',
           link: '/language/english/nce/one',
+          items: [
+            {
+              text: 'Lesson1~30',
+              link: '/language/english/nce/one-part-1'
+            },
+            {
+              text: 'Lesson31~66',
+              link: '/language/english/nce/one-part-2'
+            },
+            {
+              text: 'Lesson67~106',
+              link: '/language/english/nce/one-part-3'
+            },
+            {
+              text: 'Lesson107~144',
+              link: '/language/english/nce/one-part-4'
+            }
+          ]
         },
-        {
-          text: '第二册',
-          link: '/language/english/nce/two',
-        },
+        // {
+        //   text: '第二册',
+        //   link: '/language/english/nce/two',
+        // },
       ],
     },
   ],

@@ -526,9 +526,24 @@ pnpm config set state-dir "D:\Develop\nvm\pnpm\state"
 
 ## JDK配置
 
-1. 根据所安装的 JDK 版本，新建一个带有大版本号的用户变量，例如`JAVA17_HOME`，变量值填入安装路径`D:\Develop\Java\jdk-17`
-2. 再新建一个用户变量`JAVA_HOME`，变量值填入`%JAVA17_HOME%`。如果安装有多个 JDK 版本时，只需要修改`JAVA_HOME`变量的值即可切换全局的 JDK 版本，例如修改为`%JAVA11_HOME%`
-3. 给用户变量`Path`添加一个值`%JAVA_HOME%\bin`
+1. 根据所安装的 JDK 版本，新建一个带有大版本号的系统变量，例如`JAVA17_HOME`，变量值填入安装路径`D:\Develop\Java\jdk-17`
+2. 再新建一个系统变量`JAVA_HOME`，变量值填入`%JAVA17_HOME%`。如果安装有多个 JDK 版本时，只需要修改`JAVA_HOME`变量的值即可切换全局的 JDK 版本，例如修改为`%JAVA11_HOME%`
+3. 给系统变量`Path`添加一个值`%JAVA_HOME%\bin`和`%JAVA_HOME%\jre\bin`
+4. 新建一个系统变量`CLASSPATH`，变量值填入`.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar`
+
+由于在较新的 JDK 版本中已经不再默认提供 JRE，这时需要自己使用命令来编译生成 JRE。使用终端进入 JDK 目录，执行如下命令即可
+
+```sh
+bin\jlink.exe --module-path jmods --add-modules java.desktop --output jre
+```
+:::info ⚡ 在 VSCode 中编写 Java 项目的必备插件
+- `Extension Pack for Java`
+- `Spring Boot Extension Pack`
+- `Java Imports Snippets`
+- `XML`
+- `XML Tools`
+- `YAML`
+:::
 
 ## AndroidStudio配置
 

@@ -13,10 +13,10 @@ export default defineConfig({
     presetUno(),
     presetAttributify(),
     presetIcons({
-      scale: 1.2,
+      // scale: 1.2,
       extraProperties: {
         'display': 'inline-block',
-        'vertical-align': 'sub',
+        'vertical-align': 'middle',
       },
     }),
     presetTypography(),

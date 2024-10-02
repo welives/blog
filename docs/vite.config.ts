@@ -4,6 +4,8 @@ import UnoCSS from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { viteDemoPreviewPlugin } from '@vitepress-code-preview/plugin'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+
 export default defineConfig({
   optimizeDeps: {
     exclude: [
@@ -16,6 +18,7 @@ export default defineConfig({
     },
   },
   plugins: [vueJsx(), viteDemoPreviewPlugin(), UnoCSS(), Components({
+    resolvers: [AntDesignVueResolver({ importStyle: false })],
     dirs: [
       '.vitepress/components',
     ],

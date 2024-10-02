@@ -1122,3 +1122,18 @@ e.g. `live` => `/laɪv/`
 其中，**重读闭音节是两个辅音中间夹一个元音，在英语重读闭音节中，元音字母不发它本身的字母音**
 
 **重读闭音节三要素：①必须是重读音节；②最后只有一个辅音字母；③元音字母发短元音**
+
+## 一些常见单词缩写的发音
+
+|`be`|`have`|`would`|`will`|
+|:-:|:-:|:-:|:-:|
+|<Kbd word="I'm">`/aɪm/`</Kbd> |<Kbd word="I've">`/aɪv/`</Kbd>|<Kbd word="I'd">`/aɪd/`</Kbd>|<Kbd word="I'll">`/aɪl/`</Kbd>|
+|<Kbd word="you're">`/jɔ:(r)/`或`/jə/`</Kbd>|<Kbd word="you've">`/ju:v/`</Kbd>|<Kbd word="you'd">`/ju:d/`</Kbd>|<Kbd word="you'll">`/ju:l/`</Kbd>|
+|<Kbd word="he's">`/hɪz/`或`/his/`</Kbd>|<Kbd word="he's">`/hi:z/`或`/his/`</Kbd>|<Kbd word="he'd">`/hi:d/`</Kbd>|<Kbd word="he'll">`/hi:l/`</Kbd>|
+|<Kbd word="she's">`/∫i:z/`或`/∫iz/`</Kbd>|<Kbd word="she's">`/∫i:z/`或`/∫iz/`</Kbd>|<Kbd word="she'd">`/∫i:d/`</Kbd>|<Kbd word="she'll">`/∫i:l/`</Kbd>|
+|<Kbd word="it's">`/ɪts/`</Kbd>|<Kbd word="it's">`/ɪts/`</Kbd>|<Kbd word="it'd">`/ɪtəd/`</Kbd>|<Kbd word="it'll">`/ɪtl/`</Kbd>|
+|<Kbd word="we're">`/wɪə(r)/`</Kbd>|<Kbd word="we've">`/wi:v/`或`/wiv/`</Kbd>|<Kbd word="we'd">`/wi:d/`或`/wid/`</Kbd>|<Kbd word="we'll">`/wi:l/`或`/wil/`</Kbd>|
+|<Kbd word="they're">`/ðeə(r)/`</Kbd>|<Kbd word="they've">`/ðeɪv/`</Kbd>|<Kbd word="they'd">`/ðeɪd/`</Kbd>|<Kbd word="they'll">`/ðeɪl/`</Kbd>|
+||<Kbd word="should've">`/∫ədəv/`</Kbd>|||
+||<Kbd word="would've">`/wʊdəv/`</Kbd>|||
+||<Kbd word="could've">`/kədəv/`</Kbd>|||

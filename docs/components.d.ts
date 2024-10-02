@@ -8,5 +8,10 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BackToTop: typeof import('./.vitepress/components/BackToTop.vue')['default']
+    EnglishWord: typeof import('./.vitepress/components/EnglishWord.vue')['default']
+    EnglishWords: typeof import('./.vitepress/components/EnglishWords.vue')['default']
+    ExampleSentence: typeof import('./.vitepress/components/ExampleSentence.vue')['default']
+    Kbd: typeof import('./.vitepress/components/Kbd.vue')['default']
+    NceTexts: typeof import('./.vitepress/components/NceTexts.vue')['default']
   }
 }

@@ -11,7 +11,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev docs",
+    "dev": "vitepress dev docs --host",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
     "deploy": "bash deploy.sh",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^2.17.0",
     "@iconify/json": "^2.2.251",
+    "@types/howler": "^2.2.12",
     "@types/markdown-it": "^13.0.2",
     "@types/node": "^20.9.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
@@ -44,6 +45,10 @@
   "dependencies": {
     "@vitepress-code-preview/container": "^1.0.7",
     "@vitepress-code-preview/plugin": "^1.0.4",
+    "@vueuse/core": "^11.1.0",
+    "ant-design-vue": "^4.2.5",
+    "floating-vue": "^5.2.2",
+    "howler": "^2.2.4",
     "vue": "^3.3.9"
   }
 }
