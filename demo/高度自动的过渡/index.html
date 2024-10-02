@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高度自动的过渡效果</title>
+    <style>
+      body {
+        display: flex;
+      }
+      .scale,
+      .grid,
+      .flip {
+        margin-left: 2rem;
+      }
+      .btn {
+        position: relative;
+        border: none;
+        outline: none;
+        background: #42b883;
+        color: #fff;
+        cursor: pointer;
+        line-height: 1;
+        text-align: center;
+        transition: 0.1s;
+        font-weight: 500;
+        user-select: none;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      .btn:hover {
+        background: #43b17f;
+      }
+      .btn:active {
+        background: #44da96;
+      }
+      .btn:disabled: {
+        background: #42b88350;
+        cursor: not-allowed;
+      }
+      .detail {
+        overflow: hidden;
+      }
+      .content {
+        margin-top: 0.2rem;
+        width: 200px;
+        border-radius: 5px;
+        background: #42b883;
+        color: #fff;
+        line-height: 1.5;
+        min-height: 0;
+      }
+      .inner {
+        padding: 20px;
+      }
+      .max-height .content {
+        transition: 2s;
+        max-height: 0;
+      }
+      .max-height .btn:hover ~ .detail .content {
+        max-height: 100vh;
+      }
+      .scale .detail {
+        transform-origin: center top;
+        transform: scaleY(0);
+        transition: 0.5s;
+      }
+      .scale .btn:hover ~ .detail {
+        transform: scaleY(1);
+      }
+      .grid .detail {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: 0.5s;
+      }
+      .grid .btn:hover ~ .detail {
+        grid-template-rows: 1fr;
+      }
+      .flip .detail {
+        height: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="max-height">
+      <p>Max Height 方案</p>
+      <button class="btn">Hover me</button>
+      <div class="detail">
+        <div class="content">
+          <div class="inner">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis autem dicta culpa
+            tempore optio, exercitationem rem, placeat.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scale">
+      <p>scale 方案</p>
+      <button class="btn">Hover me</button>
+      <div class="detail">
+        <div class="content">
+          <div class="inner">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis autem dicta culpa
+            tempore optio, exercitationem rem, placeat.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <p>grid 方案, 目前在Safari中不支持</p>
+      <button class="btn">Hover me</button>
+      <div class="detail">
+        <div class="content">
+          <div class="inner">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis autem dicta culpa
+            tempore optio, exercitationem rem, placeat.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <p>flip动画 方案</p>
+      <button class="btn">Hover me</button>
+      <div class="detail">
+        <div class="content">
+          <div class="inner">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis autem dicta culpa
+            tempore optio, exercitationem rem, placeat.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const flipBtn = document.querySelector('.flip .btn')
+    const flipDetail = document.querySelector('.flip .detail')
+    // 鼠标移入时
+    flipBtn.addEventListener('mouseenter', function () {
+      // 先把文本容器的高度设为auto，目的是为了reflow拿到实际渲染高度
+      flipDetail.style.height = 'auto'
+      // 拿到文本容器的高度
+      const height = flipDetail.clientHeight
+      // 再重新把文本容器的高度设为0,这里不会闪一下是因为处在JS执行过程中,阻塞了主线程的渲染
+      flipDetail.style.height = 0
+      flipDetail.style.transition = '0.5s'
+      // 下一个渲染帧生效, 这里优先考虑requestAnimationFrame的方案
+      requestAnimationFrame(function () {
+        // 把文本容器的高度设为上面拿到的实际渲染高度
+        flipDetail.style.height = `${height}px`
+      })
+      // 如果不用requestAnimationFrame的话, 也可以使用强行渲染的方案
+      // flipDetail.offsetHeight
+      // flipDetail.style.height = `${height}px`
+    })
+    // 鼠标移出时
+    flipBtn.addEventListener('mouseleave', function () {
+      flipDetail.style.height = 0
+    })
+  </script>
+</html>
