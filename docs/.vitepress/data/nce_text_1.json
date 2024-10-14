@@ -86,571 +86,685 @@
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Mr. Blake",
     "text": "Good morning.",
     "trans": "早上好"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Students",
     "text": "Good morning. Mr. Blake",
     "trans": "早上好, 布莱克先生"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Mr. Blake",
     "text": "This is Miss Sophie Dupont. Sophie is a new student. She is French.",
     "trans": "这位是索菲亚•杜邦小姐. 索菲亚是新来的学生. 她是法国人"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Mr. Blake",
     "text": "Sophie, this is Hans. He is German.",
     "trans": "索菲亚, 这位是汉斯. 他是德国人"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Hans",
     "text": "Nice to meet you.",
     "trans": "很高兴见到你"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Mr. Blake",
     "text": "And this is Naoko. She's Japanese.",
     "trans": "这位是直子. 她是日本人"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Naoko",
     "text": "Nice to meet you.",
     "trans": "很高兴见到你"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Mr. Blake",
     "text": "And this is Chang-woo. He's Korean.",
     "trans": "这位是昌宇. 他是韩国人"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Chang-woo",
     "text": "Nice to meet you.",
     "trans": "很高兴见到你"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Mr. Blake",
     "text": "And this is Luming. He's Chinese.",
     "trans": "这位是鲁明. 他是中国人"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Luming",
     "text": "Nice to meet you.",
     "trans": "很高兴见到你"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Mr. Blake",
     "text": "And this is Xiaohui. She's Chinese too.",
     "trans": "这位是晓惠. 她也是中国人"
   },
   {
     "chapter": "Lesson5~6",
+    "speaker": "Xiaohui",
     "text": "Nice to meet you.",
     "trans": "很高兴见到你"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Robert",
     "text": "I am a new student. My name is Robert.",
     "trans": "我是个新学生, 我的名字叫罗伯特"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Sophie",
     "text": "Nice to meet you. My name is Sophie.",
     "trans": "很高兴见到你, 我的名字叫索菲亚"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Robert",
     "text": "Are you French?",
     "trans": "你是法国人吗"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Sophie",
     "text": "Yes, I am",
     "trans": "是的, 我是法国人"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Sophie",
     "text": "Are you French, too?",
     "trans": "你也是法国人吗"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Robert",
     "text": "No, I am not.",
     "trans": "不, 我不是"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Sophie",
     "text": "What nationality are you?",
     "trans": "你是哪国人"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Robert",
     "text": "I'm Italian.",
     "trans": "我是意大利人"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Robert",
     "text": "Are you a teacher?",
     "trans": "你是教师吗"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Sophie",
     "text": "No, I'm not.",
     "trans": "不, 我不是"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Robert",
     "text": "What's your job?",
     "trans": "你是做什么工作的?"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Sophie",
     "text": "I'm a keyboard operator.",
     "trans": "我是电脑录入员"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Sophie",
     "text": "What's your job?",
     "trans": "你是做什么工作的?"
   },
   {
     "chapter": "Lesson7~8",
+    "speaker": "Robert",
     "text": "I'm an engineer.",
     "trans": "我是工程师"
   },
   {
     "chapter": "Lesson9~10",
+    "speaker": "Steven",
     "text": "Hello, Helen.",
     "trans": "你好, 海伦"
   },
   {
     "chapter": "Lesson9~10",
+    "speaker": "Helen",
     "text": "Hi, Steven.",
     "trans": "你好, 史蒂文"
   },
   {
     "chapter": "Lesson9~10",
+    "speaker": "Steven",
     "text": "How are you today.",
     "trans": "你今天好吗"
   },
   {
     "chapter": "Lesson9~10",
+    "speaker": "Helen",
     "text": "I'm very well, thank you. And you?",
     "trans": "我很好, 谢谢你. 你好吗"
   },
   {
     "chapter": "Lesson9~10",
+    "speaker": "Steven",
     "text": "I'm fine, thanks.",
     "trans": "我很好, 谢谢"
   },
   {
     "chapter": "Lesson9~10",
+    "speaker": "Steven",
     "text": "How is Tony?",
     "trans": "托尼还好吗"
   },
   {
     "chapter": "Lesson9~10",
+    "speaker": "Helen",
     "text": "He's fine, thanks. How's Emma?",
     "trans": "他很好, 谢谢. 艾玛还好吗"
   },
   {
     "chapter": "Lesson9~10",
+    "speaker": "Steven",
     "text": "She's very well, too, Helen.",
     "trans": "她也很好, 海伦"
   },
   {
     "chapter": "Lesson9~10",
+    "speaker": "Steven",
     "text": "Goodbye, Helen. Nice to see you.",
     "trans": "再见, 海伦. 见到你真高兴"
   },
   {
     "chapter": "Lesson9~10",
+    "speaker": "Helen",
     "text": "Nice to see you, too, Steven. Goodbye.",
     "trans": "我见到你也很高兴, 史蒂文. 再见"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Teacher",
     "text": "Whose shirt is that?",
     "trans": "那是谁的衬衫?"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Teacher",
     "text": "Is this your shirt, Dave?",
     "trans": "戴夫, 这是你的衬衫吗"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Dave",
     "text": "No, sir. It's not my shirt.",
     "trans": "不, 先生. 这不是我的衬衫"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Dave",
     "text": "This is my shirt. My shirt's blue.",
     "trans": "这才是我的衬衫, 我的衬衫是蓝色的"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Teacher",
     "text": "Is this shirt Tim's?",
     "trans": "这件衬衫是蒂姆的吗"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Dave",
     "text": "Perhaps it is, sir. Tim's shirt's white.",
     "trans": "也许是, 先生. 蒂姆的衬衫是白色的"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Teacher",
     "text": "Tim!",
     "trans": "蒂姆"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Tim",
     "text": "Yes, sir?",
     "trans": "什么事, 先生"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Teacher",
     "text": "Is this your shirt?",
     "trans": "这是你的衬衫吗"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Tim",
     "text": "Yes, sir.",
     "trans": "是的, 先生"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Teacher",
     "text": "Here you are, Catch!",
     "trans": "给你, 接着"
   },
   {
     "chapter": "Lesson11~12",
+    "speaker": "Tim",
     "text": "Thank you, sir.",
     "trans": "谢谢您, 先生"
   },
   {
     "chapter": "Lesson13~14",
+    "speaker": "Louise",
     "text": "What colour's your new dress?",
     "trans": "你的新连衣裙是什么颜色的?"
   },
   {
     "chapter": "Lesson13~14",
+    "speaker": "Anna",
     "text": "It's green.",
     "trans": "是绿色的"
   },
   {
     "chapter": "Lesson13~14",
+    "speaker": "Anna",
     "text": "Come upstairs and see it.",
     "trans": "到楼上来看看吧"
   },
   {
     "chapter": "Lesson13~14",
+    "speaker": "Louise",
     "text": "Thank you.",
     "trans": "谢谢"
   },
   {
     "chapter": "Lesson13~14",
+    "speaker": "Anna",
     "text": "Look! Here it is!",
     "trans": "瞧, 就是这件"
   },
   {
     "chapter": "Lesson13~14",
+    "speaker": "Louise",
     "text": "That's a nice dress. It's very smart.",
     "trans": "这件连衣裙真好, 真漂亮"
   },
   {
     "chapter": "Lesson13~14",
+    "speaker": "Anna",
     "text": "My hat's new, too.",
     "trans": "我的帽子也是新的"
   },
   {
     "chapter": "Lesson13~14",
+    "speaker": "Louise",
     "text": "What colour is it?",
     "trans": "是什么颜色的?"
   },
   {
     "chapter": "Lesson13~14",
+    "speaker": "Anna",
     "text": "It's the same colour. It's green, too.",
     "trans": "一样的颜色, 也是绿色的"
   },
   {
     "chapter": "Lesson13~14",
+    "speaker": "Louise",
     "text": "That is a lovely hat!",
     "trans": "真是一顶可爱的帽子"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Customs Officer",
     "text": "Are you Swedish?",
     "trans": "你们是瑞典人吗"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Girls",
     "text": "No, we are not. We are Danish.",
     "trans": "不, 我们不是瑞典人. 我们是丹麦人"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Customs Officer",
     "text": "Are your friends Danish, too?",
     "trans": "你们的朋友也是丹麦人吗"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Girls",
     "text": "No, they aren't. They are Norwegian.",
     "trans": "不, 他们不是丹麦人. 他们是挪威人"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Customs Officer",
     "text": "Your passports, please.",
     "trans": "请出示你们的护照"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Girls",
     "text": "Here they are.",
     "trans": "给您"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Customs Officer",
     "text": "Are these your cases?",
     "trans": "这些是你们的箱子吗"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Girls",
     "text": "No, they aren't.",
     "trans": "不, 不是"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Girls",
     "text": "Our cases are brown. Here they are.",
     "trans": "我们的箱子是棕色的, 在这儿呢"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Customs Officer",
     "text": "Are you tourists?",
     "trans": "你们是来旅游的吗"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Girls",
     "text": "Yes, we are.",
     "trans": "是的, 我们是来旅游的"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Customs Officer",
     "text": "Are your friends tourists, too?",
     "trans": "你们的朋友也是来旅游的吗"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Girls",
     "text": "Yes, they are.",
     "trans": "是的, 他们也是"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Customs Officer",
     "text": "That's fine.",
     "trans": "好了"
   },
   {
     "chapter": "Lesson15~16",
+    "speaker": "Girls",
     "text": "Thank you very much.",
     "trans": "非常感谢"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Jackson",
     "text": "Come and meet our employees. Mr. Rechards.",
     "trans": "来见见我们的雇员, 理查兹先生"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Rechards",
     "text": "Thank you, Mr. Jackson.",
     "trans": "谢谢, 杰克逊先生"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Jackson",
     "text": "This is Nicola Grey, and this is Claire Taylor.",
     "trans": "这位是尼古拉•格雷, 这位是克莱尔•泰勒"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Rechards",
     "text": "How do you do.",
     "trans": "你们好"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Rechards",
     "text": "Those women are very hard-working. What are their jobs?",
     "trans": "那些姑娘很勤快, 她们是做什么工作的?"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Jackson",
     "text": "They're keyboard operators.",
     "trans": "她们是电脑录入员"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Jackson",
     "text": "This is Michael Baker, and this is Jeremy Short.",
     "trans": "这位是迈克尔•贝克, 这位是杰里米•肖特"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Rechards",
     "text": "How do you do.",
     "trans": "你们好"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Rechards",
     "text": "They aren't very busy! What are their jobs?",
     "trans": "他们不是很忙, 他们是做什么工作的?"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Jackson",
     "text": "They're sales reps. They're very lazy.",
     "trans": "他们是推销员, 他们非常懒"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Rechards",
     "text": "Who is this young man?",
     "trans": "这个年轻人是谁"
   },
   {
     "chapter": "Lesson17~18",
+    "speaker": "Mr. Jackson",
     "text": "This is Jim. He's our office assistant.",
     "trans": "他是吉姆, 是我们的办公室助理"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Mother",
     "text": "What's the matter, children?",
     "trans": "怎么啦, 孩子们"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Children",
     "text": "We're tired, and thirsty, Mum.",
     "trans": "我们累了, 口也渴, 妈妈"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Mother",
     "text": "Sit down here.",
     "trans": "坐在这儿吧"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Mother",
     "text": "Are you all right now?",
     "trans": "你们现在好些了吗"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Boy",
     "text": "No, we aren't",
     "trans": "不, 还没有"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Mother",
     "text": "Look! There's an ice cream man.",
     "trans": "瞧! 有个卖冰淇淋的"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Mother",
     "text": "Two ice creams, please.",
     "trans": "请给我两份冰淇淋"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Mother",
     "text": "Here you are, children.",
     "trans": "拿着, 孩子们"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Children",
     "text": "Thanks, Mum.",
     "trans": "谢谢, 妈妈"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Girl",
     "text": "These ice creams are nice.",
     "trans": "这些冰淇淋真好吃"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Mother",
     "text": "Are you all right now?",
     "trans": "你们现在好些了吗"
   },
   {
     "chapter": "Lesson19~20",
+    "speaker": "Children",
     "text": "Yes, we are, thank you!",
     "trans": "是的, 现在好多了, 谢谢您"
   },
   {
     "chapter": "Lesson21~22",
+    "speaker": "Man",
     "text": "Give me a book please, Jane.",
     "trans": "请拿本书给我, 简"
   },
   {
     "chapter": "Lesson21~22",
+    "speaker": "Woman",
     "text": "Which book?",
     "trans": "哪一本?"
   },
   {
     "chapter": "Lesson21~22",
+    "speaker": "Woman",
     "text": "This one?",
     "trans": "是这本吗"
   },
   {
     "chapter": "Lesson21~22",
+    "speaker": "Man",
     "text": "No, not that one. The red one.",
     "trans": "不, 不是那本. 是那本红皮的"
   },
   {
     "chapter": "Lesson21~22",
+    "speaker": "Woman",
     "text": "This one?",
     "trans": "这本吗"
   },
   {
     "chapter": "Lesson21~22",
+    "speaker": "Man",
     "text": "Yes, please.",
     "trans": "是的, 请给我"
   },
   {
     "chapter": "Lesson21~22",
+    "speaker": "Woman",
     "text": "Here you are.",
     "trans": "给你"
   },
   {
     "chapter": "Lesson21~22",
+    "speaker": "Man",
     "text": "Thank you.",
     "trans": "谢谢"
   },
   {
     "chapter": "Lesson23~24",
+    "speaker": "Man",
     "text": "Give me some glasses please, Jane.",
     "trans": "请拿给我几只玻璃杯, 简"
   },
   {
     "chapter": "Lesson23~24",
+    "speaker": "Woman",
     "text": "Which glasses?",
     "trans": "哪几只?"
   },
   {
     "chapter": "Lesson23~24",
+    "speaker": "Woman",
     "text": "These glasses?",
     "trans": "是这几只吗"
   },
   {
     "chapter": "Lesson23~24",
+    "speaker": "Man",
     "text": "No, not those. The ones on the shelf.",
     "trans": "不, 不是那几只, 是架子上的那几只"
   },
   {
     "chapter": "Lesson23~24",
+    "speaker": "Woman",
     "text": "These?",
     "trans": "这几只?"
   },
   {
     "chapter": "Lesson23~24",
+    "speaker": "Man",
     "text": "Yes, please.",
     "trans": "是的, 请拿给我"
   },
   {
     "chapter": "Lesson23~24",
+    "speaker": "Woman",
     "text": "Here you are.",
     "trans": "给你"
   },
   {
     "chapter": "Lesson23~24",
+    "speaker": "Man",
     "text": "Thanks.",
     "trans": "谢谢"
   },
@@ -781,101 +895,121 @@
   },
   {
     "chapter": "Lesson29~30",
+    "speaker": "Mrs. Jones",
     "text": "Come in, Amy.",
     "trans": "进来, 艾米"
   },
   {
     "chapter": "Lesson29~30",
+    "speaker": "Mrs. Jones",
     "text": "Shut the door, please.",
     "trans": "请把门关上"
   },
   {
     "chapter": "Lesson29~30",
+    "speaker": "Mrs. Jones",
     "text": "This bedroom's very untidy.",
     "trans": "这卧室太不整洁了"
   },
   {
     "chapter": "Lesson29~30",
+    "speaker": "Amy",
     "text": "What must I do, Mrs Jones?",
     "trans": "我应该做些什么呢, 琼斯夫人?"
   },
   {
     "chapter": "Lesson29~30",
+    "speaker": "Mrs. Jones",
     "text": "Open the window and air the room.",
     "trans": "打开窗户, 给房间通通风"
   },
   {
     "chapter": "Lesson29~30",
+    "speaker": "Mrs. Jones",
     "text": "Then put these clothes in the wardrobe.",
     "trans": "然后把这些衣服放进衣橱里去"
   },
   {
     "chapter": "Lesson29~30",
+    "speaker": "Mrs. Jones",
     "text": "Then make the bed.",
     "trans": "再把床整理一下"
   },
   {
     "chapter": "Lesson29~30",
+    "speaker": "Mrs. Jones",
     "text": "Dust the dressing table.",
     "trans": "掸掉梳妆台上的灰尘"
   },
   {
     "chapter": "Lesson29~30",
+    "speaker": "Mrs. Jones",
     "text": "Then sweep the floor.",
     "trans": "然后扫扫地"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jean",
     "text": "Where's Sally, Jack?",
     "trans": "杰克, 萨莉在哪儿"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jack",
     "text": "She's in the garden, Jean.",
     "trans": "她在花园, 琼"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jean",
     "text": "What's she doing?",
     "trans": "她在干什么"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jack",
     "text": "She's sitting under the tree.",
     "trans": "她正在树下坐着"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jean",
     "text": "Is Tim in the garden, too?",
     "trans": "蒂姆也在花园里吗"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jack",
     "text": "Yes, he is. He's climbing the tree.",
     "trans": "是的, 他也在花园里. 他正在爬树"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jean",
     "text": "I beg your pardon? Who's climbing the tree?",
     "trans": "你说什么? 谁在爬树"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jack",
     "text": "Tim is.",
     "trans": "蒂姆在爬树"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jean",
     "text": "What about the dog?",
     "trans": "那么狗狗呢"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jack",
     "text": "The dog's in the garden, too.",
     "trans": "狗狗也在花园里"
   },
   {
     "chapter": "Lesson31~32",
+    "speaker": "Jack",
     "text": "It's running across the grass. It's running after a cat.",
     "trans": "它正在草地上跑, 在追一只猫"
   },
@@ -1006,526 +1140,631 @@
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "Dan",
     "text": "You're working hard, George. What are you doing?",
     "trans": "你干得真辛苦, 乔治. 你在做什么呢"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "George",
     "text": "I'm making a bookcase.",
     "trans": "我正在做书架"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "George",
     "text": "Give me that hammer please, Dan.",
     "trans": "请把那把锤子拿给我, 丹"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "Dan",
     "text": "Which hammer? This one?",
     "trans": "哪一把? 是这把吗"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "George",
     "text": "No, not that one. The big one.",
     "trans": "不, 不是那把. 是那把大的"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "Dan",
     "text": "Here you are.",
     "trans": "给你"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "George",
     "text": "Thanks, Dan.",
     "trans": "谢谢, 丹"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "Dan",
     "text": "What are you going to do now, George?",
     "trans": "你现在打算做什么, 乔治"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "George",
     "text": "I'm going to paint it.",
     "trans": "我打算给它上漆"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "Dan",
     "text": "What colour are you going to paint it?",
     "trans": "你打算把它漆成什么颜色"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "George",
     "text": "I'm going to paint it pink.",
     "trans": "我想漆成粉红色"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "Dan",
     "text": "Pink!",
     "trans": "粉红色"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "George",
     "text": "This bookcase isn't for me. It's for my daughter Susan.",
     "trans": "这个书架不是为我做的, 是为我的女儿苏珊做的"
   },
   {
     "chapter": "Lesson37~38",
+    "speaker": "George",
     "text": "Pink's her favourite colour.",
     "trans": "粉红色是她最喜欢的颜色"
   },
   {
     "chapter": "Lesson39~40",
+    "speaker": "Sam",
     "text": "What are you going to do with that vase, Penny?",
     "trans": "你打算如何处理那些花瓶"
   },
   {
     "chapter": "Lesson39~40",
+    "speaker": "Penny",
     "text": "I'm going to put it on this table, Sam.",
     "trans": "我打算把它放在这张桌子上, 萨姆"
   },
   {
     "chapter": "Lesson39~40",
+    "speaker": "Sam",
     "text": "Don't do that. Give it to me.",
     "trans": "不要放在那儿, 把它给我"
   },
   {
     "chapter": "Lesson39~40",
+    "speaker": "Penny",
     "text": "What are you going to do with it?",
     "trans": "你打算怎么办"
   },
   {
     "chapter": "Lesson39~40",
+    "speaker": "Sam",
     "text": "I'm going to put it here, in front of the window.",
     "trans": "我准备把它放在这儿, 放在窗前"
   },
   {
     "chapter": "Lesson39~40",
+    "speaker": "Penny",
     "text": "Be careful! Don't drop it!",
     "trans": "小心点, 别摔了"
   },
   {
     "chapter": "Lesson39~40",
+    "speaker": "Penny",
     "text": "Don't put it there, Sam. Put it here, on this shelf.",
     "trans": "别放在那儿, 萨姆. 放在这儿, 这个架子上"
   },
   {
     "chapter": "Lesson39~40",
+    "speaker": "Sam",
     "text": "There we are! It's a lovely vase.",
     "trans": "放好了. 这是只漂亮的花瓶"
   },
   {
     "chapter": "Lesson39~40",
+    "speaker": "Penny",
     "text": "Those flowers are lovely, too.",
     "trans": "那些花也很漂亮啊"
   },
   {
     "chapter": "Lesson41~42",
+    "speaker": "Sam",
     "text": "Is that bag heavy, Penny?",
     "trans": "那个提包重吗, 彭妮"
   },
   {
     "chapter": "Lesson41~42",
+    "speaker": "Penny",
     "text": "Not very.",
     "trans": "不太重"
   },
   {
     "chapter": "Lesson41~42",
+    "speaker": "Sam",
     "text": "Here! Put it on this chair. What's in it?",
     "trans": "放这儿. 把它放在这把椅子上. 里面是什么东西"
   },
   {
     "chapter": "Lesson41~42",
+    "speaker": "Penny",
     "text": "A piece of cheese. A loaf of bread. A bar of soap. A bar of chocolate. A bottle of milk. A pound of sugar. Half a pound of coffee. A quarter of a pound of tea. And a tin of tobacco.",
     "trans": "一块乳酪、一条面包、一块肥皂、一块巧克力、一瓶牛奶、一磅糖、半磅咖啡、1/4磅茶叶和一盒烟丝"
   },
   {
     "chapter": "Lesson41~42",
+    "speaker": "Sam",
     "text": "Is that tin of tobacco for me?",
     "trans": "那盒烟丝是给我的吗"
   },
   {
     "chapter": "Lesson41~42",
+    "speaker": "Penny",
     "text": "Well, it's certainly not for me.",
     "trans": "噢, 当然不会是给我的"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Penny",
     "text": "Can you make the tea, Sam?",
     "trans": "你会沏茶吗, 萨姆"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Sam",
     "text": "Yes, of course I can, Penny.",
     "trans": "会的, 我当然会, 彭妮"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Sam",
     "text": "Is there any water in this kettle?",
     "trans": "这水壶里有水吗"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Penny",
     "text": "Yes, there is.",
     "trans": "有水"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Sam",
     "text": "Where's the tea?",
     "trans": "茶叶在哪里"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Penny",
     "text": "It's over there, behind the teapot.",
     "trans": "就在那儿, 茶壶后面"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Penny",
     "text": "Can you see it?",
     "trans": "你看见了吗"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Sam",
     "text": "I can see the teapot, but I can't see the tea.",
     "trans": "茶壶我看见了, 但茶叶没看到"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Penny",
     "text": "There it is! It's in front of you.",
     "trans": "那不是吗, 就在你眼前"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Sam",
     "text": "Ah yes, I can see it now.",
     "trans": "噢, 是啊, 我现在看到了"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Sam",
     "text": "Where are the cups?",
     "trans": "茶杯在哪里"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Penny",
     "text": "There are some in the cupboard.",
     "trans": "碗橱里有几只"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Penny",
     "text": "Can you find them?",
     "trans": "你找得到吗"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Sam",
     "text": "Yes. Here they are.",
     "trans": "找得到, 就在这儿呢"
   },
   {
     "chapter": "Lesson43~44",
+    "speaker": "Penny",
     "text": "Hurry up, Sam! The kettle's boiling!",
     "trans": "快点, 萨姆, 水烧开了"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "The Boss",
     "text": "Can you come here a minute please, Bob?",
     "trans": "请你来一下好吗, 鲍勃"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Bob",
     "text": "Yes, sir?",
     "trans": "什么事, 先生"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "The Boss",
     "text": "Where's Pamela?",
     "trans": "帕梅拉在哪儿"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Bob",
     "text": "She's next door. She's in her office, sir.",
     "trans": "她在隔壁, 在她的办公室里, 先生"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "The Boss",
     "text": "Can she type this letter for me? Ask her please.",
     "trans": "她能给我打一下这封信吗, 请问问她"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Bob",
     "text": "Yes, sir.",
     "trans": "好的, 先生"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Bob",
     "text": "Can you type this letter for the boss please, Pamela?",
     "trans": "你可以给老板打一下这封信吗, 帕梅拉"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Pamela",
     "text": "Yes, of course I can.",
     "trans": "可以, 当然可以"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Bob",
     "text": "Here you are.",
     "trans": "给你"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Pamela",
     "text": "Thank you, Bob.",
     "trans": "谢谢你, 鲍勃"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Pamela",
     "text": "Bob!",
     "trans": "鲍勃!"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Bob",
     "text": "Yes? What's the matter?",
     "trans": "怎么了? 怎么回事"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Pamela",
     "text": "I can't type this letter.",
     "trans": "我打不了这封信"
   },
   {
     "chapter": "Lesson45~46",
+    "speaker": "Pamela",
     "text": "I can't read it! The boss's handwriting is terrible!",
     "trans": "我看不懂这封信, 老板的字迹太糟糕了"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Christine",
     "text": "Do you like coffee, Ann?",
     "trans": "你喜欢咖啡吗, 安"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Ann",
     "text": "Yes, I do.",
     "trans": "是的, 我喜欢"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Christine",
     "text": "Do you want a cup?",
     "trans": "你想要来一杯吗"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Ann",
     "text": "Yes, please, Christine.",
     "trans": "好的, 请来一杯, 克里斯廷"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Christine",
     "text": "Do you want any sugar?",
     "trans": "你要放些糖吗"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Ann",
     "text": "Yes, please.",
     "trans": "好的, 请放一些"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Christine",
     "text": "Do you want any milk?",
     "trans": "要放些牛奶吗"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Ann",
     "text": "No, thank you. I don't like milk in my coffee. I like black coffee.",
     "trans": "不了, 谢谢. 我不喜欢在咖啡中放牛奶, 我喜欢清咖啡"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Christine",
     "text": "Do you like biscuits.",
     "trans": "你喜欢饼干吗"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Ann",
     "text": "Yes, I do.",
     "trans": "是的, 我喜欢"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Christine",
     "text": "Do you want one?",
     "trans": "你想要来一块吗"
   },
   {
     "chapter": "Lesson47~48",
+    "speaker": "Ann",
     "text": "Yes, please.",
     "trans": "好的, 请来一块"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Butcher",
     "text": "Do you want any meat today, Mrs Bird?",
     "trans": "您今天要买点肉吗, 伯德夫人"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Mrs. Bird",
     "text": "Yes, please.",
     "trans": "是的, 我买一点"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Butcher",
     "text": "Do you want beef or lamb?",
     "trans": "您要牛肉还是要羔羊肉?"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Mrs. Bird",
     "text": "Beef, please.",
     "trans": "请给我牛肉"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Butcher",
     "text": "This lamb's very good.",
     "trans": "这羔羊肉很好"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Mrs. Bird",
     "text": "I like lamb, but my husband doesn't.",
     "trans": "我喜欢羔羊肉, 但我丈夫不喜欢"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Butcher",
     "text": "What about some steak? This is a nice piece.",
     "trans": "来点牛排吗, 这块很好"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Mrs. Bird",
     "text": "Give me that piece, please.",
     "trans": "那就给我那块吧"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Mrs. Bird",
     "text": "And a pound of mince, too.",
     "trans": "再来一磅肉馅"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Butcher",
     "text": "Do you want a chicken, Mrs Bird? They're very nice.",
     "trans": "您要买只鸡吗, 伯德夫人. 这些鸡很好"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Mrs. Bird",
     "text": "No, thank you.",
     "trans": "不了, 谢谢"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Mrs. Bird",
     "text": "My husband like steak, but he doesn't like chicken.",
     "trans": "我丈夫喜欢牛排, 但他不喜欢鸡肉"
   },
   {
     "chapter": "Lesson49~50",
+    "speaker": "Butcher",
     "text": "To tell you the truth, Mrs Bird, I don't like chicken either.",
     "trans": "老实说, 我也不喜欢鸡肉"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Hans",
     "text": "Where do you come from?",
     "trans": "你是哪国人"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Dimitri",
     "text": "I come from Greece.",
     "trans": "我是希腊人"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Hans",
     "text": "What's the climate like in your country?",
     "trans": "你们国家的气候怎么样"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Dimitri",
     "text": "It's very pleasant.",
     "trans": "气候非常宜人"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Hans",
     "text": "What's the weather like in spring?",
     "trans": "春天的天气怎么样"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Dimitri",
     "text": "It's often windy in March. It's always warm in April and May, but it rains sometimes.",
     "trans": "3月里常常刮风. 4月和5月的天气总是暖洋洋的, 但有时下雨"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Hans",
     "text": "What's it like in summer?",
     "trans": "夏季的天气怎么样"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Dimitri",
     "text": "It's always hot in June, July and August. The sun shines every day.",
     "trans": "6月、7月和8月的天气总是炎热的, 每天都出太阳"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Hans",
     "text": "Is it cold or warm in autumn?",
     "trans": "秋季的天气是冷还是暖的呢"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Dimitri",
     "text": "It's always warm in September and October. It's often cold in November and it rains sometimes.",
     "trans": "9月和10月总是很暖和, 11月常常很冷, 而且有时下雨"
   },
   {
     "chapter": "Lesson51~52",
+    "speaker": "Hans",
     "text": "Is it very cold in winter?",
     "trans": "冬季的天气很冷吗"
   },
   {
     "chapter": "Lesson51~52",
-    "text": "It's often cold in December, Junuary and February. It snows sometimes.",
+    "speaker": "Dimitri",
+    "text": "It's often cold in December, January and February. It snows sometimes.",
     "trans": "12月、1月和2月常常很冷, 有时还下雪"
   },
   {
     "chapter": "Lesson53~54",
+    "speaker": "Hans",
     "text": "Where do you come from?",
     "trans": "你是哪国人"
   },
   {
     "chapter": "Lesson53~54",
+    "speaker": "Jim",
     "text": "I come from England.",
     "trans": "我是英国人"
   },
   {
     "chapter": "Lesson53~54",
+    "speaker": "Hans",
     "text": "What's the climate like in your country?",
     "trans": "你们国家的气候怎么样"
   },
   {
     "chapter": "Lesson53~54",
+    "speaker": "Jim",
     "text": "It's mild, but it's not always pleasant.",
     "trans": "气候温和, 但也不总是宜人的"
   },
   {
     "chapter": "Lesson53~54",
+    "speaker": "Jim",
     "text": "The weather's often cold in the North and windy in the East. ",
     "trans": "北部的天气常常寒冷, 东部则常常刮风"
   },
   {
     "chapter": "Lesson53~54",
+    "speaker": "Jim",
     "text": "It's often wet in the West and sometimes warm in the South.",
     "trans": "西部常下雨, 南部有时则很暖和"
   },
   {
     "chapter": "Lesson53~54",
+    "speaker": "Hans",
     "text": "Which seasons do you like best?",
     "trans": "你最喜欢哪些季节"
   },
   {
     "chapter": "Lesson53~54",
+    "speaker": "Jim",
     "text": "I like spring and summer. The days are long and the nights are short. The sun rises early and sets late.",
     "trans": "我最喜欢春季和夏季. 因为此时白天长而夜晚短, 太阳升得早而落得晚"
   },
   {
     "chapter": "Lesson53~54",
+    "speaker": "Jim",
     "text": "I don't like autumn and winter. The days are short and the nights are long. The sun rises late and sets early.",
     "trans": "我不喜欢秋季和冬季. 因为此时白天短而夜晚长, 太阳升得迟而落得早"
   },
   {
     "chapter": "Lesson53~54",
+    "speaker": "Jim",
     "text": "Our climate is not very good, but it's certainly interesting. It's our favourite subject of conversation.",
     "trans": "虽然我们国家的气候并不很好, 但确实很有意思. 天气是我们最喜欢谈论的话题"
   },
@@ -1596,316 +1835,379 @@
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Lady",
     "text": "I want some envelopes, please.",
     "trans": "请给我拿几个信封"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Shop Assistant",
     "text": "Do you want the large size or the small size?",
     "trans": "您要大号的还是小号的"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Lady",
     "text": "The large size, please.",
     "trans": "请拿大号的"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Lady",
     "text": "Do you have any writing paper?",
     "trans": "您有信纸"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Shop Assistant",
     "text": "Yes, we do.",
     "trans": "有"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Shop Assistant",
     "text": "I don't have any small pads. I only have large ones. Do you want a pad?",
     "trans": "我没有小本的信纸, 只有大本的. 您要一本吗"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Lady",
     "text": "Yes, please. And I want some glue.",
     "trans": "好, 请拿一本. 我还要些胶水"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Shop Assistant",
     "text": "A bottle of glue.",
     "trans": "一瓶胶水"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Lady",
     "text": "And I want a large box of chalk, too.",
     "trans": "我还要一大盒粉笔"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Shop Assistant",
     "text": "I only have small boxes. Do you want one?",
     "trans": "我只有小盒的. 您要一盒吗"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Lady",
     "text": "No, thank you.",
     "trans": "不了, 谢谢"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Shop Assistant",
     "text": "Is that all?",
     "trans": "就要这些吗"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Lady",
     "text": "That's all, thank you",
     "trans": "就这些, 谢谢"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Shop Assistant",
     "text": "What else do you want?",
     "trans": "您还要什么吗"
   },
   {
     "chapter": "Lesson59~60",
+    "speaker": "Lady",
     "text": "I want my change.",
     "trans": "我要找的零钱"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mr. Williams",
     "text": "Where's Jimmy?",
     "trans": "吉米在哪里"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mrs. Williams",
     "text": "He's in bed.",
     "trans": "他躺在床上"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mr. Williams",
     "text": "What's the matter with him?",
     "trans": "他怎么啦"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mrs. Williams",
     "text": "He feels ill.",
     "trans": "他觉得不舒服"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mr. Williams",
     "text": "He looks ill.",
     "trans": "他看上去是病了"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mrs. Williams",
     "text": "We must call the doctor.",
     "trans": "我们得去请医生"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mr. Williams",
     "text": "Yes, we must.",
     "trans": "是的, 一定得请"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mr. Williams",
     "text": "Can you remember the doctor's telephone number?",
     "trans": "你还记得医生的电话号码吗"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mrs. Williams",
     "text": "Yes, It's 09754.",
     "trans": "记得, 是09754"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Doctor",
     "text": "Open your mouth, Jimmy. Show me your tongue. Say, 'Ah'.",
     "trans": "把嘴张开, 吉米. 让我看看你的舌头. 说 '啊'"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mr. Williams",
     "text": "What's the matter with him, doctor?",
     "trans": "他得了什么病, 医生"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Doctor",
     "text": "He has a bad cold, Mr Williams, so he must stay in bed for a week.",
     "trans": "他得了重感冒, 威廉斯先生, 因此他必须卧床一周"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mrs. Williams",
     "text": "That's good news for Jimmy.",
     "trans": "对吉米来说, 这可是个好消息"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Doctor",
     "text": "Good news? Why?",
     "trans": "好消息? 为什么"
   },
   {
     "chapter": "Lesson61~62",
+    "speaker": "Mr. Williams",
     "text": "Because he doesn't like school.",
     "trans": "因为他不喜欢上学"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Doctor",
     "text": "How's Jimmy today?",
     "trans": "吉米今天怎么样了"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Mrs. Williams",
     "text": "Better. Thank you, doctor.",
     "trans": "他好些了, 谢谢您, 医生"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Doctor",
     "text": "Can I see him please, Mrs Williams.",
     "trans": "我可以看看他吗, 威廉斯夫人"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Mrs. Williams",
     "text": "Certainly, doctor. Come upstairs.",
     "trans": "当然可以, 医生, 上楼吧"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Doctor",
     "text": "You look very well, Jimmy. You are better now, but you mustn't get up yet. You must stay in bed for another two days.",
     "trans": "你看上去很好, 吉米. 你现在好些了, 但你还不应该起床, 你必须再卧床两天"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Doctor",
     "text": "The boy mustn't go to school yet, Mrs Williams. And he mustn't eat rich food.",
     "trans": "这孩子还不能去上学, 威廉斯夫人, 而且不能吃油腻的食物"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Mrs. Williams",
     "text": "Does he have a temperature, doctor?",
     "trans": "他还发烧吗, 医生"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Doctor",
     "text": "No, he doesn't.",
     "trans": "不, 他不发烧了"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Mrs. Williams",
     "text": "Must he stay in bed?",
     "trans": "他还必须卧床吗"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Doctor",
     "text": "Yes. He must remain in bed for another two days. He can get up for about two hours each day, but you must keep the room warm.",
     "trans": "是的, 他还必须卧床两天. 他每天可以起来两个小时, 但您必须保持房间温暖"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Doctor",
     "text": "Where's Mr Williams this evening?",
     "trans": "威廉斯先生今晚去哪儿了"
   },
   {
     "chapter": "Lesson63~64",
+    "speaker": "Mrs. Williams",
     "text": "He's in bed, doctor. Can you see him please? He has a bad cold, too.",
     "trans": "他在床上呢, 医生. 您能看看他吗, 他也得了重感冒"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Father",
     "text": "What are you going to do this evening, Jill?",
     "trans": "你今晚打算做什么, 吉尔"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Jill",
     "text": "I'm going to meet some friends, Dad.",
     "trans": "我打算去见几个朋友, 爸爸"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Father",
     "text": "You mustn't come home late. You must be home at half past ten.",
     "trans": "你不准回家太晚, 你必须在10点半到家"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Jill",
     "text": "I can't get home so early, Dad.",
     "trans": "这么早我到不了家, 爸爸"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Jill",
     "text": "Can I have the key to the front door, please?",
     "trans": "我能带上前门的钥匙吗"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Father",
     "text": "No, you can't.",
     "trans": "不行, 你不能带"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Mother",
     "text": "Jill's eighteen years old, Tom. She's not a baby. Give her the key. She always come home early.",
     "trans": "吉尔都18岁了, 汤姆. 她不是小孩子了. 把钥匙给她吧. 她总是早早回家的"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Father",
     "text": "Oh, all right!",
     "trans": "那么, 好吧"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Father",
     "text": "Here you are. But you mustn't come home after a quarter past eleven. Do you hear?",
     "trans": "拿去. 但你不能超过11点1刻回家. 听见了吗"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Jill",
     "text": "Yes, Dad.",
     "trans": "听见了, 爸爸"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Jill",
     "text": "Thanks, Mum.",
     "trans": "谢谢, 妈妈"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Mother",
     "text": "That's all right. Goodbye. Enjoy yourself!",
     "trans": "不用谢. 再见, 好好玩吧"
   },
   {
     "chapter": "Lesson65~66",
+    "speaker": "Jill",
     "text": "We always enjoy ourselves, Mum. Bye-bye",
     "trans": "我们总是玩得很开心, 妈妈, 再见"
   },
   {
     "chapter": "Lesson67~68",
+    "speaker": "Mrs. Johnson",
     "text": "Hello. Were you at the butcher's?",
     "trans": "您好, 刚才您在肉店里吗"
   },
   {
     "chapter": "Lesson67~68",
+    "speaker": "Mrs. Williams",
     "text": "Yes, I was. Were you at the butcher's, too?",
     "trans": "是的, 我在肉店里. 你也在肉店里吗"
   },
   {
     "chapter": "Lesson67~68",
+    "speaker": "Mrs. Johnson",
     "text": "No, I wasn't. I was at the greengrocer's. How's Jimmy today?",
     "trans": "不, 我不在. 我刚才在蔬菜水果店里. 吉米今天怎么样"
   },
   {
     "chapter": "Lesson67~68",
+    "speaker": "Mrs. Williams",
     "text": "He's very well, thank you.",
     "trans": "他很好, 谢谢您"
   },
   {
     "chapter": "Lesson67~68",
+    "speaker": "Mrs. Johnson",
     "text": "Was he absent from school last week?",
     "trans": "上个星期他没上学吧"
   },
   {
     "chapter": "Lesson67~68",
+    "speaker": "Mrs. Williams",
     "text": "Yes, he was. He was absent On Monday, Tuesday, Wednesday and Thursday. How are you all keeping?",
     "trans": "是的, 他没上学. 他周一, 周二, 周三和周四没去上学. 你们身体都好吗"
   },
   {
     "chapter": "Lesson67~68",
+    "speaker": "Mrs. Johnson",
     "text": "Very well, thank you. We're going to spend three days in the country. We're going to stay at my mother's for the weekend.",
     "trans": "很好, 谢谢您. 我们打算到乡下去三天, 在我母亲家度过周末"
   },
   {
     "chapter": "Lesson67~68",
+    "speaker": "Mrs. Williams",
     "text": "Friday, Saturday and Sunday in the country! Aren't you lucky.",
     "trans": "周五, 周六和周日在乡下过. 这也太爽了吧"
   },
@@ -1936,61 +2238,73 @@
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Jane",
     "text": "What's Ron Marston like, Pauline?",
     "trans": "波琳, 郎•马斯顿是个什么样的人?"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Pauline",
     "text": "He's awful! He telephoned me four times yesterday, and three times the day before yesterday.",
     "trans": "他讨厌透了, 他昨天给我打了4次电话, 前天打了3次"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Pauline",
     "text": "He telephoned the office yesterday morning and yesterday afternoon. My boss answered the telephone.",
     "trans": "他昨天上午和下午把电话打到了我的办公室, 是我的老板接的"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Jane",
     "text": "What did your boss say to him?",
     "trans": "你老板说怎么对他说的"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Pauline",
     "text": "He said, 'Pauline is typing letters. She can't speak to you now!'",
     "trans": "他说: 波琳正在打信, 她现在不能给你回话"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Pauline",
     "text": "Then I arrived home at six o'clock yesterday evening. He telephoned again. But I didn't answered the phone!",
     "trans": "后来, 我昨晚6点回到家, 他又打来电话, 但我没接"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Jane",
     "text": "Did he telephone again last night?",
     "trans": "他昨天夜里又打电话了吗"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Pauline",
     "text": "Yes, he did. He telephoned at nine o'clock.",
     "trans": "是的, 打了. 他在9点钟又打来了电话"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Jane",
     "text": "What did you say to him?",
     "trans": "你是怎么回他的"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Pauline",
     "text": "I said, 'This is Pauline's monther. Please don't telephone my daughter again!'",
     "trans": "我说: 我是波琳的母亲, 请不要再给我女儿打电话了"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Jane",
     "text": "Did he telephone again?",
     "trans": "他又打了没有"
   },
   {
     "chapter": "Lesson71~72",
+    "speaker": "Pauline",
     "text": "No, he didn't!",
     "trans": "没有"
   },
@@ -2026,631 +2340,757 @@
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Lady",
     "text": "Do you have any shoes like these?",
     "trans": "像这样的鞋子你们有吗"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Shop Assistant",
     "text": "What size?",
     "trans": "什么尺码的"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Lady",
     "text": "Size five.",
     "trans": "5号的"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Shop Assistant",
     "text": "What colour?",
     "trans": "什么颜色"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Lady",
     "text": "Black.",
     "trans": "黑色"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Shop Assistant",
     "text": "I'm sorry. We don't have any.",
     "trans": "对不起, 我们没有"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Lady",
     "text": "But my sister bought this pair last month.",
     "trans": "但是, 我姐姐上个月买到了这样的一双"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Shop Assistant",
     "text": "Did she buy them here?",
     "trans": "她是在这儿买的吗"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Lady",
     "text": "No, she bought them in the U.S.",
     "trans": "不, 她是在美国买的"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Shop Assistant",
     "text": "We had some shoes like those a mouth ago, but we don't have any now.",
     "trans": "一个月前我们有这样的鞋, 但是现在没有了"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Lady",
     "text": "Can you get a pair of for me, please?",
     "trans": "您能为我找一双吗"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Shop Assistant",
     "text": "I'm afraid that I can't. They were in fashion last year and the year before last. But they're not in fashion this year.",
     "trans": "恐怕不行, 这鞋在去年和前年流行, 而今年已经不流行了"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Shop Assistant",
     "text": "These shoes are in fashion now.",
     "trans": "现在流行的是这种鞋子"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Lady",
     "text": "They look very uncomfortable.",
     "trans": "这种鞋子看上去很不舒服"
   },
   {
     "chapter": "Lesson75~76",
+    "speaker": "Shop Assistant",
     "text": "They are very uncomfortable. But women always wear uncomfortable shoes!",
     "trans": "的确很不舒服, 可是女人们总是穿不舒服的鞋子"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Nurse",
     "text": "Good morning. Mr. Croft",
     "trans": "早上好, 克罗夫特先生"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Mr. Croft",
     "text": "Good morning, nurse. I want to see the dentist, please.",
     "trans": "早上好, 护士. 我想见牙科医生"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Nurse",
     "text": "Do you have an appointment?",
     "trans": "你有预约吗"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Mr. Croft",
     "text": "No, I don't.",
     "trans": "没有"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Nurse",
     "text": "Is it urgent?",
     "trans": "很急吗"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Mr. Croft",
     "text": "Yes, it is. It's very urgent. I feel awful. I have a terrible toothache.",
     "trans": "是的, 很急. 我难受死了, 牙痛得要命"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Nurse",
     "text": "Can you come at 10AM on Monday, April 24th?",
     "trans": "您在4月24日星期一上午10点钟来可以吗"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Mr. Croft",
     "text": "I must see the dentist now, nurse.",
     "trans": "我必须现在就见牙科医生, 护士"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Nurse",
     "text": "The dentist is very busy at the moment. Can you come at 2PM?",
     "trans": "牙科医生这会儿很忙, 您下午两点钟来行吗"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Mr. Croft",
     "text": "That's very late. Can the dentist see me now?",
     "trans": "那就太晚了. 牙科医生现在能给我看一下吗"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Nurse",
     "text": "I'm afraid that he can't, Mr. Croft. Can't you wait until this afternoon?",
     "trans": "恐怕不行, 克罗夫特先生. 您就不能等到今天下午吗"
   },
   {
     "chapter": "Lesson77~78",
+    "speaker": "Mr. Croft",
     "text": "I can wait, but my toothache can't!",
     "trans": "我倒是可以等, 但是我的牙痛等不了啊"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Tom",
     "text": "What are you doing, Carol?",
     "trans": "卡罗尔, 你在做什么呢"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Carol",
     "text": "I'm making a shopping list, Tom.",
     "trans": "我在写购物清单, 汤姆"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Tom",
     "text": "What do we need?",
     "trans": "我们都需要些什么"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Carol",
     "text": "We need a lot of things this week.",
     "trans": "这个星期我们需要很多东西"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Carol",
     "text": "I must go the grocer's. We haven't got much tea or coffee, and we haven't got any sugar or jam.",
     "trans": "我得去一下食品店. 我们的茶叶和咖啡不多了, 糖和果酱也没有了"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Tom",
     "text": "What about vegetables?",
     "trans": "蔬菜呢"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Carol",
     "text": "I must go to the greengrocer's. We haven't got many tomatoes, but we've got a lot of potatoes.",
     "trans": "我还要到蔬菜水果店去一下. 我们的番茄不多了, 但土豆还有不少"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Carol",
     "text": "I must go to the butcher's, too. We need some meat. We haven't got any meat at all.",
     "trans": "我还要到肉店去一下. 我们需要一些肉. 我们一点肉都没有了"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Tom",
     "text": "Have we got any beer and wine?",
     "trans": "我们还有啤酒和葡萄酒吗"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Carol",
     "text": "No, we haven't. And I'm not going to get any.",
     "trans": "没有了, 不过我不打算去买"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Tom",
     "text": "I hope that you've got some money.",
     "trans": "我希望你还有钱"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Carol",
     "text": "I haven't got much.",
     "trans": "我的钱不多了"
   },
   {
     "chapter": "Lesson79~80",
+    "speaker": "Tom",
     "text": "Well, I haven't got much either!",
     "trans": "唉, 我的也不多了"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Sam",
     "text": "Hi, Carol! Where's Tom?",
     "trans": "你好, 卡罗尔. 汤姆在哪"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Carol",
     "text": "He's upstairs. He's having a bath.",
     "trans": "他在楼上, 他正在洗澡"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Carol",
     "text": "Tom!",
     "trans": "汤姆!"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Tom",
     "text": "Yes?",
     "trans": "什么事?"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Carol",
     "text": "Sam's here.",
     "trans": "萨姆来了"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Tom",
     "text": "I'm nearly ready.",
     "trans": "我马上就好"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Tom",
     "text": "Hello, Sam. Have a cigarette.",
     "trans": "你好, 萨姆. 来抽根烟"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Sam",
     "text": "No, thanks, Tom.",
     "trans": "不了, 谢谢, 汤姆"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Tom",
     "text": "Have a glass of whisky then.",
     "trans": "那么来一杯威士忌吧"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Sam",
     "text": "OK, Thanks.",
     "trans": "好的, 谢谢"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Tom",
     "text": "Is dinner ready, Carol?",
     "trans": "卡罗尔, 晚饭好了吗"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Carol",
     "text": "It's nearly ready. We can have dinner at seven o'clock.",
     "trans": "马上就好. 7点钟时我们就可以吃饭了"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Tom",
     "text": "Sam and I had lunch together today. We went to a restaurant.",
     "trans": "我和萨姆今天一起吃的午饭. 我们去了一家饭馆"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Carol",
     "text": "What did you have?",
     "trans": "你们吃了什么"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Tom",
     "text": "We had roast beef and potatoes.",
     "trans": "我们吃了烤牛肉和土豆"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Carol",
     "text": "Oh!",
     "trans": "噢"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Tom",
     "text": "What's the matter, Carol?",
     "trans": "怎么了, 卡罗尔"
   },
   {
     "chapter": "Lesson81~82",
+    "speaker": "Carol",
     "text": "Well, you're going to have roast beef and potatoes again tonight!",
     "trans": "唉, 今晚你们又要吃一次烤牛肉和土豆了"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Carol",
     "text": "Hello, Sam. Come in.",
     "trans": "你好, 萨姆. 进来吧"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Tom",
     "text": "Hi, Sam. We're having lunch. Do you want to have lunch with us?",
     "trans": "你好, 萨姆. 我们正在吃午饭, 你要来跟我们一起吃吗"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Sam",
     "text": "No, thank you, Tom. I've already had lunch. I had lunch at half past twelve.",
     "trans": "不了, 汤姆, 谢谢. 我已经吃过午饭了. 我在12点半时吃的"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Carol",
     "text": "Have a cup of coffee then?",
     "trans": "那么来一杯咖啡吧"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Sam",
     "text": "I've just had a cup, thank you. I had one after my lunch.",
     "trans": "我刚喝了一杯, 谢谢. 我是在饭后喝的"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Tom",
     "text": "Let's go into the living room, Carol. We can have our coffee there.",
     "trans": "我们到客厅里去吧, 卡罗尔. 我们可以在那里喝咖啡"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Carol",
     "text": "Excuse the mess, Sam. This room's very untidy. We're packing our suitcases. We're going to leave tomorrow. Tom and I are going to have a holiday.",
     "trans": "抱歉, 屋子很乱. 房间里乱七八糟的. 我们正在收拾行李箱. 明天我们就要走了. 我和汤姆准备去度假"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Sam",
     "text": "Aren't you lucky!",
     "trans": "你们真幸运啊"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Tom",
     "text": "When are you going to have a holiday, Sam?",
     "trans": "萨姆, 你准备什么时候去度假"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Sam",
     "text": "I don't know. I've already had my holiday this year.",
     "trans": "不知道, 今年我已经度过假了"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Carol",
     "text": "Where did you go?",
     "trans": "你去了哪里"
   },
   {
     "chapter": "Lesson83~84",
+    "speaker": "Sam",
     "text": "I stayed at home!",
     "trans": "我呆在家里了"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "George",
     "text": "Hello, Ken.",
     "trans": "你好, 肯"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "Ken",
     "text": "Hi, George.",
     "trans": "你好, 乔治"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "George",
     "text": "Have you just been to the cinema?",
     "trans": "你刚才去过电影院了吗"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "Ken",
     "text": "Yes, I have.",
     "trans": "是的, 我刚去过"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "George",
     "text": "What's on?",
     "trans": "上映什么片子?"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "Ken",
     "text": "Paris in the Spring",
     "trans": "《巴黎之春》"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "George",
     "text": "Oh, I've already seen it. I saw it on television last year. It's an old film, but it's very good.",
     "trans": "噢, 我已经看过了. 我是去年在电视上看的. 这是部老电影, 但很好"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "Ken",
     "text": "Paris is a beautiful city.",
     "trans": "巴黎是座美丽的城市"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "George",
     "text": "I've never been there. Have you ever been there, Ken?",
     "trans": "我从未去过那里. 肯, 你去过吗"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "Ken",
     "text": "Yes, I have. I was there in April.",
     "trans": "是的, 我去过, 4月份时我在那里"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "George",
     "text": "Paris in the Spring, eh?",
     "trans": "那是巴黎之春, 是吗"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "Ken",
     "text": "It was spring, but the weather was awful. It rained all the time.",
     "trans": "是春天, 但天气太糟了. 一直在下雨"
   },
   {
     "chapter": "Lesson85~86",
+    "speaker": "George",
     "text": "Just like London!",
     "trans": "就像伦敦一样"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Mr. Wood",
     "text": "Is my car ready yet?",
     "trans": "我的汽车修好了吗"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Attendant",
     "text": "I don't know, sir. What's the number of your car?",
     "trans": "我不知道, 先生. 您的汽车牌号是多少"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Mr. Wood",
     "text": "It's LFZ 312 G.",
     "trans": "是 LFZ312G"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Attendant",
     "text": "When did you bring it to us?",
     "trans": "您是什么时候送来的"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Mr. Wood",
     "text": "I brought it here three days ago.",
     "trans": "3天前"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Attendant",
     "text": "Ah yes, I remember now.",
     "trans": "啊, 是的, 我现在记起来了"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Mr. Wood",
     "text": "Have your mechanics finished yet?",
     "trans": "你们的机械师修好了吗"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Attendant",
     "text": "No, they're still working on it. Let's go into the garage and have a look at it.",
     "trans": "没有, 他们还在修呢. 我们到车库去看一下吧"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Attendant",
     "text": "Is that your car?",
     "trans": "那不是您的车吗"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Mr. Wood",
     "text": "Well, it was my car.",
     "trans": "唔, 曾经是"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Attendant",
     "text": "Didn't you have a crash?",
     "trans": "您不是出车祸了吧"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Mr. Wood",
     "text": "That's right. I drove it into a lamp-post. Can your mechanics repair it?",
     "trans": "是啊, 我把车怼到路灯柱上了. 你们的机械师能修好吗"
   },
   {
     "chapter": "Lesson87~88",
+    "speaker": "Attendant",
     "text": "Well, they're trying to repair it, sir. But to tell you the truth, you need a new car!",
     "trans": "啊, 他们正设法修呢, 先生. 不过说实在的, 您需要一辆新车了"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Nigel",
     "text": "Good afternoon. I believe that this house is for sale.",
     "trans": "下午好, 我想这房子是要出售的吧"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Ian",
     "text": "That's right.",
     "trans": "是的"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Nigel",
     "text": "May I have a look at it, please?",
     "trans": "我可以看一看吗"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Ian",
     "text": "Yes, of course. Come in.",
     "trans": "可以, 当然可以, 请进"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Nigel",
     "text": "How long have you lived here?",
     "trans": "您在这里住了多长时间"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Ian",
     "text": "I've lived here for twenty years.",
     "trans": "我在这里已经住了20年了"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Nigel",
     "text": "Twenty years! That's a long time.",
     "trans": "20年, 这个时间可不短"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Ian",
     "text": "Yes, I've been here since 1976.",
     "trans": "是啊, 从1976年起我就住在这里了"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Nigel",
     "text": "Then why do you want to sell it?",
     "trans": "那么, 您为什么要卖掉它呢"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Ian",
     "text": "Because I've just retired. I want to buy a small house in the country.",
     "trans": "因为我刚退休, 我想在乡下买幢小房子"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Nigel",
     "text": "How much does this house cost?",
     "trans": "这座房子卖多少钱"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Ian",
     "text": "£68500",
     "trans": "68500英镑"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Nigel",
     "text": "That's a lot of money!",
     "trans": "那可真是一笔大钱呢"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Ian",
     "text": "It's worth every penny of it.",
     "trans": "它确确实实值这么多钱"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Nigel",
     "text": "Well, I like the house, but I can't decide yet. My wife must see it first.",
     "trans": "啊, 我喜欢这房子, 但我还不能做决定. 我妻子必须先来看一看"
   },
   {
     "chapter": "Lesson89~90",
+    "speaker": "Ian",
     "text": "Woman always have the last word.",
     "trans": "女人总是最后说了算"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Catherine",
     "text": "Has Ian sold his house yet?",
     "trans": "伊恩已经把他的房子卖掉了吗"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Jenny",
     "text": "Yes, he has. He sold it was last week.",
     "trans": "是的, 卖掉了. 他上星期卖掉的"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Catherine",
     "text": "Has he moved to his new house yet?",
     "trans": "他已经迁进新居了吗"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Jenny",
     "text": "No, not yet. He's still here. He's going to move tomorrow.",
     "trans": "还没有. 他仍在这里. 他打算明天搬家"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Catherine",
     "text": "When? Tomorrow morning?",
     "trans": "什么时候, 明天上午吗"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Jenny",
     "text": "No. Tomorrow afternoon. I'll miss him. He has always been a good neighbour.",
     "trans": "不, 明天下午. 我会想念他的. 他一直是个好邻居"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Linda",
     "text": "He's a very nice person. We'll all miss him.",
     "trans": "他是个非常好的人, 我们大家都会想念他的"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Catherine",
     "text": "When will the new people move into this hosue?",
     "trans": "新住户什么时候搬进这座房子?"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Jenny",
     "text": "I think that they'll move in the day after tomorrow.",
     "trans": "我觉得他们会在后台搬进来吧"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Linda",
     "text": "Will you see Ian today, Jenny?",
     "trans": "詹尼, 你今天会见到伊恩吗"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Jenny",
     "text": "Yes, I will.",
     "trans": "是的, 我会见到他"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Linda",
     "text": "Please give him my regards.",
     "trans": "请代我问候他"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Catherine",
     "text": "Poor Ian! He didn't want to leave this house.",
     "trans": "可怜的伊恩, 他原本不想离开这幢房子的"
   },
   {
     "chapter": "Lesson91~92",
+    "speaker": "Jenny",
     "text": "No, he didn't want to leave, but his wife did!",
     "trans": "是啊, 他是不想离开, 但是他妻子要离开"
   },
@@ -2696,681 +3136,823 @@
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "George",
     "text": "Two return tickets to London, please. What time will the next train leave?",
     "trans": "买两张到伦敦的往返票. 下一班火车什么时候开"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "Attendant",
     "text": "At nineteen minutes past eight.",
     "trans": "8点19分"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "George",
     "text": "Which platform?",
     "trans": "在哪个站台"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "Attendant",
     "text": "Platform Two. Over the bridge.",
     "trans": "2号站台, 过天桥"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "Ken",
     "text": "What time will the next train leave?",
     "trans": "下一班火车什么时候开"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "George",
     "text": "At eight nineteen.",
     "trans": "8点19分"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "Ken",
     "text": "We're got plenty of time.",
     "trans": "我们的时间还很宽裕"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "George",
     "text": "It's only three minutes to eight.",
     "trans": "现在才7点57分"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "Ken",
     "text": "Let's go and have a drink. There's a bar next door to the station.",
     "trans": "我们去喝点东西吧, 车站旁边有个酒吧"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "George",
     "text": "We had better go back to the station now, Ken.",
     "trans": "肯, 我们现在最好回到车站去"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "Popter",
     "text": "Tickets, please.",
     "trans": "请出示车票"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "George",
     "text": "We want to catch the eight nineteen to London.",
     "trans": "我们要乘8点19分的车去伦敦"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "Popter",
     "text": "You're just missed it!",
     "trans": "你们刚好错过了那班车"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "George",
     "text": "What! It's only eight fifteen.",
     "trans": "什么! 现在才8点15分而已"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "Popter",
     "text": "I'm sorry, sir. That clock's ten minutes slow.",
     "trans": "对不起, 先生. 那个钟慢了10分钟"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "George",
     "text": "When's the next train?",
     "trans": "下一班火车是什么时候"
   },
   {
     "chapter": "Lesson95~96",
+    "speaker": "Popter",
     "text": "In five hours' time!",
     "trans": "5个小时以后"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Mr. Hall",
     "text": "I left a suitcase on the train to London the other day.",
     "trans": "几天前我把一个手提箱落在开往伦敦的火车上了"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Attendant",
     "text": "Can you describe it, sir?",
     "trans": "先生, 您能描述一下它是什么样子的吗"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Mr. Hall",
     "text": "It's a small blue case and it's got a zip. There's a label on the handle with my name and address on it.",
     "trans": "是个蓝色的小箱子, 上面有拉链. 箱把上有个标签, 上面写着我的姓名和住址"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Attendant",
     "text": "Is this case yours?",
-    "trans": "这箱子上您的吗"
+    "trans": "这箱子是您的吗"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Mr. Hall",
     "text": "No, that's not mine.",
     "trans": "不, 那不是我的"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Attendant",
     "text": "What about this one? This one's got a lable.",
     "trans": "这个是不是? 这个箱子有个标签"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Mr. Hall",
     "text": "Let me see it.",
     "trans": "让我看看"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Attendant",
     "text": "What's your name and address?",
     "trans": "您的姓名和住址是什么"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Mr. Hall",
     "text": "David Hall, 83, Bridge Street.",
     "trans": "大卫•霍尔, 大桥街83号"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Attendant",
     "text": "That's right. D.N. Hall, 83, Bridge Street.",
     "trans": "那就对了, D.N 霍尔, 大桥街83号"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Attendant",
     "text": "Three pounds fifty pence, please.",
     "trans": "请付3英镑50便士"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Mr. Hall",
     "text": "Here you are.",
     "trans": "给您"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Attendant",
     "text": "Thank you.",
     "trans": "谢谢您"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Mr. Hall",
     "text": "Hey!",
     "trans": "嗨"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Attendant",
     "text": "What's the matter?",
     "trans": "怎么回事"
   },
   {
     "chapter": "Lesson97~98",
+    "speaker": "Mr. Hall",
     "text": "This case doesn't belong to me! You've given me the wrong case!",
     "trans": "这箱子不是我的, 您给错了"
   },
   {
     "chapter": "Lesson99~100",
+    "speaker": "Andy",
+    "text": "Ow!",
+    "trans": "哎哟"
+  },
+  {
+    "chapter": "Lesson99~100",
+    "speaker": "Lucy",
     "text": "What's the matter, Andy?",
     "trans": "怎么了, 安迪"
   },
   {
     "chapter": "Lesson99~100",
+    "speaker": "Andy",
     "text": "I slipped and fell downstairs.",
     "trans": "我滑了一跤, 从楼梯上摔下来了"
   },
   {
     "chapter": "Lesson99~100",
+    "speaker": "Lucy",
     "text": "Have you hurt yourself?",
     "trans": "你摔伤了没有"
   },
   {
     "chapter": "Lesson99~100",
+    "speaker": "Andy",
     "text": "Yes, I have. I think that I've hurt my back.",
     "trans": "是啊, 摔伤了. 我觉得我伤到背了"
   },
   {
     "chapter": "Lesson99~100",
+    "speaker": "Lucy",
     "text": "Try and stand up. Can you stand up? Here. Let me help you.",
     "trans": "试试站起来. 你能站起来吗. 让我帮你"
   },
   {
     "chapter": "Lesson99~100",
+    "speaker": "Andy",
     "text": "I'm sorry, Lucy. I'm afraid that I can't get up.",
     "trans": "抱歉, 露西, 恐怕我站不起来"
   },
   {
     "chapter": "Lesson99~100",
+    "speaker": "Lucy",
     "text": "I think that the doctor had better see you. I'll phone Dr. Carter.",
     "trans": "我觉得最好请医生来给你看一下. 我去给卡特医生打电话"
   },
   {
     "chapter": "Lesson99~100",
+    "speaker": "Lucy",
     "text": "The doctor says that he will come at once. I'm sure that you need an X-ray, Andy.",
     "trans": "医生说他马上就来. 安迪, 我看你需要做一次X光透视"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Grandmother",
     "text": "Read Jimmy's card to me please, Penny.",
     "trans": "请把吉米的明信片念给听听, 彭妮"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Penny",
     "text": "I have just arrived in Scotland and I'm staying at a Youth Hostel.",
     "trans": "我刚到苏格兰, 我现在住在一家青年招待所"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Grandmother",
     "text": "Eh?",
     "trans": "什么"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Penny",
     "text": "He says he's just arrived in Scotland. He says he's staying at a Youth Hostel. You know he's a member of the Y.H.A.",
     "trans": "他说他刚到苏格兰. 他说他现在住在一家青年招待所. 您知道, 他是Y.H.A的成员"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Grandmother",
     "text": "The what?",
     "trans": "什么"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Penny",
     "text": "The Y.H.A, Mum. The Youth Hostels Association.",
     "trans": "Y.H.A, 妈妈. 青年招待所协会"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Grandmother",
     "text": "What else does he say?",
     "trans": "他还说了些什么"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Penny",
     "text": "'I'll write a letter soon. I hope you are all well.'",
     "trans": "'我很快会写信的, 祝你们大家身体都好'"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Grandmother",
     "text": "What? Speak up, Penny. I'm afraid I can't hear you.",
     "trans": "什么? 彭妮, 大声一点. 我可听不见你念的"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Penny",
     "text": "He says he'll write a letter soon. He hopes we are all well. 'Love, Jimmy.'",
     "trans": "他说他很快会写信的. 他祝我们大家身体好. '爱你们的吉米'"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Grandmother",
     "text": "Is that all? He doesn't say very much, does he?",
     "trans": "就这些吗. 他没写多少, 是吗"
   },
   {
     "chapter": "Lesson101~102",
+    "speaker": "Penny",
     "text": "He can't write very much on a card, Mum.",
     "trans": "在明信片上他写不了很多, 妈妈"
   },
   {
     "chapter": "Lesson103~104",
+    "speaker": "Gray",
     "text": "How was the exam, Richard?",
     "trans": "考试考得怎么样, 理查德"
   },
   {
     "chapter": "Lesson103~104",
+    "speaker": "Richard",
     "text": "Not too bad. I think I passed in English and Mathematics. The questions were very easy. How about you, Gary?",
     "trans": "不算太烂, 我想我的英语和数学及格了. 题目很容易. 加里, 你怎么样"
   },
   {
     "chapter": "Lesson103~104",
+    "speaker": "Gray",
     "text": "The English and Maths papers weren't easy enough for me. I hope I haven't failed.",
     "trans": "英语和数学试题对我来说不那么容易. 我希望别不及格"
   },
   {
     "chapter": "Lesson103~104",
+    "speaker": "Richard",
     "text": "I think I failed the French paper. I could answer sixteen of the questions. They were very easy. But I couldn't answer the rest. They were too difficult for me.",
     "trans": "我觉得我的法语要不及格了, 我能回答其中的16道题, 这些题很容易. 但我回答不出其余的题, 那些题对我来说太难了"
   },
   {
     "chapter": "Lesson103~104",
+    "speaker": "Gray",
     "text": "French tests are awful, aren't they?",
     "trans": "法语考试太可怕了, 你说呢"
   },
   {
     "chapter": "Lesson103~104",
+    "speaker": "Richard",
     "text": "I hate them. I'm sure I've got a low mark.",
     "trans": "我讨厌法语考试. 我的成绩肯定很低"
   },
   {
     "chapter": "Lesson103~104",
+    "speaker": "Gray",
     "text": "Oh, cheer up! Perhaps we didn't do too badly. The guy next to me wrote his name at the top of the paper.",
     "trans": "啊, 别灰心. 或许我们考得还不算太糟. 坐我旁边的那个人只在试卷上写了他的名字"
   },
   {
     "chapter": "Lesson103~104",
+    "speaker": "Richard",
     "text": "Yes?",
     "trans": "是吗"
   },
   {
     "chapter": "Lesson103~104",
+    "speaker": "Gray",
     "text": "Then he sat there and looked at it for three hours! He didn't write a word!",
     "trans": "然后他就坐在那儿, 对着试卷看了3个小时, 一个字也没写"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "The Boss",
     "text": "Where's Sandra, Bob? I want her.",
     "trans": "鲍勃, 桑德拉在哪儿, 我要找她"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "Bob",
     "text": "Do you want to speak to her?",
     "trans": "您要跟她谈话吗"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "The Boss",
     "text": "Yes, I do. I want her to come my office. Tell her to come at once.",
     "trans": "是的, 我要她到我的办公室来, 叫她马上来"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "Sandra",
     "text": "Did you want to see me?",
     "trans": "您找我吗"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "The Boss",
     "text": "Ah, yes, Sandra. How do you spell 'intelligent'? Can you tell me?",
     "trans": "啊, 是的, 桑德拉. 'intelligent' 怎样拼写, 你能告诉我吗"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "Sandra",
     "text": "I-N-T-E-L-L-I-G-E-N-T",
     "trans": "I-N-T-E-L-L-I-G-E-N-T"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "The Boss",
     "text": "That's right. You've typed it with only 'L'. This letter's full of mistakes. I want you to type it again.",
     "trans": "对的. 但你只打了一个'L', 这封信里错漏百出. 我要你重打一遍"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "Sandra",
     "text": "Yes, I'll do that. I'm sorry about that.",
     "trans": "是, 我这就重打. 对此我感到很抱歉"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "The Boss",
     "text": "And here's a little present for you.",
     "trans": "这里有一件小礼物送你"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "Sandra",
     "text": "What is it?",
     "trans": "是什么"
   },
   {
     "chapter": "Lesson105~106",
+    "speaker": "The Boss",
     "text": "It's a dictionary. I hope it'll help you.",
     "trans": "是本词典. 我希望它能对你有所帮助"
   },
   {
     "chapter": "Lesson107~108",
+    "speaker": "Assistant",
     "text": "Do you like this dress, madam?",
     "trans": "夫人, 您喜欢这件衣服吗"
   },
   {
     "chapter": "Lesson107~108",
+    "speaker": "Lady",
     "text": "I like the colour very much. It's a lovely dress. but it's too small for me.",
     "trans": "我很喜欢这颜色, 这是件漂亮的衣服, 可是对我来说太小了"
   },
   {
     "chapter": "Lesson107~108",
+    "speaker": "Assistant",
     "text": "What about this one? It's a lovely dress. It's very smart. Short skirts are in fashion now. Would you like to try it?",
     "trans": "这件怎么样, 这是件漂亮的衣服, 它很时髦. 短裙现在很流行. 您要试一试吗"
   },
   {
     "chapter": "Lesson107~108",
+    "speaker": "Lady",
     "text": "All right.",
     "trans": "好吧"
   },
   {
     "chapter": "Lesson107~108",
+    "speaker": "Lady",
     "text": "I'm afraid this green dress is too small for me as well. It's smaller than the blue one.",
     "trans": "恐怕这件绿色的我穿着也太小了. 它比那件蓝色的还要小"
   },
   {
     "chapter": "Lesson107~108",
+    "speaker": "Lady",
     "text": "I don't like the colour either. It doesn't suit me at all. I think the blue dress is prettier.",
     "trans": "我也不喜欢这种颜色. 这颜色根本不适合我. 我认为那件蓝色的更漂亮些"
   },
   {
     "chapter": "Lesson107~108",
+    "speaker": "Lady",
     "text": "Could you show another blue dress? I want a dress like that one, but it must be my size.",
     "trans": "您能再给我看一件蓝色的吗. 我想要一件和那件一样的, 但必须是我的尺寸"
   },
   {
     "chapter": "Lesson107~108",
+    "speaker": "Assistant",
     "text": "I'm afraid I haven't got a larger dress. This is the largest dress in the shop.",
     "trans": "恐怕没有更大的了. 这是店里最大的一件"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Charlotte",
     "text": "Shall I make some coffee, Jane?",
     "trans": "我来煮点咖啡好吗, 简"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Jane",
     "text": "That's a good idea, Charlotte.",
     "trans": "这是个好主意, 夏洛特"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Charlotte",
     "text": "It's ready. Do you want any milk?",
     "trans": "咖啡好了, 你要放点牛奶吗"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Jane",
     "text": "Just a little, please.",
     "trans": "一点点就行"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Charlotte",
     "text": "What about some sugar? Two teaspoonfuls?",
     "trans": "加些糖怎么样, 两茶勺行吗"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Jane",
     "text": "No, less than that. One and a half teaspoonfuls, please. That's enough for me.",
     "trans": "不, 再少一点. 放一勺半对我来说足够了"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Jane",
     "text": "That was very nice.",
     "trans": "太好了"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Charlotte",
     "text": "Would you like some more?",
     "trans": "您还要再来点吗"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Jane",
     "text": "Yes, please.",
     "trans": "好的"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Jane",
     "text": "I'd like a cigarette, too. May I have one?",
     "trans": "我还想抽支烟, 可以给我一支吗"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Charlotte",
     "text": "Of course. I think there are a few in that box.",
     "trans": "当然可以. 我想那个盒子里有一些"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Jane",
     "text": "I'm afraid it's empty.",
     "trans": "恐怕盒子上空的"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Charlotte",
     "text": "What a pity!",
     "trans": "真遗憾"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Jane",
     "text": "It doesn't matter.",
     "trans": "没关系"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Charlotte",
     "text": "Have a biscuit instead. Eat more and smoke less!",
     "trans": "那就吃块饼干吧. 多吃点,少抽点"
   },
   {
     "chapter": "Lesson109~110",
+    "speaker": "Jane",
     "text": "That's very good advice!",
     "trans": "这真是个好建议"
   },
   {
     "chapter": "Lesson111~112",
+    "speaker": "Mr. Frith",
     "text": "I like this television very much. How much does it cost?",
     "trans": "我非常喜欢这台电视机. 请问它多少钱"
   },
   {
     "chapter": "Lesson111~112",
+    "speaker": "Assistant",
     "text": "It's the most expensive model in the shop. It cost five hundred pounds.",
     "trans": "这是店里最贵的型号. 它的售价是500英镑"
   },
   {
     "chapter": "Lesson111~112",
+    "speaker": "Mr. Frith",
     "text": "That's too expensive for us. We can't afford all that money.",
     "trans": "这对我们来说太贵了. 我们花不起那么多钱"
   },
   {
     "chapter": "Lesson111~112",
+    "speaker": "Assistant",
     "text": "This model's less expensive than that one. It's only three hundred pounds. But, of course, it's not as good as the expensive one.",
     "trans": "这款型号比刚才那种要便宜些. 它只要300英镑. 但是, 它自然不如贵的那款那样好"
   },
   {
     "chapter": "Lesson111~112",
+    "speaker": "Mr. Frith",
     "text": "I don't like this model. The other model's more expensive, but it's worth the money.",
     "trans": "我不喜欢这款型号. 刚才那款型号的价格是贵了一些, 但它确实值那么多钱"
   },
   {
     "chapter": "Lesson111~112",
+    "speaker": "Mr. Frith",
     "text": "Can we buy it on instalments?",
     "trans": "我们可以用分期付款的方式购买吗"
   },
   {
     "chapter": "Lesson111~112",
+    "speaker": "Assistant",
     "text": "Of course. You can pay a deposit of thirty pounds, and then fourteen pounds a month for three years.",
     "trans": "当然可以. 您可以先付30英镑定金, 然后每个月14英镑, 分3年付清"
   },
   {
     "chapter": "Lesson111~112",
+    "speaker": "Mr. Frith",
     "text": "Do you like it, dear?",
     "trans": "你喜欢吗, 亲爱的"
   },
   {
     "chapter": "Lesson111~112",
+    "speaker": "Mrs. Frith",
     "text": "I certainly do, but I don't like the price. You always want the best, but we can't afford it. Sometimes you think you're a millionaire!",
     "trans": "我当然喜欢, 但是我不喜欢这个价钱. 你总是要买最好的, 可我们买不起. 有时候你以为自己是个百万富翁"
   },
   {
     "chapter": "Lesson111~112",
+    "speaker": "Mr. Frith",
     "text": "Millionaire don't buy things on instalments!",
     "trans": "百万富翁是不会分期付款买东西的"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "Conductor",
     "text": "Fares, please.",
     "trans": "请买票"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "Man",
     "text": "Trafalgar Square, please.",
     "trans": "请给我一张到特拉法尔加广场的票"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "Conductor",
     "text": "I'm sorry, sir. I can't change a ten-pound note. Haven't you got any small change?",
     "trans": "抱歉, 我找不开10英镑的钞票, 您没有零钱吗"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "Man",
     "text": "I've got no small change, I'm afraid.",
     "trans": "我还真没有零钱"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "Conductor",
     "text": "I'll ask some of the passengers.",
     "trans": "那我问问其他乘客"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "Conductor",
     "text": "Have you any small change, sir?",
     "trans": "先生, 您有零钱吗"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "1st Passenger",
     "text": "I'm sorry. I've got none.",
     "trans": "抱歉, 我没有"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "2nd Passenger",
     "text": "I haven't got any either.",
     "trans": "我也没有"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "Conductor",
     "text": "Can you change this ten-pound note, madam?",
     "trans": "夫人, 您能把这10英镑的钞票换开吗"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "3rd Passenger",
     "text": "I'm afraid I can't.",
     "trans": "恐怕不能"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "4th Passenger",
     "text": "Neither can I.",
     "trans": "我也不能"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "Conductor",
     "text": "I'm very sorry, sir. You must get off the bus. None of our passengers can change this note. They're all millionaires!",
     "trans": "非常抱歉, 先生. 您必须下车了. 我们的乘客中没人能换开这张钞票. 他们都是百万富翁"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "Tramps",
     "text": "Except us.",
     "trans": "我们俩除外"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "1st Tramp",
     "text": "I've got some small change.",
     "trans": "我有零钱"
   },
   {
     "chapter": "Lesson113~114",
+    "speaker": "2nd Tramp",
     "text": "So have I.",
     "trans": "我也有"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Helen",
     "text": "Isn't there anyone at home?",
     "trans": "家里没人吗"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Jim",
     "text": "I'll knock again, Helen. Everything's very quite. I'm sure there's no one at home.",
     "trans": "海伦, 我再敲一次. 毫无动静, 我敢肯定家里没有人"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Helen",
     "text": "But that's impossible. Carol and Tom invited us to lunch. Look through the window.",
     "trans": "但是这不可能. 卡罗尔和汤姆请我们来吃午饭的. 透过窗户看看"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Helen",
     "text": "Can you see anything?",
     "trans": "你能看见什么吗"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Jim",
     "text": "Nothing at all.",
     "trans": "啥都没看到"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Helen",
     "text": "Let's try the back door.",
     "trans": "让我们到后门去试试"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Jim",
     "text": "Look! Everyone's in the garden.",
     "trans": "看, 大伙都在花园里"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Carol",
     "text": "Hello, Helen. Hello, Jim.",
     "trans": "你好, 海伦. 你好, 吉姆"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Tom",
     "text": "Everybody wants to have lunch in the garden. It's nice and warm out here.",
     "trans": "大伙都想在花园里吃午饭. 这外面挺暖和的"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Carol",
     "text": "Come and have something to drink.",
     "trans": "来喝点什么吧"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Jim",
     "text": "Thanks, Carol. May I have a glass of beer please?",
     "trans": "谢谢, 卡罗尔. 给我一杯啤酒好吗"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Carol",
     "text": "Beer? There's none left. You can have some lemonade.",
     "trans": "啤酒? 已经一点都不剩了. 你可以喝点柠檬水"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Jim",
     "text": "Lemonade!",
     "trans": "柠檬水!"
   },
   {
     "chapter": "Lesson115~116",
+    "speaker": "Tom",
     "text": "Don't believe her, Jim. She's only joking. Have some beer!",
     "trans": "吉姆, 别信她的鬼话. 她只是在开玩笑. 来喝点啤酒吧"
   },
@@ -3471,576 +4053,691 @@
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Customer",
     "text": "I bought two expensive dictionaries here half an hour ago, but I forgot to take them with me.",
     "trans": "半小时前我在这里买了两本很贵的词典, 但是我忘了带走"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Manager",
     "text": "Who served you, sir?",
     "trans": "是谁接待您的, 先生"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Customer",
     "text": "The lady who is standing behind the counter.",
     "trans": "站在柜台后面的的那位女士"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Manager",
     "text": "Which books did you buy?",
     "trans": "您买的是两本什么书"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Customer",
     "text": "The books which are on the counter.",
     "trans": "就是柜台上的那两本"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Manager",
     "text": "Did you serve this gentleman half an hour ago, Caroline? He says he's the man who bought these books.",
     "trans": "卡罗琳, 半小时前你接待过这位先生吗. 他说他就是买这两本书的人"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Caroline",
     "text": "I can't remember. The man who I served was wearing a hat.",
     "trans": "我记不起来了. 我接待的那个人戴着一顶帽子"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Manager",
     "text": "Have you got a hat, sir?",
     "trans": "先生, 您有帽子吗"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Customer",
     "text": "Yes, I have.",
     "trans": "有的"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Manager",
     "text": "Would you put it on, please?",
     "trans": "能请您把帽子戴上吗"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Customer",
     "text": "All right.",
     "trans": "好的"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Manager",
     "text": "Is this the man that you served, Caroline?",
     "trans": "卡罗琳, 这是你接待过的那个人吗"
   },
   {
     "chapter": "Lesson121~122",
+    "speaker": "Caroline",
     "text": "Yes. I recognize him now.",
     "trans": "是他, 我现在认出他来了"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Mike",
     "text": "Look, Scott. This is a photograph I took during my trip to Australia.",
     "trans": "看, 这是我在澳大利亚旅行时拍的一张照片"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Scott",
     "text": "Let me see it, Mike.",
     "trans": "让我看看, 迈克"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Scott",
     "text": "This is a good photograph. Who are these people?",
     "trans": "这是一张很好的照片. 这些人是谁"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Mike",
     "text": "They're people I met during the trip.",
     "trans": "他们是我旅行时认识的人"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Mike",
     "text": "That's the ship we travelled on.",
     "trans": "这是我们所乘的那艘船"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Scott",
     "text": "What a beautiful ship!",
     "trans": "多漂亮的船啊"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Scott",
     "text": "Who's this?",
     "trans": "这是谁"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Mike",
     "text": "That's the man I told you about. Remember?",
     "trans": "这就是我跟你说过的那个人. 还记得吗"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Scott",
     "text": "Ah yes. The one who offered you a job in Australia.",
     "trans": "啊, 记得. 就是在澳大利亚给你工作的那个人"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Mike",
     "text": "That's right.",
     "trans": "没错"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Scott",
     "text": "Who's this?",
     "trans": "这是谁"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Mike",
     "text": "Guess!",
     "trans": "你猜猜"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Scott",
     "text": "It's not you, is it?",
     "trans": "这不是你吧, 对吗"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Mike",
     "text": "That's right.",
     "trans": "不, 是我"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Mike",
     "text": "I grew a beard during the trip, but I shaved it off when I came home.",
     "trans": "我在旅行时留了胡子, 但我回到家时就把它刮了"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Scott",
     "text": "Why did you shave it off?",
     "trans": "你为什么把它刮了"
   },
   {
     "chapter": "Lesson123~124",
+    "speaker": "Mike",
     "text": "My wife didn't like it!",
     "trans": "我妻子不喜欢"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Susan",
     "text": "Can't you come in and have tea now, Peter?",
     "trans": "彼得, 你现在能进来喝茶吗"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Peter",
     "text": "Not yet. I must water the garden first.",
     "trans": "还不能, 我得先给花园浇水"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Susan",
     "text": "Do you have to water it now?",
     "trans": "你非得现在浇吗"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Peter",
     "text": "I'm afraid I must. Look at it! It's terribly dry.",
     "trans": "我必须现在浇. 你看看, 干得厉害"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Susan",
     "text": "What a nuisance!",
     "trans": "真讨厌"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Peter",
     "text": "Last summer it was very dry, too. Don't you remember? I had to water it every day.",
     "trans": "去年夏天也是干得很. 你不记得了吗. 我不得不每天浇水"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Susan",
     "text": "Well, I'll have tea by myself.",
     "trans": "好吧, 那我自己喝茶了"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Susan",
     "text": "That was quick! Have you finished already?",
     "trans": "好快啊, 你这就浇完啦"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Peter",
     "text": "Yes. Look out of the window.",
     "trans": "是的, 你看看窗外"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Susan",
     "text": "It's raining! That means you don't need to water the garden.",
     "trans": "下雨了. 这就是说, 你不必给花园浇水了"
   },
   {
     "chapter": "Lesson125~126",
+    "speaker": "Peter",
     "text": "That was a pleasant surprice. It means I can have tea, instead.",
     "trans": "这是意想不到的好事. 这意味着我反倒可以喝茶了"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Kate",
     "text": "Can you recognize that woman, Liz?",
     "trans": "利兹, 你能认出那个女人吗"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Liz",
     "text": "I think I can, Kate. It must be Karen Marsh, the actress.",
     "trans": "我想我认得出来, 凯特. 那一定是女演员卡伦•马什"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Kate",
     "text": "I thought so. Who's that beside her?",
     "trans": "我也这样想. 她旁边的那个人是谁"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Liz",
     "text": "That must be Conrad Reeves.",
     "trans": "一定是康拉德•里弗斯"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Kate",
     "text": "Conrad Reeves, the actor? It can't be.",
     "trans": "康拉德•里弗斯, 那个男演员吗, 不可能"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Kate",
     "text": "Let me have another look. I think you're right! Isn't he her third husband?",
     "trans": "让我再看一看. 我想你是对的. 他不是她的第3任丈夫吗"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Liz",
     "text": "No, He must be her fourth or fifth.",
     "trans": "不, 他一定是她的第4任或第5任丈夫"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Kate",
     "text": "Doesn't Karen Marsh look old!",
     "trans": "卡伦看上去可够老的"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Liz",
     "text": "She does, doesn't she! I read she's twenty-nine, but she must be at least forty.",
     "trans": "是的, 谁说不是呢. 我从报上看到她是29岁, 但她一定至少有40岁了"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Kate",
     "text": "I'm sure she is.",
     "trans": "我肯定她有40岁了"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Liz",
     "text": "She was a famous actress when I was still at school.",
     "trans": "当我还是学生时, 她就是个著名的演员了"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Kate",
     "text": "That was a long time ago, wasn't it?",
     "trans": "那是好久以前的事了, 是吗"
   },
   {
     "chapter": "Lesson127~128",
+    "speaker": "Liz",
     "text": "Not that long ago! I'm not more than twenty-nine myself.",
     "trans": "不, 没那么久. 我自己都还没29岁呢"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Ann",
     "text": "Look, Gary! That policeman's waving to you. He wants you to stop.",
     "trans": "瞧, 加里. 那个警察正朝你挥手呢. 他要你停下来"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Policeman",
     "text": "Where do you think you are? On a race track? You must have been driving at seventy miles an hour.",
     "trans": "你认为你现在是在哪儿? 在赛车道上吗. 你刚才一定是以每小时70英里的速度开车"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Gary",
     "text": "I can't have been.",
     "trans": "我不会开得那样快的"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Policeman",
     "text": "I was doing eighty when I overtook you.",
     "trans": "我是以每小时80英里的速度赶上你的"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Policeman",
     "text": "Didn't you see the speed limit?",
     "trans": "难道你没看见限速牌吗"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Gary",
     "text": "I'm afraid I didn't, officer. I must have been dreaming.",
     "trans": "恐怕我没看见, 警官. 我一定是在梦游了"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Ann",
     "text": "He wasn't dreaming, officer. I was telling him to drive slowly.",
     "trans": "警官, 他没在梦游. 我刚才告诉过他开慢点的"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Gary",
     "text": "That's why I didn't see the sign.",
     "trans": "所有我才没看见那牌子"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Policeman",
     "text": "Let me see your driving licence.",
     "trans": "让我看一看你的驾照"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Policeman",
     "text": "I won't charge you this time. But you'd better not to do it again!",
     "trans": "这次我就不罚你款了. 但你最好不要再开得这样快"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Gary",
     "text": "Thank you. I'll certainly be more careful.",
     "trans": "谢谢您. 我以后一定会多加注意"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Ann",
     "text": "I told you to drive slowly, Gary.",
     "trans": "加里, 我刚才叫你开慢点"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Gary",
     "text": "You always tell me to drive slowly, darling.",
     "trans": "你总是叫我开慢点, 亲爱的"
   },
   {
     "chapter": "Lesson129~130",
+    "speaker": "Ann",
     "text": "Well, next time you'd better take my advice!",
     "trans": "好啦, 下次你最好还是听取我的劝告吧"
   },
   {
     "chapter": "Lesson131~132",
+    "speaker": "Martin",
     "text": "Where are you going to spend your holidays this year, Gary?",
     "trans": "加里, 今年你们打算去哪里度假"
   },
   {
     "chapter": "Lesson131~132",
+    "speaker": "Gary",
     "text": "We may go abroad. I'm not sure. My wife wants to go to Egypt. I'd like to go there, too. We can't make up our minds.",
     "trans": "我们可能到国外去, 但我不确定. 我妻子想到埃及去, 我也想去那儿. 我们还拿不定主意"
   },
   {
     "chapter": "Lesson131~132",
+    "speaker": "Martin",
     "text": "Will you travel by sea or by air?",
     "trans": "你们乘船去, 还是坐飞机去"
   },
   {
     "chapter": "Lesson131~132",
+    "speaker": "Gary",
     "text": "We may travel by sea.",
     "trans": "我们可能乘船去"
   },
   {
     "chapter": "Lesson131~132",
+    "speaker": "Martin",
     "text": "It's cheaper, isn't it?",
     "trans": "这更便宜些, 不是吗"
   },
   {
     "chapter": "Lesson131~132",
+    "speaker": "Gary",
     "text": "It may be cheaper, but it takes a long time.",
     "trans": "可能是便宜些, 但花的时间长"
   },
   {
     "chapter": "Lesson131~132",
+    "speaker": "Martin",
     "text": "I'm sure you'll enjoy yourselves.",
     "trans": "我敢肯定你们一定会玩得很开心"
   },
   {
     "chapter": "Lesson131~132",
+    "speaker": "Gary",
     "text": "Don't be so sure. We might not go anywhere. My wife always worries too much.",
     "trans": "别那么肯定啦. 我们可能哪里都去不成. 我妻子总是担心这担心那的"
   },
   {
     "chapter": "Lesson131~132",
+    "speaker": "Gary",
     "text": "Who's going to look after the dog? Who's going to look after the house? Who's going to look after the garden?",
     "trans": "谁来照顾狗啦, 谁来看管房子啦, 谁来照料花园啦"
   },
   {
     "chapter": "Lesson131~132",
+    "speaker": "Gary",
     "text": "We have this problem every year. In the end, we stay at home and look after everything!",
     "trans": "我们每年都碰到这类问题. 到头来, 我们呆在家里来照看一切"
   },
   {
     "chapter": "Lesson133~134",
+    "speaker": "Reporter",
     "text": "Have you just made a new film, Miss Marsh?",
     "trans": "您刚拍完一部新电影吗, 马什小姐"
   },
   {
     "chapter": "Lesson133~134",
+    "speaker": "Miss Marsh",
     "text": "Yes, I have.",
     "trans": "是的, 我刚拍完"
   },
   {
     "chapter": "Lesson133~134",
+    "speaker": "Reporter",
     "text": "Are you going to make another?",
     "trans": "您准备再拍一部吗"
   },
   {
     "chapter": "Lesson133~134",
+    "speaker": "Miss Marsh",
     "text": "No, I'm not. I'm going to retire. I feel very tired. I don't want to make another film for a long time.",
     "trans": "不, 我不准备拍了. 我打算退休了. 我感觉很累, 我早就不想再拍片子了"
   },
   {
     "chapter": "Lesson133~134",
+    "speaker": "Kate",
     "text": "Let's buy a newspaper, Liz. Listen to this!",
     "trans": "我们买份报纸吧, 莉兹. 你听这段"
   },
   {
     "chapter": "Lesson133~134",
+    "speaker": "Kate",
     "text": "Karen Marsh: Sensational News! By our reporter, Alan Jones. Karen Marsh arrived at London Airport today. She was wearing a blue dress and a mink coat.",
     "trans": "卡伦•马什: 爆炸性新闻. 由本报记者艾伦•琼斯报导. 卡伦•马什今天到达伦敦机场. 她穿着一身蓝色的裙子和一件貂皮大衣"
   },
   {
     "chapter": "Lesson133~134",
+    "speaker": "Kate",
     "text": "She told me she had just made a new film. She said she was not going to make another. She said she was going to retire. She told reporters she felt very tired and didn't want to make another film for a long time.",
     "trans": "她告诉我她刚拍完一部新片子. 她说她不准备再拍电影了. 她说她打算退休了. 她告诉记者她感到很疲劳, 早就不想再拍电影了"
   },
   {
     "chapter": "Lesson133~134",
+    "speaker": "Liz",
     "text": "I wonder why!",
     "trans": "我想知道为什么"
   },
   {
     "chapter": "Lesson135~136",
+    "speaker": "Reporter",
     "text": "Are you really going to retire, Miss Marsh?",
     "trans": "马什小姐, 您真的打算退休吗"
   },
   {
     "chapter": "Lesson135~136",
+    "speaker": "Miss Marsh",
     "text": "I may. I can't make up my mind. I will have to ask my future husband. He won't let me make another film.",
     "trans": "有可能, 我还拿不定主意. 我得问一下我的未婚夫. 他不想让我再拍电影了"
   },
   {
     "chapter": "Lesson135~136",
+    "speaker": "Reporter",
     "text": "Your future husband, Miss Marsh?",
     "trans": "你的未婚夫? 马什小姐"
   },
   {
     "chapter": "Lesson135~136",
+    "speaker": "Miss Marsh",
     "text": "Yes, Let me introduce him to you. His name is Carlos. We're going to get married next week.",
     "trans": "是的, 让我给你们介绍一下他. 他叫卡洛斯, 下个星期我们就要结婚了"
   },
   {
     "chapter": "Lesson135~136",
+    "speaker": "Kate",
     "text": "Look, Liz! Here's another report about Karen Marsh.",
     "trans": "看啊, 莉兹. 这又有一篇关于卡伦•马什的报导"
   },
   {
     "chapter": "Lesson135~136",
+    "speaker": "Kate",
     "text": "Listen: Karen Marsh: The latest At her London Hotel today Miss Marsh told reporters she might retire. She said she couldn't make up her mind. She said she would have to ask her future husband. She said her future husband would not let her make another film. Then she introduce us to Carlos and told us they would get married next week.",
     "trans": "你听, 卡伦•马什: 最新消息. 今天在伦敦酒店, 马什小姐告诉记者她可能要退休. 她说她还拿不定主意. 她说她得问问她的未婚夫. 她说她的未婚夫不会再让她拍电影. 然后她把他介绍给我们, 并告诉我们说他们下个星期结婚"
   },
   {
     "chapter": "Lesson135~136",
+    "speaker": "Liz",
     "text": "That's sensational news, isn't it, Kate?",
     "trans": "凯特, 这真是条轰动的消息, 是不是?"
   },
   {
     "chapter": "Lesson135~136",
+    "speaker": "Kate",
     "text": "It certainly is. He'll be her sixth husband!",
     "trans": "当然啦. 他将是她的第6任丈夫"
   },
   {
     "chapter": "Lesson137~138",
+    "speaker": "Julie",
     "text": "Are you doing the football pools, Brian?",
     "trans": "布莱恩, 你正在赌球吗"
   },
   {
     "chapter": "Lesson137~138",
+    "speaker": "Brian",
     "text": "Yes, I've nearly finished, Julie. I'm sure we'll win something this week.",
     "trans": "是的, 我马上就下好注了, 朱莉. 我敢肯定这个星期我们会赢一点什么"
   },
   {
     "chapter": "Lesson137~138",
+    "speaker": "Julie",
     "text": "You always say that, but we never win anything! What will you do if you win a lot of money?",
     "trans": "你老是那样说, 但是我们从来没赢过. 要是你赢了许多钱, 你打算做什么呢"
   },
   {
     "chapter": "Lesson137~138",
+    "speaker": "Brian",
     "text": "If I win a lot of money I'll buy you a mink coat.",
     "trans": "要是我赢了许多钱, 我会给你买件貂皮大衣"
   },
   {
     "chapter": "Lesson137~138",
+    "speaker": "Julie",
     "text": "I don't want a mink coat! I want to see the world.",
     "trans": "我不要貂皮大衣, 我要去见见世面"
   },
   {
     "chapter": "Lesson137~138",
+    "speaker": "Brian",
     "text": "All right. If we win a lot of money we'll travel round the world and we'll stay at the best hotels. Then we'll return home and buy a big house in the country. We'll have a beautiful garden and ...",
     "trans": "好吧. 要是我们赢了很多钱, 我们就去环游世界, 并且住最好的酒店. 然后我们回家, 在乡下买幢大房子. 我们将有一个漂亮的花园和..."
   },
   {
     "chapter": "Lesson137~138",
+    "speaker": "Julie",
     "text": "But if we spend all that money we'll be poor again. What'll we do then?",
     "trans": "但是如果我们把所有钱都花光了, 我们又会变穷的. 那时候我们该怎么办呢"
   },
   {
     "chapter": "Lesson137~138",
+    "speaker": "Brian",
     "text": "If we spend all the money we'll try and win the football pools again.",
     "trans": "如果我们花光了所有钱, 那我们就再赢一次赌球好了"
   },
   {
     "chapter": "Lesson137~138",
+    "speaker": "Julie",
     "text": "It's pleasant dream but everything depends on 'if'.",
     "trans": "这是个美好的梦, 但一切都取决于'如果'"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "Graham Turner",
     "text": "Is that you, John?",
     "trans": "是你吗, 约翰"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "John Smith",
     "text": "Yes, speaking.",
     "trans": "是我, 请讲"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "Graham Turner",
     "text": "Tell Mary we'll be late for dinner this evening",
     "trans": "你告诉玛丽, 今晚吃饭我们将晚到一会儿"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "John Smith",
     "text": "I'm afraid I don't understand.",
     "trans": "恐怕我不明白您的意思"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "Graham Turner",
     "text": "Hasn't Mary told you? She invited Charlotte and me to dinner this evening. I said I would be at your house at six o'clock, but the boss wants me to do some extra work. I'll have to stay at the office. I don't know when I'll finish. Oh, and by the way, my wife wants to know if Mary needs any help.",
     "trans": "玛丽没有告诉你吗. 她邀请我和夏洛特今晚去吃饭. 我说过我6点到你家, 但是老板要我加班, 我不得不留在办公室, 不知道什么时候才能下班. 喔, 顺便问一句, 我妻子想知道玛丽是否需要帮忙"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "John Smith",
     "text": "I don't know what you're talking about.",
     "trans": "我不知道您在说些什么"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "Graham Turner",
     "text": "That is John Smith, isn't it?",
     "trans": "你是约翰•斯密斯, 对吗"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "John Smith",
     "text": "Yes, I'm John Smith.",
     "trans": "是的, 我是约翰•斯密斯"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "Graham Turner",
     "text": "You are John Smith, the engineer, aren't you?",
     "trans": "你是工程师约翰•斯密斯, 对吗"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "John Smith",
     "text": "That's right.",
     "trans": "对"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "Graham Turner",
     "text": "You work for the Overseas Engineering Company, don't you?",
     "trans": "你在海外工程公司上班, 是吗"
   },
   {
     "chapter": "Lesson139~140",
+    "speaker": "John Smith",
     "text": "No, I don't. I'm John Smith the telephone engineer and I'm repairing your telephone line.",
     "trans": "不, 不是. 我是电话工程师约翰•斯密斯, 我正在修理您的电话线"
   },

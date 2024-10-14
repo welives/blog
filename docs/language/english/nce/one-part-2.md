@@ -12,12 +12,14 @@ head:
 <script setup>
   import nceWords from '../../../.vitepress/data/nce_word_1.json'
   import nceTexts from '../../../.vitepress/data/nce_text_1.json'
+  import nceComprehensions from '../../../.vitepress/data/nce_comprehension_1.json'
 </script>
 
 ## Lesson 31~32
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson31~32')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson31~32')" src="/images/nce_01/lesson_31.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson31~32')" />
 :::
 
 :::info ✨单词
@@ -85,7 +87,8 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 ## Lesson 33~34
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson33~34')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson33~34')" src="/images/nce_01/lesson_33.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson33~34')" />
 :::
 
 :::info ✨单词
@@ -109,7 +112,8 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 ## Lesson 35~36
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson35~36')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson35~36')" src="/images/nce_01/lesson_35.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson35~36')" />
 :::
 
 :::info ✨单词
@@ -139,7 +143,8 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 ## Lesson 37~38
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson37~38')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson37~38')" src="/images/nce_01/lesson_37.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson37~38')" />
 :::
 
 :::info ✨单词
@@ -201,7 +206,8 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 ## Lesson 39~40
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson39~40')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson39~40')" src="/images/nce_01/lesson_39.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson39~40')" />
 :::
 
 :::info ✨单词
@@ -231,7 +237,8 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 ## Lesson 41~42
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson41~42')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson41~42')" src="/images/nce_01/lesson_41.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson41~42')" />
 :::
 
 :::info ✨单词
@@ -266,7 +273,8 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 ## Lesson 43~44
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson43~44')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson43~44')" src="/images/nce_01/lesson_43.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson43~44')" />
 :::
 
 :::info ✨单词
@@ -304,7 +312,8 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 ## Lesson 45~46
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson45~46')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson45~46')" src="/images/nce_01/lesson_45.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson45~46')" />
 :::
 
 :::info ✨单词
@@ -326,7 +335,8 @@ _这个例子中，直接对主语`Tim`进行提问，用`Who`将其替代即可
 ## Lesson 47~48
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson47~48')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson47~48')" src="/images/nce_01/lesson_47.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson47~48')" />
 :::
 
 :::info ✨单词
@@ -386,7 +396,8 @@ e.g. <ExampleSentence text="The train leaves London at six and arrives in Birmin
 ## Lesson 49~50
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson49~50')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson49~50')" src="/images/nce_01/lesson_49.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson49~50')" />
 :::
 
 :::info ✨单词
@@ -449,7 +460,8 @@ e.g. <ExampleSentence text="The train leaves London at six and arrives in Birmin
 ## Lesson 51~52
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson51~52')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson51~52')" src="/images/nce_01/lesson_51.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson51~52')" />
 :::
 
 :::info ✨单词
@@ -479,7 +491,8 @@ e.g. <ExampleSentence text="How often do you go to the cinema?">你常去电影�
 ## Lesson 53~54
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson53~54')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson53~54')" src="/images/nce_01/lesson_53.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson53~54')" />
 :::
 
 :::info ✨单词
@@ -504,7 +517,8 @@ e.g. <ExampleSentence text="How often do you go to the cinema?">你常去电影�
 ## Lesson 55~56
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson55~56')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson55~56')" src="/images/nce_01/lesson_55.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson55~56')" />
 :::
 
 :::info ✨单词
@@ -524,7 +538,8 @@ e.g. <ExampleSentence text="Their father takes them to school every day.">他们
 ## Lesson 57~58
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson57~58')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson57~58')" src="/images/nce_01/lesson_57.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson57~58')" />
 :::
 
 :::info ✨单词
@@ -567,7 +582,8 @@ e.g. <ExampleSentence text="Their father takes them to school every day.">他们
 ## Lesson 59~60
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson59~60')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson59~60')" src="/images/nce_01/lesson_59.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson59~60')" />
 :::
 
 :::info ✨单词
@@ -602,7 +618,8 @@ e.g. <ExampleSentence text="What else do you want?">你还要什么吗</ExampleS
 ## Lesson 61~62
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson61~62')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson61~62')" src="/images/nce_01/lesson_61.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson61~62')" />
 :::
 
 :::info ✨单词
@@ -641,7 +658,8 @@ e.g. <ExampleSentence text="What else do you want?">你还要什么吗</ExampleS
 ## Lesson 63~64
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson63~64')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson63~64')" src="/images/nce_01/lesson_63.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson63~64')" />
 :::
 
 :::info ✨单词
@@ -677,7 +695,8 @@ e.g. <ExampleSentence text="What else do you want?">你还要什么吗</ExampleS
 ## Lesson 65~66
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson65~66')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson65~66')" src="/images/nce_01/lesson_65.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson65~66')" />
 :::
 
 :::info ✨单词

@@ -13,13 +13,14 @@ head:
 <script setup>
   import nceWords from '../../../.vitepress/data/nce_word_1.json'
   import nceTexts from '../../../.vitepress/data/nce_text_1.json'
+  import nceComprehensions from '../../../.vitepress/data/nce_comprehension_1.json'
 </script>
 
 
 ## Lesson 1~2
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson1~2')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson1~2')" src="/images/nce_01/lesson_01.png" />
 :::
 
 :::info ✨单词
@@ -48,7 +49,7 @@ head:
 ## Lesson 3~4
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson3~4')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson3~4')" src="/images/nce_01/lesson_03.png" />
 :::
 
 :::info ✨单词
@@ -85,7 +86,8 @@ head:
 ## Lesson 5~6
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson5~6')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson5~6')" src="/images/nce_01/lesson_05.png" />
+<NceComprehension :list="nceComprehensions.filter(t => t.chapter === 'Lesson5~6')" />
 :::
 
 :::info ✨单词
@@ -123,7 +125,8 @@ e.g. `This is a B/C/D/G/J/K/P/Q/R/T/U/V/W/Y/Z`、`This is an A/E/F/H/I/L/M/N/O/S
 ## Lesson 7~8
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson7~8')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson7~8')" src="/images/nce_01/lesson_07.png" />
+<NceComprehension :list="nceComprehensions.filter(t => t.chapter === 'Lesson7~8')" />
 :::
 
 :::info ✨单词
@@ -149,7 +152,8 @@ e.g. `This is a B/C/D/G/J/K/P/Q/R/T/U/V/W/Y/Z`、`This is an A/E/F/H/I/L/M/N/O/S
 ## Lesson 9~10
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson9~10')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson9~10')" src="/images/nce_01/lesson_09.png" />
+<NceComprehension :list="nceComprehensions.filter(t => t.chapter === 'Lesson9~10')" />
 :::
 
 :::info ✨单词
@@ -176,7 +180,8 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how`�
 ## Lesson 11~12
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson11~12')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson11~12')" src="/images/nce_01/lesson_11.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson11~12')" />
 :::
 
 :::info ✨单词
@@ -199,7 +204,8 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`whose
 ## Lesson 13~14
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson13~14')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson13~14')" src="/images/nce_01/lesson_13.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson13~14')" />
 :::
 
 :::info ✨单词
@@ -221,7 +227,8 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`
 ## Lesson 15~16
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson15~16')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson15~16')" src="/images/nce_01/lesson_15.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson15~16')" />
 :::
 
 :::info ✨单词
@@ -290,7 +297,8 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`what`
 ## Lesson 17~18
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson17~18')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson17~18')" src="/images/nce_01/lesson_17.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson17~18')" />
 :::
 
 :::info ✨单词
@@ -323,7 +331,8 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`who`�
 ## Lesson 19~20
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson19~20')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson19~20')" src="/images/nce_01/lesson_19.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson19~20')" />
 :::
 
 :::info ✨单词
@@ -360,7 +369,8 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`who`�
 ## Lesson 21~22
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson21~22')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson21~22')" src="/images/nce_01/lesson_21.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson21~22')" />
 :::
 
 :::info ✨单词
@@ -383,7 +393,7 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`which
 ## Lesson 23~24
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson23~24')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson23~24')" src="/images/nce_01/lesson_23.png" />
 :::
 
 :::info ✨单词
@@ -440,7 +450,8 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`where
 ## Lesson 25~26
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson25~26')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson25~26')" src="/images/nce_01/lesson_25.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson25~26')" />
 :::
 
 :::info ✨单词
@@ -484,7 +495,8 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`where
 ## Lesson 27~28
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson27~28')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson27~28')" src="/images/nce_01/lesson_27.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson27~28')" />
 :::
 
 :::info ✨单词
@@ -511,7 +523,8 @@ _先把陈述句中的`be`动词提到句首得到一般疑问句，再用`how m
 ## Lesson 29~30
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson29~30')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson29~30')" src="/images/nce_01/lesson_29.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson29~30')" />
 :::
 
 :::info ✨单词

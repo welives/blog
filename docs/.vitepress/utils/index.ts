@@ -23,3 +23,14 @@ export function generateWordSoundSrc(word: string, pronunciation: Exclude<App.Pr
       return ''
   }
 }
+
+/** @description 洗牌算法 */
+export function shuffle<T = any>(arr: T[]) {
+  const res: T[] = []
+  let random: number | undefined = void 0
+  while (arr.length > 0) {
+    random = Math.floor(Math.random() * arr.length)
+    res.push(arr.splice(random, 1)[0])
+  }
+  return res
+}

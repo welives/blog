@@ -12,13 +12,15 @@ head:
 <script setup>
   import nceWords from '../../../.vitepress/data/nce_word_1.json'
   import nceTexts from '../../../.vitepress/data/nce_text_1.json'
+  import nceComprehensions from '../../../.vitepress/data/nce_comprehension_1.json'
 </script>
 
 
 ## Lesson 107~108
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson107~108')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson107~108')" src="/images/nce_01/lesson_107.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson107~108')" />
 :::
 
 :::info ✨单词
@@ -94,7 +96,8 @@ head:
 ## Lesson 109~110
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson109~110')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson109~110')" src="/images/nce_01/lesson_109.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson109~110')" />
 :::
 
 :::info ✨单词
@@ -135,7 +138,8 @@ head:
 ## Lesson 111~112
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson111~112')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson111~112')" src="/images/nce_01/lesson_111.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson111~112')" />
 :::
 
 :::info ✨单词
@@ -237,7 +241,8 @@ head:
 ## Lesson 113~114
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson113~114')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson113~114')" src="/images/nce_01/lesson_113.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson113~114')" />
 :::
 
 :::info ✨单词
@@ -274,7 +279,8 @@ head:
 ## Lesson 115~116
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson115~116')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson115~116')" src="/images/nce_01/lesson_115.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson115~116')" />
 :::
 
 :::info ✨单词
@@ -313,7 +319,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 117~118
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson117~118')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson117~118')" src="/images/nce_01/lesson_117.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson117~118')" />
 :::
 
 :::info ✨单词
@@ -372,7 +379,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 119~120
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson119~120')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson119~120')" src="/images/nce_01/lesson_119.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson119~120')" />
 :::
 
 :::info ✨单词
@@ -430,7 +438,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 121~122
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson121~122')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson121~122')" src="/images/nce_01/lesson_121.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson121~122')" />
 :::
 
 :::info ✨单词
@@ -509,7 +518,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 123~124
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson123~124')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson123~124')" src="/images/nce_01/lesson_123.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson123~124')" />
 :::
 
 :::info ✨单词
@@ -567,7 +577,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 125~126
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson125~126')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson125~126')" src="/images/nce_01/lesson_125.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson125~126')" />
 :::
 
 :::info ✨单词
@@ -619,7 +630,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 127~128
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson127~128')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson127~128')" src="/images/nce_01/lesson_127.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson127~128')" />
 :::
 
 :::info ✨单词
@@ -667,7 +679,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 129~130
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson129~130')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson129~130')" src="/images/nce_01/lesson_129.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson129~130')" />
 :::
 
 :::info ✨单词
@@ -728,7 +741,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 131~132
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson131~132')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson131~132')" src="/images/nce_01/lesson_131.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson131~132')" />
 :::
 
 :::info ✨单词
@@ -775,7 +789,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 133~134
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson133~134')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson133~134')" src="/images/nce_01/lesson_133.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson133~134')" />
 :::
 
 :::info ✨单词
@@ -908,7 +923,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 135~136
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson135~136')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson135~136')" src="/images/nce_01/lesson_135.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson135~136')" />
 :::
 
 :::info ✨单词
@@ -1019,7 +1035,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 137~138
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson137~138')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson137~138')" src="/images/nce_01/lesson_137.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson137~138')" />
 :::
 
 :::info ✨单词
@@ -1045,7 +1062,8 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
 ## Lesson 139~140
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson139~140')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson139~140')" src="/images/nce_01/lesson_139.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson139~140')" />
 :::
 
 :::info ✨单词
@@ -1151,7 +1169,8 @@ e.g. `He wants to know ...`
 ## Lesson 141~142
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson141~142')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson141~142')" src="/images/nce_01/lesson_141.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson141~142')" />
 :::
 
 :::info ✨单词
@@ -1207,7 +1226,8 @@ e.g. `He wants to know ...`
 ## Lesson 143~144
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson143~144')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson143~144')" src="/images/nce_01/lesson_143.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson143~144')" />
 :::
 
 :::info ✨单词

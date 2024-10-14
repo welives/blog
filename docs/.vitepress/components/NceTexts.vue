@@ -1,47 +1,45 @@
 <template>
   <div flex="~ col">
-    <div border="0 b-1 zinc dashed" class="flex justify-end items-center pb-2 mb-2">
+    <Image v-if="src" :src="withBase(src)" :height="200" class="object-cover" />
+    <div border="0 b-1 zinc dashed" class="flex justify-end items-center pb-2 my-2">
       <span class="mr-2 text-xs text-zinc">是否显示中文翻译</span>
       <Switch v-model:checked="showTrans" checked-children="显" class="focus:outline-none"></Switch>
     </div>
-    <Space :direction="direction" :size="4" @click="playSound" v-if="direction === 'vertical'">
-      <div v-for="(item, index) in list" :key="index">
-        <TypographyText type="secondary" class="typography inline-flex items-center select-none" :data-index="index"
-          :data-text="item.text">
-          {{ item.text }}
-          <span class="i-f7:speaker-2 ml-2 shrink-0"
-            :class="isPlaying && item.text === text && index === textIndex ? 'visible' : 'invisible'"></span>
-        </TypographyText>
+    <Space direction="vertical" :size="4" @click="playSound" flex="~ col">
+      <template v-for="(item, index) in list" :key="index">
+        <div>
+          <TypographyText v-if="item.speaker" min-w-10 max-w-fit class="py-1"
+            :class="{ 'text-blue-5': isPlaying && item.text === text && index === textIndex }">
+            {{ item.speaker }}：
+          </TypographyText>
+          <TypographyText type="secondary" class="typography select-none" :data-index="index" :data-text="item.text">
+            {{ item.text }}
+          </TypographyText>
+        </div>
         <Transition name="fade">
-          <div class="pointer-events-none px-2 text-xs text-zinc" v-if="showTrans">
-            {{ item.trans }}
+          <div v-if="showTrans" class="pointer-events-none">
+            <span v-if="item.speaker" min-w-10 max-w-fit class="truncate select-none invisible">
+              {{ item.speaker }}：
+            </span>
+            <span class="px-1 text-xs text-zinc">
+              {{ item.trans }}
+            </span>
           </div>
         </Transition>
-      </div>
+      </template>
     </Space>
-    <div v-else>
-      <div v-for="(item, index) in list" :key="index" flex="inline col">
-        <TypographyText type="secondary" class="typography select-none" :data-index="index" :data-text="item.text">
-          {{ item.text }}
-          <span class="i-f7:speaker-2 ml-1" v-if="isPlaying && item.text === text && index === textIndex"></span>
-        </TypographyText>
-        <Transition name="fade">
-          <div class="pointer-events-none px-2 text-xs text-zinc" v-if="showTrans">
-            {{ item.trans }}
-          </div>
-        </Transition>
-      </div>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { withBase } from 'vitepress'
 import { ref, nextTick } from 'vue'
 import { useThrottleFn } from '@vueuse/core'
-import { Switch, Space, TypographyText } from 'ant-design-vue'
+import { Image, Switch, Space, TypographyText } from 'ant-design-vue'
 import { usePronunciation } from '../hooks'
 interface Text {
   chapter: string
+  speaker?: string
   text: string
   trans: string
 }
@@ -50,12 +48,12 @@ defineOptions({
   name: 'NceTexts',
 })
 const THROTTLE_TIME = 200
-const { direction, list } = defineProps({
-  direction: {
-    default: 'vertical' // vertical | horizontal
-  },
+const { list, src } = defineProps({
   list: {
     default: (): Text[] => []
+  },
+  src: {
+    default: ''
   }
 })
 const text = ref('')
@@ -80,6 +78,6 @@ const playSound = useThrottleFn((event: Event) => {
 
 <style scoped>
 .typography {
-  --uno: 'px-2 py-1 rounded text-blue-5 cursor-pointer transition-all hover:(bg-blue-4 bg-opacity-20)'
+  --uno: 'p-1 rounded text-blue-5 cursor-pointer transition-all hover:(bg-blue-4 bg-opacity-20)'
 }
 </style>

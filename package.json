@@ -47,8 +47,8 @@
     "@vitepress-code-preview/plugin": "^1.0.4",
     "@vueuse/core": "^11.1.0",
     "ant-design-vue": "^4.2.5",
-    "floating-vue": "^5.2.2",
     "howler": "^2.2.4",
+    "nanoid": "^5.0.7",
     "vue": "^3.3.9"
   }
 }

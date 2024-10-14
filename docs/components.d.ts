@@ -7,11 +7,13 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AImage: typeof import('ant-design-vue/es')['Image']
     BackToTop: typeof import('./.vitepress/components/BackToTop.vue')['default']
     EnglishWord: typeof import('./.vitepress/components/EnglishWord.vue')['default']
     EnglishWords: typeof import('./.vitepress/components/EnglishWords.vue')['default']
     ExampleSentence: typeof import('./.vitepress/components/ExampleSentence.vue')['default']
     Kbd: typeof import('./.vitepress/components/Kbd.vue')['default']
+    NceComprehension: typeof import('./.vitepress/components/NceComprehension.vue')['default']
     NceTexts: typeof import('./.vitepress/components/NceTexts.vue')['default']
   }
 }

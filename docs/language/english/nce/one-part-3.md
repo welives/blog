@@ -12,12 +12,14 @@ head:
 <script setup>
   import nceWords from '../../../.vitepress/data/nce_word_1.json'
   import nceTexts from '../../../.vitepress/data/nce_text_1.json'
+  import nceComprehensions from '../../../.vitepress/data/nce_comprehension_1.json'
 </script>
 
 ## Lesson 67~68
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson67~68')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson67~68')" src="/images/nce_01/lesson_67.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson67~68')" />
 :::
 
 :::info ✨单词
@@ -85,7 +87,8 @@ e.g. <ExampleSentence text="Aren't you lucky.">你真幸运</ExampleSentence>
 ## Lesson 69~70
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson69~70')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson69~70')" src="/images/nce_01/lesson_69.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson69~70')" />
 :::
 
 :::info ✨单词
@@ -119,7 +122,8 @@ e.g. <ExampleSentence text="Aren't you lucky.">你真幸运</ExampleSentence>
 ## Lesson 71~72
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson71~72')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson71~72')" src="/images/nce_01/lesson_71.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson71~72')" />
 :::
 
 :::info ✨单词
@@ -204,7 +208,8 @@ e.g. <ExampleSentence text="Aren't you lucky.">你真幸运</ExampleSentence>
 ## Lesson 73~74
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson73~74')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson73~74')" src="/images/nce_01/lesson_73.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson73~74')" />
 :::
 
 :::info ✨单词
@@ -255,7 +260,8 @@ e.g. <ExampleSentence text="Aren't you lucky.">你真幸运</ExampleSentence>
 ## Lesson 75~76
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson75~76')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson75~76')" src="/images/nce_01/lesson_75.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson75~76')" />
 :::
 
 :::info ✨单词
@@ -294,7 +300,8 @@ e.g. <ExampleSentence text="Aren't you lucky.">你真幸运</ExampleSentence>
 ## Lesson 77~78
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson77~78')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson77~78')" src="/images/nce_01/lesson_77.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson77~78')" />
 :::
 
 :::info ✨单词
@@ -321,7 +328,8 @@ e.g. <ExampleSentence text="Aren't you lucky.">你真幸运</ExampleSentence>
 ## Lesson 79~80
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson79~80')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson79~80')" src="/images/nce_01/lesson_79.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson79~80')" />
 :::
 
 :::info ✨单词
@@ -398,7 +406,8 @@ e.g. <ExampleSentence text="Aren't you lucky.">你真幸运</ExampleSentence>
 ## Lesson 81~82
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson81~82')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson81~82')" src="/images/nce_01/lesson_81.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson81~82')" />
 :::
 
 :::info ✨单词
@@ -426,7 +435,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 83~84
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson83~84')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson83~84')" src="/images/nce_01/lesson_83.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson83~84')" />
 :::
 
 :::info ✨单词
@@ -485,7 +495,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 85~86
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson85~86')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson85~86')" src="/images/nce_01/lesson_85.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson85~86')" />
 :::
 
 :::info ✨单词
@@ -514,7 +525,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 87~88
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson87~88')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson87~88')" src="/images/nce_01/lesson_87.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson87~88')" />
 :::
 
 :::info ✨单词
@@ -594,7 +606,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 89~90
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson89~90')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson89~90')" src="/images/nce_01/lesson_89.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson89~90')" />
 :::
 
 :::info ✨单词
@@ -629,7 +642,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 91~92
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson91~92')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson91~92')" src="/images/nce_01/lesson_91.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson91~92')" />
 :::
 
 :::info ✨单词
@@ -675,7 +689,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 93~94
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson93~94')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson93~94')" src="/images/nce_01/lesson_93.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson93~94')" />
 :::
 
 :::info ✨单词
@@ -696,7 +711,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 95~96
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson95~96')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson95~96')" src="/images/nce_01/lesson_95.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson95~96')" />
 :::
 
 :::info ✨单词
@@ -731,7 +747,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 97~98
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson97~98')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson97~98')" src="/images/nce_01/lesson_97.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson97~98')" />
 :::
 
 :::info ✨单词
@@ -749,7 +766,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 99~100
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson99~100')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson99~100')" src="/images/nce_01/lesson_99.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson99~100')" />
 :::
 
 :::info ✨单词
@@ -785,7 +803,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 101~102
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson101~102')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson101~102')" src="/images/nce_01/lesson_101.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson101~102')" />
 :::
 
 :::info ✨单词
@@ -821,7 +840,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 103~104
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson103~104')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson103~104')" src="/images/nce_01/lesson_103.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson103~104')" />
 :::
 
 :::info ✨单词
@@ -863,7 +883,8 @@ _因为到本节课为止只学了这四个时态，所以先只列出这四个�
 ## Lesson 105~106
 
 :::warning ✨课文
-<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson105~106')" />
+<NceTexts :list="nceTexts.filter(t=>t.chapter === 'Lesson105~106')" src="/images/nce_01/lesson_105.png" />
+<NceComprehension :list="nceComprehensions.filter(t=>t.chapter === 'Lesson105~106')" />
 :::
 
 :::info ✨单词
