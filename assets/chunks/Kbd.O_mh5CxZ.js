@@ -1,0 +1,1 @@
+import{d as s,o as a,c as t,k as o,t as r,r as d,_ as n}from"./framework.0ARc0mp4.js";const c={class:"kbd-box"},_=s({name:"Kbd",__name:"Kbd",props:{word:{}},setup(l){return(e,p)=>(a(),t("div",c,[o("kbd",null,r(e.word),1),o("div",null,[d(e.$slots,"default",{},void 0,!0)])]))}}),f=n(_,[["__scopeId","data-v-a10fc7af"]]);export{f as K};

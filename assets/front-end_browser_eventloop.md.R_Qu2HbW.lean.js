@@ -1,0 +1,5 @@
+import{_ as i,o as a,c as n,R as s,k as e}from"./chunks/framework.0ARc0mp4.js";const l="/blog/assets/消息队列.CQc4vZtV.png",t="/blog/assets/线程阻塞.yKblm4P4.png",p="/blog/assets/异步.DhLguZXV.png",F=JSON.parse('{"title":"事件循环","description":"事件循环","frontmatter":{"title":"事件循环","head":[["meta",{"name":"description","content":"事件循环"}],["meta",{"name":"keywords","content":"事件循环 浏览器 线程 渲染主线程 异步"}]]},"headers":[],"relativePath":"front-end/browser/eventloop.md","filePath":"front-end/browser/eventloop.md","lastUpdated":1711386344000}'),r={name:"front-end/browser/eventloop.md"},h=s("",37),o=e("iframe",{height:"300",style:{width:"100%"},scrolling:"no",title:"JS阻塞渲染",src:"https://codepen.io/welives/embed/LYMZLmv?default-tab=js%2Cresult",frameborder:"no",loading:"lazy",allowtransparency:"true",allowfullscreen:"true"},`
+  See the Pen <a href="https://codepen.io/welives/pen/LYMZLmv">
+  JS阻塞渲染</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+`,-1),k=s("",14),d=[h,o,k];function c(g,E,b,m,u,y){return a(),n("div",null,d)}const f=i(r,[["render",c]]);export{F as __pageData,f as default};

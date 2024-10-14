@@ -1,0 +1,5 @@
+import{_ as i,o as a,c as n,R as s,k as l}from"./chunks/framework.0ARc0mp4.js";const F=JSON.parse('{"title":"课程表实战","description":"课程表实战","frontmatter":{"title":"课程表实战","head":[["meta",{"name":"description","content":"课程表实战"}],["meta",{"name":"keywords","content":"draggable 拖拽API demo"}]]},"headers":[],"relativePath":"front-end/demo/draggable.md","filePath":"front-end/demo/draggable.md","lastUpdated":1711386344000}'),p={name:"front-end/demo/draggable.md"},h=s("",1),k=l("iframe",{height:"400",style:{width:"100%"},scrolling:"no",title:"拖拽API",src:"https://codepen.io/welives/embed/mdaNzzb?default-tab=result",frameborder:"no",loading:"lazy",allowtransparency:"true",allowfullscreen:"true"},`
+  See the Pen <a href="https://codepen.io/welives/pen/mdaNzzb">
+  拖拽API</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+`,-1),t=s("",50),e=[h,k,t];function E(r,d,g,y,c,b){return a(),n("div",null,e)}const o=i(p,[["render",E]]);export{F as __pageData,o as default};
