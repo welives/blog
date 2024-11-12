@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.0ARc0mp4.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"devops/index.md","filePath":"devops/index.md","lastUpdated":1713424224000}'),o={name:"devops/index.md"};function s(d,n,r,c,p,i){return t(),a("div")}const f=e(o,[["render",s]]);export{m as __pageData,f as default};

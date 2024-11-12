@@ -1,0 +1,5 @@
+import{_ as i,o as a,c as n,R as s,k as l}from"./chunks/framework.0ARc0mp4.js";const h="/blog/assets/等号隐式转换规则.yOf2YPMC.png",u=JSON.parse('{"title":"JS奇技淫巧","description":"JS奇技淫巧","frontmatter":{"title":"JS奇技淫巧","head":[["meta",{"name":"description","content":"JS奇技淫巧"}],["meta",{"name":"keywords","content":"js 技巧 demo"}]]},"headers":[],"relativePath":"front-end/javascript/technique.md","filePath":"front-end/javascript/technique.md","lastUpdated":1731407168000}'),p={name:"front-end/javascript/technique.md"},k=s("",4),e=l("iframe",{height:"300",style:{width:"100%"},scrolling:"no",title:"解决canvas清晰度问题",src:"https://codepen.io/welives/embed/dywVbzq?default-tab=js%2Cresult",frameborder:"no",loading:"lazy",allowtransparency:"true",allowfullscreen:"true"},`
+  See the Pen <a href="https://codepen.io/welives/pen/dywVbzq">
+  解决canvas清晰度问题</a> by Jandan (<a href="https://codepen.io/welives">@welives</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+`,-1),t=s("",34),r=[k,e,t];function E(d,g,y,c,F,b){return a(),n("div",null,r)}const m=i(p,[["render",E]]);export{u as __pageData,m as default};

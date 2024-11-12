@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例1 井字游戏</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 93vh;
+      }
+      div {
+        flex: 1;
+        height: 100%;
+      }
+      canvas {
+        /* 样式尺寸 */
+        width: 100%;
+        height: 100%;
+        background-color: #fefefe;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>简单应用了canvas的一些基础API</p>
+      <canvas id="basic"></canvas>
+    </div>
+    <div>
+      <p>使用Path2D配合translate来复用路径</p>
+      <canvas id="advance"></canvas>
+    </div>
+  </body>
+  <script>
+    const MARGIN = 50 // 棋盘离画布左边缘和上边缘的距离
+    const PADDING = 30 // 棋子离棋盘分隔线的距离，决定了棋子的大小
+    const WIDTH = 500 // 棋盘的宽度
+    const HEIGHT = WIDTH // 棋盘的高度，理论上应该跟宽度保持一致
+    const radius = WIDTH / 3 / 2 - PADDING // 棋子的半径
+
+    /**
+     * 初始化canvas原始尺寸
+     * @param {HTMLCanvasElement} cvs
+     */
+    function init(cvs) {
+      cvs.width = cvs.clientWidth * devicePixelRatio
+      cvs.height = cvs.clientHeight * devicePixelRatio
+    }
+
+    /**
+     * 绘制棋盘
+     * @param {CanvasRenderingContext2D} ctx
+     */
+    function drawChessboard(ctx) {
+      // 画外边框
+      // strokeRect(x, y, width, height), 描绘一个起点在 (x, y)、宽度为 w、高度为 h 的矩形
+      ctx.strokeRect(MARGIN, MARGIN, WIDTH, HEIGHT)
+
+      // 开始画棋盘的分隔线
+      // beginPath(), 清空子路径列表开始一个新路径
+      ctx.beginPath()
+      // 第一条横线
+      // moveTo(x, y), 将子路径的起始点移动到 x，y 坐标
+      ctx.moveTo(MARGIN, MARGIN + HEIGHT / 3)
+      // lineTo(x, y), 使用直线连接子路径的终点到 x，y 坐标
+      ctx.lineTo(MARGIN + WIDTH, MARGIN + HEIGHT / 3)
+
+      // 第二条横线
+      ctx.moveTo(MARGIN, MARGIN + (HEIGHT / 3) * 2)
+      ctx.lineTo(MARGIN + WIDTH, MARGIN + (HEIGHT / 3) * 2)
+
+      // 第一条竖线
+      ctx.moveTo(MARGIN + WIDTH / 3, MARGIN)
+      ctx.lineTo(MARGIN + WIDTH / 3, MARGIN + HEIGHT)
+
+      // 第二条竖线
+      ctx.moveTo(MARGIN + (WIDTH / 3) * 2, MARGIN)
+      ctx.lineTo(MARGIN + (WIDTH / 3) * 2, MARGIN + HEIGHT)
+
+      // 结束棋盘的绘制
+      ctx.stroke()
+    }
+
+    ;(function () {
+      /**
+       * 绘制棋子
+       * @param {CanvasRenderingContext2D} ctx
+       */
+      function drawChesspiece(ctx) {
+        ctx.beginPath()
+        // 第一个棋子,位于棋盘中央
+        ctx.arc(MARGIN + WIDTH / 2, MARGIN + HEIGHT / 2, radius, 0, Math.PI * 2)
+        ctx.strokeStyle = 'green'
+        ctx.stroke()
+
+        // 第二个棋子,位于棋盘左上角
+        ctx.beginPath()
+        ctx.moveTo(MARGIN + PADDING, MARGIN + PADDING)
+        ctx.lineTo(MARGIN + WIDTH / 3 - PADDING, MARGIN + HEIGHT / 3 - PADDING)
+        ctx.moveTo(MARGIN + WIDTH / 3 - PADDING, MARGIN + PADDING)
+        ctx.lineTo(MARGIN + PADDING, MARGIN + HEIGHT / 3 - PADDING)
+        ctx.strokeStyle = 'red'
+
+        // 结束棋子的绘制
+        ctx.stroke()
+      }
+
+      /**
+       * 渲染canvas
+       * @param {string} id
+       */
+      function render(id) {
+        id = id.replace('#', '')
+        /** @type {HTMLCanvasElement} */
+        const cvs = document.querySelector(`#${id}`)
+        if (cvs === null || !cvs.getContext) {
+          return false
+        }
+        const ctx = cvs.getContext('2d')
+        init(cvs)
+        drawChessboard(ctx)
+        drawChesspiece(ctx)
+      }
+
+      render('#basic')
+    })()
+    ;(function () {
+      // 使用 Path2D 创建可复用的圆形路径
+      function createCircle() {
+        // 用来声明路径, 此路径稍后会被 CanvasRenderingContext2D 对象使用
+        const circle = new Path2D()
+        // 以棋盘左上角的格子为基准画圆
+        circle.arc(
+          MARGIN + WIDTH / 3 / 2,
+          MARGIN + HEIGHT / 3 / 2,
+          radius,
+          0,
+          Math.PI * 2,
+        )
+        return circle
+      }
+      // 使用 Path2D 创建可复用的叉叉路径
+      function createCross() {
+        const cross = new Path2D()
+        // 以棋盘左上角的格子为基准画叉叉
+        cross.moveTo(MARGIN + PADDING, MARGIN + PADDING)
+        cross.lineTo(
+          MARGIN + WIDTH / 3 - PADDING,
+          MARGIN + HEIGHT / 3 - PADDING,
+        )
+        cross.moveTo(MARGIN + WIDTH / 3 - PADDING, MARGIN + PADDING)
+        cross.lineTo(MARGIN + PADDING, MARGIN + HEIGHT / 3 - PADDING)
+        return cross
+      }
+      /**
+       * 重置 canvas 状态
+       * @param {CanvasRenderingContext2D} ctx
+       */
+      function resetContextStatus(ctx) {
+        ctx.restore() // 状态出栈, 将 canvas 恢复到最近的保存状态
+        ctx.save() // 状态入栈, 保存 canvas 全部状态
+      }
+      /**
+       * 绘制棋子
+       * @param {CanvasRenderingContext2D} ctx
+       */
+      function drawChesspiece(ctx) {
+        const circle = createCircle()
+        const cross = createCross()
+
+        ctx.save() // 保存 canvas 的初始状态,此时canvas的左上角为0,0
+        // translate(x, y), 将 canvas 按原始 x 点的水平方向、原始的 y 点垂直方向进行平移变换
+        // 由于创建的可复用子路径已经带有 MARGIN 的偏移值,所以只需要考虑平移变换每个格子的大小的距离即可
+        ctx.translate(WIDTH / 3, HEIGHT / 3)
+        ctx.strokeStyle = 'red'
+        ctx.stroke(cross)
+        resetContextStatus(ctx) // 将画布的左上角重置为0,0
+
+        ctx.strokeStyle = 'green'
+        ctx.stroke(circle)
+        resetContextStatus(ctx)
+
+        ctx.translate(0, (HEIGHT / 3) * 2)
+        ctx.strokeStyle = 'red'
+        ctx.stroke(cross)
+        resetContextStatus(ctx)
+
+        ctx.translate((WIDTH / 3) * 2, 0)
+        ctx.strokeStyle = 'green'
+        ctx.stroke(circle)
+        resetContextStatus(ctx)
+
+        ctx.translate(WIDTH / 3, 0)
+        ctx.strokeStyle = 'red'
+        ctx.stroke(cross)
+        resetContextStatus(ctx)
+
+        ctx.translate(WIDTH / 3, (HEIGHT / 3) * 2)
+        ctx.strokeStyle = 'green'
+        ctx.stroke(circle)
+        resetContextStatus(ctx)
+
+        ctx.translate((WIDTH / 3) * 2, HEIGHT / 3)
+        ctx.strokeStyle = 'red'
+        ctx.stroke(cross)
+        resetContextStatus(ctx)
+
+        ctx.translate(0, HEIGHT / 3)
+        ctx.strokeStyle = 'green'
+        ctx.stroke(circle)
+        resetContextStatus(ctx)
+      }
+      /**
+       * 渲染canvas
+       * @param {string} id
+       */
+      function render(id) {
+        id = id.replace('#', '')
+        /** @type {HTMLCanvasElement} */
+        const cvs = document.querySelector(`#${id}`)
+        if (cvs === null || !cvs.getContext) {
+          return false
+        }
+        const ctx = cvs.getContext('2d')
+        init(cvs)
+        drawChessboard(ctx)
+        drawChesspiece(ctx)
+      }
+      render('#advance')
+    })()
+  </script>
+</html>

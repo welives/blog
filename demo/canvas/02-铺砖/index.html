@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例2 铺砖</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 95vh;
+      }
+      p {
+        text-align: center;
+      }
+      canvas {
+        /* 样式尺寸 */
+        width: 500px;
+        height: 500px;
+        background-color: #fefefe;
+      }
+    </style>
+  </head>
+  <body>
+    <p>练习批量有规律地输出图形</p>
+    <canvas id="brick"></canvas>
+  </body>
+  <script>
+    const unitLenght = 20 // 单位长度，砖块的宽高比为2:1
+
+    // 颜色基值
+    const R = 150
+    const G = 0
+    const B = 0
+
+    function createRgb(r, g, b) {
+      return `rgb(${r},${g},${b})`
+    }
+    /**
+     * 初始化canvas原始尺寸
+     * @param {HTMLCanvasElement} cvs
+     */
+    function init(cvs) {
+      cvs.width = cvs.clientWidth * devicePixelRatio
+      cvs.height = cvs.clientHeight * devicePixelRatio
+    }
+    /**
+     * 画一行水平的砖块，说是一行，其实是从左上方到右下方
+     * @param {CanvasRenderingContext2D} ctx
+     * @param {number} curWidth 当前行已铺砖块的宽度
+     * @param {number} curHeight 当前行已铺砖块的高度
+     * @param {number} limitWidth 最大可铺砖宽度
+     * @param {number} limitHeight 最大可铺砖高度
+     * @param {number} nextX 下一次下笔的x坐标
+     * @param {number} nextY 下一次下笔的y坐标
+     * @param {number} startX 起始砖块的x坐标
+     */
+    function drawPerHorizontalRow(
+      ctx,
+      curWidth,
+      curHeight,
+      limitWidth,
+      limitHeight,
+      nextX,
+      nextY,
+      startX,
+    ) {
+      while (curWidth <= limitWidth && curHeight <= limitHeight) {
+        ctx.fillStyle = createRgb(R, G + nextX / 2, B + nextY / 2)
+        ctx.fillRect(nextX, nextY, unitLenght * 2, unitLenght) // 填充一个横着的矩形
+        /*
+          计算当前此行砖块所达到的宽度
+          铺设第一块砖时比较特殊，此时这行的宽度就等于砖的宽度；
+          但后面每铺设一块砖，由于有半块在水平方向上跟上一块砖是重叠的，因此只加半块砖的宽度，即一个单位长度
+        */
+        curWidth =
+          curWidth === startX
+            ? curWidth + unitLenght * 2
+            : curWidth + unitLenght
+        curHeight += unitLenght
+        nextX = curWidth - unitLenght // 下一块砖下笔的基点是上一块砖的水平中央处
+        nextY = curHeight
+      }
+    }
+    /**
+     * 绘制砖块
+     * @param {CanvasRenderingContext2D} ctx
+     * @param {number} width 画布的原始宽度
+     * @param {number} height 画布的原始高度
+     */
+    function drawBrick(ctx, width, height) {
+      // 砖块开始坐标
+      let startX = 0,
+        startY = 0
+
+      // 当前水平砖块所达到的宽高
+      let curWidth = startX,
+        curHeight = startY
+
+      // 下一砖块下笔的坐标
+      let nextX = startX,
+        nextY = startY
+
+      // 绘制左下方的部分
+      while (startY <= height - unitLenght) {
+        curWidth = 0
+        curHeight = startY
+        nextX = -unitLenght
+        nextY = startY
+        drawPerHorizontalRow(
+          ctx,
+          curWidth,
+          curHeight,
+          width,
+          height,
+          nextX,
+          nextY,
+          -unitLenght,
+        )
+        startY += unitLenght * 2 // 向下画下一行
+      }
+
+      // 绘制右上方的部分
+      startX = unitLenght
+      while (startX <= width - unitLenght) {
+        curWidth = startX
+        curHeight = 0
+        nextX = startX
+        nextY = 0
+        drawPerHorizontalRow(
+          ctx,
+          curWidth,
+          curHeight,
+          width,
+          height,
+          nextX,
+          nextY,
+          startX,
+        )
+        startX += unitLenght * 2 // 向右画下一行
+      }
+    }
+
+    /**
+     * 渲染canvas
+     * @param {string} id
+     */
+    function render(id) {
+      id = id.replace('#', '')
+      /** @type {HTMLCanvasElement} */
+      const cvs = document.querySelector(`#${id}`)
+      if (cvs === null || !cvs.getContext) {
+        return false
+      }
+      const ctx = cvs.getContext('2d')
+      init(cvs)
+      drawBrick(ctx, cvs.width, cvs.height)
+    }
+    render('#brick')
+  </script>
+</html>
