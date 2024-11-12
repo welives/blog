@@ -27,5 +27,9 @@ export default {
       text: '安装MongoDB服务',
       link: '/devops/docker/mongodb',
     },
+    {
+      text: '容器间通信',
+      link: '/devops/docker/network',
+    },
   ],
 } as DefaultTheme.SidebarItem

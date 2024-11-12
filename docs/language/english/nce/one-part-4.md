@@ -481,6 +481,15 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
   - ③由于先行词 **`the man`** 在从句中**作宾语**，所以关系代词可以用`who`、`whom`或`that`，甚至省略
   - ④最后得到完整句子 <ExampleSentence text="He is the man I met yesterday.">他就是我昨天遇到的那个人</ExampleSentence>
 
+  **e.g. 他是杀了怪物的男人**
+
+  - ①分析句子可知，从句中「**`杀了怪物的`**」修饰限定「**`男人`**」
+  - ②根据分析结果将这句中文拆分成两个部分，<ExampleSentence text="He is the man.">他是男人</ExampleSentence> 和 <ExampleSentence text="The man killed the monster.">男人杀了怪物</ExampleSentence>
+  - ③由于先行词 **`the man`** 在从句中**作主语**，所以关系代词只能用`who`或`that`，且不能省略
+  - ④最后得到完整句子 <ExampleSentence text="He is the man who killed the monster.">他是杀了怪物的男人</ExampleSentence>
+
+---
+
 - **修饰物**：关系代词用 **`which/that`**。**当先行词在从句中作主语或宾语时，可以用`which`或`that`；并且作宾语时甚至还能省略**。在生活中，实际上人们更多是用`which`
 
   **e.g. 叼着篮子的那只狗是我的**
@@ -496,6 +505,15 @@ e.g. <ExampleSentence text="I didn't go anywhere.">我哪都没去</ExampleSente
   - ②根据分析结果将这句中文拆分成两个部分，<ExampleSentence text="This is the letter.">这就是那封信</ExampleSentence> 和 <ExampleSentence text="He sent me the letter.">他寄给我的那封信</ExampleSentence>
   - ③由于先行词 **`the letter`** 在从句中**作宾语**，所以关系代词可以用`which`或`that`，甚至省略
   - ④最后得到完整句子 <ExampleSentence text="This is the letter he sent me.">这就是他寄给我的那封信</ExampleSentence>
+
+  **e.g. 她的朋友可能找到了她不见的戒指**
+
+  - ①分析句子可知，从句中「**`她的朋友找到的`**」修饰限定「**`她的戒指`**」
+  - ②根据分析结果将这句中文拆分成两个部分，<ExampleSentence text="Her friend probably found her ring.">她的朋友可能找到了她的戒指</ExampleSentence> 和 <ExampleSentence text="Her ring was missing.">她不见的戒指</ExampleSentence>
+  - ③由于先行词 **`her ring`** 在从句中**作主语**，所以关系代词可以用`which`或`that`，且不能省略
+  - ④最后得到完整句子 <ExampleSentence text="Her friend probably found her ring that was missing.">她的朋友可能找到了她不见的戒指</ExampleSentence>
+
+---
 
 - **修饰人或物**：关系代词用 **`whose/that`**。**当先行词在从句中作定语时，关系代词要用`whose`；当先行词为不定代词或由数词、最高级、`the only`、`the very`、`the same`、`all`所修饰，又或者是以`who`、`what`、`which`开头的疑问句时，关系代词只能用`that`**
 

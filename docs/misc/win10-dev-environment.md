@@ -30,6 +30,7 @@ head:
 - XshellXftpPortable
 - [Docker](https://www.docker.com/products/docker-desktop/)
 - Windows Terminal
+- [GCC](https://github.com/niXman/mingw-builds-binaries)
 
 ## 科学上网
 
@@ -658,3 +659,12 @@ PUB_HOSTED_URL: https://mirrors.tuna.tsinghua.edu.cn/dart-pub
 ```
 
 > 至此，Dart、fvm 和 flutter 的环境配置结束
+
+## GCC的配置{#gcc}
+
+- 我这里以最常用的[mingw-w64](https://github.com/niXman/mingw-builds-binaries)为例，直接去这个开源仓库下载自己需要的版本。我是把下载好的压缩文件解压到了 `D:\Develop\mingw64`目录
+- 接着配置环境变量，给系统变量`Path`添加一个值`D:\Develop\mingw64\bin`就行
+- 然后打开终端输入`gcc --version`，出现类似下面这样的信息就表示成功了
+- `make`指令：如果`bin`目录下没有`make.exe`文件的话，那就复制一份`mingw32-make.exe`，然后改名为`make.exe`即可
+
+![](./assets//win10-dev-environment/gcc.png)

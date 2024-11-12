@@ -11,7 +11,7 @@
 ### 前端
 
 - <span class="i-devicon:html5" />**HTML** + <span class="i-devicon:css3" />**CSS** + <span class="i-devicon:javascript" />**JavaScript** + <span class="i-devicon:typescript" />**TypeScript** + **SCSS**，熟练掌握
-- <span class="i-devicon:vuejs" />**Vue** + **Uniapp** + <span class="i-devicon:react" />**React** + **ReactNative** + **Taro** + **Ahooks** + <span class="i-devicon:tailwindcss" />**TailwindCSS**，熟练掌握
+- <span class="i-devicon:vuejs" />**Vue** + **Uniapp** + <span class="i-devicon:react" />**React** + **ReactNative** + **Taro** + **Ahooks** + <span class="i-devicon:tailwindcss" />**TailwindCSS** + <span class="i-simple-icons:unocss" />**UnoCSS**，熟练掌握
 - **Vuex** + <span class="i-logos:pinia" />**Pinia** + <span class="i-logos:redux" />**Redux** + **Zustand** + **MMKV**，这些是我在项目中使用过的状态管理库
 - <span class="i-devicon:nuxtjs" />**Nuxt.js** + <span class="i-devicon:nextjs" />**Next.js** + <span class="i-devicon:reactnavigation" />**ReactNavigation** + **TanStack Query** + <span class="i-devicon:antdesign" />**AntDesign** + **Umi.js** + <span class="i-logos:element" />**Element** + **Vant** + **uView** + **echarts**，都拿来做过项目，因为前端周边生态太繁杂，不敢说哪个熟练，都是看着文档在写
 - <span class="i-devicon:flutter" />**Flutter**，努力学习中
@@ -19,7 +19,7 @@
 
 ### 后端
 
-- <span class="i-devicon:nodejs" />**Nodejs** + <span class="i-logos:express" /> + <span class="i-logos:koa" /> + <span class="i-devicon:nestjs" />**Nest.js** + <span class="i-devicon:prisma" />**Prisma** + <span class="i-logos:typeorm" />**TypeORM**，熟练掌握
+- <span class="i-devicon:nodejs" />**Nodejs** + <span class="i-logos:express" /> + <span class="i-logos:koa" /> + <span class="i-devicon:nestjs" />**Nest.js** + <span class="i-devicon:prisma" />**Prisma** + <span class="i-logos:typeorm" />**TypeORM** + **Drizzle-ORM**，熟练掌握
 - <span class="i-devicon:postgresql" />**PostgreSQL** + <span class="i-devicon:mysql" />**MySQL** + <span class="i-devicon:mongodb" />**MongoDB** + <span class="i-devicon:redis" />**Redis**
 - 一些常用的配套工具：<span class="i-logos:pm2-icon" />**PM2** + <span class="i-devicon:nodemon" />**Nodemon** + <span class="i-logos:jwt-icon" />**JWT** + <span class="i-devicon:swagger" />**Swagger**
 
